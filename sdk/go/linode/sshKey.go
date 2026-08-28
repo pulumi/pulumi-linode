@@ -17,57 +17,6 @@ import (
 //
 // **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
 //
-// ## Example Usage
-//
-// The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeChomp, err := std.Chomp(ctx, &std.ChompArgs{
-//				Input: std.File(ctx, std.FileArgs{
-//					Input: "~/.ssh/id_rsa.pub",
-//				}, nil).Result,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			foo, err := linode.NewSshKey(ctx, "foo", &linode.SshKeyArgs{
-//				Label:  pulumi.String("foo"),
-//				SshKey: pulumi.String(invokeChomp.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-//				Image:  pulumi.String("linode/ubuntu22.04"),
-//				Label:  pulumi.String("foo"),
-//				Region: pulumi.String("us-east"),
-//				Type:   pulumi.String("g6-nanode-1"),
-//				AuthorizedKeys: pulumi.StringArray{
-//					foo.SshKey,
-//				},
-//				RootPass: pulumi.String("..."),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.

@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool Active;
         /// <summary>
-        /// The address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         public readonly string Address;
         /// <summary>
@@ -34,9 +34,21 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Gateway;
         /// <summary>
-        /// The globally general API entity identifier for the Linode interface.
+        /// The Linode interface ID that this IP address is assigned to.
         /// </summary>
         public readonly int InterfaceId;
+        /// <summary>
+        /// (Read-Only Object List) A list of IPv6 addresses associated with this VPC interface. Referenced with an index (e.g. `ipv4.0.vpc.0.ipv6_addresses.0.slaac_address`).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4VpcIpv6AddressResult> Ipv6Addresses;
+        /// <summary>
+        /// Whether the VPC IPv6 interface has public reachability.
+        /// </summary>
+        public readonly bool Ipv6IsPublic;
+        /// <summary>
+        /// The /64 prefix, in CIDR notation, assigned to an interface. Only set for VPC interfaces with IPv6 enabled.
+        /// </summary>
+        public readonly string Ipv6Range;
         /// <summary>
         /// The Linode instance's ID.
         /// </summary>
@@ -54,7 +66,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The unique globally general API entity identifier for the VPC subnet.
+        /// The `Id` of the VPC Subnet for this Interface.
         /// </summary>
         public readonly int SubnetId;
         /// <summary>
@@ -62,7 +74,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string SubnetMask;
         /// <summary>
-        /// The unique globally general API entity identifier for the VPC.
+        /// The `Id` of the VPC configured for this Interface.
         /// </summary>
         public readonly int VpcId;
 
@@ -79,6 +91,12 @@ namespace Pulumi.Linode.Outputs
             string gateway,
 
             int interfaceId,
+
+            ImmutableArray<Outputs.GetInstanceNetworkingIpv4VpcIpv6AddressResult> ipv6Addresses,
+
+            bool ipv6IsPublic,
+
+            string ipv6Range,
 
             int linodeId,
 
@@ -100,6 +118,9 @@ namespace Pulumi.Linode.Outputs
             ConfigId = configId;
             Gateway = gateway;
             InterfaceId = interfaceId;
+            Ipv6Addresses = ipv6Addresses;
+            Ipv6IsPublic = ipv6IsPublic;
+            Ipv6Range = ipv6Range;
             LinodeId = linodeId;
             Nat11 = nat11;
             Prefix = prefix;

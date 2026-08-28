@@ -43,8 +43,6 @@ import * as utilities from "./utilities";
  *
  * ## Filterable Fields
  *
- * * `group`
- *
  * * `id`
  *
  * * `image`
@@ -95,6 +93,9 @@ export interface GetInstancesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
+     */
     readonly instances: outputs.GetInstancesInstance[];
     readonly order?: string;
     readonly orderBy?: string;
@@ -135,8 +136,6 @@ export interface GetInstancesResult {
  * ```
  *
  * ## Filterable Fields
- *
- * * `group`
  *
  * * `id`
  *

@@ -182,7 +182,7 @@ export interface FirewallInbound {
      */
     ports?: string;
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      */
     protocol: string;
 }
@@ -213,7 +213,7 @@ export interface FirewallOutbound {
      */
     ports?: string;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. Accepted values are ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
      */
     protocol: string;
 }
@@ -428,7 +428,7 @@ export interface GetConsumerImageShareGroupImageSharesImageShare {
      */
     id: string;
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing: outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharing;
     /**
@@ -463,11 +463,11 @@ export interface GetConsumerImageShareGroupImageSharesImageShare {
 
 export interface GetConsumerImageShareGroupImageSharesImageShareImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      */
     sharedBy: outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      */
     sharedWith: outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith;
 }
@@ -1020,6 +1020,14 @@ export interface GetDatabasesDatabase {
      */
     engine: string;
     /**
+     * The database timestamp from which it was restored.
+     */
+    forkRestoreTime: string;
+    /**
+     * The ID of the database that was forked from.
+     */
+    forkSource: number;
+    /**
      * The primary host for the Managed Database.
      */
     hostPrimary: string;
@@ -1045,6 +1053,10 @@ export interface GetDatabasesDatabase {
      * A unique, user-defined string referring to the Managed Database.
      */
     label: string;
+    /**
+     * The oldest time to which a database can be restored.
+     */
+    oldestRestoreTime: string;
     /**
      * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
      */
@@ -1118,10 +1130,6 @@ export interface GetDomainsDomain {
      * The amount of time in seconds that may pass before this Domain is no longer authoritative.
      */
     expireSec: number;
-    /**
-     * The group this Domain belongs to.
-     */
-    group: string;
     /**
      * The unique ID of this Domain.
      */
@@ -1221,7 +1229,7 @@ export interface GetFirewallInbound {
      */
     ports: string;
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      */
     protocol: string;
 }
@@ -1249,7 +1257,7 @@ export interface GetFirewallOutbound {
      */
     ports: string;
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      */
     protocol: string;
 }
@@ -1302,7 +1310,7 @@ export interface GetFirewallTemplatesFirewallTemplate {
      */
     inboundPolicy: string;
     /**
-     * A list of firewall rules specifying allowed inbound network traffic.
+     * (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
      */
     inbounds: outputs.GetFirewallTemplatesFirewallTemplateInbound[];
     /**
@@ -1310,7 +1318,7 @@ export interface GetFirewallTemplatesFirewallTemplate {
      */
     outboundPolicy: string;
     /**
-     * A list of firewall rules specifying allowed outbound network traffic.
+     * (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
      */
     outbounds: outputs.GetFirewallTemplatesFirewallTemplateOutbound[];
     /**
@@ -1368,6 +1376,10 @@ export interface GetFirewallsFirewall {
      */
     disabled: boolean;
     /**
+     * The fingerprint of the current Firewall rules.
+     */
+    fingerprint: string;
+    /**
      * The unique ID assigned to this Firewall.
      */
     id: number;
@@ -1415,6 +1427,10 @@ export interface GetFirewallsFirewall {
      * When this firewall was last updated.
      */
     updated: string;
+    /**
+     * The current version of the Firewall rules.
+     */
+    version: number;
 }
 
 export interface GetFirewallsFirewallDevice {
@@ -1462,7 +1478,7 @@ export interface GetFirewallsFirewallInbound {
      */
     ports: string;
     /**
-     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     * The network protocol this rule controls. Valid values include ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
      */
     protocol: string;
 }
@@ -1489,18 +1505,63 @@ export interface GetFirewallsFirewallOutbound {
      */
     ports: string;
     /**
-     * The network protocol this rule controls. (TCP, UDP, ICMP)
+     * The network protocol this rule controls. Valid values include ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
      */
     protocol: string;
 }
 
+export interface GetIamEntitiesEntity {
+    /**
+     * A unique identifier for each entity.
+     */
+    id: number;
+    /**
+     * A unique label for each entity.
+     */
+    label: string;
+    /**
+     * The type for each entity. (eg. Volume)
+     */
+    type: string;
+}
+
+export interface GetIamEntitiesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetIamUserEntityAccess {
+    /**
+     * The unique ID for the entity.
+     */
+    id: number;
+    /**
+     * A list of the roles for this entity and specific user.
+     */
+    roles: string[];
+    /**
+     * The type of product for the entity. (eg. Volume)
+     */
+    type: string;
+}
+
 export interface GetImageImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
      */
     sharedBy: outputs.GetImageImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
      */
     sharedWith: outputs.GetImageImageSharingSharedWith;
 }
@@ -1591,7 +1652,7 @@ export interface GetImagesImage {
      */
     id: string;
     /**
-     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing: outputs.GetImagesImageImageSharing;
     /**
@@ -1607,7 +1668,7 @@ export interface GetImagesImage {
      */
     label: string;
     /**
-     * A list of image replication regions and corresponding status.
+     * (Nested Attribute List) A list of image replication regions and corresponding status.
      */
     replications: outputs.GetImagesImageReplication[];
     /**
@@ -1638,11 +1699,11 @@ export interface GetImagesImage {
 
 export interface GetImagesImageImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      */
     sharedBy: outputs.GetImagesImageImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      */
     sharedWith: outputs.GetImagesImageImageSharingSharedWith;
 }
@@ -1850,6 +1911,9 @@ export interface GetInstanceNetworkingIpv4 {
      * Whether this is a public or private IP address.
      */
     publics: outputs.GetInstanceNetworkingIpv4Public[];
+    /**
+     * Whether this IP address is a reserved IP.
+     */
     reserveds: outputs.GetInstanceNetworkingIpv4Reserved[];
     shareds: outputs.GetInstanceNetworkingIpv4Shared[];
     vpcs: outputs.GetInstanceNetworkingIpv4Vpc[];
@@ -1857,15 +1921,19 @@ export interface GetInstanceNetworkingIpv4 {
 
 export interface GetInstanceNetworkingIpv4Private {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetInstanceNetworkingIpv4PrivateAssignedEntity;
     /**
      * The default gateway for this address.
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
     /**
@@ -1889,45 +1957,76 @@ export interface GetInstanceNetworkingIpv4Private {
      */
     region: string;
     /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
      * The subnet mask.
      */
     subnetMask: string;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
     /**
      * The type of address this is.
      */
     type: string;
     /**
-     * IPv4 address configured as a 1:1 NAT for this Interface.
+     * (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetInstanceNetworkingIpv4PrivateVpcNat11;
 }
 
+export interface GetInstanceNetworkingIpv4PrivateAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface GetInstanceNetworkingIpv4PrivateVpcNat11 {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv4Public {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetInstanceNetworkingIpv4PublicAssignedEntity;
     /**
      * The default gateway for this address.
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
     /**
@@ -1951,45 +2050,76 @@ export interface GetInstanceNetworkingIpv4Public {
      */
     region: string;
     /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
      * The subnet mask.
      */
     subnetMask: string;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
     /**
      * The type of address this is.
      */
     type: string;
     /**
-     * IPv4 address configured as a 1:1 NAT for this Interface.
+     * (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetInstanceNetworkingIpv4PublicVpcNat11;
 }
 
+export interface GetInstanceNetworkingIpv4PublicAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface GetInstanceNetworkingIpv4PublicVpcNat11 {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv4Reserved {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetInstanceNetworkingIpv4ReservedAssignedEntity;
     /**
      * The default gateway for this address.
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
     /**
@@ -2013,45 +2143,76 @@ export interface GetInstanceNetworkingIpv4Reserved {
      */
     region: string;
     /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
      * The subnet mask.
      */
     subnetMask: string;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
     /**
      * The type of address this is.
      */
     type: string;
     /**
-     * IPv4 address configured as a 1:1 NAT for this Interface.
+     * (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetInstanceNetworkingIpv4ReservedVpcNat11;
 }
 
+export interface GetInstanceNetworkingIpv4ReservedAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface GetInstanceNetworkingIpv4ReservedVpcNat11 {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv4Shared {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetInstanceNetworkingIpv4SharedAssignedEntity;
     /**
      * The default gateway for this address.
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
     /**
@@ -2075,30 +2236,57 @@ export interface GetInstanceNetworkingIpv4Shared {
      */
     region: string;
     /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
      * The subnet mask.
      */
     subnetMask: string;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
     /**
      * The type of address this is.
      */
     type: string;
     /**
-     * IPv4 address configured as a 1:1 NAT for this Interface.
+     * (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetInstanceNetworkingIpv4SharedVpcNat11;
 }
 
+export interface GetInstanceNetworkingIpv4SharedAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface GetInstanceNetworkingIpv4SharedVpcNat11 {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
 }
@@ -2109,7 +2297,7 @@ export interface GetInstanceNetworkingIpv4Vpc {
      */
     active: boolean;
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
@@ -2125,9 +2313,21 @@ export interface GetInstanceNetworkingIpv4Vpc {
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
+    /**
+     * (Read-Only Object List) A list of IPv6 addresses associated with this VPC interface. Referenced with an index (e.g. `ipv4.0.vpc.0.ipv6_addresses.0.slaac_address`).
+     */
+    ipv6Addresses: outputs.GetInstanceNetworkingIpv4VpcIpv6Address[];
+    /**
+     * Whether the VPC IPv6 interface has public reachability.
+     */
+    ipv6IsPublic: boolean;
+    /**
+     * The /64 prefix, in CIDR notation, assigned to an interface. Only set for VPC interfaces with IPv6 enabled.
+     */
+    ipv6Range: string;
     /**
      * The Linode instance's ID.
      */
@@ -2145,7 +2345,7 @@ export interface GetInstanceNetworkingIpv4Vpc {
      */
     region: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
@@ -2153,15 +2353,23 @@ export interface GetInstanceNetworkingIpv4Vpc {
      */
     subnetMask: string;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
+}
+
+export interface GetInstanceNetworkingIpv4VpcIpv6Address {
+    /**
+     * The specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
+     */
+    slaacAddress: string;
 }
 
 export interface GetInstanceNetworkingIpv6 {
     globals: outputs.GetInstanceNetworkingIpv6Global[];
     linkLocal: outputs.GetInstanceNetworkingIpv6LinkLocal;
     slaac: outputs.GetInstanceNetworkingIpv6Slaac;
+    vpcs: outputs.GetInstanceNetworkingIpv6Vpc[];
 }
 
 export interface GetInstanceNetworkingIpv6Global {
@@ -2185,15 +2393,19 @@ export interface GetInstanceNetworkingIpv6Global {
 
 export interface GetInstanceNetworkingIpv6LinkLocal {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetInstanceNetworkingIpv6LinkLocalAssignedEntity;
     /**
      * The default gateway for this address.
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
     /**
@@ -2217,45 +2429,76 @@ export interface GetInstanceNetworkingIpv6LinkLocal {
      */
     region: string;
     /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
      * The subnet mask.
      */
     subnetMask: string;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
     /**
      * The type of address this is.
      */
     type: string;
     /**
-     * IPv4 address configured as a 1:1 NAT for this Interface.
+     * (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetInstanceNetworkingIpv6LinkLocalVpcNat11;
 }
 
+export interface GetInstanceNetworkingIpv6LinkLocalAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
 }
 
 export interface GetInstanceNetworkingIpv6Slaac {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetInstanceNetworkingIpv6SlaacAssignedEntity;
     /**
      * The default gateway for this address.
      */
     gateway: string;
     /**
-     * The globally general API entity identifier for the Linode interface.
+     * The Linode interface ID that this IP address is assigned to.
      */
     interfaceId: number;
     /**
@@ -2279,40 +2522,150 @@ export interface GetInstanceNetworkingIpv6Slaac {
      */
     region: string;
     /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
      * The subnet mask.
      */
     subnetMask: string;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
     /**
      * The type of address this is.
      */
     type: string;
     /**
-     * IPv4 address configured as a 1:1 NAT for this Interface.
+     * (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetInstanceNetworkingIpv6SlaacVpcNat11;
 }
 
+export interface GetInstanceNetworkingIpv6SlaacAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of address this is.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface GetInstanceNetworkingIpv6SlaacVpcNat11 {
     /**
-     * The address.
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address: string;
     /**
-     * The unique globally general API entity identifier for the VPC subnet.
+     * The `id` of the VPC Subnet for this Interface.
      */
     subnetId: number;
     /**
-     * The unique globally general API entity identifier for the VPC.
+     * The `id` of the VPC configured for this Interface.
      */
     vpcId: number;
 }
 
+export interface GetInstanceNetworkingIpv6Vpc {
+    /**
+     * Returns `true` if the VPC interface is in use, meaning that the Linode was powered on using the `configId` to which the interface belongs. Otherwise returns `false`.
+     */
+    active: boolean;
+    /**
+     * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+     */
+    address: string;
+    /**
+     * A range of IPv4 addresses configured for this VPC interface. it will be `null` if it's a single `address`.
+     */
+    addressRange: string;
+    /**
+     * The globally general entity identifier for the Linode configuration profile where the VPC is included.
+     */
+    configId: number;
+    /**
+     * The default gateway for this address.
+     */
+    gateway: string;
+    /**
+     * The Linode interface ID that this IP address is assigned to.
+     */
+    interfaceId: number;
+    /**
+     * (Read-Only Object List) A list of IPv6 addresses associated with this VPC interface. Referenced with an index (e.g. `ipv4.0.vpc.0.ipv6_addresses.0.slaac_address`).
+     */
+    ipv6Addresses: outputs.GetInstanceNetworkingIpv6VpcIpv6Address[];
+    /**
+     * Whether the VPC IPv6 interface has public reachability.
+     */
+    ipv6IsPublic: boolean;
+    /**
+     * The /64 prefix, in CIDR notation, assigned to an interface. Only set for VPC interfaces with IPv6 enabled.
+     */
+    ipv6Range: string;
+    /**
+     * The Linode instance's ID.
+     */
+    linodeId: number;
+    /**
+     * The public IP address used for NAT 1:1 with the VPC. This is `null` if the VPC interface uses an `addressRange` or NAT 1:1 isn't used.
+     */
+    nat11: string;
+    /**
+     * The network prefix.
+     */
+    prefix: number;
+    /**
+     * (Filterable) The Region this address resides in.
+     */
+    region: string;
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     */
+    subnetId: number;
+    /**
+     * The subnet mask.
+     */
+    subnetMask: string;
+    /**
+     * The `id` of the VPC configured for this Interface.
+     */
+    vpcId: number;
+}
+
+export interface GetInstanceNetworkingIpv6VpcIpv6Address {
+    /**
+     * The specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
+     */
+    slaacAddress: string;
+}
+
 export interface GetInstanceTypeAddon {
+    /**
+     * (Read-Only Object List) Backups add-on pricing information. Referenced with an index (e.g. `addons.0.backups.0.price`).
+     */
     backups: outputs.GetInstanceTypeAddonBackup[];
 }
 
 export interface GetInstanceTypeAddonBackup {
+    /**
+     * (Read-Only Object List) The price to add Backups service. Referenced with an index (e.g. `addons.0.backups.0.price.0.hourly`).
+     */
     prices: outputs.GetInstanceTypeAddonBackupPrice[];
+    /**
+     * (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+     */
     regionPrices: outputs.GetInstanceTypeAddonBackupRegionPrice[];
 }
 
@@ -2377,7 +2730,7 @@ export interface GetInstanceTypesType {
      */
     acceleratedDevices: number;
     /**
-     * Information about the optional Backup service offered for Linodes.
+     * (Read-Only Object List) Add-on information for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
      */
     addons: outputs.GetInstanceTypesTypeAddon[];
     /**
@@ -2405,11 +2758,11 @@ export interface GetInstanceTypesType {
      */
     networkOut: number;
     /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
+     * (Read-Only Object List) The base cost for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
      */
     prices: outputs.GetInstanceTypesTypePrice[];
     /**
-     * A list of region-specific prices for this plan.
+     * (Read-Only Object List) Region-specific pricing for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
      */
     regionPrices: outputs.GetInstanceTypesTypeRegionPrice[];
     /**
@@ -2423,11 +2776,20 @@ export interface GetInstanceTypesType {
 }
 
 export interface GetInstanceTypesTypeAddon {
+    /**
+     * (Read-Only Object List) Backup add-on pricing for this Linode Type. Referenced with an index (e.g. `addons.0.backups.0.price`).
+     */
     backups: outputs.GetInstanceTypesTypeAddonBackup[];
 }
 
 export interface GetInstanceTypesTypeAddonBackup {
+    /**
+     * (Read-Only Object List) Backup add-on costs for this Linode Type. Referenced with an index (e.g. `addons.0.backups.0.price.0.hourly`).
+     */
     prices: outputs.GetInstanceTypesTypeAddonBackupPrice[];
+    /**
+     * (Read-Only Object List) Region-specific pricing for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+     */
     regionPrices: outputs.GetInstanceTypesTypeAddonBackupRegionPrice[];
 }
 
@@ -2487,9 +2849,12 @@ export interface GetInstancesFilter {
 }
 
 export interface GetInstancesInstance {
+    /**
+     * (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
+     */
     alerts: outputs.GetInstancesInstanceAlerts;
     /**
-     * Information about this Linode's backups status.
+     * (Read-Only Object List) Information about the Linode's backup status. Referenced with an index (e.g. `backups.0.enabled`).
      */
     backups: outputs.GetInstancesInstanceBackup[];
     /**
@@ -2501,7 +2866,7 @@ export interface GetInstancesInstance {
      */
     capabilities: string[];
     /**
-     * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     * (Read-Only Object List) A list of configs associated with the Linode. Referenced with an index (e.g. `config.0.label`).
      */
     configs: outputs.GetInstancesInstanceConfig[];
     /**
@@ -2509,13 +2874,9 @@ export interface GetInstancesInstance {
      */
     diskEncryption: string;
     /**
-     * Disks associated with this Linode.
+     * (Read-Only Object List) A list of disks associated with the Linode. Referenced with an index (e.g. `disk.0.label`).
      */
     disks: outputs.GetInstancesInstanceDisk[];
-    /**
-     * The display group of the Linode instance.
-     */
-    group: string;
     /**
      * Whether this Instance was created with user-data.
      */
@@ -2564,6 +2925,9 @@ export interface GetInstancesInstance {
      * The maintenance policy of this Linode instance.
      */
     maintenancePolicy: string;
+    /**
+     * (Read-Only Object List) Information about the Linode's Placement Groups. Referenced with an index (e.g. `placement_group.0.id`).
+     */
     placementGroups: outputs.GetInstancesInstancePlacementGroup[];
     /**
      * This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -2573,6 +2937,9 @@ export interface GetInstancesInstance {
      * This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
      */
     region: string;
+    /**
+     * (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
+     */
     specs: outputs.GetInstancesInstanceSpec[];
     /**
      * The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -2628,6 +2995,9 @@ export interface GetInstancesInstanceBackup {
      * If this Linode has the Backup service enabled.
      */
     enabled: boolean;
+    /**
+     * (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `schedule.0.day`).
+     */
     schedules: outputs.GetInstancesInstanceBackupSchedule[];
 }
 
@@ -2648,11 +3018,11 @@ export interface GetInstancesInstanceConfig {
      */
     comments: string;
     /**
-     * A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+     * (Read-Only Object List) A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted. Referenced with an index (e.g. `devices.0.sda`).
      */
     devices: outputs.GetInstancesInstanceConfigDevice[];
     /**
-     * Helpers enabled when booting to this Linode Config.
+     * (Read-Only Object List) Helpers enabled when booting to this Linode Config. Referenced with an index (e.g. `helpers.0.distro`).
      */
     helpers: outputs.GetInstancesInstanceConfigHelper[];
     /**
@@ -2691,9 +3061,161 @@ export interface GetInstancesInstanceConfig {
 
 export interface GetInstancesInstanceConfigDevice {
     /**
-     * ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     * ... `sdbl` - (Read-Only Object List) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskLabel` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_label`).
+     */
+    sda: outputs.GetInstancesInstanceConfigDeviceSda[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaas: outputs.GetInstancesInstanceConfigDeviceSdaa[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdabs: outputs.GetInstancesInstanceConfigDeviceSdab[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdacs: outputs.GetInstancesInstanceConfigDeviceSdac[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdads: outputs.GetInstancesInstanceConfigDeviceSdad[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaes: outputs.GetInstancesInstanceConfigDeviceSdae[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdafs: outputs.GetInstancesInstanceConfigDeviceSdaf[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdags: outputs.GetInstancesInstanceConfigDeviceSdag[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdahs: outputs.GetInstancesInstanceConfigDeviceSdah[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdais: outputs.GetInstancesInstanceConfigDeviceSdai[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdajs: outputs.GetInstancesInstanceConfigDeviceSdaj[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaks: outputs.GetInstancesInstanceConfigDeviceSdak[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdals: outputs.GetInstancesInstanceConfigDeviceSdal[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdams: outputs.GetInstancesInstanceConfigDeviceSdam[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdans: outputs.GetInstancesInstanceConfigDeviceSdan[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaos: outputs.GetInstancesInstanceConfigDeviceSdao[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaps: outputs.GetInstancesInstanceConfigDeviceSdap[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaqs: outputs.GetInstancesInstanceConfigDeviceSdaq[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdars: outputs.GetInstancesInstanceConfigDeviceSdar[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
     sdas: outputs.GetInstancesInstanceConfigDeviceSda[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdats: outputs.GetInstancesInstanceConfigDeviceSdat[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaus: outputs.GetInstancesInstanceConfigDeviceSdaus[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdavs: outputs.GetInstancesInstanceConfigDeviceSdav[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaws: outputs.GetInstancesInstanceConfigDeviceSdaw[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaxes: outputs.GetInstancesInstanceConfigDeviceSdaxis[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdays: outputs.GetInstancesInstanceConfigDeviceSday[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdazs: outputs.GetInstancesInstanceConfigDeviceSdaz[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbas: outputs.GetInstancesInstanceConfigDeviceSdba[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbbs: outputs.GetInstancesInstanceConfigDeviceSdbb[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbcs: outputs.GetInstancesInstanceConfigDeviceSdbc[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbds: outputs.GetInstancesInstanceConfigDeviceSdbd[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbes: outputs.GetInstancesInstanceConfigDeviceSdbe[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbfs: outputs.GetInstancesInstanceConfigDeviceSdbf[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbgs: outputs.GetInstancesInstanceConfigDeviceSdbg[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbhs: outputs.GetInstancesInstanceConfigDeviceSdbh[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbis: outputs.GetInstancesInstanceConfigDeviceSdbi[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbjs: outputs.GetInstancesInstanceConfigDeviceSdbj[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbks: outputs.GetInstancesInstanceConfigDeviceSdbk[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbls: outputs.GetInstancesInstanceConfigDeviceSdbl[];
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
@@ -2722,6 +3244,93 @@ export interface GetInstancesInstanceConfigDevice {
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
     sdhs: outputs.GetInstancesInstanceConfigDeviceSdh[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdies: outputs.GetInstancesInstanceConfigDeviceSdy[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdis: outputs.GetInstancesInstanceConfigDeviceSdi[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdjs: outputs.GetInstancesInstanceConfigDeviceSdj[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdks: outputs.GetInstancesInstanceConfigDeviceSdk[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdls: outputs.GetInstancesInstanceConfigDeviceSdl[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdms: outputs.GetInstancesInstanceConfigDeviceSdm[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdns: outputs.GetInstancesInstanceConfigDeviceSdn[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdos: outputs.GetInstancesInstanceConfigDeviceSdo[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdps: outputs.GetInstancesInstanceConfigDeviceSdp[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdqs: outputs.GetInstancesInstanceConfigDeviceSdq[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdrs: outputs.GetInstancesInstanceConfigDeviceSdr[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sds: outputs.GetInstancesInstanceConfigDeviceSd[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdts: outputs.GetInstancesInstanceConfigDeviceSdt[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdus: outputs.GetInstancesInstanceConfigDeviceSdus[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdvs: outputs.GetInstancesInstanceConfigDeviceSdv[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdws: outputs.GetInstancesInstanceConfigDeviceSdw[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdxes: outputs.GetInstancesInstanceConfigDeviceSdx[];
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdzs: outputs.GetInstancesInstanceConfigDeviceSdz[];
+}
+
+export interface GetInstancesInstanceConfigDeviceSd {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSda {
@@ -2739,7 +3348,562 @@ export interface GetInstancesInstanceConfigDeviceSda {
     volumeId?: number;
 }
 
+export interface GetInstancesInstanceConfigDeviceSdaa {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdab {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdac {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdad {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdae {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaf {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdag {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdah {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdai {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaj {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdak {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdal {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdam {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdan {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdao {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdap {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaq {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdar {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdat {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaus {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdav {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaw {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaxis {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSday {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdaz {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
 export interface GetInstancesInstanceConfigDeviceSdb {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdba {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbb {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbc {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbd {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbe {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbf {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbg {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbh {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbi {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbj {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbk {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdbl {
     /**
      * The Disk ID of the associated `diskLabel`, if used
      */
@@ -2844,6 +4008,261 @@ export interface GetInstancesInstanceConfigDeviceSdh {
     volumeId?: number;
 }
 
+export interface GetInstancesInstanceConfigDeviceSdi {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdj {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdk {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdl {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdm {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdn {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdo {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdp {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdq {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdr {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdt {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdus {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdv {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdw {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdx {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdy {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
+export interface GetInstancesInstanceConfigDeviceSdz {
+    /**
+     * The Disk ID of the associated `diskLabel`, if used
+     */
+    diskId: number;
+    /**
+     * The `label` of the `disk` to map to this `device` slot.
+     */
+    diskLabel?: string;
+    /**
+     * The Volume ID to map to this `device` slot.
+     */
+    volumeId?: number;
+}
+
 export interface GetInstancesInstanceConfigHelper {
     /**
      * Populates the /dev directory early during boot without udev. Defaults to false.
@@ -2918,7 +4337,7 @@ export interface GetInstancesInstanceConfigInterfaceIpv4 {
     /**
      * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      */
-    nat11: string;
+    nat11?: string;
     /**
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
@@ -3308,15 +4727,11 @@ export interface GetKernelsKernel {
      * Linux Kernel version
      */
     version: string;
-    /**
-     * If this Kernel is suitable for Xen Linodes.
-     */
-    xen: boolean;
 }
 
 export interface GetLkeClusterControlPlane {
     /**
-     * The ACL configuration for an LKE cluster's control plane.
+     * (Nested Attribute List) The ACL configuration for an LKE cluster's control plane.
      */
     acls: outputs.GetLkeClusterControlPlaneAcl[];
     /**
@@ -3331,7 +4746,7 @@ export interface GetLkeClusterControlPlane {
 
 export interface GetLkeClusterControlPlaneAcl {
     /**
-     * A list of ip addresses to allow.
+     * (Nested Attribute List) A list of ip addresses to allow.
      */
     addresses: outputs.GetLkeClusterControlPlaneAclAddress[];
     /**
@@ -3353,7 +4768,7 @@ export interface GetLkeClusterControlPlaneAclAddress {
 
 export interface GetLkeClusterPool {
     /**
-     * The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+     * (Nested Attribute List) The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      */
     autoscalers: outputs.GetLkeClusterPoolAutoscaler[];
     /**
@@ -3365,7 +4780,7 @@ export interface GetLkeClusterPool {
      */
     diskEncryption: string;
     /**
-     * This Node Pool’s custom disk layout.
+     * (Nested Attribute List) This Node Pool’s custom disk layout.
      */
     disks: outputs.GetLkeClusterPoolDisk[];
     /**
@@ -3389,7 +4804,7 @@ export interface GetLkeClusterPool {
      */
     labels: {[key: string]: string};
     /**
-     * The nodes in the Node Pool.
+     * (Nested Attribute List) The nodes in the Node Pool.
      */
     nodes: outputs.GetLkeClusterPoolNode[];
     /**
@@ -3397,11 +4812,11 @@ export interface GetLkeClusterPool {
      */
     tags: string[];
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * (Read-Only Object Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     taints: outputs.GetLkeClusterPoolTaint[];
     /**
-     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+     * This custom disk partition’s filesystem type.
      */
     type: string;
     /**
@@ -3431,7 +4846,7 @@ export interface GetLkeClusterPoolDisk {
      */
     size: number;
     /**
-     * The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+     * This custom disk partition’s filesystem type.
      */
     type: string;
 }
@@ -3487,7 +4902,7 @@ export interface GetLkeClustersLkeCluster {
      */
     aplEnabled: boolean;
     /**
-     * Defines settings for the Kubernetes Control Plane.
+     * (Nested Attribute) The cluster Control Plane configuration. Referenced directly (e.g. `lke_clusters[0].control_plane.high_availability`).
      */
     controlPlane: outputs.GetLkeClustersLkeClusterControlPlane;
     /**
@@ -3632,11 +5047,11 @@ export interface GetLkeTypesType {
      */
     label: string;
     /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
+     * (Read-Only Object List) Pricing information for this LKE type. Referenced with an index (e.g. `price.0.hourly`).
      */
     prices: outputs.GetLkeTypesTypePrice[];
     /**
-     * A list of region-specific prices for this LKE Type.
+     * (Read-Only Object List) Region-specific pricing information for this LKE type. Referenced with an index (e.g. `region_prices.0.id`).
      */
     regionPrices: outputs.GetLkeTypesTypeRegionPrice[];
     /**
@@ -3760,6 +5175,669 @@ export interface GetMaintenancePoliciesMaintenancePolicy {
     type: string;
 }
 
+export interface GetMonitorAlertChannelsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorAlertChannelsMonitorAlertChannel {
+    /**
+     * (Nested Attribute) Alert linkage metadata for this channel. Referenced directly (e.g. `alerts.alert_count`).
+     */
+    alerts: outputs.GetMonitorAlertChannelsMonitorAlertChannelAlerts;
+    /**
+     * The notification transport type (currently `email`).
+     */
+    channelType: string;
+    /**
+     * When the channel was created.
+     */
+    created: string;
+    /**
+     * The user who created the channel, or `system`.
+     */
+    createdBy: string;
+    /**
+     * (Nested Attribute) Channel configuration details. Referenced directly (e.g. `details.email`).
+     */
+    details: outputs.GetMonitorAlertChannelsMonitorAlertChannelDetails;
+    /**
+     * The unique ID of the channel.
+     */
+    id: number;
+    /**
+     * The display label for the channel.
+     */
+    label: string;
+    /**
+     * The alert type associated with the channel.
+     */
+    type: string;
+    /**
+     * When the channel was last updated.
+     */
+    updated: string;
+    /**
+     * The user who last updated the channel, or `system`.
+     */
+    updatedBy: string;
+}
+
+export interface GetMonitorAlertChannelsMonitorAlertChannelAlerts {
+    /**
+     * The number of associated alerts.
+     */
+    alertCount: number;
+    /**
+     * The alert type associated with the channel.
+     */
+    type: string;
+    /**
+     * The API URL for associated alerts.
+     */
+    url: string;
+}
+
+export interface GetMonitorAlertChannelsMonitorAlertChannelDetails {
+    /**
+     * (Nested Attribute) Email-specific configuration details. Referenced directly (e.g. `email.recipient_type`).
+     */
+    email: outputs.GetMonitorAlertChannelsMonitorAlertChannelDetailsEmail;
+}
+
+export interface GetMonitorAlertChannelsMonitorAlertChannelDetailsEmail {
+    /**
+     * Recipient selection mode (for example `readWriteUsers` or `user`).
+     */
+    recipientType: string;
+    /**
+     * Usernames that receive notifications.
+     */
+    usernames: string[];
+}
+
+export interface GetMonitorAlertDefinitionAlertChannel {
+    /**
+     * The ID of the alert definition.
+     */
+    id: number;
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The type of alert channel.
+     */
+    type: string;
+    /**
+     * The URL of the alert channel.
+     */
+    url: string;
+}
+
+export interface GetMonitorAlertDefinitionEntities {
+    /**
+     * The number of entities associated with the alert definition.
+     */
+    count: number;
+    /**
+     * Whether there are additional entities associated with the alert.
+     */
+    hasMoreResources: boolean;
+    /**
+     * The URL of the alert channel.
+     */
+    url: string;
+}
+
+export interface GetMonitorAlertDefinitionEntitiesEntity {
+    /**
+     * The unique identifier for this entity.
+     */
+    id: string;
+    /**
+     * The label of this entity.
+     */
+    label: string;
+    /**
+     * The type of this entity.
+     */
+    type: string;
+    /**
+     * The URL for this entity.
+     */
+    url: string;
+}
+
+export interface GetMonitorAlertDefinitionEntitiesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorAlertDefinitionRuleCriteria {
+    /**
+     * The individual rules that make up the alert definition.
+     */
+    rules: outputs.GetMonitorAlertDefinitionRuleCriteriaRule[];
+}
+
+export interface GetMonitorAlertDefinitionRuleCriteriaRule {
+    /**
+     * The aggregate function to apply to the metric data.
+     * * `dimensionFilters` - (Nested Attribute List) A list of dimension filter objects to filter the metric data.
+     */
+    aggregateFunction: string;
+    /**
+     * Individual objects that define dimension filters for the rule.
+     */
+    dimensionFilters: outputs.GetMonitorAlertDefinitionRuleCriteriaRuleDimensionFilter[];
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The metric to query.
+     */
+    metric: string;
+    /**
+     * The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+     */
+    operator: string;
+    /**
+     * The predefined value or condition that triggers an alert when met or exceeded.
+     */
+    threshold: number;
+    /**
+     * The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+     */
+    unit: string;
+}
+
+export interface GetMonitorAlertDefinitionRuleCriteriaRuleDimensionFilter {
+    /**
+     * The label of the dimension to filter on.
+     */
+    dimensionLabel: string;
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+     */
+    operator: string;
+    /**
+     * The value to compare the dimensionLabel against.
+     */
+    value: string;
+}
+
+export interface GetMonitorAlertDefinitionTriggerConditions {
+    /**
+     * The logical operation applied. Currently only 'ALL' allowed.
+     */
+    criteriaCondition: string;
+    /**
+     * Time period over which data is collected before evaluating the threshold.
+     */
+    evaluationPeriodSeconds: number;
+    /**
+     * Frequency at which the metric data is polled.
+     */
+    pollingIntervalSeconds: number;
+    /**
+     * Number of times the condition must be met before triggering an alert.
+     */
+    triggerOccurrences: number;
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinition {
+    /**
+     * The alert channels set up for use with this alert.
+     */
+    alertChannels: outputs.GetMonitorAlertDefinitionsAlertDefinitionAlertChannel[];
+    /**
+     * "The plan type for the Managed Database cluster, either shared or dedicated. This only applies to a system alert for a serviceType of dbaas (Managed Databases). For user alerts for dbaas, this is returned as null.",
+     */
+    class: string;
+    /**
+     * The date and time the alert definition was created.
+     */
+    created: string;
+    /**
+     * For a user alert definition, this is the user on your account that created it. For a system alert definition, this is returned as system.
+     */
+    createdBy: string;
+    /**
+     * A description for the alert definition.
+     */
+    description: string;
+    /**
+     * Entity metadata for the alert definition.
+     */
+    entities: outputs.GetMonitorAlertDefinitionsAlertDefinitionEntities;
+    /**
+     * A set of dimension fields used to group alert events, such as `entityId`.
+     */
+    groupBies: string[];
+    /**
+     * The unique identifier assigned to the alert channel.
+     */
+    id: number;
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The regions the alert definition applies to. Only used for region-scoped alerts.
+     * * `entities` - (Nested Attribute) Entity metadata for the alert definition. Referenced directly (e.g. `entities.count`).
+     * * `alertChannels` - (Nested Attribute List) A list of alert channel objects associated with the alert definition.
+     */
+    regions: string[];
+    /**
+     * Details for the rules required to trigger the alert.
+     */
+    ruleCriteria: outputs.GetMonitorAlertDefinitionsAlertDefinitionRuleCriteria;
+    /**
+     * The scope of the alert definition. Possible values: `account`, `entity`, `region`.
+     */
+    scope: string;
+    /**
+     * The service type (e.g., dbaas).
+     *
+     * * `filter` - (Optional, Block Set) A set of filters used to select IP addresses that meet certain requirements.
+     */
+    serviceType: string;
+    /**
+     * The severity level of the alert definition.
+     * * `ruleCriteria` - (Nested Attribute) The criteria expression for the alert. Referenced directly (e.g. `rule_criteria.rules`).
+     * * `triggerConditions` - (Nested Attribute) The conditions that need to be met to send a notification for the alert. Referenced directly (e.g. `trigger_conditions.criteria_condition`).
+     */
+    severity: number;
+    /**
+     * The status of the alert definition.
+     */
+    status: string;
+    /**
+     * The conditions that need to be met to send a notification for the alert.
+     */
+    triggerConditions: outputs.GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions;
+    /**
+     * The type of alert channel.
+     */
+    type: string;
+    /**
+     * The date and time the alert definition was last updated.
+     */
+    updated: string;
+    /**
+     * For a user alert definition, this is the user on your account that last updated it. For a system alert definition, this is returned as system. If it hasn't been updated, this value is the same as created_by.
+     */
+    updatedBy: string;
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinitionAlertChannel {
+    /**
+     * The unique identifier assigned to the alert channel.
+     */
+    id: number;
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The type of alert channel.
+     */
+    type: string;
+    /**
+     * The URL of the alert channel.
+     */
+    url: string;
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinitionEntities {
+    /**
+     * The number of entities associated with the alert definition.
+     */
+    count: number;
+    /**
+     * Whether there are additional entities associated with the alert.
+     */
+    hasMoreResources: boolean;
+    /**
+     * The URL of the alert channel.
+     */
+    url: string;
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinitionRuleCriteria {
+    /**
+     * The individual rules that make up the alert definition.
+     */
+    rules: outputs.GetMonitorAlertDefinitionsAlertDefinitionRuleCriteriaRule[];
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinitionRuleCriteriaRule {
+    /**
+     * The aggregate function to apply to the metric data.
+     * * `dimensionFilters` - (Nested Attribute List) A list of dimension filter objects to filter the metric data.
+     */
+    aggregateFunction: string;
+    /**
+     * Individual objects that define dimension filters for the rule.
+     */
+    dimensionFilters: outputs.GetMonitorAlertDefinitionsAlertDefinitionRuleCriteriaRuleDimensionFilter[];
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The metric to query.
+     */
+    metric: string;
+    /**
+     * The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+     */
+    operator: string;
+    /**
+     * The predefined value or condition that triggers an alert when met or exceeded.
+     */
+    threshold: number;
+    /**
+     * The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+     */
+    unit: string;
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinitionRuleCriteriaRuleDimensionFilter {
+    /**
+     * The label of the dimension to filter on.
+     */
+    dimensionLabel: string;
+    /**
+     * The label of the alert channel.
+     */
+    label: string;
+    /**
+     * The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+     */
+    operator: string;
+    /**
+     * The value to compare the dimensionLabel against.
+     */
+    value: string;
+}
+
+export interface GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions {
+    /**
+     * The logical operation applied. Currently only 'ALL' allowed.
+     */
+    criteriaCondition: string;
+    /**
+     * Time period over which data is collected before evaluating the threshold.
+     */
+    evaluationPeriodSeconds: number;
+    /**
+     * Frequency at which the metric data is polled.
+     */
+    pollingIntervalSeconds: number;
+    /**
+     * Number of times the condition must be met before triggering an alert.
+     */
+    triggerOccurrences: number;
+}
+
+export interface GetMonitorAlertDefinitionsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorLogsDestinationDetails {
+    /**
+     * The access key ID (applies to `akamaiObjectStorage` type).
+     */
+    accessKeyId: string;
+    /**
+     * The authentication type (applies to `customHttps` type).
+     */
+    authenticationType: string;
+    /**
+     * The bucket name (applies to `akamaiObjectStorage` type).
+     */
+    bucketName: string;
+    /**
+     * The content type of log data. One of: `application/json`, `application/json; charset=utf-8` (applies to `customHttps` type).
+     */
+    contentType: string;
+    /**
+     * The compression format (applies to `customHttps` type).
+     */
+    dataCompression: string;
+    /**
+     * The HTTPS endpoint URL (applies to `customHttps` type).
+     */
+    endpointUrl: string;
+    /**
+     * The storage endpoint hostname (applies to `akamaiObjectStorage` type).
+     */
+    host: string;
+    /**
+     * The path within the bucket (applies to `akamaiObjectStorage` type).
+     */
+    path: string;
+    /**
+     * The TLS hostname (applies to `customHttps` type).
+     */
+    tlsHostname: string;
+}
+
+export interface GetMonitorLogsDestinationsDestination {
+    /**
+     * When this logs destination was created.
+     */
+    created: string;
+    /**
+     * The user who created this logs destination.
+     */
+    createdBy: string;
+    /**
+     * The unique ID of this logs destination.
+     */
+    id: number;
+    /**
+     * The label for this logs destination.
+     */
+    label: string;
+    /**
+     * The status of this logs destination.
+     */
+    status: string;
+    /**
+     * The type of this logs destination.
+     */
+    type: string;
+    /**
+     * When this logs destination was last updated.
+     */
+    updated: string;
+    /**
+     * The user who last updated this logs destination.
+     */
+    updatedBy: string;
+    /**
+     * The version of this logs destination.
+     */
+    version: number;
+}
+
+export interface GetMonitorLogsDestinationsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorLogsStreamDetails {
+    /**
+     * The list of LKE cluster IDs included in this stream.
+     */
+    clusterIds: number[];
+    /**
+     * When true, all LKE clusters are automatically added to this stream.
+     */
+    isAutoAddAllClustersEnabled: boolean;
+}
+
+export interface GetMonitorLogsStreamHistoryStream {
+    /**
+     * The date and time when this version was created.
+     */
+    created: string;
+    /**
+     * The user who created this stream version.
+     */
+    createdBy: string;
+    /**
+     * The destination IDs configured at this version.
+     */
+    destinations: number[];
+    /**
+     * Additional configuration details at this version.
+     */
+    details: outputs.GetMonitorLogsStreamHistoryStreamDetails;
+    /**
+     * The ID of the logs stream version.
+     */
+    id: number;
+    /**
+     * The label of the logs stream at this version.
+     */
+    label: string;
+    /**
+     * The status of the logs stream at this version.
+     */
+    status: string;
+    /**
+     * The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
+     */
+    type: string;
+    /**
+     * The date and time when this version was last updated.
+     */
+    updated: string;
+    /**
+     * The user who last updated this stream version.
+     */
+    updatedBy: string;
+    /**
+     * The version number of this history entry.
+     */
+    version: number;
+}
+
+export interface GetMonitorLogsStreamHistoryStreamDetails {
+    /**
+     * The LKE cluster IDs included in this stream version.
+     */
+    clusterIds: number[];
+    /**
+     * Whether all clusters were auto-added at this version.
+     */
+    isAutoAddAllClustersEnabled: boolean;
+}
+
+export interface GetMonitorLogsStreamsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorLogsStreamsStream {
+    /**
+     * When this logs stream was created.
+     */
+    created: string;
+    /**
+     * The user who created this logs stream.
+     */
+    createdBy: string;
+    /**
+     * The unique ID of this logs stream.
+     */
+    id: number;
+    /**
+     * The label for this logs stream.
+     */
+    label: string;
+    /**
+     * The status of this logs stream.
+     */
+    status: string;
+    /**
+     * The type of this logs stream.
+     */
+    type: string;
+    /**
+     * When this logs stream was last updated.
+     */
+    updated: string;
+    /**
+     * The user who last updated this logs stream.
+     */
+    updatedBy: string;
+    /**
+     * The version of this logs stream.
+     */
+    version: number;
+}
+
 export interface GetNbTypesFilter {
     /**
      * The type of comparison to use for this filter.
@@ -3834,11 +5912,11 @@ export interface GetNetworkTransferPricesType {
      */
     label: string;
     /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
+     * (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
      */
     prices: outputs.GetNetworkTransferPricesTypePrice[];
     /**
-     * A list of region-specific prices for this Network Transfer Price.
+     * (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
      */
     regionPrices: outputs.GetNetworkTransferPricesTypeRegionPrice[];
     /**
@@ -3865,6 +5943,25 @@ export interface GetNetworkTransferPricesTypeRegionPrice {
      */
     id: string;
     monthly: number;
+}
+
+export interface GetNetworkingIpAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of the entity.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
 }
 
 export interface GetNetworkingIpVpcNat11 {
@@ -3903,6 +6000,10 @@ export interface GetNetworkingIpsIpAddress {
      */
     address: string;
     /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    assignedEntity: outputs.GetNetworkingIpsIpAddressAssignedEntity;
+    /**
      * The default gateway for this address.
      */
     gateway: string;
@@ -3939,13 +6040,36 @@ export interface GetNetworkingIpsIpAddress {
      */
     subnetMask: string;
     /**
-     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
+    /**
+     * The type of the entity.
      */
     type: string;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      */
     vpcNat11: outputs.GetNetworkingIpsIpAddressVpcNat11;
+}
+
+export interface GetNetworkingIpsIpAddressAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of the entity.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
 }
 
 export interface GetNetworkingIpsIpAddressVpcNat11 {
@@ -3992,7 +6116,7 @@ export interface GetNodeBalancerFirewall {
      */
     inbounds: outputs.GetNodeBalancerFirewallInbound[];
     /**
-     * Used to identify this rule. For display purposes only.
+     * The label of the related LKE cluster.
      */
     label: string;
     /**
@@ -4031,7 +6155,7 @@ export interface GetNodeBalancerFirewallInbound {
      */
     ipv6s: string[];
     /**
-     * Used to identify this rule. For display purposes only.
+     * The label of the related LKE cluster.
      */
     label: string;
     /**
@@ -4058,7 +6182,7 @@ export interface GetNodeBalancerFirewallOutbound {
      */
     ipv6s: string[];
     /**
-     * Used to identify this rule. For display purposes only.
+     * The label of the related LKE cluster.
      */
     label: string;
     /**
@@ -4069,6 +6193,25 @@ export interface GetNodeBalancerFirewallOutbound {
      * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
+}
+
+export interface GetNodeBalancerLkeCluster {
+    /**
+     * The NodeBalancer's ID.
+     */
+    id: number;
+    /**
+     * The label of the related LKE cluster.
+     */
+    label: string;
+    /**
+     * The type of the related LKE cluster.
+     */
+    type: string;
+    /**
+     * The URL where you can access the related LKE cluster.
+     */
+    url: string;
 }
 
 export interface GetNodeBalancerTransfer {
@@ -4092,7 +6235,11 @@ export interface GetNodeBalancerVpc {
      */
     ipv4Range: string;
     /**
-     * The ID of a subnet to assign to this NodeBalancer.
+     * A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv6Range: string;
+    /**
+     * The ID of this configuration's VPC subnet.
      */
     subnetId: number;
 }
@@ -4160,7 +6307,7 @@ export interface GetNodebalancerConfigsNodebalancerConfig {
     /**
      * The ID of the NodeBalancer to access.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      */
     nodebalancerId: number;
     /**
@@ -4233,9 +6380,13 @@ export interface GetNodebalancerVpcsVpcConfig {
      */
     ipv4Range: string;
     /**
+     * A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv6Range: string;
+    /**
      * The ID of the NodeBalancer to list VPC configurations for.
      *
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      */
     nodebalancerId: number;
     /**
@@ -4281,7 +6432,7 @@ export interface GetNodebalancersNodebalancer {
      */
     hostname: string;
     /**
-     * The Linode NodeBalancer's unique ID
+     * The ID of the related LKE cluster.
      */
     id: number;
     /**
@@ -4293,9 +6444,13 @@ export interface GetNodebalancersNodebalancer {
      */
     ipv6: string;
     /**
-     * The label of the Linode NodeBalancer
+     * The label of the related LKE cluster.
      */
     label: string;
+    /**
+     * The related LKE cluster for this NodeBalancer, if any.
+     */
+    lkeClusters: outputs.GetNodebalancersNodebalancerLkeCluster[];
     /**
      * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
      */
@@ -4312,6 +6467,25 @@ export interface GetNodebalancersNodebalancer {
      * When this Linode NodeBalancer was last updated
      */
     updated: string;
+}
+
+export interface GetNodebalancersNodebalancerLkeCluster {
+    /**
+     * The ID of the related LKE cluster.
+     */
+    id: number;
+    /**
+     * The label of the related LKE cluster.
+     */
+    label: string;
+    /**
+     * The type of the related LKE cluster.
+     */
+    type: string;
+    /**
+     * The URL where you can access the related LKE cluster.
+     */
+    url: string;
 }
 
 export interface GetNodebalancersNodebalancerTransfer {
@@ -4359,6 +6533,63 @@ export interface GetObjectStorageEndpointsFilter {
     values: string[];
 }
 
+export interface GetObjectStorageGlobalQuotaQuotaUsage {
+    /**
+     * The maximum quantity allowed by the quota.
+     */
+    quotaLimit: number;
+    /**
+     * The quantity of the Object Storage resource currently in use.
+     */
+    usage: number;
+}
+
+export interface GetObjectStorageGlobalQuotasFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetObjectStorageGlobalQuotasQuota {
+    /**
+     * The description of the Object Storage global quota.
+     */
+    description: string;
+    /**
+     * Whether usage data is available for the Object Storage global quota.
+     */
+    hasUsage: boolean;
+    /**
+     * The ID of the Object Storage global quota.
+     */
+    quotaId: string;
+    /**
+     * The maximum quantity of the `resourceMetric` allowed by the quota.
+     */
+    quotaLimit: number;
+    /**
+     * The name of the Object Storage global quota.
+     */
+    quotaName: string;
+    /**
+     * The type of the Object Storage global quota.
+     */
+    quotaType: string;
+    /**
+     * The specific Object Storage resource for the quota.
+     */
+    resourceMetric: string;
+}
+
 export interface GetObjectStorageQuotaQuotaUsage {
     /**
      * The maximum quantity allowed by the quota.
@@ -4395,6 +6626,10 @@ export interface GetObjectStorageQuotasQuota {
      */
     endpointType: string;
     /**
+     * Whether usage data is available for the Object Storage quota.
+     */
+    hasUsage: boolean;
+    /**
      * The ID of the Object Storage quota.
      */
     quotaId: string;
@@ -4406,6 +6641,10 @@ export interface GetObjectStorageQuotasQuota {
      * The name of the Object Storage quota.
      */
     quotaName: string;
+    /**
+     * The type of the Object Storage quota.
+     */
+    quotaType: string;
     /**
      * The specific Object Storage resource for the quota.
      */
@@ -4429,11 +6668,11 @@ export interface GetPlacementGroupMember {
 
 export interface GetPlacementGroupMigrations {
     /**
-     * A list of the Linodes the system is migrating into the placement group.
+     * (Read-Only Object List) A list of the Linodes the system is migrating into the placement group. Referenced with an index (e.g. `migrations.inbound.0.linode_id`).
      */
     inbounds: outputs.GetPlacementGroupMigrationsInbound[];
     /**
-     * A list of the Linodes the system is migrating out of the placement group.
+     * (Read-Only Object List) A list of the Linodes the system is migrating out of the placement group. Referenced with an index (e.g. `migrations.outbound.0.linode_id`).
      */
     outbounds: outputs.GetPlacementGroupMigrationsOutbound[];
 }
@@ -4481,11 +6720,11 @@ export interface GetPlacementGroupsPlacementGroup {
      */
     label: string;
     /**
-     * A set of Linodes currently assigned to this Placement Group.
+     * (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     members: outputs.GetPlacementGroupsPlacementGroupMember[];
     /**
-     * Any Linodes that are being migrated to or from the placement group.
+     * (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
      */
     migrations: outputs.GetPlacementGroupsPlacementGroupMigrations;
     /**
@@ -4515,11 +6754,11 @@ export interface GetPlacementGroupsPlacementGroupMember {
 
 export interface GetPlacementGroupsPlacementGroupMigrations {
     /**
-     * A list of the Linodes the system is migrating into the placement group.
+     * (Read-Only Object List) A list of the Linodes the system is migrating into the placement group. Referenced with an index (e.g. `inbound.0.linode_id`).
      */
     inbounds: outputs.GetPlacementGroupsPlacementGroupMigrationsInbound[];
     /**
-     * A list of the Linodes the system is migrating out of the placement group.
+     * (Read-Only Object List) A list of the Linodes the system is migrating out of the placement group. Referenced with an index (e.g. `outbound.0.linode_id`).
      */
     outbounds: outputs.GetPlacementGroupsPlacementGroupMigrationsOutbound[];
 }
@@ -4575,7 +6814,7 @@ export interface GetProducerImageShareGroupImageSharesImageShare {
      */
     id: string;
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing: outputs.GetProducerImageShareGroupImageSharesImageShareImageSharing;
     /**
@@ -4610,11 +6849,11 @@ export interface GetProducerImageShareGroupImageSharesImageShare {
 
 export interface GetProducerImageShareGroupImageSharesImageShareImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
      */
     sharedBy: outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
      */
     sharedWith: outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith;
 }
@@ -4623,7 +6862,7 @@ export interface GetProducerImageShareGroupImageSharesImageShareImageSharingShar
     /**
      * The ID of the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     sharegroupId: number;
     /**
@@ -4899,6 +7138,75 @@ export interface GetRegionsRegionResolver {
     ipv6: string;
 }
 
+export interface GetRegionsVpcAvailabilityRegionsVpcAvailability {
+    /**
+     * Whether VPCs can be created in the region.
+     */
+    available: boolean;
+    /**
+     * The IPv6 prefix lengths allowed when creating a VPC in the region.
+     */
+    availableIpv6PrefixLengths: number[];
+    /**
+     * The Region ID.
+     */
+    id: string;
+}
+
+export interface GetReservedIpTypesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetReservedIpTypesType {
+    /**
+     * The unique ID of this Reserved IP type (e.g. `reserved-ip`).
+     */
+    id: string;
+    /**
+     * The human-readable label for this Reserved IP type.
+     */
+    label: string;
+    /**
+     * (Read-Only Object List) Pricing information for this Reserved IP type. Referenced with an index (e.g. `price.0.hourly`).
+     */
+    prices: outputs.GetReservedIpTypesTypePrice[];
+    /**
+     * (Read-Only Object List) Region-specific pricing information for this Reserved IP type. Referenced with an index (e.g. `region_prices.0.hourly`).
+     */
+    regionPrices: outputs.GetReservedIpTypesTypeRegionPrice[];
+}
+
+export interface GetReservedIpTypesTypePrice {
+    /**
+     * Cost (in US dollars) per hour.
+     */
+    hourly: number;
+    /**
+     * Cost (in US dollars) per month.
+     */
+    monthly: number;
+}
+
+export interface GetReservedIpTypesTypeRegionPrice {
+    hourly: number;
+    /**
+     * The unique ID of this Reserved IP type (e.g. `reserved-ip`).
+     */
+    id: string;
+    monthly: number;
+}
+
 export interface GetSshkeysFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -5021,7 +7329,7 @@ export interface GetStackScriptsStackscript {
      */
     updated: string;
     /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      */
     userDefinedFields: outputs.GetStackScriptsStackscriptUserDefinedField[];
     /**
@@ -5059,6 +7367,17 @@ export interface GetStackScriptsStackscriptUserDefinedField {
      * A list of acceptable single values for the field.
      */
     oneOf: string;
+}
+
+export interface GetTagObject {
+    /**
+     * The ID of the tagged object. For `reservedIpv4Address` objects, this is the IP address string.
+     */
+    id: string;
+    /**
+     * The type of the tagged object (e.g. `linode`, `domain`, `volume`, `nodebalancer`, `reservedIpv4Address`).
+     */
+    type: string;
 }
 
 export interface GetUserDatabaseGrant {
@@ -5622,11 +7941,11 @@ export interface GetVolumeTypesType {
      */
     label: string;
     /**
-     * Cost in US dollars, broken down into hourly and monthly charges.
+     * (Read-Only Object List) Pricing information for this Linode Volume type. Referenced with an index (e.g. `price.0.hourly`).
      */
     prices: outputs.GetVolumeTypesTypePrice[];
     /**
-     * A list of region-specific prices for this Volume Type.
+     * (Read-Only Object List) Region-specific pricing information for this Linode Volume type. Referenced with an index (e.g. `region_prices.0.hourly`).
      */
     regionPrices: outputs.GetVolumeTypesTypeRegionPrice[];
     /**
@@ -5687,6 +8006,10 @@ export interface GetVolumesVolume {
      * The unique ID of this Volume.
      */
     id: number;
+    /**
+     * Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     */
+    ioReady: boolean;
     /**
      * This Volume's label is for display purposes only.
      */
@@ -5758,7 +8081,7 @@ export interface GetVpcIpsVpcIp {
      */
     interfaceId: number;
     /**
-     * The addresses within the prefix that the interface is associated with.
+     * (Nested Attribute Set) The addresses within the prefix that the interface is associated with. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     ipv6Addresses: outputs.GetVpcIpsVpcIpIpv6Address[];
     /**
@@ -5796,7 +8119,7 @@ export interface GetVpcIpsVpcIp {
     /**
      * The id of the parent VPC for the list of VPC IPs.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
     vpcId: number;
 }
@@ -5806,6 +8129,13 @@ export interface GetVpcIpsVpcIpIpv6Address {
      * A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
      */
     slaacAddress: string;
+}
+
+export interface GetVpcIpv4 {
+    /**
+     * The IPv4 range assigned to this VPC.
+     */
+    range: string;
 }
 
 export interface GetVpcIpv6 {
@@ -5821,11 +8151,11 @@ export interface GetVpcSubnetDatabase {
      */
     id: number;
     /**
-     * IPv4 range assigned to the database.
+     * IPv4 range assigned to the NodeBalancer.
      */
     ipv4Range: string;
     /**
-     * A list of IPv6 ranges assigned to the database.
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `nodebalancers.0.ipv6_ranges.0.range`).
      */
     ipv6Ranges: outputs.GetVpcSubnetDatabaseIpv6Range[];
 }
@@ -5850,7 +8180,7 @@ export interface GetVpcSubnetLinode {
      */
     id: number;
     /**
-     * A list of networking interfaces objects.
+     * (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `linodes.0.interfaces.0.id`).
      */
     interfaces: outputs.GetVpcSubnetLinodeInterface[];
 }
@@ -5868,6 +8198,28 @@ export interface GetVpcSubnetLinodeInterface {
      * The unique id of this VPC subnet.
      */
     id: number;
+}
+
+export interface GetVpcSubnetNodebalancer {
+    /**
+     * The unique id of this VPC subnet.
+     */
+    id: number;
+    /**
+     * IPv4 range assigned to the NodeBalancer.
+     */
+    ipv4Range: string;
+    /**
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `nodebalancers.0.ipv6_ranges.0.range`).
+     */
+    ipv6Ranges: outputs.GetVpcSubnetNodebalancerIpv6Range[];
+}
+
+export interface GetVpcSubnetNodebalancerIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: string;
 }
 
 export interface GetVpcSubnetsFilter {
@@ -5891,11 +8243,11 @@ export interface GetVpcSubnetsVpcSubnet {
      */
     created: string;
     /**
-     * A list of Managed databases assigned to the VPC Subnet.
+     * (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      */
     databases: outputs.GetVpcSubnetsVpcSubnetDatabase[];
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
     /**
@@ -5911,9 +8263,13 @@ export interface GetVpcSubnetsVpcSubnet {
      */
     label: string;
     /**
-     * A list of Linodes added to this subnet.
+     * (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      */
     linodes: outputs.GetVpcSubnetsVpcSubnetLinode[];
+    /**
+     * (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     */
+    nodebalancers: outputs.GetVpcSubnetsVpcSubnetNodebalancer[];
     /**
      * The date and time when the VPC Subnet was last updated.
      */
@@ -5922,15 +8278,15 @@ export interface GetVpcSubnetsVpcSubnet {
 
 export interface GetVpcSubnetsVpcSubnetDatabase {
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
     /**
-     * IPv4 range assigned to the database.
+     * IPv4 range assigned to the NodeBalancer.
      */
     ipv4Range: string;
     /**
-     * A list of IPv6 ranges assigned to the database.
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      */
     ipv6Ranges: outputs.GetVpcSubnetsVpcSubnetDatabaseIpv6Range[];
 }
@@ -5951,11 +8307,11 @@ export interface GetVpcSubnetsVpcSubnetIpv6 {
 
 export interface GetVpcSubnetsVpcSubnetLinode {
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
     /**
-     * A list of networking interfaces objects.
+     * (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      */
     interfaces: outputs.GetVpcSubnetsVpcSubnetLinodeInterface[];
 }
@@ -5970,9 +8326,31 @@ export interface GetVpcSubnetsVpcSubnetLinodeInterface {
      */
     configId: number;
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
+}
+
+export interface GetVpcSubnetsVpcSubnetNodebalancer {
+    /**
+     * ID of a NodeBalancer assigned to the VPC Subnet.
+     */
+    id: number;
+    /**
+     * IPv4 range assigned to the NodeBalancer.
+     */
+    ipv4Range: string;
+    /**
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
+     */
+    ipv6Ranges: outputs.GetVpcSubnetsVpcSubnetNodebalancerIpv6Range[];
+}
+
+export interface GetVpcSubnetsVpcSubnetNodebalancerIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: string;
 }
 
 export interface GetVpcsFilter {
@@ -6004,7 +8382,11 @@ export interface GetVpcsVpc {
      */
     id: string;
     /**
-     * A list of IPv6 allocations under this VPC.
+     * (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    ipv4s: outputs.GetVpcsVpcIpv4[];
+    /**
+     * (Nested Attribute List) A list of IPv6 allocations under this VPC.
      */
     ipv6s: outputs.GetVpcsVpcIpv6[];
     /**
@@ -6019,6 +8401,17 @@ export interface GetVpcsVpc {
      * The date and time when the VPC was last updated.
      */
     updated: string;
+    /**
+     * The type of the VPC ('regular' or 'rdma'). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     */
+    vpcType: string;
+}
+
+export interface GetVpcsVpcIpv4 {
+    /**
+     * The IPv4 range assigned to this VPC.
+     */
+    range: string;
 }
 
 export interface GetVpcsVpcIpv6 {
@@ -6028,13 +8421,28 @@ export interface GetVpcsVpcIpv6 {
     range: string;
 }
 
+export interface IamUserEntityAccess {
+    /**
+     * The unique ID for the entity.
+     */
+    id: number;
+    /**
+     * A list of the roles for this entity and specific user.
+     */
+    roles: string[];
+    /**
+     * The type of product for the entity. (eg. Volume)
+     */
+    type: string;
+}
+
 export interface ImageImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      */
     sharedBy: outputs.ImageImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      */
     sharedWith: outputs.ImageImageSharingSharedWith;
 }
@@ -6119,6 +8527,9 @@ export interface InstanceBackup {
      * If this Linode has the Backup service enabled.
      */
     enabled: boolean;
+    /**
+     * (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+     */
     schedules: outputs.InstanceBackupSchedule[];
 }
 
@@ -6139,7 +8550,7 @@ export interface InstanceConfig {
      */
     comments?: string;
     /**
-     * Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
+     * Device sda-sdbl can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      */
     devices: outputs.InstanceConfigDevices;
     /**
@@ -6182,7 +8593,7 @@ export interface InstanceConfig {
 
 export interface InstanceConfigDevice {
     /**
-     * The Disk ID to map to this disk slot
+     * The device slot identifier (for example, sda, sdb) to map a disk or volume into
      */
     deviceName: string;
     /**
@@ -6197,13 +8608,165 @@ export interface InstanceConfigDevice {
 
 export interface InstanceConfigDevices {
     /**
-     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     * ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
      */
     sda?: outputs.InstanceConfigDevicesSda;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
+    sdaa?: outputs.InstanceConfigDevicesSdaa;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdab?: outputs.InstanceConfigDevicesSdab;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdac?: outputs.InstanceConfigDevicesSdac;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdad?: outputs.InstanceConfigDevicesSdad;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdae?: outputs.InstanceConfigDevicesSdae;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaf?: outputs.InstanceConfigDevicesSdaf;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdag?: outputs.InstanceConfigDevicesSdag;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdah?: outputs.InstanceConfigDevicesSdah;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdai?: outputs.InstanceConfigDevicesSdai;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaj?: outputs.InstanceConfigDevicesSdaj;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdak?: outputs.InstanceConfigDevicesSdak;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdal?: outputs.InstanceConfigDevicesSdal;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdam?: outputs.InstanceConfigDevicesSdam;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdan?: outputs.InstanceConfigDevicesSdan;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdao?: outputs.InstanceConfigDevicesSdao;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdap?: outputs.InstanceConfigDevicesSdap;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaq?: outputs.InstanceConfigDevicesSdaq;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdar?: outputs.InstanceConfigDevicesSdar;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdas?: outputs.InstanceConfigDevicesSdas;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdat?: outputs.InstanceConfigDevicesSdat;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdau?: outputs.InstanceConfigDevicesSdau;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdav?: outputs.InstanceConfigDevicesSdav;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaw?: outputs.InstanceConfigDevicesSdaw;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdax?: outputs.InstanceConfigDevicesSdax;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sday?: outputs.InstanceConfigDevicesSday;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaz?: outputs.InstanceConfigDevicesSdaz;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdb?: outputs.InstanceConfigDevicesSdb;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdba?: outputs.InstanceConfigDevicesSdba;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbb?: outputs.InstanceConfigDevicesSdbb;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbc?: outputs.InstanceConfigDevicesSdbc;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbd?: outputs.InstanceConfigDevicesSdbd;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbe?: outputs.InstanceConfigDevicesSdbe;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbf?: outputs.InstanceConfigDevicesSdbf;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbg?: outputs.InstanceConfigDevicesSdbg;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbh?: outputs.InstanceConfigDevicesSdbh;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbi?: outputs.InstanceConfigDevicesSdbi;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbj?: outputs.InstanceConfigDevicesSdbj;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbk?: outputs.InstanceConfigDevicesSdbk;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbl?: outputs.InstanceConfigDevicesSdbl;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
@@ -6228,6 +8791,78 @@ export interface InstanceConfigDevices {
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
     sdh?: outputs.InstanceConfigDevicesSdh;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdi?: outputs.InstanceConfigDevicesSdi;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdj?: outputs.InstanceConfigDevicesSdj;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdk?: outputs.InstanceConfigDevicesSdk;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdl?: outputs.InstanceConfigDevicesSdl;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdm?: outputs.InstanceConfigDevicesSdm;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdn?: outputs.InstanceConfigDevicesSdn;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdo?: outputs.InstanceConfigDevicesSdo;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdp?: outputs.InstanceConfigDevicesSdp;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdq?: outputs.InstanceConfigDevicesSdq;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdr?: outputs.InstanceConfigDevicesSdr;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sds?: outputs.InstanceConfigDevicesSds;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdt?: outputs.InstanceConfigDevicesSdt;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdu?: outputs.InstanceConfigDevicesSdu;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdv?: outputs.InstanceConfigDevicesSdv;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdw?: outputs.InstanceConfigDevicesSdw;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdx?: outputs.InstanceConfigDevicesSdx;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdy?: outputs.InstanceConfigDevicesSdy;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdz?: outputs.InstanceConfigDevicesSdz;
 }
 
 export interface InstanceConfigDevicesSda {
@@ -6241,7 +8876,425 @@ export interface InstanceConfigDevicesSda {
     volumeId?: number;
 }
 
+export interface InstanceConfigDevicesSdaa {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdab {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdac {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdad {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdae {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdaf {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdag {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdah {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdai {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdaj {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdak {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdal {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdam {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdan {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdao {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdap {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdaq {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdar {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdas {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdat {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdau {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdav {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdaw {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdax {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSday {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdaz {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
 export interface InstanceConfigDevicesSdb {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdba {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbb {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbc {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbd {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbe {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbf {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbg {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbh {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbi {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbj {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbk {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdbl {
     /**
      * The Disk ID to map to this disk slot
      */
@@ -6308,6 +9361,204 @@ export interface InstanceConfigDevicesSdg {
 }
 
 export interface InstanceConfigDevicesSdh {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdi {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdj {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdk {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdl {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdm {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdn {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdo {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdp {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdq {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdr {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSds {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdt {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdu {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdv {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdw {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdx {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdy {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: number;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: number;
+}
+
+export interface InstanceConfigDevicesSdz {
     /**
      * The Disk ID to map to this disk slot
      */
@@ -6396,9 +9647,9 @@ export interface InstanceConfigInterface {
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
-     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
      *
-     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      */
     primary?: boolean;
     /**
@@ -6419,7 +9670,7 @@ export interface InstanceConfigInterfaceIpv4 {
     /**
      * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      */
-    nat11: string;
+    nat11?: string;
     /**
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
@@ -6430,9 +9681,9 @@ export interface InstanceConfigInterfaceIpv6 {
     /**
      * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
      *
-     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     * * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
      *
-     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     * * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
      */
     isPublic: boolean;
     /**
@@ -6567,9 +9818,9 @@ export interface InstanceInterface {
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
-     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
      *
-     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      */
     primary?: boolean;
     /**
@@ -6590,7 +9841,7 @@ export interface InstanceInterfaceIpv4 {
     /**
      * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      */
-    nat11: string;
+    nat11?: string;
     /**
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
@@ -6601,9 +9852,9 @@ export interface InstanceInterfaceIpv6 {
     /**
      * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
      *
-     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     * * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
      *
-     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     * * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
      */
     isPublic: boolean;
     /**
@@ -6644,10 +9895,16 @@ export interface InstanceInterfaceIpv6Slaac {
 
 export interface InstanceIpVpcNat11 {
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      */
     address: string;
+    /**
+     * The ID of the VPC subnet containing the NATted address.
+     */
     subnetId: number;
+    /**
+     * The ID of the VPC containing the NATted address.
+     */
     vpcId: number;
 }
 
@@ -6718,11 +9975,11 @@ export interface InterfaceDefaultRoute {
 
 export interface InterfacePublic {
     /**
-     * IPv4 addresses for this interface.
+     * IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
      */
     ipv4: outputs.InterfacePublicIpv4;
     /**
-     * IPv6 addresses for this interface.
+     * IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
      */
     ipv6: outputs.InterfacePublicIpv6;
 }
@@ -6733,11 +9990,11 @@ export interface InterfacePublicIpv4 {
      */
     addresses?: outputs.InterfacePublicIpv4Address[];
     /**
-     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedAddresses: outputs.InterfacePublicIpv4AssignedAddress[];
     /**
-     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     shareds: outputs.InterfacePublicIpv4Shared[];
 }
@@ -6777,7 +10034,7 @@ export interface InterfacePublicIpv4Shared {
 
 export interface InterfacePublicIpv6 {
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedRanges: outputs.InterfacePublicIpv6AssignedRange[];
     /**
@@ -6785,11 +10042,11 @@ export interface InterfacePublicIpv6 {
      */
     ranges?: outputs.InterfacePublicIpv6Range[];
     /**
-     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     shareds: outputs.InterfacePublicIpv6Shared[];
     /**
-     * (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     slaacs: outputs.InterfacePublicIpv6Slaac[];
 }
@@ -6847,11 +10104,11 @@ export interface InterfaceVlan {
 
 export interface InterfaceVpc {
     /**
-     * IPv4 configuration for the VPC interface.
+     * IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
      */
     ipv4: outputs.InterfaceVpcIpv4;
     /**
-     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
      */
     ipv6: outputs.InterfaceVpcIpv6;
     /**
@@ -6866,11 +10123,11 @@ export interface InterfaceVpcIpv4 {
      */
     addresses?: outputs.InterfaceVpcIpv4Address[];
     /**
-     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedAddresses: outputs.InterfaceVpcIpv4AssignedAddress[];
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedRanges: outputs.InterfaceVpcIpv4AssignedRange[];
     /**
@@ -6925,11 +10182,11 @@ export interface InterfaceVpcIpv4Range {
 
 export interface InterfaceVpcIpv6 {
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedRanges: outputs.InterfaceVpcIpv6AssignedRange[];
     /**
-     * Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     * (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedSlaacs: outputs.InterfaceVpcIpv6AssignedSlaac[];
     /**
@@ -6986,7 +10243,7 @@ export interface LkeClusterControlPlane {
     /**
      * Enables audit logs on the cluster's control plane.
      *
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+     * * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster's control plane. Referenced with an index (e.g. `acl.0.enabled`).
      */
     auditLogsEnabled: boolean;
     /**
@@ -7003,7 +10260,7 @@ export interface LkeClusterControlPlaneAcl {
     /**
      * Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      *
-     * * `addresses` - (Optional) A list of ip addresses to allow.
+     * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
      */
     enabled: boolean;
 }
@@ -7029,7 +10286,7 @@ export interface LkeClusterPool {
      */
     count: number;
     /**
-     * The disk encryption policy for nodes in this pool.
+     * The disk encryption policy for nodes in this pool. Must be `enabled` or `disabled`. If omitted, the account default encryption policy is applied. Changing this value will cause the pool to be replaced (deleted and recreated).
      */
     diskEncryption: string;
     /**
@@ -7061,7 +10318,7 @@ export interface LkeClusterPool {
      */
     tags?: string[];
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     taints?: outputs.LkeClusterPoolTaint[];
     /**
@@ -7112,7 +10369,7 @@ export interface LkeClusterPoolTaint {
     /**
      * The Kubernetes taint value.
      *
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
      */
     value: string;
 }
@@ -7158,15 +10415,288 @@ export interface LkeNodePoolTaint {
     value: string;
 }
 
+export interface MonitorAlertDefinitionAlertChannel {
+    /**
+     * The unique identifier assigned to the alert channel.
+     */
+    id: number;
+    /**
+     * The label for the alert definition.
+     */
+    label: string;
+    /**
+     * The type of alert channel.
+     */
+    type: string;
+    /**
+     * The URL of the alert channel.
+     */
+    url: string;
+}
+
+export interface MonitorAlertDefinitionEntities {
+    /**
+     * The number of entities associated with the alert definition.
+     */
+    count: number;
+    /**
+     * Whether there are additional entities associated with the alert.
+     */
+    hasMoreResources: boolean;
+    /**
+     * The URL of the alert channel.
+     */
+    url: string;
+}
+
+export interface MonitorAlertDefinitionRuleCriteria {
+    /**
+     * The individual rules that make up the alert definition.
+     */
+    rules: outputs.MonitorAlertDefinitionRuleCriteriaRule[];
+}
+
+export interface MonitorAlertDefinitionRuleCriteriaRule {
+    /**
+     * The aggregate function to apply to the metric data.
+     * * `dimensionFilters` - (Optional, Nested Attribute List) A list of dimension filter objects to filter the metric data.
+     */
+    aggregateFunction: string;
+    /**
+     * Individual objects that define dimension filters for the rule.
+     */
+    dimensionFilters: outputs.MonitorAlertDefinitionRuleCriteriaRuleDimensionFilter[];
+    /**
+     * The name of the individual rule. This is used for display purposes in Akamai Cloud Manager.
+     */
+    label: string;
+    /**
+     * The metric to query.
+     */
+    metric: string;
+    /**
+     * The operator to apply to the metric. Allowed values: eq, gt, lt, gte, lte.
+     */
+    operator: string;
+    /**
+     * The predefined value or condition that triggers an alert when met or exceeded.
+     */
+    threshold: number;
+    /**
+     * The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+     */
+    unit: string;
+}
+
+export interface MonitorAlertDefinitionRuleCriteriaRuleDimensionFilter {
+    /**
+     * The label of the dimension to filter on.
+     */
+    dimensionLabel: string;
+    /**
+     * The name of the dimension filter. Used for display purposes.
+     */
+    label: string;
+    /**
+     * The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+     */
+    operator: string;
+    /**
+     * The value to compare the dimensionLabel against.
+     */
+    value: string;
+}
+
+export interface MonitorAlertDefinitionTriggerConditions {
+    /**
+     * The logical operation applied. Currently only 'ALL' allowed.
+     */
+    criteriaCondition: string;
+    /**
+     * Time period over which data is collected before evaluating the threshold.
+     */
+    evaluationPeriodSeconds: number;
+    /**
+     * Frequency at which the metric data is polled.
+     */
+    pollingIntervalSeconds: number;
+    /**
+     * Number of times the condition must be met before triggering an alert.
+     */
+    triggerOccurrences: number;
+}
+
+export interface MonitorLogsDestinationAkamaiObjectStorageDetails {
+    /**
+     * The access key ID for the object storage bucket.
+     */
+    accessKeyId: string;
+    /**
+     * The access key secret for the object storage bucket. This value is write-only and will not be returned by the API.
+     */
+    accessKeySecret: string;
+    /**
+     * The name of the object storage bucket.
+     */
+    bucketName: string;
+    /**
+     * The hostname of the object storage endpoint.
+     */
+    host: string;
+    /**
+     * The path within the bucket where logs will be stored.
+     */
+    path: string;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetails {
+    /**
+     * Authentication configuration for the HTTPS endpoint.
+     */
+    authentication: outputs.MonitorLogsDestinationCustomHttpsDetailsAuthentication;
+    /**
+     * TLS client certificate configuration.
+     */
+    clientCertificateDetails?: outputs.MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetails;
+    /**
+     * The content type of the log data. One of: `application/json`, `application/json; charset=utf-8`.
+     */
+    contentType: string;
+    /**
+     * Custom HTTP headers to include in log delivery requests.
+     */
+    customHeaders?: outputs.MonitorLogsDestinationCustomHttpsDetailsCustomHeader[];
+    /**
+     * The compression format for log data. One of: `none`, `gzip`.
+     *
+     * * `authentication` - (Required, Nested Attribute) Authentication configuration for the HTTPS endpoint. Referenced directly (e.g. `custom_https_details.authentication.type`).
+     *
+     * * `clientCertificateDetails` - (Optional, Nested Attribute) TLS client certificate configuration. Referenced directly (e.g. `custom_https_details.client_certificate_details.tls_hostname`).
+     *
+     * * `customHeaders` - (Optional, Nested Attribute List) Custom HTTP headers to include in log delivery requests.
+     */
+    dataCompression: string;
+    /**
+     * The HTTPS endpoint URL to send logs to.
+     */
+    endpointUrl: string;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetailsAuthentication {
+    /**
+     * The password for basic authentication. This value is write-only and will not be returned by the API.
+     */
+    password?: string;
+    /**
+     * The authentication type. One of: `basic`, `none`.
+     */
+    type: string;
+    /**
+     * The username for basic authentication. This value is write-only and will not be returned by the API.
+     */
+    username?: string;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetails {
+    /**
+     * The client CA certificate. This value is write-only and will not be returned by the API.
+     */
+    clientCaCertificate: string;
+    /**
+     * The client certificate. This value is write-only and will not be returned by the API.
+     */
+    clientCertificate: string;
+    /**
+     * The client private key. This value is write-only and will not be returned by the API.
+     */
+    clientPrivateKey: string;
+    /**
+     * The TLS hostname for certificate verification.
+     */
+    tlsHostname: string;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetailsCustomHeader {
+    /**
+     * The name of the HTTP header.
+     */
+    name: string;
+    /**
+     * The value of the HTTP header. This value is write-only and will not be returned by the API.
+     */
+    value: string;
+}
+
+export interface MonitorLogsStreamDetails {
+    /**
+     * The list of LKE cluster IDs to include in this stream.
+     */
+    clusterIds: number[];
+    /**
+     * When true, all LKE clusters are automatically added to this stream.
+     */
+    isAutoAddAllClustersEnabled: boolean;
+}
+
+export interface NetworkingIpAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of IP address. (ipv4, ipv6, etc.)
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface NetworkingIpAssignmentAssignment {
     /**
      * The IPv4 address or IPv6 range to assign.
      */
     address: string;
     /**
+     * (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    assignedEntity: outputs.NetworkingIpAssignmentAssignmentAssignedEntity;
+    /**
      * The ID of the Linode to which the IP address will be assigned.
      */
     linodeId: number;
+    /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved: boolean;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags: string[];
+}
+
+export interface NetworkingIpAssignmentAssignmentAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of the entity.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
 }
 
 export interface NetworkingIpVpcNat11 {
@@ -7201,7 +10731,7 @@ export interface NodeBalancerFirewall {
      */
     created: string;
     /**
-     * (Required) The Firewall's ID.
+     * The ID of the related LKE cluster.
      */
     id: number;
     /**
@@ -7239,7 +10769,7 @@ export interface NodeBalancerFirewallInbound {
     action: string;
     description: string;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      */
     ipv4s: string[];
     /**
@@ -7267,7 +10797,7 @@ export interface NodeBalancerFirewallOutbound {
     action: string;
     description: string;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      */
     ipv4s: string[];
     /**
@@ -7286,6 +10816,25 @@ export interface NodeBalancerFirewallOutbound {
      * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: string;
+}
+
+export interface NodeBalancerLkeCluster {
+    /**
+     * The ID of the related LKE cluster.
+     */
+    id: number;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label: string;
+    /**
+     * The type of the related LKE cluster.
+     */
+    type: string;
+    /**
+     * The URL where you can access the related LKE cluster.
+     */
+    url: string;
 }
 
 export interface NodeBalancerTransfer {
@@ -7314,6 +10863,10 @@ export interface NodeBalancerVpc {
      */
     ipv4RangeAutoAssign?: boolean;
     /**
+     * (Optional) A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv6Range: string;
+    /**
      * (Required) The ID of a subnet to assign to this NodeBalancer.
      */
     subnetId: number;
@@ -7334,9 +10887,9 @@ export interface ObjectStorageBucketLifecycleRule {
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      *
-     * * `expiration` - (Optional) Specifies a period in the object's expire.
+     * * `expiration` - (Optional, Block) Specifies a period in the object's expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
      *
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
      */
     abortIncompleteMultipartUploadDays?: number;
     /**
@@ -7389,12 +10942,6 @@ export interface ObjectStorageKeyBucketAccess {
      */
     bucketName: string;
     /**
-     * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-     *
-     * @deprecated The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
-     */
-    cluster: string;
-    /**
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: string;
@@ -7434,7 +10981,7 @@ export interface ProducerImageShareGroupImage {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     description?: string;
     /**
@@ -7458,7 +11005,63 @@ export interface RdnsTimeouts {
     update?: string;
 }
 
+export interface ReservedIpAssignedEntity {
+    /**
+     * The ID of the assigned entity.
+     */
+    id: number;
+    /**
+     * The label of the assigned entity.
+     */
+    label: string;
+    /**
+     * The type of the assigned entity (e.g. `linode`).
+     */
+    type: string;
+    /**
+     * The API URL of the assigned entity.
+     */
+    url: string;
+}
+
+export interface ReservedIpAssignmentAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: number;
+    /**
+     * The label of the entity.
+     */
+    label: string;
+    /**
+     * The type of the entity.
+     */
+    type: string;
+    /**
+     * The URL of the entity.
+     */
+    url: string;
+}
+
 export interface ReservedIpAssignmentVpcNat11 {
+    /**
+     * The reserved IPv4 address to assign to the Linode.
+     */
+    address: string;
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     */
+    subnetId: number;
+    /**
+     * The `id` of the VPC configured for this Interface.
+     */
+    vpcId: number;
+}
+
+export interface ReservedIpVpcNat11 {
+    /**
+     * The reserved IPv4 address.
+     */
     address: string;
     subnetId: number;
     vpcId: number;
@@ -7660,6 +11263,13 @@ export interface VolumeTimeouts {
     update?: string;
 }
 
+export interface VpcIpv4 {
+    /**
+     * The IPv4 range assigned to this VPC.
+     */
+    range: string;
+}
+
 export interface VpcIpv6 {
     /**
      * The IPv6 range assigned to this VPC.
@@ -7678,15 +11288,15 @@ export interface VpcIpv6 {
 
 export interface VpcSubnetDatabase {
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
     /**
-     * IPv4 range assigned to the database.
+     * IPv4 range assigned to the NodeBalancer.
      */
     ipv4Range: string;
     /**
-     * A list of IPv6 ranges assigned to the database.
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      */
     ipv6Ranges: outputs.VpcSubnetDatabaseIpv6Range[];
 }
@@ -7711,11 +11321,11 @@ export interface VpcSubnetIpv6 {
 
 export interface VpcSubnetLinode {
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
     /**
-     * A list of networking interfaces objects.
+     * (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      */
     interfaces: outputs.VpcSubnetLinodeInterface[];
 }
@@ -7730,8 +11340,30 @@ export interface VpcSubnetLinodeInterface {
      */
     configId: number;
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: number;
+}
+
+export interface VpcSubnetNodebalancer {
+    /**
+     * ID of a NodeBalancer assigned to the VPC Subnet.
+     */
+    id: number;
+    /**
+     * IPv4 range assigned to the NodeBalancer.
+     */
+    ipv4Range: string;
+    /**
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
+     */
+    ipv6Ranges: outputs.VpcSubnetNodebalancerIpv6Range[];
+}
+
+export interface VpcSubnetNodebalancerIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: string;
 }
 

@@ -35,14 +35,14 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="assignedAddresses")
     private @Nullable Output<List<InterfaceVpcIpv4AssignedAddressArgs>> assignedAddresses;
 
     /**
-     * @return (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfaceVpcIpv4AssignedAddressArgs>>> assignedAddresses() {
@@ -50,14 +50,14 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="assignedRanges")
     private @Nullable Output<List<InterfaceVpcIpv4AssignedRangeArgs>> assignedRanges;
 
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfaceVpcIpv4AssignedRangeArgs>>> assignedRanges() {
@@ -138,7 +138,7 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedAddresses (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+         * @param assignedAddresses (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedAddresses (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+         * @param assignedAddresses (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -159,7 +159,7 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedAddresses (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+         * @param assignedAddresses (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class InterfaceVpcIpv4Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

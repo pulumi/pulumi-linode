@@ -51,6 +51,9 @@ class GetDatabaseEnginesResult:
     @_builtins.property
     @pulumi.getter
     def engines(self) -> Sequence['outputs.GetDatabaseEnginesEngineResult']:
+        """
+        (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
+        """
         return pulumi.get(self, "engines")
 
     @_builtins.property
@@ -133,7 +136,7 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
             "name": "engine",
             "values": ["mysql"],
         }])
-    my_db = linode.DatabaseMysqlV2("my_db",
+    my_db = linode.DatabaseMysqlV2("myDb",
         label="mydb",
         engine_id=mysql.engines[0].id,
         region="us-southeast",
@@ -143,7 +146,7 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
 
     :param _builtins.bool latest: If true, only the latest engine version will be returned.
            
-           * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
@@ -199,7 +202,7 @@ def get_database_engines_output(filters: pulumi.Input[Optional[Optional[Sequence
             "name": "engine",
             "values": ["mysql"],
         }])
-    my_db = linode.DatabaseMysqlV2("my_db",
+    my_db = linode.DatabaseMysqlV2("myDb",
         label="mydb",
         engine_id=mysql.engines[0].id,
         region="us-southeast",
@@ -209,7 +212,7 @@ def get_database_engines_output(filters: pulumi.Input[Optional[Optional[Sequence
 
     :param _builtins.bool latest: If true, only the latest engine version will be returned.
            
-           * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """

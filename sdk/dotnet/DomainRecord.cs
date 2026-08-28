@@ -25,16 +25,16 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Domain("foobar", new()
+    ///     var foobarDomain = new Linode.Domain("foobarDomain", new()
     ///     {
     ///         Type = "master",
     ///         DomainName = "foobar.example",
     ///         SoaEmail = "example@foobar.example",
     ///     });
     /// 
-    ///     var foobarDomainRecord = new Linode.DomainRecord("foobar", new()
+    ///     var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new()
     ///     {
-    ///         DomainId = foobar.Id,
+    ///         DomainId = foobarDomain.Id,
     ///         Name = "www",
     ///         RecordType = "CNAME",
     ///         Target = "foobar.example",

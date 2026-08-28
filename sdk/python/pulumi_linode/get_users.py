@@ -71,6 +71,9 @@ class GetUsersResult:
     @_builtins.property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
+        """
+        (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
+        """
         return pulumi.get(self, "users")
 
 

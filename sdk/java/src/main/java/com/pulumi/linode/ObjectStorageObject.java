@@ -22,48 +22,6 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
- * ### Uploading a file to a bucket
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.ObjectStorageObject;
- * import com.pulumi.linode.ObjectStorageObjectArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.PathexpandArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
- *             .bucket("my-bucket")
- *             .region("us-mia")
- *             .key("my-object")
- *             .secretKey(myKey.secretKey())
- *             .accessKey(myKey.accessKey())
- *             .source(StdFunctions.pathexpand(PathexpandArgs.builder()
- *                 .input("~/files/log.txt")
- *                 .build()).result())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ### Uploading plaintext to a bucket
  * 
  * <pre>
@@ -92,51 +50,11 @@ import javax.annotation.Nullable;
  *             .bucket("my-bucket")
  *             .region("us-mia")
  *             .key("my-object")
- *             .secretKey(myKey.secretKey())
- *             .accessKey(myKey.accessKey())
+ *             .secretKey(linode_object_storage_key.my_key().secret_key())
+ *             .accessKey(linode_object_storage_key.my_key().access_key())
  *             .content("This is the content of the Object...")
  *             .contentType("text/plain")
  *             .contentLanguage("en")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * ### Creating an object using implicitly created object credentials
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.ObjectStorageObject;
- * import com.pulumi.linode.ObjectStorageObjectArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.PathexpandArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var object = new ObjectStorageObject("object", ObjectStorageObjectArgs.builder()
- *             .bucket("my-bucket")
- *             .region("us-mia")
- *             .key("my-object")
- *             .source(StdFunctions.pathexpand(PathexpandArgs.builder()
- *                 .input("~/files/log.txt")
- *                 .build()).result())
  *             .build());
  * 
  *     }
@@ -206,24 +124,6 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> cacheControl() {
         return Codegen.optional(this.cacheControl);
-    }
-    /**
-     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    @Export(name="cluster", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cluster;
-
-    /**
-     * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     * 
-     */
-    public Output<Optional<String>> cluster() {
-        return Codegen.optional(this.cluster);
     }
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -380,18 +280,18 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return this.metadata;
     }
     /**
-     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * The region the bucket is in.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
-     * @return The cluster the bucket is in. Required if `cluster` is not configured.
+     * @return The region the bucket is in.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by

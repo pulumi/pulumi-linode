@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class GetPlacementGroupMigrations {
     /**
-     * @return A list of the Linodes the system is migrating into the placement group.
+     * @return (Read-Only Object List) A list of the Linodes the system is migrating into the placement group. Referenced with an index (e.g. `migrations.inbound.0.linode_id`).
      * 
      */
     private List<GetPlacementGroupMigrationsInbound> inbounds;
     /**
-     * @return A list of the Linodes the system is migrating out of the placement group.
+     * @return (Read-Only Object List) A list of the Linodes the system is migrating out of the placement group. Referenced with an index (e.g. `migrations.outbound.0.linode_id`).
      * 
      */
     private List<GetPlacementGroupMigrationsOutbound> outbounds;
 
     private GetPlacementGroupMigrations() {}
     /**
-     * @return A list of the Linodes the system is migrating into the placement group.
+     * @return (Read-Only Object List) A list of the Linodes the system is migrating into the placement group. Referenced with an index (e.g. `migrations.inbound.0.linode_id`).
      * 
      */
     public List<GetPlacementGroupMigrationsInbound> inbounds() {
         return this.inbounds;
     }
     /**
-     * @return A list of the Linodes the system is migrating out of the placement group.
+     * @return (Read-Only Object List) A list of the Linodes the system is migrating out of the placement group. Referenced with an index (e.g. `migrations.outbound.0.linode_id`).
      * 
      */
     public List<GetPlacementGroupMigrationsOutbound> outbounds() {

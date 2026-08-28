@@ -135,6 +135,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
+        /// Whether usage data is available for the Object Storage quota.
+        /// </summary>
+        public readonly bool HasUsage;
+        /// <summary>
         /// The unique ID of the Object Storage quota data source.
         /// </summary>
         public readonly string Id;
@@ -148,7 +152,11 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string QuotaName;
         /// <summary>
-        /// The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
+        /// The type of the Object Storage quota.
+        /// </summary>
+        public readonly string QuotaType;
+        /// <summary>
+        /// (Read-Only Object) The usage data for a specific Object Storage related quota on your account. This value is `Null` when `HasUsage` is `False`. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage). Referenced directly (e.g. `quota_usage.quota_limit`).
         /// </summary>
         public readonly Outputs.GetObjectStorageQuotaQuotaUsageResult QuotaUsage;
         /// <summary>
@@ -166,6 +174,8 @@ namespace Pulumi.Linode
 
             string endpointType,
 
+            bool hasUsage,
+
             string id,
 
             string quotaId,
@@ -173,6 +183,8 @@ namespace Pulumi.Linode
             int quotaLimit,
 
             string quotaName,
+
+            string quotaType,
 
             Outputs.GetObjectStorageQuotaQuotaUsageResult quotaUsage,
 
@@ -182,10 +194,12 @@ namespace Pulumi.Linode
         {
             Description = description;
             EndpointType = endpointType;
+            HasUsage = hasUsage;
             Id = id;
             QuotaId = quotaId;
             QuotaLimit = quotaLimit;
             QuotaName = quotaName;
+            QuotaType = quotaType;
             QuotaUsage = quotaUsage;
             ResourceMetric = resourceMetric;
             S3Endpoint = s3Endpoint;

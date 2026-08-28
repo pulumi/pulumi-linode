@@ -80,9 +80,12 @@ export interface GetNodebalancersArgs {
 export interface GetNodebalancersResult {
     readonly filters?: outputs.GetNodebalancersFilter[];
     /**
-     * The Linode NodeBalancer's unique ID
+     * The ID of the related LKE cluster.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
+     */
     readonly nodebalancers: outputs.GetNodebalancersNodebalancer[];
     readonly order?: string;
     readonly orderBy?: string;

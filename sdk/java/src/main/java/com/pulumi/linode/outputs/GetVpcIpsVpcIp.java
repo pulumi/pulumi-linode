@@ -45,7 +45,7 @@ public final class GetVpcIpsVpcIp {
      */
     private Integer interfaceId;
     /**
-     * @return The addresses within the prefix that the interface is associated with.
+     * @return (Nested Attribute Set) The addresses within the prefix that the interface is associated with. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses;
@@ -92,7 +92,7 @@ public final class GetVpcIpsVpcIp {
     /**
      * @return The id of the parent VPC for the list of VPC IPs.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      * 
      */
     private Integer vpcId;
@@ -141,7 +141,7 @@ public final class GetVpcIpsVpcIp {
         return this.interfaceId;
     }
     /**
-     * @return The addresses within the prefix that the interface is associated with.
+     * @return (Nested Attribute Set) The addresses within the prefix that the interface is associated with. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<GetVpcIpsVpcIpIpv6Address> ipv6Addresses() {
@@ -206,7 +206,7 @@ public final class GetVpcIpsVpcIp {
     /**
      * @return The id of the parent VPC for the list of VPC IPs.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      * 
      */
     public Integer vpcId() {

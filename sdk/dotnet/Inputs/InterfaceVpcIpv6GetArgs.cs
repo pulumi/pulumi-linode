@@ -16,7 +16,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.InterfaceVpcIpv6AssignedRangeGetArgs>? _assignedRanges;
 
         /// <summary>
-        /// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input.
+        /// (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.InterfaceVpcIpv6AssignedRangeGetArgs> AssignedRanges
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.InterfaceVpcIpv6AssignedSlaacGetArgs>? _assignedSlaacs;
 
         /// <summary>
-        /// Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `Slaac` input.
+        /// (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `Slaac` input. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.InterfaceVpcIpv6AssignedSlaacGetArgs> AssignedSlaacs
         {

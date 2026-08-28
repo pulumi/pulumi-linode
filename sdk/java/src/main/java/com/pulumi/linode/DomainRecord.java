@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var foobar = new Domain("foobar", DomainArgs.builder()
+ *         var foobarDomain = new Domain("foobarDomain", DomainArgs.builder()
  *             .type("master")
  *             .domain("foobar.example")
  *             .soaEmail("example}{@literal @}{@code foobar.example")
  *             .build());
  * 
  *         var foobarDomainRecord = new DomainRecord("foobarDomainRecord", DomainRecordArgs.builder()
- *             .domainId(foobar.id())
+ *             .domainId(foobarDomain.id())
  *             .name("www")
  *             .recordType("CNAME")
  *             .target("foobar.example")

@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_node_pool = linode.getLkeNodePool({
- *     id: 123,
  *     clusterId: 321,
+ *     id: 123,
  * });
  * ```
  */
@@ -49,7 +49,7 @@ export interface GetLkeNodePoolArgs {
  */
 export interface GetLkeNodePoolResult {
     /**
-     * When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+     * (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
      */
     readonly autoscaler: outputs.GetLkeNodePoolAutoscaler;
     readonly clusterId: number;
@@ -58,7 +58,7 @@ export interface GetLkeNodePoolResult {
      */
     readonly diskEncryption: string;
     /**
-     * This node pool's custom disk layout.
+     * (Nested Attribute List) This node pool's custom disk layout.
      */
     readonly disks: outputs.GetLkeNodePoolDisk[];
     /**
@@ -86,7 +86,7 @@ export interface GetLkeNodePoolResult {
      */
     readonly nodeCount: number;
     /**
-     * Status information for the nodes that are members of this node pool.
+     * (Nested Attribute List) Status information for the nodes that are members of this node pool.
      */
     readonly nodes: outputs.GetLkeNodePoolNode[];
     /**
@@ -94,7 +94,7 @@ export interface GetLkeNodePoolResult {
      */
     readonly tags: string[];
     /**
-     * Kubernetes taints to add to node pool nodes.
+     * (Nested Attribute List) Kubernetes taints to add to node pool nodes.
      */
     readonly taints: outputs.GetLkeNodePoolTaint[];
     /**
@@ -117,8 +117,8 @@ export interface GetLkeNodePoolResult {
  * import * as linode from "@pulumi/linode";
  *
  * const my_node_pool = linode.getLkeNodePool({
- *     id: 123,
  *     clusterId: 321,
+ *     id: 123,
  * });
  * ```
  */

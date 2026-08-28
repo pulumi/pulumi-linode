@@ -134,7 +134,7 @@ class GetImageResult:
     @pulumi.getter(name="imageSharing")
     def image_sharing(self) -> 'outputs.GetImageImageSharingResult':
         """
-        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         """
         return pulumi.get(self, "image_sharing")
 
@@ -166,7 +166,7 @@ class GetImageResult:
     @pulumi.getter
     def replications(self) -> Sequence['outputs.GetImageReplicationResult']:
         """
-        A list of image replication regions and corresponding status.
+        (Nested Attribute List) A list of image replication regions and corresponding status.
         """
         return pulumi.get(self, "replications")
 

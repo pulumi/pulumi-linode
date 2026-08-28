@@ -22,7 +22,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The IPv4 range of this subnet in CIDR format.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      * 
      */
     @Import(name="ipv4")
@@ -31,7 +31,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The IPv4 range of this subnet in CIDR format.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      * 
      */
     public Optional<Output<String>> ipv4() {
@@ -113,7 +113,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ipv4 The IPv4 range of this subnet in CIDR format.
          * 
-         * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+         * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class VpcSubnetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ipv4 The IPv4 range of this subnet in CIDR format.
          * 
-         * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+         * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
          * 
          * @return builder
          * 

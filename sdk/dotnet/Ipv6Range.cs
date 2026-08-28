@@ -25,17 +25,17 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Instance("foobar", new()
+    ///     var foobarInstance = new Linode.Instance("foobarInstance", new()
     ///     {
     ///         Label = "my-linode",
-    ///         Image = "linode/alpine3.19",
+    ///         Image = "linode/arch",
     ///         Type = "g6-nanode-1",
     ///         Region = "us-southeast",
     ///     });
     /// 
-    ///     var foobarIpv6Range = new Linode.Ipv6Range("foobar", new()
+    ///     var foobarIpv6Range = new Linode.Ipv6Range("foobarIpv6Range", new()
     ///     {
-    ///         LinodeId = foobar.Id,
+    ///         LinodeId = foobarInstance.Id,
     ///         PrefixLength = 64,
     ///     });
     /// 

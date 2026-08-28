@@ -63,8 +63,12 @@ func NewProvider(ctx *pulumi.Context,
 	if args.ObjSecretKey != nil {
 		args.ObjSecretKey = pulumi.ToSecret(args.ObjSecretKey).(pulumi.StringPtrInput)
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"objSecretKey",
+		"token",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)

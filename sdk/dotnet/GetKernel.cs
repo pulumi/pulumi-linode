@@ -152,10 +152,6 @@ namespace Pulumi.Linode
         /// Linux Kernel version
         /// </summary>
         public readonly string Version;
-        /// <summary>
-        /// If this Kernel is suitable for Xen Linodes.
-        /// </summary>
-        public readonly bool Xen;
 
         [OutputConstructor]
         private GetKernelResult(
@@ -173,9 +169,7 @@ namespace Pulumi.Linode
 
             bool pvops,
 
-            string version,
-
-            bool xen)
+            string version)
         {
             Architecture = architecture;
             Built = built;
@@ -185,7 +179,6 @@ namespace Pulumi.Linode
             Label = label;
             Pvops = pvops;
             Version = version;
-            Xen = xen;
         }
     }
 }

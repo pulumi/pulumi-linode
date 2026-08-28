@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class InterfacePublic
     {
         /// <summary>
-        /// IPv4 addresses for this interface.
+        /// IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
         /// </summary>
         public readonly Outputs.InterfacePublicIpv4? Ipv4;
         /// <summary>
-        /// IPv6 addresses for this interface.
+        /// IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
         /// </summary>
         public readonly Outputs.InterfacePublicIpv6? Ipv6;
 

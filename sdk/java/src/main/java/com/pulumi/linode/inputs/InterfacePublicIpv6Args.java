@@ -20,14 +20,14 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
     public static final InterfacePublicIpv6Args Empty = new InterfacePublicIpv6Args();
 
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="assignedRanges")
     private @Nullable Output<List<InterfacePublicIpv6AssignedRangeArgs>> assignedRanges;
 
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfacePublicIpv6AssignedRangeArgs>>> assignedRanges() {
@@ -50,14 +50,14 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="shareds")
     private @Nullable Output<List<InterfacePublicIpv6SharedArgs>> shareds;
 
     /**
-     * @return (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfacePublicIpv6SharedArgs>>> shareds() {
@@ -65,14 +65,14 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="slaacs")
     private @Nullable Output<List<InterfacePublicIpv6SlaacArgs>> slaacs;
 
     /**
-     * @return (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfacePublicIpv6SlaacArgs>>> slaacs() {
@@ -107,7 +107,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param shareds (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+         * @param shareds (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param shareds (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+         * @param shareds (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param shareds (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+         * @param shareds (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param slaacs (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+         * @param slaacs (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param slaacs (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+         * @param slaacs (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class InterfacePublicIpv6Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param slaacs (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+         * @param slaacs (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

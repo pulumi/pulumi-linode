@@ -71,6 +71,9 @@ class GetVolumeTypesResult:
     @_builtins.property
     @pulumi.getter
     def types(self) -> Sequence['outputs.GetVolumeTypesTypeResult']:
+        """
+        (Nested Attribute List) Linode Volume types matching the query.
+        """
         return pulumi.get(self, "types")
 
 

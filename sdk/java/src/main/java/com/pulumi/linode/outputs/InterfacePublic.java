@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterfacePublic {
     /**
-     * @return IPv4 addresses for this interface.
+     * @return IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
      * 
      */
     private @Nullable InterfacePublicIpv4 ipv4;
     /**
-     * @return IPv6 addresses for this interface.
+     * @return IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
      * 
      */
     private @Nullable InterfacePublicIpv6 ipv6;
 
     private InterfacePublic() {}
     /**
-     * @return IPv4 addresses for this interface.
+     * @return IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
      * 
      */
     public Optional<InterfacePublicIpv4> ipv4() {
         return Optional.ofNullable(this.ipv4);
     }
     /**
-     * @return IPv6 addresses for this interface.
+     * @return IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
      * 
      */
     public Optional<InterfacePublicIpv6> ipv6() {

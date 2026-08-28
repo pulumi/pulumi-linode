@@ -25,8 +25,8 @@ namespace Pulumi.Linode
     /// {
     ///     var test_empty = new Linode.ProducerImageShareGroup("test-empty", new()
     ///     {
-    ///         Label = "my-image-share-group",
     ///         Description = "My description.",
+    ///         Label = "my-image-share-group",
     ///     });
     /// 
     /// });
@@ -41,17 +41,17 @@ namespace Pulumi.Linode
     /// {
     ///     var test_images = new Linode.ProducerImageShareGroup("test-images", new()
     ///     {
-    ///         Label = "my-image-share-group",
     ///         Description = "My description.",
     ///         Images = new[]
     ///         {
     ///             new Linode.Inputs.ProducerImageShareGroupImageArgs
     ///             {
+    ///                 Description = "My image description.",
     ///                 Id = "private/12345",
     ///                 Label = "my-image",
-    ///                 Description = "My image description.",
     ///             },
     ///         },
+    ///         Label = "my-image-share-group",
     ///     });
     /// 
     /// });
@@ -69,7 +69,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

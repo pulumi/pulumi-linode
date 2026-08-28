@@ -44,9 +44,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ProducerImageShareGroupMember("example", ProducerImageShareGroupMemberArgs.builder()
+ *             .label("example-member")
  *             .sharegroupId(12345)
  *             .token("abcdefghijklmnopqrstuvwxyz0123456789")
- *             .label("example-member")
  *             .build());
  * 
  *     }

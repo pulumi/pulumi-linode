@@ -31,8 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewAccountSettings(ctx, "myaccount", &linode.AccountSettingsArgs{
-//				LongviewSubscription: pulumi.String("longview-40"),
-//				BackupsEnabled:       pulumi.Bool(true),
+//				BackupsEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -47,6 +46,8 @@ import (
 //
 // * `managed` - Enables monitoring for connectivity, response, and total request time.
 //
+// * `longviewSubscription` - (Deprecated) The Longview Pro tier you are currently subscribed to.
+//
 // * `objectStorage` - A string describing the status of this account’s Object Storage service enrollment.
 type AccountSettings struct {
 	pulumi.CustomResourceState
@@ -55,7 +56,7 @@ type AccountSettings struct {
 	BackupsEnabled pulumi.BoolOutput `pulumi:"backupsEnabled"`
 	// Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
 	InterfacesForNewLinodes pulumi.StringOutput `pulumi:"interfacesForNewLinodes"`
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to.
 	LongviewSubscription pulumi.StringOutput `pulumi:"longviewSubscription"`
 	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy pulumi.StringOutput `pulumi:"maintenancePolicy"`
@@ -101,7 +102,7 @@ type accountSettingsState struct {
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
 	InterfacesForNewLinodes *string `pulumi:"interfacesForNewLinodes"`
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to.
 	LongviewSubscription *string `pulumi:"longviewSubscription"`
 	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
@@ -118,7 +119,7 @@ type AccountSettingsState struct {
 	BackupsEnabled pulumi.BoolPtrInput
 	// Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
 	InterfacesForNewLinodes pulumi.StringPtrInput
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+	// The Longview Pro tier you are currently subscribed to.
 	LongviewSubscription pulumi.StringPtrInput
 	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy pulumi.StringPtrInput
@@ -139,8 +140,6 @@ type accountSettingsArgs struct {
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`
 	// Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
 	InterfacesForNewLinodes *string `pulumi:"interfacesForNewLinodes"`
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-	LongviewSubscription *string `pulumi:"longviewSubscription"`
 	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy *string `pulumi:"maintenancePolicy"`
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
@@ -153,8 +152,6 @@ type AccountSettingsArgs struct {
 	BackupsEnabled pulumi.BoolPtrInput
 	// Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
 	InterfacesForNewLinodes pulumi.StringPtrInput
-	// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-	LongviewSubscription pulumi.StringPtrInput
 	// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
 	MaintenancePolicy pulumi.StringPtrInput
 	// Enables network helper across all users by default for new Linodes and Linode Configs.
@@ -258,7 +255,7 @@ func (o AccountSettingsOutput) InterfacesForNewLinodes() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSettings) pulumi.StringOutput { return v.InterfacesForNewLinodes }).(pulumi.StringOutput)
 }
 
-// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+// The Longview Pro tier you are currently subscribed to.
 func (o AccountSettingsOutput) LongviewSubscription() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountSettings) pulumi.StringOutput { return v.LongviewSubscription }).(pulumi.StringOutput)
 }

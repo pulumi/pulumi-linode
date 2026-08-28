@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigDevicesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ... `Sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `DiskId` or `VolumeId`. Only one disk identifier is permitted per slot. Devices mapped from `Sde` through `Sdh` are unavailable in `"fullvirt"` `VirtMode`.
+        /// ... `Sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `Sda`-`Sdz`, `Sdaa`-`Sdaz`, `Sdba`-`Sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `DiskId` or `VolumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
         /// </summary>
         [Input("sda")]
         public Input<Inputs.InstanceConfigDevicesSdaArgs>? Sda { get; set; }
@@ -21,8 +21,236 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
+        [Input("sdaa")]
+        public Input<Inputs.InstanceConfigDevicesSdaaArgs>? Sdaa { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdab")]
+        public Input<Inputs.InstanceConfigDevicesSdabArgs>? Sdab { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdac")]
+        public Input<Inputs.InstanceConfigDevicesSdacArgs>? Sdac { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdad")]
+        public Input<Inputs.InstanceConfigDevicesSdadArgs>? Sdad { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdae")]
+        public Input<Inputs.InstanceConfigDevicesSdaeArgs>? Sdae { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdaf")]
+        public Input<Inputs.InstanceConfigDevicesSdafArgs>? Sdaf { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdag")]
+        public Input<Inputs.InstanceConfigDevicesSdagArgs>? Sdag { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdah")]
+        public Input<Inputs.InstanceConfigDevicesSdahArgs>? Sdah { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdai")]
+        public Input<Inputs.InstanceConfigDevicesSdaiArgs>? Sdai { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdaj")]
+        public Input<Inputs.InstanceConfigDevicesSdajArgs>? Sdaj { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdak")]
+        public Input<Inputs.InstanceConfigDevicesSdakArgs>? Sdak { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdal")]
+        public Input<Inputs.InstanceConfigDevicesSdalArgs>? Sdal { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdam")]
+        public Input<Inputs.InstanceConfigDevicesSdamArgs>? Sdam { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdan")]
+        public Input<Inputs.InstanceConfigDevicesSdanArgs>? Sdan { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdao")]
+        public Input<Inputs.InstanceConfigDevicesSdaoArgs>? Sdao { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdap")]
+        public Input<Inputs.InstanceConfigDevicesSdapArgs>? Sdap { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdaq")]
+        public Input<Inputs.InstanceConfigDevicesSdaqArgs>? Sdaq { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdar")]
+        public Input<Inputs.InstanceConfigDevicesSdarArgs>? Sdar { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdas")]
+        public Input<Inputs.InstanceConfigDevicesSdasArgs>? Sdas { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdat")]
+        public Input<Inputs.InstanceConfigDevicesSdatArgs>? Sdat { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdau")]
+        public Input<Inputs.InstanceConfigDevicesSdauArgs>? Sdau { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdav")]
+        public Input<Inputs.InstanceConfigDevicesSdavArgs>? Sdav { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdaw")]
+        public Input<Inputs.InstanceConfigDevicesSdawArgs>? Sdaw { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdax")]
+        public Input<Inputs.InstanceConfigDevicesSdaxArgs>? Sdax { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sday")]
+        public Input<Inputs.InstanceConfigDevicesSdayArgs>? Sday { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdaz")]
+        public Input<Inputs.InstanceConfigDevicesSdazArgs>? Sdaz { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
         [Input("sdb")]
         public Input<Inputs.InstanceConfigDevicesSdbArgs>? Sdb { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdba")]
+        public Input<Inputs.InstanceConfigDevicesSdbaArgs>? Sdba { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbb")]
+        public Input<Inputs.InstanceConfigDevicesSdbbArgs>? Sdbb { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbc")]
+        public Input<Inputs.InstanceConfigDevicesSdbcArgs>? Sdbc { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbd")]
+        public Input<Inputs.InstanceConfigDevicesSdbdArgs>? Sdbd { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbe")]
+        public Input<Inputs.InstanceConfigDevicesSdbeArgs>? Sdbe { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbf")]
+        public Input<Inputs.InstanceConfigDevicesSdbfArgs>? Sdbf { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbg")]
+        public Input<Inputs.InstanceConfigDevicesSdbgArgs>? Sdbg { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbh")]
+        public Input<Inputs.InstanceConfigDevicesSdbhArgs>? Sdbh { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbi")]
+        public Input<Inputs.InstanceConfigDevicesSdbiArgs>? Sdbi { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbj")]
+        public Input<Inputs.InstanceConfigDevicesSdbjArgs>? Sdbj { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbk")]
+        public Input<Inputs.InstanceConfigDevicesSdbkArgs>? Sdbk { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdbl")]
+        public Input<Inputs.InstanceConfigDevicesSdblArgs>? Sdbl { get; set; }
 
         /// <summary>
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
@@ -59,6 +287,114 @@ namespace Pulumi.Linode.Inputs
         /// </summary>
         [Input("sdh")]
         public Input<Inputs.InstanceConfigDevicesSdhArgs>? Sdh { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdi")]
+        public Input<Inputs.InstanceConfigDevicesSdiArgs>? Sdi { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdj")]
+        public Input<Inputs.InstanceConfigDevicesSdjArgs>? Sdj { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdk")]
+        public Input<Inputs.InstanceConfigDevicesSdkArgs>? Sdk { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdl")]
+        public Input<Inputs.InstanceConfigDevicesSdlArgs>? Sdl { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdm")]
+        public Input<Inputs.InstanceConfigDevicesSdmArgs>? Sdm { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdn")]
+        public Input<Inputs.InstanceConfigDevicesSdnArgs>? Sdn { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdo")]
+        public Input<Inputs.InstanceConfigDevicesSdoArgs>? Sdo { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdp")]
+        public Input<Inputs.InstanceConfigDevicesSdpArgs>? Sdp { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdq")]
+        public Input<Inputs.InstanceConfigDevicesSdqArgs>? Sdq { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdr")]
+        public Input<Inputs.InstanceConfigDevicesSdrArgs>? Sdr { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sds")]
+        public Input<Inputs.InstanceConfigDevicesSdsArgs>? Sds { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdt")]
+        public Input<Inputs.InstanceConfigDevicesSdtArgs>? Sdt { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdu")]
+        public Input<Inputs.InstanceConfigDevicesSduArgs>? Sdu { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdv")]
+        public Input<Inputs.InstanceConfigDevicesSdvArgs>? Sdv { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdw")]
+        public Input<Inputs.InstanceConfigDevicesSdwArgs>? Sdw { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdx")]
+        public Input<Inputs.InstanceConfigDevicesSdxArgs>? Sdx { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdy")]
+        public Input<Inputs.InstanceConfigDevicesSdyArgs>? Sdy { get; set; }
+
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        [Input("sdz")]
+        public Input<Inputs.InstanceConfigDevicesSdzArgs>? Sdz { get; set; }
 
         public InstanceConfigDevicesArgs()
         {

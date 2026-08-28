@@ -19,6 +19,10 @@ public final class GetConsumerImageShareGroupTokensResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     * 
+     */
     private @Nullable List<GetConsumerImageShareGroupTokensToken> tokens;
 
     private GetConsumerImageShareGroupTokensResult() {}
@@ -34,6 +38,10 @@ public final class GetConsumerImageShareGroupTokensResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     * 
+     */
     public List<GetConsumerImageShareGroupTokensToken> tokens() {
         return this.tokens == null ? List.of() : this.tokens;
     }

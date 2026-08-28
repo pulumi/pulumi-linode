@@ -29,6 +29,10 @@ public final class GetNodebalancerVpcsResult {
     private Integer nodebalancerId;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) A list of VPC configurations.
+     * 
+     */
     private List<GetNodebalancerVpcsVpcConfig> vpcConfigs;
 
     private GetNodebalancerVpcsResult() {}
@@ -55,6 +59,10 @@ public final class GetNodebalancerVpcsResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) A list of VPC configurations.
+     * 
+     */
     public List<GetNodebalancerVpcsVpcConfig> vpcConfigs() {
         return this.vpcConfigs;
     }

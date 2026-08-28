@@ -36,15 +36,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooInstance, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-//				Image:  pulumi.String("linode/alpine3.19"),
+//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//				Image:  pulumi.String("linode/arch"),
 //				Region: pulumi.String("ca-east"),
 //				Type:   pulumi.String("g6-dedicated-2"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewRdns(ctx, "foo", &linode.RdnsArgs{
+//			_, err = linode.NewRdns(ctx, "fooRdns", &linode.RdnsArgs{
 //				Address: fooInstance.IpAddress,
 //				Rdns: fooInstance.IpAddress.ApplyT(func(ipAddress string) (string, error) {
 //					return fmt.Sprintf("%v.nip.io", ipAddress), nil

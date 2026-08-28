@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const testIp = new linode.NetworkingIp("test_ip", {
- *     type: "ipv4",
+ * const testIp = new linode.NetworkingIp("testIp", {
  *     linodeId: 12345,
  *     "public": true,
+ *     type: "ipv4",
  * });
  * ```
  *
@@ -65,6 +65,10 @@ export class NetworkingIp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly address: pulumi.Output<string>;
     /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    declare public /*out*/ readonly assignedEntity: pulumi.Output<outputs.NetworkingIpAssignedEntity>;
+    /**
      * The default gateway for this address.
      */
     declare public /*out*/ readonly gateway: pulumi.Output<string>;
@@ -97,11 +101,15 @@ export class NetworkingIp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly subnetMask: pulumi.Output<string>;
     /**
+     * A set of tags associated with this IP address.
+     */
+    declare public /*out*/ readonly tags: pulumi.Output<string[]>;
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      */
     declare public /*out*/ readonly vpcNat11: pulumi.Output<outputs.NetworkingIpVpcNat11>;
 
@@ -119,6 +127,7 @@ export class NetworkingIp extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkingIpState | undefined;
             resourceInputs["address"] = state?.address;
+            resourceInputs["assignedEntity"] = state?.assignedEntity;
             resourceInputs["gateway"] = state?.gateway;
             resourceInputs["linodeId"] = state?.linodeId;
             resourceInputs["prefix"] = state?.prefix;
@@ -127,6 +136,7 @@ export class NetworkingIp extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["reserved"] = state?.reserved;
             resourceInputs["subnetMask"] = state?.subnetMask;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
             resourceInputs["vpcNat11"] = state?.vpcNat11;
         } else {
@@ -137,10 +147,12 @@ export class NetworkingIp extends pulumi.CustomResource {
             resourceInputs["reserved"] = args?.reserved;
             resourceInputs["type"] = args?.type;
             resourceInputs["address"] = undefined /*out*/;
+            resourceInputs["assignedEntity"] = undefined /*out*/;
             resourceInputs["gateway"] = undefined /*out*/;
             resourceInputs["prefix"] = undefined /*out*/;
             resourceInputs["rdns"] = undefined /*out*/;
             resourceInputs["subnetMask"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["vpcNat11"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -156,6 +168,10 @@ export interface NetworkingIpState {
      * The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      */
     address?: pulumi.Input<string | undefined>;
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    assignedEntity?: pulumi.Input<inputs.NetworkingIpAssignedEntity | undefined>;
     /**
      * The default gateway for this address.
      */
@@ -189,11 +205,15 @@ export interface NetworkingIpState {
      */
     subnetMask?: pulumi.Input<string | undefined>;
     /**
+     * A set of tags associated with this IP address.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      */
     vpcNat11?: pulumi.Input<inputs.NetworkingIpVpcNat11 | undefined>;
 }

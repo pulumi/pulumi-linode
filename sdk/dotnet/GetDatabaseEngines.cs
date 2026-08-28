@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("myDb", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -175,7 +175,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("myDb", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -264,7 +264,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("myDb", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -293,7 +293,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest engine version will be returned.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest engine version will be returned.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
@@ -356,6 +356,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetDatabaseEnginesResult
     {
+        /// <summary>
+        /// (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseEnginesEngineResult> Engines;
         public readonly ImmutableArray<Outputs.GetDatabaseEnginesFilterResult> Filters;
         /// <summary>

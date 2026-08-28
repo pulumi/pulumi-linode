@@ -24,7 +24,6 @@ class DomainArgs:
                  axfr_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 group: pulumi.Input[Optional[_builtins.str]] = None,
                  master_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  refresh_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -40,7 +39,6 @@ class DomainArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] axfr_ips: The list of IPs that may perform a zone transfer for this Domain. This is potentially dangerous, and should be set to an empty list unless you intend to use it.
         :param pulumi.Input[_builtins.str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[_builtins.int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[_builtins.str] group: The group this Domain belongs to. This is for display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_ips: The IP addresses representing the master DNS for this Domain.
                
                ***
@@ -59,8 +57,6 @@ class DomainArgs:
             pulumi.set(__self__, "description", description)
         if expire_sec is not None:
             pulumi.set(__self__, "expire_sec", expire_sec)
-        if group is not None:
-            pulumi.set(__self__, "group", group)
         if master_ips is not None:
             pulumi.set(__self__, "master_ips", master_ips)
         if refresh_sec is not None:
@@ -135,18 +131,6 @@ class DomainArgs:
     @expire_sec.setter
     def expire_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expire_sec", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The group this Domain belongs to. This is for display purposes only.
-        """
-        return pulumi.get(self, "group")
-
-    @group.setter
-    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="masterIps")
@@ -242,7 +226,6 @@ class _DomainState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 group: pulumi.Input[Optional[_builtins.str]] = None,
                  master_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  refresh_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -258,7 +241,6 @@ class _DomainState:
         :param pulumi.Input[_builtins.str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[_builtins.str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         :param pulumi.Input[_builtins.int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[_builtins.str] group: The group this Domain belongs to. This is for display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_ips: The IP addresses representing the master DNS for this Domain.
                
                ***
@@ -278,8 +260,6 @@ class _DomainState:
             pulumi.set(__self__, "domain", domain)
         if expire_sec is not None:
             pulumi.set(__self__, "expire_sec", expire_sec)
-        if group is not None:
-            pulumi.set(__self__, "group", group)
         if master_ips is not None:
             pulumi.set(__self__, "master_ips", master_ips)
         if refresh_sec is not None:
@@ -344,18 +324,6 @@ class _DomainState:
     @expire_sec.setter
     def expire_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expire_sec", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The group this Domain belongs to. This is for display purposes only.
-        """
-        return pulumi.get(self, "group")
-
-    @group.setter
-    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="masterIps")
@@ -466,7 +434,6 @@ class Domain(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 group: pulumi.Input[Optional[_builtins.str]] = None,
                  master_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  refresh_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -488,7 +455,7 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foobar = linode.Domain("foobar",
+        foobar_domain = linode.Domain("foobarDomain",
             type="master",
             domain="foobar.example",
             soa_email="example@foobar.example",
@@ -496,8 +463,8 @@ class Domain(pulumi.CustomResource):
                 "foo",
                 "bar",
             ])
-        foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id.apply(lambda x: int(x)),
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")
@@ -518,7 +485,6 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[_builtins.str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         :param pulumi.Input[_builtins.int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[_builtins.str] group: The group this Domain belongs to. This is for display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_ips: The IP addresses representing the master DNS for this Domain.
                
                ***
@@ -548,7 +514,7 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foobar = linode.Domain("foobar",
+        foobar_domain = linode.Domain("foobarDomain",
             type="master",
             domain="foobar.example",
             soa_email="example@foobar.example",
@@ -556,8 +522,8 @@ class Domain(pulumi.CustomResource):
                 "foo",
                 "bar",
             ])
-        foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id.apply(lambda x: int(x)),
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")
@@ -591,7 +557,6 @@ class Domain(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_sec: pulumi.Input[Optional[_builtins.int]] = None,
-                 group: pulumi.Input[Optional[_builtins.str]] = None,
                  master_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  refresh_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -615,7 +580,6 @@ class Domain(pulumi.CustomResource):
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
             __props__.__dict__["expire_sec"] = expire_sec
-            __props__.__dict__["group"] = group
             __props__.__dict__["master_ips"] = master_ips
             __props__.__dict__["refresh_sec"] = refresh_sec
             __props__.__dict__["retry_sec"] = retry_sec
@@ -640,7 +604,6 @@ class Domain(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             expire_sec: pulumi.Input[Optional[_builtins.int]] = None,
-            group: pulumi.Input[Optional[_builtins.str]] = None,
             master_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             refresh_sec: pulumi.Input[Optional[_builtins.int]] = None,
             retry_sec: pulumi.Input[Optional[_builtins.int]] = None,
@@ -660,7 +623,6 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description for this Domain. This is for display purposes only.
         :param pulumi.Input[_builtins.str] domain: The domain this Domain represents. These must be unique in our system; you cannot have two Domains representing the same domain.
         :param pulumi.Input[_builtins.int] expire_sec: The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
-        :param pulumi.Input[_builtins.str] group: The group this Domain belongs to. This is for display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] master_ips: The IP addresses representing the master DNS for this Domain.
                
                ***
@@ -680,7 +642,6 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["domain"] = domain
         __props__.__dict__["expire_sec"] = expire_sec
-        __props__.__dict__["group"] = group
         __props__.__dict__["master_ips"] = master_ips
         __props__.__dict__["refresh_sec"] = refresh_sec
         __props__.__dict__["retry_sec"] = retry_sec
@@ -722,14 +683,6 @@ class Domain(pulumi.CustomResource):
         The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
         """
         return pulumi.get(self, "expire_sec")
-
-    @_builtins.property
-    @pulumi.getter
-    def group(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        The group this Domain belongs to. This is for display purposes only.
-        """
-        return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter(name="masterIps")

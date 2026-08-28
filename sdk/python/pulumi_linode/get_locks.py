@@ -62,7 +62,7 @@ class GetLocksResult:
     @pulumi.getter
     def locks(self) -> Sequence['outputs.GetLocksLockResult']:
         """
-        A list of Linode Locks that match the filter criteria.
+        (Nested Attribute List) A list of Linode Locks that match the filter criteria.
         """
         return pulumi.get(self, "locks")
 
@@ -95,13 +95,11 @@ def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFi
               order_by: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLocksResult:
     """
-    > **Early Access:** Lock functionality is in early access and may not be available to all users.
-
     > **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
 
     Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
 
-    For more information, see the Linode APIv4 docs (TBD).
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
 
     ## Example Usage
 
@@ -150,13 +148,11 @@ def get_locks_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['Get
                      order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocksResult]:
     """
-    > **Early Access:** Lock functionality is in early access and may not be available to all users.
-
     > **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
 
     Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
 
-    For more information, see the Linode APIv4 docs (TBD).
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
 
     ## Example Usage
 

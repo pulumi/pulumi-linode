@@ -26,7 +26,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of IPv6 allocations under this VPC.
+        /// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcsVpcIpv4Result> Ipv4s;
+        /// <summary>
+        /// (Nested Attribute List) A list of IPv6 allocations under this VPC.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcsVpcIpv6Result> Ipv6s;
         /// <summary>
@@ -41,6 +45,10 @@ namespace Pulumi.Linode.Outputs
         /// The date and time when the VPC was last updated.
         /// </summary>
         public readonly string Updated;
+        /// <summary>
+        /// The type of the VPC ('regular' or 'rdma'). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+        /// </summary>
+        public readonly string VpcType;
 
         [OutputConstructor]
         private GetVpcsVpcResult(
@@ -50,21 +58,27 @@ namespace Pulumi.Linode.Outputs
 
             string id,
 
+            ImmutableArray<Outputs.GetVpcsVpcIpv4Result> ipv4s,
+
             ImmutableArray<Outputs.GetVpcsVpcIpv6Result> ipv6s,
 
             string label,
 
             string region,
 
-            string updated)
+            string updated,
+
+            string vpcType)
         {
             Created = created;
             Description = description;
             Id = id;
+            Ipv4s = ipv4s;
             Ipv6s = ipv6s;
             Label = label;
             Region = region;
             Updated = updated;
+            VpcType = vpcType;
         }
     }
 }

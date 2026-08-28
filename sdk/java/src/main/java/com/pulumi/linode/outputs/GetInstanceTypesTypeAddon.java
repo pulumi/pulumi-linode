@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypesTypeAddon {
+    /**
+     * @return (Read-Only Object List) Backup add-on pricing for this Linode Type. Referenced with an index (e.g. `addons.0.backups.0.price`).
+     * 
+     */
     private List<GetInstanceTypesTypeAddonBackup> backups;
 
     private GetInstanceTypesTypeAddon() {}
+    /**
+     * @return (Read-Only Object List) Backup add-on pricing for this Linode Type. Referenced with an index (e.g. `addons.0.backups.0.price`).
+     * 
+     */
     public List<GetInstanceTypesTypeAddonBackup> backups() {
         return this.backups;
     }

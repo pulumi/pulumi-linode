@@ -47,6 +47,9 @@ class GetFirewallTemplatesResult:
     @_builtins.property
     @pulumi.getter(name="firewallTemplates")
     def firewall_templates(self) -> Sequence['outputs.GetFirewallTemplatesFirewallTemplateResult']:
+        """
+        (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
+        """
         return pulumi.get(self, "firewall_templates")
 
     @_builtins.property

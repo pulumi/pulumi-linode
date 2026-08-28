@@ -123,12 +123,12 @@ class NetworkingIpAssignment(pulumi.CustomResource):
             region="us-mia",
             assignments=[
                 {
-                    "address": reserved_ip1["address"],
-                    "linode_id": int(terraform_web1["id"]),
+                    "address": linode_networking_ip["reserved_ip1"]["address"],
+                    "linode_id": linode_instance["terraform-web1"]["id"],
                 },
                 {
-                    "address": reserved_ip2["address"],
-                    "linode_id": int(terraform_web2["id"]),
+                    "address": linode_networking_ip["reserved_ip2"]["address"],
+                    "linode_id": linode_instance["terraform-web2"]["id"],
                 },
             ])
         ```
@@ -164,12 +164,12 @@ class NetworkingIpAssignment(pulumi.CustomResource):
             region="us-mia",
             assignments=[
                 {
-                    "address": reserved_ip1["address"],
-                    "linode_id": int(terraform_web1["id"]),
+                    "address": linode_networking_ip["reserved_ip1"]["address"],
+                    "linode_id": linode_instance["terraform-web1"]["id"],
                 },
                 {
-                    "address": reserved_ip2["address"],
-                    "linode_id": int(terraform_web2["id"]),
+                    "address": linode_networking_ip["reserved_ip2"]["address"],
+                    "linode_id": linode_instance["terraform-web2"]["id"],
                 },
             ])
         ```

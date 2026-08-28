@@ -21,12 +21,12 @@ public final class GetInstancesInstanceConfig {
      */
     private String comments;
     /**
-     * @return A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+     * @return (Read-Only Object List) A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted. Referenced with an index (e.g. `devices.0.sda`).
      * 
      */
     private List<GetInstancesInstanceConfigDevice> devices;
     /**
-     * @return Helpers enabled when booting to this Linode Config.
+     * @return (Read-Only Object List) Helpers enabled when booting to this Linode Config. Referenced with an index (e.g. `helpers.0.distro`).
      * 
      */
     private List<GetInstancesInstanceConfigHelper> helpers;
@@ -80,14 +80,14 @@ public final class GetInstancesInstanceConfig {
         return this.comments;
     }
     /**
-     * @return A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted.
+     * @return (Read-Only Object List) A list of `disk` or `volume` attachments for this `config`.  If the `bootConfigLabel` omits a `devices` block, the Linode will not be booted. Referenced with an index (e.g. `devices.0.sda`).
      * 
      */
     public List<GetInstancesInstanceConfigDevice> devices() {
         return this.devices;
     }
     /**
-     * @return Helpers enabled when booting to this Linode Config.
+     * @return (Read-Only Object List) Helpers enabled when booting to this Linode Config. Referenced with an index (e.g. `helpers.0.distro`).
      * 
      */
     public List<GetInstancesInstanceConfigHelper> helpers() {

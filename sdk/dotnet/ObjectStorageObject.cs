@@ -14,33 +14,6 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
-    /// ### Uploading a file to a bucket
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @object = new Linode.ObjectStorageObject("object", new()
-    ///     {
-    ///         Bucket = "my-bucket",
-    ///         Region = "us-mia",
-    ///         Key = "my-object",
-    ///         SecretKey = myKey.SecretKey,
-    ///         AccessKey = myKey.AccessKey,
-    ///         Source = Std.Pathexpand.Invoke(new()
-    ///         {
-    ///             Input = "~/files/log.txt",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ### Uploading plaintext to a bucket
     /// 
     /// ```csharp
@@ -56,36 +29,11 @@ namespace Pulumi.Linode
     ///         Bucket = "my-bucket",
     ///         Region = "us-mia",
     ///         Key = "my-object",
-    ///         SecretKey = myKey.SecretKey,
-    ///         AccessKey = myKey.AccessKey,
+    ///         SecretKey = linode_object_storage_key.My_key.Secret_key,
+    ///         AccessKey = linode_object_storage_key.My_key.Access_key,
     ///         Content = "This is the content of the Object...",
     ///         ContentType = "text/plain",
     ///         ContentLanguage = "en",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Creating an object using implicitly created object credentials
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var @object = new Linode.ObjectStorageObject("object", new()
-    ///     {
-    ///         Bucket = "my-bucket",
-    ///         Region = "us-mia",
-    ///         Key = "my-object",
-    ///         Source = Std.Pathexpand.Invoke(new()
-    ///         {
-    ///             Input = "~/files/log.txt",
-    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });
@@ -119,12 +67,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("cacheControl")]
         public Output<string?> CacheControl { get; private set; } = null!;
-
-        /// <summary>
-        /// The cluster the bucket is in. Required if `Region` is not configured. Deprecated in favor of `Region`.
-        /// </summary>
-        [Output("cluster")]
-        public Output<string?> Cluster { get; private set; } = null!;
 
         /// <summary>
         /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -193,10 +135,10 @@ namespace Pulumi.Linode
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `Cluster` is not configured.
+        /// The region the bucket is in.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
@@ -301,12 +243,6 @@ namespace Pulumi.Linode
         public Input<string>? CacheControl { get; set; }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `Region` is not configured. Deprecated in favor of `Region`.
-        /// </summary>
-        [Input("cluster")]
-        public Input<string>? Cluster { get; set; }
-
-        /// <summary>
         /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
         /// </summary>
         [Input("content")]
@@ -379,10 +315,10 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `Cluster` is not configured.
+        /// The region the bucket is in.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         [Input("secretKey")]
         private Input<string>? _secretKey;
@@ -447,12 +383,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
-
-        /// <summary>
-        /// The cluster the bucket is in. Required if `Region` is not configured. Deprecated in favor of `Region`.
-        /// </summary>
-        [Input("cluster")]
-        public Input<string>? Cluster { get; set; }
 
         /// <summary>
         /// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
@@ -527,7 +457,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The cluster the bucket is in. Required if `Cluster` is not configured.
+        /// The region the bucket is in.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new Linode.Domain("foobar", new()
+    ///     var foobarDomain = new Linode.Domain("foobarDomain", new()
     ///     {
     ///         Type = "master",
     ///         DomainName = "foobar.example",
@@ -37,9 +37,9 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var foobarDomainRecord = new Linode.DomainRecord("foobar", new()
+    ///     var foobarDomainRecord = new Linode.DomainRecord("foobarDomainRecord", new()
     ///     {
-    ///         DomainId = foobar.Id,
+    ///         DomainId = foobarDomain.Id,
     ///         Name = "www",
     ///         RecordType = "CNAME",
     ///         Target = "foobar.example",
@@ -82,12 +82,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("expireSec")]
         public Output<int?> ExpireSec { get; private set; } = null!;
-
-        /// <summary>
-        /// The group this Domain belongs to. This is for display purposes only.
-        /// </summary>
-        [Output("group")]
-        public Output<string?> Group { get; private set; } = null!;
 
         /// <summary>
         /// The IP addresses representing the master DNS for this Domain.
@@ -215,12 +209,6 @@ namespace Pulumi.Linode
         [Input("expireSec")]
         public Input<int>? ExpireSec { get; set; }
 
-        /// <summary>
-        /// The group this Domain belongs to. This is for display purposes only.
-        /// </summary>
-        [Input("group")]
-        public Input<string>? Group { get; set; }
-
         [Input("masterIps")]
         private InputList<string>? _masterIps;
 
@@ -320,12 +308,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("expireSec")]
         public Input<int>? ExpireSec { get; set; }
-
-        /// <summary>
-        /// The group this Domain belongs to. This is for display purposes only.
-        /// </summary>
-        [Input("group")]
-        public Input<string>? Group { get; set; }
 
         [Input("masterIps")]
         private InputList<string>? _masterIps;

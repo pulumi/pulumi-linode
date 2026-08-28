@@ -19,6 +19,10 @@ public final class GetVlansResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+     * 
+     */
     private List<GetVlansVlan> vlans;
 
     private GetVlansResult() {}
@@ -34,6 +38,10 @@ public final class GetVlansResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+     * 
+     */
     public List<GetVlansVlan> vlans() {
         return this.vlans;
     }

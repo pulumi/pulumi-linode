@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .label("mydatabase")
  *             .engineId("mysql/8")
+ *             .label("mydatabase")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
  *             .build());
@@ -87,11 +87,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .label("mydatabase")
+ *             .allowLists("0.0.0.0/0")
  *             .engineId("mysql/8")
+ *             .label("mydatabase")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
- *             .allowLists("0.0.0.0/0")
  *             .build());
  * 
  *     }
@@ -122,17 +122,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .label("mydatabase")
- *             .engineId("mysql/8")
- *             .region("us-mia")
- *             .type("g6-nanode-1")
  *             .allowLists("10.0.0.3/32")
  *             .clusterSize(3)
+ *             .engineId("mysql/8")
+ *             .label("mydatabase")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
  *             .updates(DatabaseMysqlV2UpdatesArgs.builder()
+ *                 .day_of_week(3)
  *                 .duration(4)
  *                 .frequency("weekly")
- *                 .hourOfDay(22)
- *                 .dayOfWeek(3)
+ *                 .hour_of_day(22)
  *                 .build())
  *             .build());
  * 
@@ -163,10 +163,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .label("mydatabase")
- *             .engineId("mysql/8")
- *             .region("us-mia")
- *             .type("g6-nanode-1")
  *             .engineConfigBinlogRetentionPeriod(3600)
  *             .engineConfigMysqlConnectTimeout(10)
  *             .engineConfigMysqlDefaultTimeZone("+00:00")
@@ -195,6 +191,10 @@ import javax.annotation.Nullable;
  *             .engineConfigMysqlSqlRequirePrimaryKey(false)
  *             .engineConfigMysqlTmpTableSize(16777216)
  *             .engineConfigMysqlWaitTimeout(28800)
+ *             .engineId("mysql/8")
+ *             .label("mydatabase")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
  *             .build());
  * 
  *     }
@@ -224,11 +224,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .label("mydatabase")
  *             .engineId("mysql/8")
+ *             .forkSource(12345)
+ *             .label("mydatabase")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
- *             .forkSource(12345)
  *             .build());
  * 
  *     }
@@ -259,15 +259,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
+ *             .engineId("mysql/8")
  *             .label("mydatabase")
- *             .engineId("mysql/16")
+ *             .privateNetwork(DatabaseMysqlV2PrivateNetworkArgs.builder()
+ *                 .public_access(false)
+ *                 .subnet_id(456)
+ *                 .vpc_id(123)
+ *                 .build())
  *             .region("us-mia")
  *             .type("g6-nanode-1")
- *             .privateNetwork(DatabaseMysqlV2PrivateNetworkArgs.builder()
- *                 .vpcId(123)
- *                 .subnetId(456)
- *                 .publicAccess(false)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -827,9 +827,9 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     @Export(name="forkSource", refs={Integer.class}, tree="[0]")
@@ -838,9 +838,9 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     public Output<Optional<Integer>> forkSource() {
@@ -935,14 +935,14 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
         return this.oldestRestoreTime;
     }
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="pendingUpdates", refs={List.class,DatabaseMysqlV2PendingUpdate.class}, tree="[0,1]")
     private Output<List<DatabaseMysqlV2PendingUpdate>> pendingUpdates;
 
     /**
-     * @return A set of pending updates.
+     * @return (Nested Attribute Set) A set of pending updates. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<DatabaseMysqlV2PendingUpdate>> pendingUpdates() {

@@ -71,6 +71,9 @@ class GetVpcIpsResult:
     @_builtins.property
     @pulumi.getter(name="vpcIps")
     def vpc_ips(self) -> Sequence['outputs.GetVpcIpsVpcIpResult']:
+        """
+        (Nested Attribute List) The Linode VPC IPs returned by this data source.
+        """
         return pulumi.get(self, "vpc_ips")
 
 
@@ -144,7 +147,7 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
 
     :param _builtins.int vpc_id: The id of the parent VPC for the list of VPC IPs.
            
-           * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -216,7 +219,7 @@ def get_vpc_ips_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['G
 
     :param _builtins.int vpc_id: The id of the parent VPC for the list of VPC IPs.
            
-           * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters

@@ -10,10 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.NetworkingIpArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.NetworkingIpState;
+import com.pulumi.linode.outputs.NetworkingIpAssignedEntity;
 import com.pulumi.linode.outputs.NetworkingIpVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import javax.annotation.Nullable;
 
 /**
@@ -46,9 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testIp = new NetworkingIp("testIp", NetworkingIpArgs.builder()
- *             .type("ipv4")
  *             .linodeId(12345)
  *             .public_(true)
+ *             .type("ipv4")
  *             .build());
  * 
  *     }
@@ -80,6 +82,20 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
      */
     public Output<String> address() {
         return this.address;
+    }
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    @Export(name="assignedEntity", refs={NetworkingIpAssignedEntity.class}, tree="[0]")
+    private Output<NetworkingIpAssignedEntity> assignedEntity;
+
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public Output<NetworkingIpAssignedEntity> assignedEntity() {
+        return this.assignedEntity;
     }
     /**
      * The default gateway for this address.
@@ -194,6 +210,20 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
         return this.subnetMask;
     }
     /**
+     * A set of tags associated with this IP address.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tags;
+
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public Output<List<String>> tags() {
+        return this.tags;
+    }
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
@@ -208,14 +238,14 @@ public class NetworkingIp extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      * 
      */
     @Export(name="vpcNat11", refs={NetworkingIpVpcNat11.class}, tree="[0]")
     private Output<NetworkingIpVpcNat11> vpcNat11;
 
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      * 
      */
     public Output<NetworkingIpVpcNat11> vpcNat11() {

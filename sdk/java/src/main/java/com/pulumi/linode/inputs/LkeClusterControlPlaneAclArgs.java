@@ -35,7 +35,7 @@ public final class LkeClusterControlPlaneAclArgs extends com.pulumi.resources.Re
     /**
      * Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      * 
-     * * `addresses` - (Optional) A list of ip addresses to allow.
+     * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
      * 
      */
     @Import(name="enabled")
@@ -44,7 +44,7 @@ public final class LkeClusterControlPlaneAclArgs extends com.pulumi.resources.Re
     /**
      * @return Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      * 
-     * * `addresses` - (Optional) A list of ip addresses to allow.
+     * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -110,7 +110,7 @@ public final class LkeClusterControlPlaneAclArgs extends com.pulumi.resources.Re
         /**
          * @param enabled Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
          * 
-         * * `addresses` - (Optional) A list of ip addresses to allow.
+         * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class LkeClusterControlPlaneAclArgs extends com.pulumi.resources.Re
         /**
          * @param enabled Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
          * 
-         * * `addresses` - (Optional) A list of ip addresses to allow.
+         * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
          * 
          * @return builder
          * 

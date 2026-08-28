@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_config = linode.getNodebalancerVpc({
- *     nodebalancerId: 123,
  *     id: 456,
+ *     nodebalancerId: 123,
  * });
  * ```
  */
@@ -53,6 +53,10 @@ export interface GetNodebalancerVpcResult {
      * A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
      */
     readonly ipv4Range: string;
+    /**
+     * A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    readonly ipv6Range: string;
     readonly nodebalancerId: number;
     /**
      * The ID of this configuration's VPC subnet.
@@ -76,8 +80,8 @@ export interface GetNodebalancerVpcResult {
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_config = linode.getNodebalancerVpc({
- *     nodebalancerId: 123,
  *     id: 456,
+ *     nodebalancerId: 123,
  * });
  * ```
  */

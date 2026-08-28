@@ -51,6 +51,14 @@ import (
 //
 // * `range` - The allocated range in CIDR format.
 //
+// ## IPv4
+//
+// > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+//
+// Contains information about a single IPv4 range under this VPC.
+//
+// * `range` - The IPv4 range in CIDR format.
+//
 // ### Subnets Reference
 //
 // To list all subnets under a VPC, please refer to the getVpcSubnets data source.
@@ -77,7 +85,9 @@ type LookupVpcResult struct {
 	// The user-defined description of this VPC.
 	Description string `pulumi:"description"`
 	Id          string `pulumi:"id"`
-	// A list of IPv6 allocations under this VPC.
+	// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+	Ipv4s []GetVpcIpv4 `pulumi:"ipv4s"`
+	// (Nested Attribute List) A list of IPv6 allocations under this VPC.
 	Ipv6s []GetVpcIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC.
 	Label string `pulumi:"label"`
@@ -85,6 +95,8 @@ type LookupVpcResult struct {
 	Region string `pulumi:"region"`
 	// The date and time when the VPC was last updated.
 	Updated string `pulumi:"updated"`
+	// The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+	VpcType string `pulumi:"vpcType"`
 }
 
 func LookupVpcOutput(ctx *pulumi.Context, args LookupVpcOutputArgs, opts ...pulumi.InvokeOption) LookupVpcResultOutput {
@@ -131,7 +143,12 @@ func (o LookupVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of IPv6 allocations under this VPC.
+// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+func (o LookupVpcResultOutput) Ipv4s() GetVpcIpv4ArrayOutput {
+	return o.ApplyT(func(v LookupVpcResult) []GetVpcIpv4 { return v.Ipv4s }).(GetVpcIpv4ArrayOutput)
+}
+
+// (Nested Attribute List) A list of IPv6 allocations under this VPC.
 func (o LookupVpcResultOutput) Ipv6s() GetVpcIpv6ArrayOutput {
 	return o.ApplyT(func(v LookupVpcResult) []GetVpcIpv6 { return v.Ipv6s }).(GetVpcIpv6ArrayOutput)
 }
@@ -149,6 +166,11 @@ func (o LookupVpcResultOutput) Region() pulumi.StringOutput {
 // The date and time when the VPC was last updated.
 func (o LookupVpcResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+func (o LookupVpcResultOutput) VpcType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcResult) string { return v.VpcType }).(pulumi.StringOutput)
 }
 
 func init() {

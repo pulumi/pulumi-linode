@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.VolumeTimeoutsArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -46,6 +47,21 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> filesystemPath() {
         return Optional.ofNullable(this.filesystemPath);
+    }
+
+    /**
+     * Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     * 
+     */
+    @Import(name="ioReady")
+    private @Nullable Output<Boolean> ioReady;
+
+    /**
+     * @return Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     * 
+     */
+    public Optional<Output<Boolean>> ioReady() {
+        return Optional.ofNullable(this.ioReady);
     }
 
     /**
@@ -169,6 +185,7 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
     private VolumeState(VolumeState $) {
         this.encryption = $.encryption;
         this.filesystemPath = $.filesystemPath;
+        this.ioReady = $.ioReady;
         this.label = $.label;
         this.linodeId = $.linodeId;
         this.region = $.region;
@@ -237,6 +254,27 @@ public final class VolumeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder filesystemPath(String filesystemPath) {
             return filesystemPath(Output.of(filesystemPath));
+        }
+
+        /**
+         * @param ioReady Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioReady(@Nullable Output<Boolean> ioReady) {
+            $.ioReady = ioReady;
+            return this;
+        }
+
+        /**
+         * @param ioReady Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ioReady(Boolean ioReady) {
+            return ioReady(Output.of(ioReady));
         }
 
         /**

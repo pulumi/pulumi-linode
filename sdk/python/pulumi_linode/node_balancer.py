@@ -24,6 +24,7 @@ class NodeBalancerArgs:
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -36,6 +37,7 @@ class NodeBalancerArgs:
                
                * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[_builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
+        :param pulumi.Input[_builtins.str] ipv4: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[_builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
@@ -49,6 +51,8 @@ class NodeBalancerArgs:
             pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if region is not None:
@@ -95,6 +99,18 @@ class NodeBalancerArgs:
     @firewall_id.setter
     def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
@@ -159,6 +175,7 @@ class _NodeBalancerState:
                  ipv4: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 lke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerLkeClusterArgs']]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  transfers: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerTransferArgs']]]] = None,
@@ -175,9 +192,10 @@ class _NodeBalancerState:
         :param pulumi.Input[_builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerFirewallArgs']]] firewalls: A list of Firewalls assigned to this NodeBalancer.
         :param pulumi.Input[_builtins.str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-        :param pulumi.Input[_builtins.str] ipv4: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[_builtins.str] ipv4: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[_builtins.str] ipv6: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
+        :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerLkeClusterArgs']]] lke_clusters: The related LKE cluster for this NodeBalancer, if any.
         :param pulumi.Input[_builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
                ***
@@ -204,6 +222,8 @@ class _NodeBalancerState:
             pulumi.set(__self__, "ipv6", ipv6)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if lke_clusters is not None:
+            pulumi.set(__self__, "lke_clusters", lke_clusters)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if tags is not None:
@@ -293,7 +313,7 @@ class _NodeBalancerState:
     @pulumi.getter
     def ipv4(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         """
         return pulumi.get(self, "ipv4")
 
@@ -324,6 +344,18 @@ class _NodeBalancerState:
     @label.setter
     def label(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lkeClusters")
+    def lke_clusters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerLkeClusterArgs']]]]:
+        """
+        The related LKE cluster for this NodeBalancer, if any.
+        """
+        return pulumi.get(self, "lke_clusters")
+
+    @lke_clusters.setter
+    def lke_clusters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerLkeClusterArgs']]]]):
+        pulumi.set(self, "lke_clusters", value)
 
     @_builtins.property
     @pulumi.getter
@@ -397,6 +429,7 @@ class NodeBalancer(pulumi.CustomResource):
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -415,10 +448,10 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            label="mynodebalancer",
-            region="us-east",
             client_conn_throttle=20,
             client_udp_sess_throttle=10,
+            label="mynodebalancer",
+            region="us-east",
             tags=["foobar"])
         ```
 
@@ -433,8 +466,25 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-mia",
             vpcs=[{
-                "subnet_id": int(test["id"]),
+                "subnet_id": linode_vpc_subnet["test"]["id"],
             }])
+        ```
+
+        The following example shows how to create a NodeBalancer with a pre-reserved IPv4 address.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_reserved_ip = linode.NetworkingIp("myReservedIp",
+            region="us-east",
+            type="ipv4",
+            public=True,
+            reserved=True)
+        foobar = linode.NodeBalancer("foobar",
+            label="mynodebalancer",
+            region="us-east",
+            ipv4=my_reserved_ip.address)
         ```
 
         ## Import
@@ -453,6 +503,7 @@ class NodeBalancer(pulumi.CustomResource):
                
                * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[_builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
+        :param pulumi.Input[_builtins.str] ipv4: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[_builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
@@ -479,10 +530,10 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            label="mynodebalancer",
-            region="us-east",
             client_conn_throttle=20,
             client_udp_sess_throttle=10,
+            label="mynodebalancer",
+            region="us-east",
             tags=["foobar"])
         ```
 
@@ -497,8 +548,25 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-mia",
             vpcs=[{
-                "subnet_id": int(test["id"]),
+                "subnet_id": linode_vpc_subnet["test"]["id"],
             }])
+        ```
+
+        The following example shows how to create a NodeBalancer with a pre-reserved IPv4 address.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_reserved_ip = linode.NetworkingIp("myReservedIp",
+            region="us-east",
+            type="ipv4",
+            public=True,
+            reserved=True)
+        foobar = linode.NodeBalancer("foobar",
+            label="mynodebalancer",
+            region="us-east",
+            ipv4=my_reserved_ip.address)
         ```
 
         ## Import
@@ -528,6 +596,7 @@ class NodeBalancer(pulumi.CustomResource):
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -544,6 +613,7 @@ class NodeBalancer(pulumi.CustomResource):
             __props__.__dict__["client_conn_throttle"] = client_conn_throttle
             __props__.__dict__["client_udp_sess_throttle"] = client_udp_sess_throttle
             __props__.__dict__["firewall_id"] = firewall_id
+            __props__.__dict__["ipv4"] = ipv4
             __props__.__dict__["label"] = label
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
@@ -551,8 +621,8 @@ class NodeBalancer(pulumi.CustomResource):
             __props__.__dict__["created"] = None
             __props__.__dict__["firewalls"] = None
             __props__.__dict__["hostname"] = None
-            __props__.__dict__["ipv4"] = None
             __props__.__dict__["ipv6"] = None
+            __props__.__dict__["lke_clusters"] = None
             __props__.__dict__["transfers"] = None
             __props__.__dict__["updated"] = None
         super(NodeBalancer, __self__).__init__(
@@ -574,6 +644,7 @@ class NodeBalancer(pulumi.CustomResource):
             ipv4: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
+            lke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             transfers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]]] = None,
@@ -594,9 +665,10 @@ class NodeBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
         :param pulumi.Input[_builtins.str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
-        :param pulumi.Input[_builtins.str] ipv4: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[_builtins.str] ipv4: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[_builtins.str] ipv6: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict']]]] lke_clusters: The related LKE cluster for this NodeBalancer, if any.
         :param pulumi.Input[_builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
                ***
@@ -618,6 +690,7 @@ class NodeBalancer(pulumi.CustomResource):
         __props__.__dict__["ipv4"] = ipv4
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["label"] = label
+        __props__.__dict__["lke_clusters"] = lke_clusters
         __props__.__dict__["region"] = region
         __props__.__dict__["tags"] = tags
         __props__.__dict__["transfers"] = transfers
@@ -679,7 +752,7 @@ class NodeBalancer(pulumi.CustomResource):
     @pulumi.getter
     def ipv4(self) -> pulumi.Output[_builtins.str]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         """
         return pulumi.get(self, "ipv4")
 
@@ -698,6 +771,14 @@ class NodeBalancer(pulumi.CustomResource):
         The label of the Linode NodeBalancer
         """
         return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="lkeClusters")
+    def lke_clusters(self) -> pulumi.Output[Sequence['outputs.NodeBalancerLkeCluster']]:
+        """
+        The related LKE cluster for this NodeBalancer, if any.
+        """
+        return pulumi.get(self, "lke_clusters")
 
     @_builtins.property
     @pulumi.getter

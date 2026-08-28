@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewUser(ctx, "john", &linode.UserArgs{
-//				Username: pulumi.String("john123"),
 //				Email:    pulumi.String("john@acme.io"),
+//				Username: pulumi.String("john123"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,12 +54,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewUser(ctx, "fooser", &linode.UserArgs{
-//				Username:   pulumi.String("cooluser123"),
-//				Email:      pulumi.String("cool@acme.io"),
-//				Restricted: pulumi.Bool(true),
+//				Email: pulumi.String("cool@acme.io"),
 //				GlobalGrants: &linode.UserGlobalGrantsArgs{
-//					AddLinodes: pulumi.Bool(true),
 //					AddImages:  pulumi.Bool(true),
+//					AddLinodes: pulumi.Bool(true),
 //				},
 //				LinodeGrants: linode.UserLinodeGrantArray{
 //					&linode.UserLinodeGrantArgs{
@@ -67,6 +65,8 @@ import (
 //						Permissions: pulumi.String("read_write"),
 //					},
 //				},
+//				Restricted: pulumi.Bool(true),
+//				Username:   pulumi.String("cooluser123"),
 //			})
 //			if err != nil {
 //				return err
@@ -111,31 +111,31 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
-	// The domains the user has permissions access to.
+	// The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	DomainGrants UserDomainGrantArrayOutput `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// The firewalls the user has permissions access to.
+	// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	FirewallGrants UserFirewallGrantArrayOutput `pulumi:"firewallGrants"`
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants UserGlobalGrantsOutput `pulumi:"globalGrants"`
-	// The images the user has permissions access to.
+	// The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	ImageGrants UserImageGrantArrayOutput `pulumi:"imageGrants"`
-	// The Linodes the user has permissions access to.
+	// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LinodeGrants UserLinodeGrantArrayOutput `pulumi:"linodeGrants"`
-	// The longview the user has permissions access to.
+	// The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LongviewGrants UserLongviewGrantArrayOutput `pulumi:"longviewGrants"`
-	// The NodeBalancers the user has permissions access to.
+	// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	NodebalancerGrants UserNodebalancerGrantArrayOutput `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	// * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 	//
 	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrOutput `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayOutput `pulumi:"sshKeys"`
-	// The StackScripts the user has permissions access to.
+	// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	StackscriptGrants UserStackscriptGrantArrayOutput `pulumi:"stackscriptGrants"`
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled pulumi.BoolOutput `pulumi:"tfaEnabled"`
@@ -143,9 +143,9 @@ type User struct {
 	UserType pulumi.StringOutput `pulumi:"userType"`
 	// The username of the user.
 	Username pulumi.StringOutput `pulumi:"username"`
-	// The volumes the user has permissions access to.
+	// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VolumeGrants UserVolumeGrantArrayOutput `pulumi:"volumeGrants"`
-	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VpcGrants UserVpcGrantArrayOutput `pulumi:"vpcGrants"`
 }
 
@@ -185,31 +185,31 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
-	// The domains the user has permissions access to.
+	// The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	DomainGrants []UserDomainGrant `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email *string `pulumi:"email"`
-	// The firewalls the user has permissions access to.
+	// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	FirewallGrants []UserFirewallGrant `pulumi:"firewallGrants"`
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
-	// The images the user has permissions access to.
+	// The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	ImageGrants []UserImageGrant `pulumi:"imageGrants"`
-	// The Linodes the user has permissions access to.
+	// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LinodeGrants []UserLinodeGrant `pulumi:"linodeGrants"`
-	// The longview the user has permissions access to.
+	// The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
-	// The NodeBalancers the user has permissions access to.
+	// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	// * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 	//
 	// The following arguments are sets of entity grants:
 	Restricted *bool `pulumi:"restricted"`
 	// A list of the User's SSH keys.
 	SshKeys []string `pulumi:"sshKeys"`
-	// The StackScripts the user has permissions access to.
+	// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled *bool `pulumi:"tfaEnabled"`
@@ -217,38 +217,38 @@ type userState struct {
 	UserType *string `pulumi:"userType"`
 	// The username of the user.
 	Username *string `pulumi:"username"`
-	// The volumes the user has permissions access to.
+	// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VolumeGrants []UserVolumeGrant `pulumi:"volumeGrants"`
-	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VpcGrants []UserVpcGrant `pulumi:"vpcGrants"`
 }
 
 type UserState struct {
-	// The domains the user has permissions access to.
+	// The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	DomainGrants UserDomainGrantArrayInput
 	// The email address of the user.
 	Email pulumi.StringPtrInput
-	// The firewalls the user has permissions access to.
+	// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	FirewallGrants UserFirewallGrantArrayInput
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants UserGlobalGrantsPtrInput
-	// The images the user has permissions access to.
+	// The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	ImageGrants UserImageGrantArrayInput
-	// The Linodes the user has permissions access to.
+	// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LinodeGrants UserLinodeGrantArrayInput
-	// The longview the user has permissions access to.
+	// The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LongviewGrants UserLongviewGrantArrayInput
-	// The NodeBalancers the user has permissions access to.
+	// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	// * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 	//
 	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrInput
 	// A list of the User's SSH keys.
 	SshKeys pulumi.StringArrayInput
-	// The StackScripts the user has permissions access to.
+	// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	StackscriptGrants UserStackscriptGrantArrayInput
 	// Whether the user has two-factor-authentication enabled.
 	TfaEnabled pulumi.BoolPtrInput
@@ -256,9 +256,9 @@ type UserState struct {
 	UserType pulumi.StringPtrInput
 	// The username of the user.
 	Username pulumi.StringPtrInput
-	// The volumes the user has permissions access to.
+	// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VolumeGrants UserVolumeGrantArrayInput
-	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VpcGrants UserVpcGrantArrayInput
 }
 
@@ -267,69 +267,69 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// The domains the user has permissions access to.
+	// The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	DomainGrants []UserDomainGrant `pulumi:"domainGrants"`
 	// The email address of the user.
 	Email string `pulumi:"email"`
-	// The firewalls the user has permissions access to.
+	// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	FirewallGrants []UserFirewallGrant `pulumi:"firewallGrants"`
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants *UserGlobalGrants `pulumi:"globalGrants"`
-	// The images the user has permissions access to.
+	// The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	ImageGrants []UserImageGrant `pulumi:"imageGrants"`
-	// The Linodes the user has permissions access to.
+	// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LinodeGrants []UserLinodeGrant `pulumi:"linodeGrants"`
-	// The longview the user has permissions access to.
+	// The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LongviewGrants []UserLongviewGrant `pulumi:"longviewGrants"`
-	// The NodeBalancers the user has permissions access to.
+	// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	NodebalancerGrants []UserNodebalancerGrant `pulumi:"nodebalancerGrants"`
 	// If true, this user will only have explicit permissions granted.
 	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	// * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 	//
 	// The following arguments are sets of entity grants:
 	Restricted *bool `pulumi:"restricted"`
-	// The StackScripts the user has permissions access to.
+	// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	StackscriptGrants []UserStackscriptGrant `pulumi:"stackscriptGrants"`
 	// The username of the user.
 	Username string `pulumi:"username"`
-	// The volumes the user has permissions access to.
+	// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VolumeGrants []UserVolumeGrant `pulumi:"volumeGrants"`
-	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VpcGrants []UserVpcGrant `pulumi:"vpcGrants"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// The domains the user has permissions access to.
+	// The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	DomainGrants UserDomainGrantArrayInput
 	// The email address of the user.
 	Email pulumi.StringInput
-	// The firewalls the user has permissions access to.
+	// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	FirewallGrants UserFirewallGrantArrayInput
 	// A structure containing the Account-level grants a User has.
 	GlobalGrants UserGlobalGrantsPtrInput
-	// The images the user has permissions access to.
+	// The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	ImageGrants UserImageGrantArrayInput
-	// The Linodes the user has permissions access to.
+	// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LinodeGrants UserLinodeGrantArrayInput
-	// The longview the user has permissions access to.
+	// The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	LongviewGrants UserLongviewGrantArrayInput
-	// The NodeBalancers the user has permissions access to.
+	// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	NodebalancerGrants UserNodebalancerGrantArrayInput
 	// If true, this user will only have explicit permissions granted.
 	//
-	// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+	// * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 	//
 	// The following arguments are sets of entity grants:
 	Restricted pulumi.BoolPtrInput
-	// The StackScripts the user has permissions access to.
+	// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	StackscriptGrants UserStackscriptGrantArrayInput
 	// The username of the user.
 	Username pulumi.StringInput
-	// The volumes the user has permissions access to.
+	// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VolumeGrants UserVolumeGrantArrayInput
-	// The Virtual Private Clouds (VPCs) the user has permissions access to.
+	// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	VpcGrants UserVpcGrantArrayInput
 }
 
@@ -420,7 +420,7 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
-// The domains the user has permissions access to.
+// The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) DomainGrants() UserDomainGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserDomainGrantArrayOutput { return v.DomainGrants }).(UserDomainGrantArrayOutput)
 }
@@ -430,7 +430,7 @@ func (o UserOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// The firewalls the user has permissions access to.
+// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) FirewallGrants() UserFirewallGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserFirewallGrantArrayOutput { return v.FirewallGrants }).(UserFirewallGrantArrayOutput)
 }
@@ -440,29 +440,29 @@ func (o UserOutput) GlobalGrants() UserGlobalGrantsOutput {
 	return o.ApplyT(func(v *User) UserGlobalGrantsOutput { return v.GlobalGrants }).(UserGlobalGrantsOutput)
 }
 
-// The images the user has permissions access to.
+// The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) ImageGrants() UserImageGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserImageGrantArrayOutput { return v.ImageGrants }).(UserImageGrantArrayOutput)
 }
 
-// The Linodes the user has permissions access to.
+// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) LinodeGrants() UserLinodeGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserLinodeGrantArrayOutput { return v.LinodeGrants }).(UserLinodeGrantArrayOutput)
 }
 
-// The longview the user has permissions access to.
+// The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) LongviewGrants() UserLongviewGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserLongviewGrantArrayOutput { return v.LongviewGrants }).(UserLongviewGrantArrayOutput)
 }
 
-// The NodeBalancers the user has permissions access to.
+// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) NodebalancerGrants() UserNodebalancerGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserNodebalancerGrantArrayOutput { return v.NodebalancerGrants }).(UserNodebalancerGrantArrayOutput)
 }
 
 // If true, this user will only have explicit permissions granted.
 //
-// * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+// * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 //
 // The following arguments are sets of entity grants:
 func (o UserOutput) Restricted() pulumi.BoolPtrOutput {
@@ -474,7 +474,7 @@ func (o UserOutput) SshKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.SshKeys }).(pulumi.StringArrayOutput)
 }
 
-// The StackScripts the user has permissions access to.
+// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) StackscriptGrants() UserStackscriptGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserStackscriptGrantArrayOutput { return v.StackscriptGrants }).(UserStackscriptGrantArrayOutput)
 }
@@ -494,12 +494,12 @@ func (o UserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-// The volumes the user has permissions access to.
+// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) VolumeGrants() UserVolumeGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserVolumeGrantArrayOutput { return v.VolumeGrants }).(UserVolumeGrantArrayOutput)
 }
 
-// The Virtual Private Clouds (VPCs) the user has permissions access to.
+// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o UserOutput) VpcGrants() UserVpcGrantArrayOutput {
 	return o.ApplyT(func(v *User) UserVpcGrantArrayOutput { return v.VpcGrants }).(UserVpcGrantArrayOutput)
 }

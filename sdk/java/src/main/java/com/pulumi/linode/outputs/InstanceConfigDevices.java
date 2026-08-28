@@ -5,13 +5,69 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSda;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdaa;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdab;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdac;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdad;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdae;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdaf;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdag;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdah;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdai;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdaj;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdak;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdal;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdam;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdan;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdao;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdap;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdaq;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdar;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdas;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdat;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdau;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdav;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdaw;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdax;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSday;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdaz;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSdb;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdba;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbb;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbc;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbd;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbe;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbf;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbg;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbh;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbi;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbj;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbk;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdbl;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSdc;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSdd;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSde;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSdf;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSdg;
 import com.pulumi.linode.outputs.InstanceConfigDevicesSdh;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdi;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdj;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdk;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdl;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdm;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdn;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdo;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdp;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdq;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdr;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSds;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdt;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdu;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdv;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdw;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdx;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdy;
+import com.pulumi.linode.outputs.InstanceConfigDevicesSdz;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,7 +75,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfigDevices {
     /**
-     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+     * @return ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
      * 
      */
     private @Nullable InstanceConfigDevicesSda sda;
@@ -27,7 +83,197 @@ public final class InstanceConfigDevices {
      * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
+    private @Nullable InstanceConfigDevicesSdaa sdaa;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdab sdab;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdac sdac;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdad sdad;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdae sdae;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdaf sdaf;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdag sdag;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdah sdah;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdai sdai;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdaj sdaj;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdak sdak;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdal sdal;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdam sdam;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdan sdan;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdao sdao;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdap sdap;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdaq sdaq;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdar sdar;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdas sdas;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdat sdat;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdau sdau;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdav sdav;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdaw sdaw;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdax sdax;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSday sday;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdaz sdaz;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
     private @Nullable InstanceConfigDevicesSdb sdb;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdba sdba;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbb sdbb;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbc sdbc;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbd sdbd;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbe sdbe;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbf sdbf;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbg sdbg;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbh sdbh;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbi sdbi;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbj sdbj;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbk sdbk;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdbl sdbl;
     /**
      * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
@@ -58,10 +304,100 @@ public final class InstanceConfigDevices {
      * 
      */
     private @Nullable InstanceConfigDevicesSdh sdh;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdi sdi;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdj sdj;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdk sdk;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdl sdl;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdm sdm;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdn sdn;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdo sdo;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdp sdp;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdq sdq;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdr sdr;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSds sds;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdt sdt;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdu sdu;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdv sdv;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdw sdw;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdx sdx;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdy sdy;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private @Nullable InstanceConfigDevicesSdz sdz;
 
     private InstanceConfigDevices() {}
     /**
-     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+     * @return ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
      * 
      */
     public Optional<InstanceConfigDevicesSda> sda() {
@@ -71,8 +407,274 @@ public final class InstanceConfigDevices {
      * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
+    public Optional<InstanceConfigDevicesSdaa> sdaa() {
+        return Optional.ofNullable(this.sdaa);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdab> sdab() {
+        return Optional.ofNullable(this.sdab);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdac> sdac() {
+        return Optional.ofNullable(this.sdac);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdad> sdad() {
+        return Optional.ofNullable(this.sdad);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdae> sdae() {
+        return Optional.ofNullable(this.sdae);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdaf> sdaf() {
+        return Optional.ofNullable(this.sdaf);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdag> sdag() {
+        return Optional.ofNullable(this.sdag);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdah> sdah() {
+        return Optional.ofNullable(this.sdah);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdai> sdai() {
+        return Optional.ofNullable(this.sdai);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdaj> sdaj() {
+        return Optional.ofNullable(this.sdaj);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdak> sdak() {
+        return Optional.ofNullable(this.sdak);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdal> sdal() {
+        return Optional.ofNullable(this.sdal);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdam> sdam() {
+        return Optional.ofNullable(this.sdam);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdan> sdan() {
+        return Optional.ofNullable(this.sdan);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdao> sdao() {
+        return Optional.ofNullable(this.sdao);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdap> sdap() {
+        return Optional.ofNullable(this.sdap);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdaq> sdaq() {
+        return Optional.ofNullable(this.sdaq);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdar> sdar() {
+        return Optional.ofNullable(this.sdar);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdas> sdas() {
+        return Optional.ofNullable(this.sdas);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdat> sdat() {
+        return Optional.ofNullable(this.sdat);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdau> sdau() {
+        return Optional.ofNullable(this.sdau);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdav> sdav() {
+        return Optional.ofNullable(this.sdav);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdaw> sdaw() {
+        return Optional.ofNullable(this.sdaw);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdax> sdax() {
+        return Optional.ofNullable(this.sdax);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSday> sday() {
+        return Optional.ofNullable(this.sday);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdaz> sdaz() {
+        return Optional.ofNullable(this.sdaz);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
     public Optional<InstanceConfigDevicesSdb> sdb() {
         return Optional.ofNullable(this.sdb);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdba> sdba() {
+        return Optional.ofNullable(this.sdba);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbb> sdbb() {
+        return Optional.ofNullable(this.sdbb);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbc> sdbc() {
+        return Optional.ofNullable(this.sdbc);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbd> sdbd() {
+        return Optional.ofNullable(this.sdbd);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbe> sdbe() {
+        return Optional.ofNullable(this.sdbe);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbf> sdbf() {
+        return Optional.ofNullable(this.sdbf);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbg> sdbg() {
+        return Optional.ofNullable(this.sdbg);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbh> sdbh() {
+        return Optional.ofNullable(this.sdbh);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbi> sdbi() {
+        return Optional.ofNullable(this.sdbi);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbj> sdbj() {
+        return Optional.ofNullable(this.sdbj);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbk> sdbk() {
+        return Optional.ofNullable(this.sdbk);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdbl> sdbl() {
+        return Optional.ofNullable(this.sdbl);
     }
     /**
      * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
@@ -116,6 +718,132 @@ public final class InstanceConfigDevices {
     public Optional<InstanceConfigDevicesSdh> sdh() {
         return Optional.ofNullable(this.sdh);
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdi> sdi() {
+        return Optional.ofNullable(this.sdi);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdj> sdj() {
+        return Optional.ofNullable(this.sdj);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdk> sdk() {
+        return Optional.ofNullable(this.sdk);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdl> sdl() {
+        return Optional.ofNullable(this.sdl);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdm> sdm() {
+        return Optional.ofNullable(this.sdm);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdn> sdn() {
+        return Optional.ofNullable(this.sdn);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdo> sdo() {
+        return Optional.ofNullable(this.sdo);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdp> sdp() {
+        return Optional.ofNullable(this.sdp);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdq> sdq() {
+        return Optional.ofNullable(this.sdq);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdr> sdr() {
+        return Optional.ofNullable(this.sdr);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSds> sds() {
+        return Optional.ofNullable(this.sds);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdt> sdt() {
+        return Optional.ofNullable(this.sdt);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdu> sdu() {
+        return Optional.ofNullable(this.sdu);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdv> sdv() {
+        return Optional.ofNullable(this.sdv);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdw> sdw() {
+        return Optional.ofNullable(this.sdw);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdx> sdx() {
+        return Optional.ofNullable(this.sdx);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdy> sdy() {
+        return Optional.ofNullable(this.sdy);
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<InstanceConfigDevicesSdz> sdz() {
+        return Optional.ofNullable(this.sdz);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -127,24 +855,136 @@ public final class InstanceConfigDevices {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable InstanceConfigDevicesSda sda;
+        private @Nullable InstanceConfigDevicesSdaa sdaa;
+        private @Nullable InstanceConfigDevicesSdab sdab;
+        private @Nullable InstanceConfigDevicesSdac sdac;
+        private @Nullable InstanceConfigDevicesSdad sdad;
+        private @Nullable InstanceConfigDevicesSdae sdae;
+        private @Nullable InstanceConfigDevicesSdaf sdaf;
+        private @Nullable InstanceConfigDevicesSdag sdag;
+        private @Nullable InstanceConfigDevicesSdah sdah;
+        private @Nullable InstanceConfigDevicesSdai sdai;
+        private @Nullable InstanceConfigDevicesSdaj sdaj;
+        private @Nullable InstanceConfigDevicesSdak sdak;
+        private @Nullable InstanceConfigDevicesSdal sdal;
+        private @Nullable InstanceConfigDevicesSdam sdam;
+        private @Nullable InstanceConfigDevicesSdan sdan;
+        private @Nullable InstanceConfigDevicesSdao sdao;
+        private @Nullable InstanceConfigDevicesSdap sdap;
+        private @Nullable InstanceConfigDevicesSdaq sdaq;
+        private @Nullable InstanceConfigDevicesSdar sdar;
+        private @Nullable InstanceConfigDevicesSdas sdas;
+        private @Nullable InstanceConfigDevicesSdat sdat;
+        private @Nullable InstanceConfigDevicesSdau sdau;
+        private @Nullable InstanceConfigDevicesSdav sdav;
+        private @Nullable InstanceConfigDevicesSdaw sdaw;
+        private @Nullable InstanceConfigDevicesSdax sdax;
+        private @Nullable InstanceConfigDevicesSday sday;
+        private @Nullable InstanceConfigDevicesSdaz sdaz;
         private @Nullable InstanceConfigDevicesSdb sdb;
+        private @Nullable InstanceConfigDevicesSdba sdba;
+        private @Nullable InstanceConfigDevicesSdbb sdbb;
+        private @Nullable InstanceConfigDevicesSdbc sdbc;
+        private @Nullable InstanceConfigDevicesSdbd sdbd;
+        private @Nullable InstanceConfigDevicesSdbe sdbe;
+        private @Nullable InstanceConfigDevicesSdbf sdbf;
+        private @Nullable InstanceConfigDevicesSdbg sdbg;
+        private @Nullable InstanceConfigDevicesSdbh sdbh;
+        private @Nullable InstanceConfigDevicesSdbi sdbi;
+        private @Nullable InstanceConfigDevicesSdbj sdbj;
+        private @Nullable InstanceConfigDevicesSdbk sdbk;
+        private @Nullable InstanceConfigDevicesSdbl sdbl;
         private @Nullable InstanceConfigDevicesSdc sdc;
         private @Nullable InstanceConfigDevicesSdd sdd;
         private @Nullable InstanceConfigDevicesSde sde;
         private @Nullable InstanceConfigDevicesSdf sdf;
         private @Nullable InstanceConfigDevicesSdg sdg;
         private @Nullable InstanceConfigDevicesSdh sdh;
+        private @Nullable InstanceConfigDevicesSdi sdi;
+        private @Nullable InstanceConfigDevicesSdj sdj;
+        private @Nullable InstanceConfigDevicesSdk sdk;
+        private @Nullable InstanceConfigDevicesSdl sdl;
+        private @Nullable InstanceConfigDevicesSdm sdm;
+        private @Nullable InstanceConfigDevicesSdn sdn;
+        private @Nullable InstanceConfigDevicesSdo sdo;
+        private @Nullable InstanceConfigDevicesSdp sdp;
+        private @Nullable InstanceConfigDevicesSdq sdq;
+        private @Nullable InstanceConfigDevicesSdr sdr;
+        private @Nullable InstanceConfigDevicesSds sds;
+        private @Nullable InstanceConfigDevicesSdt sdt;
+        private @Nullable InstanceConfigDevicesSdu sdu;
+        private @Nullable InstanceConfigDevicesSdv sdv;
+        private @Nullable InstanceConfigDevicesSdw sdw;
+        private @Nullable InstanceConfigDevicesSdx sdx;
+        private @Nullable InstanceConfigDevicesSdy sdy;
+        private @Nullable InstanceConfigDevicesSdz sdz;
         public Builder() {}
         public Builder(InstanceConfigDevices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.sda = defaults.sda;
+    	      this.sdaa = defaults.sdaa;
+    	      this.sdab = defaults.sdab;
+    	      this.sdac = defaults.sdac;
+    	      this.sdad = defaults.sdad;
+    	      this.sdae = defaults.sdae;
+    	      this.sdaf = defaults.sdaf;
+    	      this.sdag = defaults.sdag;
+    	      this.sdah = defaults.sdah;
+    	      this.sdai = defaults.sdai;
+    	      this.sdaj = defaults.sdaj;
+    	      this.sdak = defaults.sdak;
+    	      this.sdal = defaults.sdal;
+    	      this.sdam = defaults.sdam;
+    	      this.sdan = defaults.sdan;
+    	      this.sdao = defaults.sdao;
+    	      this.sdap = defaults.sdap;
+    	      this.sdaq = defaults.sdaq;
+    	      this.sdar = defaults.sdar;
+    	      this.sdas = defaults.sdas;
+    	      this.sdat = defaults.sdat;
+    	      this.sdau = defaults.sdau;
+    	      this.sdav = defaults.sdav;
+    	      this.sdaw = defaults.sdaw;
+    	      this.sdax = defaults.sdax;
+    	      this.sday = defaults.sday;
+    	      this.sdaz = defaults.sdaz;
     	      this.sdb = defaults.sdb;
+    	      this.sdba = defaults.sdba;
+    	      this.sdbb = defaults.sdbb;
+    	      this.sdbc = defaults.sdbc;
+    	      this.sdbd = defaults.sdbd;
+    	      this.sdbe = defaults.sdbe;
+    	      this.sdbf = defaults.sdbf;
+    	      this.sdbg = defaults.sdbg;
+    	      this.sdbh = defaults.sdbh;
+    	      this.sdbi = defaults.sdbi;
+    	      this.sdbj = defaults.sdbj;
+    	      this.sdbk = defaults.sdbk;
+    	      this.sdbl = defaults.sdbl;
     	      this.sdc = defaults.sdc;
     	      this.sdd = defaults.sdd;
     	      this.sde = defaults.sde;
     	      this.sdf = defaults.sdf;
     	      this.sdg = defaults.sdg;
     	      this.sdh = defaults.sdh;
+    	      this.sdi = defaults.sdi;
+    	      this.sdj = defaults.sdj;
+    	      this.sdk = defaults.sdk;
+    	      this.sdl = defaults.sdl;
+    	      this.sdm = defaults.sdm;
+    	      this.sdn = defaults.sdn;
+    	      this.sdo = defaults.sdo;
+    	      this.sdp = defaults.sdp;
+    	      this.sdq = defaults.sdq;
+    	      this.sdr = defaults.sdr;
+    	      this.sds = defaults.sds;
+    	      this.sdt = defaults.sdt;
+    	      this.sdu = defaults.sdu;
+    	      this.sdv = defaults.sdv;
+    	      this.sdw = defaults.sdw;
+    	      this.sdx = defaults.sdx;
+    	      this.sdy = defaults.sdy;
+    	      this.sdz = defaults.sdz;
         }
 
         @CustomType.Setter
@@ -154,9 +994,237 @@ public final class InstanceConfigDevices {
             return this;
         }
         @CustomType.Setter
+        public Builder sdaa(@Nullable InstanceConfigDevicesSdaa sdaa) {
+
+            this.sdaa = sdaa;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdab(@Nullable InstanceConfigDevicesSdab sdab) {
+
+            this.sdab = sdab;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdac(@Nullable InstanceConfigDevicesSdac sdac) {
+
+            this.sdac = sdac;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdad(@Nullable InstanceConfigDevicesSdad sdad) {
+
+            this.sdad = sdad;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdae(@Nullable InstanceConfigDevicesSdae sdae) {
+
+            this.sdae = sdae;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdaf(@Nullable InstanceConfigDevicesSdaf sdaf) {
+
+            this.sdaf = sdaf;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdag(@Nullable InstanceConfigDevicesSdag sdag) {
+
+            this.sdag = sdag;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdah(@Nullable InstanceConfigDevicesSdah sdah) {
+
+            this.sdah = sdah;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdai(@Nullable InstanceConfigDevicesSdai sdai) {
+
+            this.sdai = sdai;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdaj(@Nullable InstanceConfigDevicesSdaj sdaj) {
+
+            this.sdaj = sdaj;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdak(@Nullable InstanceConfigDevicesSdak sdak) {
+
+            this.sdak = sdak;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdal(@Nullable InstanceConfigDevicesSdal sdal) {
+
+            this.sdal = sdal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdam(@Nullable InstanceConfigDevicesSdam sdam) {
+
+            this.sdam = sdam;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdan(@Nullable InstanceConfigDevicesSdan sdan) {
+
+            this.sdan = sdan;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdao(@Nullable InstanceConfigDevicesSdao sdao) {
+
+            this.sdao = sdao;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdap(@Nullable InstanceConfigDevicesSdap sdap) {
+
+            this.sdap = sdap;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdaq(@Nullable InstanceConfigDevicesSdaq sdaq) {
+
+            this.sdaq = sdaq;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdar(@Nullable InstanceConfigDevicesSdar sdar) {
+
+            this.sdar = sdar;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdas(@Nullable InstanceConfigDevicesSdas sdas) {
+
+            this.sdas = sdas;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdat(@Nullable InstanceConfigDevicesSdat sdat) {
+
+            this.sdat = sdat;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdau(@Nullable InstanceConfigDevicesSdau sdau) {
+
+            this.sdau = sdau;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdav(@Nullable InstanceConfigDevicesSdav sdav) {
+
+            this.sdav = sdav;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdaw(@Nullable InstanceConfigDevicesSdaw sdaw) {
+
+            this.sdaw = sdaw;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdax(@Nullable InstanceConfigDevicesSdax sdax) {
+
+            this.sdax = sdax;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sday(@Nullable InstanceConfigDevicesSday sday) {
+
+            this.sday = sday;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdaz(@Nullable InstanceConfigDevicesSdaz sdaz) {
+
+            this.sdaz = sdaz;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sdb(@Nullable InstanceConfigDevicesSdb sdb) {
 
             this.sdb = sdb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdba(@Nullable InstanceConfigDevicesSdba sdba) {
+
+            this.sdba = sdba;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbb(@Nullable InstanceConfigDevicesSdbb sdbb) {
+
+            this.sdbb = sdbb;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbc(@Nullable InstanceConfigDevicesSdbc sdbc) {
+
+            this.sdbc = sdbc;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbd(@Nullable InstanceConfigDevicesSdbd sdbd) {
+
+            this.sdbd = sdbd;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbe(@Nullable InstanceConfigDevicesSdbe sdbe) {
+
+            this.sdbe = sdbe;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbf(@Nullable InstanceConfigDevicesSdbf sdbf) {
+
+            this.sdbf = sdbf;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbg(@Nullable InstanceConfigDevicesSdbg sdbg) {
+
+            this.sdbg = sdbg;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbh(@Nullable InstanceConfigDevicesSdbh sdbh) {
+
+            this.sdbh = sdbh;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbi(@Nullable InstanceConfigDevicesSdbi sdbi) {
+
+            this.sdbi = sdbi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbj(@Nullable InstanceConfigDevicesSdbj sdbj) {
+
+            this.sdbj = sdbj;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbk(@Nullable InstanceConfigDevicesSdbk sdbk) {
+
+            this.sdbk = sdbk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdbl(@Nullable InstanceConfigDevicesSdbl sdbl) {
+
+            this.sdbl = sdbl;
             return this;
         }
         @CustomType.Setter
@@ -195,16 +1263,180 @@ public final class InstanceConfigDevices {
             this.sdh = sdh;
             return this;
         }
+        @CustomType.Setter
+        public Builder sdi(@Nullable InstanceConfigDevicesSdi sdi) {
+
+            this.sdi = sdi;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdj(@Nullable InstanceConfigDevicesSdj sdj) {
+
+            this.sdj = sdj;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdk(@Nullable InstanceConfigDevicesSdk sdk) {
+
+            this.sdk = sdk;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdl(@Nullable InstanceConfigDevicesSdl sdl) {
+
+            this.sdl = sdl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdm(@Nullable InstanceConfigDevicesSdm sdm) {
+
+            this.sdm = sdm;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdn(@Nullable InstanceConfigDevicesSdn sdn) {
+
+            this.sdn = sdn;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdo(@Nullable InstanceConfigDevicesSdo sdo) {
+
+            this.sdo = sdo;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdp(@Nullable InstanceConfigDevicesSdp sdp) {
+
+            this.sdp = sdp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdq(@Nullable InstanceConfigDevicesSdq sdq) {
+
+            this.sdq = sdq;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdr(@Nullable InstanceConfigDevicesSdr sdr) {
+
+            this.sdr = sdr;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sds(@Nullable InstanceConfigDevicesSds sds) {
+
+            this.sds = sds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdt(@Nullable InstanceConfigDevicesSdt sdt) {
+
+            this.sdt = sdt;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdu(@Nullable InstanceConfigDevicesSdu sdu) {
+
+            this.sdu = sdu;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdv(@Nullable InstanceConfigDevicesSdv sdv) {
+
+            this.sdv = sdv;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdw(@Nullable InstanceConfigDevicesSdw sdw) {
+
+            this.sdw = sdw;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdx(@Nullable InstanceConfigDevicesSdx sdx) {
+
+            this.sdx = sdx;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdy(@Nullable InstanceConfigDevicesSdy sdy) {
+
+            this.sdy = sdy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sdz(@Nullable InstanceConfigDevicesSdz sdz) {
+
+            this.sdz = sdz;
+            return this;
+        }
         public InstanceConfigDevices build() {
             final var _resultValue = new InstanceConfigDevices();
             _resultValue.sda = sda;
+            _resultValue.sdaa = sdaa;
+            _resultValue.sdab = sdab;
+            _resultValue.sdac = sdac;
+            _resultValue.sdad = sdad;
+            _resultValue.sdae = sdae;
+            _resultValue.sdaf = sdaf;
+            _resultValue.sdag = sdag;
+            _resultValue.sdah = sdah;
+            _resultValue.sdai = sdai;
+            _resultValue.sdaj = sdaj;
+            _resultValue.sdak = sdak;
+            _resultValue.sdal = sdal;
+            _resultValue.sdam = sdam;
+            _resultValue.sdan = sdan;
+            _resultValue.sdao = sdao;
+            _resultValue.sdap = sdap;
+            _resultValue.sdaq = sdaq;
+            _resultValue.sdar = sdar;
+            _resultValue.sdas = sdas;
+            _resultValue.sdat = sdat;
+            _resultValue.sdau = sdau;
+            _resultValue.sdav = sdav;
+            _resultValue.sdaw = sdaw;
+            _resultValue.sdax = sdax;
+            _resultValue.sday = sday;
+            _resultValue.sdaz = sdaz;
             _resultValue.sdb = sdb;
+            _resultValue.sdba = sdba;
+            _resultValue.sdbb = sdbb;
+            _resultValue.sdbc = sdbc;
+            _resultValue.sdbd = sdbd;
+            _resultValue.sdbe = sdbe;
+            _resultValue.sdbf = sdbf;
+            _resultValue.sdbg = sdbg;
+            _resultValue.sdbh = sdbh;
+            _resultValue.sdbi = sdbi;
+            _resultValue.sdbj = sdbj;
+            _resultValue.sdbk = sdbk;
+            _resultValue.sdbl = sdbl;
             _resultValue.sdc = sdc;
             _resultValue.sdd = sdd;
             _resultValue.sde = sde;
             _resultValue.sdf = sdf;
             _resultValue.sdg = sdg;
             _resultValue.sdh = sdh;
+            _resultValue.sdi = sdi;
+            _resultValue.sdj = sdj;
+            _resultValue.sdk = sdk;
+            _resultValue.sdl = sdl;
+            _resultValue.sdm = sdm;
+            _resultValue.sdn = sdn;
+            _resultValue.sdo = sdo;
+            _resultValue.sdp = sdp;
+            _resultValue.sdq = sdq;
+            _resultValue.sdr = sdr;
+            _resultValue.sds = sds;
+            _resultValue.sdt = sdt;
+            _resultValue.sdu = sdu;
+            _resultValue.sdv = sdv;
+            _resultValue.sdw = sdw;
+            _resultValue.sdx = sdx;
+            _resultValue.sdy = sdy;
+            _resultValue.sdz = sdz;
             return _resultValue;
         }
     }

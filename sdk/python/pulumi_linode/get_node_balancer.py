@@ -27,7 +27,7 @@ class GetNodeBalancerResult:
     """
     A collection of values returned by getNodeBalancer.
     """
-    def __init__(__self__, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, region=None, tags=None, transfers=None, updated=None, vpcs=None):
+    def __init__(__self__, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, lke_clusters=None, region=None, tags=None, transfers=None, updated=None, vpcs=None):
         if client_conn_throttle and not isinstance(client_conn_throttle, int):
             raise TypeError("Expected argument 'client_conn_throttle' to be a int")
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -55,6 +55,9 @@ class GetNodeBalancerResult:
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
+        if lke_clusters and not isinstance(lke_clusters, list):
+            raise TypeError("Expected argument 'lke_clusters' to be a list")
+        pulumi.set(__self__, "lke_clusters", lke_clusters)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -112,7 +115,7 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def id(self) -> _builtins.int:
         """
-        The Firewall's ID.
+        The ID of the related LKE cluster.
         """
         return pulumi.get(self, "id")
 
@@ -136,9 +139,14 @@ class GetNodeBalancerResult:
     @pulumi.getter
     def label(self) -> _builtins.str:
         """
-        Used to identify this rule. For display purposes only.
+        The label of the related LKE cluster.
         """
         return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter(name="lkeClusters")
+    def lke_clusters(self) -> Sequence['outputs.GetNodeBalancerLkeClusterResult']:
+        return pulumi.get(self, "lke_clusters")
 
     @_builtins.property
     @pulumi.getter
@@ -190,6 +198,7 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             ipv4=self.ipv4,
             ipv6=self.ipv6,
             label=self.label,
+            lke_clusters=self.lke_clusters,
             region=self.region,
             tags=self.tags,
             transfers=self.transfers,
@@ -230,6 +239,7 @@ def get_node_balancer(id: Optional[_builtins.int] = None,
         ipv4=pulumi.get(__ret__, 'ipv4'),
         ipv6=pulumi.get(__ret__, 'ipv6'),
         label=pulumi.get(__ret__, 'label'),
+        lke_clusters=pulumi.get(__ret__, 'lke_clusters'),
         region=pulumi.get(__ret__, 'region'),
         tags=pulumi.get(__ret__, 'tags'),
         transfers=pulumi.get(__ret__, 'transfers'),
@@ -267,6 +277,7 @@ def get_node_balancer_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         ipv4=pulumi.get(__response__, 'ipv4'),
         ipv6=pulumi.get(__response__, 'ipv6'),
         label=pulumi.get(__response__, 'label'),
+        lke_clusters=pulumi.get(__response__, 'lke_clusters'),
         region=pulumi.get(__response__, 'region'),
         tags=pulumi.get(__response__, 'tags'),
         transfers=pulumi.get(__response__, 'transfers'),

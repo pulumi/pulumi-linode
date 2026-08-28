@@ -93,8 +93,9 @@ type GetNodebalancersArgs struct {
 // A collection of values returned by getNodebalancers.
 type GetNodebalancersResult struct {
 	Filters []GetNodebalancersFilter `pulumi:"filters"`
-	// The Linode NodeBalancer's unique ID
-	Id            string                         `pulumi:"id"`
+	// The ID of the related LKE cluster.
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
 	Nodebalancers []GetNodebalancersNodebalancer `pulumi:"nodebalancers"`
 	Order         *string                        `pulumi:"order"`
 	OrderBy       *string                        `pulumi:"orderBy"`
@@ -137,11 +138,12 @@ func (o GetNodebalancersResultOutput) Filters() GetNodebalancersFilterArrayOutpu
 	return o.ApplyT(func(v GetNodebalancersResult) []GetNodebalancersFilter { return v.Filters }).(GetNodebalancersFilterArrayOutput)
 }
 
-// The Linode NodeBalancer's unique ID
+// The ID of the related LKE cluster.
 func (o GetNodebalancersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodebalancersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
 func (o GetNodebalancersResultOutput) Nodebalancers() GetNodebalancersNodebalancerArrayOutput {
 	return o.ApplyT(func(v GetNodebalancersResult) []GetNodebalancersNodebalancer { return v.Nodebalancers }).(GetNodebalancersNodebalancerArrayOutput)
 }

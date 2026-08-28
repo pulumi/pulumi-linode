@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewProducerImageShareGroup(ctx, "test-empty", &linode.ProducerImageShareGroupArgs{
-//				Label:       pulumi.String("my-image-share-group"),
 //				Description: pulumi.String("My description."),
+//				Label:       pulumi.String("my-image-share-group"),
 //			})
 //			if err != nil {
 //				return err
@@ -54,15 +54,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewProducerImageShareGroup(ctx, "test-images", &linode.ProducerImageShareGroupArgs{
-//				Label:       pulumi.String("my-image-share-group"),
 //				Description: pulumi.String("My description."),
 //				Images: linode.ProducerImageShareGroupImageArray{
 //					&linode.ProducerImageShareGroupImageArgs{
+//						Description: pulumi.String("My image description."),
 //						Id:          pulumi.String("private/12345"),
 //						Label:       pulumi.String("my-image"),
-//						Description: pulumi.String("My image description."),
 //					},
 //				},
+//				Label: pulumi.String("my-image-share-group"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,7 +79,7 @@ type ProducerImageShareGroup struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The description of the Image Share Group
 	//
-	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	// * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The date and time the Image Share Group will expire.
 	Expiry pulumi.StringOutput `pulumi:"expiry"`
@@ -136,7 +136,7 @@ type producerImageShareGroupState struct {
 	Created *string `pulumi:"created"`
 	// The description of the Image Share Group
 	//
-	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	// * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
 	Description *string `pulumi:"description"`
 	// The date and time the Image Share Group will expire.
 	Expiry *string `pulumi:"expiry"`
@@ -161,7 +161,7 @@ type ProducerImageShareGroupState struct {
 	Created pulumi.StringPtrInput
 	// The description of the Image Share Group
 	//
-	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	// * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
 	Description pulumi.StringPtrInput
 	// The date and time the Image Share Group will expire.
 	Expiry pulumi.StringPtrInput
@@ -188,7 +188,7 @@ func (ProducerImageShareGroupState) ElementType() reflect.Type {
 type producerImageShareGroupArgs struct {
 	// The description of the Image Share Group
 	//
-	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	// * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
 	Description *string `pulumi:"description"`
 	// The images to be shared using this Image Share Group.
 	Images []ProducerImageShareGroupImage `pulumi:"images"`
@@ -200,7 +200,7 @@ type producerImageShareGroupArgs struct {
 type ProducerImageShareGroupArgs struct {
 	// The description of the Image Share Group
 	//
-	// * `images` - (Optional) A list of Images to include in the Image Share Group.
+	// * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
 	Description pulumi.StringPtrInput
 	// The images to be shared using this Image Share Group.
 	Images ProducerImageShareGroupImageArrayInput
@@ -302,7 +302,7 @@ func (o ProducerImageShareGroupOutput) Created() pulumi.StringOutput {
 
 // The description of the Image Share Group
 //
-// * `images` - (Optional) A list of Images to include in the Image Share Group.
+// * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
 func (o ProducerImageShareGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProducerImageShareGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

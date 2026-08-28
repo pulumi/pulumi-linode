@@ -21,12 +21,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooInstance = new linode.Instance("foo", {
- *     image: "linode/alpine3.19",
+ * const fooInstance = new linode.Instance("fooInstance", {
+ *     image: "linode/arch",
  *     region: "ca-east",
  *     type: "g6-dedicated-2",
  * });
- * const foo = new linode.Rdns("foo", {
+ * const fooRdns = new linode.Rdns("fooRdns", {
  *     address: fooInstance.ipAddress,
  *     rdns: pulumi.interpolate`${fooInstance.ipAddress}.nip.io`,
  * });

@@ -138,7 +138,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// The Firewall's ID.
+        /// The ID of the related LKE cluster.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -150,9 +150,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Ipv6;
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// The label of the related LKE cluster.
         /// </summary>
         public readonly string Label;
+        public readonly ImmutableArray<Outputs.GetNodeBalancerLkeClusterResult> LkeClusters;
         /// <summary>
         /// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
         /// </summary>
@@ -188,6 +189,8 @@ namespace Pulumi.Linode
 
             string label,
 
+            ImmutableArray<Outputs.GetNodeBalancerLkeClusterResult> lkeClusters,
+
             string region,
 
             ImmutableArray<string> tags,
@@ -207,6 +210,7 @@ namespace Pulumi.Linode
             Ipv4 = ipv4;
             Ipv6 = ipv6;
             Label = label;
+            LkeClusters = lkeClusters;
             Region = region;
             Tags = tags;
             Transfers = transfers;

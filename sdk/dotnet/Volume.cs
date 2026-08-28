@@ -57,15 +57,15 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.Instance("foo", new()
+    ///     var fooInstance = new Linode.Instance("fooInstance", new()
     ///     {
     ///         Region = "us-east",
     ///         Type = "g6-nanode-1",
     ///     });
     /// 
-    ///     var fooInstanceConfig = new Linode.InstanceConfig("foo", new()
+    ///     var fooInstanceConfig = new Linode.InstanceConfig("fooInstanceConfig", new()
     ///     {
-    ///         LinodeId = foo.Id,
+    ///         LinodeId = fooInstance.Id,
     ///         Label = "boot-existing-volume",
     ///         Kernel = "linode/grub2",
     ///         Devices = new[]
@@ -123,6 +123,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("filesystemPath")]
         public Output<string> FilesystemPath { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        /// </summary>
+        [Output("ioReady")]
+        public Output<bool> IoReady { get; private set; } = null!;
 
         /// <summary>
         /// The label of the Linode Volume
@@ -289,6 +295,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("filesystemPath")]
         public Input<string>? FilesystemPath { get; set; }
+
+        /// <summary>
+        /// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        /// </summary>
+        [Input("ioReady")]
+        public Input<bool>? IoReady { get; set; }
 
         /// <summary>
         /// The label of the Linode Volume

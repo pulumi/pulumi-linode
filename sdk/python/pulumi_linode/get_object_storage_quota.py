@@ -27,13 +27,16 @@ class GetObjectStorageQuotaResult:
     """
     A collection of values returned by getObjectStorageQuota.
     """
-    def __init__(__self__, description=None, endpoint_type=None, id=None, quota_id=None, quota_limit=None, quota_name=None, quota_usage=None, resource_metric=None, s3_endpoint=None):
+    def __init__(__self__, description=None, endpoint_type=None, has_usage=None, id=None, quota_id=None, quota_limit=None, quota_name=None, quota_type=None, quota_usage=None, resource_metric=None, s3_endpoint=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
         if endpoint_type and not isinstance(endpoint_type, str):
             raise TypeError("Expected argument 'endpoint_type' to be a str")
         pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if has_usage and not isinstance(has_usage, bool):
+            raise TypeError("Expected argument 'has_usage' to be a bool")
+        pulumi.set(__self__, "has_usage", has_usage)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -46,6 +49,9 @@ class GetObjectStorageQuotaResult:
         if quota_name and not isinstance(quota_name, str):
             raise TypeError("Expected argument 'quota_name' to be a str")
         pulumi.set(__self__, "quota_name", quota_name)
+        if quota_type and not isinstance(quota_type, str):
+            raise TypeError("Expected argument 'quota_type' to be a str")
+        pulumi.set(__self__, "quota_type", quota_type)
         if quota_usage and not isinstance(quota_usage, dict):
             raise TypeError("Expected argument 'quota_usage' to be a dict")
         pulumi.set(__self__, "quota_usage", quota_usage)
@@ -71,6 +77,14 @@ class GetObjectStorageQuotaResult:
         The type of the S3 endpoint of the Object Storage.
         """
         return pulumi.get(self, "endpoint_type")
+
+    @_builtins.property
+    @pulumi.getter(name="hasUsage")
+    def has_usage(self) -> _builtins.bool:
+        """
+        Whether usage data is available for the Object Storage quota.
+        """
+        return pulumi.get(self, "has_usage")
 
     @_builtins.property
     @pulumi.getter
@@ -102,10 +116,18 @@ class GetObjectStorageQuotaResult:
         return pulumi.get(self, "quota_name")
 
     @_builtins.property
+    @pulumi.getter(name="quotaType")
+    def quota_type(self) -> _builtins.str:
+        """
+        The type of the Object Storage quota.
+        """
+        return pulumi.get(self, "quota_type")
+
+    @_builtins.property
     @pulumi.getter(name="quotaUsage")
     def quota_usage(self) -> 'outputs.GetObjectStorageQuotaQuotaUsageResult':
         """
-        The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
+        (Read-Only Object) The usage data for a specific Object Storage related quota on your account. This value is `null` when `has_usage` is `false`. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage). Referenced directly (e.g. `quota_usage.quota_limit`).
         """
         return pulumi.get(self, "quota_usage")
 
@@ -134,10 +156,12 @@ class AwaitableGetObjectStorageQuotaResult(GetObjectStorageQuotaResult):
         return GetObjectStorageQuotaResult(
             description=self.description,
             endpoint_type=self.endpoint_type,
+            has_usage=self.has_usage,
             id=self.id,
             quota_id=self.quota_id,
             quota_limit=self.quota_limit,
             quota_name=self.quota_name,
+            quota_type=self.quota_type,
             quota_usage=self.quota_usage,
             resource_metric=self.resource_metric,
             s3_endpoint=self.s3_endpoint)
@@ -171,10 +195,12 @@ def get_object_storage_quota(quota_id: Optional[_builtins.str] = None,
     return AwaitableGetObjectStorageQuotaResult(
         description=pulumi.get(__ret__, 'description'),
         endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
+        has_usage=pulumi.get(__ret__, 'has_usage'),
         id=pulumi.get(__ret__, 'id'),
         quota_id=pulumi.get(__ret__, 'quota_id'),
         quota_limit=pulumi.get(__ret__, 'quota_limit'),
         quota_name=pulumi.get(__ret__, 'quota_name'),
+        quota_type=pulumi.get(__ret__, 'quota_type'),
         quota_usage=pulumi.get(__ret__, 'quota_usage'),
         resource_metric=pulumi.get(__ret__, 'resource_metric'),
         s3_endpoint=pulumi.get(__ret__, 's3_endpoint'))
@@ -205,10 +231,12 @@ def get_object_storage_quota_output(quota_id: pulumi.Input[Optional[_builtins.st
     return __ret__.apply(lambda __response__: GetObjectStorageQuotaResult(
         description=pulumi.get(__response__, 'description'),
         endpoint_type=pulumi.get(__response__, 'endpoint_type'),
+        has_usage=pulumi.get(__response__, 'has_usage'),
         id=pulumi.get(__response__, 'id'),
         quota_id=pulumi.get(__response__, 'quota_id'),
         quota_limit=pulumi.get(__response__, 'quota_limit'),
         quota_name=pulumi.get(__response__, 'quota_name'),
+        quota_type=pulumi.get(__response__, 'quota_type'),
         quota_usage=pulumi.get(__response__, 'quota_usage'),
         resource_metric=pulumi.get(__response__, 'resource_metric'),
         s3_endpoint=pulumi.get(__response__, 's3_endpoint')))

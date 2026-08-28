@@ -41,6 +41,9 @@ export interface GetMaintenancePoliciesArgs {
 export interface GetMaintenancePoliciesResult {
     readonly filters?: outputs.GetMaintenancePoliciesFilter[];
     readonly id: string;
+    /**
+     * (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
+     */
     readonly maintenancePolicies: outputs.GetMaintenancePoliciesMaintenancePolicy[];
 }
 /**

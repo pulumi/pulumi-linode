@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Created { get; set; } = null!;
 
         /// <summary>
-        /// (Required) The Firewall's ID.
+        /// The ID of the related LKE cluster.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;

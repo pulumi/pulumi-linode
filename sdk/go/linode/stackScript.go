@@ -34,10 +34,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := linode.NewStackScript(ctx, "foo", &linode.StackScriptArgs{
+//			fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
 //				Label:       pulumi.String("foo"),
 //				Description: pulumi.String("Installs a Package"),
-//				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
+//				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
 //				Images: pulumi.StringArray{
 //					pulumi.String("linode/ubuntu22.04"),
 //					pulumi.String("linode/ubuntu20.04"),
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
+//			_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
 //				Image:  pulumi.String("linode/ubuntu22.04"),
 //				Label:  pulumi.String("foo"),
 //				Region: pulumi.String("us-east"),
@@ -56,7 +56,7 @@ import (
 //					pulumi.String("..."),
 //				},
 //				RootPass:      pulumi.String("..."),
-//				StackscriptId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				StackscriptId: fooStackScript.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				StackscriptData: pulumi.StringMap{
 //					"package": pulumi.String("nginx"),
 //				},
@@ -102,7 +102,7 @@ type StackScript struct {
 	Script pulumi.StringOutput `pulumi:"script"`
 	// The date this StackScript was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+	// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 	UserDefinedFields StackScriptUserDefinedFieldArrayOutput `pulumi:"userDefinedFields"`
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId pulumi.StringOutput `pulumi:"userGravatarId"`
@@ -174,7 +174,7 @@ type stackScriptState struct {
 	Script *string `pulumi:"script"`
 	// The date this StackScript was updated.
 	Updated *string `pulumi:"updated"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+	// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 	UserDefinedFields []StackScriptUserDefinedField `pulumi:"userDefinedFields"`
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId *string `pulumi:"userGravatarId"`
@@ -205,7 +205,7 @@ type StackScriptState struct {
 	Script pulumi.StringPtrInput
 	// The date this StackScript was updated.
 	Updated pulumi.StringPtrInput
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+	// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 	UserDefinedFields StackScriptUserDefinedFieldArrayInput
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId pulumi.StringPtrInput
@@ -391,7 +391,7 @@ func (o StackScriptOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 func (o StackScriptOutput) UserDefinedFields() StackScriptUserDefinedFieldArrayOutput {
 	return o.ApplyT(func(v *StackScript) StackScriptUserDefinedFieldArrayOutput { return v.UserDefinedFields }).(StackScriptUserDefinedFieldArrayOutput)
 }

@@ -11,13 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Early Access:** Lock functionality is in early access and may not be available to all users.
-//
 // > **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
 //
 // Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
 //
-// For more information, see the Linode APIv4 docs (TBD).
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
 //
 // ## Example Usage
 //
@@ -67,7 +65,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("allLockIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-26)))
+// ctx.Export("allLockIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getLocks:getLocks.pp:2,11-25)))
 // return nil
 // })
 // }
@@ -102,7 +100,7 @@ type GetLocksResult struct {
 	Filters []GetLocksFilter `pulumi:"filters"`
 	// The unique ID of the Lock.
 	Id string `pulumi:"id"`
-	// A list of Linode Locks that match the filter criteria.
+	// (Nested Attribute List) A list of Linode Locks that match the filter criteria.
 	Locks   []GetLocksLock `pulumi:"locks"`
 	Order   *string        `pulumi:"order"`
 	OrderBy *string        `pulumi:"orderBy"`
@@ -150,7 +148,7 @@ func (o GetLocksResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLocksResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of Linode Locks that match the filter criteria.
+// (Nested Attribute List) A list of Linode Locks that match the filter criteria.
 func (o GetLocksResultOutput) Locks() GetLocksLockArrayOutput {
 	return o.ApplyT(func(v GetLocksResult) []GetLocksLock { return v.Locks }).(GetLocksLockArrayOutput)
 }

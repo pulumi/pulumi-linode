@@ -14,10 +14,16 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceIpVpcNat11
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The VPC IPv4 address this address is NATted with.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The ID of the VPC subnet containing the NATted address.
+        /// </summary>
         public readonly int SubnetId;
+        /// <summary>
+        /// The ID of the VPC containing the NATted address.
+        /// </summary>
         public readonly int VpcId;
 
         [OutputConstructor]

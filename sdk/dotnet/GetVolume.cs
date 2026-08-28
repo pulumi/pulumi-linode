@@ -143,6 +143,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int Id;
         /// <summary>
+        /// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        /// </summary>
+        public readonly bool IoReady;
+        /// <summary>
         /// This Volume's label is for display purposes only.
         /// </summary>
         public readonly string Label;
@@ -181,6 +185,8 @@ namespace Pulumi.Linode
 
             int id,
 
+            bool ioReady,
+
             string label,
 
             int linodeId,
@@ -199,6 +205,7 @@ namespace Pulumi.Linode
             Encryption = encryption;
             FilesystemPath = filesystemPath;
             Id = id;
+            IoReady = ioReady;
             Label = label;
             LinodeId = linodeId;
             Region = region;

@@ -24,23 +24,33 @@ class VpcArgs:
                  label: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]] = None):
+                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv4Args']]]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]] = None,
+                 vpc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vpc resource.
 
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
-               
-               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcIpv4Args']]] ipv4s: The IPv4 configuration of this VPC.
         :param pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]] ipv6s: The IPv6 configuration of this VPC.
+        :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+               
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+               
+               * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
         """
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "region", region)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
             pulumi.set(__self__, "ipv6s", ipv6s)
+        if vpc_type is not None:
+            pulumi.set(__self__, "vpc_type", vpc_type)
 
     @_builtins.property
     @pulumi.getter
@@ -71,14 +81,24 @@ class VpcArgs:
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined description of this VPC.
-
-        * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv4Args']]]]:
+        """
+        The IPv4 configuration of this VPC.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv4Args']]]]):
+        pulumi.set(self, "ipv4s", value)
 
     @_builtins.property
     @pulumi.getter
@@ -92,32 +112,56 @@ class VpcArgs:
     def ipv6s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]]):
         pulumi.set(self, "ipv6s", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+
+        * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+
+        * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+        """
+        return pulumi.get(self, "vpc_type")
+
+    @vpc_type.setter
+    def vpc_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_type", value)
+
 
 @pulumi.input_type
 class _VpcState:
     def __init__(__self__, *,
                  created: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv4Args']]]] = None,
                  ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 updated: pulumi.Input[Optional[_builtins.str]] = None):
+                 updated: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpc resources.
 
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
-               
-               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcIpv4Args']]] ipv4s: The IPv4 configuration of this VPC.
         :param pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
+        :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+               
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+               
+               * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
         """
         if created is not None:
             pulumi.set(__self__, "created", created)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s is not None:
             pulumi.set(__self__, "ipv6s", ipv6s)
         if label is not None:
@@ -126,6 +170,8 @@ class _VpcState:
             pulumi.set(__self__, "region", region)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
+        if vpc_type is not None:
+            pulumi.set(__self__, "vpc_type", vpc_type)
 
     @_builtins.property
     @pulumi.getter
@@ -144,14 +190,24 @@ class _VpcState:
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined description of this VPC.
-
-        * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv4Args']]]]:
+        """
+        The IPv4 configuration of this VPC.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @ipv4s.setter
+    def ipv4s(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv4Args']]]]):
+        pulumi.set(self, "ipv4s", value)
 
     @_builtins.property
     @pulumi.getter
@@ -201,6 +257,22 @@ class _VpcState:
     def updated(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+
+        * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+
+        * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+        """
+        return pulumi.get(self, "vpc_type")
+
+    @vpc_type.setter
+    def vpc_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_type", value)
+
 
 @pulumi.type_token("linode:index/vpc:Vpc")
 class Vpc(pulumi.CustomResource):
@@ -209,9 +281,11 @@ class Vpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]]] = None,
                  ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Linode VPC.
@@ -226,9 +300,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.Vpc("test",
+            description="My first VPC.",
             label="test-vpc",
-            region="us-iad",
-            description="My first VPC.")
+            region="us-iad")
         ```
 
         Create a VPC with a `/52` IPv6 range prefix:
@@ -239,11 +313,23 @@ class Vpc(pulumi.CustomResource):
 
         # NOTE: IPv6 VPCs may not currently be available to all users.
         test = linode.Vpc("test",
-            label="test-vpc",
-            region="us-iad",
             ipv6s=[{
                 "range": "/52",
-            }])
+            }],
+            label="test-vpc",
+            region="us-iad")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
+        test = linode.Vpc("test",
+            ipv4s=[{
+                "range": "10.0.0.0/8",
+            }],
+            label="test-vpc",
+            region="us-iad")
         ```
 
         ## IPv6
@@ -258,15 +344,27 @@ class Vpc(pulumi.CustomResource):
 
         * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
 
+        ## IPv4
+
+        > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+
+        Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
+
+        * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
-               
-               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]] ipv4s: The IPv4 configuration of this VPC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
+        :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+               
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+               
+               * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
         """
         ...
     @overload
@@ -287,9 +385,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.Vpc("test",
+            description="My first VPC.",
             label="test-vpc",
-            region="us-iad",
-            description="My first VPC.")
+            region="us-iad")
         ```
 
         Create a VPC with a `/52` IPv6 range prefix:
@@ -300,11 +398,23 @@ class Vpc(pulumi.CustomResource):
 
         # NOTE: IPv6 VPCs may not currently be available to all users.
         test = linode.Vpc("test",
-            label="test-vpc",
-            region="us-iad",
             ipv6s=[{
                 "range": "/52",
-            }])
+            }],
+            label="test-vpc",
+            region="us-iad")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
+        test = linode.Vpc("test",
+            ipv4s=[{
+                "range": "10.0.0.0/8",
+            }],
+            label="test-vpc",
+            region="us-iad")
         ```
 
         ## IPv6
@@ -318,6 +428,14 @@ class Vpc(pulumi.CustomResource):
         * `allocation_class` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
 
         * `allocated_range` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+
+        ## IPv4
+
+        > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+
+        Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
+
+        * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
 
 
         :param str resource_name: The name of the resource.
@@ -336,9 +454,11 @@ class Vpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]]] = None,
                  ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,6 +469,7 @@ class Vpc(pulumi.CustomResource):
             __props__ = VpcArgs.__new__(VpcArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["ipv4s"] = ipv4s
             __props__.__dict__["ipv6s"] = ipv6s
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
@@ -356,6 +477,7 @@ class Vpc(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["vpc_type"] = vpc_type
             __props__.__dict__["created"] = None
             __props__.__dict__["updated"] = None
         super(Vpc, __self__).__init__(
@@ -370,10 +492,12 @@ class Vpc(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]]] = None,
             ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpc':
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpc':
         """
         Get an existing Vpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -383,12 +507,16 @@ class Vpc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
-               
-               * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]] ipv4s: The IPv4 configuration of this VPC.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
+        :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+               
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+               
+               * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -396,10 +524,12 @@ class Vpc(pulumi.CustomResource):
 
         __props__.__dict__["created"] = created
         __props__.__dict__["description"] = description
+        __props__.__dict__["ipv4s"] = ipv4s
         __props__.__dict__["ipv6s"] = ipv6s
         __props__.__dict__["label"] = label
         __props__.__dict__["region"] = region
         __props__.__dict__["updated"] = updated
+        __props__.__dict__["vpc_type"] = vpc_type
         return Vpc(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -415,10 +545,16 @@ class Vpc(pulumi.CustomResource):
     def description(self) -> pulumi.Output[_builtins.str]:
         """
         The user-defined description of this VPC.
-
-        * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4s(self) -> pulumi.Output[Sequence['outputs.VpcIpv4']]:
+        """
+        The IPv4 configuration of this VPC.
+        """
+        return pulumi.get(self, "ipv4s")
 
     @_builtins.property
     @pulumi.getter
@@ -451,4 +587,16 @@ class Vpc(pulumi.CustomResource):
         The date and time when the VPC was last updated.
         """
         return pulumi.get(self, "updated")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+
+        * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+
+        * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+        """
+        return pulumi.get(self, "vpc_type")
 

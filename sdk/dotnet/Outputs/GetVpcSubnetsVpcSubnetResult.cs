@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// A list of Managed databases assigned to the VPC Subnet.
+        /// (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetDatabaseResult> Databases;
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -38,9 +38,13 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// A list of Linodes added to this subnet.
+        /// (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetLinodeResult> Linodes;
+        /// <summary>
+        /// (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetNodebalancerResult> Nodebalancers;
         /// <summary>
         /// The date and time when the VPC Subnet was last updated.
         /// </summary>
@@ -62,6 +66,8 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetLinodeResult> linodes,
 
+            ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetNodebalancerResult> nodebalancers,
+
             string updated)
         {
             Created = created;
@@ -71,6 +77,7 @@ namespace Pulumi.Linode.Outputs
             Ipv6s = ipv6s;
             Label = label;
             Linodes = linodes;
+            Nodebalancers = nodebalancers;
             Updated = updated;
         }
     }

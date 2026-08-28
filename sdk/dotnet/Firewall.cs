@@ -23,7 +23,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myInstance = new Linode.Instance("my_instance", new()
+    ///     var myInstance = new Linode.Instance("myInstance", new()
     ///     {
     ///         Label = "my_instance",
     ///         Image = "linode/ubuntu22.04",
@@ -33,7 +33,7 @@ namespace Pulumi.Linode
     ///         SwapSize = 256,
     ///     });
     /// 
-    ///     var myFirewall = new Linode.Firewall("my_firewall", new()
+    ///     var myFirewall = new Linode.Firewall("myFirewall", new()
     ///     {
     ///         Label = "my_firewall",
     ///         Inbounds = new[]
@@ -139,15 +139,21 @@ namespace Pulumi.Linode
         /// <summary>
         /// If `True`, the Firewall's rules are not enforced (defaults to `False`).
         /// 
-        /// * `Inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+        /// * `Inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
 
         /// <summary>
+        /// The fingerprint of the current Firewall rules.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
         /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         /// 
-        /// * `Outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+        /// * `Outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
         /// </summary>
         [Output("inboundPolicy")]
         public Output<string> InboundPolicy { get; private set; } = null!;
@@ -212,6 +218,12 @@ namespace Pulumi.Linode
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
 
+        /// <summary>
+        /// The current version of the Firewall rules.
+        /// </summary>
+        [Output("version")]
+        public Output<int> Version { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Firewall resource with the given unique name, arguments, and options.
@@ -261,7 +273,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If `True`, the Firewall's rules are not enforced (defaults to `False`).
         /// 
-        /// * `Inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+        /// * `Inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -269,7 +281,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         /// 
-        /// * `Outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+        /// * `Outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
         /// </summary>
         [Input("inboundPolicy", required: true)]
         public Input<string> InboundPolicy { get; set; } = null!;
@@ -387,15 +399,21 @@ namespace Pulumi.Linode
         /// <summary>
         /// If `True`, the Firewall's rules are not enforced (defaults to `False`).
         /// 
-        /// * `Inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+        /// * `Inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
+        /// The fingerprint of the current Firewall rules.
+        /// </summary>
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
+
+        /// <summary>
         /// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
         /// 
-        /// * `Outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+        /// * `Outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
         /// </summary>
         [Input("inboundPolicy")]
         public Input<string>? InboundPolicy { get; set; }
@@ -495,6 +513,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
+
+        /// <summary>
+        /// The current version of the Firewall rules.
+        /// </summary>
+        [Input("version")]
+        public Input<int>? Version { get; set; }
 
         public FirewallState()
         {

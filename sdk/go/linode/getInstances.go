@@ -70,15 +70,13 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("instanceIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-40)))
+// ctx.Export("instanceIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getInstances:getInstances.pp:2,11-39)))
 // return nil
 // })
 // }
 // ```
 //
 // ## Filterable Fields
-//
-// * `group`
 //
 // * `id`
 //
@@ -118,7 +116,8 @@ type GetInstancesArgs struct {
 type GetInstancesResult struct {
 	Filters []GetInstancesFilter `pulumi:"filters"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string                 `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
 	Instances []GetInstancesInstance `pulumi:"instances"`
 	Order     *string                `pulumi:"order"`
 	OrderBy   *string                `pulumi:"orderBy"`
@@ -166,6 +165,7 @@ func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
 func (o GetInstancesResultOutput) Instances() GetInstancesInstanceArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesInstance { return v.Instances }).(GetInstancesInstanceArrayOutput)
 }

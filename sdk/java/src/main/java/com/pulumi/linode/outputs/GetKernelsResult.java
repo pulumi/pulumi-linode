@@ -21,6 +21,10 @@ public final class GetKernelsResult {
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
+     * 
+     */
     private List<GetKernelsKernel> kernels;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -36,6 +40,10 @@ public final class GetKernelsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
+     * 
+     */
     public List<GetKernelsKernel> kernels() {
         return this.kernels;
     }

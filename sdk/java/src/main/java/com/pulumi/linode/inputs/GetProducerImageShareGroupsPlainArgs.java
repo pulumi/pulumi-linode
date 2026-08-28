@@ -24,9 +24,17 @@ public final class GetProducerImageShareGroupsPlainArgs extends com.pulumi.resou
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * (Block List) The list of Image Share Groups.
+     * 
+     */
     @Import(name="imageShareGroups")
     private @Nullable List<GetProducerImageShareGroupsImageShareGroup> imageShareGroups;
 
+    /**
+     * @return (Block List) The list of Image Share Groups.
+     * 
+     */
     public Optional<List<GetProducerImageShareGroupsImageShareGroup>> imageShareGroups() {
         return Optional.ofNullable(this.imageShareGroups);
     }
@@ -81,11 +89,23 @@ public final class GetProducerImageShareGroupsPlainArgs extends com.pulumi.resou
             return filters(List.of(filters));
         }
 
+        /**
+         * @param imageShareGroups (Block List) The list of Image Share Groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShareGroups(@Nullable List<GetProducerImageShareGroupsImageShareGroup> imageShareGroups) {
             $.imageShareGroups = imageShareGroups;
             return this;
         }
 
+        /**
+         * @param imageShareGroups (Block List) The list of Image Share Groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShareGroups(GetProducerImageShareGroupsImageShareGroup... imageShareGroups) {
             return imageShareGroups(List.of(imageShareGroups));
         }

@@ -60,7 +60,7 @@ export interface GetNodeBalancerResult {
      */
     readonly hostname: string;
     /**
-     * The Firewall's ID.
+     * The ID of the related LKE cluster.
      */
     readonly id: number;
     /**
@@ -72,9 +72,10 @@ export interface GetNodeBalancerResult {
      */
     readonly ipv6: string;
     /**
-     * Used to identify this rule. For display purposes only.
+     * The label of the related LKE cluster.
      */
     readonly label: string;
+    readonly lkeClusters: outputs.GetNodeBalancerLkeCluster[];
     /**
      * The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
      */

@@ -13,6 +13,7 @@ import com.pulumi.linode.inputs.VpcSubnetState;
 import com.pulumi.linode.outputs.VpcSubnetDatabase;
 import com.pulumi.linode.outputs.VpcSubnetIpv6;
 import com.pulumi.linode.outputs.VpcSubnetLinode;
+import com.pulumi.linode.outputs.VpcSubnetNodebalancer;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -48,9 +49,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()
- *             .vpcId(123)
- *             .label("test-subnet")
  *             .ipv4("10.0.0.0/24")
+ *             .label("test-subnet")
+ *             .vpcId(123)
  *             .build());
  * 
  *     }
@@ -92,7 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // NOTE: IPv6 VPCs may not currently be available to all users.
- *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()
+ *         var testVpcSubnet = new VpcSubnet("testVpcSubnet", VpcSubnetArgs.builder()
  *             .vpcId(testVpc.id())
  *             .label("test-subnet")
  *             .ipv4("10.0.0.0/24")
@@ -142,14 +143,14 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * A list of Managed databases assigned to the VPC Subnet.
+     * (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      * 
      */
     @Export(name="databases", refs={List.class,VpcSubnetDatabase.class}, tree="[0,1]")
     private Output<List<VpcSubnetDatabase>> databases;
 
     /**
-     * @return A list of Managed databases assigned to the VPC Subnet.
+     * @return (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      * 
      */
     public Output<List<VpcSubnetDatabase>> databases() {
@@ -158,7 +159,7 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
     /**
      * The IPv4 range of this subnet in CIDR format.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      * 
      */
     @Export(name="ipv4", refs={String.class}, tree="[0]")
@@ -167,7 +168,7 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
     /**
      * @return The IPv4 range of this subnet in CIDR format.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      * 
      */
     public Output<Optional<String>> ipv4() {
@@ -202,18 +203,32 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * A list of Linodes added to this subnet.
+     * (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      * 
      */
     @Export(name="linodes", refs={List.class,VpcSubnetLinode.class}, tree="[0,1]")
     private Output<List<VpcSubnetLinode>> linodes;
 
     /**
-     * @return A list of Linodes added to this subnet.
+     * @return (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      * 
      */
     public Output<List<VpcSubnetLinode>> linodes() {
         return this.linodes;
+    }
+    /**
+     * (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     * 
+     */
+    @Export(name="nodebalancers", refs={List.class,VpcSubnetNodebalancer.class}, tree="[0,1]")
+    private Output<List<VpcSubnetNodebalancer>> nodebalancers;
+
+    /**
+     * @return (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     * 
+     */
+    public Output<List<VpcSubnetNodebalancer>> nodebalancers() {
+        return this.nodebalancers;
     }
     /**
      * The date and time when the VPC was last updated.
@@ -242,6 +257,20 @@ public class VpcSubnet extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> vpcId() {
         return this.vpcId;
+    }
+    /**
+     * The type of the parent VPC (`regular` or `rdma`).
+     * 
+     */
+    @Export(name="vpcType", refs={String.class}, tree="[0]")
+    private Output<String> vpcType;
+
+    /**
+     * @return The type of the parent VPC (`regular` or `rdma`).
+     * 
+     */
+    public Output<String> vpcType() {
+        return this.vpcType;
     }
 
     /**

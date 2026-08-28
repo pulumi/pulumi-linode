@@ -28,12 +28,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.ObjectStorageKey("foobar", {
- *     label: "my-key",
  *     bucketAccesses: [{
  *         bucketName: "my-bucket-name",
- *         region: "us-mia",
  *         permissions: "read_write",
+ *         region: "us-mia",
  *     }],
+ *     label: "my-key",
  * });
  * ```
  *
@@ -44,19 +44,19 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = new linode.ObjectStorageKey("foo", {
- *     label: "image-access",
  *     bucketAccesses: [
  *         {
  *             bucketName: "foobar1",
- *             region: "us-mia",
  *             permissions: "read_write",
+ *             region: "us-mia",
  *         },
  *         {
  *             bucketName: "foobar2",
- *             region: "gb-lon",
  *             permissions: "read_write",
+ *             region: "gb-lon",
  *         },
  *     ],
+ *     label: "image-access",
  * });
  * ```
  */
@@ -93,7 +93,7 @@ export class ObjectStorageKey extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
-     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly bucketAccesses: pulumi.Output<outputs.ObjectStorageKeyBucketAccess[] | undefined>;
     /**
@@ -111,7 +111,7 @@ export class ObjectStorageKey extends pulumi.CustomResource {
      */
     declare public readonly regions: pulumi.Output<string[]>;
     /**
-     * A set of objects containing the detailed info of the regions where this key can access.
+     * (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public /*out*/ readonly regionsDetails: pulumi.Output<outputs.ObjectStorageKeyRegionsDetail[]>;
     /**
@@ -168,7 +168,7 @@ export interface ObjectStorageKeyState {
      */
     accessKey?: pulumi.Input<string | undefined>;
     /**
-     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[] | undefined>;
     /**
@@ -186,7 +186,7 @@ export interface ObjectStorageKeyState {
      */
     regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A set of objects containing the detailed info of the regions where this key can access.
+     * (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     regionsDetails?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyRegionsDetail>[] | undefined>;
     /**
@@ -200,7 +200,7 @@ export interface ObjectStorageKeyState {
  */
 export interface ObjectStorageKeyArgs {
     /**
-     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     bucketAccesses?: pulumi.Input<pulumi.Input<inputs.ObjectStorageKeyBucketAccess>[] | undefined>;
     /**

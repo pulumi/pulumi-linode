@@ -81,16 +81,17 @@ type GetVpcSubnetsArgs struct {
 	Filters []GetVpcSubnetsFilter `pulumi:"filters"`
 	// The id of the parent VPC for the list of VPCs.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
 	VpcId int `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getVpcSubnets.
 type GetVpcSubnetsResult struct {
 	Filters []GetVpcSubnetsFilter `pulumi:"filters"`
-	// ID of a managed database assigned to the VPC Subnet.
-	Id         string                   `pulumi:"id"`
-	VpcId      int                      `pulumi:"vpcId"`
+	// ID of a NodeBalancer assigned to the VPC Subnet.
+	Id    string `pulumi:"id"`
+	VpcId int    `pulumi:"vpcId"`
+	// (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
 	VpcSubnets []GetVpcSubnetsVpcSubnet `pulumi:"vpcSubnets"`
 }
 
@@ -104,7 +105,7 @@ type GetVpcSubnetsOutputArgs struct {
 	Filters GetVpcSubnetsFilterArrayInput `pulumi:"filters"`
 	// The id of the parent VPC for the list of VPCs.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
 	VpcId pulumi.IntInput `pulumi:"vpcId"`
 }
 
@@ -131,7 +132,7 @@ func (o GetVpcSubnetsResultOutput) Filters() GetVpcSubnetsFilterArrayOutput {
 	return o.ApplyT(func(v GetVpcSubnetsResult) []GetVpcSubnetsFilter { return v.Filters }).(GetVpcSubnetsFilterArrayOutput)
 }
 
-// ID of a managed database assigned to the VPC Subnet.
+// ID of a NodeBalancer assigned to the VPC Subnet.
 func (o GetVpcSubnetsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcSubnetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -140,6 +141,7 @@ func (o GetVpcSubnetsResultOutput) VpcId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVpcSubnetsResult) int { return v.VpcId }).(pulumi.IntOutput)
 }
 
+// (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
 func (o GetVpcSubnetsResultOutput) VpcSubnets() GetVpcSubnetsVpcSubnetArrayOutput {
 	return o.ApplyT(func(v GetVpcSubnetsResult) []GetVpcSubnetsVpcSubnet { return v.VpcSubnets }).(GetVpcSubnetsVpcSubnetArrayOutput)
 }

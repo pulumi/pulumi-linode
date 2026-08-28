@@ -268,7 +268,7 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[_builtins.str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[_builtins.str] file_path: The path of the image file to be uploaded.
-        :param pulumi.Input['ImageImageSharingArgs'] image_sharing: Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input['ImageImageSharingArgs'] image_sharing: (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         :param pulumi.Input[_builtins.bool] is_public: True if the Image is public.
         :param pulumi.Input[_builtins.bool] is_shared: True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
@@ -279,7 +279,7 @@ class _ImageState:
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]] replications: A list of image replications region and corresponding status.
+        :param pulumi.Input[Sequence[pulumi.Input['ImageReplicationArgs']]] replications: (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         :param pulumi.Input[_builtins.int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[_builtins.str] status: The status of an image replica.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.
@@ -467,7 +467,7 @@ class _ImageState:
     @pulumi.getter(name="imageSharing")
     def image_sharing(self) -> pulumi.Input[Optional['ImageImageSharingArgs']]:
         """
-        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         """
         return pulumi.get(self, "image_sharing")
 
@@ -555,7 +555,7 @@ class _ImageState:
     @pulumi.getter
     def replications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageReplicationArgs']]]]:
         """
-        A list of image replications region and corresponding status.
+        (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         """
         return pulumi.get(self, "replications")
 
@@ -703,49 +703,11 @@ class Image(pulumi.CustomResource):
                 "image-tag",
                 "test",
             ])
-        bar_based = linode.Instance("bar_based",
+        bar_based = linode.Instance("barBased",
             type=foo.type,
             region="eu-west",
             image=bar.id)
         ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-        import pulumi_std as std
-
-        foobar = linode.Image("foobar",
-            label="foobar-image",
-            description="An image uploaded from Terraform!",
-            region="us-southeast",
-            tags=[
-                "image-tag",
-                "test",
-            ],
-            file_path="path/to/image.img.gz",
-            file_hash=std.filemd5(input="path/to/image.img.gz").result)
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-        import pulumi_std as std
-
-        foobar = linode.Image("foobar",
-            label="foobar-image",
-            description="An image uploaded from Terraform!",
-            region="us-southeast",
-            tags=[
-                "image-tag",
-                "test",
-            ],
-            file_path="path/to/image.img.gz",
-            file_hash=std.filemd5(input="path/to/image.img.gz").result,
-            replica_regions=[
-                "us-southeast",
-                "us-east",
-                "eu-west",
-            ])
-        ```
-
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -806,49 +768,11 @@ class Image(pulumi.CustomResource):
                 "image-tag",
                 "test",
             ])
-        bar_based = linode.Instance("bar_based",
+        bar_based = linode.Instance("barBased",
             type=foo.type,
             region="eu-west",
             image=bar.id)
         ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-        import pulumi_std as std
-
-        foobar = linode.Image("foobar",
-            label="foobar-image",
-            description="An image uploaded from Terraform!",
-            region="us-southeast",
-            tags=[
-                "image-tag",
-                "test",
-            ],
-            file_path="path/to/image.img.gz",
-            file_hash=std.filemd5(input="path/to/image.img.gz").result)
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-        import pulumi_std as std
-
-        foobar = linode.Image("foobar",
-            label="foobar-image",
-            description="An image uploaded from Terraform!",
-            region="us-southeast",
-            tags=[
-                "image-tag",
-                "test",
-            ],
-            file_path="path/to/image.img.gz",
-            file_hash=std.filemd5(input="path/to/image.img.gz").result,
-            replica_regions=[
-                "us-southeast",
-                "us-east",
-                "eu-west",
-            ])
-        ```
-
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -975,7 +899,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[_builtins.str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[_builtins.str] file_path: The path of the image file to be uploaded.
-        :param pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']] image_sharing: Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        :param pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']] image_sharing: (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         :param pulumi.Input[_builtins.bool] is_public: True if the Image is public.
         :param pulumi.Input[_builtins.bool] is_shared: True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
@@ -986,7 +910,7 @@ class Image(pulumi.CustomResource):
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]] replications: A list of image replications region and corresponding status.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]] replications: (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         :param pulumi.Input[_builtins.int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[_builtins.str] status: The status of an image replica.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.
@@ -1113,7 +1037,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="imageSharing")
     def image_sharing(self) -> pulumi.Output['outputs.ImageImageSharing']:
         """
-        Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         """
         return pulumi.get(self, "image_sharing")
 
@@ -1173,7 +1097,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter
     def replications(self) -> pulumi.Output[Sequence['outputs.ImageReplication']]:
         """
-        A list of image replications region and corresponding status.
+        (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         """
         return pulumi.get(self, "replications")
 

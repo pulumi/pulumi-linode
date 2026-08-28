@@ -21,7 +21,6 @@ class AccountSettingsArgs:
     def __init__(__self__, *,
                  backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
-                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_helper: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -29,7 +28,6 @@ class AccountSettingsArgs:
 
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         :param pulumi.Input[_builtins.str] interfaces_for_new_linodes: Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
-        :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         :param pulumi.Input[_builtins.str] maintenance_policy: The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         :param pulumi.Input[_builtins.bool] network_helper: Enables network helper across all users by default for new Linodes and Linode Configs.
         """
@@ -37,8 +35,6 @@ class AccountSettingsArgs:
             pulumi.set(__self__, "backups_enabled", backups_enabled)
         if interfaces_for_new_linodes is not None:
             pulumi.set(__self__, "interfaces_for_new_linodes", interfaces_for_new_linodes)
-        if longview_subscription is not None:
-            pulumi.set(__self__, "longview_subscription", longview_subscription)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if network_helper is not None:
@@ -67,18 +63,6 @@ class AccountSettingsArgs:
     @interfaces_for_new_linodes.setter
     def interfaces_for_new_linodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interfaces_for_new_linodes", value)
-
-    @_builtins.property
-    @pulumi.getter(name="longviewSubscription")
-    def longview_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-        """
-        return pulumi.get(self, "longview_subscription")
-
-    @longview_subscription.setter
-    def longview_subscription(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "longview_subscription", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
@@ -120,7 +104,7 @@ class _AccountSettingsState:
 
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         :param pulumi.Input[_builtins.str] interfaces_for_new_linodes: Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
-        :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+        :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to.
         :param pulumi.Input[_builtins.str] maintenance_policy: The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         :param pulumi.Input[_builtins.bool] managed: Enables monitoring for connectivity, response, and total request time.
         :param pulumi.Input[_builtins.bool] network_helper: Enables network helper across all users by default for new Linodes and Linode Configs.
@@ -169,7 +153,7 @@ class _AccountSettingsState:
     @pulumi.getter(name="longviewSubscription")
     def longview_subscription(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+        The Longview Pro tier you are currently subscribed to.
         """
         return pulumi.get(self, "longview_subscription")
 
@@ -234,7 +218,6 @@ class AccountSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
-                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -250,14 +233,14 @@ class AccountSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        myaccount = linode.AccountSettings("myaccount",
-            longview_subscription="longview-40",
-            backups_enabled=True)
+        myaccount = linode.AccountSettings("myaccount", backups_enabled=True)
         ```
 
         ## Additional Results
 
         * `managed` - Enables monitoring for connectivity, response, and total request time.
+
+        * `longview_subscription` - (Deprecated) The Longview Pro tier you are currently subscribed to.
 
         * `object_storage` - A string describing the status of this account’s Object Storage service enrollment.
 
@@ -266,7 +249,6 @@ class AccountSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         :param pulumi.Input[_builtins.str] interfaces_for_new_linodes: Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
-        :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
         :param pulumi.Input[_builtins.str] maintenance_policy: The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         :param pulumi.Input[_builtins.bool] network_helper: Enables network helper across all users by default for new Linodes and Linode Configs.
         """
@@ -288,14 +270,14 @@ class AccountSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        myaccount = linode.AccountSettings("myaccount",
-            longview_subscription="longview-40",
-            backups_enabled=True)
+        myaccount = linode.AccountSettings("myaccount", backups_enabled=True)
         ```
 
         ## Additional Results
 
         * `managed` - Enables monitoring for connectivity, response, and total request time.
+
+        * `longview_subscription` - (Deprecated) The Longview Pro tier you are currently subscribed to.
 
         * `object_storage` - A string describing the status of this account’s Object Storage service enrollment.
 
@@ -317,7 +299,6 @@ class AccountSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  interfaces_for_new_linodes: pulumi.Input[Optional[_builtins.str]] = None,
-                 longview_subscription: pulumi.Input[Optional[_builtins.str]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
@@ -331,9 +312,9 @@ class AccountSettings(pulumi.CustomResource):
 
             __props__.__dict__["backups_enabled"] = backups_enabled
             __props__.__dict__["interfaces_for_new_linodes"] = interfaces_for_new_linodes
-            __props__.__dict__["longview_subscription"] = longview_subscription
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["network_helper"] = network_helper
+            __props__.__dict__["longview_subscription"] = None
             __props__.__dict__["managed"] = None
             __props__.__dict__["object_storage"] = None
         super(AccountSettings, __self__).__init__(
@@ -362,7 +343,7 @@ class AccountSettings(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] backups_enabled: The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
         :param pulumi.Input[_builtins.str] interfaces_for_new_linodes: Type of interfaces for new Linode instances. Available values are `"legacy_config_only"`, `"legacy_config_default_but_linode_allowed"`, `"linode_default_but_legacy_config_allowed"`, and `"linode_only"`.
-        :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+        :param pulumi.Input[_builtins.str] longview_subscription: The Longview Pro tier you are currently subscribed to.
         :param pulumi.Input[_builtins.str] maintenance_policy: The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         :param pulumi.Input[_builtins.bool] managed: Enables monitoring for connectivity, response, and total request time.
         :param pulumi.Input[_builtins.bool] network_helper: Enables network helper across all users by default for new Linodes and Linode Configs.
@@ -401,7 +382,7 @@ class AccountSettings(pulumi.CustomResource):
     @pulumi.getter(name="longviewSubscription")
     def longview_subscription(self) -> pulumi.Output[_builtins.str]:
         """
-        The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+        The Longview Pro tier you are currently subscribed to.
         """
         return pulumi.get(self, "longview_subscription")
 

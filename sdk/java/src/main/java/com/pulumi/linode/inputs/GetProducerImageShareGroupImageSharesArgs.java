@@ -27,9 +27,17 @@ public final class GetProducerImageShareGroupImageSharesArgs extends com.pulumi.
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * (Block List) The Image Shares returned by this data source.
+     * 
+     */
     @Import(name="imageShares")
     private @Nullable Output<List<GetProducerImageShareGroupImageSharesImageShareArgs>> imageShares;
 
+    /**
+     * @return (Block List) The Image Shares returned by this data source.
+     * 
+     */
     public Optional<Output<List<GetProducerImageShareGroupImageSharesImageShareArgs>>> imageShares() {
         return Optional.ofNullable(this.imageShares);
     }
@@ -51,7 +59,7 @@ public final class GetProducerImageShareGroupImageSharesArgs extends com.pulumi.
     /**
      * The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     @Import(name="sharegroupId", required=true)
@@ -60,7 +68,7 @@ public final class GetProducerImageShareGroupImageSharesArgs extends com.pulumi.
     /**
      * @return The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     public Output<Integer> sharegroupId() {
@@ -108,15 +116,33 @@ public final class GetProducerImageShareGroupImageSharesArgs extends com.pulumi.
             return filters(List.of(filters));
         }
 
+        /**
+         * @param imageShares (Block List) The Image Shares returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(@Nullable Output<List<GetProducerImageShareGroupImageSharesImageShareArgs>> imageShares) {
             $.imageShares = imageShares;
             return this;
         }
 
+        /**
+         * @param imageShares (Block List) The Image Shares returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(List<GetProducerImageShareGroupImageSharesImageShareArgs> imageShares) {
             return imageShares(Output.of(imageShares));
         }
 
+        /**
+         * @param imageShares (Block List) The Image Shares returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(GetProducerImageShareGroupImageSharesImageShareArgs... imageShares) {
             return imageShares(List.of(imageShares));
         }
@@ -142,7 +168,7 @@ public final class GetProducerImageShareGroupImageSharesArgs extends com.pulumi.
         /**
          * @param sharegroupId The ID of the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 
@@ -155,7 +181,7 @@ public final class GetProducerImageShareGroupImageSharesArgs extends com.pulumi.
         /**
          * @param sharegroupId The ID of the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 

@@ -9,25 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * ### Uploading a file to a bucket
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- * import * as std from "@pulumi/std";
- *
- * const object = new linode.ObjectStorageObject("object", {
- *     bucket: "my-bucket",
- *     region: "us-mia",
- *     key: "my-object",
- *     secretKey: myKey.secretKey,
- *     accessKey: myKey.accessKey,
- *     source: std.pathexpand({
- *         input: "~/files/log.txt",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
  * ### Uploading plaintext to a bucket
  *
  * ```typescript
@@ -38,28 +19,11 @@ import * as utilities from "./utilities";
  *     bucket: "my-bucket",
  *     region: "us-mia",
  *     key: "my-object",
- *     secretKey: myKey.secretKey,
- *     accessKey: myKey.accessKey,
+ *     secretKey: linode_object_storage_key.my_key.secret_key,
+ *     accessKey: linode_object_storage_key.my_key.access_key,
  *     content: "This is the content of the Object...",
  *     contentType: "text/plain",
  *     contentLanguage: "en",
- * });
- * ```
- *
- * ### Creating an object using implicitly created object credentials
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- * import * as std from "@pulumi/std";
- *
- * const object = new linode.ObjectStorageObject("object", {
- *     bucket: "my-bucket",
- *     region: "us-mia",
- *     key: "my-object",
- *     source: std.pathexpand({
- *         input: "~/files/log.txt",
- *     }).then(invoke => invoke.result),
  * });
  * ```
  */
@@ -110,12 +74,6 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     declare public readonly cacheControl: pulumi.Output<string | undefined>;
     /**
-     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     *
-     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     */
-    declare public readonly cluster: pulumi.Output<string | undefined>;
-    /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
     declare public readonly content: pulumi.Output<string | undefined>;
@@ -160,9 +118,9 @@ export class ObjectStorageObject extends pulumi.CustomResource {
      */
     declare public readonly metadata: pulumi.Output<{[key: string]: string}>;
     /**
-     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * The region the bucket is in.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
      * * configuring the `objSecretKey` in the provider configuration;
@@ -199,7 +157,6 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             resourceInputs["acl"] = state?.acl;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["cacheControl"] = state?.cacheControl;
-            resourceInputs["cluster"] = state?.cluster;
             resourceInputs["content"] = state?.content;
             resourceInputs["contentBase64"] = state?.contentBase64;
             resourceInputs["contentDisposition"] = state?.contentDisposition;
@@ -224,11 +181,13 @@ export class ObjectStorageObject extends pulumi.CustomResource {
             if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
+            if (args?.region === undefined && !opts.urn) {
+                throw new Error("Missing required property 'region'");
+            }
             resourceInputs["accessKey"] = args?.accessKey;
             resourceInputs["acl"] = args?.acl;
             resourceInputs["bucket"] = args?.bucket;
             resourceInputs["cacheControl"] = args?.cacheControl;
-            resourceInputs["cluster"] = args?.cluster;
             resourceInputs["content"] = args?.content;
             resourceInputs["contentBase64"] = args?.contentBase64;
             resourceInputs["contentDisposition"] = args?.contentDisposition;
@@ -276,12 +235,6 @@ export interface ObjectStorageObjectState {
      */
     cacheControl?: pulumi.Input<string | undefined>;
     /**
-     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     *
-     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     */
-    cluster?: pulumi.Input<string | undefined>;
-    /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
     content?: pulumi.Input<string | undefined>;
@@ -326,7 +279,7 @@ export interface ObjectStorageObjectState {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * The region the bucket is in.
      */
     region?: pulumi.Input<string | undefined>;
     /**
@@ -372,12 +325,6 @@ export interface ObjectStorageObjectArgs {
      */
     cacheControl?: pulumi.Input<string | undefined>;
     /**
-     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     *
-     * @deprecated The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     */
-    cluster?: pulumi.Input<string | undefined>;
-    /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
     content?: pulumi.Input<string | undefined>;
@@ -422,9 +369,9 @@ export interface ObjectStorageObjectArgs {
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * The region the bucket is in.
      */
-    region?: pulumi.Input<string | undefined>;
+    region: pulumi.Input<string>;
     /**
      * The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
      * * configuring the `objSecretKey` in the provider configuration;

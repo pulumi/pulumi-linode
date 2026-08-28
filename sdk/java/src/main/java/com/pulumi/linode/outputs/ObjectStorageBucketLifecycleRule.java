@@ -19,9 +19,9 @@ public final class ObjectStorageBucketLifecycleRule {
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
-     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * * `expiration` - (Optional, Block) Specifies a period in the object&#39;s expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
      * 
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
      * 
      */
     private @Nullable Integer abortIncompleteMultipartUploadDays;
@@ -55,9 +55,9 @@ public final class ObjectStorageBucketLifecycleRule {
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
-     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * * `expiration` - (Optional, Block) Specifies a period in the object&#39;s expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
      * 
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
      * 
      */
     public Optional<Integer> abortIncompleteMultipartUploadDays() {

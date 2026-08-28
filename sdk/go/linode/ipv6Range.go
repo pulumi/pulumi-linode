@@ -33,17 +33,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobar, err := linode.NewInstance(ctx, "foobar", &linode.InstanceArgs{
+//			foobarInstance, err := linode.NewInstance(ctx, "foobarInstance", &linode.InstanceArgs{
 //				Label:  pulumi.String("my-linode"),
-//				Image:  pulumi.String("linode/alpine3.19"),
+//				Image:  pulumi.String("linode/arch"),
 //				Type:   pulumi.String("g6-nanode-1"),
 //				Region: pulumi.String("us-southeast"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewIpv6Range(ctx, "foobar", &linode.Ipv6RangeArgs{
-//				LinodeId:     foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//			_, err = linode.NewIpv6Range(ctx, "foobarIpv6Range", &linode.Ipv6RangeArgs{
+//				LinodeId:     foobarInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				PrefixLength: pulumi.Int(64),
 //			})
 //			if err != nil {

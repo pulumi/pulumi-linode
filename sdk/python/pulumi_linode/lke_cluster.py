@@ -40,13 +40,13 @@ class LkeClusterArgs:
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
-               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
                
-               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+               * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -105,9 +105,9 @@ class LkeClusterArgs:
         """
         This Kubernetes cluster's location.
 
-        * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 
-        * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         """
         return pulumi.get(self, "region")
 
@@ -155,7 +155,7 @@ class LkeClusterArgs:
     @pulumi.getter
     def pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
         """
-        Additional nested attributes:
+        (Block List) Additional nested attributes:
         """
         return pulumi.get(self, "pools")
 
@@ -230,7 +230,6 @@ class _LkeClusterState:
                  api_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  control_plane: pulumi.Input[Optional['LkeClusterControlPlaneArgs']] = None,
-                 dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
                  external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
@@ -249,17 +248,16 @@ class _LkeClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[_builtins.str] dashboard_url: The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
-               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
                
-               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+               * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
@@ -273,8 +271,6 @@ class _LkeClusterState:
             pulumi.set(__self__, "apl_enabled", apl_enabled)
         if control_plane is not None:
             pulumi.set(__self__, "control_plane", control_plane)
-        if dashboard_url is not None:
-            pulumi.set(__self__, "dashboard_url", dashboard_url)
         if external_pool_tags is not None:
             pulumi.set(__self__, "external_pool_tags", external_pool_tags)
         if k8s_version is not None:
@@ -337,18 +333,6 @@ class _LkeClusterState:
         pulumi.set(self, "control_plane", value)
 
     @_builtins.property
-    @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        """
-        return pulumi.get(self, "dashboard_url")
-
-    @dashboard_url.setter
-    def dashboard_url(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "dashboard_url", value)
-
-    @_builtins.property
     @pulumi.getter(name="externalPoolTags")
     def external_pool_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -400,7 +384,7 @@ class _LkeClusterState:
     @pulumi.getter
     def pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
         """
-        Additional nested attributes:
+        (Block List) Additional nested attributes:
         """
         return pulumi.get(self, "pools")
 
@@ -414,9 +398,9 @@ class _LkeClusterState:
         """
         This Kubernetes cluster's location.
 
-        * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 
-        * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         """
         return pulumi.get(self, "region")
 
@@ -527,137 +511,159 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "count": 3,
-            }])
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            label="lke-e-cluster",
-            region="us-lax",
             k8s_version="v1.31.8+lke5",
-            tags=["test"],
-            tier="enterprise",
+            label="lke-e-cluster",
             pools=[{
-                "type": "g7-premium-2",
                 "count": 3,
                 "tags": ["test"],
-            }])
+                "type": "g7-premium-2",
+            }],
+            region="us-lax",
+            tags=["test"],
+            tier="enterprise")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "autoscaler": {
-                    "min": 3,
                     "max": 10,
+                    "min": 3,
                 },
-            }])
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            label="my-cluster",
-            k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
             control_plane={
-                "high_availability": True,
                 "acl": {
-                    "enabled": True,
                     "addresses": [{
-                        "ipv4s": ["0.0.0.0/0"],
-                        "ipv6s": ["2001:db8::/32"],
+                        "ipv4": ["0.0.0.0/0"],
+                        "ipv6": ["2001:db8::/32"],
                     }],
+                    "enabled": True,
                 },
+                "high_availability": True,
             },
+            k8s_version="1.32",
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "count": 1,
-            }])
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[
                 {
-                    "type": "g6-standard-2",
                     "count": 2,
                     "label": "db-pool",
+                    "type": "g6-standard-2",
                 },
                 {
-                    "type": "g6-standard-1",
                     "count": 3,
                     "label": "app-pool",
+                    "type": "g6-standard-1",
                 },
-            ])
+            ],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "count": 2,
-                "label": "db-pool",
                 "firewall_id": 12345,
-            }])
+                "label": "db-pool",
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[
                 {
-                    "type": "g6-standard-2",
                     "count": 2,
                     "labels": {
-                        "role": "database",
                         "environment": "production",
+                        "role": "database",
                     },
+                    "type": "g6-standard-2",
                 },
                 {
-                    "type": "g6-standard-1",
                     "count": 3,
                     "labels": {
-                        "role": "application",
                         "environment": "production",
+                        "role": "application",
                     },
+                    "type": "g6-standard-1",
                 },
-            ])
+            ],
+            region="us-central",
+            tags=["prod"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            k8s_version="1.32",
+            label="my-cluster",
+            pools=[
+                {
+                    "count": 2,
+                    "disk_encryption": "enabled",
+                    "type": "g6-standard-2",
+                },
+                {
+                    "count": 1,
+                    "disk_encryption": "disabled",
+                    "type": "g6-standard-1",
+                },
+            ],
+            region="us-central",
+            tags=["prod"])
         ```
 
         ## Nested Node Pool Caveats
@@ -672,12 +678,12 @@ class LkeCluster(pulumi.CustomResource):
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[
             {
-                "type": "g6-standard-1",
                 "count": 2,
+                "type": "g6-standard-1",
             },
             {
-                "type": "g6-standard-2",
                 "count": 3,
+                "type": "g6-standard-2",
             },
         ])
         ```
@@ -686,8 +692,8 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[{
-            "type": "g6-standard-2",
             "count": 3,
+            "type": "g6-standard-2",
         }])
         ```
         ## Externally Managed Node Pools
@@ -734,12 +740,12 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]] pools: Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
-               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
                
-               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+               * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
@@ -763,137 +769,159 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "count": 3,
-            }])
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            label="lke-e-cluster",
-            region="us-lax",
             k8s_version="v1.31.8+lke5",
-            tags=["test"],
-            tier="enterprise",
+            label="lke-e-cluster",
             pools=[{
-                "type": "g7-premium-2",
                 "count": 3,
                 "tags": ["test"],
-            }])
+                "type": "g7-premium-2",
+            }],
+            region="us-lax",
+            tags=["test"],
+            tier="enterprise")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "autoscaler": {
-                    "min": 3,
                     "max": 10,
+                    "min": 3,
                 },
-            }])
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            label="my-cluster",
-            k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
             control_plane={
-                "high_availability": True,
                 "acl": {
-                    "enabled": True,
                     "addresses": [{
-                        "ipv4s": ["0.0.0.0/0"],
-                        "ipv6s": ["2001:db8::/32"],
+                        "ipv4": ["0.0.0.0/0"],
+                        "ipv6": ["2001:db8::/32"],
                     }],
+                    "enabled": True,
                 },
+                "high_availability": True,
             },
+            k8s_version="1.32",
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "count": 1,
-            }])
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[
                 {
-                    "type": "g6-standard-2",
                     "count": 2,
                     "label": "db-pool",
+                    "type": "g6-standard-2",
                 },
                 {
-                    "type": "g6-standard-1",
                     "count": 3,
                     "label": "app-pool",
+                    "type": "g6-standard-1",
                 },
-            ])
+            ],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[{
-                "type": "g6-standard-2",
                 "count": 2,
-                "label": "db-pool",
                 "firewall_id": 12345,
-            }])
+                "label": "db-pool",
+                "type": "g6-standard-2",
+            }],
+            region="us-central",
+            tags=["prod"])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            label="my-cluster",
             k8s_version="1.32",
-            region="us-central",
-            tags=["prod"],
+            label="my-cluster",
             pools=[
                 {
-                    "type": "g6-standard-2",
                     "count": 2,
                     "labels": {
-                        "role": "database",
                         "environment": "production",
+                        "role": "database",
                     },
+                    "type": "g6-standard-2",
                 },
                 {
-                    "type": "g6-standard-1",
                     "count": 3,
                     "labels": {
-                        "role": "application",
                         "environment": "production",
+                        "role": "application",
                     },
+                    "type": "g6-standard-1",
                 },
-            ])
+            ],
+            region="us-central",
+            tags=["prod"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_cluster = linode.LkeCluster("my-cluster",
+            k8s_version="1.32",
+            label="my-cluster",
+            pools=[
+                {
+                    "count": 2,
+                    "disk_encryption": "enabled",
+                    "type": "g6-standard-2",
+                },
+                {
+                    "count": 1,
+                    "disk_encryption": "disabled",
+                    "type": "g6-standard-1",
+                },
+            ],
+            region="us-central",
+            tags=["prod"])
         ```
 
         ## Nested Node Pool Caveats
@@ -908,12 +936,12 @@ class LkeCluster(pulumi.CustomResource):
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[
             {
-                "type": "g6-standard-1",
                 "count": 2,
+                "type": "g6-standard-1",
             },
             {
-                "type": "g6-standard-2",
                 "count": 3,
+                "type": "g6-standard-2",
             },
         ])
         ```
@@ -922,8 +950,8 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[{
-            "type": "g6-standard-2",
             "count": 3,
+            "type": "g6-standard-2",
         }])
         ```
         ## Externally Managed Node Pools
@@ -1018,7 +1046,6 @@ class LkeCluster(pulumi.CustomResource):
             __props__.__dict__["tier"] = tier
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["api_endpoints"] = None
-            __props__.__dict__["dashboard_url"] = None
             __props__.__dict__["kubeconfig"] = None
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["kubeconfig"])
@@ -1036,7 +1063,6 @@ class LkeCluster(pulumi.CustomResource):
             api_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
-            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
             external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
             kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1059,17 +1085,16 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']] control_plane: Defines settings for the Kubernetes Control Plane.
-        :param pulumi.Input[_builtins.str] dashboard_url: The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]] pools: Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
-               * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+               * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
                
-               * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+               * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
@@ -1084,7 +1109,6 @@ class LkeCluster(pulumi.CustomResource):
         __props__.__dict__["api_endpoints"] = api_endpoints
         __props__.__dict__["apl_enabled"] = apl_enabled
         __props__.__dict__["control_plane"] = control_plane
-        __props__.__dict__["dashboard_url"] = dashboard_url
         __props__.__dict__["external_pool_tags"] = external_pool_tags
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["kubeconfig"] = kubeconfig
@@ -1124,14 +1148,6 @@ class LkeCluster(pulumi.CustomResource):
         return pulumi.get(self, "control_plane")
 
     @_builtins.property
-    @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> pulumi.Output[_builtins.str]:
-        """
-        The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        """
-        return pulumi.get(self, "dashboard_url")
-
-    @_builtins.property
     @pulumi.getter(name="externalPoolTags")
     def external_pool_tags(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
@@ -1167,7 +1183,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter
     def pools(self) -> pulumi.Output[Optional[Sequence['outputs.LkeClusterPool']]]:
         """
-        Additional nested attributes:
+        (Block List) Additional nested attributes:
         """
         return pulumi.get(self, "pools")
 
@@ -1177,9 +1193,9 @@ class LkeCluster(pulumi.CustomResource):
         """
         This Kubernetes cluster's location.
 
-        * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 
-        * `control_plane` (Optional) Defines settings for the Kubernetes Control Plane.
+        * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         """
         return pulumi.get(self, "region")
 

@@ -30,9 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewProducerImageShareGroupMember(ctx, "example", &linode.ProducerImageShareGroupMemberArgs{
+//				Label:        pulumi.String("example-member"),
 //				SharegroupId: pulumi.Int(12345),
 //				Token:        pulumi.String("abcdefghijklmnopqrstuvwxyz0123456789"),
-//				Label:        pulumi.String("example-member"),
 //			})
 //			if err != nil {
 //				return err

@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class InterfaceVpc
     {
         /// <summary>
-        /// IPv4 configuration for the VPC interface.
+        /// IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
         /// </summary>
         public readonly Outputs.InterfaceVpcIpv4? Ipv4;
         /// <summary>
-        /// IPv6 assigned through `Slaac` and `Ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `Slaac` or `Ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        /// IPv6 assigned through `Slaac` and `Ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `Slaac` or `Ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
         /// </summary>
         public readonly Outputs.InterfaceVpcIpv6? Ipv6;
         /// <summary>

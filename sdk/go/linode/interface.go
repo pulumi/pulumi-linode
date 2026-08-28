@@ -39,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInterface(ctx, "public", &linode.InterfaceArgs{
-//				LinodeId: pulumi.Any(my_instance.Id),
+//				LinodeId: pulumi.Any(linode_instance.MyInstance.Id),
 //				Public: &linode.InterfacePublicArgs{
 //					Ipv4: &linode.InterfacePublicIpv4Args{
 //						Addresses: linode.InterfacePublicIpv4AddressArray{
@@ -83,8 +83,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInterface(ctx, "ipv6_only", &linode.InterfaceArgs{
-//				LinodeId: pulumi.Any(my_instance.Id),
+//			_, err := linode.NewInterface(ctx, "ipv6Only", &linode.InterfaceArgs{
+//				LinodeId: pulumi.Any(linode_instance.MyInstance.Id),
 //				Public: &linode.InterfacePublicArgs{
 //					Ipv4: &linode.InterfacePublicIpv4Args{
 //						Addresses: linode.InterfacePublicIpv4AddressArray{},
@@ -124,9 +124,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInterface(ctx, "vpc", &linode.InterfaceArgs{
-//				LinodeId: pulumi.Any(my_instance.Id),
+//				LinodeId: pulumi.Any(linode_instance.MyInstance.Id),
 //				Vpc: &linode.InterfaceVpcArgs{
-//					SubnetId: pulumi.Int(240213),
+//					Subnet_id: 240213,
 //					Ipv4: &linode.InterfaceVpcIpv4Args{
 //						Addresses: linode.InterfaceVpcIpv4AddressArray{
 //							&linode.InterfaceVpcIpv4AddressArgs{
@@ -167,14 +167,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInterface(ctx, "vpc", &linode.InterfaceArgs{
-//				LinodeId: pulumi.Any(my_instance.Id),
+//				LinodeId: pulumi.Any(linode_instance.MyInstance.Id),
 //				Vpc: &linode.InterfaceVpcArgs{
-//					SubnetId: pulumi.Int(12345),
+//					Subnet_id: 12345,
 //					Ipv6: &linode.InterfaceVpcIpv6Args{
 //						IsPublic: pulumi.Bool(true),
-//						Slaacs: linode.InterfaceVpcIpv6SlaacArray{
-//							&linode.InterfaceVpcIpv6SlaacArgs{
-//								Range: pulumi.String("auto"),
+//						Slaac: []map[string]string{
+//							{
+//								"range": "auto",
 //							},
 //						},
 //						Ranges: linode.InterfaceVpcIpv6RangeArray{
@@ -211,10 +211,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewInterface(ctx, "vlan", &linode.InterfaceArgs{
-//				LinodeId: pulumi.Any(web.Id),
+//				LinodeId: pulumi.Any(linode_instance.Web.Id),
 //				Vlan: &linode.InterfaceVlanArgs{
-//					VlanLabel:   pulumi.String("web-vlan"),
-//					IpamAddress: pulumi.String("192.168.200.5/24"),
+//					Vlan_label:   "web-vlan",
+//					Ipam_address: "192.168.200.5/24",
 //				},
 //			})
 //			if err != nil {
@@ -326,17 +326,17 @@ import (
 type Interface struct {
 	pulumi.CustomResourceState
 
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute InterfaceDefaultRouteOutput `pulumi:"defaultRoute"`
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
 	// The ID of the Linode to assign this interface to.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
 	Public InterfacePublicPtrOutput `pulumi:"public"`
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan InterfaceVlanPtrOutput `pulumi:"vlan"`
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc InterfaceVpcPtrOutput `pulumi:"vpc"`
 }
 
@@ -373,32 +373,32 @@ func GetInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interface resources.
 type interfaceState struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute *InterfaceDefaultRoute `pulumi:"defaultRoute"`
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId *int `pulumi:"firewallId"`
 	// The ID of the Linode to assign this interface to.
 	LinodeId *int `pulumi:"linodeId"`
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
 	Public *InterfacePublic `pulumi:"public"`
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan *InterfaceVlan `pulumi:"vlan"`
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc *InterfaceVpc `pulumi:"vpc"`
 }
 
 type InterfaceState struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute InterfaceDefaultRoutePtrInput
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId pulumi.IntPtrInput
 	// The ID of the Linode to assign this interface to.
 	LinodeId pulumi.IntPtrInput
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
 	Public InterfacePublicPtrInput
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan InterfaceVlanPtrInput
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc InterfaceVpcPtrInput
 }
 
@@ -407,33 +407,33 @@ func (InterfaceState) ElementType() reflect.Type {
 }
 
 type interfaceArgs struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute *InterfaceDefaultRoute `pulumi:"defaultRoute"`
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId *int `pulumi:"firewallId"`
 	// The ID of the Linode to assign this interface to.
 	LinodeId int `pulumi:"linodeId"`
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
 	Public *InterfacePublic `pulumi:"public"`
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan *InterfaceVlan `pulumi:"vlan"`
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc *InterfaceVpc `pulumi:"vpc"`
 }
 
 // The set of arguments for constructing a Interface resource.
 type InterfaceArgs struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute InterfaceDefaultRoutePtrInput
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId pulumi.IntPtrInput
 	// The ID of the Linode to assign this interface to.
 	LinodeId pulumi.IntInput
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
 	Public InterfacePublicPtrInput
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan InterfaceVlanPtrInput
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc InterfaceVpcPtrInput
 }
 
@@ -524,7 +524,7 @@ func (o InterfaceOutput) ToInterfaceOutputWithContext(ctx context.Context) Inter
 	return o
 }
 
-// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 func (o InterfaceOutput) DefaultRoute() InterfaceDefaultRouteOutput {
 	return o.ApplyT(func(v *Interface) InterfaceDefaultRouteOutput { return v.DefaultRoute }).(InterfaceDefaultRouteOutput)
 }
@@ -539,17 +539,17 @@ func (o InterfaceOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Interface) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }
 
-// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
 func (o InterfaceOutput) Public() InterfacePublicPtrOutput {
 	return o.ApplyT(func(v *Interface) InterfacePublicPtrOutput { return v.Public }).(InterfacePublicPtrOutput)
 }
 
-// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
 func (o InterfaceOutput) Vlan() InterfaceVlanPtrOutput {
 	return o.ApplyT(func(v *Interface) InterfaceVlanPtrOutput { return v.Vlan }).(InterfaceVlanPtrOutput)
 }
 
-// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
 func (o InterfaceOutput) Vpc() InterfaceVpcPtrOutput {
 	return o.ApplyT(func(v *Interface) InterfaceVpcPtrOutput { return v.Vpc }).(InterfaceVpcPtrOutput)
 }

@@ -91,7 +91,7 @@ type GetNodebalancerConfigsArgs struct {
 	Filters []GetNodebalancerConfigsFilter `pulumi:"filters"`
 	// The ID of the NodeBalancer to access.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
 	NodebalancerId int `pulumi:"nodebalancerId"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -103,7 +103,8 @@ type GetNodebalancerConfigsArgs struct {
 type GetNodebalancerConfigsResult struct {
 	Filters []GetNodebalancerConfigsFilter `pulumi:"filters"`
 	// The config's ID.
-	Id                  string                                     `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The list of Linode NodeBalancer Configs.
 	NodebalancerConfigs []GetNodebalancerConfigsNodebalancerConfig `pulumi:"nodebalancerConfigs"`
 	// The ID of the NodeBalancer that contains the config.
 	NodebalancerId int     `pulumi:"nodebalancerId"`
@@ -121,7 +122,7 @@ type GetNodebalancerConfigsOutputArgs struct {
 	Filters GetNodebalancerConfigsFilterArrayInput `pulumi:"filters"`
 	// The ID of the NodeBalancer to access.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
 	NodebalancerId pulumi.IntInput `pulumi:"nodebalancerId"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
@@ -157,6 +158,7 @@ func (o GetNodebalancerConfigsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodebalancerConfigsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The list of Linode NodeBalancer Configs.
 func (o GetNodebalancerConfigsResultOutput) NodebalancerConfigs() GetNodebalancerConfigsNodebalancerConfigArrayOutput {
 	return o.ApplyT(func(v GetNodebalancerConfigsResult) []GetNodebalancerConfigsNodebalancerConfig {
 		return v.NodebalancerConfigs

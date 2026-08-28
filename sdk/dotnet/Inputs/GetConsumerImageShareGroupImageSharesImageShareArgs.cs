@@ -49,7 +49,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Details about image sharing, including who the image is shared with and by.
+        /// (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
         /// </summary>
         [Input("imageSharing", required: true)]
         public Input<Inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingInputArgs> ImageSharing { get; set; } = null!;

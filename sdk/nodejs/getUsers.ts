@@ -75,6 +75,9 @@ export interface GetUsersResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
+     */
     readonly users: outputs.GetUsersUser[];
 }
 /**

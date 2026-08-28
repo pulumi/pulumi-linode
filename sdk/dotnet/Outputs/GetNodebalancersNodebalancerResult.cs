@@ -30,7 +30,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// The Linode NodeBalancer's unique ID
+        /// The ID of the related LKE cluster.
         /// </summary>
         public readonly int Id;
         /// <summary>
@@ -42,9 +42,13 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Ipv6;
         /// <summary>
-        /// The label of the Linode NodeBalancer
+        /// The label of the related LKE cluster.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The related LKE cluster for this NodeBalancer, if any.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetNodebalancersNodebalancerLkeClusterResult> LkeClusters;
         /// <summary>
         /// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
         /// </summary>
@@ -80,6 +84,8 @@ namespace Pulumi.Linode.Outputs
 
             string label,
 
+            ImmutableArray<Outputs.GetNodebalancersNodebalancerLkeClusterResult> lkeClusters,
+
             string region,
 
             ImmutableArray<string> tags,
@@ -96,6 +102,7 @@ namespace Pulumi.Linode.Outputs
             Ipv4 = ipv4;
             Ipv6 = ipv6;
             Label = label;
+            LkeClusters = lkeClusters;
             Region = region;
             Tags = tags;
             Transfers = transfers;

@@ -35,7 +35,7 @@ public final class GetNodeBalancerFirewall {
      */
     private List<GetNodeBalancerFirewallInbound> inbounds;
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return The label of the related LKE cluster.
      * 
      */
     private String label;
@@ -95,7 +95,7 @@ public final class GetNodeBalancerFirewall {
         return this.inbounds;
     }
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return The label of the related LKE cluster.
      * 
      */
     public String label() {

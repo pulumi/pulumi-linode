@@ -22,6 +22,10 @@ public final class GetNodebalancerConfigsResult {
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The list of Linode NodeBalancer Configs.
+     * 
+     */
     private List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs;
     /**
      * @return The ID of the NodeBalancer that contains the config.
@@ -42,6 +46,10 @@ public final class GetNodebalancerConfigsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The list of Linode NodeBalancer Configs.
+     * 
+     */
     public List<GetNodebalancerConfigsNodebalancerConfig> nodebalancerConfigs() {
         return this.nodebalancerConfigs;
     }

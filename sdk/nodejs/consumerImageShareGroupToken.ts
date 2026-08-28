@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const example = new linode.ConsumerImageShareGroupToken("example", {
- *     validForSharegroupUuid: "03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
  *     label: "example-token",
+ *     validForSharegroupUuid: "03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
  * });
  * ```
  */

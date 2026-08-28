@@ -38,12 +38,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foo = new linode.Instance("foo", {
+ * const fooInstance = new linode.Instance("fooInstance", {
  *     region: "us-east",
  *     type: "g6-nanode-1",
  * });
- * const fooInstanceConfig = new linode.InstanceConfig("foo", {
- *     linodeId: foo.id.apply(x =>Number(x)),
+ * const fooInstanceConfig = new linode.InstanceConfig("fooInstanceConfig", {
+ *     linodeId: fooInstance.id.apply(x =>Number(x)),
  *     label: "boot-existing-volume",
  *     kernel: "linode/grub2",
  *     devices: [{
@@ -111,6 +111,10 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly filesystemPath: pulumi.Output<string>;
     /**
+     * Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     */
+    declare public /*out*/ readonly ioReady: pulumi.Output<boolean>;
+    /**
      * The label of the Linode Volume
      */
     declare public readonly label: pulumi.Output<string>;
@@ -157,6 +161,7 @@ export class Volume extends pulumi.CustomResource {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["encryption"] = state?.encryption;
             resourceInputs["filesystemPath"] = state?.filesystemPath;
+            resourceInputs["ioReady"] = state?.ioReady;
             resourceInputs["label"] = state?.label;
             resourceInputs["linodeId"] = state?.linodeId;
             resourceInputs["region"] = state?.region;
@@ -179,6 +184,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["filesystemPath"] = undefined /*out*/;
+            resourceInputs["ioReady"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -198,6 +204,10 @@ export interface VolumeState {
      * The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
      */
     filesystemPath?: pulumi.Input<string | undefined>;
+    /**
+     * Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     */
+    ioReady?: pulumi.Input<boolean | undefined>;
     /**
      * The label of the Linode Volume
      */

@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new StackScript("foo", StackScriptArgs.builder()
+ *         var fooStackScript = new StackScript("fooStackScript", StackScriptArgs.builder()
  *             .label("foo")
  *             .description("Installs a Package")
  *             .script("""
  * #!/bin/bash
- * # <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">
+ * # <UDF name="package" label="System Package to Install" example="nginx" default="">
  * apt-get -q update && apt-get -q -y install $PACKAGE
  *             """)
  *             .images(            
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .type("g6-nanode-1")
  *             .authorizedKeys("...")
  *             .rootPass("...")
- *             .stackscriptId(foo.id())
+ *             .stackscriptId(fooStackScript.id())
  *             .stackscriptData(Map.of("package", "nginx"))
  *             .build());
  * 
@@ -236,14 +236,14 @@ public class StackScript extends com.pulumi.resources.CustomResource {
         return this.updated;
     }
     /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      * 
      */
     @Export(name="userDefinedFields", refs={List.class,StackScriptUserDefinedField.class}, tree="[0,1]")
     private Output<List<StackScriptUserDefinedField>> userDefinedFields;
 
     /**
-     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * @return (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      * 
      */
     public Output<List<StackScriptUserDefinedField>> userDefinedFields() {

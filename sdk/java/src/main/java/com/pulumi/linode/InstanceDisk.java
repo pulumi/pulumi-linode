@@ -102,6 +102,48 @@ import javax.annotation.Nullable;
  *             .linodeId(my_instance.id())
  *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
  *             .image("linode/ubuntu22.04")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import com.pulumi.linode.InstanceDisk;
+ * import com.pulumi.linode.InstanceDiskArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
+ *             .label("my-instance")
+ *             .type("g6-standard-1")
+ *             .region("us-southeast")
+ *             .build());
+ * 
+ *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
+ *             .label("boot")
+ *             .linodeId(my_instance.id())
+ *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
+ *             .image("linode/ubuntu22.04")
  *             .rootPass("myc00lpass!")
  *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
  *             .stackscriptId(12345)
@@ -125,28 +167,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/instanceDisk:InstanceDisk")
 public class InstanceDisk extends com.pulumi.resources.CustomResource {
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     @Export(name="authorizedKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
-     * @return A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * @return A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     public Output<Optional<List<String>>> authorizedKeys() {
         return Codegen.optional(this.authorizedKeys);
     }
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     @Export(name="authorizedUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedUsers;
 
     /**
-     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     public Output<Optional<List<String>>> authorizedUsers() {
@@ -237,14 +279,14 @@ public class InstanceDisk extends com.pulumi.resources.CustomResource {
         return this.linodeId;
     }
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * The root user&#39;s password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     @Export(name="rootPass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rootPass;
 
     /**
-     * @return The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * @return The root user&#39;s password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     public Output<Optional<String>> rootPass() {

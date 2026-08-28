@@ -18,14 +18,14 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
     public static final VpcSubnetDatabaseArgs Empty = new VpcSubnetDatabaseArgs();
 
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public Output<Integer> id() {
@@ -33,14 +33,14 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * IPv4 range assigned to the database.
+     * IPv4 range assigned to the NodeBalancer.
      * 
      */
     @Import(name="ipv4Range", required=true)
     private Output<String> ipv4Range;
 
     /**
-     * @return IPv4 range assigned to the database.
+     * @return IPv4 range assigned to the NodeBalancer.
      * 
      */
     public Output<String> ipv4Range() {
@@ -48,14 +48,14 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A list of IPv6 ranges assigned to the database.
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      * 
      */
     @Import(name="ipv6Ranges", required=true)
     private Output<List<VpcSubnetDatabaseIpv6RangeArgs>> ipv6Ranges;
 
     /**
-     * @return A list of IPv6 ranges assigned to the database.
+     * @return (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      * 
      */
     public Output<List<VpcSubnetDatabaseIpv6RangeArgs>> ipv6Ranges() {
@@ -89,7 +89,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id ID of a managed database assigned to the VPC Subnet.
+         * @param id ID of a NodeBalancer assigned to the VPC Subnet.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param id ID of a managed database assigned to the VPC Subnet.
+         * @param id ID of a NodeBalancer assigned to the VPC Subnet.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv4Range IPv4 range assigned to the database.
+         * @param ipv4Range IPv4 range assigned to the NodeBalancer.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv4Range IPv4 range assigned to the database.
+         * @param ipv4Range IPv4 range assigned to the NodeBalancer.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv6Ranges A list of IPv6 ranges assigned to the database.
+         * @param ipv6Ranges (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv6Ranges A list of IPv6 ranges assigned to the database.
+         * @param ipv6Ranges (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class VpcSubnetDatabaseArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param ipv6Ranges A list of IPv6 ranges assigned to the database.
+         * @param ipv6Ranges (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
          * 
          * @return builder
          * 

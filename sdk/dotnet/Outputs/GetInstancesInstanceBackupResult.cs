@@ -21,6 +21,9 @@ namespace Pulumi.Linode.Outputs
         /// If this Linode has the Backup service enabled.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `schedule.0.day`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceBackupScheduleResult> Schedules;
 
         [OutputConstructor]

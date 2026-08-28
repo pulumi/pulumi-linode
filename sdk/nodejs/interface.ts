@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const _public = new linode.Interface("public", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: Number(linode_instance["my-instance"].id),
  *     "public": {
  *         ipv4: {
  *             addresses: [{
@@ -51,8 +51,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const ipv6Only = new linode.Interface("ipv6_only", {
- *     linodeId: Number(my_instance.id),
+ * const ipv6Only = new linode.Interface("ipv6Only", {
+ *     linodeId: Number(linode_instance["my-instance"].id),
  *     "public": {
  *         ipv4: {
  *             addresses: [],
@@ -75,9 +75,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: Number(linode_instance["my-instance"].id),
  *     vpc: {
- *         subnetId: 240213,
+ *         subnet_id: 240213,
  *         ipv4: {
  *             addresses: [{
  *                 address: "auto",
@@ -99,12 +99,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: Number(linode_instance["my-instance"].id),
  *     vpc: {
- *         subnetId: 12345,
+ *         subnet_id: 12345,
  *         ipv6: {
  *             isPublic: true,
- *             slaacs: [{
+ *             slaac: [{
  *                 range: "auto",
  *             }],
  *             ranges: [{
@@ -124,10 +124,10 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vlan = new linode.Interface("vlan", {
- *     linodeId: Number(web.id),
+ *     linodeId: Number(linode_instance.web.id),
  *     vlan: {
- *         vlanLabel: "web-vlan",
- *         ipamAddress: "192.168.200.5/24",
+ *         vlan_label: "web-vlan",
+ *         ipam_address: "192.168.200.5/24",
  *     },
  * });
  * ```
@@ -225,7 +225,7 @@ export class Interface extends pulumi.CustomResource {
     }
 
     /**
-     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      */
     declare public readonly defaultRoute: pulumi.Output<outputs.InterfaceDefaultRoute>;
     /**
@@ -237,15 +237,15 @@ export class Interface extends pulumi.CustomResource {
      */
     declare public readonly linodeId: pulumi.Output<number>;
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
      */
     declare public readonly public: pulumi.Output<outputs.InterfacePublic | undefined>;
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
      */
     declare public readonly vlan: pulumi.Output<outputs.InterfaceVlan | undefined>;
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
      */
     declare public readonly vpc: pulumi.Output<outputs.InterfaceVpc | undefined>;
 
@@ -290,7 +290,7 @@ export class Interface extends pulumi.CustomResource {
  */
 export interface InterfaceState {
     /**
-     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      */
     defaultRoute?: pulumi.Input<inputs.InterfaceDefaultRoute | undefined>;
     /**
@@ -302,15 +302,15 @@ export interface InterfaceState {
      */
     linodeId?: pulumi.Input<number | undefined>;
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
      */
     public?: pulumi.Input<inputs.InterfacePublic | undefined>;
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
      */
     vlan?: pulumi.Input<inputs.InterfaceVlan | undefined>;
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
      */
     vpc?: pulumi.Input<inputs.InterfaceVpc | undefined>;
 }
@@ -320,7 +320,7 @@ export interface InterfaceState {
  */
 export interface InterfaceArgs {
     /**
-     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      */
     defaultRoute?: pulumi.Input<inputs.InterfaceDefaultRoute | undefined>;
     /**
@@ -332,15 +332,15 @@ export interface InterfaceArgs {
      */
     linodeId: pulumi.Input<number>;
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
      */
     public?: pulumi.Input<inputs.InterfacePublic | undefined>;
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
      */
     vlan?: pulumi.Input<inputs.InterfaceVlan | undefined>;
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
      */
     vpc?: pulumi.Input<inputs.InterfaceVpc | undefined>;
 }

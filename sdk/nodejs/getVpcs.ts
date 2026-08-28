@@ -35,6 +35,14 @@ import * as utilities from "./utilities";
  *
  * * `range` - The allocated range in CIDR format.
  *
+ * ## IPv4
+ *
+ * > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+ *
+ * Contains information about a single IPv4 range under this VPC.
+ *
+ * * `range` - The IPv4 range in CIDR format.
+ *
  * ## Filterable Fields
  *
  * * `id`
@@ -69,6 +77,9 @@ export interface GetVpcsResult {
      * The unique id of this VPC.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The VPCs returned by this data source.
+     */
     readonly vpcs: outputs.GetVpcsVpc[];
 }
 /**
@@ -99,6 +110,14 @@ export interface GetVpcsResult {
  * Contains information about a single IPv6 allocation under a VPC.
  *
  * * `range` - The allocated range in CIDR format.
+ *
+ * ## IPv4
+ *
+ * > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+ *
+ * Contains information about a single IPv4 range under this VPC.
+ *
+ * * `range` - The IPv4 range in CIDR format.
  *
  * ## Filterable Fields
  *

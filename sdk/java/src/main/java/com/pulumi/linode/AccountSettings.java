@@ -45,7 +45,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myaccount = new AccountSettings("myaccount", AccountSettingsArgs.builder()
- *             .longviewSubscription("longview-40")
  *             .backupsEnabled(true)
  *             .build());
  * 
@@ -57,6 +56,8 @@ import javax.annotation.Nullable;
  * ## Additional Results
  * 
  * * `managed` - Enables monitoring for connectivity, response, and total request time.
+ * 
+ * * `longviewSubscription` - (Deprecated) The Longview Pro tier you are currently subscribed to.
  * 
  * * `objectStorage` - A string describing the status of this account’s Object Storage service enrollment.
  * 
@@ -92,14 +93,14 @@ public class AccountSettings extends com.pulumi.resources.CustomResource {
         return this.interfacesForNewLinodes;
     }
     /**
-     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+     * The Longview Pro tier you are currently subscribed to.
      * 
      */
     @Export(name="longviewSubscription", refs={String.class}, tree="[0]")
     private Output<String> longviewSubscription;
 
     /**
-     * @return The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+     * @return The Longview Pro tier you are currently subscribed to.
      * 
      */
     public Output<String> longviewSubscription() {

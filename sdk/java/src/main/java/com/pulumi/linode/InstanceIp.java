@@ -51,15 +51,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance("foo", InstanceArgs.builder()
- *             .image("linode/alpine3.19")
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
+ *             .image("linode/arch")
  *             .label("foobar-test")
  *             .type("g6-nanode-1")
  *             .region("us-east")
  *             .build());
  * 
  *         var fooInstanceIp = new InstanceIp("fooInstanceIp", InstanceIpArgs.builder()
- *             .linodeId(foo.id())
+ *             .linodeId(fooInstance.id())
  *             .public_(true)
  *             .build());
  * 
@@ -72,14 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/instanceIp:InstanceIp")
 public class InstanceIp extends com.pulumi.resources.CustomResource {
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      * 
      */
     @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
-     * @return The resulting IPv4 address.
+     * @return The VPC IPv4 address this address is NATted with.
      * 
      */
     public Output<String> address() {
@@ -212,14 +212,14 @@ public class InstanceIp extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     @Export(name="vpcNat11s", refs={List.class,InstanceIpVpcNat11.class}, tree="[0,1]")
     private Output<List<InstanceIpVpcNat11>> vpcNat11s;
 
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     public Output<List<InstanceIpVpcNat11>> vpcNat11s() {

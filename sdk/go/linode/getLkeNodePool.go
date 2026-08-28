@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetLkeNodePool(ctx, &linode.LookupLkeNodePoolArgs{
-//				Id:        123,
 //				ClusterId: 321,
+//				Id:        123,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -60,12 +60,12 @@ type LookupLkeNodePoolArgs struct {
 
 // A collection of values returned by getLkeNodePool.
 type LookupLkeNodePoolResult struct {
-	// When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+	// (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
 	Autoscaler GetLkeNodePoolAutoscaler `pulumi:"autoscaler"`
 	ClusterId  int                      `pulumi:"clusterId"`
 	// Indicates the local disk encryption setting for this LKE node pool.
 	DiskEncryption string `pulumi:"diskEncryption"`
-	// This node pool's custom disk layout.
+	// (Nested Attribute List) This node pool's custom disk layout.
 	Disks []GetLkeNodePoolDisk `pulumi:"disks"`
 	// The ID of the Cloud Firewall assigned to this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
 	FirewallId int `pulumi:"firewallId"`
@@ -79,11 +79,11 @@ type LookupLkeNodePoolResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The number of nodes in the node pool.
 	NodeCount int `pulumi:"nodeCount"`
-	// Status information for the nodes that are members of this node pool.
+	// (Nested Attribute List) Status information for the nodes that are members of this node pool.
 	Nodes []GetLkeNodePoolNode `pulumi:"nodes"`
 	// An array of tags applied to this object.
 	Tags []string `pulumi:"tags"`
-	// Kubernetes taints to add to node pool nodes.
+	// (Nested Attribute List) Kubernetes taints to add to node pool nodes.
 	Taints []GetLkeNodePoolTaint `pulumi:"taints"`
 	// The Linode type for all of the nodes in the node pool.
 	Type string `pulumi:"type"`
@@ -123,7 +123,7 @@ func (o LookupLkeNodePoolResultOutput) ToLookupLkeNodePoolResultOutputWithContex
 	return o
 }
 
-// When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+// (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
 func (o LookupLkeNodePoolResultOutput) Autoscaler() GetLkeNodePoolAutoscalerOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) GetLkeNodePoolAutoscaler { return v.Autoscaler }).(GetLkeNodePoolAutoscalerOutput)
 }
@@ -137,7 +137,7 @@ func (o LookupLkeNodePoolResultOutput) DiskEncryption() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) string { return v.DiskEncryption }).(pulumi.StringOutput)
 }
 
-// This node pool's custom disk layout.
+// (Nested Attribute List) This node pool's custom disk layout.
 func (o LookupLkeNodePoolResultOutput) Disks() GetLkeNodePoolDiskArrayOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) []GetLkeNodePoolDisk { return v.Disks }).(GetLkeNodePoolDiskArrayOutput)
 }
@@ -172,7 +172,7 @@ func (o LookupLkeNodePoolResultOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
-// Status information for the nodes that are members of this node pool.
+// (Nested Attribute List) Status information for the nodes that are members of this node pool.
 func (o LookupLkeNodePoolResultOutput) Nodes() GetLkeNodePoolNodeArrayOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) []GetLkeNodePoolNode { return v.Nodes }).(GetLkeNodePoolNodeArrayOutput)
 }
@@ -182,7 +182,7 @@ func (o LookupLkeNodePoolResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Kubernetes taints to add to node pool nodes.
+// (Nested Attribute List) Kubernetes taints to add to node pool nodes.
 func (o LookupLkeNodePoolResultOutput) Taints() GetLkeNodePoolTaintArrayOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) []GetLkeNodePoolTaint { return v.Taints }).(GetLkeNodePoolTaintArrayOutput)
 }

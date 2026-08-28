@@ -325,6 +325,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetChildAccountsResult
     {
+        /// <summary>
+        /// (Nested Attribute List) A list of Child Accounts.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetChildAccountsChildAccountResult> ChildAccounts;
         public readonly ImmutableArray<Outputs.GetChildAccountsFilterResult> Filters;
         public readonly string Id;

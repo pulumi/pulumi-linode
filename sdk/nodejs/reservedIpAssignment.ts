@@ -6,6 +6,24 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the assignment of a reserved IPv4 address to a Linode instance.
+ *
+ * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-add-linode-ip).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const example = new linode.ReservedIpAssignment("example", {
+ *     linodeId: Number(linode_instance.example.id),
+ *     address: linode_networking_ip.reserved.address,
+ *     "public": true,
+ * });
+ * ```
+ */
 export class ReservedIpAssignment extends pulumi.CustomResource {
     /**
      * Get an existing ReservedIpAssignment resource's state with the given name, ID, and optional extra
@@ -35,19 +53,23 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * The resulting IPv4 address.
+     * The reserved IPv4 address to assign to the Linode.
      */
     declare public readonly address: pulumi.Output<string>;
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      */
     declare public readonly applyImmediately: pulumi.Output<boolean>;
     /**
-     * The default gateway for this address
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    declare public /*out*/ readonly assignedEntity: pulumi.Output<outputs.ReservedIpAssignmentAssignedEntity>;
+    /**
+     * The default gateway for this address.
      */
     declare public /*out*/ readonly gateway: pulumi.Output<string>;
     /**
-     * The ID of the Linode to allocate an IPv4 address for.
+     * The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      */
     declare public readonly linodeId: pulumi.Output<number>;
     /**
@@ -55,11 +77,11 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly prefix: pulumi.Output<number>;
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
      */
     declare public readonly public: pulumi.Output<boolean>;
     /**
-     * The reverse DNS assigned to this address.
+     * The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      */
     declare public readonly rdns: pulumi.Output<string>;
     /**
@@ -67,7 +89,7 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly region: pulumi.Output<string>;
     /**
-     * The reservation status of the IP address
+     * The reservation status of the IP address.
      */
     declare public /*out*/ readonly reserved: pulumi.Output<boolean>;
     /**
@@ -75,11 +97,15 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly subnetMask: pulumi.Output<string>;
     /**
-     * The type of IP address.
+     * A set of tags associated with this IP address.
+     */
+    declare public /*out*/ readonly tags: pulumi.Output<string[]>;
+    /**
+     * The type of the entity.
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      */
     declare public /*out*/ readonly vpcNat11s: pulumi.Output<outputs.ReservedIpAssignmentVpcNat11[]>;
 
@@ -98,6 +124,7 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
             const state = argsOrState as ReservedIpAssignmentState | undefined;
             resourceInputs["address"] = state?.address;
             resourceInputs["applyImmediately"] = state?.applyImmediately;
+            resourceInputs["assignedEntity"] = state?.assignedEntity;
             resourceInputs["gateway"] = state?.gateway;
             resourceInputs["linodeId"] = state?.linodeId;
             resourceInputs["prefix"] = state?.prefix;
@@ -106,6 +133,7 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["reserved"] = state?.reserved;
             resourceInputs["subnetMask"] = state?.subnetMask;
+            resourceInputs["tags"] = state?.tags;
             resourceInputs["type"] = state?.type;
             resourceInputs["vpcNat11s"] = state?.vpcNat11s;
         } else {
@@ -121,11 +149,13 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
             resourceInputs["linodeId"] = args?.linodeId;
             resourceInputs["public"] = args?.public;
             resourceInputs["rdns"] = args?.rdns;
+            resourceInputs["assignedEntity"] = undefined /*out*/;
             resourceInputs["gateway"] = undefined /*out*/;
             resourceInputs["prefix"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["reserved"] = undefined /*out*/;
             resourceInputs["subnetMask"] = undefined /*out*/;
+            resourceInputs["tags"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["vpcNat11s"] = undefined /*out*/;
         }
@@ -139,19 +169,23 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
  */
 export interface ReservedIpAssignmentState {
     /**
-     * The resulting IPv4 address.
+     * The reserved IPv4 address to assign to the Linode.
      */
     address?: pulumi.Input<string | undefined>;
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      */
     applyImmediately?: pulumi.Input<boolean | undefined>;
     /**
-     * The default gateway for this address
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    assignedEntity?: pulumi.Input<inputs.ReservedIpAssignmentAssignedEntity | undefined>;
+    /**
+     * The default gateway for this address.
      */
     gateway?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the Linode to allocate an IPv4 address for.
+     * The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      */
     linodeId?: pulumi.Input<number | undefined>;
     /**
@@ -159,11 +193,11 @@ export interface ReservedIpAssignmentState {
      */
     prefix?: pulumi.Input<number | undefined>;
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
      */
     public?: pulumi.Input<boolean | undefined>;
     /**
-     * The reverse DNS assigned to this address.
+     * The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      */
     rdns?: pulumi.Input<string | undefined>;
     /**
@@ -171,7 +205,7 @@ export interface ReservedIpAssignmentState {
      */
     region?: pulumi.Input<string | undefined>;
     /**
-     * The reservation status of the IP address
+     * The reservation status of the IP address.
      */
     reserved?: pulumi.Input<boolean | undefined>;
     /**
@@ -179,11 +213,15 @@ export interface ReservedIpAssignmentState {
      */
     subnetMask?: pulumi.Input<string | undefined>;
     /**
-     * The type of IP address.
+     * A set of tags associated with this IP address.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The type of the entity.
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      */
     vpcNat11s?: pulumi.Input<pulumi.Input<inputs.ReservedIpAssignmentVpcNat11>[] | undefined>;
 }
@@ -193,23 +231,23 @@ export interface ReservedIpAssignmentState {
  */
 export interface ReservedIpAssignmentArgs {
     /**
-     * The resulting IPv4 address.
+     * The reserved IPv4 address to assign to the Linode.
      */
     address: pulumi.Input<string>;
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      */
     applyImmediately?: pulumi.Input<boolean | undefined>;
     /**
-     * The ID of the Linode to allocate an IPv4 address for.
+     * The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      */
     linodeId: pulumi.Input<number>;
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
      */
     public?: pulumi.Input<boolean | undefined>;
     /**
-     * The reverse DNS assigned to this address.
+     * The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      */
     rdns?: pulumi.Input<string | undefined>;
 }

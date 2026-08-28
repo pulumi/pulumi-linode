@@ -27,8 +27,8 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
-        ///         Id = 123,
         ///         ClusterId = 321,
+        ///         Id = 123,
         ///     });
         /// 
         /// });
@@ -53,8 +53,8 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
-        ///         Id = 123,
         ///         ClusterId = 321,
+        ///         Id = 123,
         ///     });
         /// 
         /// });
@@ -79,8 +79,8 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
-        ///         Id = 123,
         ///         ClusterId = 321,
+        ///         Id = 123,
         ///     });
         /// 
         /// });
@@ -136,7 +136,7 @@ namespace Pulumi.Linode
     public sealed class GetLkeNodePoolResult
     {
         /// <summary>
-        /// When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+        /// (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
         /// </summary>
         public readonly Outputs.GetLkeNodePoolAutoscalerResult Autoscaler;
         public readonly int ClusterId;
@@ -145,7 +145,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string DiskEncryption;
         /// <summary>
-        /// This node pool's custom disk layout.
+        /// (Nested Attribute List) This node pool's custom disk layout.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeNodePoolDiskResult> Disks;
         /// <summary>
@@ -173,7 +173,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
-        /// Status information for the nodes that are members of this node pool.
+        /// (Nested Attribute List) Status information for the nodes that are members of this node pool.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeNodePoolNodeResult> Nodes;
         /// <summary>
@@ -181,7 +181,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes.
+        /// (Nested Attribute List) Kubernetes taints to add to node pool nodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeNodePoolTaintResult> Taints;
         /// <summary>

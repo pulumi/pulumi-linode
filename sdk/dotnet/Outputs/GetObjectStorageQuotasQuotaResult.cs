@@ -22,6 +22,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string EndpointType;
         /// <summary>
+        /// Whether usage data is available for the Object Storage quota.
+        /// </summary>
+        public readonly bool HasUsage;
+        /// <summary>
         /// The ID of the Object Storage quota.
         /// </summary>
         public readonly string QuotaId;
@@ -33,6 +37,10 @@ namespace Pulumi.Linode.Outputs
         /// The name of the Object Storage quota.
         /// </summary>
         public readonly string QuotaName;
+        /// <summary>
+        /// The type of the Object Storage quota.
+        /// </summary>
+        public readonly string QuotaType;
         /// <summary>
         /// The specific Object Storage resource for the quota.
         /// </summary>
@@ -48,11 +56,15 @@ namespace Pulumi.Linode.Outputs
 
             string endpointType,
 
+            bool hasUsage,
+
             string quotaId,
 
             int quotaLimit,
 
             string quotaName,
+
+            string quotaType,
 
             string resourceMetric,
 
@@ -60,9 +72,11 @@ namespace Pulumi.Linode.Outputs
         {
             Description = description;
             EndpointType = endpointType;
+            HasUsage = hasUsage;
             QuotaId = quotaId;
             QuotaLimit = quotaLimit;
             QuotaName = quotaName;
+            QuotaType = quotaType;
             ResourceMetric = resourceMetric;
             S3Endpoint = s3Endpoint;
         }

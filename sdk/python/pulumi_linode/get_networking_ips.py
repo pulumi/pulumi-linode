@@ -53,11 +53,17 @@ class GetNetworkingIpsResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the entity.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="ipAddresses")
     def ip_addresses(self) -> Sequence['outputs.GetNetworkingIpsIpAddressResult']:
+        """
+        (Nested Attribute List) The list of IP addresses.
+        """
         return pulumi.get(self, "ip_addresses")
 
     @_builtins.property

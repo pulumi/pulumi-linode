@@ -228,9 +228,9 @@ class ProducerImageShareGroupMember(pulumi.CustomResource):
         import pulumi_linode as linode
 
         example = linode.ProducerImageShareGroupMember("example",
+            label="example-member",
             sharegroup_id=12345,
-            token="abcdefghijklmnopqrstuvwxyz0123456789",
-            label="example-member")
+            token="abcdefghijklmnopqrstuvwxyz0123456789")
         ```
 
 
@@ -257,9 +257,9 @@ class ProducerImageShareGroupMember(pulumi.CustomResource):
         import pulumi_linode as linode
 
         example = linode.ProducerImageShareGroupMember("example",
+            label="example-member",
             sharegroup_id=12345,
-            token="abcdefghijklmnopqrstuvwxyz0123456789",
-            label="example-member")
+            token="abcdefghijklmnopqrstuvwxyz0123456789")
         ```
 
 

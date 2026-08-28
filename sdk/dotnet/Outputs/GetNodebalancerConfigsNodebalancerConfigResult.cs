@@ -60,7 +60,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
         /// </summary>
         public readonly int NodebalancerId;
         /// <summary>

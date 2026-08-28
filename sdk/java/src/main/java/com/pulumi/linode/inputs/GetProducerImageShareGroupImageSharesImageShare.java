@@ -93,14 +93,14 @@ public final class GetProducerImageShareGroupImageSharesImageShare extends com.p
     }
 
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     @Import(name="imageSharing", required=true)
     private GetProducerImageShareGroupImageSharesImageShareImageSharing imageSharing;
 
     /**
-     * @return Details about image sharing, including who the image is shared with and by.
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     public GetProducerImageShareGroupImageSharesImageShareImageSharing imageSharing() {
@@ -314,7 +314,7 @@ public final class GetProducerImageShareGroupImageSharesImageShare extends com.p
         }
 
         /**
-         * @param imageSharing Details about image sharing, including who the image is shared with and by.
+         * @param imageSharing (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
          * 
          * @return builder
          * 

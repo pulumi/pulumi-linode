@@ -32,7 +32,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-30)))
+// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabases:getDatabases.pp:2,11-29)))
 // return nil
 // })
 // }
@@ -61,7 +61,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-32)))
+// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabases:getDatabases.pp:7,11-31)))
 // return nil
 // })
 // }
@@ -97,6 +97,7 @@ type GetDatabasesArgs struct {
 
 // A collection of values returned by getDatabases.
 type GetDatabasesResult struct {
+	// (Nested Attribute List) Managed Databases matching the query.
 	Databases []GetDatabasesDatabase `pulumi:"databases"`
 	Filters   []GetDatabasesFilter   `pulumi:"filters"`
 	// The ID of the Managed Database.
@@ -138,6 +139,7 @@ func (o GetDatabasesResultOutput) ToGetDatabasesResultOutputWithContext(ctx cont
 	return o
 }
 
+// (Nested Attribute List) Managed Databases matching the query.
 func (o GetDatabasesResultOutput) Databases() GetDatabasesDatabaseArrayOutput {
 	return o.ApplyT(func(v GetDatabasesResult) []GetDatabasesDatabase { return v.Databases }).(GetDatabasesDatabaseArrayOutput)
 }

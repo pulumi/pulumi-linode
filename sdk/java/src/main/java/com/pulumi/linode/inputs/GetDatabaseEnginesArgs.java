@@ -28,7 +28,7 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
     /**
      * If true, only the latest engine version will be returned.
      * 
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
      * 
      */
     @Import(name="latest")
@@ -37,7 +37,7 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return If true, only the latest engine version will be returned.
      * 
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
      * 
      */
     public Optional<Output<Boolean>> latest() {
@@ -117,7 +117,7 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param latest If true, only the latest engine version will be returned.
          * 
-         * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetDatabaseEnginesArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param latest If true, only the latest engine version will be returned.
          * 
-         * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
          * 
          * @return builder
          * 

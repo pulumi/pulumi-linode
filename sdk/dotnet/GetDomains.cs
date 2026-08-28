@@ -49,8 +49,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `Group`
-        /// 
         /// * `Tags`
         /// 
         /// * `Domain`
@@ -116,8 +114,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `Group`
-        /// 
         /// * `Tags`
         /// 
         /// * `Domain`
@@ -182,8 +178,6 @@ namespace Pulumi.Linode
         /// ```
         /// 
         /// ## Filterable Fields
-        /// 
-        /// * `Group`
         /// 
         /// * `Tags`
         /// 
@@ -274,6 +268,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetDomainsResult
     {
+        /// <summary>
+        /// (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         public readonly ImmutableArray<Outputs.GetDomainsFilterResult> Filters;
         /// <summary>

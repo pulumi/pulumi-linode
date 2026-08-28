@@ -66,21 +66,6 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    @Import(name="dashboardUrl")
-    private @Nullable Output<String> dashboardUrl;
-
-    /**
-     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    public Optional<Output<String>> dashboardUrl() {
-        return Optional.ofNullable(this.dashboardUrl);
-    }
-
-    /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      * 
      */
@@ -141,14 +126,14 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      * 
      */
     @Import(name="pools")
     private @Nullable Output<List<LkeClusterPoolArgs>> pools;
 
     /**
-     * @return Additional nested attributes:
+     * @return (Block List) Additional nested attributes:
      * 
      */
     public Optional<Output<List<LkeClusterPoolArgs>>> pools() {
@@ -158,9 +143,9 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     @Import(name="region")
@@ -169,9 +154,9 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     public Optional<Output<String>> region() {
@@ -274,7 +259,6 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         this.apiEndpoints = $.apiEndpoints;
         this.aplEnabled = $.aplEnabled;
         this.controlPlane = $.controlPlane;
-        this.dashboardUrl = $.dashboardUrl;
         this.externalPoolTags = $.externalPoolTags;
         this.k8sVersion = $.k8sVersion;
         this.kubeconfig = $.kubeconfig;
@@ -381,27 +365,6 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dashboardUrl The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dashboardUrl(@Nullable Output<String> dashboardUrl) {
-            $.dashboardUrl = dashboardUrl;
-            return this;
-        }
-
-        /**
-         * @param dashboardUrl The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder dashboardUrl(String dashboardUrl) {
-            return dashboardUrl(Output.of(dashboardUrl));
-        }
-
-        /**
          * @param externalPoolTags A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
          * 
          * @return builder
@@ -496,7 +459,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pools Additional nested attributes:
+         * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
          * 
@@ -507,7 +470,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pools Additional nested attributes:
+         * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
          * 
@@ -517,7 +480,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pools Additional nested attributes:
+         * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
          * 
@@ -529,9 +492,9 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param region This Kubernetes cluster&#39;s location.
          * 
-         * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+         * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
          * 
-         * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
          * 
          * @return builder
          * 
@@ -544,9 +507,9 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param region This Kubernetes cluster&#39;s location.
          * 
-         * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+         * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
          * 
-         * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
          * 
          * @return builder
          * 

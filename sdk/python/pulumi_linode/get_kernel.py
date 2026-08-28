@@ -26,7 +26,7 @@ class GetKernelResult:
     """
     A collection of values returned by getKernel.
     """
-    def __init__(__self__, architecture=None, built=None, deprecated=None, id=None, kvm=None, label=None, pvops=None, version=None, xen=None):
+    def __init__(__self__, architecture=None, built=None, deprecated=None, id=None, kvm=None, label=None, pvops=None, version=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -51,9 +51,6 @@ class GetKernelResult:
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
-        if xen and not isinstance(xen, bool):
-            raise TypeError("Expected argument 'xen' to be a bool")
-        pulumi.set(__self__, "xen", xen)
 
     @_builtins.property
     @pulumi.getter
@@ -113,14 +110,6 @@ class GetKernelResult:
         """
         return pulumi.get(self, "version")
 
-    @_builtins.property
-    @pulumi.getter
-    def xen(self) -> _builtins.bool:
-        """
-        If this Kernel is suitable for Xen Linodes.
-        """
-        return pulumi.get(self, "xen")
-
 
 class AwaitableGetKernelResult(GetKernelResult):
     # pylint: disable=using-constant-test
@@ -135,8 +124,7 @@ class AwaitableGetKernelResult(GetKernelResult):
             kvm=self.kvm,
             label=self.label,
             pvops=self.pvops,
-            version=self.version,
-            xen=self.xen)
+            version=self.version)
 
 
 def get_kernel(id: Optional[_builtins.str] = None,
@@ -172,8 +160,7 @@ def get_kernel(id: Optional[_builtins.str] = None,
         kvm=pulumi.get(__ret__, 'kvm'),
         label=pulumi.get(__ret__, 'label'),
         pvops=pulumi.get(__ret__, 'pvops'),
-        version=pulumi.get(__ret__, 'version'),
-        xen=pulumi.get(__ret__, 'xen'))
+        version=pulumi.get(__ret__, 'version'))
 def get_kernel_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKernelResult]:
     """
@@ -206,5 +193,4 @@ def get_kernel_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         kvm=pulumi.get(__response__, 'kvm'),
         label=pulumi.get(__response__, 'label'),
         pvops=pulumi.get(__response__, 'pvops'),
-        version=pulumi.get(__response__, 'version'),
-        xen=pulumi.get(__response__, 'xen')))
+        version=pulumi.get(__response__, 'version')))

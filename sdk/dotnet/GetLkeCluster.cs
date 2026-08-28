@@ -129,17 +129,13 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly bool AplEnabled;
         /// <summary>
-        /// The settings for the Kubernetes Control Plane.
+        /// (Nested Attribute List) The settings for the Kubernetes Control Plane.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneResult> ControlPlanes;
         /// <summary>
         /// When this Kubernetes cluster was created.
         /// </summary>
         public readonly string Created;
-        /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        /// </summary>
-        public readonly string DashboardUrl;
         /// <summary>
         /// The ID of the node.
         /// </summary>
@@ -157,7 +153,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Node pools associated with this cluster.
+        /// (Nested Attribute List) Node pools associated with this cluster.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolResult> Pools;
         /// <summary>
@@ -203,8 +199,6 @@ namespace Pulumi.Linode
 
             string created,
 
-            string dashboardUrl,
-
             int id,
 
             string k8sVersion,
@@ -235,7 +229,6 @@ namespace Pulumi.Linode
             AplEnabled = aplEnabled;
             ControlPlanes = controlPlanes;
             Created = created;
-            DashboardUrl = dashboardUrl;
             Id = id;
             K8sVersion = k8sVersion;
             Kubeconfig = kubeconfig;

@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("my_instance", {
+ * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",
@@ -79,6 +79,9 @@ export interface GetVlansResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+     */
     readonly vlans: outputs.GetVlansVlan[];
 }
 /**
@@ -95,7 +98,7 @@ export interface GetVlansResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("my_instance", {
+ * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",

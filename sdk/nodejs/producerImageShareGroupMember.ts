@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const example = new linode.ProducerImageShareGroupMember("example", {
+ *     label: "example-member",
  *     sharegroupId: 12345,
  *     token: "abcdefghijklmnopqrstuvwxyz0123456789",
- *     label: "example-member",
  * });
  * ```
  */

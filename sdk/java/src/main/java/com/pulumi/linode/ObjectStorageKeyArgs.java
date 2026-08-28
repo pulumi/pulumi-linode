@@ -19,14 +19,14 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
     public static final ObjectStorageKeyArgs Empty = new ObjectStorageKeyArgs();
 
     /**
-     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="bucketAccesses")
     private @Nullable Output<List<ObjectStorageKeyBucketAccessArgs>> bucketAccesses;
 
     /**
-     * @return Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * @return Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<ObjectStorageKeyBucketAccessArgs>>> bucketAccesses() {
@@ -94,7 +94,7 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ObjectStorageKeyArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

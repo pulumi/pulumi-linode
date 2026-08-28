@@ -15,14 +15,14 @@ public final class GetConsumerImageShareGroupImageSharesImageShareImageSharing e
     public static final GetConsumerImageShareGroupImageSharesImageShareImageSharing Empty = new GetConsumerImageShareGroupImageSharesImageShareImageSharing();
 
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      * 
      */
     @Import(name="sharedBy", required=true)
     private GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy sharedBy;
 
     /**
-     * @return Details about who the image is shared by.
+     * @return (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      * 
      */
     public GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy sharedBy() {
@@ -30,14 +30,14 @@ public final class GetConsumerImageShareGroupImageSharesImageShareImageSharing e
     }
 
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      * 
      */
     @Import(name="sharedWith", required=true)
     private GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith sharedWith;
 
     /**
-     * @return Details about who the image is shared with.
+     * @return (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      * 
      */
     public GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith sharedWith() {
@@ -70,7 +70,7 @@ public final class GetConsumerImageShareGroupImageSharesImageShareImageSharing e
         }
 
         /**
-         * @param sharedBy Details about who the image is shared by.
+         * @param sharedBy (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetConsumerImageShareGroupImageSharesImageShareImageSharing e
         }
 
         /**
-         * @param sharedWith Details about who the image is shared with.
+         * @param sharedWith (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
          * 
          * @return builder
          * 

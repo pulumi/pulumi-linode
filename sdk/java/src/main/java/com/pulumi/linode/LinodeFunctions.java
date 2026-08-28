@@ -53,6 +53,10 @@ import com.pulumi.linode.inputs.GetFirewallTemplatesArgs;
 import com.pulumi.linode.inputs.GetFirewallTemplatesPlainArgs;
 import com.pulumi.linode.inputs.GetFirewallsArgs;
 import com.pulumi.linode.inputs.GetFirewallsPlainArgs;
+import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+import com.pulumi.linode.inputs.GetIamEntitiesPlainArgs;
+import com.pulumi.linode.inputs.GetIamUserArgs;
+import com.pulumi.linode.inputs.GetIamUserPlainArgs;
 import com.pulumi.linode.inputs.GetImageArgs;
 import com.pulumi.linode.inputs.GetImagePlainArgs;
 import com.pulumi.linode.inputs.GetImagesArgs;
@@ -97,6 +101,24 @@ import com.pulumi.linode.inputs.GetLocksArgs;
 import com.pulumi.linode.inputs.GetLocksPlainArgs;
 import com.pulumi.linode.inputs.GetMaintenancePoliciesArgs;
 import com.pulumi.linode.inputs.GetMaintenancePoliciesPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertChannelsPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertDefinitionArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertDefinitionPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsDestinationArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsDestinationPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsDestinationsPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsStreamArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsStreamPlainArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+import com.pulumi.linode.inputs.GetMonitorLogsStreamsPlainArgs;
 import com.pulumi.linode.inputs.GetNbTypesArgs;
 import com.pulumi.linode.inputs.GetNbTypesPlainArgs;
 import com.pulumi.linode.inputs.GetNetworkTransferPricesArgs;
@@ -119,10 +141,12 @@ import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
 import com.pulumi.linode.inputs.GetNodebalancerVpcsPlainArgs;
 import com.pulumi.linode.inputs.GetNodebalancersArgs;
 import com.pulumi.linode.inputs.GetNodebalancersPlainArgs;
-import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-import com.pulumi.linode.inputs.GetObjectStorageClusterPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageEndpointsArgs;
 import com.pulumi.linode.inputs.GetObjectStorageEndpointsPlainArgs;
+import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaArgs;
+import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaPlainArgs;
+import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageQuotaArgs;
 import com.pulumi.linode.inputs.GetObjectStorageQuotaPlainArgs;
 import com.pulumi.linode.inputs.GetObjectStorageQuotasArgs;
@@ -143,8 +167,12 @@ import com.pulumi.linode.inputs.GetProducerImageShareGroupsArgs;
 import com.pulumi.linode.inputs.GetProducerImageShareGroupsPlainArgs;
 import com.pulumi.linode.inputs.GetRegionArgs;
 import com.pulumi.linode.inputs.GetRegionPlainArgs;
+import com.pulumi.linode.inputs.GetRegionVpcAvailabilityArgs;
+import com.pulumi.linode.inputs.GetRegionVpcAvailabilityPlainArgs;
 import com.pulumi.linode.inputs.GetRegionsArgs;
 import com.pulumi.linode.inputs.GetRegionsPlainArgs;
+import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+import com.pulumi.linode.inputs.GetReservedIpTypesPlainArgs;
 import com.pulumi.linode.inputs.GetSshKeyArgs;
 import com.pulumi.linode.inputs.GetSshKeyPlainArgs;
 import com.pulumi.linode.inputs.GetSshkeysArgs;
@@ -153,6 +181,8 @@ import com.pulumi.linode.inputs.GetStackScriptArgs;
 import com.pulumi.linode.inputs.GetStackScriptPlainArgs;
 import com.pulumi.linode.inputs.GetStackScriptsArgs;
 import com.pulumi.linode.inputs.GetStackScriptsPlainArgs;
+import com.pulumi.linode.inputs.GetTagArgs;
+import com.pulumi.linode.inputs.GetTagPlainArgs;
 import com.pulumi.linode.inputs.GetUserArgs;
 import com.pulumi.linode.inputs.GetUserPlainArgs;
 import com.pulumi.linode.inputs.GetUsersArgs;
@@ -202,6 +232,8 @@ import com.pulumi.linode.outputs.GetFirewallSettingsResult;
 import com.pulumi.linode.outputs.GetFirewallTemplateResult;
 import com.pulumi.linode.outputs.GetFirewallTemplatesResult;
 import com.pulumi.linode.outputs.GetFirewallsResult;
+import com.pulumi.linode.outputs.GetIamEntitiesResult;
+import com.pulumi.linode.outputs.GetIamUserResult;
 import com.pulumi.linode.outputs.GetImageResult;
 import com.pulumi.linode.outputs.GetImagesResult;
 import com.pulumi.linode.outputs.GetInstanceBackupsResult;
@@ -224,6 +256,15 @@ import com.pulumi.linode.outputs.GetLkeVersionsResult;
 import com.pulumi.linode.outputs.GetLockResult;
 import com.pulumi.linode.outputs.GetLocksResult;
 import com.pulumi.linode.outputs.GetMaintenancePoliciesResult;
+import com.pulumi.linode.outputs.GetMonitorAlertChannelsResult;
+import com.pulumi.linode.outputs.GetMonitorAlertDefinitionEntitiesResult;
+import com.pulumi.linode.outputs.GetMonitorAlertDefinitionResult;
+import com.pulumi.linode.outputs.GetMonitorAlertDefinitionsResult;
+import com.pulumi.linode.outputs.GetMonitorLogsDestinationResult;
+import com.pulumi.linode.outputs.GetMonitorLogsDestinationsResult;
+import com.pulumi.linode.outputs.GetMonitorLogsStreamHistoryResult;
+import com.pulumi.linode.outputs.GetMonitorLogsStreamResult;
+import com.pulumi.linode.outputs.GetMonitorLogsStreamsResult;
 import com.pulumi.linode.outputs.GetNbTypesResult;
 import com.pulumi.linode.outputs.GetNetworkTransferPricesResult;
 import com.pulumi.linode.outputs.GetNetworkingIpResult;
@@ -235,8 +276,9 @@ import com.pulumi.linode.outputs.GetNodebalancerConfigsResult;
 import com.pulumi.linode.outputs.GetNodebalancerVpcResult;
 import com.pulumi.linode.outputs.GetNodebalancerVpcsResult;
 import com.pulumi.linode.outputs.GetNodebalancersResult;
-import com.pulumi.linode.outputs.GetObjectStorageClusterResult;
 import com.pulumi.linode.outputs.GetObjectStorageEndpointsResult;
+import com.pulumi.linode.outputs.GetObjectStorageGlobalQuotaResult;
+import com.pulumi.linode.outputs.GetObjectStorageGlobalQuotasResult;
 import com.pulumi.linode.outputs.GetObjectStorageQuotaResult;
 import com.pulumi.linode.outputs.GetObjectStorageQuotasResult;
 import com.pulumi.linode.outputs.GetPlacementGroupResult;
@@ -248,17 +290,22 @@ import com.pulumi.linode.outputs.GetProducerImageShareGroupResult;
 import com.pulumi.linode.outputs.GetProducerImageShareGroupsResult;
 import com.pulumi.linode.outputs.GetProfileResult;
 import com.pulumi.linode.outputs.GetRegionResult;
+import com.pulumi.linode.outputs.GetRegionVpcAvailabilityResult;
 import com.pulumi.linode.outputs.GetRegionsResult;
+import com.pulumi.linode.outputs.GetRegionsVpcAvailabilityResult;
+import com.pulumi.linode.outputs.GetReservedIpTypesResult;
 import com.pulumi.linode.outputs.GetSshKeyResult;
 import com.pulumi.linode.outputs.GetSshkeysResult;
 import com.pulumi.linode.outputs.GetStackScriptResult;
 import com.pulumi.linode.outputs.GetStackScriptsResult;
+import com.pulumi.linode.outputs.GetTagResult;
 import com.pulumi.linode.outputs.GetUserResult;
 import com.pulumi.linode.outputs.GetUsersResult;
 import com.pulumi.linode.outputs.GetVlansResult;
 import com.pulumi.linode.outputs.GetVolumeResult;
 import com.pulumi.linode.outputs.GetVolumeTypesResult;
 import com.pulumi.linode.outputs.GetVolumesResult;
+import com.pulumi.linode.outputs.GetVpcDefaultRangesResult;
 import com.pulumi.linode.outputs.GetVpcIpsResult;
 import com.pulumi.linode.outputs.GetVpcResult;
 import com.pulumi.linode.outputs.GetVpcSubnetResult;
@@ -5063,59 +5110,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -5599,59 +5646,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -6135,59 +6182,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -6671,59 +6718,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -7207,59 +7254,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -7743,59 +7790,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -8279,59 +8326,59 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `mysql` specification block:
      * 
-     * * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;.
+     * * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with &#34;Bad handshake&#34;. Referenced directly (e.g. `connect_timeout.description`).
      * 
-     * * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+     * * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
      * 
-     * * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+     * * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
      * 
-     * * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+     * * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
      * 
-     * * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
      * 
-     * * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
      * 
-     * * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
      * 
-     * * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
      * 
-     * * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
      * 
-     * * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
      * 
-     * * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
      * 
-     * * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
      * 
-     * * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
      * 
-     * * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
      * 
-     * * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
      * 
-     * * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+     * * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
      * 
-     * * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+     * * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
      * 
-     * * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
      * 
-     * * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
      * 
-     * * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
      * 
-     * * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+     * * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
      * 
-     * * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
      * 
-     * * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
      * 
-     * * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
      * 
-     * * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
      * 
-     * * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
      * 
-     * * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
      * 
      * ## connectTimeout
      * 
@@ -9174,7 +9221,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -9226,91 +9273,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -9980,7 +10027,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -10032,91 +10079,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -10786,7 +10833,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -10838,91 +10885,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -11592,7 +11639,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -11644,91 +11691,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -12398,7 +12445,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -12450,91 +12497,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -13204,7 +13251,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -13256,91 +13303,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -14010,7 +14057,7 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pglookout` specification block:
      * 
-     * * `maxFailoverReplicationTimeLag` - The maximum failover replication time lag for `pglookout`.
+     * * `maxFailoverReplicationTimeLag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
      * 
      * ## maxFailoverReplicationTimeLag
      * 
@@ -14062,91 +14109,91 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `pg` specification block:
      * 
-     * * `autovacuumAnalyzeScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+     * * `autovacuumAnalyzeScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
      * 
-     * * `autovacuumAnalyzeThreshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+     * * `autovacuumAnalyzeThreshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
      * 
-     * * `autovacuumMaxWorkers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+     * * `autovacuumMaxWorkers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
      * 
-     * * `autovacuumNaptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+     * * `autovacuumNaptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
      * 
-     * * `autovacuumVacuumCostDelay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds
+     * * `autovacuumVacuumCostDelay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuumCostDelay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
      * 
-     * * `autovacuumVacuumCostLimit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
+     * * `autovacuumVacuumCostLimit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
      * 
-     * * `autovacuumVacuumScaleFactor` - (Optional) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+     * * `autovacuumVacuumScaleFactor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
      * 
-     * * `autovacuumVacuumThreshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+     * * `autovacuumVacuumThreshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
      * 
-     * * `bgwriterDelay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * * `bgwriterDelay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
      * 
-     * * `bgwriterFlushAfter` - (Optional) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * * `bgwriterFlushAfter` - (Read-Only Object) Whenever more than bgwriterFlushAfter bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
      * 
-     * * `bgwriterLruMaxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * * `bgwriterLruMaxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
      * 
-     * * `bgwriterLruMultiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * * `bgwriterLruMultiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
      * 
-     * * `deadlockTimeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * * `deadlockTimeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
      * 
-     * * `defaultToastCompression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * * `defaultToastCompression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
      * 
-     * * `idleInTransactionSessionTimeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+     * * `idleInTransactionSessionTimeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
      * 
-     * * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+     * * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
      * 
-     * * `maxFilesPerProcess` - (Optional) PostgreSQL maximum number of files that can be open per process.
+     * * `maxFilesPerProcess` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
      * 
-     * * `maxLocksPerTransaction` - (Optional) PostgreSQL maximum locks per transaction.
+     * * `maxLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
      * 
-     * * `maxLogicalReplicationWorkers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+     * * `maxLogicalReplicationWorkers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
      * 
-     * * `maxParallelWorkers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+     * * `maxParallelWorkers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
      * 
-     * * `maxParallelWorkersPerGather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+     * * `maxParallelWorkersPerGather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
      * 
-     * * `maxPredLocksPerTransaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+     * * `maxPredLocksPerTransaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
      * 
-     * * `maxReplicationSlots` - (Optional) PostgreSQL maximum replication slots.
+     * * `maxReplicationSlots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
      * 
-     * * `maxSlotWalKeepSize` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this.
+     * * `maxSlotWalKeepSize` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). walKeepSize minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
      * 
-     * * `maxStackDepth` - (Optional) Maximum depth of the stack in bytes.
+     * * `maxStackDepth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
      * 
-     * * `maxStandbyArchiveDelay` - (Optional) Max standby archive delay in milliseconds.
+     * * `maxStandbyArchiveDelay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
      * 
-     * * `maxStandbyStreamingDelay` - (Optional) Max standby streaming delay in milliseconds.
+     * * `maxStandbyStreamingDelay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
      * 
-     * * `maxWalSenders` - (Optional) PostgreSQL maximum WAL senders.
+     * * `maxWalSenders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
      * 
-     * * `maxWorkerProcesses` - (Optional) Sets the maximum number of background processes that the system can support.
+     * * `maxWorkerProcesses` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
      * 
-     * * `passwordEncryption` - (Optional) Chooses the algorithm for encrypting passwords.
+     * * `passwordEncryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
      * 
-     * * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman&#39;s scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
      * 
-     * * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman&#39;s scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
      * 
-     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+     * * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
      * 
-     * * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+     * * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
      * 
-     * * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
      * 
-     * * `tempFileLimit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * * `tempFileLimit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
      * 
-     * * `timezone` - (Optional) PostgreSQL service timezone.
+     * * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
      * 
-     * * `trackActivityQuerySize` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * * `trackActivityQuerySize` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
      * 
-     * * `trackCommitTimestamp` - (Optional) Record commit time of transactions.
+     * * `trackCommitTimestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
      * 
-     * * `trackFunctions` - (Optional) Enables tracking of function call counts and time used.
+     * * `trackFunctions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
      * 
-     * * `trackIoTiming` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * * `trackIoTiming` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
      * 
-     * * `walSenderTimeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * * `walSenderTimeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
      * 
-     * * `walWriterDelay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * * `walWriterDelay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
      * 
      * ## autovacuumAnalyzeScaleFactor
      * 
@@ -16095,13 +16142,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(14950401)
      *             .domainId(3150401)
+     *             .id(14950401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name("www")
      *             .domainId(3150401)
+     *             .name("www")
      *             .build());
      * 
      *     }
@@ -16144,13 +16191,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(14950401)
      *             .domainId(3150401)
+     *             .id(14950401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name("www")
      *             .domainId(3150401)
+     *             .name("www")
      *             .build());
      * 
      *     }
@@ -16193,13 +16240,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(14950401)
      *             .domainId(3150401)
+     *             .id(14950401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name("www")
      *             .domainId(3150401)
+     *             .name("www")
      *             .build());
      * 
      *     }
@@ -16242,13 +16289,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(14950401)
      *             .domainId(3150401)
+     *             .id(14950401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name("www")
      *             .domainId(3150401)
+     *             .name("www")
      *             .build());
      * 
      *     }
@@ -16291,13 +16338,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .id(14950401)
      *             .domainId(3150401)
+     *             .id(14950401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .name("www")
      *             .domainId(3150401)
+     *             .name("www")
      *             .build());
      * 
      *     }
@@ -16568,8 +16615,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `tags`
      * 
      * * `domain`
@@ -16641,8 +16686,6 @@ public final class LinodeFunctions {
      * </pre>
      * 
      * ## Filterable Fields
-     * 
-     * * `group`
      * 
      * * `tags`
      * 
@@ -16716,8 +16759,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `tags`
      * 
      * * `domain`
@@ -16789,8 +16830,6 @@ public final class LinodeFunctions {
      * </pre>
      * 
      * ## Filterable Fields
-     * 
-     * * `group`
      * 
      * * `tags`
      * 
@@ -16864,8 +16903,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `tags`
      * 
      * * `domain`
@@ -16938,8 +16975,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `tags`
      * 
      * * `domain`
@@ -17011,8 +17046,6 @@ public final class LinodeFunctions {
      * </pre>
      * 
      * ## Filterable Fields
-     * 
-     * * `group`
      * 
      * * `tags`
      * 
@@ -18137,7 +18170,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18254,7 +18287,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18371,7 +18404,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18488,7 +18521,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18605,7 +18638,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18722,7 +18755,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18839,7 +18872,7 @@ public final class LinodeFunctions {
      * 
      * * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
      * 
-     * * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+     * * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      * * `ports` - A string representation of ports and/or port ranges (i.e. &#34;443&#34; or &#34;80-90, 91&#34;).
      * 
@@ -18872,6 +18905,515 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetFirewallsResult> getFirewallsPlain(GetFirewallsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getFirewalls:getFirewalls", TypeShape.of(GetFirewallsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static Output<GetIamEntitiesResult> getIamEntities() {
+        return getIamEntities(GetIamEntitiesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static CompletableFuture<GetIamEntitiesResult> getIamEntitiesPlain() {
+        return getIamEntitiesPlain(GetIamEntitiesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static Output<GetIamEntitiesResult> getIamEntities(GetIamEntitiesArgs args) {
+        return getIamEntities(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static CompletableFuture<GetIamEntitiesResult> getIamEntitiesPlain(GetIamEntitiesPlainArgs args) {
+        return getIamEntitiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static Output<GetIamEntitiesResult> getIamEntities(GetIamEntitiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getIamEntities:getIamEntities", TypeShape.of(GetIamEntitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static Output<GetIamEntitiesResult> getIamEntities(GetIamEntitiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getIamEntities:getIamEntities", TypeShape.of(GetIamEntitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of all Entities on this Account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-entities).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var entities = LinodeFunctions.getIamEntities(GetIamEntitiesArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * *While the filtering system is in place currently this endpoint does not have filter support for any field.*
+     * 
+     */
+    public static CompletableFuture<GetIamEntitiesResult> getIamEntitiesPlain(GetIamEntitiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getIamEntities:getIamEntities", TypeShape.of(GetIamEntitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides IAM information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-iam-users-role-permissions).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access IAM information about a Linode user.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getIamUser(GetIamUserArgs.builder()
+     *             .username("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIamUserResult> getIamUser(GetIamUserArgs args) {
+        return getIamUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides IAM information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-iam-users-role-permissions).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access IAM information about a Linode user.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getIamUser(GetIamUserArgs.builder()
+     *             .username("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIamUserResult> getIamUserPlain(GetIamUserPlainArgs args) {
+        return getIamUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides IAM information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-iam-users-role-permissions).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access IAM information about a Linode user.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getIamUser(GetIamUserArgs.builder()
+     *             .username("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIamUserResult> getIamUser(GetIamUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getIamUser:getIamUser", TypeShape.of(GetIamUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides IAM information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-iam-users-role-permissions).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access IAM information about a Linode user.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getIamUser(GetIamUserArgs.builder()
+     *             .username("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetIamUserResult> getIamUser(GetIamUserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getIamUser:getIamUser", TypeShape.of(GetIamUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides IAM information about a Linode user
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-iam-users-role-permissions).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access IAM information about a Linode user.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetIamUserArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getIamUser(GetIamUserArgs.builder()
+     *             .username("foo")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetIamUserResult> getIamUserPlain(GetIamUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getIamUser:getIamUser", TypeShape.of(GetIamUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode image
@@ -20016,7 +20558,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
      * 
      * ## Example Usage
      * 
@@ -20057,7 +20599,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
      * 
      * ## Example Usage
      * 
@@ -20098,7 +20640,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
      * 
      * ## Example Usage
      * 
@@ -20139,7 +20681,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
      * 
      * ## Example Usage
      * 
@@ -20180,7 +20722,7 @@ public final class LinodeFunctions {
     }
     /**
      * Provides details about the networking configuration of an Instance.
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
      * 
      * ## Example Usage
      * 
@@ -21173,8 +21715,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `id`
      * 
      * * `image`
@@ -21275,8 +21815,6 @@ public final class LinodeFunctions {
      * </pre>
      * 
      * ## Filterable Fields
-     * 
-     * * `group`
      * 
      * * `id`
      * 
@@ -21379,8 +21917,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `id`
      * 
      * * `image`
@@ -21481,8 +22017,6 @@ public final class LinodeFunctions {
      * </pre>
      * 
      * ## Filterable Fields
-     * 
-     * * `group`
      * 
      * * `id`
      * 
@@ -21585,8 +22119,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `id`
      * 
      * * `image`
@@ -21688,8 +22220,6 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
-     * * `group`
-     * 
      * * `id`
      * 
      * * `image`
@@ -21790,8 +22320,6 @@ public final class LinodeFunctions {
      * </pre>
      * 
      * ## Filterable Fields
-     * 
-     * * `group`
      * 
      * * `id`
      * 
@@ -22718,8 +23246,6 @@ public final class LinodeFunctions {
      * 
      * * `version`
      * 
-     * * `xen`
-     * 
      */
     public static Output<GetKernelsResult> getKernels() {
         return getKernels(GetKernelsArgs.Empty, InvokeOptions.Empty);
@@ -22787,8 +23313,6 @@ public final class LinodeFunctions {
      * * `pvops`
      * 
      * * `version`
-     * 
-     * * `xen`
      * 
      */
     public static CompletableFuture<GetKernelsResult> getKernelsPlain() {
@@ -22858,8 +23382,6 @@ public final class LinodeFunctions {
      * 
      * * `version`
      * 
-     * * `xen`
-     * 
      */
     public static Output<GetKernelsResult> getKernels(GetKernelsArgs args) {
         return getKernels(args, InvokeOptions.Empty);
@@ -22927,8 +23449,6 @@ public final class LinodeFunctions {
      * * `pvops`
      * 
      * * `version`
-     * 
-     * * `xen`
      * 
      */
     public static CompletableFuture<GetKernelsResult> getKernelsPlain(GetKernelsPlainArgs args) {
@@ -22998,8 +23518,6 @@ public final class LinodeFunctions {
      * 
      * * `version`
      * 
-     * * `xen`
-     * 
      */
     public static Output<GetKernelsResult> getKernels(GetKernelsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getKernels:getKernels", TypeShape.of(GetKernelsResult.class), args, Utilities.withVersion(options));
@@ -23068,8 +23586,6 @@ public final class LinodeFunctions {
      * 
      * * `version`
      * 
-     * * `xen`
-     * 
      */
     public static Output<GetKernelsResult> getKernels(GetKernelsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getKernels:getKernels", TypeShape.of(GetKernelsResult.class), args, Utilities.withVersion(options));
@@ -23137,8 +23653,6 @@ public final class LinodeFunctions {
      * * `pvops`
      * 
      * * `version`
-     * 
-     * * `xen`
      * 
      */
     public static CompletableFuture<GetKernelsResult> getKernelsPlain(GetKernelsPlainArgs args, InvokeOptions options) {
@@ -24032,8 +24546,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .id(123)
      *             .clusterId(321)
+     *             .id(123)
      *             .build());
      * 
      *     }
@@ -24074,8 +24588,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .id(123)
      *             .clusterId(321)
+     *             .id(123)
      *             .build());
      * 
      *     }
@@ -24116,8 +24630,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .id(123)
      *             .clusterId(321)
+     *             .id(123)
      *             .build());
      * 
      *     }
@@ -24158,8 +24672,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .id(123)
      *             .clusterId(321)
+     *             .id(123)
      *             .build());
      * 
      *     }
@@ -24200,8 +24714,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .id(123)
      *             .clusterId(321)
+     *             .id(123)
      *             .build());
      * 
      *     }
@@ -24217,6 +24731,80 @@ public final class LinodeFunctions {
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
+     * 
      */
     public static Output<GetLkeTypesResult> getLkeTypes() {
         return getLkeTypes(GetLkeTypesArgs.Empty, InvokeOptions.Empty);
@@ -24224,6 +24812,80 @@ public final class LinodeFunctions {
     /**
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
      * 
      */
     public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain() {
@@ -24233,6 +24895,80 @@ public final class LinodeFunctions {
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
+     * 
      */
     public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args) {
         return getLkeTypes(args, InvokeOptions.Empty);
@@ -24240,6 +24976,80 @@ public final class LinodeFunctions {
     /**
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
      * 
      */
     public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain(GetLkeTypesPlainArgs args) {
@@ -24249,6 +25059,80 @@ public final class LinodeFunctions {
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
+     * 
      */
     public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
@@ -24257,6 +25141,80 @@ public final class LinodeFunctions {
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
      * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
+     * 
      */
     public static Output<GetLkeTypesResult> getLkeTypes(GetLkeTypesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getLkeTypes:getLkeTypes", TypeShape.of(GetLkeTypesResult.class), args, Utilities.withVersion(options));
@@ -24264,6 +25222,80 @@ public final class LinodeFunctions {
     /**
      * Provides information about Linode LKE types that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import com.pulumi.linode.inputs.GetLkeTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific-label = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .filters(GetLkeTypesFilterArgs.builder()
+     *                 .name("label")
+     *                 .values("LKE Standard Availability")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("typeId", specific_label.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetLkeTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-types = LinodeFunctions.getLkeTypes(GetLkeTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeId", all_types.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     * * `transfer`
      * 
      */
     public static CompletableFuture<GetLkeTypesResult> getLkeTypesPlain(GetLkeTypesPlainArgs args, InvokeOptions options) {
@@ -25244,13 +26276,11 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getLkeVersions:getLkeVersions", TypeShape.of(GetLkeVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
      * 
      * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-lock).
      * 
      * ## Example Usage
      * 
@@ -25290,13 +26320,11 @@ public final class LinodeFunctions {
         return getLock(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
      * 
      * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-lock).
      * 
      * ## Example Usage
      * 
@@ -25336,13 +26364,11 @@ public final class LinodeFunctions {
         return getLockPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
      * 
      * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-lock).
      * 
      * ## Example Usage
      * 
@@ -25382,13 +26408,11 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getLock:getLock", TypeShape.of(GetLockResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
      * 
      * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-lock).
      * 
      * ## Example Usage
      * 
@@ -25428,13 +26452,11 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getLock:getLock", TypeShape.of(GetLockResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resource.
      * 
      * Provides information about a Linode Lock. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-lock).
      * 
      * ## Example Usage
      * 
@@ -25474,13 +26496,11 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getLock:getLock", TypeShape.of(GetLockResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -25560,13 +26580,11 @@ public final class LinodeFunctions {
         return getLocks(GetLocksArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -25646,13 +26664,11 @@ public final class LinodeFunctions {
         return getLocksPlain(GetLocksPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -25732,13 +26748,11 @@ public final class LinodeFunctions {
         return getLocks(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -25818,13 +26832,11 @@ public final class LinodeFunctions {
         return getLocksPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -25904,13 +26916,11 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getLocks:getLocks", TypeShape.of(GetLocksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -25990,13 +27000,11 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getLocks:getLocks", TypeShape.of(GetLocksResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-     * 
      * &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
      * 
      * Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
      * 
-     * For more information, see the Linode APIv4 docs (TBD).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
      * 
      * ## Example Usage
      * 
@@ -26361,6 +27369,3573 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetMaintenancePoliciesResult> getMaintenancePoliciesPlain(GetMaintenancePoliciesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getMaintenancePolicies:getMaintenancePolicies", TypeShape.of(GetMaintenancePoliciesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static Output<GetMonitorAlertChannelsResult> getMonitorAlertChannels() {
+        return getMonitorAlertChannels(GetMonitorAlertChannelsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertChannelsResult> getMonitorAlertChannelsPlain() {
+        return getMonitorAlertChannelsPlain(GetMonitorAlertChannelsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static Output<GetMonitorAlertChannelsResult> getMonitorAlertChannels(GetMonitorAlertChannelsArgs args) {
+        return getMonitorAlertChannels(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertChannelsResult> getMonitorAlertChannelsPlain(GetMonitorAlertChannelsPlainArgs args) {
+        return getMonitorAlertChannelsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static Output<GetMonitorAlertChannelsResult> getMonitorAlertChannels(GetMonitorAlertChannelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertChannels:getMonitorAlertChannels", TypeShape.of(GetMonitorAlertChannelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static Output<GetMonitorAlertChannelsResult> getMonitorAlertChannels(GetMonitorAlertChannelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertChannels:getMonitorAlertChannels", TypeShape.of(GetMonitorAlertChannelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to query Linode Monitor Alert notification channels.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-notification-channels).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filter Example
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertChannelsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var system = LinodeFunctions.getMonitorAlertChannels(GetMonitorAlertChannelsArgs.builder()
+     *             .filters(GetMonitorAlertChannelsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("system")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * The following top-level fields can be used with the `filter` block:
+     * 
+     * * `id`
+     * * `label`
+     * * `type`
+     * * `channelType`
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertChannelsResult> getMonitorAlertChannelsPlain(GetMonitorAlertChannelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorAlertChannels:getMonitorAlertChannels", TypeShape.of(GetMonitorAlertChannelsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definition). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs.builder()
+     *             .serviceType("dbaas")
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", test);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionResult> getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs args) {
+        return getMonitorAlertDefinition(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definition). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs.builder()
+     *             .serviceType("dbaas")
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", test);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionResult> getMonitorAlertDefinitionPlain(GetMonitorAlertDefinitionPlainArgs args) {
+        return getMonitorAlertDefinitionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definition). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs.builder()
+     *             .serviceType("dbaas")
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", test);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionResult> getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition", TypeShape.of(GetMonitorAlertDefinitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definition). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs.builder()
+     *             .serviceType("dbaas")
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", test);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionResult> getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition", TypeShape.of(GetMonitorAlertDefinitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definition). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinition(GetMonitorAlertDefinitionArgs.builder()
+     *             .serviceType("dbaas")
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("exampleOutput", test);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionResult> getMonitorAlertDefinitionPlain(GetMonitorAlertDefinitionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition", TypeShape.of(GetMonitorAlertDefinitionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the entities associated with a specific Monitor Alert Definition.
+     * For more information, see the Linode APIv4 docs.  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("dbaas")
+     *                 .build())
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `type`
+     * 
+     * * `url`
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionEntitiesResult> getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs args) {
+        return getMonitorAlertDefinitionEntities(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the entities associated with a specific Monitor Alert Definition.
+     * For more information, see the Linode APIv4 docs.  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("dbaas")
+     *                 .build())
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `type`
+     * 
+     * * `url`
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionEntitiesResult> getMonitorAlertDefinitionEntitiesPlain(GetMonitorAlertDefinitionEntitiesPlainArgs args) {
+        return getMonitorAlertDefinitionEntitiesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the entities associated with a specific Monitor Alert Definition.
+     * For more information, see the Linode APIv4 docs.  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("dbaas")
+     *                 .build())
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `type`
+     * 
+     * * `url`
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionEntitiesResult> getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities", TypeShape.of(GetMonitorAlertDefinitionEntitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the entities associated with a specific Monitor Alert Definition.
+     * For more information, see the Linode APIv4 docs.  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("dbaas")
+     *                 .build())
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `type`
+     * 
+     * * `url`
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionEntitiesResult> getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities", TypeShape.of(GetMonitorAlertDefinitionEntitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the entities associated with a specific Monitor Alert Definition.
+     * For more information, see the Linode APIv4 docs.  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionEntitiesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .alertId(123)
+     *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("dbaas")
+     *                 .build())
+     *             .serviceType("dbaas")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `id`
+     * 
+     * * `label`
+     * 
+     * * `type`
+     * 
+     * * `url`
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionEntitiesResult> getMonitorAlertDefinitionEntitiesPlain(GetMonitorAlertDefinitionEntitiesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities", TypeShape.of(GetMonitorAlertDefinitionEntitiesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitions() {
+        return getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitionsPlain() {
+        return getMonitorAlertDefinitionsPlain(GetMonitorAlertDefinitionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs args) {
+        return getMonitorAlertDefinitions(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitionsPlain(GetMonitorAlertDefinitionsPlainArgs args) {
+        return getMonitorAlertDefinitionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertDefinitions:getMonitorAlertDefinitions", TypeShape.of(GetMonitorAlertDefinitionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorAlertDefinitions:getMonitorAlertDefinitions", TypeShape.of(GetMonitorAlertDefinitionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves Monitor Alert Definitions.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-alert-definitions).  (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorAlertDefinitionsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorAlertDefinitions(GetMonitorAlertDefinitionsArgs.builder()
+     *             .serviceType("dbaas")
+     *             .filters(GetMonitorAlertDefinitionsFilterArgs.builder()
+     *                 .name(type)
+     *                 .values("test-alert-definition")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorAlertDefinitionsResult> getMonitorAlertDefinitionsPlain(GetMonitorAlertDefinitionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorAlertDefinitions:getMonitorAlertDefinitions", TypeShape.of(GetMonitorAlertDefinitionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Destination.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destination). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsDestination(GetMonitorLogsDestinationArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("destinationLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationResult> getMonitorLogsDestination(GetMonitorLogsDestinationArgs args) {
+        return getMonitorLogsDestination(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Destination.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destination). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsDestination(GetMonitorLogsDestinationArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("destinationLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsDestinationResult> getMonitorLogsDestinationPlain(GetMonitorLogsDestinationPlainArgs args) {
+        return getMonitorLogsDestinationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Destination.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destination). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsDestination(GetMonitorLogsDestinationArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("destinationLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationResult> getMonitorLogsDestination(GetMonitorLogsDestinationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsDestination:getMonitorLogsDestination", TypeShape.of(GetMonitorLogsDestinationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Destination.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destination). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsDestination(GetMonitorLogsDestinationArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("destinationLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationResult> getMonitorLogsDestination(GetMonitorLogsDestinationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsDestination:getMonitorLogsDestination", TypeShape.of(GetMonitorLogsDestinationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Destination.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destination). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsDestination(GetMonitorLogsDestinationArgs.builder()
+     *             .id(12345)
+     *             .build());
+     * 
+     *         ctx.export("destinationLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsDestinationResult> getMonitorLogsDestinationPlain(GetMonitorLogsDestinationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsDestination:getMonitorLogsDestination", TypeShape.of(GetMonitorLogsDestinationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationsResult> getMonitorLogsDestinations() {
+        return getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsDestinationsResult> getMonitorLogsDestinationsPlain() {
+        return getMonitorLogsDestinationsPlain(GetMonitorLogsDestinationsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationsResult> getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs args) {
+        return getMonitorLogsDestinations(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsDestinationsResult> getMonitorLogsDestinationsPlain(GetMonitorLogsDestinationsPlainArgs args) {
+        return getMonitorLogsDestinationsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationsResult> getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsDestinations:getMonitorLogsDestinations", TypeShape.of(GetMonitorLogsDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsDestinationsResult> getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsDestinations:getMonitorLogsDestinations", TypeShape.of(GetMonitorLogsDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Destinations.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-destinations). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsDestinationsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var objectStorage = LinodeFunctions.getMonitorLogsDestinations(GetMonitorLogsDestinationsArgs.builder()
+     *             .filters(GetMonitorLogsDestinationsFilterArgs.builder()
+     *                 .name("type")
+     *                 .values("akamai_object_storage")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsDestinationsResult> getMonitorLogsDestinationsPlain(GetMonitorLogsDestinationsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsDestinations:getMonitorLogsDestinations", TypeShape.of(GetMonitorLogsDestinationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStream(GetMonitorLogsStreamArgs.builder()
+     *             .id("12345")
+     *             .build());
+     * 
+     *         ctx.export("streamLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamResult> getMonitorLogsStream(GetMonitorLogsStreamArgs args) {
+        return getMonitorLogsStream(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStream(GetMonitorLogsStreamArgs.builder()
+     *             .id("12345")
+     *             .build());
+     * 
+     *         ctx.export("streamLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamResult> getMonitorLogsStreamPlain(GetMonitorLogsStreamPlainArgs args) {
+        return getMonitorLogsStreamPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStream(GetMonitorLogsStreamArgs.builder()
+     *             .id("12345")
+     *             .build());
+     * 
+     *         ctx.export("streamLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamResult> getMonitorLogsStream(GetMonitorLogsStreamArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStream:getMonitorLogsStream", TypeShape.of(GetMonitorLogsStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStream(GetMonitorLogsStreamArgs.builder()
+     *             .id("12345")
+     *             .build());
+     * 
+     *         ctx.export("streamLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamResult> getMonitorLogsStream(GetMonitorLogsStreamArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStream:getMonitorLogsStream", TypeShape.of(GetMonitorLogsStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStream(GetMonitorLogsStreamArgs.builder()
+     *             .id("12345")
+     *             .build());
+     * 
+     *         ctx.export("streamLabel", example.label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamResult> getMonitorLogsStreamPlain(GetMonitorLogsStreamPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsStream:getMonitorLogsStream", TypeShape.of(GetMonitorLogsStreamResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides the historical versions of a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream-history). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs.builder()
+     *             .streamId(12345)
+     *             .build());
+     * 
+     *         ctx.export("historyCount", example.streams().size());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamHistoryResult> getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs args) {
+        return getMonitorLogsStreamHistory(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides the historical versions of a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream-history). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs.builder()
+     *             .streamId(12345)
+     *             .build());
+     * 
+     *         ctx.export("historyCount", example.streams().size());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamHistoryResult> getMonitorLogsStreamHistoryPlain(GetMonitorLogsStreamHistoryPlainArgs args) {
+        return getMonitorLogsStreamHistoryPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides the historical versions of a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream-history). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs.builder()
+     *             .streamId(12345)
+     *             .build());
+     * 
+     *         ctx.export("historyCount", example.streams().size());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamHistoryResult> getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory", TypeShape.of(GetMonitorLogsStreamHistoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides the historical versions of a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream-history). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs.builder()
+     *             .streamId(12345)
+     *             .build());
+     * 
+     *         ctx.export("historyCount", example.streams().size());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamHistoryResult> getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory", TypeShape.of(GetMonitorLogsStreamHistoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides the historical versions of a Linode Monitor Logs Stream.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-stream-history). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamHistoryArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getMonitorLogsStreamHistory(GetMonitorLogsStreamHistoryArgs.builder()
+     *             .streamId(12345)
+     *             .build());
+     * 
+     *         ctx.export("historyCount", example.streams().size());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamHistoryResult> getMonitorLogsStreamHistoryPlain(GetMonitorLogsStreamHistoryPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory", TypeShape.of(GetMonitorLogsStreamHistoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsStreamsResult> getMonitorLogsStreams() {
+        return getMonitorLogsStreams(GetMonitorLogsStreamsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamsResult> getMonitorLogsStreamsPlain() {
+        return getMonitorLogsStreamsPlain(GetMonitorLogsStreamsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsStreamsResult> getMonitorLogsStreams(GetMonitorLogsStreamsArgs args) {
+        return getMonitorLogsStreams(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamsResult> getMonitorLogsStreamsPlain(GetMonitorLogsStreamsPlainArgs args) {
+        return getMonitorLogsStreamsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsStreamsResult> getMonitorLogsStreams(GetMonitorLogsStreamsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStreams:getMonitorLogsStreams", TypeShape.of(GetMonitorLogsStreamsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static Output<GetMonitorLogsStreamsResult> getMonitorLogsStreams(GetMonitorLogsStreamsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStreams:getMonitorLogsStreams", TypeShape.of(GetMonitorLogsStreamsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides a list of Linode Monitor Logs Streams.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-logs-streams). (**Note: v4beta only.**)
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsArgs;
+     * import com.pulumi.linode.inputs.GetMonitorLogsStreamsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var activeAudit = LinodeFunctions.getMonitorLogsStreams(GetMonitorLogsStreamsArgs.builder()
+     *             .filters(            
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("type")
+     *                     .values("audit_logs")
+     *                     .build(),
+     *                 GetMonitorLogsStreamsFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("active")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * * `type`
+     * * `status`
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamsResult> getMonitorLogsStreamsPlain(GetMonitorLogsStreamsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsStreams:getMonitorLogsStreams", TypeShape.of(GetMonitorLogsStreamsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetNbTypesResult> getNbTypes() {
         return getNbTypes(GetNbTypesArgs.Empty, InvokeOptions.Empty);
@@ -27763,9 +32338,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
+     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
-     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -27806,9 +32381,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
+     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
-     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -27849,9 +32424,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
+     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
-     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -27892,9 +32467,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
+     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
-     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -27935,9 +32510,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
+     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
-     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -28355,8 +32930,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .nodebalancerId(123)
      *             .id(456)
+     *             .nodebalancerId(123)
      *             .build());
      * 
      *     }
@@ -28399,8 +32974,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .nodebalancerId(123)
      *             .id(456)
+     *             .nodebalancerId(123)
      *             .build());
      * 
      *     }
@@ -28443,8 +33018,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .nodebalancerId(123)
      *             .id(456)
+     *             .nodebalancerId(123)
      *             .build());
      * 
      *     }
@@ -28487,8 +33062,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .nodebalancerId(123)
      *             .id(456)
+     *             .nodebalancerId(123)
      *             .build());
      * 
      *     }
@@ -28531,8 +33106,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .nodebalancerId(123)
      *             .id(456)
+     *             .nodebalancerId(123)
      *             .build());
      * 
      *     }
@@ -28606,11 +33181,46 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
-     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv6_range")
+     *                 .values("2a01:7e04:e403:3::/64")
+     *                 .build())
+     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -28623,6 +33233,8 @@ public final class LinodeFunctions {
      * * `id`
      * 
      * * `ipv4Range`
+     * 
+     * * `ipv6Range`
      * 
      * * `nodebalancerId`
      * 
@@ -28696,11 +33308,46 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
-     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv6_range")
+     *                 .values("2a01:7e04:e403:3::/64")
+     *                 .build())
+     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -28713,6 +33360,8 @@ public final class LinodeFunctions {
      * * `id`
      * 
      * * `ipv4Range`
+     * 
+     * * `ipv6Range`
      * 
      * * `nodebalancerId`
      * 
@@ -28786,11 +33435,46 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
-     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv6_range")
+     *                 .values("2a01:7e04:e403:3::/64")
+     *                 .build())
+     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -28803,6 +33487,8 @@ public final class LinodeFunctions {
      * * `id`
      * 
      * * `ipv4Range`
+     * 
+     * * `ipv6Range`
      * 
      * * `nodebalancerId`
      * 
@@ -28876,11 +33562,46 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
-     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv6_range")
+     *                 .values("2a01:7e04:e403:3::/64")
+     *                 .build())
+     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -28893,6 +33614,8 @@ public final class LinodeFunctions {
      * * `id`
      * 
      * * `ipv4Range`
+     * 
+     * * `ipv6Range`
      * 
      * * `nodebalancerId`
      * 
@@ -28966,11 +33689,46 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
-     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
+     *             .nodebalancerId(12345)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsArgs;
+     * import com.pulumi.linode.inputs.GetNodebalancerVpcsFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .filters(GetNodebalancerVpcsFilterArgs.builder()
+     *                 .name("ipv6_range")
+     *                 .values("2a01:7e04:e403:3::/64")
+     *                 .build())
+     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -28983,6 +33741,8 @@ public final class LinodeFunctions {
      * * `id`
      * 
      * * `ipv4Range`
+     * 
+     * * `ipv6Range`
      * 
      * * `nodebalancerId`
      * 
@@ -29476,221 +34236,6 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain(GetNodebalancersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getNodebalancers:getNodebalancers", TypeShape.of(GetNodebalancersResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides information about a Linode Object Storage Cluster
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
-     * 
-     * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id("us-east-1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args) {
-        return getObjectStorageCluster(args, InvokeOptions.Empty);
-    }
-    /**
-     * Provides information about a Linode Object Storage Cluster
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
-     * 
-     * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id("us-east-1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args) {
-        return getObjectStorageClusterPlain(args, InvokeOptions.Empty);
-    }
-    /**
-     * Provides information about a Linode Object Storage Cluster
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
-     * 
-     * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id("us-east-1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", TypeShape.of(GetObjectStorageClusterResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides information about a Linode Object Storage Cluster
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
-     * 
-     * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id("us-east-1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static Output<GetObjectStorageClusterResult> getObjectStorageCluster(GetObjectStorageClusterArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("linode:index/getObjectStorageCluster:getObjectStorageCluster", TypeShape.of(GetObjectStorageClusterResult.class), args, Utilities.withVersion(options));
-    }
-    /**
-     * Provides information about a Linode Object Storage Cluster
-     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-cluster).
-     * 
-     * ## Example Usage
-     * 
-     * The following example shows how one might use this data source to access information about a Linode Object Storage Cluster.
-     * 
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.linode.LinodeFunctions;
-     * import com.pulumi.linode.inputs.GetObjectStorageClusterArgs;
-     * import java.util.ArrayList;
-     * import java.util.Arrays;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var primary = LinodeFunctions.getObjectStorageCluster(GetObjectStorageClusterArgs.builder()
-     *             .id("us-east-1")
-     *             .build());
-     * 
-     *     }
-     * }
-     * }
-     * </pre>
-     * 
-     */
-    public static CompletableFuture<GetObjectStorageClusterResult> getObjectStorageClusterPlain(GetObjectStorageClusterPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageCluster:getObjectStorageCluster", TypeShape.of(GetObjectStorageClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about Linode Object Storage endpoints available to the user.
@@ -30302,6 +34847,662 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints", TypeShape.of(GetObjectStorageEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides details about an Object Storage global quota on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quota).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage global quota.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs.builder()
+     *             .quotaId("keys")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotaResult> getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs args) {
+        return getObjectStorageGlobalQuota(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about an Object Storage global quota on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quota).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage global quota.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs.builder()
+     *             .quotaId("keys")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageGlobalQuotaResult> getObjectStorageGlobalQuotaPlain(GetObjectStorageGlobalQuotaPlainArgs args) {
+        return getObjectStorageGlobalQuotaPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about an Object Storage global quota on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quota).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage global quota.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs.builder()
+     *             .quotaId("keys")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotaResult> getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageGlobalQuota:getObjectStorageGlobalQuota", TypeShape.of(GetObjectStorageGlobalQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about an Object Storage global quota on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quota).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage global quota.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs.builder()
+     *             .quotaId("keys")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotaResult> getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageGlobalQuota:getObjectStorageGlobalQuota", TypeShape.of(GetObjectStorageGlobalQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about an Object Storage global quota on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quota).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an Object Storage global quota.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotaArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuota = LinodeFunctions.getObjectStorageGlobalQuota(GetObjectStorageGlobalQuotaArgs.builder()
+     *             .quotaId("keys")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageGlobalQuotaResult> getObjectStorageGlobalQuotaPlain(GetObjectStorageGlobalQuotaPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageGlobalQuota:getObjectStorageGlobalQuota", TypeShape.of(GetObjectStorageGlobalQuotaResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotas() {
+        return getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotasPlain() {
+        return getObjectStorageGlobalQuotasPlain(GetObjectStorageGlobalQuotasPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs args) {
+        return getObjectStorageGlobalQuotas(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotasPlain(GetObjectStorageGlobalQuotasPlainArgs args) {
+        return getObjectStorageGlobalQuotasPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageGlobalQuotas:getObjectStorageGlobalQuotas", TypeShape.of(GetObjectStorageGlobalQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static Output<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getObjectStorageGlobalQuotas:getObjectStorageGlobalQuotas", TypeShape.of(GetObjectStorageGlobalQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about Object Storage global quotas on your account.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-global-quotas).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list and filter Object Storage global quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasArgs;
+     * import com.pulumi.linode.inputs.GetObjectStorageGlobalQuotasFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var keys = LinodeFunctions.getObjectStorageGlobalQuotas(GetObjectStorageGlobalQuotasArgs.builder()
+     *             .filters(GetObjectStorageGlobalQuotasFilterArgs.builder()
+     *                 .name("quota_id")
+     *                 .values("keys")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `quotaId`
+     * 
+     * * `quotaName`
+     * 
+     * * `description`
+     * 
+     * * `quotaLimit`
+     * 
+     * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
+     * 
+     */
+    public static CompletableFuture<GetObjectStorageGlobalQuotasResult> getObjectStorageGlobalQuotasPlain(GetObjectStorageGlobalQuotasPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageGlobalQuotas:getObjectStorageGlobalQuotas", TypeShape.of(GetObjectStorageGlobalQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides details about Object Storage quota information on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota).
      * 
@@ -30517,7 +35718,7 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getObjectStorageQuota:getObjectStorageQuota", TypeShape.of(GetObjectStorageQuotaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30574,13 +35775,17 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas() {
         return getObjectStorageQuotas(GetObjectStorageQuotasArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30637,13 +35842,17 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static CompletableFuture<GetObjectStorageQuotasResult> getObjectStorageQuotasPlain() {
         return getObjectStorageQuotasPlain(GetObjectStorageQuotasPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30700,13 +35909,17 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas(GetObjectStorageQuotasArgs args) {
         return getObjectStorageQuotas(args, InvokeOptions.Empty);
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30763,13 +35976,17 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static CompletableFuture<GetObjectStorageQuotasResult> getObjectStorageQuotasPlain(GetObjectStorageQuotasPlainArgs args) {
         return getObjectStorageQuotasPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30826,13 +36043,17 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas(GetObjectStorageQuotasArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", TypeShape.of(GetObjectStorageQuotasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30889,13 +36110,17 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static Output<GetObjectStorageQuotasResult> getObjectStorageQuotas(GetObjectStorageQuotasArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", TypeShape.of(GetObjectStorageQuotasResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides details about a list of Object Storage quotas information on your account.
+     * Provides details about a list of Object Storage quotas on your account.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
      * 
      * ## Example Usage
@@ -30952,6 +36177,10 @@ public final class LinodeFunctions {
      * * `quotaLimit`
      * 
      * * `resourceMetric`
+     * 
+     * * `quotaType`
+     * 
+     * * `hasUsage`
      * 
      */
     public static CompletableFuture<GetObjectStorageQuotasResult> getObjectStorageQuotasPlain(GetObjectStorageQuotasPlainArgs args, InvokeOptions options) {
@@ -33595,6 +38824,221 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getRegion:getRegion", TypeShape.of(GetRegionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * `linode.getRegionVpcAvailability` provides details about a specific Linode region VPC availability. See all regions VPC availability [here](https://api.linode.com/v4/regions/vpc-availability).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region-vpc-availability).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode region VPC availability.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionVpcAvailabilityArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regionVpcAvailability = LinodeFunctions.getRegionVpcAvailability(GetRegionVpcAvailabilityArgs.builder()
+     *             .id("us-east")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionVpcAvailabilityResult> getRegionVpcAvailability(GetRegionVpcAvailabilityArgs args) {
+        return getRegionVpcAvailability(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.getRegionVpcAvailability` provides details about a specific Linode region VPC availability. See all regions VPC availability [here](https://api.linode.com/v4/regions/vpc-availability).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region-vpc-availability).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode region VPC availability.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionVpcAvailabilityArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regionVpcAvailability = LinodeFunctions.getRegionVpcAvailability(GetRegionVpcAvailabilityArgs.builder()
+     *             .id("us-east")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionVpcAvailabilityResult> getRegionVpcAvailabilityPlain(GetRegionVpcAvailabilityPlainArgs args) {
+        return getRegionVpcAvailabilityPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.getRegionVpcAvailability` provides details about a specific Linode region VPC availability. See all regions VPC availability [here](https://api.linode.com/v4/regions/vpc-availability).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region-vpc-availability).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode region VPC availability.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionVpcAvailabilityArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regionVpcAvailability = LinodeFunctions.getRegionVpcAvailability(GetRegionVpcAvailabilityArgs.builder()
+     *             .id("us-east")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionVpcAvailabilityResult> getRegionVpcAvailability(GetRegionVpcAvailabilityArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getRegionVpcAvailability:getRegionVpcAvailability", TypeShape.of(GetRegionVpcAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.getRegionVpcAvailability` provides details about a specific Linode region VPC availability. See all regions VPC availability [here](https://api.linode.com/v4/regions/vpc-availability).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region-vpc-availability).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode region VPC availability.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionVpcAvailabilityArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regionVpcAvailability = LinodeFunctions.getRegionVpcAvailability(GetRegionVpcAvailabilityArgs.builder()
+     *             .id("us-east")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionVpcAvailabilityResult> getRegionVpcAvailability(GetRegionVpcAvailabilityArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getRegionVpcAvailability:getRegionVpcAvailability", TypeShape.of(GetRegionVpcAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * `linode.getRegionVpcAvailability` provides details about a specific Linode region VPC availability. See all regions VPC availability [here](https://api.linode.com/v4/regions/vpc-availability).
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-region-vpc-availability).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how the resource might be used to obtain additional information about a Linode region VPC availability.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetRegionVpcAvailabilityArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var regionVpcAvailability = LinodeFunctions.getRegionVpcAvailability(GetRegionVpcAvailabilityArgs.builder()
+     *             .id("us-east")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionVpcAvailabilityResult> getRegionVpcAvailabilityPlain(GetRegionVpcAvailabilityPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getRegionVpcAvailability:getRegionVpcAvailability", TypeShape.of(GetRegionVpcAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Provides information about Linode regions that match a set of filters.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions).
      * 
@@ -34006,6 +39450,825 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailability() {
+        return getRegionsVpcAvailability(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailabilityPlain() {
+        return getRegionsVpcAvailabilityPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailability(InvokeArgs args) {
+        return getRegionsVpcAvailability(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailabilityPlain(InvokeArgs args) {
+        return getRegionsVpcAvailabilityPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailability(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability", TypeShape.of(GetRegionsVpcAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailability(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability", TypeShape.of(GetRegionsVpcAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode regions VPC availability.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-regions-vpc-availability).
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all-regions = LinodeFunctions.getRegionsVpcAvailability(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("regionsVpcAvailability", all_regions.regionsVpcAvailabilities());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetRegionsVpcAvailabilityResult> getRegionsVpcAvailabilityPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability", TypeShape.of(GetRegionsVpcAvailabilityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetReservedIpTypesResult> getReservedIpTypes() {
+        return getReservedIpTypes(GetReservedIpTypesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetReservedIpTypesResult> getReservedIpTypesPlain() {
+        return getReservedIpTypesPlain(GetReservedIpTypesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetReservedIpTypesResult> getReservedIpTypes(GetReservedIpTypesArgs args) {
+        return getReservedIpTypes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetReservedIpTypesResult> getReservedIpTypesPlain(GetReservedIpTypesPlainArgs args) {
+        return getReservedIpTypesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetReservedIpTypesResult> getReservedIpTypes(GetReservedIpTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getReservedIpTypes:getReservedIpTypes", TypeShape.of(GetReservedIpTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static Output<GetReservedIpTypesResult> getReservedIpTypes(GetReservedIpTypesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getReservedIpTypes:getReservedIpTypes", TypeShape.of(GetReservedIpTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode Reserved IP types that match a set of filters.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-reserved-ip-types).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("typeIds", all.types().stream().map(element -> element.id()).collect(toList()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesArgs;
+     * import com.pulumi.linode.inputs.GetReservedIpTypesFilterArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var specific = LinodeFunctions.getReservedIpTypes(GetReservedIpTypesArgs.builder()
+     *             .filters(GetReservedIpTypesFilterArgs.builder()
+     *                 .name("id")
+     *                 .values("reserved-ip")
+     *                 .build())
+     *             .build());
+     * 
+     *         ctx.export("label", specific.types()[0].label());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Filterable Fields
+     * 
+     * * `label`
+     * 
+     */
+    public static CompletableFuture<GetReservedIpTypesResult> getReservedIpTypesPlain(GetReservedIpTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getReservedIpTypes:getReservedIpTypes", TypeShape.of(GetReservedIpTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
@@ -35395,6 +41658,216 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetStackScriptsResult> getStackScriptsPlain(GetStackScriptsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getStackScripts:getStackScripts", TypeShape.of(GetStackScriptsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Tag, including the objects associated with it.
+     * 
+     * For more information, see the [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-tagged-objects).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getTag(GetTagArgs.builder()
+     *             .label("my-tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTagResult> getTag(GetTagArgs args) {
+        return getTag(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Tag, including the objects associated with it.
+     * 
+     * For more information, see the [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-tagged-objects).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getTag(GetTagArgs.builder()
+     *             .label("my-tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args) {
+        return getTagPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about a Linode Tag, including the objects associated with it.
+     * 
+     * For more information, see the [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-tagged-objects).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getTag(GetTagArgs.builder()
+     *             .label("my-tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Tag, including the objects associated with it.
+     * 
+     * For more information, see the [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-tagged-objects).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getTag(GetTagArgs.builder()
+     *             .label("my-tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetTagResult> getTag(GetTagArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a Linode Tag, including the objects associated with it.
+     * 
+     * For more information, see the [Linode APIv4 documentation](https://techdocs.akamai.com/linode-api/reference/get-tagged-objects).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetTagArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = LinodeFunctions.getTag(GetTagArgs.builder()
+     *             .label("my-tag")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetTagResult> getTagPlain(GetTagPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode user
@@ -37207,6 +43680,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ### Subnets Reference
      * 
      * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
@@ -37262,6 +43743,14 @@ public final class LinodeFunctions {
      * Contains information about a single IPv6 allocation under this VPC.
      * 
      * * `range` - The allocated range in CIDR format.
+     * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
      * 
      * ### Subnets Reference
      * 
@@ -37319,6 +43808,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ### Subnets Reference
      * 
      * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
@@ -37374,6 +43871,14 @@ public final class LinodeFunctions {
      * Contains information about a single IPv6 allocation under this VPC.
      * 
      * * `range` - The allocated range in CIDR format.
+     * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
      * 
      * ### Subnets Reference
      * 
@@ -37431,6 +43936,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ### Subnets Reference
      * 
      * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
@@ -37438,6 +43951,293 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVpcDefaultRangesResult> getVpcDefaultRanges() {
+        return getVpcDefaultRanges(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVpcDefaultRangesResult> getVpcDefaultRangesPlain() {
+        return getVpcDefaultRangesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVpcDefaultRangesResult> getVpcDefaultRanges(InvokeArgs args) {
+        return getVpcDefaultRanges(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVpcDefaultRangesResult> getVpcDefaultRangesPlain(InvokeArgs args) {
+        return getVpcDefaultRangesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVpcDefaultRangesResult> getVpcDefaultRanges(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpcDefaultRanges:getVpcDefaultRanges", TypeShape.of(GetVpcDefaultRangesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetVpcDefaultRangesResult> getVpcDefaultRanges(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getVpcDefaultRanges:getVpcDefaultRanges", TypeShape.of(GetVpcDefaultRangesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about the default and forbidden IPv4 address ranges for VPCs.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-vpcs-default-ranges).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about the default and forbidden IPv4 address ranges for VPCs.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getVpcDefaultRanges(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("vpcDefaultRanges", foo);
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetVpcDefaultRangesResult> getVpcDefaultRangesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getVpcDefaultRanges:getVpcDefaultRanges", TypeShape.of(GetVpcDefaultRangesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a list of Linode VPC IPs that match a set of filters.
@@ -38970,6 +45770,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -39035,6 +45843,14 @@ public final class LinodeFunctions {
      * Contains information about a single IPv6 allocation under a VPC.
      * 
      * * `range` - The allocated range in CIDR format.
+     * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -39102,6 +45918,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -39167,6 +45991,14 @@ public final class LinodeFunctions {
      * Contains information about a single IPv6 allocation under a VPC.
      * 
      * * `range` - The allocated range in CIDR format.
+     * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
      * 
      * ## Filterable Fields
      * 
@@ -39234,6 +46066,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -39300,6 +46140,14 @@ public final class LinodeFunctions {
      * 
      * * `range` - The allocated range in CIDR format.
      * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
+     * 
      * ## Filterable Fields
      * 
      * * `id`
@@ -39365,6 +46213,14 @@ public final class LinodeFunctions {
      * Contains information about a single IPv6 allocation under a VPC.
      * 
      * * `range` - The allocated range in CIDR format.
+     * 
+     * ## IPv4
+     * 
+     * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+     * 
+     * Contains information about a single IPv4 range under this VPC.
+     * 
+     * * `range` - The IPv4 range in CIDR format.
      * 
      * ## Filterable Fields
      * 

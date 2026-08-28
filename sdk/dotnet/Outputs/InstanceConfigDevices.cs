@@ -14,13 +14,165 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigDevices
     {
         /// <summary>
-        /// ... `Sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `DiskId` or `VolumeId`. Only one disk identifier is permitted per slot. Devices mapped from `Sde` through `Sdh` are unavailable in `"fullvirt"` `VirtMode`.
+        /// ... `Sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `Sda`-`Sdz`, `Sdaa`-`Sdaz`, `Sdba`-`Sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `DiskId` or `VolumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
         /// </summary>
         public readonly Outputs.InstanceConfigDevicesSda? Sda;
         /// <summary>
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdaa? Sdaa;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdab? Sdab;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdac? Sdac;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdad? Sdad;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdae? Sdae;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdaf? Sdaf;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdag? Sdag;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdah? Sdah;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdai? Sdai;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdaj? Sdaj;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdak? Sdak;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdal? Sdal;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdam? Sdam;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdan? Sdan;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdao? Sdao;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdap? Sdap;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdaq? Sdaq;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdar? Sdar;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdas? Sdas;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdat? Sdat;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdau? Sdau;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdav? Sdav;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdaw? Sdaw;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdax? Sdax;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSday? Sday;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdaz? Sdaz;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
         public readonly Outputs.InstanceConfigDevicesSdb? Sdb;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdba? Sdba;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbb? Sdbb;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbc? Sdbc;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbd? Sdbd;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbe? Sdbe;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbf? Sdbf;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbg? Sdbg;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbh? Sdbh;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbi? Sdbi;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbj? Sdbj;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbk? Sdbk;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdbl? Sdbl;
         /// <summary>
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
@@ -45,12 +197,160 @@ namespace Pulumi.Linode.Outputs
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly Outputs.InstanceConfigDevicesSdh? Sdh;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdi? Sdi;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdj? Sdj;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdk? Sdk;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdl? Sdl;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdm? Sdm;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdn? Sdn;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdo? Sdo;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdp? Sdp;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdq? Sdq;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdr? Sdr;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSds? Sds;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdt? Sdt;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdu? Sdu;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdv? Sdv;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdw? Sdw;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdx? Sdx;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdy? Sdy;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly Outputs.InstanceConfigDevicesSdz? Sdz;
 
         [OutputConstructor]
         private InstanceConfigDevices(
             Outputs.InstanceConfigDevicesSda? sda,
 
+            Outputs.InstanceConfigDevicesSdaa? sdaa,
+
+            Outputs.InstanceConfigDevicesSdab? sdab,
+
+            Outputs.InstanceConfigDevicesSdac? sdac,
+
+            Outputs.InstanceConfigDevicesSdad? sdad,
+
+            Outputs.InstanceConfigDevicesSdae? sdae,
+
+            Outputs.InstanceConfigDevicesSdaf? sdaf,
+
+            Outputs.InstanceConfigDevicesSdag? sdag,
+
+            Outputs.InstanceConfigDevicesSdah? sdah,
+
+            Outputs.InstanceConfigDevicesSdai? sdai,
+
+            Outputs.InstanceConfigDevicesSdaj? sdaj,
+
+            Outputs.InstanceConfigDevicesSdak? sdak,
+
+            Outputs.InstanceConfigDevicesSdal? sdal,
+
+            Outputs.InstanceConfigDevicesSdam? sdam,
+
+            Outputs.InstanceConfigDevicesSdan? sdan,
+
+            Outputs.InstanceConfigDevicesSdao? sdao,
+
+            Outputs.InstanceConfigDevicesSdap? sdap,
+
+            Outputs.InstanceConfigDevicesSdaq? sdaq,
+
+            Outputs.InstanceConfigDevicesSdar? sdar,
+
+            Outputs.InstanceConfigDevicesSdas? sdas,
+
+            Outputs.InstanceConfigDevicesSdat? sdat,
+
+            Outputs.InstanceConfigDevicesSdau? sdau,
+
+            Outputs.InstanceConfigDevicesSdav? sdav,
+
+            Outputs.InstanceConfigDevicesSdaw? sdaw,
+
+            Outputs.InstanceConfigDevicesSdax? sdax,
+
+            Outputs.InstanceConfigDevicesSday? sday,
+
+            Outputs.InstanceConfigDevicesSdaz? sdaz,
+
             Outputs.InstanceConfigDevicesSdb? sdb,
+
+            Outputs.InstanceConfigDevicesSdba? sdba,
+
+            Outputs.InstanceConfigDevicesSdbb? sdbb,
+
+            Outputs.InstanceConfigDevicesSdbc? sdbc,
+
+            Outputs.InstanceConfigDevicesSdbd? sdbd,
+
+            Outputs.InstanceConfigDevicesSdbe? sdbe,
+
+            Outputs.InstanceConfigDevicesSdbf? sdbf,
+
+            Outputs.InstanceConfigDevicesSdbg? sdbg,
+
+            Outputs.InstanceConfigDevicesSdbh? sdbh,
+
+            Outputs.InstanceConfigDevicesSdbi? sdbi,
+
+            Outputs.InstanceConfigDevicesSdbj? sdbj,
+
+            Outputs.InstanceConfigDevicesSdbk? sdbk,
+
+            Outputs.InstanceConfigDevicesSdbl? sdbl,
 
             Outputs.InstanceConfigDevicesSdc? sdc,
 
@@ -62,16 +362,108 @@ namespace Pulumi.Linode.Outputs
 
             Outputs.InstanceConfigDevicesSdg? sdg,
 
-            Outputs.InstanceConfigDevicesSdh? sdh)
+            Outputs.InstanceConfigDevicesSdh? sdh,
+
+            Outputs.InstanceConfigDevicesSdi? sdi,
+
+            Outputs.InstanceConfigDevicesSdj? sdj,
+
+            Outputs.InstanceConfigDevicesSdk? sdk,
+
+            Outputs.InstanceConfigDevicesSdl? sdl,
+
+            Outputs.InstanceConfigDevicesSdm? sdm,
+
+            Outputs.InstanceConfigDevicesSdn? sdn,
+
+            Outputs.InstanceConfigDevicesSdo? sdo,
+
+            Outputs.InstanceConfigDevicesSdp? sdp,
+
+            Outputs.InstanceConfigDevicesSdq? sdq,
+
+            Outputs.InstanceConfigDevicesSdr? sdr,
+
+            Outputs.InstanceConfigDevicesSds? sds,
+
+            Outputs.InstanceConfigDevicesSdt? sdt,
+
+            Outputs.InstanceConfigDevicesSdu? sdu,
+
+            Outputs.InstanceConfigDevicesSdv? sdv,
+
+            Outputs.InstanceConfigDevicesSdw? sdw,
+
+            Outputs.InstanceConfigDevicesSdx? sdx,
+
+            Outputs.InstanceConfigDevicesSdy? sdy,
+
+            Outputs.InstanceConfigDevicesSdz? sdz)
         {
             Sda = sda;
+            Sdaa = sdaa;
+            Sdab = sdab;
+            Sdac = sdac;
+            Sdad = sdad;
+            Sdae = sdae;
+            Sdaf = sdaf;
+            Sdag = sdag;
+            Sdah = sdah;
+            Sdai = sdai;
+            Sdaj = sdaj;
+            Sdak = sdak;
+            Sdal = sdal;
+            Sdam = sdam;
+            Sdan = sdan;
+            Sdao = sdao;
+            Sdap = sdap;
+            Sdaq = sdaq;
+            Sdar = sdar;
+            Sdas = sdas;
+            Sdat = sdat;
+            Sdau = sdau;
+            Sdav = sdav;
+            Sdaw = sdaw;
+            Sdax = sdax;
+            Sday = sday;
+            Sdaz = sdaz;
             Sdb = sdb;
+            Sdba = sdba;
+            Sdbb = sdbb;
+            Sdbc = sdbc;
+            Sdbd = sdbd;
+            Sdbe = sdbe;
+            Sdbf = sdbf;
+            Sdbg = sdbg;
+            Sdbh = sdbh;
+            Sdbi = sdbi;
+            Sdbj = sdbj;
+            Sdbk = sdbk;
+            Sdbl = sdbl;
             Sdc = sdc;
             Sdd = sdd;
             Sde = sde;
             Sdf = sdf;
             Sdg = sdg;
             Sdh = sdh;
+            Sdi = sdi;
+            Sdj = sdj;
+            Sdk = sdk;
+            Sdl = sdl;
+            Sdm = sdm;
+            Sdn = sdn;
+            Sdo = sdo;
+            Sdp = sdp;
+            Sdq = sdq;
+            Sdr = sdr;
+            Sds = sds;
+            Sdt = sdt;
+            Sdu = sdu;
+            Sdv = sdv;
+            Sdw = sdw;
+            Sdx = sdx;
+            Sdy = sdy;
+            Sdz = sdz;
         }
     }
 }

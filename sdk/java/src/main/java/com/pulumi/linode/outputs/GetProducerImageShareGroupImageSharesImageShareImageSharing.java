@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class GetProducerImageShareGroupImageSharesImageShareImageSharing {
     /**
-     * @return Details about who the image is shared by.
+     * @return (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
      * 
      */
     private GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy sharedBy;
     /**
-     * @return Details about who the image is shared with.
+     * @return (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
      * 
      */
     private GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith sharedWith;
 
     private GetProducerImageShareGroupImageSharesImageShareImageSharing() {}
     /**
-     * @return Details about who the image is shared by.
+     * @return (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
      * 
      */
     public GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy sharedBy() {
         return this.sharedBy;
     }
     /**
-     * @return Details about who the image is shared with.
+     * @return (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
      * 
      */
     public GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith sharedWith() {

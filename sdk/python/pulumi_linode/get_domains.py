@@ -48,6 +48,9 @@ class GetDomainsResult:
     @_builtins.property
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
+        """
+        (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
+        """
         return pulumi.get(self, "domains")
 
     @_builtins.property
@@ -109,8 +112,6 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
     ```
 
     ## Filterable Fields
-
-    * `group`
 
     * `tags`
 
@@ -175,8 +176,6 @@ def get_domains_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['G
     ```
 
     ## Filterable Fields
-
-    * `group`
 
     * `tags`
 

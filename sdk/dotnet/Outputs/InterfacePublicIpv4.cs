@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv4Address> Addresses;
         /// <summary>
-        /// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `Addresses` input. Each object in this set supports:
+        /// (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `Addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv4AssignedAddress> AssignedAddresses;
         /// <summary>
-        /// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        /// (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv4Shared> Shareds;
 

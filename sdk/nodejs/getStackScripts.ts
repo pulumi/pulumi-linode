@@ -74,7 +74,7 @@ export interface GetStackScriptsArgs {
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -99,6 +99,9 @@ export interface GetStackScriptsResult {
     readonly latest?: boolean;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The returned list of StackScripts. Referenced by index (e.g. `stackscripts[0].id`).
+     */
     readonly stackscripts: outputs.GetStackScriptsStackscript[];
 }
 /**
@@ -169,7 +172,7 @@ export interface GetStackScriptsOutputArgs {
     /**
      * If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode StackScripts that meet certain requirements.
      */
     latest?: pulumi.Input<boolean | undefined>;
     /**

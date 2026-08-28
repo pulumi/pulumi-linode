@@ -25,9 +25,9 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.VpcSubnet("test", new()
     ///     {
-    ///         VpcId = 123,
-    ///         Label = "test-subnet",
     ///         Ipv4 = "10.0.0.0/24",
+    ///         Label = "test-subnet",
+    ///         VpcId = 123,
     ///     });
     /// 
     /// });
@@ -40,7 +40,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testVpc = new Linode.Vpc("test", new()
+    ///     var testVpc = new Linode.Vpc("testVpc", new()
     ///     {
     ///         Label = "test-vpc",
     ///         Region = "us-mia",
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
     ///     });
     /// 
     ///     // NOTE: IPv6 VPCs may not currently be available to all users.
-    ///     var test = new Linode.VpcSubnet("test", new()
+    ///     var testVpcSubnet = new Linode.VpcSubnet("testVpcSubnet", new()
     ///     {
     ///         VpcId = testVpc.Id,
     ///         Label = "test-subnet",
@@ -99,7 +99,7 @@ namespace Pulumi.Linode
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Managed databases assigned to the VPC Subnet.
+        /// (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         /// </summary>
         [Output("databases")]
         public Output<ImmutableArray<Outputs.VpcSubnetDatabase>> Databases { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
-        /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        /// * `Ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Output("ipv4")]
         public Output<string?> Ipv4 { get; private set; } = null!;
@@ -125,10 +125,16 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Linodes added to this subnet.
+        /// (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         /// </summary>
         [Output("linodes")]
         public Output<ImmutableArray<Outputs.VpcSubnetLinode>> Linodes { get; private set; } = null!;
+
+        /// <summary>
+        /// (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        /// </summary>
+        [Output("nodebalancers")]
+        public Output<ImmutableArray<Outputs.VpcSubnetNodebalancer>> Nodebalancers { get; private set; } = null!;
 
         /// <summary>
         /// The date and time when the VPC was last updated.
@@ -141,6 +147,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("vpcId")]
         public Output<int> VpcId { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the parent VPC (`Regular` or `Rdma`).
+        /// </summary>
+        [Output("vpcType")]
+        public Output<string> VpcType { get; private set; } = null!;
 
 
         /// <summary>
@@ -191,7 +203,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
-        /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        /// * `Ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
@@ -238,7 +250,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.VpcSubnetDatabaseGetArgs>? _databases;
 
         /// <summary>
-        /// A list of Managed databases assigned to the VPC Subnet.
+        /// (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         /// </summary>
         public InputList<Inputs.VpcSubnetDatabaseGetArgs> Databases
         {
@@ -249,7 +261,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IPv4 range of this subnet in CIDR format.
         /// 
-        /// * `Ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        /// * `Ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
@@ -276,12 +288,24 @@ namespace Pulumi.Linode
         private InputList<Inputs.VpcSubnetLinodeGetArgs>? _linodes;
 
         /// <summary>
-        /// A list of Linodes added to this subnet.
+        /// (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         /// </summary>
         public InputList<Inputs.VpcSubnetLinodeGetArgs> Linodes
         {
             get => _linodes ?? (_linodes = new InputList<Inputs.VpcSubnetLinodeGetArgs>());
             set => _linodes = value;
+        }
+
+        [Input("nodebalancers")]
+        private InputList<Inputs.VpcSubnetNodebalancerGetArgs>? _nodebalancers;
+
+        /// <summary>
+        /// (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        /// </summary>
+        public InputList<Inputs.VpcSubnetNodebalancerGetArgs> Nodebalancers
+        {
+            get => _nodebalancers ?? (_nodebalancers = new InputList<Inputs.VpcSubnetNodebalancerGetArgs>());
+            set => _nodebalancers = value;
         }
 
         /// <summary>
@@ -295,6 +319,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }
+
+        /// <summary>
+        /// The type of the parent VPC (`Regular` or `Rdma`).
+        /// </summary>
+        [Input("vpcType")]
+        public Input<string>? VpcType { get; set; }
 
         public VpcSubnetState()
         {

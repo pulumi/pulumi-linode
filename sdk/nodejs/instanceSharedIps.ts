@@ -21,13 +21,13 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * // Create a single primary node
- * const primaryInstance = new linode.Instance("primary", {
+ * const primaryInstance = new linode.Instance("primaryInstance", {
  *     label: "node-primary",
  *     type: "g6-nanode-1",
  *     region: "eu-central",
  * });
  * // Allocate an IP under the primary node
- * const primary = new linode.InstanceIp("primary", {linodeId: primaryInstance.id.apply(x =>Number(x))});
+ * const primaryInstanceIp = new linode.InstanceIp("primaryInstanceIp", {linodeId: primaryInstance.id.apply(x =>Number(x))});
  * // Create a secondary node
  * const secondary = new linode.Instance("secondary", {
  *     label: "node-secondary",
@@ -37,7 +37,7 @@ import * as utilities from "./utilities";
  * // Share the IP with the secondary node
  * const share_primary = new linode.InstanceSharedIps("share-primary", {
  *     linodeId: secondary.id.apply(x =>Number(x)),
- *     addresses: [primary.address],
+ *     addresses: [primaryInstanceIp.address],
  * });
  * ```
  */

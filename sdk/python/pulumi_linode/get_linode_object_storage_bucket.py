@@ -26,10 +26,7 @@ class GetLinodeObjectStorageBucketResult:
     """
     A collection of values returned by getLinodeObjectStorageBucket.
     """
-    def __init__(__self__, cluster=None, created=None, endpoint_type=None, hostname=None, id=None, label=None, objects=None, region=None, s3_endpoint=None, size=None):
-        if cluster and not isinstance(cluster, str):
-            raise TypeError("Expected argument 'cluster' to be a str")
-        pulumi.set(__self__, "cluster", cluster)
+    def __init__(__self__, created=None, endpoint_type=None, hostname=None, id=None, label=None, objects=None, region=None, s3_endpoint=None, size=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -57,12 +54,6 @@ class GetLinodeObjectStorageBucketResult:
         if size and not isinstance(size, int):
             raise TypeError("Expected argument 'size' to be a int")
         pulumi.set(__self__, "size", size)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-    def cluster(self) -> _builtins.str:
-        return pulumi.get(self, "cluster")
 
     @_builtins.property
     @pulumi.getter
@@ -116,7 +107,6 @@ class AwaitableGetLinodeObjectStorageBucketResult(GetLinodeObjectStorageBucketRe
         if False:
             yield self
         return GetLinodeObjectStorageBucketResult(
-            cluster=self.cluster,
             created=self.created,
             endpoint_type=self.endpoint_type,
             hostname=self.hostname,
@@ -128,8 +118,7 @@ class AwaitableGetLinodeObjectStorageBucketResult(GetLinodeObjectStorageBucketRe
             size=self.size)
 
 
-def get_linode_object_storage_bucket(cluster: Optional[_builtins.str] = None,
-                                     label: Optional[_builtins.str] = None,
+def get_linode_object_storage_bucket(label: Optional[_builtins.str] = None,
                                      region: Optional[_builtins.str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLinodeObjectStorageBucketResult:
     """
@@ -149,19 +138,16 @@ def get_linode_object_storage_bucket(cluster: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str cluster: The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
     :param _builtins.str label: The name of this bucket.
-    :param _builtins.str region: The ID of the region this bucket is in. Required if `cluster` is not configured.
+    :param _builtins.str region: The ID of the region this bucket is in.
     """
     __args__ = dict()
-    __args__['cluster'] = cluster
     __args__['label'] = label
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket', __args__, opts=opts, typ=GetLinodeObjectStorageBucketResult).value
 
     return AwaitableGetLinodeObjectStorageBucketResult(
-        cluster=pulumi.get(__ret__, 'cluster'),
         created=pulumi.get(__ret__, 'created'),
         endpoint_type=pulumi.get(__ret__, 'endpoint_type'),
         hostname=pulumi.get(__ret__, 'hostname'),
@@ -171,8 +157,7 @@ def get_linode_object_storage_bucket(cluster: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         s3_endpoint=pulumi.get(__ret__, 's3_endpoint'),
         size=pulumi.get(__ret__, 'size'))
-def get_linode_object_storage_bucket_output(cluster: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                            label: pulumi.Input[Optional[_builtins.str]] = None,
+def get_linode_object_storage_bucket_output(label: pulumi.Input[Optional[_builtins.str]] = None,
                                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLinodeObjectStorageBucketResult]:
     """
@@ -192,18 +177,15 @@ def get_linode_object_storage_bucket_output(cluster: pulumi.Input[Optional[Optio
     ```
 
 
-    :param _builtins.str cluster: The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
     :param _builtins.str label: The name of this bucket.
-    :param _builtins.str region: The ID of the region this bucket is in. Required if `cluster` is not configured.
+    :param _builtins.str region: The ID of the region this bucket is in.
     """
     __args__ = dict()
-    __args__['cluster'] = cluster
     __args__['label'] = label
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket', __args__, opts=opts, typ=GetLinodeObjectStorageBucketResult)
     return __ret__.apply(lambda __response__: GetLinodeObjectStorageBucketResult(
-        cluster=pulumi.get(__response__, 'cluster'),
         created=pulumi.get(__response__, 'created'),
         endpoint_type=pulumi.get(__response__, 'endpoint_type'),
         hostname=pulumi.get(__response__, 'hostname'),

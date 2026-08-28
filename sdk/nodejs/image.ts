@@ -33,56 +33,12 @@ import * as utilities from "./utilities";
  *         "test",
  *     ],
  * });
- * const barBased = new linode.Instance("bar_based", {
+ * const barBased = new linode.Instance("barBased", {
  *     type: foo.type,
  *     region: "eu-west",
  *     image: bar.id,
  * });
  * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- * import * as std from "@pulumi/std";
- *
- * const foobar = new linode.Image("foobar", {
- *     label: "foobar-image",
- *     description: "An image uploaded from Terraform!",
- *     region: "us-southeast",
- *     tags: [
- *         "image-tag",
- *         "test",
- *     ],
- *     filePath: "path/to/image.img.gz",
- *     fileHash: std.filemd5({
- *         input: "path/to/image.img.gz",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- * import * as std from "@pulumi/std";
- *
- * const foobar = new linode.Image("foobar", {
- *     label: "foobar-image",
- *     description: "An image uploaded from Terraform!",
- *     region: "us-southeast",
- *     tags: [
- *         "image-tag",
- *         "test",
- *     ],
- *     filePath: "path/to/image.img.gz",
- *     fileHash: std.filemd5({
- *         input: "path/to/image.img.gz",
- *     }).then(invoke => invoke.result),
- *     replicaRegions: [
- *         "us-southeast",
- *         "us-east",
- *         "eu-west",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -160,7 +116,7 @@ export class Image extends pulumi.CustomResource {
      */
     declare public readonly filePath: pulumi.Output<string | undefined>;
     /**
-     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      */
     declare public /*out*/ readonly imageSharing: pulumi.Output<outputs.ImageImageSharing>;
     /**
@@ -192,7 +148,7 @@ export class Image extends pulumi.CustomResource {
      */
     declare public readonly replicaRegions: pulumi.Output<string[] | undefined>;
     /**
-     * A list of image replications region and corresponding status.
+     * (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
      */
     declare public /*out*/ readonly replications: pulumi.Output<outputs.ImageReplication[]>;
     /**
@@ -348,7 +304,7 @@ export interface ImageState {
      */
     filePath?: pulumi.Input<string | undefined>;
     /**
-     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing?: pulumi.Input<inputs.ImageImageSharing | undefined>;
     /**
@@ -380,7 +336,7 @@ export interface ImageState {
      */
     replicaRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A list of image replications region and corresponding status.
+     * (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
      */
     replications?: pulumi.Input<pulumi.Input<inputs.ImageReplication>[] | undefined>;
     /**

@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test_empty = new linode.ProducerImageShareGroup("test-empty", {
- *     label: "my-image-share-group",
  *     description: "My description.",
+ *     label: "my-image-share-group",
  * });
  * ```
  * ```typescript
@@ -26,13 +26,13 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test_images = new linode.ProducerImageShareGroup("test-images", {
- *     label: "my-image-share-group",
  *     description: "My description.",
  *     images: [{
+ *         description: "My image description.",
  *         id: "private/12345",
  *         label: "my-image",
- *         description: "My image description.",
  *     }],
+ *     label: "my-image-share-group",
  * });
  * ```
  */
@@ -71,7 +71,7 @@ export class ProducerImageShareGroup extends pulumi.CustomResource {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export interface ProducerImageShareGroupState {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -206,7 +206,7 @@ export interface ProducerImageShareGroupArgs {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     description?: pulumi.Input<string | undefined>;
     /**

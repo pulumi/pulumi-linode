@@ -154,7 +154,7 @@ class _StackScriptState:
         :param pulumi.Input[_builtins.str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[_builtins.str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[_builtins.str] updated: The date this StackScript was updated.
-        :param pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]] user_defined_fields: (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         :param pulumi.Input[_builtins.str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[_builtins.str] username: The User who created the StackScript.
         """
@@ -311,7 +311,7 @@ class _StackScriptState:
     @pulumi.getter(name="userDefinedFields")
     def user_defined_fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackScriptUserDefinedFieldArgs']]]]:
         """
-        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         """
         return pulumi.get(self, "user_defined_fields")
 
@@ -370,11 +370,11 @@ class StackScript(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.StackScript("foo",
+        foo_stack_script = linode.StackScript("fooStackScript",
             label="foo",
             description="Installs a Package",
             script=\"\"\"#!/bin/bash
-        # <UDF name=\\"package\\" label=\\"System Package to Install\\" example=\\"nginx\\" default=\\"\\">
+        # <UDF name="package" label="System Package to Install" example="nginx" default="">
         apt-get -q update && apt-get -q -y install $PACKAGE
         \"\"\",
             images=[
@@ -382,14 +382,14 @@ class StackScript(pulumi.CustomResource):
                 "linode/ubuntu20.04",
             ],
             rev_note="initial version")
-        foo_instance = linode.Instance("foo",
+        foo_instance = linode.Instance("fooInstance",
             image="linode/ubuntu22.04",
             label="foo",
             region="us-east",
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo.id.apply(lambda x: int(x)),
+            stackscript_id=foo_stack_script.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })
@@ -434,11 +434,11 @@ class StackScript(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.StackScript("foo",
+        foo_stack_script = linode.StackScript("fooStackScript",
             label="foo",
             description="Installs a Package",
             script=\"\"\"#!/bin/bash
-        # <UDF name=\\"package\\" label=\\"System Package to Install\\" example=\\"nginx\\" default=\\"\\">
+        # <UDF name="package" label="System Package to Install" example="nginx" default="">
         apt-get -q update && apt-get -q -y install $PACKAGE
         \"\"\",
             images=[
@@ -446,14 +446,14 @@ class StackScript(pulumi.CustomResource):
                 "linode/ubuntu20.04",
             ],
             rev_note="initial version")
-        foo_instance = linode.Instance("foo",
+        foo_instance = linode.Instance("fooInstance",
             image="linode/ubuntu22.04",
             label="foo",
             region="us-east",
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo.id.apply(lambda x: int(x)),
+            stackscript_id=foo_stack_script.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })
@@ -561,7 +561,7 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[_builtins.str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[_builtins.str] updated: The date this StackScript was updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]] user_defined_fields: This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]] user_defined_fields: (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         :param pulumi.Input[_builtins.str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[_builtins.str] username: The User who created the StackScript.
         """
@@ -670,7 +670,7 @@ class StackScript(pulumi.CustomResource):
     @pulumi.getter(name="userDefinedFields")
     def user_defined_fields(self) -> pulumi.Output[Sequence['outputs.StackScriptUserDefinedField']]:
         """
-        This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         """
         return pulumi.get(self, "user_defined_fields")
 

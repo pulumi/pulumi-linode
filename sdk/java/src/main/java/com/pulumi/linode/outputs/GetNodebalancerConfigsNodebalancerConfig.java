@@ -72,7 +72,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
     /**
      * @return The ID of the NodeBalancer to access.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      * 
      */
     private Integer nodebalancerId;
@@ -198,7 +198,7 @@ public final class GetNodebalancerConfigsNodebalancerConfig {
     /**
      * @return The ID of the NodeBalancer to access.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      * 
      */
     public Integer nodebalancerId() {

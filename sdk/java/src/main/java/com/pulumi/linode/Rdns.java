@@ -52,12 +52,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
- *             .image("linode/alpine3.19")
+ *             .image("linode/arch")
  *             .region("ca-east")
  *             .type("g6-dedicated-2")
  *             .build());
  * 
- *         var foo = new Rdns("foo", RdnsArgs.builder()
+ *         var fooRdns = new Rdns("fooRdns", RdnsArgs.builder()
  *             .address(fooInstance.ipAddress())
  *             .rdns(fooInstance.ipAddress().applyValue(_ipAddress -> String.format("%s.nip.io", _ipAddress)))
  *             .build());

@@ -47,21 +47,6 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-     * 
-     */
-    @Import(name="longviewSubscription")
-    private @Nullable Output<String> longviewSubscription;
-
-    /**
-     * @return The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-     * 
-     */
-    public Optional<Output<String>> longviewSubscription() {
-        return Optional.ofNullable(this.longviewSubscription);
-    }
-
-    /**
      * The default maintenance policy for this account. Examples are `&#34;linode/migrate&#34;` and `&#34;linode/power_off_on&#34;`. Defaults to `&#34;linode/migrate&#34;`.
      * 
      */
@@ -96,7 +81,6 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
     private AccountSettingsArgs(AccountSettingsArgs $) {
         this.backupsEnabled = $.backupsEnabled;
         this.interfacesForNewLinodes = $.interfacesForNewLinodes;
-        this.longviewSubscription = $.longviewSubscription;
         this.maintenancePolicy = $.maintenancePolicy;
         this.networkHelper = $.networkHelper;
     }
@@ -159,27 +143,6 @@ public final class AccountSettingsArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder interfacesForNewLinodes(String interfacesForNewLinodes) {
             return interfacesForNewLinodes(Output.of(interfacesForNewLinodes));
-        }
-
-        /**
-         * @param longviewSubscription The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder longviewSubscription(@Nullable Output<String> longviewSubscription) {
-            $.longviewSubscription = longviewSubscription;
-            return this;
-        }
-
-        /**
-         * @param longviewSubscription The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder longviewSubscription(String longviewSubscription) {
-            return longviewSubscription(Output.of(longviewSubscription));
         }
 
         /**

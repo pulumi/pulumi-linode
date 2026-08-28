@@ -25,12 +25,12 @@ public final class GetNetworkTransferPricesType {
      */
     private String label;
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     private List<GetNetworkTransferPricesTypePrice> prices;
     /**
-     * @return A list of region-specific prices for this Network Transfer Price.
+     * @return (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
      * 
      */
     private List<GetNetworkTransferPricesTypeRegionPrice> regionPrices;
@@ -56,14 +56,14 @@ public final class GetNetworkTransferPricesType {
         return this.label;
     }
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     public List<GetNetworkTransferPricesTypePrice> prices() {
         return this.prices;
     }
     /**
-     * @return A list of region-specific prices for this Network Transfer Price.
+     * @return (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
      * 
      */
     public List<GetNetworkTransferPricesTypeRegionPrice> regionPrices() {

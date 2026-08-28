@@ -49,14 +49,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .label("my-cluster")
  *             .k8sVersion("1.32")
+ *             .label("my-cluster")
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .count(3)
+ *                 .type("g6-standard-2")
+ *                 .build())
  *             .region("us-central")
  *             .tags("prod")
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .type("g6-standard-2")
- *                 .count(3)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -87,16 +87,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new LkeCluster("test", LkeClusterArgs.builder()
- *             .label("lke-e-cluster")
- *             .region("us-lax")
  *             .k8sVersion("v1.31.8+lke5")
- *             .tags("test")
- *             .tier("enterprise")
+ *             .label("lke-e-cluster")
  *             .pools(LkeClusterPoolArgs.builder()
- *                 .type("g7-premium-2")
  *                 .count(3)
  *                 .tags("test")
+ *                 .type("g7-premium-2")
  *                 .build())
+ *             .region("us-lax")
+ *             .tags("test")
+ *             .tier("enterprise")
  *             .build());
  * 
  *     }
@@ -128,17 +128,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .label("my-cluster")
  *             .k8sVersion("1.32")
+ *             .label("my-cluster")
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .autoscaler(LkeClusterPoolAutoscalerArgs.builder()
+ *                     .max(10)
+ *                     .min(3)
+ *                     .build())
+ *                 .type("g6-standard-2")
+ *                 .build())
  *             .region("us-central")
  *             .tags("prod")
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .type("g6-standard-2")
- *                 .autoscaler(LkeClusterPoolAutoscalerArgs.builder()
- *                     .min(3)
- *                     .max(10)
- *                     .build())
- *                 .build())
  *             .build());
  * 
  *     }
@@ -172,24 +172,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new LkeCluster("test", LkeClusterArgs.builder()
- *             .label("my-cluster")
+ *             .controlPlane(LkeClusterControlPlaneArgs.builder()
+ *                 .acl(LkeClusterControlPlaneAclArgs.builder()
+ *                     .addresses(LkeClusterControlPlaneAclAddressArgs.builder()
+ *                         .ipv4(Arrays.asList("0.0.0.0/0"))
+ *                         .ipv6(Arrays.asList("2001:db8::/32"))
+ *                         .build())
+ *                     .enabled(true)
+ *                     .build())
+ *                 .highAvailability(true)
+ *                 .build())
  *             .k8sVersion("1.32")
+ *             .label("my-cluster")
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .count(1)
+ *                 .type("g6-standard-2")
+ *                 .build())
  *             .region("us-central")
  *             .tags("prod")
- *             .controlPlane(LkeClusterControlPlaneArgs.builder()
- *                 .highAvailability(true)
- *                 .acl(LkeClusterControlPlaneAclArgs.builder()
- *                     .enabled(true)
- *                     .addresses(LkeClusterControlPlaneAclAddressArgs.builder()
- *                         .ipv4s("0.0.0.0/0")
- *                         .ipv6s("2001:db8::/32")
- *                         .build())
- *                     .build())
- *                 .build())
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .type("g6-standard-2")
- *                 .count(1)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -220,21 +220,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .label("my-cluster")
  *             .k8sVersion("1.32")
- *             .region("us-central")
- *             .tags("prod")
+ *             .label("my-cluster")
  *             .pools(            
  *                 LkeClusterPoolArgs.builder()
- *                     .type("g6-standard-2")
  *                     .count(2)
  *                     .label("db-pool")
+ *                     .type("g6-standard-2")
  *                     .build(),
  *                 LkeClusterPoolArgs.builder()
- *                     .type("g6-standard-1")
  *                     .count(3)
  *                     .label("app-pool")
+ *                     .type("g6-standard-1")
  *                     .build())
+ *             .region("us-central")
+ *             .tags("prod")
  *             .build());
  * 
  *     }
@@ -265,16 +265,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .label("my-cluster")
  *             .k8sVersion("1.32")
- *             .region("us-central")
- *             .tags("prod")
+ *             .label("my-cluster")
  *             .pools(LkeClusterPoolArgs.builder()
- *                 .type("g6-standard-2")
  *                 .count(2)
- *                 .label("db-pool")
  *                 .firewallId(12345)
+ *                 .label("db-pool")
+ *                 .type("g6-standard-2")
  *                 .build())
+ *             .region("us-central")
+ *             .tags("prod")
  *             .build());
  * 
  *     }
@@ -305,27 +305,72 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .label("my-cluster")
  *             .k8sVersion("1.32")
- *             .region("us-central")
- *             .tags("prod")
+ *             .label("my-cluster")
  *             .pools(            
  *                 LkeClusterPoolArgs.builder()
- *                     .type("g6-standard-2")
  *                     .count(2)
  *                     .labels(Map.ofEntries(
- *                         Map.entry("role", "database"),
- *                         Map.entry("environment", "production")
+ *                         Map.entry("environment", "production"),
+ *                         Map.entry("role", "database")
  *                     ))
+ *                     .type("g6-standard-2")
  *                     .build(),
  *                 LkeClusterPoolArgs.builder()
- *                     .type("g6-standard-1")
  *                     .count(3)
  *                     .labels(Map.ofEntries(
- *                         Map.entry("role", "application"),
- *                         Map.entry("environment", "production")
+ *                         Map.entry("environment", "production"),
+ *                         Map.entry("role", "application")
  *                     ))
+ *                     .type("g6-standard-1")
  *                     .build())
+ *             .region("us-central")
+ *             .tags("prod")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeCluster;
+ * import com.pulumi.linode.LkeClusterArgs;
+ * import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
+ *             .k8sVersion("1.32")
+ *             .label("my-cluster")
+ *             .pools(            
+ *                 LkeClusterPoolArgs.builder()
+ *                     .count(2)
+ *                     .diskEncryption("enabled")
+ *                     .type("g6-standard-2")
+ *                     .build(),
+ *                 LkeClusterPoolArgs.builder()
+ *                     .count(1)
+ *                     .diskEncryption("disabled")
+ *                     .type("g6-standard-1")
+ *                     .build())
+ *             .region("us-central")
+ *             .tags("prod")
  *             .build());
  * 
  *     }
@@ -365,12 +410,12 @@ import javax.annotation.Nullable;
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
  *             .pools(            
  *                 LkeClusterPoolArgs.builder()
- *                     .type("g6-standard-1")
  *                     .count(2)
+ *                     .type("g6-standard-1")
  *                     .build(),
  *                 LkeClusterPoolArgs.builder()
- *                     .type("g6-standard-2")
  *                     .count(3)
+ *                     .type("g6-standard-2")
  *                     .build())
  *             .build());
  * 
@@ -403,8 +448,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
  *             .pools(LkeClusterPoolArgs.builder()
- *                 .type("g6-standard-2")
  *                 .count(3)
+ *                 .type("g6-standard-2")
  *                 .build())
  *             .build());
  * 
@@ -523,20 +568,6 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.controlPlane;
     }
     /**
-     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    @Export(name="dashboardUrl", refs={String.class}, tree="[0]")
-    private Output<String> dashboardUrl;
-
-    /**
-     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    public Output<String> dashboardUrl() {
-        return this.dashboardUrl;
-    }
-    /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      * 
      */
@@ -593,14 +624,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      * 
      */
     @Export(name="pools", refs={List.class,LkeClusterPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LkeClusterPool>> pools;
 
     /**
-     * @return Additional nested attributes:
+     * @return (Block List) Additional nested attributes:
      * 
      */
     public Output<Optional<List<LkeClusterPool>>> pools() {
@@ -609,9 +640,9 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -620,9 +651,9 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * @return This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     public Output<String> region() {

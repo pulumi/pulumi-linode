@@ -69,7 +69,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("imageIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-34)))
+// ctx.Export("imageIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getImages:getImages.pp:2,11-33)))
 // return nil
 // })
 // }
@@ -111,7 +111,7 @@ type GetImagesArgs struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -123,7 +123,8 @@ type GetImagesArgs struct {
 type GetImagesResult struct {
 	Filters []GetImagesFilter `pulumi:"filters"`
 	// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
-	Id      string           `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The returned list of Images. Referenced by index (e.g. `images[0].id`).
 	Images  []GetImagesImage `pulumi:"images"`
 	Latest  *bool            `pulumi:"latest"`
 	Order   *string          `pulumi:"order"`
@@ -140,7 +141,7 @@ type GetImagesOutputArgs struct {
 	Filters GetImagesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
@@ -176,6 +177,7 @@ func (o GetImagesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The returned list of Images. Referenced by index (e.g. `images[0].id`).
 func (o GetImagesResultOutput) Images() GetImagesImageArrayOutput {
 	return o.ApplyT(func(v GetImagesResult) []GetImagesImage { return v.Images }).(GetImagesImageArrayOutput)
 }

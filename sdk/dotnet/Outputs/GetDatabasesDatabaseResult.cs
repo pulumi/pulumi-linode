@@ -34,6 +34,14 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Engine;
         /// <summary>
+        /// The database timestamp from which it was restored.
+        /// </summary>
+        public readonly string ForkRestoreTime;
+        /// <summary>
+        /// The ID of the database that was forked from.
+        /// </summary>
+        public readonly int ForkSource;
+        /// <summary>
         /// The primary host for the Managed Database.
         /// </summary>
         public readonly string HostPrimary;
@@ -57,6 +65,10 @@ namespace Pulumi.Linode.Outputs
         /// A unique, user-defined string referring to the Managed Database.
         /// </summary>
         public readonly string Label;
+        /// <summary>
+        /// The oldest time to which a database can be restored.
+        /// </summary>
+        public readonly string OldestRestoreTime;
         /// <summary>
         /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         /// </summary>
@@ -94,6 +106,10 @@ namespace Pulumi.Linode.Outputs
 
             string engine,
 
+            string forkRestoreTime,
+
+            int forkSource,
+
             string hostPrimary,
 
             string hostSecondary,
@@ -105,6 +121,8 @@ namespace Pulumi.Linode.Outputs
             string instanceUri,
 
             string label,
+
+            string oldestRestoreTime,
 
             Outputs.GetDatabasesDatabasePrivateNetworkResult privateNetwork,
 
@@ -123,12 +141,15 @@ namespace Pulumi.Linode.Outputs
             Created = created;
             Encrypted = encrypted;
             Engine = engine;
+            ForkRestoreTime = forkRestoreTime;
+            ForkSource = forkSource;
             HostPrimary = hostPrimary;
             HostSecondary = hostSecondary;
             HostStandby = hostStandby;
             Id = id;
             InstanceUri = instanceUri;
             Label = label;
+            OldestRestoreTime = oldestRestoreTime;
             PrivateNetwork = privateNetwork;
             Region = region;
             Status = status;

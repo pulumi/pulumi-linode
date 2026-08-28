@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// A list of networking interfaces objects.
+        /// (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `linodes.0.interfaces.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetLinodeInterfaceResult> Interfaces;
 

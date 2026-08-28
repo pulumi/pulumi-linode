@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foobar = new linode.Domain("foobar", {
+ * const foobarDomain = new linode.Domain("foobarDomain", {
  *     type: "master",
  *     domain: "foobar.example",
  *     soaEmail: "example@foobar.example",
@@ -25,8 +25,8 @@ import * as utilities from "./utilities";
  *         "bar",
  *     ],
  * });
- * const foobarDomainRecord = new linode.DomainRecord("foobar", {
- *     domainId: foobar.id.apply(x =>Number(x)),
+ * const foobarDomainRecord = new linode.DomainRecord("foobarDomainRecord", {
+ *     domainId: foobarDomain.id.apply(x =>Number(x)),
  *     name: "www",
  *     recordType: "CNAME",
  *     target: "foobar.example",
@@ -86,10 +86,6 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly expireSec: pulumi.Output<number | undefined>;
     /**
-     * The group this Domain belongs to. This is for display purposes only.
-     */
-    declare public readonly group: pulumi.Output<string | undefined>;
-    /**
      * The IP addresses representing the master DNS for this Domain.
      *
      * ***
@@ -141,7 +137,6 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["expireSec"] = state?.expireSec;
-            resourceInputs["group"] = state?.group;
             resourceInputs["masterIps"] = state?.masterIps;
             resourceInputs["refreshSec"] = state?.refreshSec;
             resourceInputs["retrySec"] = state?.retrySec;
@@ -162,7 +157,6 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["expireSec"] = args?.expireSec;
-            resourceInputs["group"] = args?.group;
             resourceInputs["masterIps"] = args?.masterIps;
             resourceInputs["refreshSec"] = args?.refreshSec;
             resourceInputs["retrySec"] = args?.retrySec;
@@ -197,10 +191,6 @@ export interface DomainState {
      * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     expireSec?: pulumi.Input<number | undefined>;
-    /**
-     * The group this Domain belongs to. This is for display purposes only.
-     */
-    group?: pulumi.Input<string | undefined>;
     /**
      * The IP addresses representing the master DNS for this Domain.
      *
@@ -257,10 +247,6 @@ export interface DomainArgs {
      * The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
      */
     expireSec?: pulumi.Input<number | undefined>;
-    /**
-     * The group this Domain belongs to. This is for display purposes only.
-     */
-    group?: pulumi.Input<string | undefined>;
     /**
      * The IP addresses representing the master DNS for this Domain.
      *

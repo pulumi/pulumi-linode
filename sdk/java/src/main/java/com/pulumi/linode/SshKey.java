@@ -19,60 +19,6 @@ import javax.annotation.Nullable;
  * 
  * **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
  * 
- * ## Example Usage
- * 
- * The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.SshKey;
- * import com.pulumi.linode.SshKeyArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.FileArgs;
- * import com.pulumi.std.inputs.ChompArgs;
- * import com.pulumi.linode.Instance;
- * import com.pulumi.linode.InstanceArgs;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new SshKey("foo", SshKeyArgs.builder()
- *             .label("foo")
- *             .sshKey(StdFunctions.chomp(ChompArgs.builder()
- *                 .input(StdFunctions.file(FileArgs.builder()
- *                     .input("~/.ssh/id_rsa.pub")
- *                     .build()).result())
- *                 .build()).result())
- *             .build());
- * 
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
- *             .image("linode/ubuntu22.04")
- *             .label("foo")
- *             .region("us-east")
- *             .type("g6-nanode-1")
- *             .authorizedKeys(foo.sshKey())
- *             .rootPass("...")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.

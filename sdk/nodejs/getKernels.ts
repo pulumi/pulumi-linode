@@ -47,8 +47,6 @@ import * as utilities from "./utilities";
  * * `pvops`
  *
  * * `version`
- *
- * * `xen`
  */
 export function getKernels(args?: GetKernelsArgs, opts?: pulumi.InvokeOptions): Promise<GetKernelsResult> {
     args = args || {};
@@ -84,6 +82,9 @@ export interface GetKernelsResult {
      * The unique ID of this Kernel.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
+     */
     readonly kernels: outputs.GetKernelsKernel[];
     readonly order?: string;
     readonly orderBy?: string;
@@ -129,8 +130,6 @@ export interface GetKernelsResult {
  * * `pvops`
  *
  * * `version`
- *
- * * `xen`
  */
 export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKernelsResult> {
     args = args || {};

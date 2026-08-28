@@ -61,6 +61,9 @@ class GetLkeClustersResult:
     @_builtins.property
     @pulumi.getter(name="lkeClusters")
     def lke_clusters(self) -> Sequence['outputs.GetLkeClustersLkeClusterResult']:
+        """
+        (Nested Attribute List) The LKE Clusters matching the data source filters.
+        """
         return pulumi.get(self, "lke_clusters")
 
     @_builtins.property

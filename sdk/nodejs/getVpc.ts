@@ -32,6 +32,14 @@ import * as utilities from "./utilities";
  *
  * * `range` - The allocated range in CIDR format.
  *
+ * ## IPv4
+ *
+ * > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+ *
+ * Contains information about a single IPv4 range under this VPC.
+ *
+ * * `range` - The IPv4 range in CIDR format.
+ *
  * ### Subnets Reference
  *
  * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
@@ -67,7 +75,11 @@ export interface GetVpcResult {
     readonly description: string;
     readonly id: string;
     /**
-     * A list of IPv6 allocations under this VPC.
+     * (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    readonly ipv4s: outputs.GetVpcIpv4[];
+    /**
+     * (Nested Attribute List) A list of IPv6 allocations under this VPC.
      */
     readonly ipv6s: outputs.GetVpcIpv6[];
     /**
@@ -82,6 +94,10 @@ export interface GetVpcResult {
      * The date and time when the VPC was last updated.
      */
     readonly updated: string;
+    /**
+     * The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     */
+    readonly vpcType: string;
 }
 /**
  * Provides information about a Linode VPC.
@@ -108,6 +124,14 @@ export interface GetVpcResult {
  * Contains information about a single IPv6 allocation under this VPC.
  *
  * * `range` - The allocated range in CIDR format.
+ *
+ * ## IPv4
+ *
+ * > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+ *
+ * Contains information about a single IPv4 range under this VPC.
+ *
+ * * `range` - The IPv4 range in CIDR format.
  *
  * ### Subnets Reference
  *

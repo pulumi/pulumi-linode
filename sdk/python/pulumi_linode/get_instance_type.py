@@ -76,6 +76,9 @@ class GetInstanceTypeResult:
     @_builtins.property
     @pulumi.getter
     def addons(self) -> Sequence['outputs.GetInstanceTypeAddonResult']:
+        """
+        (Read-Only Object List) Add-ons available for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
+        """
         return pulumi.get(self, "addons")
 
     @_builtins.property
@@ -129,11 +132,17 @@ class GetInstanceTypeResult:
     @_builtins.property
     @pulumi.getter
     def prices(self) -> Sequence['outputs.GetInstanceTypePriceResult']:
+        """
+        (Read-Only Object List) Pricing information for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
+        """
         return pulumi.get(self, "prices")
 
     @_builtins.property
     @pulumi.getter(name="regionPrices")
     def region_prices(self) -> Sequence['outputs.GetInstanceTypeRegionPriceResult']:
+        """
+        (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+        """
         return pulumi.get(self, "region_prices")
 
     @_builtins.property

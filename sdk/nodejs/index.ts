@@ -190,6 +190,16 @@ export const getFirewalls: typeof import("./getFirewalls").getFirewalls = null a
 export const getFirewallsOutput: typeof import("./getFirewalls").getFirewallsOutput = null as any;
 utilities.lazyLoad(exports, ["getFirewalls","getFirewallsOutput"], () => require("./getFirewalls"));
 
+export { GetIamEntitiesArgs, GetIamEntitiesResult, GetIamEntitiesOutputArgs } from "./getIamEntities";
+export const getIamEntities: typeof import("./getIamEntities").getIamEntities = null as any;
+export const getIamEntitiesOutput: typeof import("./getIamEntities").getIamEntitiesOutput = null as any;
+utilities.lazyLoad(exports, ["getIamEntities","getIamEntitiesOutput"], () => require("./getIamEntities"));
+
+export { GetIamUserArgs, GetIamUserResult, GetIamUserOutputArgs } from "./getIamUser";
+export const getIamUser: typeof import("./getIamUser").getIamUser = null as any;
+export const getIamUserOutput: typeof import("./getIamUser").getIamUserOutput = null as any;
+utilities.lazyLoad(exports, ["getIamUser","getIamUserOutput"], () => require("./getIamUser"));
+
 export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
 export const getImage: typeof import("./getImage").getImage = null as any;
 export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
@@ -300,6 +310,51 @@ export const getMaintenancePolicies: typeof import("./getMaintenancePolicies").g
 export const getMaintenancePoliciesOutput: typeof import("./getMaintenancePolicies").getMaintenancePoliciesOutput = null as any;
 utilities.lazyLoad(exports, ["getMaintenancePolicies","getMaintenancePoliciesOutput"], () => require("./getMaintenancePolicies"));
 
+export { GetMonitorAlertChannelsArgs, GetMonitorAlertChannelsResult, GetMonitorAlertChannelsOutputArgs } from "./getMonitorAlertChannels";
+export const getMonitorAlertChannels: typeof import("./getMonitorAlertChannels").getMonitorAlertChannels = null as any;
+export const getMonitorAlertChannelsOutput: typeof import("./getMonitorAlertChannels").getMonitorAlertChannelsOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorAlertChannels","getMonitorAlertChannelsOutput"], () => require("./getMonitorAlertChannels"));
+
+export { GetMonitorAlertDefinitionArgs, GetMonitorAlertDefinitionResult, GetMonitorAlertDefinitionOutputArgs } from "./getMonitorAlertDefinition";
+export const getMonitorAlertDefinition: typeof import("./getMonitorAlertDefinition").getMonitorAlertDefinition = null as any;
+export const getMonitorAlertDefinitionOutput: typeof import("./getMonitorAlertDefinition").getMonitorAlertDefinitionOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorAlertDefinition","getMonitorAlertDefinitionOutput"], () => require("./getMonitorAlertDefinition"));
+
+export { GetMonitorAlertDefinitionEntitiesArgs, GetMonitorAlertDefinitionEntitiesResult, GetMonitorAlertDefinitionEntitiesOutputArgs } from "./getMonitorAlertDefinitionEntities";
+export const getMonitorAlertDefinitionEntities: typeof import("./getMonitorAlertDefinitionEntities").getMonitorAlertDefinitionEntities = null as any;
+export const getMonitorAlertDefinitionEntitiesOutput: typeof import("./getMonitorAlertDefinitionEntities").getMonitorAlertDefinitionEntitiesOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorAlertDefinitionEntities","getMonitorAlertDefinitionEntitiesOutput"], () => require("./getMonitorAlertDefinitionEntities"));
+
+export { GetMonitorAlertDefinitionsArgs, GetMonitorAlertDefinitionsResult, GetMonitorAlertDefinitionsOutputArgs } from "./getMonitorAlertDefinitions";
+export const getMonitorAlertDefinitions: typeof import("./getMonitorAlertDefinitions").getMonitorAlertDefinitions = null as any;
+export const getMonitorAlertDefinitionsOutput: typeof import("./getMonitorAlertDefinitions").getMonitorAlertDefinitionsOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorAlertDefinitions","getMonitorAlertDefinitionsOutput"], () => require("./getMonitorAlertDefinitions"));
+
+export { GetMonitorLogsDestinationArgs, GetMonitorLogsDestinationResult, GetMonitorLogsDestinationOutputArgs } from "./getMonitorLogsDestination";
+export const getMonitorLogsDestination: typeof import("./getMonitorLogsDestination").getMonitorLogsDestination = null as any;
+export const getMonitorLogsDestinationOutput: typeof import("./getMonitorLogsDestination").getMonitorLogsDestinationOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorLogsDestination","getMonitorLogsDestinationOutput"], () => require("./getMonitorLogsDestination"));
+
+export { GetMonitorLogsDestinationsArgs, GetMonitorLogsDestinationsResult, GetMonitorLogsDestinationsOutputArgs } from "./getMonitorLogsDestinations";
+export const getMonitorLogsDestinations: typeof import("./getMonitorLogsDestinations").getMonitorLogsDestinations = null as any;
+export const getMonitorLogsDestinationsOutput: typeof import("./getMonitorLogsDestinations").getMonitorLogsDestinationsOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorLogsDestinations","getMonitorLogsDestinationsOutput"], () => require("./getMonitorLogsDestinations"));
+
+export { GetMonitorLogsStreamArgs, GetMonitorLogsStreamResult, GetMonitorLogsStreamOutputArgs } from "./getMonitorLogsStream";
+export const getMonitorLogsStream: typeof import("./getMonitorLogsStream").getMonitorLogsStream = null as any;
+export const getMonitorLogsStreamOutput: typeof import("./getMonitorLogsStream").getMonitorLogsStreamOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorLogsStream","getMonitorLogsStreamOutput"], () => require("./getMonitorLogsStream"));
+
+export { GetMonitorLogsStreamHistoryArgs, GetMonitorLogsStreamHistoryResult, GetMonitorLogsStreamHistoryOutputArgs } from "./getMonitorLogsStreamHistory";
+export const getMonitorLogsStreamHistory: typeof import("./getMonitorLogsStreamHistory").getMonitorLogsStreamHistory = null as any;
+export const getMonitorLogsStreamHistoryOutput: typeof import("./getMonitorLogsStreamHistory").getMonitorLogsStreamHistoryOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorLogsStreamHistory","getMonitorLogsStreamHistoryOutput"], () => require("./getMonitorLogsStreamHistory"));
+
+export { GetMonitorLogsStreamsArgs, GetMonitorLogsStreamsResult, GetMonitorLogsStreamsOutputArgs } from "./getMonitorLogsStreams";
+export const getMonitorLogsStreams: typeof import("./getMonitorLogsStreams").getMonitorLogsStreams = null as any;
+export const getMonitorLogsStreamsOutput: typeof import("./getMonitorLogsStreams").getMonitorLogsStreamsOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorLogsStreams","getMonitorLogsStreamsOutput"], () => require("./getMonitorLogsStreams"));
+
 export { GetNbTypesArgs, GetNbTypesResult, GetNbTypesOutputArgs } from "./getNbTypes";
 export const getNbTypes: typeof import("./getNbTypes").getNbTypes = null as any;
 export const getNbTypesOutput: typeof import("./getNbTypes").getNbTypesOutput = null as any;
@@ -355,15 +410,20 @@ export const getNodebalancers: typeof import("./getNodebalancers").getNodebalanc
 export const getNodebalancersOutput: typeof import("./getNodebalancers").getNodebalancersOutput = null as any;
 utilities.lazyLoad(exports, ["getNodebalancers","getNodebalancersOutput"], () => require("./getNodebalancers"));
 
-export { GetObjectStorageClusterArgs, GetObjectStorageClusterResult, GetObjectStorageClusterOutputArgs } from "./getObjectStorageCluster";
-export const getObjectStorageCluster: typeof import("./getObjectStorageCluster").getObjectStorageCluster = null as any;
-export const getObjectStorageClusterOutput: typeof import("./getObjectStorageCluster").getObjectStorageClusterOutput = null as any;
-utilities.lazyLoad(exports, ["getObjectStorageCluster","getObjectStorageClusterOutput"], () => require("./getObjectStorageCluster"));
-
 export { GetObjectStorageEndpointsArgs, GetObjectStorageEndpointsResult, GetObjectStorageEndpointsOutputArgs } from "./getObjectStorageEndpoints";
 export const getObjectStorageEndpoints: typeof import("./getObjectStorageEndpoints").getObjectStorageEndpoints = null as any;
 export const getObjectStorageEndpointsOutput: typeof import("./getObjectStorageEndpoints").getObjectStorageEndpointsOutput = null as any;
 utilities.lazyLoad(exports, ["getObjectStorageEndpoints","getObjectStorageEndpointsOutput"], () => require("./getObjectStorageEndpoints"));
+
+export { GetObjectStorageGlobalQuotaArgs, GetObjectStorageGlobalQuotaResult, GetObjectStorageGlobalQuotaOutputArgs } from "./getObjectStorageGlobalQuota";
+export const getObjectStorageGlobalQuota: typeof import("./getObjectStorageGlobalQuota").getObjectStorageGlobalQuota = null as any;
+export const getObjectStorageGlobalQuotaOutput: typeof import("./getObjectStorageGlobalQuota").getObjectStorageGlobalQuotaOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectStorageGlobalQuota","getObjectStorageGlobalQuotaOutput"], () => require("./getObjectStorageGlobalQuota"));
+
+export { GetObjectStorageGlobalQuotasArgs, GetObjectStorageGlobalQuotasResult, GetObjectStorageGlobalQuotasOutputArgs } from "./getObjectStorageGlobalQuotas";
+export const getObjectStorageGlobalQuotas: typeof import("./getObjectStorageGlobalQuotas").getObjectStorageGlobalQuotas = null as any;
+export const getObjectStorageGlobalQuotasOutput: typeof import("./getObjectStorageGlobalQuotas").getObjectStorageGlobalQuotasOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectStorageGlobalQuotas","getObjectStorageGlobalQuotasOutput"], () => require("./getObjectStorageGlobalQuotas"));
 
 export { GetObjectStorageQuotaArgs, GetObjectStorageQuotaResult, GetObjectStorageQuotaOutputArgs } from "./getObjectStorageQuota";
 export const getObjectStorageQuota: typeof import("./getObjectStorageQuota").getObjectStorageQuota = null as any;
@@ -420,10 +480,25 @@ export const getRegion: typeof import("./getRegion").getRegion = null as any;
 export const getRegionOutput: typeof import("./getRegion").getRegionOutput = null as any;
 utilities.lazyLoad(exports, ["getRegion","getRegionOutput"], () => require("./getRegion"));
 
+export { GetRegionVpcAvailabilityArgs, GetRegionVpcAvailabilityResult, GetRegionVpcAvailabilityOutputArgs } from "./getRegionVpcAvailability";
+export const getRegionVpcAvailability: typeof import("./getRegionVpcAvailability").getRegionVpcAvailability = null as any;
+export const getRegionVpcAvailabilityOutput: typeof import("./getRegionVpcAvailability").getRegionVpcAvailabilityOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionVpcAvailability","getRegionVpcAvailabilityOutput"], () => require("./getRegionVpcAvailability"));
+
 export { GetRegionsArgs, GetRegionsResult, GetRegionsOutputArgs } from "./getRegions";
 export const getRegions: typeof import("./getRegions").getRegions = null as any;
 export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
 utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
+
+export { GetRegionsVpcAvailabilityResult } from "./getRegionsVpcAvailability";
+export const getRegionsVpcAvailability: typeof import("./getRegionsVpcAvailability").getRegionsVpcAvailability = null as any;
+export const getRegionsVpcAvailabilityOutput: typeof import("./getRegionsVpcAvailability").getRegionsVpcAvailabilityOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionsVpcAvailability","getRegionsVpcAvailabilityOutput"], () => require("./getRegionsVpcAvailability"));
+
+export { GetReservedIpTypesArgs, GetReservedIpTypesResult, GetReservedIpTypesOutputArgs } from "./getReservedIpTypes";
+export const getReservedIpTypes: typeof import("./getReservedIpTypes").getReservedIpTypes = null as any;
+export const getReservedIpTypesOutput: typeof import("./getReservedIpTypes").getReservedIpTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getReservedIpTypes","getReservedIpTypesOutput"], () => require("./getReservedIpTypes"));
 
 export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
 export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
@@ -444,6 +519,11 @@ export { GetStackScriptsArgs, GetStackScriptsResult, GetStackScriptsOutputArgs }
 export const getStackScripts: typeof import("./getStackScripts").getStackScripts = null as any;
 export const getStackScriptsOutput: typeof import("./getStackScripts").getStackScriptsOutput = null as any;
 utilities.lazyLoad(exports, ["getStackScripts","getStackScriptsOutput"], () => require("./getStackScripts"));
+
+export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
+export const getTag: typeof import("./getTag").getTag = null as any;
+export const getTagOutput: typeof import("./getTag").getTagOutput = null as any;
+utilities.lazyLoad(exports, ["getTag","getTagOutput"], () => require("./getTag"));
 
 export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -480,6 +560,11 @@ export const getVpc: typeof import("./getVpc").getVpc = null as any;
 export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
 utilities.lazyLoad(exports, ["getVpc","getVpcOutput"], () => require("./getVpc"));
 
+export { GetVpcDefaultRangesResult } from "./getVpcDefaultRanges";
+export const getVpcDefaultRanges: typeof import("./getVpcDefaultRanges").getVpcDefaultRanges = null as any;
+export const getVpcDefaultRangesOutput: typeof import("./getVpcDefaultRanges").getVpcDefaultRangesOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcDefaultRanges","getVpcDefaultRangesOutput"], () => require("./getVpcDefaultRanges"));
+
 export { GetVpcIpsArgs, GetVpcIpsResult, GetVpcIpsOutputArgs } from "./getVpcIps";
 export const getVpcIps: typeof import("./getVpcIps").getVpcIps = null as any;
 export const getVpcIpsOutput: typeof import("./getVpcIps").getVpcIpsOutput = null as any;
@@ -499,6 +584,11 @@ export { GetVpcsArgs, GetVpcsResult, GetVpcsOutputArgs } from "./getVpcs";
 export const getVpcs: typeof import("./getVpcs").getVpcs = null as any;
 export const getVpcsOutput: typeof import("./getVpcs").getVpcsOutput = null as any;
 utilities.lazyLoad(exports, ["getVpcs","getVpcsOutput"], () => require("./getVpcs"));
+
+export { IamUserArgs, IamUserState } from "./iamUser";
+export type IamUser = import("./iamUser").IamUser;
+export const IamUser: typeof import("./iamUser").IamUser = null as any;
+utilities.lazyLoad(exports, ["IamUser"], () => require("./iamUser"));
 
 export { ImageArgs, ImageState } from "./image";
 export type Image = import("./image").Image;
@@ -554,6 +644,21 @@ export { LockArgs, LockState } from "./lock";
 export type Lock = import("./lock").Lock;
 export const Lock: typeof import("./lock").Lock = null as any;
 utilities.lazyLoad(exports, ["Lock"], () => require("./lock"));
+
+export { MonitorAlertDefinitionArgs, MonitorAlertDefinitionState } from "./monitorAlertDefinition";
+export type MonitorAlertDefinition = import("./monitorAlertDefinition").MonitorAlertDefinition;
+export const MonitorAlertDefinition: typeof import("./monitorAlertDefinition").MonitorAlertDefinition = null as any;
+utilities.lazyLoad(exports, ["MonitorAlertDefinition"], () => require("./monitorAlertDefinition"));
+
+export { MonitorLogsDestinationArgs, MonitorLogsDestinationState } from "./monitorLogsDestination";
+export type MonitorLogsDestination = import("./monitorLogsDestination").MonitorLogsDestination;
+export const MonitorLogsDestination: typeof import("./monitorLogsDestination").MonitorLogsDestination = null as any;
+utilities.lazyLoad(exports, ["MonitorLogsDestination"], () => require("./monitorLogsDestination"));
+
+export { MonitorLogsStreamArgs, MonitorLogsStreamState } from "./monitorLogsStream";
+export type MonitorLogsStream = import("./monitorLogsStream").MonitorLogsStream;
+export const MonitorLogsStream: typeof import("./monitorLogsStream").MonitorLogsStream = null as any;
+utilities.lazyLoad(exports, ["MonitorLogsStream"], () => require("./monitorLogsStream"));
 
 export { NetworkingIpArgs, NetworkingIpState } from "./networkingIp";
 export type NetworkingIp = import("./networkingIp").NetworkingIp;
@@ -622,6 +727,11 @@ export { RdnsArgs, RdnsState } from "./rdns";
 export type Rdns = import("./rdns").Rdns;
 export const Rdns: typeof import("./rdns").Rdns = null as any;
 utilities.lazyLoad(exports, ["Rdns"], () => require("./rdns"));
+
+export { ReservedIpArgs, ReservedIpState } from "./reservedIp";
+export type ReservedIp = import("./reservedIp").ReservedIp;
+export const ReservedIp: typeof import("./reservedIp").ReservedIp = null as any;
+utilities.lazyLoad(exports, ["ReservedIp"], () => require("./reservedIp"));
 
 export { ReservedIpAssignmentArgs, ReservedIpAssignmentState } from "./reservedIpAssignment";
 export type ReservedIpAssignment = import("./reservedIpAssignment").ReservedIpAssignment;
@@ -697,6 +807,8 @@ const _module = {
                 return new FirewallDevice(name, <any>undefined, { urn })
             case "linode:index/firewallSettings:FirewallSettings":
                 return new FirewallSettings(name, <any>undefined, { urn })
+            case "linode:index/iamUser:IamUser":
+                return new IamUser(name, <any>undefined, { urn })
             case "linode:index/image:Image":
                 return new Image(name, <any>undefined, { urn })
             case "linode:index/instance:Instance":
@@ -719,6 +831,12 @@ const _module = {
                 return new LkeNodePool(name, <any>undefined, { urn })
             case "linode:index/lock:Lock":
                 return new Lock(name, <any>undefined, { urn })
+            case "linode:index/monitorAlertDefinition:MonitorAlertDefinition":
+                return new MonitorAlertDefinition(name, <any>undefined, { urn })
+            case "linode:index/monitorLogsDestination:MonitorLogsDestination":
+                return new MonitorLogsDestination(name, <any>undefined, { urn })
+            case "linode:index/monitorLogsStream:MonitorLogsStream":
+                return new MonitorLogsStream(name, <any>undefined, { urn })
             case "linode:index/networkingIp:NetworkingIp":
                 return new NetworkingIp(name, <any>undefined, { urn })
             case "linode:index/networkingIpAssignment:NetworkingIpAssignment":
@@ -745,6 +863,8 @@ const _module = {
                 return new ProducerImageShareGroupMember(name, <any>undefined, { urn })
             case "linode:index/rdns:Rdns":
                 return new Rdns(name, <any>undefined, { urn })
+            case "linode:index/reservedIp:ReservedIp":
+                return new ReservedIp(name, <any>undefined, { urn })
             case "linode:index/reservedIpAssignment:ReservedIpAssignment":
                 return new ReservedIpAssignment(name, <any>undefined, { urn })
             case "linode:index/sshKey:SshKey":
@@ -776,6 +896,7 @@ pulumi.runtime.registerResourceModule("linode", "index/domainRecord", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewallDevice", _module)
 pulumi.runtime.registerResourceModule("linode", "index/firewallSettings", _module)
+pulumi.runtime.registerResourceModule("linode", "index/iamUser", _module)
 pulumi.runtime.registerResourceModule("linode", "index/image", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instance", _module)
 pulumi.runtime.registerResourceModule("linode", "index/instanceConfig", _module)
@@ -787,6 +908,9 @@ pulumi.runtime.registerResourceModule("linode", "index/ipv6Range", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeCluster", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lkeNodePool", _module)
 pulumi.runtime.registerResourceModule("linode", "index/lock", _module)
+pulumi.runtime.registerResourceModule("linode", "index/monitorAlertDefinition", _module)
+pulumi.runtime.registerResourceModule("linode", "index/monitorLogsDestination", _module)
+pulumi.runtime.registerResourceModule("linode", "index/monitorLogsStream", _module)
 pulumi.runtime.registerResourceModule("linode", "index/networkingIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/networkingIpAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/nodeBalancer", _module)
@@ -800,6 +924,7 @@ pulumi.runtime.registerResourceModule("linode", "index/placementGroupAssignment"
 pulumi.runtime.registerResourceModule("linode", "index/producerImageShareGroup", _module)
 pulumi.runtime.registerResourceModule("linode", "index/producerImageShareGroupMember", _module)
 pulumi.runtime.registerResourceModule("linode", "index/rdns", _module)
+pulumi.runtime.registerResourceModule("linode", "index/reservedIp", _module)
 pulumi.runtime.registerResourceModule("linode", "index/reservedIpAssignment", _module)
 pulumi.runtime.registerResourceModule("linode", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("linode", "index/stackScript", _module)

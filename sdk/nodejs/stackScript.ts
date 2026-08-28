@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foo = new linode.StackScript("foo", {
+ * const fooStackScript = new linode.StackScript("fooStackScript", {
  *     label: "foo",
  *     description: "Installs a Package",
  *     script: `#!/bin/bash
- * # <UDF name=\\"package\\" label=\\"System Package to Install\\" example=\\"nginx\\" default=\\"\\">
+ * # <UDF name="package" label="System Package to Install" example="nginx" default="">
  * apt-get -q update && apt-get -q -y install PACKAGE
  * `,
  *     images: [
@@ -32,14 +32,14 @@ import * as utilities from "./utilities";
  *     ],
  *     revNote: "initial version",
  * });
- * const fooInstance = new linode.Instance("foo", {
+ * const fooInstance = new linode.Instance("fooInstance", {
  *     image: "linode/ubuntu22.04",
  *     label: "foo",
  *     region: "us-east",
  *     type: "g6-nanode-1",
  *     authorizedKeys: ["..."],
  *     rootPass: "...",
- *     stackscriptId: foo.id.apply(x =>Number(x)),
+ *     stackscriptId: fooStackScript.id.apply(x =>Number(x)),
  *     stackscriptData: {
  *         "package": "nginx",
  *     },
@@ -125,7 +125,7 @@ export class StackScript extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
     /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      */
     declare public /*out*/ readonly userDefinedFields: pulumi.Output<outputs.StackScriptUserDefinedField[]>;
     /**
@@ -243,7 +243,7 @@ export interface StackScriptState {
      */
     updated?: pulumi.Input<string | undefined>;
     /**
-     * This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      */
     userDefinedFields?: pulumi.Input<pulumi.Input<inputs.StackScriptUserDefinedField>[] | undefined>;
     /**

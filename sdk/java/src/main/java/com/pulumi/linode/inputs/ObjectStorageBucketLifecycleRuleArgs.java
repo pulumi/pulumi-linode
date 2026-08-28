@@ -23,9 +23,9 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
-     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * * `expiration` - (Optional, Block) Specifies a period in the object&#39;s expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
      * 
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
      * 
      */
     @Import(name="abortIncompleteMultipartUploadDays")
@@ -34,9 +34,9 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
     /**
      * @return Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      * 
-     * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+     * * `expiration` - (Optional, Block) Specifies a period in the object&#39;s expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
      * 
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
      * 
      */
     public Optional<Output<Integer>> abortIncompleteMultipartUploadDays() {
@@ -150,9 +150,9 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         /**
          * @param abortIncompleteMultipartUploadDays Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
          * 
-         * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+         * * `expiration` - (Optional, Block) Specifies a period in the object&#39;s expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
          * 
-         * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+         * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
          * 
          * @return builder
          * 
@@ -165,9 +165,9 @@ public final class ObjectStorageBucketLifecycleRuleArgs extends com.pulumi.resou
         /**
          * @param abortIncompleteMultipartUploadDays Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
          * 
-         * * `expiration` - (Optional) Specifies a period in the object&#39;s expire.
+         * * `expiration` - (Optional, Block) Specifies a period in the object&#39;s expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
          * 
-         * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+         * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
          * 
          * @return builder
          * 

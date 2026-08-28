@@ -39,9 +39,17 @@ public final class GetConsumerImageShareGroupTokensArgs extends com.pulumi.resou
         return Optional.ofNullable(this.orderBy);
     }
 
+    /**
+     * (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     * 
+     */
     @Import(name="tokens")
     private @Nullable Output<List<GetConsumerImageShareGroupTokensTokenArgs>> tokens;
 
+    /**
+     * @return (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     * 
+     */
     public Optional<Output<List<GetConsumerImageShareGroupTokensTokenArgs>>> tokens() {
         return Optional.ofNullable(this.tokens);
     }
@@ -104,15 +112,33 @@ public final class GetConsumerImageShareGroupTokensArgs extends com.pulumi.resou
             return orderBy(Output.of(orderBy));
         }
 
+        /**
+         * @param tokens (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(@Nullable Output<List<GetConsumerImageShareGroupTokensTokenArgs>> tokens) {
             $.tokens = tokens;
             return this;
         }
 
+        /**
+         * @param tokens (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(List<GetConsumerImageShareGroupTokensTokenArgs> tokens) {
             return tokens(Output.of(tokens));
         }
 
+        /**
+         * @param tokens (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokens(GetConsumerImageShareGroupTokensTokenArgs... tokens) {
             return tokens(List.of(tokens));
         }

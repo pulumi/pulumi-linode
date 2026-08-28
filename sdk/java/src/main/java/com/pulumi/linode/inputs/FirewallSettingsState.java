@@ -16,14 +16,14 @@ public final class FirewallSettingsState extends com.pulumi.resources.ResourceAr
     public static final FirewallSettingsState Empty = new FirewallSettingsState();
 
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      * 
      */
     @Import(name="defaultFirewallIds")
     private @Nullable Output<FirewallSettingsDefaultFirewallIdsArgs> defaultFirewallIds;
 
     /**
-     * @return A map of default firewall IDs for various interfaces.
+     * @return A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      * 
      */
     public Optional<Output<FirewallSettingsDefaultFirewallIdsArgs>> defaultFirewallIds() {
@@ -55,7 +55,7 @@ public final class FirewallSettingsState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defaultFirewallIds A map of default firewall IDs for various interfaces.
+         * @param defaultFirewallIds A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class FirewallSettingsState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param defaultFirewallIds A map of default firewall IDs for various interfaces.
+         * @param defaultFirewallIds A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
          * 
          * @return builder
          * 

@@ -78,7 +78,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def autoscaler(self) -> 'outputs.GetLkeNodePoolAutoscalerResult':
         """
-        When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+        (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
         """
         return pulumi.get(self, "autoscaler")
 
@@ -99,7 +99,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetLkeNodePoolDiskResult']:
         """
-        This node pool's custom disk layout.
+        (Nested Attribute List) This node pool's custom disk layout.
         """
         return pulumi.get(self, "disks")
 
@@ -155,7 +155,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetLkeNodePoolNodeResult']:
         """
-        Status information for the nodes that are members of this node pool.
+        (Nested Attribute List) Status information for the nodes that are members of this node pool.
         """
         return pulumi.get(self, "nodes")
 
@@ -171,7 +171,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def taints(self) -> Sequence['outputs.GetLkeNodePoolTaintResult']:
         """
-        Kubernetes taints to add to node pool nodes.
+        (Nested Attribute List) Kubernetes taints to add to node pool nodes.
         """
         return pulumi.get(self, "taints")
 
@@ -228,8 +228,8 @@ def get_lke_node_pool(cluster_id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_node_pool = linode.get_lke_node_pool(id=123,
-        cluster_id=321)
+    my_node_pool = linode.get_lke_node_pool(cluster_id=321,
+        id=123)
     ```
 
 
@@ -271,8 +271,8 @@ def get_lke_node_pool_output(cluster_id: pulumi.Input[Optional[_builtins.int]] =
     import pulumi
     import pulumi_linode as linode
 
-    my_node_pool = linode.get_lke_node_pool(id=123,
-        cluster_id=321)
+    my_node_pool = linode.get_lke_node_pool(cluster_id=321,
+        id=123)
     ```
 
 

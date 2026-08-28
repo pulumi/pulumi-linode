@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobar, err := linode.NewDomain(ctx, "foobar", &linode.DomainArgs{
+//			foobarDomain, err := linode.NewDomain(ctx, "foobarDomain", &linode.DomainArgs{
 //				Type:     pulumi.String("master"),
 //				Domain:   pulumi.String("foobar.example"),
 //				SoaEmail: pulumi.String("example@foobar.example"),
@@ -45,8 +45,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDomainRecord(ctx, "foobar", &linode.DomainRecordArgs{
-//				DomainId:   foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//			_, err = linode.NewDomainRecord(ctx, "foobarDomainRecord", &linode.DomainRecordArgs{
+//				DomainId:   foobarDomain.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Name:       pulumi.String("www"),
 //				RecordType: pulumi.String("CNAME"),
 //				Target:     pulumi.String("foobar.example"),
@@ -78,8 +78,6 @@ type Domain struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	ExpireSec pulumi.IntPtrOutput `pulumi:"expireSec"`
-	// The group this Domain belongs to. This is for display purposes only.
-	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// The IP addresses representing the master DNS for this Domain.
 	//
 	// ***
@@ -144,8 +142,6 @@ type domainState struct {
 	Domain *string `pulumi:"domain"`
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	ExpireSec *int `pulumi:"expireSec"`
-	// The group this Domain belongs to. This is for display purposes only.
-	Group *string `pulumi:"group"`
 	// The IP addresses representing the master DNS for this Domain.
 	//
 	// ***
@@ -175,8 +171,6 @@ type DomainState struct {
 	Domain pulumi.StringPtrInput
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	ExpireSec pulumi.IntPtrInput
-	// The group this Domain belongs to. This is for display purposes only.
-	Group pulumi.StringPtrInput
 	// The IP addresses representing the master DNS for this Domain.
 	//
 	// ***
@@ -210,8 +204,6 @@ type domainArgs struct {
 	Domain string `pulumi:"domain"`
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	ExpireSec *int `pulumi:"expireSec"`
-	// The group this Domain belongs to. This is for display purposes only.
-	Group *string `pulumi:"group"`
 	// The IP addresses representing the master DNS for this Domain.
 	//
 	// ***
@@ -242,8 +234,6 @@ type DomainArgs struct {
 	Domain pulumi.StringInput
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 	ExpireSec pulumi.IntPtrInput
-	// The group this Domain belongs to. This is for display purposes only.
-	Group pulumi.StringPtrInput
 	// The IP addresses representing the master DNS for this Domain.
 	//
 	// ***
@@ -369,11 +359,6 @@ func (o DomainOutput) Domain() pulumi.StringOutput {
 // The amount of time in seconds that may pass before this Domain is no longer authoritative. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
 func (o DomainOutput) ExpireSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.ExpireSec }).(pulumi.IntPtrOutput)
-}
-
-// The group this Domain belongs to. This is for display purposes only.
-func (o DomainOutput) Group() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Group }).(pulumi.StringPtrOutput)
 }
 
 // The IP addresses representing the master DNS for this Domain.

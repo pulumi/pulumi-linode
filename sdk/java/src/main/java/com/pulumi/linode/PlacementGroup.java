@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var test = new PlacementGroup("test", PlacementGroupArgs.builder()
  *             .label("my-placement-group")
- *             .region("us-mia")
  *             .placementGroupType("anti_affinity:local")
+ *             .region("us-mia")
  *             .build());
  * 
  *     }

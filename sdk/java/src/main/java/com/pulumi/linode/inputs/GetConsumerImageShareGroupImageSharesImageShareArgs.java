@@ -94,14 +94,14 @@ public final class GetConsumerImageShareGroupImageSharesImageShareArgs extends c
     }
 
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     @Import(name="imageSharing", required=true)
     private Output<GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs> imageSharing;
 
     /**
-     * @return Details about image sharing, including who the image is shared with and by.
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     public Output<GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs> imageSharing() {
@@ -365,7 +365,7 @@ public final class GetConsumerImageShareGroupImageSharesImageShareArgs extends c
         }
 
         /**
-         * @param imageSharing Details about image sharing, including who the image is shared with and by.
+         * @param imageSharing (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class GetConsumerImageShareGroupImageSharesImageShareArgs extends c
         }
 
         /**
-         * @param imageSharing Details about image sharing, including who the image is shared with and by.
+         * @param imageSharing (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
          * 
          * @return builder
          * 

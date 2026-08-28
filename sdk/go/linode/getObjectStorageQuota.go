@@ -63,6 +63,8 @@ type GetObjectStorageQuotaResult struct {
 	Description string `pulumi:"description"`
 	// The type of the S3 endpoint of the Object Storage.
 	EndpointType string `pulumi:"endpointType"`
+	// Whether usage data is available for the Object Storage quota.
+	HasUsage bool `pulumi:"hasUsage"`
 	// The unique ID of the Object Storage quota data source.
 	Id      string `pulumi:"id"`
 	QuotaId string `pulumi:"quotaId"`
@@ -70,7 +72,9 @@ type GetObjectStorageQuotaResult struct {
 	QuotaLimit int `pulumi:"quotaLimit"`
 	// The name of the Object Storage quota.
 	QuotaName string `pulumi:"quotaName"`
-	// The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
+	// The type of the Object Storage quota.
+	QuotaType string `pulumi:"quotaType"`
+	// (Read-Only Object) The usage data for a specific Object Storage related quota on your account. This value is `null` when `hasUsage` is `false`. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage). Referenced directly (e.g. `quota_usage.quota_limit`).
 	QuotaUsage GetObjectStorageQuotaQuotaUsage `pulumi:"quotaUsage"`
 	// The specific Object Storage resource for the quota.
 	ResourceMetric string `pulumi:"resourceMetric"`
@@ -118,6 +122,11 @@ func (o GetObjectStorageQuotaResultOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageQuotaResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }
 
+// Whether usage data is available for the Object Storage quota.
+func (o GetObjectStorageQuotaResultOutput) HasUsage() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotaResult) bool { return v.HasUsage }).(pulumi.BoolOutput)
+}
+
 // The unique ID of the Object Storage quota data source.
 func (o GetObjectStorageQuotaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageQuotaResult) string { return v.Id }).(pulumi.StringOutput)
@@ -137,7 +146,12 @@ func (o GetObjectStorageQuotaResultOutput) QuotaName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageQuotaResult) string { return v.QuotaName }).(pulumi.StringOutput)
 }
 
-// The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
+// The type of the Object Storage quota.
+func (o GetObjectStorageQuotaResultOutput) QuotaType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObjectStorageQuotaResult) string { return v.QuotaType }).(pulumi.StringOutput)
+}
+
+// (Read-Only Object) The usage data for a specific Object Storage related quota on your account. This value is `null` when `hasUsage` is `false`. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage). Referenced directly (e.g. `quota_usage.quota_limit`).
 func (o GetObjectStorageQuotaResultOutput) QuotaUsage() GetObjectStorageQuotaQuotaUsageOutput {
 	return o.ApplyT(func(v GetObjectStorageQuotaResult) GetObjectStorageQuotaQuotaUsage { return v.QuotaUsage }).(GetObjectStorageQuotaQuotaUsageOutput)
 }

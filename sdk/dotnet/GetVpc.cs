@@ -47,6 +47,14 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
+        /// ## IPv4
+        /// 
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
         /// ### Subnets Reference
         /// 
         /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
@@ -90,6 +98,14 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
+        /// ## IPv4
+        /// 
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
         /// ### Subnets Reference
         /// 
         /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
@@ -132,6 +148,14 @@ namespace Pulumi.Linode
         /// Contains information about a single IPv6 allocation under this VPC.
         /// 
         /// * `Range` - The allocated range in CIDR format.
+        /// 
+        /// ## IPv4
+        /// 
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
         /// 
         /// ### Subnets Reference
         /// 
@@ -184,7 +208,11 @@ namespace Pulumi.Linode
         public readonly string Description;
         public readonly string Id;
         /// <summary>
-        /// A list of IPv6 allocations under this VPC.
+        /// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcIpv4Result> Ipv4s;
+        /// <summary>
+        /// (Nested Attribute List) A list of IPv6 allocations under this VPC.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcIpv6Result> Ipv6s;
         /// <summary>
@@ -199,6 +227,10 @@ namespace Pulumi.Linode
         /// The date and time when the VPC was last updated.
         /// </summary>
         public readonly string Updated;
+        /// <summary>
+        /// The type of the VPC (`Regular` or `Rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+        /// </summary>
+        public readonly string VpcType;
 
         [OutputConstructor]
         private GetVpcResult(
@@ -208,21 +240,27 @@ namespace Pulumi.Linode
 
             string id,
 
+            ImmutableArray<Outputs.GetVpcIpv4Result> ipv4s,
+
             ImmutableArray<Outputs.GetVpcIpv6Result> ipv6s,
 
             string label,
 
             string region,
 
-            string updated)
+            string updated,
+
+            string vpcType)
         {
             Created = created;
             Description = description;
             Id = id;
+            Ipv4s = ipv4s;
             Ipv6s = ipv6s;
             Label = label;
             Region = region;
             Updated = updated;
+            VpcType = vpcType;
         }
     }
 }

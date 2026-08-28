@@ -236,6 +236,9 @@ namespace Pulumi.Linode
     public sealed class GetFirewallTemplatesResult
     {
         public readonly ImmutableArray<Outputs.GetFirewallTemplatesFilterResult> Filters;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallTemplatesFirewallTemplateResult> FirewallTemplates;
         public readonly string Id;
 

@@ -44,9 +44,9 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `Public` or `Vpc` purpose.
         /// 
-        /// * `Ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose.
+        /// * `Ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `Vpc` purpose.
         /// 
-        /// * `Ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `Vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        /// * `Ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `Vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         /// </summary>
         public readonly bool? Primary;
         /// <summary>

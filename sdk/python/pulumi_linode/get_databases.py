@@ -48,6 +48,9 @@ class GetDatabasesResult:
     @_builtins.property
     @pulumi.getter
     def databases(self) -> Sequence['outputs.GetDatabasesDatabaseResult']:
+        """
+        (Nested Attribute List) Managed Databases matching the query.
+        """
         return pulumi.get(self, "databases")
 
     @_builtins.property

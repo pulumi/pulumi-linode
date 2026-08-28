@@ -32,7 +32,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-28)))
+// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabaseEngines:getDatabaseEngines.pp:2,11-27)))
 // return nil
 // })
 // }
@@ -61,7 +61,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-30)))
+// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabaseEngines:getDatabaseEngines.pp:7,11-29)))
 // return nil
 // })
 // }
@@ -92,7 +92,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDatabaseMysqlV2(ctx, "my_db", &linode.DatabaseMysqlV2Args{
+//			_, err = linode.NewDatabaseMysqlV2(ctx, "myDb", &linode.DatabaseMysqlV2Args{
 //				Label:    pulumi.String("mydb"),
 //				EngineId: pulumi.String(mysql.Engines[0].Id),
 //				Region:   pulumi.String("us-southeast"),
@@ -121,7 +121,7 @@ type GetDatabaseEnginesArgs struct {
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
 	//
-	// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -131,6 +131,7 @@ type GetDatabaseEnginesArgs struct {
 
 // A collection of values returned by getDatabaseEngines.
 type GetDatabaseEnginesResult struct {
+	// (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
 	Engines []GetDatabaseEnginesEngine `pulumi:"engines"`
 	Filters []GetDatabaseEnginesFilter `pulumi:"filters"`
 	// The Managed Database engine ID in engine/version format.
@@ -150,7 +151,7 @@ type GetDatabaseEnginesOutputArgs struct {
 	Filters GetDatabaseEnginesFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest engine version will be returned.
 	//
-	// * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
@@ -177,6 +178,7 @@ func (o GetDatabaseEnginesResultOutput) ToGetDatabaseEnginesResultOutputWithCont
 	return o
 }
 
+// (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
 func (o GetDatabaseEnginesResultOutput) Engines() GetDatabaseEnginesEngineArrayOutput {
 	return o.ApplyT(func(v GetDatabaseEnginesResult) []GetDatabaseEnginesEngine { return v.Engines }).(GetDatabaseEnginesEngineArrayOutput)
 }

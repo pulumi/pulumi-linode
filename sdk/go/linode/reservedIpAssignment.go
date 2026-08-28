@@ -12,32 +12,67 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages the assignment of a reserved IPv4 address to a Linode instance.
+//
+// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-add-linode-ip).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewReservedIpAssignment(ctx, "example", &linode.ReservedIpAssignmentArgs{
+//				LinodeId: pulumi.Any(linode_instance.Example.Id),
+//				Address:  pulumi.Any(linode_networking_ip.Reserved.Address),
+//				Public:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ReservedIpAssignment struct {
 	pulumi.CustomResourceState
 
-	// The resulting IPv4 address.
+	// The reserved IPv4 address to assign to the Linode.
 	Address pulumi.StringOutput `pulumi:"address"`
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
 	ApplyImmediately pulumi.BoolOutput `pulumi:"applyImmediately"`
-	// The default gateway for this address
+	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+	AssignedEntity ReservedIpAssignmentAssignedEntityOutput `pulumi:"assignedEntity"`
+	// The default gateway for this address.
 	Gateway pulumi.StringOutput `pulumi:"gateway"`
-	// The ID of the Linode to allocate an IPv4 address for.
+	// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
 	Prefix pulumi.IntOutput `pulumi:"prefix"`
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
 	Public pulumi.BoolOutput `pulumi:"public"`
-	// The reverse DNS assigned to this address.
+	// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
 	Rdns pulumi.StringOutput `pulumi:"rdns"`
 	// The region this IP resides in.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// The reservation status of the IP address
+	// The reservation status of the IP address.
 	Reserved pulumi.BoolOutput `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask pulumi.StringOutput `pulumi:"subnetMask"`
-	// The type of IP address.
+	// A set of tags associated with this IP address.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
+	// The type of the entity.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 	VpcNat11s ReservedIpAssignmentVpcNat11ArrayOutput `pulumi:"vpcNat11s"`
 }
 
@@ -77,56 +112,64 @@ func GetReservedIpAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReservedIpAssignment resources.
 type reservedIpAssignmentState struct {
-	// The resulting IPv4 address.
+	// The reserved IPv4 address to assign to the Linode.
 	Address *string `pulumi:"address"`
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
 	ApplyImmediately *bool `pulumi:"applyImmediately"`
-	// The default gateway for this address
+	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+	AssignedEntity *ReservedIpAssignmentAssignedEntity `pulumi:"assignedEntity"`
+	// The default gateway for this address.
 	Gateway *string `pulumi:"gateway"`
-	// The ID of the Linode to allocate an IPv4 address for.
+	// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
 	LinodeId *int `pulumi:"linodeId"`
 	// The number of bits set in the subnet mask.
 	Prefix *int `pulumi:"prefix"`
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
 	Public *bool `pulumi:"public"`
-	// The reverse DNS assigned to this address.
+	// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
 	Rdns *string `pulumi:"rdns"`
 	// The region this IP resides in.
 	Region *string `pulumi:"region"`
-	// The reservation status of the IP address
+	// The reservation status of the IP address.
 	Reserved *bool `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask *string `pulumi:"subnetMask"`
-	// The type of IP address.
+	// A set of tags associated with this IP address.
+	Tags []string `pulumi:"tags"`
+	// The type of the entity.
 	Type *string `pulumi:"type"`
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 	VpcNat11s []ReservedIpAssignmentVpcNat11 `pulumi:"vpcNat11s"`
 }
 
 type ReservedIpAssignmentState struct {
-	// The resulting IPv4 address.
+	// The reserved IPv4 address to assign to the Linode.
 	Address pulumi.StringPtrInput
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
 	ApplyImmediately pulumi.BoolPtrInput
-	// The default gateway for this address
+	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+	AssignedEntity ReservedIpAssignmentAssignedEntityPtrInput
+	// The default gateway for this address.
 	Gateway pulumi.StringPtrInput
-	// The ID of the Linode to allocate an IPv4 address for.
+	// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
 	LinodeId pulumi.IntPtrInput
 	// The number of bits set in the subnet mask.
 	Prefix pulumi.IntPtrInput
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
 	Public pulumi.BoolPtrInput
-	// The reverse DNS assigned to this address.
+	// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
 	Rdns pulumi.StringPtrInput
 	// The region this IP resides in.
 	Region pulumi.StringPtrInput
-	// The reservation status of the IP address
+	// The reservation status of the IP address.
 	Reserved pulumi.BoolPtrInput
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask pulumi.StringPtrInput
-	// The type of IP address.
+	// A set of tags associated with this IP address.
+	Tags pulumi.StringArrayInput
+	// The type of the entity.
 	Type pulumi.StringPtrInput
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 	VpcNat11s ReservedIpAssignmentVpcNat11ArrayInput
 }
 
@@ -135,29 +178,29 @@ func (ReservedIpAssignmentState) ElementType() reflect.Type {
 }
 
 type reservedIpAssignmentArgs struct {
-	// The resulting IPv4 address.
+	// The reserved IPv4 address to assign to the Linode.
 	Address string `pulumi:"address"`
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
 	ApplyImmediately *bool `pulumi:"applyImmediately"`
-	// The ID of the Linode to allocate an IPv4 address for.
+	// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
 	LinodeId int `pulumi:"linodeId"`
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
 	Public *bool `pulumi:"public"`
-	// The reverse DNS assigned to this address.
+	// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
 	Rdns *string `pulumi:"rdns"`
 }
 
 // The set of arguments for constructing a ReservedIpAssignment resource.
 type ReservedIpAssignmentArgs struct {
-	// The resulting IPv4 address.
+	// The reserved IPv4 address to assign to the Linode.
 	Address pulumi.StringInput
-	// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+	// If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
 	ApplyImmediately pulumi.BoolPtrInput
-	// The ID of the Linode to allocate an IPv4 address for.
+	// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
 	LinodeId pulumi.IntInput
-	// Whether the IPv4 address is public or private.
+	// Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
 	Public pulumi.BoolPtrInput
-	// The reverse DNS assigned to this address.
+	// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
 	Rdns pulumi.StringPtrInput
 }
 
@@ -248,22 +291,27 @@ func (o ReservedIpAssignmentOutput) ToReservedIpAssignmentOutputWithContext(ctx 
 	return o
 }
 
-// The resulting IPv4 address.
+// The reserved IPv4 address to assign to the Linode.
 func (o ReservedIpAssignmentOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
-// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+// If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
 func (o ReservedIpAssignmentOutput) ApplyImmediately() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.BoolOutput { return v.ApplyImmediately }).(pulumi.BoolOutput)
 }
 
-// The default gateway for this address
+// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+func (o ReservedIpAssignmentOutput) AssignedEntity() ReservedIpAssignmentAssignedEntityOutput {
+	return o.ApplyT(func(v *ReservedIpAssignment) ReservedIpAssignmentAssignedEntityOutput { return v.AssignedEntity }).(ReservedIpAssignmentAssignedEntityOutput)
+}
+
+// The default gateway for this address.
 func (o ReservedIpAssignmentOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.Gateway }).(pulumi.StringOutput)
 }
 
-// The ID of the Linode to allocate an IPv4 address for.
+// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
 func (o ReservedIpAssignmentOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }
@@ -273,12 +321,12 @@ func (o ReservedIpAssignmentOutput) Prefix() pulumi.IntOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.IntOutput { return v.Prefix }).(pulumi.IntOutput)
 }
 
-// Whether the IPv4 address is public or private.
+// Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
 func (o ReservedIpAssignmentOutput) Public() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.BoolOutput { return v.Public }).(pulumi.BoolOutput)
 }
 
-// The reverse DNS assigned to this address.
+// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
 func (o ReservedIpAssignmentOutput) Rdns() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.Rdns }).(pulumi.StringOutput)
 }
@@ -288,7 +336,7 @@ func (o ReservedIpAssignmentOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// The reservation status of the IP address
+// The reservation status of the IP address.
 func (o ReservedIpAssignmentOutput) Reserved() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.BoolOutput { return v.Reserved }).(pulumi.BoolOutput)
 }
@@ -298,12 +346,17 @@ func (o ReservedIpAssignmentOutput) SubnetMask() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.SubnetMask }).(pulumi.StringOutput)
 }
 
-// The type of IP address.
+// A set of tags associated with this IP address.
+func (o ReservedIpAssignmentOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The type of the entity.
 func (o ReservedIpAssignmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 func (o ReservedIpAssignmentOutput) VpcNat11s() ReservedIpAssignmentVpcNat11ArrayOutput {
 	return o.ApplyT(func(v *ReservedIpAssignment) ReservedIpAssignmentVpcNat11ArrayOutput { return v.VpcNat11s }).(ReservedIpAssignmentVpcNat11ArrayOutput)
 }

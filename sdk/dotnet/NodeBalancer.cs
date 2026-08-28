@@ -27,10 +27,10 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.NodeBalancer("foobar", new()
     ///     {
-    ///         Label = "mynodebalancer",
-    ///         Region = "us-east",
     ///         ClientConnThrottle = 20,
     ///         ClientUdpSessThrottle = 10,
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-east",
     ///         Tags = new[]
     ///         {
     ///             "foobar",
@@ -59,9 +59,37 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.NodeBalancerVpcArgs
     ///             {
-    ///                 SubnetId = test.Id,
+    ///                 Subnet_id = linode_vpc_subnet.Test.Id,
     ///             },
     ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The following example shows how to create a NodeBalancer with a pre-reserved IPv4 address.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myReservedIp = new Linode.NetworkingIp("myReservedIp", new()
+    ///     {
+    ///         Region = "us-east",
+    ///         Type = "ipv4",
+    ///         Public = true,
+    ///         Reserved = true,
+    ///     });
+    /// 
+    ///     var foobar = new Linode.NodeBalancer("foobar", new()
+    ///     {
+    ///         Label = "mynodebalancer",
+    ///         Region = "us-east",
+    ///         Ipv4 = myReservedIp.Address,
     ///     });
     /// 
     /// });
@@ -117,7 +145,7 @@ namespace Pulumi.Linode
         public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
-        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
+        /// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `Ipv4` forces the creation of a new Linode NodeBalancer.*
         /// </summary>
         [Output("ipv4")]
         public Output<string> Ipv4 { get; private set; } = null!;
@@ -133,6 +161,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("label")]
         public Output<string?> Label { get; private set; } = null!;
+
+        /// <summary>
+        /// The related LKE cluster for this NodeBalancer, if any.
+        /// </summary>
+        [Output("lkeClusters")]
+        public Output<ImmutableArray<Outputs.NodeBalancerLkeCluster>> LkeClusters { get; private set; } = null!;
 
         /// <summary>
         /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `Region` forces the creation of a new Linode NodeBalancer.*.
@@ -233,6 +267,12 @@ namespace Pulumi.Linode
         public Input<int>? FirewallId { get; set; }
 
         /// <summary>
+        /// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `Ipv4` forces the creation of a new Linode NodeBalancer.*
+        /// </summary>
+        [Input("ipv4")]
+        public Input<string>? Ipv4 { get; set; }
+
+        /// <summary>
         /// The label of the Linode NodeBalancer
         /// </summary>
         [Input("label")]
@@ -323,7 +363,7 @@ namespace Pulumi.Linode
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
+        /// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `Ipv4` forces the creation of a new Linode NodeBalancer.*
         /// </summary>
         [Input("ipv4")]
         public Input<string>? Ipv4 { get; set; }
@@ -339,6 +379,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
+
+        [Input("lkeClusters")]
+        private InputList<Inputs.NodeBalancerLkeClusterGetArgs>? _lkeClusters;
+
+        /// <summary>
+        /// The related LKE cluster for this NodeBalancer, if any.
+        /// </summary>
+        public InputList<Inputs.NodeBalancerLkeClusterGetArgs> LkeClusters
+        {
+            get => _lkeClusters ?? (_lkeClusters = new InputList<Inputs.NodeBalancerLkeClusterGetArgs>());
+            set => _lkeClusters = value;
+        }
 
         /// <summary>
         /// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `Region` forces the creation of a new Linode NodeBalancer.*.

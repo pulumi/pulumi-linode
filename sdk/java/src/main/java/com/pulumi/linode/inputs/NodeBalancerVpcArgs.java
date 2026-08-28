@@ -51,6 +51,21 @@ public final class NodeBalancerVpcArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Optional) A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    @Import(name="ipv6Range")
+    private @Nullable Output<String> ipv6Range;
+
+    /**
+     * @return (Optional) A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    public Optional<Output<String>> ipv6Range() {
+        return Optional.ofNullable(this.ipv6Range);
+    }
+
+    /**
      * (Required) The ID of a subnet to assign to this NodeBalancer.
      * 
      */
@@ -70,6 +85,7 @@ public final class NodeBalancerVpcArgs extends com.pulumi.resources.ResourceArgs
     private NodeBalancerVpcArgs(NodeBalancerVpcArgs $) {
         this.ipv4Range = $.ipv4Range;
         this.ipv4RangeAutoAssign = $.ipv4RangeAutoAssign;
+        this.ipv6Range = $.ipv6Range;
         this.subnetId = $.subnetId;
     }
 
@@ -133,6 +149,27 @@ public final class NodeBalancerVpcArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder ipv4RangeAutoAssign(Boolean ipv4RangeAutoAssign) {
             return ipv4RangeAutoAssign(Output.of(ipv4RangeAutoAssign));
+        }
+
+        /**
+         * @param ipv6Range (Optional) A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Range(@Nullable Output<String> ipv6Range) {
+            $.ipv6Range = ipv6Range;
+            return this;
+        }
+
+        /**
+         * @param ipv6Range (Optional) A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6Range(String ipv6Range) {
+            return ipv6Range(Output.of(ipv6Range));
         }
 
         /**

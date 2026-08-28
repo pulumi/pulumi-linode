@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Allocate an IP under the primary node
- *         var primary = new InstanceIp("primary", InstanceIpArgs.builder()
+ *         var primaryInstanceIp = new InstanceIp("primaryInstanceIp", InstanceIpArgs.builder()
  *             .linodeId(primaryInstance.id())
  *             .build());
  * 
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *         // Share the IP with the secondary node
  *         var share_primary = new InstanceSharedIps("share-primary", InstanceSharedIpsArgs.builder()
  *             .linodeId(secondary.id())
- *             .addresses(primary.address())
+ *             .addresses(primaryInstanceIp.address())
  *             .build());
  * 
  *     }

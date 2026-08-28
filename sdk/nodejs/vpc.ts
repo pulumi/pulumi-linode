@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.Vpc("test", {
+ *     description: "My first VPC.",
  *     label: "test-vpc",
  *     region: "us-iad",
- *     description: "My first VPC.",
  * });
  * ```
  *
@@ -33,11 +33,24 @@ import * as utilities from "./utilities";
  *
  * // NOTE: IPv6 VPCs may not currently be available to all users.
  * const test = new linode.Vpc("test", {
- *     label: "test-vpc",
- *     region: "us-iad",
  *     ipv6s: [{
  *         range: "/52",
  *     }],
+ *     label: "test-vpc",
+ *     region: "us-iad",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
+ * const test = new linode.Vpc("test", {
+ *     ipv4s: [{
+ *         range: "10.0.0.0/8",
+ *     }],
+ *     label: "test-vpc",
+ *     region: "us-iad",
  * });
  * ```
  *
@@ -52,6 +65,14 @@ import * as utilities from "./utilities";
  * * `allocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
  *
  * * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+ *
+ * ## IPv4
+ *
+ * > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+ *
+ * Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
+ *
+ * * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
  */
 export class Vpc extends pulumi.CustomResource {
     /**
@@ -87,10 +108,12 @@ export class Vpc extends pulumi.CustomResource {
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
      * The user-defined description of this VPC.
-     *
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * The IPv4 configuration of this VPC.
+     */
+    declare public readonly ipv4s: pulumi.Output<outputs.VpcIpv4[]>;
     /**
      * The IPv6 configuration of this VPC.
      */
@@ -107,6 +130,14 @@ export class Vpc extends pulumi.CustomResource {
      * The date and time when the VPC was last updated.
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
+    /**
+     * The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     *
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     *
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    declare public readonly vpcType: pulumi.Output<string>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.
@@ -123,10 +154,12 @@ export class Vpc extends pulumi.CustomResource {
             const state = argsOrState as VpcState | undefined;
             resourceInputs["created"] = state?.created;
             resourceInputs["description"] = state?.description;
+            resourceInputs["ipv4s"] = state?.ipv4s;
             resourceInputs["ipv6s"] = state?.ipv6s;
             resourceInputs["label"] = state?.label;
             resourceInputs["region"] = state?.region;
             resourceInputs["updated"] = state?.updated;
+            resourceInputs["vpcType"] = state?.vpcType;
         } else {
             const args = argsOrState as VpcArgs | undefined;
             if (args?.label === undefined && !opts.urn) {
@@ -136,9 +169,11 @@ export class Vpc extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["ipv4s"] = args?.ipv4s;
             resourceInputs["ipv6s"] = args?.ipv6s;
             resourceInputs["label"] = args?.label;
             resourceInputs["region"] = args?.region;
+            resourceInputs["vpcType"] = args?.vpcType;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
@@ -157,10 +192,12 @@ export interface VpcState {
     created?: pulumi.Input<string | undefined>;
     /**
      * The user-defined description of this VPC.
-     *
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv4 configuration of this VPC.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<inputs.VpcIpv4>[] | undefined>;
     /**
      * The IPv6 configuration of this VPC.
      */
@@ -177,6 +214,14 @@ export interface VpcState {
      * The date and time when the VPC was last updated.
      */
     updated?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     *
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     *
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    vpcType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,10 +230,12 @@ export interface VpcState {
 export interface VpcArgs {
     /**
      * The user-defined description of this VPC.
-     *
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv4 configuration of this VPC.
+     */
+    ipv4s?: pulumi.Input<pulumi.Input<inputs.VpcIpv4>[] | undefined>;
     /**
      * The IPv6 configuration of this VPC.
      */
@@ -201,4 +248,12 @@ export interface VpcArgs {
      * The region of the VPC.
      */
     region: pulumi.Input<string>;
+    /**
+     * The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     *
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     *
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    vpcType?: pulumi.Input<string | undefined>;
 }

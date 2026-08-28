@@ -18,11 +18,11 @@ import * as utilities from "./utilities";
  *     label: "myinstance",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
- *     image: "linode/alpine3.19",
+ *     image: "linode/arch",
  * });
  * const my_db = new linode.DatabaseMysqlV2("my-db", {
  *     label: "mydatabase",
- *     engineId: "mysql/8.0.30",
+ *     engineId: "mysql/8",
  *     region: "us-southeast",
  *     type: "g6-nanode-1",
  * });

@@ -38,14 +38,14 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
     }
 
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     @Import(name="ipv4s", required=true)
     private Output<List<String>> ipv4s;
 
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     public Output<List<String>> ipv4s() {
@@ -173,7 +173,7 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4s The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4s The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class NodeBalancerFirewallOutboundArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipv4s A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4s The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
          * 
          * @return builder
          * 

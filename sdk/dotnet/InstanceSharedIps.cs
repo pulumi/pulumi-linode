@@ -30,7 +30,7 @@ namespace Pulumi.Linode
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a single primary node
-    ///     var primaryInstance = new Linode.Instance("primary", new()
+    ///     var primaryInstance = new Linode.Instance("primaryInstance", new()
     ///     {
     ///         Label = "node-primary",
     ///         Type = "g6-nanode-1",
@@ -38,7 +38,7 @@ namespace Pulumi.Linode
     ///     });
     /// 
     ///     // Allocate an IP under the primary node
-    ///     var primary = new Linode.InstanceIp("primary", new()
+    ///     var primaryInstanceIp = new Linode.InstanceIp("primaryInstanceIp", new()
     ///     {
     ///         LinodeId = primaryInstance.Id,
     ///     });
@@ -57,7 +57,7 @@ namespace Pulumi.Linode
     ///         LinodeId = secondary.Id,
     ///         Addresses = new[]
     ///         {
-    ///             primary.Address,
+    ///             primaryInstanceIp.Address,
     ///         },
     ///     });
     /// 

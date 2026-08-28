@@ -31,12 +31,12 @@ public final class GetPlacementGroupsPlacementGroup {
      */
     private String label;
     /**
-     * @return A set of Linodes currently assigned to this Placement Group.
+     * @return (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private List<GetPlacementGroupsPlacementGroupMember> members;
     /**
-     * @return Any Linodes that are being migrated to or from the placement group.
+     * @return (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
      * 
      */
     private GetPlacementGroupsPlacementGroupMigrations migrations;
@@ -79,14 +79,14 @@ public final class GetPlacementGroupsPlacementGroup {
         return this.label;
     }
     /**
-     * @return A set of Linodes currently assigned to this Placement Group.
+     * @return (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<GetPlacementGroupsPlacementGroupMember> members() {
         return this.members;
     }
     /**
-     * @return Any Linodes that are being migrated to or from the placement group.
+     * @return (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
      * 
      */
     public GetPlacementGroupsPlacementGroupMigrations migrations() {

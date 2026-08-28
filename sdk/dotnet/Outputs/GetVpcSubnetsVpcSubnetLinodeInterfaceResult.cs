@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int ConfigId;
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         public readonly int Id;
 

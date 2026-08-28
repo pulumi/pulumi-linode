@@ -81,7 +81,7 @@ export interface GetVpcIpsArgs {
     /**
      * The id of the parent VPC for the list of VPC IPs.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
     vpcId?: number;
 }
@@ -97,6 +97,9 @@ export interface GetVpcIpsResult {
      * The unique globally general API entity identifier for the VPC.
      */
     readonly vpcId?: number;
+    /**
+     * (Nested Attribute List) The Linode VPC IPs returned by this data source.
+     */
     readonly vpcIps: outputs.GetVpcIpsVpcIp[];
 }
 /**
@@ -174,7 +177,7 @@ export interface GetVpcIpsOutputArgs {
     /**
      * The id of the parent VPC for the list of VPC IPs.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      */
     vpcId?: pulumi.Input<number | undefined>;
 }

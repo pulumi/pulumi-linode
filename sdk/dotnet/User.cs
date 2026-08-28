@@ -25,8 +25,8 @@ namespace Pulumi.Linode
     /// {
     ///     var john = new Linode.User("john", new()
     ///     {
-    ///         Username = "john123",
     ///         Email = "john@acme.io",
+    ///         Username = "john123",
     ///     });
     /// 
     /// });
@@ -41,13 +41,11 @@ namespace Pulumi.Linode
     /// {
     ///     var fooser = new Linode.User("fooser", new()
     ///     {
-    ///         Username = "cooluser123",
     ///         Email = "cool@acme.io",
-    ///         Restricted = true,
     ///         GlobalGrants = new Linode.Inputs.UserGlobalGrantsArgs
     ///         {
-    ///             AddLinodes = true,
     ///             AddImages = true,
+    ///             AddLinodes = true,
     ///         },
     ///         LinodeGrants = new[]
     ///         {
@@ -57,6 +55,8 @@ namespace Pulumi.Linode
     ///                 Permissions = "read_write",
     ///             },
     ///         },
+    ///         Restricted = true,
+    ///         Username = "cooluser123",
     ///     });
     /// 
     /// });
@@ -98,7 +98,7 @@ namespace Pulumi.Linode
     public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The domains the user has permissions access to.
+        /// The domains the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("domainGrants")]
         public Output<ImmutableArray<Outputs.UserDomainGrant>> DomainGrants { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.Linode
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The firewalls the user has permissions access to.
+        /// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("firewallGrants")]
         public Output<ImmutableArray<Outputs.UserFirewallGrant>> FirewallGrants { get; private set; } = null!;
@@ -122,25 +122,25 @@ namespace Pulumi.Linode
         public Output<Outputs.UserGlobalGrants> GlobalGrants { get; private set; } = null!;
 
         /// <summary>
-        /// The images the user has permissions access to.
+        /// The images the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("imageGrants")]
         public Output<ImmutableArray<Outputs.UserImageGrant>> ImageGrants { get; private set; } = null!;
 
         /// <summary>
-        /// The Linodes the user has permissions access to.
+        /// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("linodeGrants")]
         public Output<ImmutableArray<Outputs.UserLinodeGrant>> LinodeGrants { get; private set; } = null!;
 
         /// <summary>
-        /// The longview the user has permissions access to.
+        /// The longview the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("longviewGrants")]
         public Output<ImmutableArray<Outputs.UserLongviewGrant>> LongviewGrants { get; private set; } = null!;
 
         /// <summary>
-        /// The NodeBalancers the user has permissions access to.
+        /// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("nodebalancerGrants")]
         public Output<ImmutableArray<Outputs.UserNodebalancerGrant>> NodebalancerGrants { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
-        /// * `GlobalGrants` - (optional) A structure containing the Account-level grants a User has.
+        /// * `GlobalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
         /// 
         /// The following arguments are sets of entity grants:
         /// </summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> SshKeys { get; private set; } = null!;
 
         /// <summary>
-        /// The StackScripts the user has permissions access to.
+        /// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("stackscriptGrants")]
         public Output<ImmutableArray<Outputs.UserStackscriptGrant>> StackscriptGrants { get; private set; } = null!;
@@ -186,13 +186,13 @@ namespace Pulumi.Linode
         public Output<string> Username { get; private set; } = null!;
 
         /// <summary>
-        /// The volumes the user has permissions access to.
+        /// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("volumeGrants")]
         public Output<ImmutableArray<Outputs.UserVolumeGrant>> VolumeGrants { get; private set; } = null!;
 
         /// <summary>
-        /// The Virtual Private Clouds (VPCs) the user has permissions access to.
+        /// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("vpcGrants")]
         public Output<ImmutableArray<Outputs.UserVpcGrant>> VpcGrants { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserDomainGrantArgs>? _domainGrants;
 
         /// <summary>
-        /// The domains the user has permissions access to.
+        /// The domains the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserDomainGrantArgs> DomainGrants
         {
@@ -265,7 +265,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserFirewallGrantArgs>? _firewallGrants;
 
         /// <summary>
-        /// The firewalls the user has permissions access to.
+        /// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserFirewallGrantArgs> FirewallGrants
         {
@@ -283,7 +283,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserImageGrantArgs>? _imageGrants;
 
         /// <summary>
-        /// The images the user has permissions access to.
+        /// The images the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserImageGrantArgs> ImageGrants
         {
@@ -295,7 +295,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserLinodeGrantArgs>? _linodeGrants;
 
         /// <summary>
-        /// The Linodes the user has permissions access to.
+        /// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserLinodeGrantArgs> LinodeGrants
         {
@@ -307,7 +307,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserLongviewGrantArgs>? _longviewGrants;
 
         /// <summary>
-        /// The longview the user has permissions access to.
+        /// The longview the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserLongviewGrantArgs> LongviewGrants
         {
@@ -319,7 +319,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserNodebalancerGrantArgs>? _nodebalancerGrants;
 
         /// <summary>
-        /// The NodeBalancers the user has permissions access to.
+        /// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserNodebalancerGrantArgs> NodebalancerGrants
         {
@@ -330,7 +330,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
-        /// * `GlobalGrants` - (optional) A structure containing the Account-level grants a User has.
+        /// * `GlobalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
         /// 
         /// The following arguments are sets of entity grants:
         /// </summary>
@@ -341,7 +341,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserStackscriptGrantArgs>? _stackscriptGrants;
 
         /// <summary>
-        /// The StackScripts the user has permissions access to.
+        /// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserStackscriptGrantArgs> StackscriptGrants
         {
@@ -359,7 +359,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserVolumeGrantArgs>? _volumeGrants;
 
         /// <summary>
-        /// The volumes the user has permissions access to.
+        /// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserVolumeGrantArgs> VolumeGrants
         {
@@ -371,7 +371,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserVpcGrantArgs>? _vpcGrants;
 
         /// <summary>
-        /// The Virtual Private Clouds (VPCs) the user has permissions access to.
+        /// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserVpcGrantArgs> VpcGrants
         {
@@ -391,7 +391,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserDomainGrantGetArgs>? _domainGrants;
 
         /// <summary>
-        /// The domains the user has permissions access to.
+        /// The domains the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserDomainGrantGetArgs> DomainGrants
         {
@@ -409,7 +409,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserFirewallGrantGetArgs>? _firewallGrants;
 
         /// <summary>
-        /// The firewalls the user has permissions access to.
+        /// The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserFirewallGrantGetArgs> FirewallGrants
         {
@@ -427,7 +427,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserImageGrantGetArgs>? _imageGrants;
 
         /// <summary>
-        /// The images the user has permissions access to.
+        /// The images the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserImageGrantGetArgs> ImageGrants
         {
@@ -439,7 +439,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserLinodeGrantGetArgs>? _linodeGrants;
 
         /// <summary>
-        /// The Linodes the user has permissions access to.
+        /// The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserLinodeGrantGetArgs> LinodeGrants
         {
@@ -451,7 +451,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserLongviewGrantGetArgs>? _longviewGrants;
 
         /// <summary>
-        /// The longview the user has permissions access to.
+        /// The longview the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserLongviewGrantGetArgs> LongviewGrants
         {
@@ -463,7 +463,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserNodebalancerGrantGetArgs>? _nodebalancerGrants;
 
         /// <summary>
-        /// The NodeBalancers the user has permissions access to.
+        /// The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserNodebalancerGrantGetArgs> NodebalancerGrants
         {
@@ -474,7 +474,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, this user will only have explicit permissions granted.
         /// 
-        /// * `GlobalGrants` - (optional) A structure containing the Account-level grants a User has.
+        /// * `GlobalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
         /// 
         /// The following arguments are sets of entity grants:
         /// </summary>
@@ -497,7 +497,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserStackscriptGrantGetArgs>? _stackscriptGrants;
 
         /// <summary>
-        /// The StackScripts the user has permissions access to.
+        /// The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserStackscriptGrantGetArgs> StackscriptGrants
         {
@@ -527,7 +527,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserVolumeGrantGetArgs>? _volumeGrants;
 
         /// <summary>
-        /// The volumes the user has permissions access to.
+        /// The volumes the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserVolumeGrantGetArgs> VolumeGrants
         {
@@ -539,7 +539,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.UserVpcGrantGetArgs>? _vpcGrants;
 
         /// <summary>
-        /// The Virtual Private Clouds (VPCs) the user has permissions access to.
+        /// The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.UserVpcGrantGetArgs> VpcGrants
         {

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides details about a list of Object Storage quotas information on your account.
+ * Provides details about a list of Object Storage quotas on your account.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
  *
  * ## Example Usage
@@ -41,6 +41,10 @@ import * as utilities from "./utilities";
  * * `quotaLimit`
  *
  * * `resourceMetric`
+ *
+ * * `quotaType`
+ *
+ * * `hasUsage`
  */
 export function getObjectStorageQuotas(args?: GetObjectStorageQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectStorageQuotasResult> {
     args = args || {};
@@ -63,10 +67,13 @@ export interface GetObjectStorageQuotasArgs {
 export interface GetObjectStorageQuotasResult {
     readonly filters?: outputs.GetObjectStorageQuotasFilter[];
     readonly id: string;
+    /**
+     * (Nested Attribute List) The list of Object Storage quotas.
+     */
     readonly quotas: outputs.GetObjectStorageQuotasQuota[];
 }
 /**
- * Provides details about a list of Object Storage quotas information on your account.
+ * Provides details about a list of Object Storage quotas on your account.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
  *
  * ## Example Usage
@@ -100,6 +107,10 @@ export interface GetObjectStorageQuotasResult {
  * * `quotaLimit`
  *
  * * `resourceMetric`
+ *
+ * * `quotaType`
+ *
+ * * `hasUsage`
  */
 export function getObjectStorageQuotasOutput(args?: GetObjectStorageQuotasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObjectStorageQuotasResult> {
     args = args || {};

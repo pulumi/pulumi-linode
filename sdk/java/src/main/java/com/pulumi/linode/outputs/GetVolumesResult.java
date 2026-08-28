@@ -23,6 +23,10 @@ public final class GetVolumesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The Volumes returned by this data source.
+     * 
+     */
     private List<GetVolumesVolume> volumes;
 
     private GetVolumesResult() {}
@@ -42,6 +46,10 @@ public final class GetVolumesResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The Volumes returned by this data source.
+     * 
+     */
     public List<GetVolumesVolume> volumes() {
         return this.volumes;
     }

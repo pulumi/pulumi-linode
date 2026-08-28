@@ -19,14 +19,14 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
     public static final ReservedIpAssignmentArgs Empty = new ReservedIpAssignmentArgs();
 
     /**
-     * The resulting IPv4 address.
+     * The reserved IPv4 address to assign to the Linode.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The resulting IPv4 address.
+     * @return The reserved IPv4 address to assign to the Linode.
      * 
      */
     public Output<String> address() {
@@ -34,14 +34,14 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      * 
      */
     @Import(name="applyImmediately")
     private @Nullable Output<Boolean> applyImmediately;
 
     /**
-     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * @return If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> applyImmediately() {
@@ -49,14 +49,14 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the Linode to allocate an IPv4 address for.
+     * The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      * 
      */
     @Import(name="linodeId", required=true)
     private Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to allocate an IPv4 address for.
+     * @return The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      * 
      */
     public Output<Integer> linodeId() {
@@ -64,14 +64,14 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
      * 
      */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
     /**
-     * @return Whether the IPv4 address is public or private.
+     * @return Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
      * 
      */
     public Optional<Output<Boolean>> public_() {
@@ -79,14 +79,14 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The reverse DNS assigned to this address.
+     * The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      * 
      */
     @Import(name="rdns")
     private @Nullable Output<String> rdns;
 
     /**
-     * @return The reverse DNS assigned to this address.
+     * @return The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      * 
      */
     public Optional<Output<String>> rdns() {
@@ -122,7 +122,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The reserved IPv4 address to assign to the Linode.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The reserved IPv4 address to assign to the Linode.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param linodeId The ID of the Linode to allocate an IPv4 address for.
+         * @param linodeId The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param linodeId The ID of the Linode to allocate an IPv4 address for.
+         * @param linodeId The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param public_ Whether the IPv4 address is public or private.
+         * @param public_ Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param public_ Whether the IPv4 address is public or private.
+         * @param public_ Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rdns The reverse DNS assigned to this address.
+         * @param rdns The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ReservedIpAssignmentArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param rdns The reverse DNS assigned to this address.
+         * @param rdns The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
          * 
          * @return builder
          * 

@@ -19,9 +19,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstance {
+    /**
+     * @return (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
+     * 
+     */
     private GetInstancesInstanceAlerts alerts;
     /**
-     * @return Information about this Linode&#39;s backups status.
+     * @return (Read-Only Object List) Information about the Linode&#39;s backup status. Referenced with an index (e.g. `backups.0.enabled`).
      * 
      */
     private List<GetInstancesInstanceBackup> backups;
@@ -36,7 +40,7 @@ public final class GetInstancesInstance {
      */
     private List<String> capabilities;
     /**
-     * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     * @return (Read-Only Object List) A list of configs associated with the Linode. Referenced with an index (e.g. `config.0.label`).
      * 
      */
     private List<GetInstancesInstanceConfig> configs;
@@ -46,15 +50,10 @@ public final class GetInstancesInstance {
      */
     private String diskEncryption;
     /**
-     * @return Disks associated with this Linode.
+     * @return (Read-Only Object List) A list of disks associated with the Linode. Referenced with an index (e.g. `disk.0.label`).
      * 
      */
     private List<GetInstancesInstanceDisk> disks;
-    /**
-     * @return The display group of the Linode instance.
-     * 
-     */
-    private String group;
     /**
      * @return Whether this Instance was created with user-data.
      * 
@@ -115,6 +114,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String maintenancePolicy;
+    /**
+     * @return (Read-Only Object List) Information about the Linode&#39;s Placement Groups. Referenced with an index (e.g. `placement_group.0.id`).
+     * 
+     */
     private List<GetInstancesInstancePlacementGroup> placementGroups;
     /**
      * @return This Linode&#39;s Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -126,6 +129,10 @@ public final class GetInstancesInstance {
      * 
      */
     private String region;
+    /**
+     * @return (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
+     * 
+     */
     private List<GetInstancesInstanceSpec> specs;
     /**
      * @return The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
@@ -154,11 +161,15 @@ public final class GetInstancesInstance {
     private Boolean watchdogEnabled;
 
     private GetInstancesInstance() {}
+    /**
+     * @return (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
+     * 
+     */
     public GetInstancesInstanceAlerts alerts() {
         return this.alerts;
     }
     /**
-     * @return Information about this Linode&#39;s backups status.
+     * @return (Read-Only Object List) Information about the Linode&#39;s backup status. Referenced with an index (e.g. `backups.0.enabled`).
      * 
      */
     public List<GetInstancesInstanceBackup> backups() {
@@ -179,7 +190,7 @@ public final class GetInstancesInstance {
         return this.capabilities;
     }
     /**
-     * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+     * @return (Read-Only Object List) A list of configs associated with the Linode. Referenced with an index (e.g. `config.0.label`).
      * 
      */
     public List<GetInstancesInstanceConfig> configs() {
@@ -193,18 +204,11 @@ public final class GetInstancesInstance {
         return this.diskEncryption;
     }
     /**
-     * @return Disks associated with this Linode.
+     * @return (Read-Only Object List) A list of disks associated with the Linode. Referenced with an index (e.g. `disk.0.label`).
      * 
      */
     public List<GetInstancesInstanceDisk> disks() {
         return this.disks;
-    }
-    /**
-     * @return The display group of the Linode instance.
-     * 
-     */
-    public String group() {
-        return this.group;
     }
     /**
      * @return Whether this Instance was created with user-data.
@@ -290,6 +294,10 @@ public final class GetInstancesInstance {
     public String maintenancePolicy() {
         return this.maintenancePolicy;
     }
+    /**
+     * @return (Read-Only Object List) Information about the Linode&#39;s Placement Groups. Referenced with an index (e.g. `placement_group.0.id`).
+     * 
+     */
     public List<GetInstancesInstancePlacementGroup> placementGroups() {
         return this.placementGroups;
     }
@@ -307,6 +315,10 @@ public final class GetInstancesInstance {
     public String region() {
         return this.region;
     }
+    /**
+     * @return (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
+     * 
+     */
     public List<GetInstancesInstanceSpec> specs() {
         return this.specs;
     }
@@ -362,7 +374,6 @@ public final class GetInstancesInstance {
         private List<GetInstancesInstanceConfig> configs;
         private String diskEncryption;
         private List<GetInstancesInstanceDisk> disks;
-        private String group;
         private Boolean hasUserData;
         private String hostUuid;
         private Integer id;
@@ -394,7 +405,6 @@ public final class GetInstancesInstance {
     	      this.configs = defaults.configs;
     	      this.diskEncryption = defaults.diskEncryption;
     	      this.disks = defaults.disks;
-    	      this.group = defaults.group;
     	      this.hasUserData = defaults.hasUserData;
     	      this.hostUuid = defaults.hostUuid;
     	      this.id = defaults.id;
@@ -485,14 +495,6 @@ public final class GetInstancesInstance {
         }
         public Builder disks(GetInstancesInstanceDisk... disks) {
             return disks(List.of(disks));
-        }
-        @CustomType.Setter
-        public Builder group(String group) {
-            if (group == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstance", "group");
-            }
-            this.group = group;
-            return this;
         }
         @CustomType.Setter
         public Builder hasUserData(Boolean hasUserData) {
@@ -686,7 +688,6 @@ public final class GetInstancesInstance {
             _resultValue.configs = configs;
             _resultValue.diskEncryption = diskEncryption;
             _resultValue.disks = disks;
-            _resultValue.group = group;
             _resultValue.hasUserData = hasUserData;
             _resultValue.hostUuid = hostUuid;
             _resultValue.id = id;

@@ -12,12 +12,21 @@ namespace Pulumi.Linode.Inputs
 
     public sealed class ReservedIpAssignmentVpcNat11Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The reserved IPv4 address to assign to the Linode.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// The `Id` of the VPC Subnet for this Interface.
+        /// </summary>
         [Input("subnetId", required: true)]
         public Input<int> SubnetId { get; set; } = null!;
 
+        /// <summary>
+        /// The `Id` of the VPC configured for this Interface.
+        /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;
 

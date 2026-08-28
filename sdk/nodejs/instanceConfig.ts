@@ -44,79 +44,6 @@ import * as utilities from "./utilities";
  *     booted: true,
  * });
  * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * // Create a VPC and a subnet
- * const foobar = new linode.Vpc("foobar", {
- *     label: "my-vpc",
- *     region: "us-mia",
- *     description: "test description",
- * });
- * const foobarVpcSubnet = new linode.VpcSubnet("foobar", {
- *     vpcId: foobar.id.apply(x =>Number(x)),
- *     label: "my-subnet",
- *     ipv4: "10.0.4.0/24",
- * });
- * const my_instance = new linode.Instance("my-instance", {
- *     label: "my-instance",
- *     type: "g6-standard-1",
- *     region: "us-mia",
- * });
- * // Create a boot disk
- * const boot = new linode.InstanceDisk("boot", {
- *     label: "boot",
- *     linodeId: my_instance.id.apply(x =>Number(x)),
- *     size: my_instance.specs.apply(specs => specs[0].disk - 512),
- *     image: "linode/ubuntu22.04",
- *     rootPass: "myc00lpass!ciuw23asxbviwuc",
- * });
- * // Create a swap disk
- * const swap = new linode.InstanceDisk("swap", {
- *     label: "swap",
- *     linodeId: my_instance.id.apply(x =>Number(x)),
- *     size: 512,
- *     filesystem: "swap",
- * });
- * const my_config = new linode.InstanceConfig("my-config", {
- *     linodeId: my_instance.id.apply(x =>Number(x)),
- *     label: "my-config",
- *     devices: [
- *         {
- *             deviceName: "sda",
- *             diskId: boot.id,
- *         },
- *         {
- *             deviceName: "sdb",
- *             diskId: swap.id,
- *         },
- *     ],
- *     helpers: [{
- *         updatedbDisabled: false,
- *     }],
- *     interfaces: [
- *         {
- *             purpose: "public",
- *         },
- *         {
- *             purpose: "vlan",
- *             label: "my-vlan",
- *             ipamAddress: "10.0.0.2/24",
- *         },
- *         {
- *             purpose: "vpc",
- *             subnetId: foobarVpcSubnet.id.apply(x =>Number(x)),
- *             ipv4: {
- *                 vpc: "10.0.4.250",
- *             },
- *         },
- *     ],
- *     booted: true,
- * });
- * // Unsupported provisioner type remote-exec
- * ```
- *
  * ## Import
  *
  * Instance Configs can be imported using the `linodeId` followed by the Instance Config `id` separated by a comma, e.g.
@@ -160,11 +87,13 @@ export class InstanceConfig extends pulumi.CustomResource {
     /**
      * Optional field for arbitrary User comments on this Config.
      *
-     * * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+     * * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
      *
-     * * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+     * * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      *
-     * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+     * * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+     *
+     * * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
      */
     declare public readonly comments: pulumi.Output<string | undefined>;
     /**
@@ -280,11 +209,13 @@ export interface InstanceConfigState {
     /**
      * Optional field for arbitrary User comments on this Config.
      *
-     * * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+     * * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
      *
-     * * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+     * * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      *
-     * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+     * * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+     *
+     * * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
      */
     comments?: pulumi.Input<string | undefined>;
     /**
@@ -348,11 +279,13 @@ export interface InstanceConfigArgs {
     /**
      * Optional field for arbitrary User comments on this Config.
      *
-     * * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+     * * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
      *
-     * * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+     * * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      *
-     * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+     * * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+     *
+     * * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
      */
     comments?: pulumi.Input<string | undefined>;
     /**
