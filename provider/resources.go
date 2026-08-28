@@ -23,7 +23,7 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/linode/terraform-provider-linode/v3/linode"
+	"github.com/linode/terraform-provider-linode/v4/linode"
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -122,7 +122,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:                "https://pulumi.io",
 		Repository:              "https://github.com/pulumi/pulumi-linode",
 		GitHubOrg:               "linode",
-		TFProviderModuleVersion: "v3",
+		TFProviderModuleVersion: "v4",
 		Version:                 version.Version,
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),
 		DocRules: &tfbridge.DocRuleInfo{
@@ -154,6 +154,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
+			"linode_monitor_alert_definition": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {Type: "string"},
+				},
+			},
 			"linode_domain": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"domain": {CSharpName: "DomainName"},
