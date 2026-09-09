@@ -17,9 +17,9 @@ public final class InstanceConfigInterfaceIpv6 {
     /**
      * @return If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
      * 
-     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     * * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
      * 
-     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     * * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
      * 
      */
     private @Nullable Boolean isPublic;
@@ -38,9 +38,9 @@ public final class InstanceConfigInterfaceIpv6 {
     /**
      * @return If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
      * 
-     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     * * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
      * 
-     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     * * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
      * 
      */
     public Optional<Boolean> isPublic() {

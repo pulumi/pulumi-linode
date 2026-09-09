@@ -80,6 +80,9 @@ export interface GetObjectStorageEndpointsArgs {
  * A collection of values returned by getObjectStorageEndpoints.
  */
 export interface GetObjectStorageEndpointsResult {
+    /**
+     * (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
+     */
     readonly endpoints: outputs.GetObjectStorageEndpointsEndpoint[];
     readonly filters?: outputs.GetObjectStorageEndpointsFilter[];
     readonly id: string;

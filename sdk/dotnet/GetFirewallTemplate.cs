@@ -138,7 +138,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string InboundPolicy;
         /// <summary>
-        /// A list of firewall rules specifying allowed inbound network traffic.
+        /// (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallTemplateInboundResult> Inbounds;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string OutboundPolicy;
         /// <summary>
-        /// A list of firewall rules specifying allowed outbound network traffic.
+        /// (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallTemplateOutboundResult> Outbounds;
         public readonly string Slug;

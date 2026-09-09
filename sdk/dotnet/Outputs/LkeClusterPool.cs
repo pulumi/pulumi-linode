@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int? Count;
         /// <summary>
-        /// The disk encryption policy for nodes in this pool.
+        /// The disk encryption policy for nodes in this pool. Must be `Enabled` or `Disabled`. If omitted, the account default encryption policy is applied. Changing this value will cause the pool to be replaced (deleted and recreated).
         /// </summary>
         public readonly string? DiskEncryption;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.LkeClusterPoolTaint> Taints;
         /// <summary>

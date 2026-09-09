@@ -38,7 +38,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a single primary node
-//			primaryInstance, err := linode.NewInstance(ctx, "primary", &linode.InstanceArgs{
+//			primaryInstance, err := linode.NewInstance(ctx, "primaryInstance", &linode.InstanceArgs{
 //				Label:  pulumi.String("node-primary"),
 //				Type:   pulumi.String("g6-nanode-1"),
 //				Region: pulumi.String("eu-central"),
@@ -47,7 +47,7 @@ import (
 //				return err
 //			}
 //			// Allocate an IP under the primary node
-//			primary, err := linode.NewInstanceIp(ctx, "primary", &linode.InstanceIpArgs{
+//			primaryInstanceIp, err := linode.NewInstanceIp(ctx, "primaryInstanceIp", &linode.InstanceIpArgs{
 //				LinodeId: primaryInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
@@ -66,7 +66,7 @@ import (
 //			_, err = linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
 //				LinodeId: secondary.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Addresses: pulumi.StringArray{
-//					primary.Address,
+//					primaryInstanceIp.Address,
 //				},
 //			})
 //			if err != nil {

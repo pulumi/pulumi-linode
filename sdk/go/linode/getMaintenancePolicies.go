@@ -55,8 +55,9 @@ type GetMaintenancePoliciesArgs struct {
 
 // A collection of values returned by getMaintenancePolicies.
 type GetMaintenancePoliciesResult struct {
-	Filters             []GetMaintenancePoliciesFilter            `pulumi:"filters"`
-	Id                  string                                    `pulumi:"id"`
+	Filters []GetMaintenancePoliciesFilter `pulumi:"filters"`
+	Id      string                         `pulumi:"id"`
+	// (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
 	MaintenancePolicies []GetMaintenancePoliciesMaintenancePolicy `pulumi:"maintenancePolicies"`
 }
 
@@ -97,6 +98,7 @@ func (o GetMaintenancePoliciesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetMaintenancePoliciesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
 func (o GetMaintenancePoliciesResultOutput) MaintenancePolicies() GetMaintenancePoliciesMaintenancePolicyArrayOutput {
 	return o.ApplyT(func(v GetMaintenancePoliciesResult) []GetMaintenancePoliciesMaintenancePolicy {
 		return v.MaintenancePolicies

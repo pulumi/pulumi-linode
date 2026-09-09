@@ -27,7 +27,7 @@ public final class GetVpcSubnetsPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * The id of the parent VPC for the list of VPCs.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
      * 
      */
     @Import(name="vpcId", required=true)
@@ -36,7 +36,7 @@ public final class GetVpcSubnetsPlainArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return The id of the parent VPC for the list of VPCs.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
      * 
      */
     public Integer vpcId() {
@@ -80,7 +80,7 @@ public final class GetVpcSubnetsPlainArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param vpcId The id of the parent VPC for the list of VPCs.
          * 
-         * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
          * 
          * @return builder
          * 

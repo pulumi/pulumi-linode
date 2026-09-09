@@ -24,11 +24,11 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testIp = new Linode.NetworkingIp("test_ip", new()
+    ///     var testIp = new Linode.NetworkingIp("testIp", new()
     ///     {
-    ///         Type = "ipv4",
     ///         LinodeId = 12345,
     ///         Public = true,
+    ///         Type = "ipv4",
     ///     });
     /// 
     /// });
@@ -50,6 +50,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
+
+        /// <summary>
+        /// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        [Output("assignedEntity")]
+        public Output<Outputs.NetworkingIpAssignedEntity> AssignedEntity { get; private set; } = null!;
 
         /// <summary>
         /// The default gateway for this address.
@@ -100,13 +106,19 @@ namespace Pulumi.Linode
         public Output<string> SubnetMask { get; private set; } = null!;
 
         /// <summary>
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         /// </summary>
         [Output("vpcNat11")]
         public Output<Outputs.NetworkingIpVpcNat11> VpcNat11 { get; private set; } = null!;
@@ -202,6 +214,12 @@ namespace Pulumi.Linode
         public Input<string>? Address { get; set; }
 
         /// <summary>
+        /// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        [Input("assignedEntity")]
+        public Input<Inputs.NetworkingIpAssignedEntityGetArgs>? AssignedEntity { get; set; }
+
+        /// <summary>
         /// The default gateway for this address.
         /// </summary>
         [Input("gateway")]
@@ -249,6 +267,18 @@ namespace Pulumi.Linode
         [Input("subnetMask")]
         public Input<string>? SubnetMask { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The type of IP address. (ipv4, ipv6, etc.)
         /// </summary>
@@ -256,7 +286,7 @@ namespace Pulumi.Linode
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         /// </summary>
         [Input("vpcNat11")]
         public Input<Inputs.NetworkingIpVpcNat11GetArgs>? VpcNat11 { get; set; }

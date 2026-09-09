@@ -181,6 +181,10 @@ namespace Pulumi.Linode
 
         [Input("imageShareGroups")]
         private List<Inputs.GetProducerImageShareGroupsImageShareGroupArgs>? _imageShareGroups;
+
+        /// <summary>
+        /// (Block List) The list of Image Share Groups.
+        /// </summary>
         public List<Inputs.GetProducerImageShareGroupsImageShareGroupArgs> ImageShareGroups
         {
             get => _imageShareGroups ?? (_imageShareGroups = new List<Inputs.GetProducerImageShareGroupsImageShareGroupArgs>());
@@ -211,6 +215,10 @@ namespace Pulumi.Linode
 
         [Input("imageShareGroups")]
         private InputList<Inputs.GetProducerImageShareGroupsImageShareGroupInputArgs>? _imageShareGroups;
+
+        /// <summary>
+        /// (Block List) The list of Image Share Groups.
+        /// </summary>
         public InputList<Inputs.GetProducerImageShareGroupsImageShareGroupInputArgs> ImageShareGroups
         {
             get => _imageShareGroups ?? (_imageShareGroups = new InputList<Inputs.GetProducerImageShareGroupsImageShareGroupInputArgs>());
@@ -238,6 +246,9 @@ namespace Pulumi.Linode
         /// The ID of the Image Share Group.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Block List) The list of Image Share Groups.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProducerImageShareGroupsImageShareGroupResult> ImageShareGroups;
         public readonly string? Order;
         public readonly string? OrderBy;

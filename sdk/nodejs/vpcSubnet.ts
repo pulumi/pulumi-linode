@@ -17,16 +17,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.VpcSubnet("test", {
- *     vpcId: 123,
- *     label: "test-subnet",
  *     ipv4: "10.0.0.0/24",
+ *     label: "test-subnet",
+ *     vpcId: 123,
  * });
  * ```
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const testVpc = new linode.Vpc("test", {
+ * const testVpc = new linode.Vpc("testVpc", {
  *     label: "test-vpc",
  *     region: "us-mia",
  *     ipv6s: [{
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // NOTE: IPv6 VPCs may not currently be available to all users.
- * const test = new linode.VpcSubnet("test", {
+ * const testVpcSubnet = new linode.VpcSubnet("testVpcSubnet", {
  *     vpcId: testVpc.id.apply(x =>Number(x)),
  *     label: "test-subnet",
  *     ipv4: "10.0.0.0/24",
@@ -95,13 +95,13 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly created: pulumi.Output<string>;
     /**
-     * A list of Managed databases assigned to the VPC Subnet.
+     * (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      */
     declare public /*out*/ readonly databases: pulumi.Output<outputs.VpcSubnetDatabase[]>;
     /**
      * The IPv4 range of this subnet in CIDR format.
      *
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
     declare public readonly ipv4: pulumi.Output<string | undefined>;
     /**
@@ -113,9 +113,13 @@ export class VpcSubnet extends pulumi.CustomResource {
      */
     declare public readonly label: pulumi.Output<string>;
     /**
-     * A list of Linodes added to this subnet.
+     * (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      */
     declare public /*out*/ readonly linodes: pulumi.Output<outputs.VpcSubnetLinode[]>;
+    /**
+     * (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     */
+    declare public /*out*/ readonly nodebalancers: pulumi.Output<outputs.VpcSubnetNodebalancer[]>;
     /**
      * The date and time when the VPC was last updated.
      */
@@ -124,6 +128,10 @@ export class VpcSubnet extends pulumi.CustomResource {
      * The id of the parent VPC for this VPC subnet.
      */
     declare public readonly vpcId: pulumi.Output<number>;
+    /**
+     * The type of the parent VPC (`regular` or `rdma`).
+     */
+    declare public /*out*/ readonly vpcType: pulumi.Output<string>;
 
     /**
      * Create a VpcSubnet resource with the given unique name, arguments, and options.
@@ -144,8 +152,10 @@ export class VpcSubnet extends pulumi.CustomResource {
             resourceInputs["ipv6s"] = state?.ipv6s;
             resourceInputs["label"] = state?.label;
             resourceInputs["linodes"] = state?.linodes;
+            resourceInputs["nodebalancers"] = state?.nodebalancers;
             resourceInputs["updated"] = state?.updated;
             resourceInputs["vpcId"] = state?.vpcId;
+            resourceInputs["vpcType"] = state?.vpcType;
         } else {
             const args = argsOrState as VpcSubnetArgs | undefined;
             if (args?.label === undefined && !opts.urn) {
@@ -161,7 +171,9 @@ export class VpcSubnet extends pulumi.CustomResource {
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["databases"] = undefined /*out*/;
             resourceInputs["linodes"] = undefined /*out*/;
+            resourceInputs["nodebalancers"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["vpcType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcSubnet.__pulumiType, name, resourceInputs, opts);
@@ -177,13 +189,13 @@ export interface VpcSubnetState {
      */
     created?: pulumi.Input<string | undefined>;
     /**
-     * A list of Managed databases assigned to the VPC Subnet.
+     * (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      */
     databases?: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabase>[] | undefined>;
     /**
      * The IPv4 range of this subnet in CIDR format.
      *
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
     ipv4?: pulumi.Input<string | undefined>;
     /**
@@ -195,9 +207,13 @@ export interface VpcSubnetState {
      */
     label?: pulumi.Input<string | undefined>;
     /**
-     * A list of Linodes added to this subnet.
+     * (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      */
     linodes?: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinode>[] | undefined>;
+    /**
+     * (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     */
+    nodebalancers?: pulumi.Input<pulumi.Input<inputs.VpcSubnetNodebalancer>[] | undefined>;
     /**
      * The date and time when the VPC was last updated.
      */
@@ -206,6 +222,10 @@ export interface VpcSubnetState {
      * The id of the parent VPC for this VPC subnet.
      */
     vpcId?: pulumi.Input<number | undefined>;
+    /**
+     * The type of the parent VPC (`regular` or `rdma`).
+     */
+    vpcType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,7 +235,7 @@ export interface VpcSubnetArgs {
     /**
      * The IPv4 range of this subnet in CIDR format.
      *
-     * * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
      */
     ipv4?: pulumi.Input<string | undefined>;
     /**

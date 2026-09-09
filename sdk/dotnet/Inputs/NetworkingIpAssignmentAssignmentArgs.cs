@@ -19,10 +19,34 @@ namespace Pulumi.Linode.Inputs
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
+        /// (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        [Input("assignedEntity")]
+        public Input<Inputs.NetworkingIpAssignmentAssignmentAssignedEntityArgs>? AssignedEntity { get; set; }
+
+        /// <summary>
         /// The ID of the Linode to which the IP address will be assigned.
         /// </summary>
         [Input("linodeId", required: true)]
         public Input<int> LinodeId { get; set; } = null!;
+
+        /// <summary>
+        /// Whether this IP address is a reserved IP.
+        /// </summary>
+        [Input("reserved")]
+        public Input<bool>? Reserved { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         public NetworkingIpAssignmentAssignmentArgs()
         {

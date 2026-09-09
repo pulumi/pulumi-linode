@@ -87,115 +87,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.Vpc;
- * import com.pulumi.linode.VpcArgs;
- * import com.pulumi.linode.VpcSubnet;
- * import com.pulumi.linode.VpcSubnetArgs;
- * import com.pulumi.linode.Instance;
- * import com.pulumi.linode.InstanceArgs;
- * import com.pulumi.linode.InstanceDisk;
- * import com.pulumi.linode.InstanceDiskArgs;
- * import com.pulumi.linode.InstanceConfig;
- * import com.pulumi.linode.InstanceConfigArgs;
- * import com.pulumi.linode.inputs.InstanceConfigHelperArgs;
- * import com.pulumi.linode.inputs.InstanceConfigInterfaceArgs;
- * import com.pulumi.linode.inputs.InstanceConfigInterfaceIpv4Args;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Create a VPC and a subnet
- *         var foobar = new Vpc("foobar", VpcArgs.builder()
- *             .label("my-vpc")
- *             .region("us-mia")
- *             .description("test description")
- *             .build());
- * 
- *         var foobarVpcSubnet = new VpcSubnet("foobarVpcSubnet", VpcSubnetArgs.builder()
- *             .vpcId(foobar.id())
- *             .label("my-subnet")
- *             .ipv4("10.0.4.0/24")
- *             .build());
- * 
- *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
- *             .label("my-instance")
- *             .type("g6-standard-1")
- *             .region("us-mia")
- *             .build());
- * 
- *         // Create a boot disk
- *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
- *             .label("boot")
- *             .linodeId(my_instance.id())
- *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk() - 512))
- *             .image("linode/ubuntu22.04")
- *             .rootPass("myc00lpass!ciuw23asxbviwuc")
- *             .build());
- * 
- *         // Create a swap disk
- *         var swap = new InstanceDisk("swap", InstanceDiskArgs.builder()
- *             .label("swap")
- *             .linodeId(my_instance.id())
- *             .size(512)
- *             .filesystem("swap")
- *             .build());
- * 
- *         var my_config = new InstanceConfig("my-config", InstanceConfigArgs.builder()
- *             .linodeId(my_instance.id())
- *             .label("my-config")
- *             .devices(            
- *                 com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
- *                     .deviceName("sda")
- *                     .diskId(boot.id())
- *                     .build(),
- *                 com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
- *                     .deviceName("sdb")
- *                     .diskId(swap.id())
- *                     .build())
- *             .helpers(InstanceConfigHelperArgs.builder()
- *                 .updatedbDisabled(false)
- *                 .build())
- *             .interfaces(            
- *                 InstanceConfigInterfaceArgs.builder()
- *                     .purpose("public")
- *                     .build(),
- *                 InstanceConfigInterfaceArgs.builder()
- *                     .purpose("vlan")
- *                     .label("my-vlan")
- *                     .ipamAddress("10.0.0.2/24")
- *                     .build(),
- *                 InstanceConfigInterfaceArgs.builder()
- *                     .purpose("vpc")
- *                     .subnetId(foobarVpcSubnet.id())
- *                     .ipv4(InstanceConfigInterfaceIpv4Args.builder()
- *                         .vpc("10.0.4.250")
- *                         .build())
- *                     .build())
- *             .booted(true)
- *             .build());
- * 
- *         // Unsupported provisioner type remote-exec
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * Instance Configs can be imported using the `linodeId` followed by the Instance Config `id` separated by a comma, e.g.
@@ -224,11 +115,13 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
     /**
      * Optional field for arbitrary User comments on this Config.
      * 
-     * * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+     * * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
      * 
-     * * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+     * * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
-     * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+     * * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+     * 
+     * * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
      * 
      */
     @Export(name="comments", refs={String.class}, tree="[0]")
@@ -237,11 +130,13 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return Optional field for arbitrary User comments on this Config.
      * 
-     * * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+     * * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
      * 
-     * * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+     * * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
-     * * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+     * * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+     * 
+     * * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
      * 
      */
     public Output<Optional<String>> comments() {

@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetPlacementGroupMigrationsResult
     {
         /// <summary>
-        /// A list of the Linodes the system is migrating into the placement group.
+        /// (Read-Only Object List) A list of the Linodes the system is migrating into the placement group. Referenced with an index (e.g. `migrations.inbound.0.linode_id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPlacementGroupMigrationsInboundResult> Inbounds;
         /// <summary>
-        /// A list of the Linodes the system is migrating out of the placement group.
+        /// (Read-Only Object List) A list of the Linodes the system is migrating out of the placement group. Referenced with an index (e.g. `migrations.outbound.0.linode_id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPlacementGroupMigrationsOutboundResult> Outbounds;
 

@@ -17,14 +17,14 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
     public static final VpcSubnetLinodeArgs Empty = new VpcSubnetLinodeArgs();
 
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public Output<Integer> id() {
@@ -32,14 +32,14 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A list of networking interfaces objects.
+     * (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      * 
      */
     @Import(name="interfaces", required=true)
     private Output<List<VpcSubnetLinodeInterfaceArgs>> interfaces;
 
     /**
-     * @return A list of networking interfaces objects.
+     * @return (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      * 
      */
     public Output<List<VpcSubnetLinodeInterfaceArgs>> interfaces() {
@@ -72,7 +72,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id ID of a managed database assigned to the VPC Subnet.
+         * @param id ID of a NodeBalancer assigned to the VPC Subnet.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param id ID of a managed database assigned to the VPC Subnet.
+         * @param id ID of a NodeBalancer assigned to the VPC Subnet.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param interfaces A list of networking interfaces objects.
+         * @param interfaces (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param interfaces A list of networking interfaces objects.
+         * @param interfaces (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class VpcSubnetLinodeArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param interfaces A list of networking interfaces objects.
+         * @param interfaces (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
          * 
          * @return builder
          * 

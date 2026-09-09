@@ -21,6 +21,10 @@ public final class GetProducerImageShareGroupsResult {
      * 
      */
     private String id;
+    /**
+     * @return (Block List) The list of Image Share Groups.
+     * 
+     */
     private @Nullable List<GetProducerImageShareGroupsImageShareGroup> imageShareGroups;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -36,6 +40,10 @@ public final class GetProducerImageShareGroupsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Block List) The list of Image Share Groups.
+     * 
+     */
     public List<GetProducerImageShareGroupsImageShareGroup> imageShareGroups() {
         return this.imageShareGroups == null ? List.of() : this.imageShareGroups;
     }

@@ -111,7 +111,7 @@ class GetProfileResult:
     @pulumi.getter
     def referrals(self) -> Sequence['outputs.GetProfileReferralResult']:
         """
-        Credit Card information associated with this Account.
+        (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
         """
         return pulumi.get(self, "referrals")
 

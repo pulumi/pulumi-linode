@@ -20,7 +20,7 @@ public final class LkeClusterControlPlane {
     /**
      * @return Enables audit logs on the cluster&#39;s control plane.
      * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster&#39;s control plane. Referenced with an index (e.g. `acl.0.enabled`).
      * 
      */
     private @Nullable Boolean auditLogsEnabled;
@@ -41,7 +41,7 @@ public final class LkeClusterControlPlane {
     /**
      * @return Enables audit logs on the cluster&#39;s control plane.
      * 
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster&#39;s control plane.
+     * * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster&#39;s control plane. Referenced with an index (e.g. `acl.0.enabled`).
      * 
      */
     public Optional<Boolean> auditLogsEnabled() {

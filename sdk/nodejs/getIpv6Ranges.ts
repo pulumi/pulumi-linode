@@ -58,6 +58,9 @@ export interface GetIpv6RangesArgs {
 export interface GetIpv6RangesResult {
     readonly filters?: outputs.GetIpv6RangesFilter[];
     readonly id: string;
+    /**
+     * (Nested Attribute List) A list of Linode IPv6 ranges.
+     */
     readonly ranges: outputs.GetIpv6RangesRange[];
 }
 /**

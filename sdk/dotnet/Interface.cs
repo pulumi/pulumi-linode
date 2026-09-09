@@ -34,7 +34,7 @@ namespace Pulumi.Linode
     /// {
     ///     var @public = new Linode.Interface("public", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = linode_instance.My_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
     ///         {
     ///             Ipv4 = new Linode.Inputs.InterfacePublicIpv4Args
@@ -76,9 +76,9 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ipv6Only = new Linode.Interface("ipv6_only", new()
+    ///     var ipv6Only = new Linode.Interface("ipv6Only", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = linode_instance.My_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
     ///         {
     ///             Ipv4 = new Linode.Inputs.InterfacePublicIpv4Args
@@ -115,10 +115,10 @@ namespace Pulumi.Linode
     /// {
     ///     var vpc = new Linode.Interface("vpc", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = linode_instance.My_instance.Id,
     ///         Vpc = new Linode.Inputs.InterfaceVpcArgs
     ///         {
-    ///             SubnetId = 240213,
+    ///             Subnet_id = 240213,
     ///             Ipv4 = new Linode.Inputs.InterfaceVpcIpv4Args
     ///             {
     ///                 Addresses = new[]
@@ -156,18 +156,18 @@ namespace Pulumi.Linode
     /// {
     ///     var vpc = new Linode.Interface("vpc", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = linode_instance.My_instance.Id,
     ///         Vpc = new Linode.Inputs.InterfaceVpcArgs
     ///         {
-    ///             SubnetId = 12345,
+    ///             Subnet_id = 12345,
     ///             Ipv6 = new Linode.Inputs.InterfaceVpcIpv6Args
     ///             {
     ///                 IsPublic = true,
-    ///                 Slaacs = new[]
+    ///                 Slaac = new[]
     ///                 {
-    ///                     new Linode.Inputs.InterfaceVpcIpv6SlaacArgs
+    ///                     
     ///                     {
-    ///                         Range = "auto",
+    ///                         { "range", "auto" },
     ///                     },
     ///                 },
     ///                 Ranges = new[]
@@ -198,11 +198,11 @@ namespace Pulumi.Linode
     /// {
     ///     var vlan = new Linode.Interface("vlan", new()
     ///     {
-    ///         LinodeId = web.Id,
+    ///         LinodeId = linode_instance.Web.Id,
     ///         Vlan = new Linode.Inputs.InterfaceVlanArgs
     ///         {
-    ///             VlanLabel = "web-vlan",
-    ///             IpamAddress = "192.168.200.5/24",
+    ///             Vlan_label = "web-vlan",
+    ///             Ipam_address = "192.168.200.5/24",
     ///         },
     ///     });
     /// 
@@ -309,7 +309,7 @@ namespace Pulumi.Linode
     public partial class Interface : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         /// </summary>
         [Output("defaultRoute")]
         public Output<Outputs.InterfaceDefaultRoute> DefaultRoute { get; private set; } = null!;
@@ -327,19 +327,19 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
         /// </summary>
         [Output("public")]
         public Output<Outputs.InterfacePublic?> Public { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
         /// </summary>
         [Output("vlan")]
         public Output<Outputs.InterfaceVlan?> Vlan { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
         /// </summary>
         [Output("vpc")]
         public Output<Outputs.InterfaceVpc?> Vpc { get; private set; } = null!;
@@ -391,7 +391,7 @@ namespace Pulumi.Linode
     public sealed class InterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         /// </summary>
         [Input("defaultRoute")]
         public Input<Inputs.InterfaceDefaultRouteArgs>? DefaultRoute { get; set; }
@@ -409,19 +409,19 @@ namespace Pulumi.Linode
         public Input<int> LinodeId { get; set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
         /// </summary>
         [Input("public")]
         public Input<Inputs.InterfacePublicArgs>? Public { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
         /// </summary>
         [Input("vlan")]
         public Input<Inputs.InterfaceVlanArgs>? Vlan { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.InterfaceVpcArgs>? Vpc { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.Linode
     public sealed class InterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        /// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         /// </summary>
         [Input("defaultRoute")]
         public Input<Inputs.InterfaceDefaultRouteGetArgs>? DefaultRoute { get; set; }
@@ -453,19 +453,19 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
         /// </summary>
         [Input("public")]
         public Input<Inputs.InterfacePublicGetArgs>? Public { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
         /// </summary>
         [Input("vlan")]
         public Input<Inputs.InterfaceVlanGetArgs>? Vlan { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified.
+        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.InterfaceVpcGetArgs>? Vpc { get; set; }

@@ -27,9 +27,17 @@ public final class GetProducerImageShareGroupMembersArgs extends com.pulumi.reso
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * (Block List) The Image Share Group members returned by this data source.
+     * 
+     */
     @Import(name="members")
     private @Nullable Output<List<GetProducerImageShareGroupMembersMemberArgs>> members;
 
+    /**
+     * @return (Block List) The Image Share Group members returned by this data source.
+     * 
+     */
     public Optional<Output<List<GetProducerImageShareGroupMembersMemberArgs>>> members() {
         return Optional.ofNullable(this.members);
     }
@@ -104,15 +112,33 @@ public final class GetProducerImageShareGroupMembersArgs extends com.pulumi.reso
             return filters(List.of(filters));
         }
 
+        /**
+         * @param members (Block List) The Image Share Group members returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(@Nullable Output<List<GetProducerImageShareGroupMembersMemberArgs>> members) {
             $.members = members;
             return this;
         }
 
+        /**
+         * @param members (Block List) The Image Share Group members returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(List<GetProducerImageShareGroupMembersMemberArgs> members) {
             return members(Output.of(members));
         }
 
+        /**
+         * @param members (Block List) The Image Share Group members returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder members(GetProducerImageShareGroupMembersMemberArgs... members) {
             return members(List.of(members));
         }

@@ -14,7 +14,7 @@ public final class GetProducerImageShareGroupImageSharesImageShareImageSharingSh
     /**
      * @return The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     private Integer sharegroupId;
@@ -38,7 +38,7 @@ public final class GetProducerImageShareGroupImageSharesImageShareImageSharingSh
     /**
      * @return The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     public Integer sharegroupId() {

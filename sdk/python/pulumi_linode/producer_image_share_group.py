@@ -30,7 +30,7 @@ class ProducerImageShareGroupArgs:
         :param pulumi.Input[_builtins.str] label: The label of the Image Share Group.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
-               * `images` - (Optional) A list of Images to include in the Image Share Group.
+               * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         :param pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]] images: The images to be shared using this Image Share Group.
         """
         pulumi.set(__self__, "label", label)
@@ -57,7 +57,7 @@ class ProducerImageShareGroupArgs:
         """
         The description of the Image Share Group
 
-        * `images` - (Optional) A list of Images to include in the Image Share Group.
+        * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         """
         return pulumi.get(self, "description")
 
@@ -97,7 +97,7 @@ class _ProducerImageShareGroupState:
         :param pulumi.Input[_builtins.str] created: The date and time the Image Share Group was created.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
-               * `images` - (Optional) A list of Images to include in the Image Share Group.
+               * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         :param pulumi.Input[_builtins.str] expiry: The date and time the Image Share Group will expire.
         :param pulumi.Input[Sequence[pulumi.Input['ProducerImageShareGroupImageArgs']]] images: The images to be shared using this Image Share Group.
         :param pulumi.Input[_builtins.int] images_count: The number of images in the Image Share Group.
@@ -146,7 +146,7 @@ class _ProducerImageShareGroupState:
         """
         The description of the Image Share Group
 
-        * `images` - (Optional) A list of Images to include in the Image Share Group.
+        * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         """
         return pulumi.get(self, "description")
 
@@ -272,21 +272,21 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test_empty = linode.ProducerImageShareGroup("test-empty",
-            label="my-image-share-group",
-            description="My description.")
+            description="My description.",
+            label="my-image-share-group")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test_images = linode.ProducerImageShareGroup("test-images",
-            label="my-image-share-group",
             description="My description.",
             images=[{
+                "description": "My image description.",
                 "id": "private/12345",
                 "label": "my-image",
-                "description": "My image description.",
-            }])
+            }],
+            label="my-image-share-group")
         ```
 
 
@@ -294,7 +294,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
-               * `images` - (Optional) A list of Images to include in the Image Share Group.
+               * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]] images: The images to be shared using this Image Share Group.
         :param pulumi.Input[_builtins.str] label: The label of the Image Share Group.
         """
@@ -315,21 +315,21 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test_empty = linode.ProducerImageShareGroup("test-empty",
-            label="my-image-share-group",
-            description="My description.")
+            description="My description.",
+            label="my-image-share-group")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test_images = linode.ProducerImageShareGroup("test-images",
-            label="my-image-share-group",
             description="My description.",
             images=[{
+                "description": "My image description.",
                 "id": "private/12345",
                 "label": "my-image",
-                "description": "My image description.",
-            }])
+            }],
+            label="my-image-share-group")
         ```
 
 
@@ -402,7 +402,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: The date and time the Image Share Group was created.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
-               * `images` - (Optional) A list of Images to include in the Image Share Group.
+               * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         :param pulumi.Input[_builtins.str] expiry: The date and time the Image Share Group will expire.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]] images: The images to be shared using this Image Share Group.
         :param pulumi.Input[_builtins.int] images_count: The number of images in the Image Share Group.
@@ -442,7 +442,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         """
         The description of the Image Share Group
 
-        * `images` - (Optional) A list of Images to include in the Image Share Group.
+        * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         """
         return pulumi.get(self, "description")
 

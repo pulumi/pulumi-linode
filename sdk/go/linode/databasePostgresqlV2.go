@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
 //				EngineId: pulumi.String("postgresql/16"),
+//				Label:    pulumi.String("mydatabase"),
 //				Region:   pulumi.String("us-mia"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -58,13 +58,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("postgresql/16"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},
+//				EngineId: pulumi.String("postgresql/16"),
+//				Label:    pulumi.String("mydatabase"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,19 +87,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("postgresql/16"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("10.0.0.3/32"),
 //				},
 //				ClusterSize: pulumi.Int(3),
+//				EngineId:    pulumi.String("postgresql/16"),
+//				Label:       pulumi.String("mydatabase"),
+//				Region:      pulumi.String("us-mia"),
+//				Type:        pulumi.String("g6-nanode-1"),
 //				Updates: &linode.DatabasePostgresqlV2UpdatesArgs{
-//					Duration:  pulumi.Int(4),
-//					Frequency: pulumi.String("weekly"),
-//					HourOfDay: pulumi.Int(22),
-//					DayOfWeek: pulumi.Int(2),
+//					Day_of_week: 2,
+//					Duration:    pulumi.Int(4),
+//					Frequency:   pulumi.String("weekly"),
+//					Hour_of_day: 22,
 //				},
 //			})
 //			if err != nil {
@@ -123,10 +123,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("postgresql/16"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //				EngineConfigPgAutovacuumAnalyzeScaleFactor:         pulumi.Float64(0.1),
 //				EngineConfigPgAutovacuumAnalyzeThreshold:           pulumi.Int(50),
 //				EngineConfigPgAutovacuumMaxWorkers:                 pulumi.Int(3),
@@ -162,6 +158,7 @@ import (
 //				EngineConfigPgPgStatMonitorPgsmEnableQueryPlan:     pulumi.Bool(true),
 //				EngineConfigPgPgStatMonitorPgsmMaxBuckets:          pulumi.Int(5),
 //				EngineConfigPgPgStatStatementsTrack:                pulumi.String("all"),
+//				EngineConfigPgStatMonitorEnable:                    pulumi.Bool(true),
 //				EngineConfigPgTempFileLimit:                        pulumi.Int(100),
 //				EngineConfigPgTimezone:                             pulumi.String("Europe/Helsinki"),
 //				EngineConfigPgTrackActivityQuerySize:               pulumi.Int(2048),
@@ -170,10 +167,13 @@ import (
 //				EngineConfigPgTrackIoTiming:                        pulumi.String("on"),
 //				EngineConfigPgWalSenderTimeout:                     pulumi.Int(60000),
 //				EngineConfigPgWalWriterDelay:                       pulumi.Int(200),
-//				EngineConfigPgStatMonitorEnable:                    pulumi.Bool(true),
 //				EngineConfigPglookoutMaxFailoverReplicationTimeLag: pulumi.Int(10000),
 //				EngineConfigSharedBuffersPercentage:                pulumi.Float64(25),
 //				EngineConfigWorkMem:                                pulumi.Int(400),
+//				EngineId:                                           pulumi.String("postgresql/16"),
+//				Label:                                              pulumi.String("mydatabase"),
+//				Region:                                             pulumi.String("us-mia"),
+//				Type:                                               pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -196,11 +196,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				Label:      pulumi.String("mydatabase"),
 //				EngineId:   pulumi.String("postgresql/16"),
+//				ForkSource: pulumi.Int(12345),
+//				Label:      pulumi.String("mydatabase"),
 //				Region:     pulumi.String("us-mia"),
 //				Type:       pulumi.String("g6-nanode-1"),
-//				ForkSource: pulumi.Int(12345),
 //			})
 //			if err != nil {
 //				return err
@@ -223,15 +223,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
 //				EngineId: pulumi.String("postgresql/16"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
+//				Label:    pulumi.String("mydatabase"),
 //				PrivateNetwork: &linode.DatabasePostgresqlV2PrivateNetworkArgs{
-//					VpcId:        pulumi.Int(123),
-//					SubnetId:     pulumi.Int(456),
-//					PublicAccess: pulumi.Bool(false),
+//					Public_access: false,
+//					Subnet_id:     456,
+//					Vpc_id:        123,
 //				},
+//				Region: pulumi.String("us-mia"),
+//				Type:   pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -398,9 +398,9 @@ type DatabasePostgresqlV2 struct {
 	ForkRestoreTime pulumi.StringOutput `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource pulumi.IntPtrOutput `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringOutput `pulumi:"hostPrimary"`
@@ -416,7 +416,7 @@ type DatabasePostgresqlV2 struct {
 	Members pulumi.StringMapOutput `pulumi:"members"`
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime pulumi.StringOutput `pulumi:"oldestRestoreTime"`
-	// A set of pending updates.
+	// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	PendingUpdates DatabasePostgresqlV2PendingUpdateArrayOutput `pulumi:"pendingUpdates"`
 	// The back-end platform for relational databases used by the service.
 	Platform pulumi.StringOutput `pulumi:"platform"`
@@ -609,9 +609,9 @@ type databasePostgresqlV2State struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource *int `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
 	HostPrimary *string `pulumi:"hostPrimary"`
@@ -627,7 +627,7 @@ type databasePostgresqlV2State struct {
 	Members map[string]string `pulumi:"members"`
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime *string `pulumi:"oldestRestoreTime"`
-	// A set of pending updates.
+	// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	PendingUpdates []DatabasePostgresqlV2PendingUpdate `pulumi:"pendingUpdates"`
 	// The back-end platform for relational databases used by the service.
 	Platform *string `pulumi:"platform"`
@@ -773,9 +773,9 @@ type DatabasePostgresqlV2State struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource pulumi.IntPtrInput
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringPtrInput
@@ -791,7 +791,7 @@ type DatabasePostgresqlV2State struct {
 	Members pulumi.StringMapInput
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime pulumi.StringPtrInput
-	// A set of pending updates.
+	// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	PendingUpdates DatabasePostgresqlV2PendingUpdateArrayInput
 	// The back-end platform for relational databases used by the service.
 	Platform pulumi.StringPtrInput
@@ -933,9 +933,9 @@ type databasePostgresqlV2Args struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource *int `pulumi:"forkSource"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
@@ -1060,9 +1060,9 @@ type DatabasePostgresqlV2Args struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource pulumi.IntPtrInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
@@ -1451,9 +1451,9 @@ func (o DatabasePostgresqlV2Output) ForkRestoreTime() pulumi.StringOutput {
 
 // The ID of the database that was forked from.
 //
-// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 //
-// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 func (o DatabasePostgresqlV2Output) ForkSource() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.IntPtrOutput { return v.ForkSource }).(pulumi.IntPtrOutput)
 }
@@ -1490,7 +1490,7 @@ func (o DatabasePostgresqlV2Output) OldestRestoreTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) pulumi.StringOutput { return v.OldestRestoreTime }).(pulumi.StringOutput)
 }
 
-// A set of pending updates.
+// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o DatabasePostgresqlV2Output) PendingUpdates() DatabasePostgresqlV2PendingUpdateArrayOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2) DatabasePostgresqlV2PendingUpdateArrayOutput { return v.PendingUpdates }).(DatabasePostgresqlV2PendingUpdateArrayOutput)
 }

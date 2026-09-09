@@ -45,7 +45,7 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var barBased = new Linode.Instance("bar_based", new()
+    ///     var barBased = new Linode.Instance("barBased", new()
     ///     {
     ///         Type = foo.Type,
     ///         Region = "eu-west",
@@ -54,69 +54,6 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new Linode.Image("foobar", new()
-    ///     {
-    ///         Label = "foobar-image",
-    ///         Description = "An image uploaded from Terraform!",
-    ///         Region = "us-southeast",
-    ///         Tags = new[]
-    ///         {
-    ///             "image-tag",
-    ///             "test",
-    ///         },
-    ///         FilePath = "path/to/image.img.gz",
-    ///         FileHash = Std.Filemd5.Invoke(new()
-    ///         {
-    ///             Input = "path/to/image.img.gz",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new Linode.Image("foobar", new()
-    ///     {
-    ///         Label = "foobar-image",
-    ///         Description = "An image uploaded from Terraform!",
-    ///         Region = "us-southeast",
-    ///         Tags = new[]
-    ///         {
-    ///             "image-tag",
-    ///             "test",
-    ///         },
-    ///         FilePath = "path/to/image.img.gz",
-    ///         FileHash = Std.Filemd5.Invoke(new()
-    ///         {
-    ///             Input = "path/to/image.img.gz",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ReplicaRegions = new[]
-    ///         {
-    ///             "us-southeast",
-    ///             "us-east",
-    ///             "eu-west",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Linodes Images can be imported using the Linode Image `Id`, e.g.
@@ -189,7 +126,7 @@ namespace Pulumi.Linode
         public Output<string?> FilePath { get; private set; } = null!;
 
         /// <summary>
-        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         /// </summary>
         [Output("imageSharing")]
         public Output<Outputs.ImageImageSharing> ImageSharing { get; private set; } = null!;
@@ -235,7 +172,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> ReplicaRegions { get; private set; } = null!;
 
         /// <summary>
-        /// A list of image replications region and corresponding status.
+        /// (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         /// </summary>
         [Output("replications")]
         public Output<ImmutableArray<Outputs.ImageReplication>> Replications { get; private set; } = null!;
@@ -495,7 +432,7 @@ namespace Pulumi.Linode
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
-        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         /// </summary>
         [Input("imageSharing")]
         public Input<Inputs.ImageImageSharingGetArgs>? ImageSharing { get; set; }
@@ -550,7 +487,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ImageReplicationGetArgs>? _replications;
 
         /// <summary>
-        /// A list of image replications region and corresponding status.
+        /// (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         /// </summary>
         public InputList<Inputs.ImageReplicationGetArgs> Replications
         {

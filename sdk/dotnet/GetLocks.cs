@@ -12,13 +12,11 @@ namespace Pulumi.Linode
     public static class GetLocks
     {
         /// <summary>
-        /// &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-        /// 
         /// &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
         /// 
         /// Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
         /// 
-        /// For more information, see the Linode APIv4 docs (TBD).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
         /// 
         /// ## Example Usage
         /// 
@@ -74,13 +72,11 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLocksResult>("linode:index/getLocks:getLocks", args ?? new GetLocksArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-        /// 
         /// &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
         /// 
         /// Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
         /// 
-        /// For more information, see the Linode APIv4 docs (TBD).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
         /// 
         /// ## Example Usage
         /// 
@@ -136,13 +132,11 @@ namespace Pulumi.Linode
             => global::Pulumi.Deployment.Instance.Invoke<GetLocksResult>("linode:index/getLocks:getLocks", args ?? new GetLocksInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Early Access:** Lock functionality is in early access and may not be available to all users.
-        /// 
         /// &gt; **Important** Only unrestricted users can view locks. Restricted users cannot access lock information even if they have permissions for the resources.
         /// 
         /// Provides information about Linode Locks that match a set of filters. Locks prevent accidental deletion, rebuild operations, and service transfers of resources.
         /// 
-        /// For more information, see the Linode APIv4 docs (TBD).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-resource-locks).
         /// 
         /// ## Example Usage
         /// 
@@ -265,7 +259,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of Linode Locks that match the filter criteria.
+        /// (Nested Attribute List) A list of Linode Locks that match the filter criteria.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLocksLockResult> Locks;
         public readonly string? Order;

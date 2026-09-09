@@ -23,6 +23,10 @@ public final class InstanceBackup {
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+     * 
+     */
     private @Nullable List<InstanceBackupSchedule> schedules;
 
     private InstanceBackup() {}
@@ -40,6 +44,10 @@ public final class InstanceBackup {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+     * 
+     */
     public List<InstanceBackupSchedule> schedules() {
         return this.schedules == null ? List.of() : this.schedules;
     }

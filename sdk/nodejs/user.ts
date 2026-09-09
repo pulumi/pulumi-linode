@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const john = new linode.User("john", {
- *     username: "john123",
  *     email: "john@acme.io",
+ *     username: "john123",
  * });
  * ```
  * ```typescript
@@ -26,17 +26,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const fooser = new linode.User("fooser", {
- *     username: "cooluser123",
  *     email: "cool@acme.io",
- *     restricted: true,
  *     globalGrants: {
- *         addLinodes: true,
  *         addImages: true,
+ *         addLinodes: true,
  *     },
  *     linodeGrants: [{
  *         id: 12345,
  *         permissions: "read_write",
  *     }],
+ *     restricted: true,
+ *     username: "cooluser123",
  * });
  * ```
  *
@@ -101,7 +101,7 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
-     * The domains the user has permissions access to.
+     * The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly domainGrants: pulumi.Output<outputs.UserDomainGrant[]>;
     /**
@@ -109,7 +109,7 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly email: pulumi.Output<string>;
     /**
-     * The firewalls the user has permissions access to.
+     * The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly firewallGrants: pulumi.Output<outputs.UserFirewallGrant[]>;
     /**
@@ -117,25 +117,25 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly globalGrants: pulumi.Output<outputs.UserGlobalGrants>;
     /**
-     * The images the user has permissions access to.
+     * The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly imageGrants: pulumi.Output<outputs.UserImageGrant[]>;
     /**
-     * The Linodes the user has permissions access to.
+     * The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly linodeGrants: pulumi.Output<outputs.UserLinodeGrant[]>;
     /**
-     * The longview the user has permissions access to.
+     * The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly longviewGrants: pulumi.Output<outputs.UserLongviewGrant[]>;
     /**
-     * The NodeBalancers the user has permissions access to.
+     * The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly nodebalancerGrants: pulumi.Output<outputs.UserNodebalancerGrant[]>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      *
      * The following arguments are sets of entity grants:
      */
@@ -145,7 +145,7 @@ export class User extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly sshKeys: pulumi.Output<string[]>;
     /**
-     * The StackScripts the user has permissions access to.
+     * The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly stackscriptGrants: pulumi.Output<outputs.UserStackscriptGrant[]>;
     /**
@@ -161,11 +161,11 @@ export class User extends pulumi.CustomResource {
      */
     declare public readonly username: pulumi.Output<string>;
     /**
-     * The volumes the user has permissions access to.
+     * The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly volumeGrants: pulumi.Output<outputs.UserVolumeGrant[]>;
     /**
-     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public readonly vpcGrants: pulumi.Output<outputs.UserVpcGrant[]>;
 
@@ -233,7 +233,7 @@ export class User extends pulumi.CustomResource {
  */
 export interface UserState {
     /**
-     * The domains the user has permissions access to.
+     * The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[] | undefined>;
     /**
@@ -241,7 +241,7 @@ export interface UserState {
      */
     email?: pulumi.Input<string | undefined>;
     /**
-     * The firewalls the user has permissions access to.
+     * The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[] | undefined>;
     /**
@@ -249,25 +249,25 @@ export interface UserState {
      */
     globalGrants?: pulumi.Input<inputs.UserGlobalGrants | undefined>;
     /**
-     * The images the user has permissions access to.
+     * The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[] | undefined>;
     /**
-     * The Linodes the user has permissions access to.
+     * The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[] | undefined>;
     /**
-     * The longview the user has permissions access to.
+     * The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[] | undefined>;
     /**
-     * The NodeBalancers the user has permissions access to.
+     * The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[] | undefined>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      *
      * The following arguments are sets of entity grants:
      */
@@ -277,7 +277,7 @@ export interface UserState {
      */
     sshKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The StackScripts the user has permissions access to.
+     * The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[] | undefined>;
     /**
@@ -293,11 +293,11 @@ export interface UserState {
      */
     username?: pulumi.Input<string | undefined>;
     /**
-     * The volumes the user has permissions access to.
+     * The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[] | undefined>;
     /**
-     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[] | undefined>;
 }
@@ -307,7 +307,7 @@ export interface UserState {
  */
 export interface UserArgs {
     /**
-     * The domains the user has permissions access to.
+     * The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     domainGrants?: pulumi.Input<pulumi.Input<inputs.UserDomainGrant>[] | undefined>;
     /**
@@ -315,7 +315,7 @@ export interface UserArgs {
      */
     email: pulumi.Input<string>;
     /**
-     * The firewalls the user has permissions access to.
+     * The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     firewallGrants?: pulumi.Input<pulumi.Input<inputs.UserFirewallGrant>[] | undefined>;
     /**
@@ -323,31 +323,31 @@ export interface UserArgs {
      */
     globalGrants?: pulumi.Input<inputs.UserGlobalGrants | undefined>;
     /**
-     * The images the user has permissions access to.
+     * The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     imageGrants?: pulumi.Input<pulumi.Input<inputs.UserImageGrant>[] | undefined>;
     /**
-     * The Linodes the user has permissions access to.
+     * The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     linodeGrants?: pulumi.Input<pulumi.Input<inputs.UserLinodeGrant>[] | undefined>;
     /**
-     * The longview the user has permissions access to.
+     * The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     longviewGrants?: pulumi.Input<pulumi.Input<inputs.UserLongviewGrant>[] | undefined>;
     /**
-     * The NodeBalancers the user has permissions access to.
+     * The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     nodebalancerGrants?: pulumi.Input<pulumi.Input<inputs.UserNodebalancerGrant>[] | undefined>;
     /**
      * If true, this user will only have explicit permissions granted.
      *
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      *
      * The following arguments are sets of entity grants:
      */
     restricted?: pulumi.Input<boolean | undefined>;
     /**
-     * The StackScripts the user has permissions access to.
+     * The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     stackscriptGrants?: pulumi.Input<pulumi.Input<inputs.UserStackscriptGrant>[] | undefined>;
     /**
@@ -355,11 +355,11 @@ export interface UserArgs {
      */
     username: pulumi.Input<string>;
     /**
-     * The volumes the user has permissions access to.
+     * The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     volumeGrants?: pulumi.Input<pulumi.Input<inputs.UserVolumeGrant>[] | undefined>;
     /**
-     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     vpcGrants?: pulumi.Input<pulumi.Input<inputs.UserVpcGrant>[] | undefined>;
 }

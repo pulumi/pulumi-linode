@@ -38,7 +38,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int InterfaceId;
         /// <summary>
-        /// The addresses within the prefix that the interface is associated with.
+        /// (Nested Attribute Set) The addresses within the prefix that the interface is associated with. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcIpsVpcIpIpv6AddressResult> Ipv6Addresses;
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         public readonly int VpcId;
 

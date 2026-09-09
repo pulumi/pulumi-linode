@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
 //				EngineId: pulumi.String("mysql/8"),
+//				Label:    pulumi.String("mydatabase"),
 //				Region:   pulumi.String("us-mia"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -58,13 +58,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("mysql/8"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},
+//				EngineId: pulumi.String("mysql/8"),
+//				Label:    pulumi.String("mydatabase"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,19 +87,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("mysql/8"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("10.0.0.3/32"),
 //				},
 //				ClusterSize: pulumi.Int(3),
+//				EngineId:    pulumi.String("mysql/8"),
+//				Label:       pulumi.String("mydatabase"),
+//				Region:      pulumi.String("us-mia"),
+//				Type:        pulumi.String("g6-nanode-1"),
 //				Updates: &linode.DatabaseMysqlV2UpdatesArgs{
-//					Duration:  pulumi.Int(4),
-//					Frequency: pulumi.String("weekly"),
-//					HourOfDay: pulumi.Int(22),
-//					DayOfWeek: pulumi.Int(3),
+//					Day_of_week: 3,
+//					Duration:    pulumi.Int(4),
+//					Frequency:   pulumi.String("weekly"),
+//					Hour_of_day: 22,
 //				},
 //			})
 //			if err != nil {
@@ -123,14 +123,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				Label:                              pulumi.String("mydatabase"),
-//				EngineId:                           pulumi.String("mysql/8"),
-//				Region:                             pulumi.String("us-mia"),
-//				Type:                               pulumi.String("g6-nanode-1"),
-//				EngineConfigBinlogRetentionPeriod:  pulumi.Int(3600),
-//				EngineConfigMysqlConnectTimeout:    pulumi.Int(10),
-//				EngineConfigMysqlDefaultTimeZone:   pulumi.String("+00:00"),
-//				EngineConfigMysqlGroupConcatMaxLen: pulumi.Float64(4096),
+//				EngineConfigBinlogRetentionPeriod:             pulumi.Int(3600),
+//				EngineConfigMysqlConnectTimeout:               pulumi.Int(10),
+//				EngineConfigMysqlDefaultTimeZone:              pulumi.String("+00:00"),
+//				EngineConfigMysqlGroupConcatMaxLen:            pulumi.Float64(4096),
 //				EngineConfigMysqlInformationSchemaStatsExpiry: pulumi.Int(3600),
 //				EngineConfigMysqlInnodbChangeBufferMaxSize:    pulumi.Int(25),
 //				EngineConfigMysqlInnodbFlushNeighbors:         pulumi.Int(0),
@@ -155,6 +151,10 @@ import (
 //				EngineConfigMysqlSqlRequirePrimaryKey:         pulumi.Bool(false),
 //				EngineConfigMysqlTmpTableSize:                 pulumi.Int(16777216),
 //				EngineConfigMysqlWaitTimeout:                  pulumi.Int(28800),
+//				EngineId:                                      pulumi.String("mysql/8"),
+//				Label:                                         pulumi.String("mydatabase"),
+//				Region:                                        pulumi.String("us-mia"),
+//				Type:                                          pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -177,11 +177,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				Label:      pulumi.String("mydatabase"),
 //				EngineId:   pulumi.String("mysql/8"),
+//				ForkSource: pulumi.Int(12345),
+//				Label:      pulumi.String("mydatabase"),
 //				Region:     pulumi.String("us-mia"),
 //				Type:       pulumi.String("g6-nanode-1"),
-//				ForkSource: pulumi.Int(12345),
 //			})
 //			if err != nil {
 //				return err
@@ -204,15 +204,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				EngineId: pulumi.String("mysql/8"),
 //				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("mysql/16"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //				PrivateNetwork: &linode.DatabaseMysqlV2PrivateNetworkArgs{
-//					VpcId:        pulumi.Int(123),
-//					SubnetId:     pulumi.Int(456),
-//					PublicAccess: pulumi.Bool(false),
+//					Public_access: false,
+//					Subnet_id:     456,
+//					Vpc_id:        123,
 //				},
+//				Region: pulumi.String("us-mia"),
+//				Type:   pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -341,9 +341,9 @@ type DatabaseMysqlV2 struct {
 	ForkRestoreTime pulumi.StringOutput `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource pulumi.IntPtrOutput `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringOutput `pulumi:"hostPrimary"`
@@ -359,7 +359,7 @@ type DatabaseMysqlV2 struct {
 	Members pulumi.StringMapOutput `pulumi:"members"`
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime pulumi.StringOutput `pulumi:"oldestRestoreTime"`
-	// A set of pending updates.
+	// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	PendingUpdates DatabaseMysqlV2PendingUpdateArrayOutput `pulumi:"pendingUpdates"`
 	// The back-end platform for relational databases used by the service.
 	Platform pulumi.StringOutput `pulumi:"platform"`
@@ -514,9 +514,9 @@ type databaseMysqlV2State struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource *int `pulumi:"forkSource"`
 	// The primary host for the Managed Database.
 	HostPrimary *string `pulumi:"hostPrimary"`
@@ -532,7 +532,7 @@ type databaseMysqlV2State struct {
 	Members map[string]string `pulumi:"members"`
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime *string `pulumi:"oldestRestoreTime"`
-	// A set of pending updates.
+	// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	PendingUpdates []DatabaseMysqlV2PendingUpdate `pulumi:"pendingUpdates"`
 	// The back-end platform for relational databases used by the service.
 	Platform *string `pulumi:"platform"`
@@ -640,9 +640,9 @@ type DatabaseMysqlV2State struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource pulumi.IntPtrInput
 	// The primary host for the Managed Database.
 	HostPrimary pulumi.StringPtrInput
@@ -658,7 +658,7 @@ type DatabaseMysqlV2State struct {
 	Members pulumi.StringMapInput
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime pulumi.StringPtrInput
-	// A set of pending updates.
+	// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	PendingUpdates DatabaseMysqlV2PendingUpdateArrayInput
 	// The back-end platform for relational databases used by the service.
 	Platform pulumi.StringPtrInput
@@ -762,9 +762,9 @@ type databaseMysqlV2Args struct {
 	ForkRestoreTime *string `pulumi:"forkRestoreTime"`
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource *int `pulumi:"forkSource"`
 	// A unique, user-defined string referring to the Managed Database.
 	Label string `pulumi:"label"`
@@ -851,9 +851,9 @@ type DatabaseMysqlV2Args struct {
 	ForkRestoreTime pulumi.StringPtrInput
 	// The ID of the database that was forked from.
 	//
-	// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+	// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 	//
-	// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+	// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 	ForkSource pulumi.IntPtrInput
 	// A unique, user-defined string referring to the Managed Database.
 	Label pulumi.StringInput
@@ -1141,9 +1141,9 @@ func (o DatabaseMysqlV2Output) ForkRestoreTime() pulumi.StringOutput {
 
 // The ID of the database that was forked from.
 //
-// * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+// * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 //
-// * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+// * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
 func (o DatabaseMysqlV2Output) ForkSource() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2) pulumi.IntPtrOutput { return v.ForkSource }).(pulumi.IntPtrOutput)
 }
@@ -1180,7 +1180,7 @@ func (o DatabaseMysqlV2Output) OldestRestoreTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2) pulumi.StringOutput { return v.OldestRestoreTime }).(pulumi.StringOutput)
 }
 
-// A set of pending updates.
+// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o DatabaseMysqlV2Output) PendingUpdates() DatabaseMysqlV2PendingUpdateArrayOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2) DatabaseMysqlV2PendingUpdateArrayOutput { return v.PendingUpdates }).(DatabaseMysqlV2PendingUpdateArrayOutput)
 }

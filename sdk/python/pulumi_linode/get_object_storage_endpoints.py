@@ -48,6 +48,9 @@ class GetObjectStorageEndpointsResult:
     @_builtins.property
     @pulumi.getter
     def endpoints(self) -> Sequence['outputs.GetObjectStorageEndpointsEndpointResult']:
+        """
+        (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
+        """
         return pulumi.get(self, "endpoints")
 
     @_builtins.property

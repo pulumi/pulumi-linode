@@ -62,6 +62,8 @@ type LookupFirewallResult struct {
 	Devices []GetFirewallDeviceType `pulumi:"devices"`
 	// If true, the firewall is inactive.
 	Disabled bool `pulumi:"disabled"`
+	// The fingerprint of the current Firewall rules.
+	Fingerprint string `pulumi:"fingerprint"`
 	// The ID of the Firewall Device.
 	Id int `pulumi:"id"`
 	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
@@ -84,6 +86,8 @@ type LookupFirewallResult struct {
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated.
 	Updated string `pulumi:"updated"`
+	// The current version of the Firewall rules.
+	Version int `pulumi:"version"`
 }
 
 func LookupFirewallOutput(ctx *pulumi.Context, args LookupFirewallOutputArgs, opts ...pulumi.InvokeOption) LookupFirewallResultOutput {
@@ -128,6 +132,11 @@ func (o LookupFirewallResultOutput) Devices() GetFirewallDeviceTypeArrayOutput {
 // If true, the firewall is inactive.
 func (o LookupFirewallResultOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupFirewallResult) bool { return v.Disabled }).(pulumi.BoolOutput)
+}
+
+// The fingerprint of the current Firewall rules.
+func (o LookupFirewallResultOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
 // The ID of the Firewall Device.
@@ -186,6 +195,11 @@ func (o LookupFirewallResultOutput) Tags() pulumi.StringArrayOutput {
 // When this firewall was last updated.
 func (o LookupFirewallResultOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The current version of the Firewall rules.
+func (o LookupFirewallResultOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFirewallResult) int { return v.Version }).(pulumi.IntOutput)
 }
 
 func init() {

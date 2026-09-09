@@ -25,12 +25,12 @@ public final class GetVolumeTypesType {
      */
     private String label;
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) Pricing information for this Linode Volume type. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     private List<GetVolumeTypesTypePrice> prices;
     /**
-     * @return A list of region-specific prices for this Volume Type.
+     * @return (Read-Only Object List) Region-specific pricing information for this Linode Volume type. Referenced with an index (e.g. `region_prices.0.hourly`).
      * 
      */
     private List<GetVolumeTypesTypeRegionPrice> regionPrices;
@@ -56,14 +56,14 @@ public final class GetVolumeTypesType {
         return this.label;
     }
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) Pricing information for this Linode Volume type. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     public List<GetVolumeTypesTypePrice> prices() {
         return this.prices;
     }
     /**
-     * @return A list of region-specific prices for this Volume Type.
+     * @return (Read-Only Object List) Region-specific pricing information for this Linode Volume type. Referenced with an index (e.g. `region_prices.0.hourly`).
      * 
      */
     public List<GetVolumeTypesTypeRegionPrice> regionPrices() {

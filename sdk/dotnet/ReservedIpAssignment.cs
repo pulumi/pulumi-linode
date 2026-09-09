@@ -9,29 +9,60 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Linode
 {
+    /// <summary>
+    /// Manages the assignment of a reserved IPv4 address to a Linode instance.
+    /// 
+    /// For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-add-linode-ip).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Linode.ReservedIpAssignment("example", new()
+    ///     {
+    ///         LinodeId = linode_instance.Example.Id,
+    ///         Address = linode_networking_ip.Reserved.Address,
+    ///         Public = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [LinodeResourceType("linode:index/reservedIpAssignment:ReservedIpAssignment")]
     public partial class ReservedIpAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The reserved IPv4 address to assign to the Linode.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `SkipImplicitReboots` provider argument.
+        /// If true, the instance will be rebooted to update network interfaces. Defaults to `False`.
         /// </summary>
         [Output("applyImmediately")]
         public Output<bool> ApplyImmediately { get; private set; } = null!;
 
         /// <summary>
-        /// The default gateway for this address
+        /// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        [Output("assignedEntity")]
+        public Output<Outputs.ReservedIpAssignmentAssignedEntity> AssignedEntity { get; private set; } = null!;
+
+        /// <summary>
+        /// The default gateway for this address.
         /// </summary>
         [Output("gateway")]
         public Output<string> Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Linode to allocate an IPv4 address for.
+        /// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         /// </summary>
         [Output("linodeId")]
         public Output<int> LinodeId { get; private set; } = null!;
@@ -43,13 +74,13 @@ namespace Pulumi.Linode
         public Output<int> Prefix { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the IPv4 address is public or private.
+        /// Whether the IP address is public. Defaults to `True`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
         /// </summary>
         [Output("public")]
         public Output<bool> Public { get; private set; } = null!;
 
         /// <summary>
-        /// The reverse DNS assigned to this address.
+        /// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         /// </summary>
         [Output("rdns")]
         public Output<string> Rdns { get; private set; } = null!;
@@ -61,7 +92,7 @@ namespace Pulumi.Linode
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The reservation status of the IP address
+        /// The reservation status of the IP address.
         /// </summary>
         [Output("reserved")]
         public Output<bool> Reserved { get; private set; } = null!;
@@ -73,13 +104,19 @@ namespace Pulumi.Linode
         public Output<string> SubnetMask { get; private set; } = null!;
 
         /// <summary>
-        /// The type of IP address.
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the entity.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         /// </summary>
         [Output("vpcNat11s")]
         public Output<ImmutableArray<Outputs.ReservedIpAssignmentVpcNat11>> VpcNat11s { get; private set; } = null!;
@@ -131,31 +168,31 @@ namespace Pulumi.Linode
     public sealed class ReservedIpAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The reserved IPv4 address to assign to the Linode.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
         /// <summary>
-        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `SkipImplicitReboots` provider argument.
+        /// If true, the instance will be rebooted to update network interfaces. Defaults to `False`.
         /// </summary>
         [Input("applyImmediately")]
         public Input<bool>? ApplyImmediately { get; set; }
 
         /// <summary>
-        /// The ID of the Linode to allocate an IPv4 address for.
+        /// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         /// </summary>
         [Input("linodeId", required: true)]
         public Input<int> LinodeId { get; set; } = null!;
 
         /// <summary>
-        /// Whether the IPv4 address is public or private.
+        /// Whether the IP address is public. Defaults to `True`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
         /// <summary>
-        /// The reverse DNS assigned to this address.
+        /// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         /// </summary>
         [Input("rdns")]
         public Input<string>? Rdns { get; set; }
@@ -169,25 +206,31 @@ namespace Pulumi.Linode
     public sealed class ReservedIpAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The reserved IPv4 address to assign to the Linode.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
-        /// If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `SkipImplicitReboots` provider argument.
+        /// If true, the instance will be rebooted to update network interfaces. Defaults to `False`.
         /// </summary>
         [Input("applyImmediately")]
         public Input<bool>? ApplyImmediately { get; set; }
 
         /// <summary>
-        /// The default gateway for this address
+        /// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        [Input("assignedEntity")]
+        public Input<Inputs.ReservedIpAssignmentAssignedEntityGetArgs>? AssignedEntity { get; set; }
+
+        /// <summary>
+        /// The default gateway for this address.
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }
 
         /// <summary>
-        /// The ID of the Linode to allocate an IPv4 address for.
+        /// The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         /// </summary>
         [Input("linodeId")]
         public Input<int>? LinodeId { get; set; }
@@ -199,13 +242,13 @@ namespace Pulumi.Linode
         public Input<int>? Prefix { get; set; }
 
         /// <summary>
-        /// Whether the IPv4 address is public or private.
+        /// Whether the IP address is public. Defaults to `True`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
         /// </summary>
         [Input("public")]
         public Input<bool>? Public { get; set; }
 
         /// <summary>
-        /// The reverse DNS assigned to this address.
+        /// The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         /// </summary>
         [Input("rdns")]
         public Input<string>? Rdns { get; set; }
@@ -217,7 +260,7 @@ namespace Pulumi.Linode
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The reservation status of the IP address
+        /// The reservation status of the IP address.
         /// </summary>
         [Input("reserved")]
         public Input<bool>? Reserved { get; set; }
@@ -228,8 +271,20 @@ namespace Pulumi.Linode
         [Input("subnetMask")]
         public Input<string>? SubnetMask { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
         /// <summary>
-        /// The type of IP address.
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// The type of the entity.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -238,7 +293,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ReservedIpAssignmentVpcNat11GetArgs>? _vpcNat11s;
 
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         /// </summary>
         public InputList<Inputs.ReservedIpAssignmentVpcNat11GetArgs> VpcNat11s
         {

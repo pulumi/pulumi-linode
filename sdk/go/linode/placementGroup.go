@@ -31,8 +31,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewPlacementGroup(ctx, "test", &linode.PlacementGroupArgs{
 //				Label:              pulumi.String("my-placement-group"),
-//				Region:             pulumi.String("us-mia"),
 //				PlacementGroupType: pulumi.String("anti_affinity:local"),
+//				Region:             pulumi.String("us-mia"),
 //			})
 //			if err != nil {
 //				return err

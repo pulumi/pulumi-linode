@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foobar, err := linode.NewDomain(ctx, "foobar", &linode.DomainArgs{
+//			foobarDomain, err := linode.NewDomain(ctx, "foobarDomain", &linode.DomainArgs{
 //				Type:     pulumi.String("master"),
 //				Domain:   pulumi.String("foobar.example"),
 //				SoaEmail: pulumi.String("example@foobar.example"),
@@ -41,8 +41,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDomainRecord(ctx, "foobar", &linode.DomainRecordArgs{
-//				DomainId:   foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//			_, err = linode.NewDomainRecord(ctx, "foobarDomainRecord", &linode.DomainRecordArgs{
+//				DomainId:   foobarDomain.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Name:       pulumi.String("www"),
 //				RecordType: pulumi.String("CNAME"),
 //				Target:     pulumi.String("foobar.example"),

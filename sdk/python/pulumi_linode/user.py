@@ -39,21 +39,21 @@ class UserArgs:
 
         :param pulumi.Input[_builtins.str] email: The email address of the user.
         :param pulumi.Input[_builtins.str] username: The username of the user.
-        :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: A structure containing the Account-level grants a User has.
-        :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
                
                The following arguments are sets of entity grants:
-        :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "username", username)
@@ -108,7 +108,7 @@ class UserArgs:
     @pulumi.getter(name="domainGrants")
     def domain_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserDomainGrantArgs']]]]:
         """
-        The domains the user has permissions access to.
+        The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "domain_grants")
 
@@ -120,7 +120,7 @@ class UserArgs:
     @pulumi.getter(name="firewallGrants")
     def firewall_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserFirewallGrantArgs']]]]:
         """
-        The firewalls the user has permissions access to.
+        The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "firewall_grants")
 
@@ -144,7 +144,7 @@ class UserArgs:
     @pulumi.getter(name="imageGrants")
     def image_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserImageGrantArgs']]]]:
         """
-        The images the user has permissions access to.
+        The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "image_grants")
 
@@ -156,7 +156,7 @@ class UserArgs:
     @pulumi.getter(name="linodeGrants")
     def linode_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserLinodeGrantArgs']]]]:
         """
-        The Linodes the user has permissions access to.
+        The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "linode_grants")
 
@@ -168,7 +168,7 @@ class UserArgs:
     @pulumi.getter(name="longviewGrants")
     def longview_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserLongviewGrantArgs']]]]:
         """
-        The longview the user has permissions access to.
+        The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "longview_grants")
 
@@ -180,7 +180,7 @@ class UserArgs:
     @pulumi.getter(name="nodebalancerGrants")
     def nodebalancer_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]]:
         """
-        The NodeBalancers the user has permissions access to.
+        The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "nodebalancer_grants")
 
@@ -194,7 +194,7 @@ class UserArgs:
         """
         If true, this user will only have explicit permissions granted.
 
-        * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 
         The following arguments are sets of entity grants:
         """
@@ -208,7 +208,7 @@ class UserArgs:
     @pulumi.getter(name="stackscriptGrants")
     def stackscript_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]]:
         """
-        The StackScripts the user has permissions access to.
+        The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "stackscript_grants")
 
@@ -220,7 +220,7 @@ class UserArgs:
     @pulumi.getter(name="volumeGrants")
     def volume_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserVolumeGrantArgs']]]]:
         """
-        The volumes the user has permissions access to.
+        The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "volume_grants")
 
@@ -232,7 +232,7 @@ class UserArgs:
     @pulumi.getter(name="vpcGrants")
     def vpc_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserVpcGrantArgs']]]]:
         """
-        The Virtual Private Clouds (VPCs) the user has permissions access to.
+        The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "vpc_grants")
 
@@ -263,26 +263,26 @@ class _UserState:
         """
         Input properties used for looking up and filtering User resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserDomainGrantArgs']]] domain_grants: The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] email: The email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserFirewallGrantArgs']]] firewall_grants: The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input['UserGlobalGrantsArgs'] global_grants: A structure containing the Account-level grants a User has.
-        :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserImageGrantArgs']]] image_grants: The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserLinodeGrantArgs']]] linode_grants: The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserLongviewGrantArgs']]] longview_grants: The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]] nodebalancer_grants: The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
                
                The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: A list of the User's SSH keys.
-        :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserStackscriptGrantArgs']]] stackscript_grants: The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
         :param pulumi.Input[_builtins.str] user_type: The type of this user.
         :param pulumi.Input[_builtins.str] username: The username of the user.
-        :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input['UserVolumeGrantArgs']]] volume_grants: The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['UserVpcGrantArgs']]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         if domain_grants is not None:
             pulumi.set(__self__, "domain_grants", domain_grants)
@@ -321,7 +321,7 @@ class _UserState:
     @pulumi.getter(name="domainGrants")
     def domain_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserDomainGrantArgs']]]]:
         """
-        The domains the user has permissions access to.
+        The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "domain_grants")
 
@@ -345,7 +345,7 @@ class _UserState:
     @pulumi.getter(name="firewallGrants")
     def firewall_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserFirewallGrantArgs']]]]:
         """
-        The firewalls the user has permissions access to.
+        The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "firewall_grants")
 
@@ -369,7 +369,7 @@ class _UserState:
     @pulumi.getter(name="imageGrants")
     def image_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserImageGrantArgs']]]]:
         """
-        The images the user has permissions access to.
+        The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "image_grants")
 
@@ -381,7 +381,7 @@ class _UserState:
     @pulumi.getter(name="linodeGrants")
     def linode_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserLinodeGrantArgs']]]]:
         """
-        The Linodes the user has permissions access to.
+        The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "linode_grants")
 
@@ -393,7 +393,7 @@ class _UserState:
     @pulumi.getter(name="longviewGrants")
     def longview_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserLongviewGrantArgs']]]]:
         """
-        The longview the user has permissions access to.
+        The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "longview_grants")
 
@@ -405,7 +405,7 @@ class _UserState:
     @pulumi.getter(name="nodebalancerGrants")
     def nodebalancer_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserNodebalancerGrantArgs']]]]:
         """
-        The NodeBalancers the user has permissions access to.
+        The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "nodebalancer_grants")
 
@@ -419,7 +419,7 @@ class _UserState:
         """
         If true, this user will only have explicit permissions granted.
 
-        * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 
         The following arguments are sets of entity grants:
         """
@@ -445,7 +445,7 @@ class _UserState:
     @pulumi.getter(name="stackscriptGrants")
     def stackscript_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserStackscriptGrantArgs']]]]:
         """
-        The StackScripts the user has permissions access to.
+        The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "stackscript_grants")
 
@@ -493,7 +493,7 @@ class _UserState:
     @pulumi.getter(name="volumeGrants")
     def volume_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserVolumeGrantArgs']]]]:
         """
-        The volumes the user has permissions access to.
+        The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "volume_grants")
 
@@ -505,7 +505,7 @@ class _UserState:
     @pulumi.getter(name="vpcGrants")
     def vpc_grants(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserVpcGrantArgs']]]]:
         """
-        The Virtual Private Clouds (VPCs) the user has permissions access to.
+        The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "vpc_grants")
 
@@ -545,25 +545,25 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         john = linode.User("john",
-            username="john123",
-            email="john@acme.io")
+            email="john@acme.io",
+            username="john123")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         fooser = linode.User("fooser",
-            username="cooluser123",
             email="cool@acme.io",
-            restricted=True,
             global_grants={
-                "add_linodes": True,
                 "add_images": True,
+                "add_linodes": True,
             },
             linode_grants=[{
                 "id": 12345,
                 "permissions": "read_write",
-            }])
+            }],
+            restricted=True,
+            username="cooluser123")
         ```
 
         ## Global Grants
@@ -601,23 +601,23 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] email: The email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]] firewall_grants: The firewalls the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]] firewall_grants: The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']] global_grants: A structure containing the Account-level grants a User has.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]] image_grants: The images the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]] image_grants: The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
                
                The following arguments are sets of entity grants:
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] username: The username of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         ...
     @overload
@@ -636,25 +636,25 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         john = linode.User("john",
-            username="john123",
-            email="john@acme.io")
+            email="john@acme.io",
+            username="john123")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         fooser = linode.User("fooser",
-            username="cooluser123",
             email="cool@acme.io",
-            restricted=True,
             global_grants={
-                "add_linodes": True,
                 "add_images": True,
+                "add_linodes": True,
             },
             linode_grants=[{
                 "id": 12345,
                 "permissions": "read_write",
-            }])
+            }],
+            restricted=True,
+            username="cooluser123")
         ```
 
         ## Global Grants
@@ -780,26 +780,26 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserDomainGrantArgs', 'UserDomainGrantArgsDict']]]] domain_grants: The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] email: The email address of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]] firewall_grants: The firewalls the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserFirewallGrantArgs', 'UserFirewallGrantArgsDict']]]] firewall_grants: The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[Union['UserGlobalGrantsArgs', 'UserGlobalGrantsArgsDict']] global_grants: A structure containing the Account-level grants a User has.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]] image_grants: The images the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserImageGrantArgs', 'UserImageGrantArgsDict']]]] image_grants: The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLinodeGrantArgs', 'UserLinodeGrantArgsDict']]]] linode_grants: The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLongviewGrantArgs', 'UserLongviewGrantArgsDict']]]] longview_grants: The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserNodebalancerGrantArgs', 'UserNodebalancerGrantArgsDict']]]] nodebalancer_grants: The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] restricted: If true, this user will only have explicit permissions granted.
                
-               * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+               * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
                
                The following arguments are sets of entity grants:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ssh_keys: A list of the User's SSH keys.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserStackscriptGrantArgs', 'UserStackscriptGrantArgsDict']]]] stackscript_grants: The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] tfa_enabled: Whether the user has two-factor-authentication enabled.
         :param pulumi.Input[_builtins.str] user_type: The type of this user.
         :param pulumi.Input[_builtins.str] username: The username of the user.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVolumeGrantArgs', 'UserVolumeGrantArgsDict']]]] volume_grants: The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserVpcGrantArgs', 'UserVpcGrantArgsDict']]]] vpc_grants: The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -827,7 +827,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="domainGrants")
     def domain_grants(self) -> pulumi.Output[Sequence['outputs.UserDomainGrant']]:
         """
-        The domains the user has permissions access to.
+        The domains the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "domain_grants")
 
@@ -843,7 +843,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="firewallGrants")
     def firewall_grants(self) -> pulumi.Output[Sequence['outputs.UserFirewallGrant']]:
         """
-        The firewalls the user has permissions access to.
+        The firewalls the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "firewall_grants")
 
@@ -859,7 +859,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="imageGrants")
     def image_grants(self) -> pulumi.Output[Sequence['outputs.UserImageGrant']]:
         """
-        The images the user has permissions access to.
+        The images the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "image_grants")
 
@@ -867,7 +867,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="linodeGrants")
     def linode_grants(self) -> pulumi.Output[Sequence['outputs.UserLinodeGrant']]:
         """
-        The Linodes the user has permissions access to.
+        The Linodes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "linode_grants")
 
@@ -875,7 +875,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="longviewGrants")
     def longview_grants(self) -> pulumi.Output[Sequence['outputs.UserLongviewGrant']]:
         """
-        The longview the user has permissions access to.
+        The longview the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "longview_grants")
 
@@ -883,7 +883,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="nodebalancerGrants")
     def nodebalancer_grants(self) -> pulumi.Output[Sequence['outputs.UserNodebalancerGrant']]:
         """
-        The NodeBalancers the user has permissions access to.
+        The NodeBalancers the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "nodebalancer_grants")
 
@@ -893,7 +893,7 @@ class User(pulumi.CustomResource):
         """
         If true, this user will only have explicit permissions granted.
 
-        * `global_grants` - (optional) A structure containing the Account-level grants a User has.
+        * `global_grants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
 
         The following arguments are sets of entity grants:
         """
@@ -911,7 +911,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptGrants")
     def stackscript_grants(self) -> pulumi.Output[Sequence['outputs.UserStackscriptGrant']]:
         """
-        The StackScripts the user has permissions access to.
+        The StackScripts the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "stackscript_grants")
 
@@ -943,7 +943,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="volumeGrants")
     def volume_grants(self) -> pulumi.Output[Sequence['outputs.UserVolumeGrant']]:
         """
-        The volumes the user has permissions access to.
+        The volumes the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "volume_grants")
 
@@ -951,7 +951,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="vpcGrants")
     def vpc_grants(self) -> pulumi.Output[Sequence['outputs.UserVpcGrant']]:
         """
-        The Virtual Private Clouds (VPCs) the user has permissions access to.
+        The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "vpc_grants")
 

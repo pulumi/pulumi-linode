@@ -25,9 +25,9 @@ namespace Pulumi.Linode
     /// {
     ///     var example = new Linode.ProducerImageShareGroupMember("example", new()
     ///     {
+    ///         Label = "example-member",
     ///         SharegroupId = 12345,
     ///         Token = "abcdefghijklmnopqrstuvwxyz0123456789",
-    ///         Label = "example-member",
     ///     });
     /// 
     /// });

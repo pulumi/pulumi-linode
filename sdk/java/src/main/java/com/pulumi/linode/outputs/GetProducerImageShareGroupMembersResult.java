@@ -18,6 +18,10 @@ import javax.annotation.Nullable;
 public final class GetProducerImageShareGroupMembersResult {
     private @Nullable List<GetProducerImageShareGroupMembersFilter> filters;
     private String id;
+    /**
+     * @return (Block List) The Image Share Group members returned by this data source.
+     * 
+     */
     private @Nullable List<GetProducerImageShareGroupMembersMember> members;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -30,6 +34,10 @@ public final class GetProducerImageShareGroupMembersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Block List) The Image Share Group members returned by this data source.
+     * 
+     */
     public List<GetProducerImageShareGroupMembersMember> members() {
         return this.members == null ? List.of() : this.members;
     }

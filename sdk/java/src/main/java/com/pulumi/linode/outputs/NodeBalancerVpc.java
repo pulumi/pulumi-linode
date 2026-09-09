@@ -26,6 +26,11 @@ public final class NodeBalancerVpc {
      */
     private @Nullable Boolean ipv4RangeAutoAssign;
     /**
+     * @return (Optional) A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    private @Nullable String ipv6Range;
+    /**
      * @return (Required) The ID of a subnet to assign to this NodeBalancer.
      * 
      */
@@ -48,6 +53,13 @@ public final class NodeBalancerVpc {
         return Optional.ofNullable(this.ipv4RangeAutoAssign);
     }
     /**
+     * @return (Optional) A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    public Optional<String> ipv6Range() {
+        return Optional.ofNullable(this.ipv6Range);
+    }
+    /**
      * @return (Required) The ID of a subnet to assign to this NodeBalancer.
      * 
      */
@@ -66,12 +78,14 @@ public final class NodeBalancerVpc {
     public static final class Builder {
         private @Nullable String ipv4Range;
         private @Nullable Boolean ipv4RangeAutoAssign;
+        private @Nullable String ipv6Range;
         private Integer subnetId;
         public Builder() {}
         public Builder(NodeBalancerVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipv4Range = defaults.ipv4Range;
     	      this.ipv4RangeAutoAssign = defaults.ipv4RangeAutoAssign;
+    	      this.ipv6Range = defaults.ipv6Range;
     	      this.subnetId = defaults.subnetId;
         }
 
@@ -88,6 +102,12 @@ public final class NodeBalancerVpc {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6Range(@Nullable String ipv6Range) {
+
+            this.ipv6Range = ipv6Range;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetId(Integer subnetId) {
             if (subnetId == null) {
               throw new MissingRequiredPropertyException("NodeBalancerVpc", "subnetId");
@@ -99,6 +119,7 @@ public final class NodeBalancerVpc {
             final var _resultValue = new NodeBalancerVpc();
             _resultValue.ipv4Range = ipv4Range;
             _resultValue.ipv4RangeAutoAssign = ipv4RangeAutoAssign;
+            _resultValue.ipv6Range = ipv6Range;
             _resultValue.subnetId = subnetId;
             return _resultValue;
         }

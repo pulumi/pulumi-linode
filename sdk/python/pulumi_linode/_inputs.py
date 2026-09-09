@@ -39,6 +39,8 @@ __all__ = [
     'FirewallOutboundArgsDict',
     'FirewallSettingsDefaultFirewallIdsArgs',
     'FirewallSettingsDefaultFirewallIdsArgsDict',
+    'IamUserEntityAccessArgs',
+    'IamUserEntityAccessArgsDict',
     'ImageImageSharingArgs',
     'ImageImageSharingArgsDict',
     'ImageImageSharingSharedByArgs',
@@ -63,8 +65,84 @@ __all__ = [
     'InstanceConfigDevicesArgsDict',
     'InstanceConfigDevicesSdaArgs',
     'InstanceConfigDevicesSdaArgsDict',
+    'InstanceConfigDevicesSdaaArgs',
+    'InstanceConfigDevicesSdaaArgsDict',
+    'InstanceConfigDevicesSdabArgs',
+    'InstanceConfigDevicesSdabArgsDict',
+    'InstanceConfigDevicesSdacArgs',
+    'InstanceConfigDevicesSdacArgsDict',
+    'InstanceConfigDevicesSdadArgs',
+    'InstanceConfigDevicesSdadArgsDict',
+    'InstanceConfigDevicesSdaeArgs',
+    'InstanceConfigDevicesSdaeArgsDict',
+    'InstanceConfigDevicesSdafArgs',
+    'InstanceConfigDevicesSdafArgsDict',
+    'InstanceConfigDevicesSdagArgs',
+    'InstanceConfigDevicesSdagArgsDict',
+    'InstanceConfigDevicesSdahArgs',
+    'InstanceConfigDevicesSdahArgsDict',
+    'InstanceConfigDevicesSdaiArgs',
+    'InstanceConfigDevicesSdaiArgsDict',
+    'InstanceConfigDevicesSdajArgs',
+    'InstanceConfigDevicesSdajArgsDict',
+    'InstanceConfigDevicesSdakArgs',
+    'InstanceConfigDevicesSdakArgsDict',
+    'InstanceConfigDevicesSdalArgs',
+    'InstanceConfigDevicesSdalArgsDict',
+    'InstanceConfigDevicesSdamArgs',
+    'InstanceConfigDevicesSdamArgsDict',
+    'InstanceConfigDevicesSdanArgs',
+    'InstanceConfigDevicesSdanArgsDict',
+    'InstanceConfigDevicesSdaoArgs',
+    'InstanceConfigDevicesSdaoArgsDict',
+    'InstanceConfigDevicesSdapArgs',
+    'InstanceConfigDevicesSdapArgsDict',
+    'InstanceConfigDevicesSdaqArgs',
+    'InstanceConfigDevicesSdaqArgsDict',
+    'InstanceConfigDevicesSdarArgs',
+    'InstanceConfigDevicesSdarArgsDict',
+    'InstanceConfigDevicesSdasArgs',
+    'InstanceConfigDevicesSdasArgsDict',
+    'InstanceConfigDevicesSdatArgs',
+    'InstanceConfigDevicesSdatArgsDict',
+    'InstanceConfigDevicesSdauArgs',
+    'InstanceConfigDevicesSdauArgsDict',
+    'InstanceConfigDevicesSdavArgs',
+    'InstanceConfigDevicesSdavArgsDict',
+    'InstanceConfigDevicesSdawArgs',
+    'InstanceConfigDevicesSdawArgsDict',
+    'InstanceConfigDevicesSdaxArgs',
+    'InstanceConfigDevicesSdaxArgsDict',
+    'InstanceConfigDevicesSdayArgs',
+    'InstanceConfigDevicesSdayArgsDict',
+    'InstanceConfigDevicesSdazArgs',
+    'InstanceConfigDevicesSdazArgsDict',
     'InstanceConfigDevicesSdbArgs',
     'InstanceConfigDevicesSdbArgsDict',
+    'InstanceConfigDevicesSdbaArgs',
+    'InstanceConfigDevicesSdbaArgsDict',
+    'InstanceConfigDevicesSdbbArgs',
+    'InstanceConfigDevicesSdbbArgsDict',
+    'InstanceConfigDevicesSdbcArgs',
+    'InstanceConfigDevicesSdbcArgsDict',
+    'InstanceConfigDevicesSdbdArgs',
+    'InstanceConfigDevicesSdbdArgsDict',
+    'InstanceConfigDevicesSdbeArgs',
+    'InstanceConfigDevicesSdbeArgsDict',
+    'InstanceConfigDevicesSdbfArgs',
+    'InstanceConfigDevicesSdbfArgsDict',
+    'InstanceConfigDevicesSdbgArgs',
+    'InstanceConfigDevicesSdbgArgsDict',
+    'InstanceConfigDevicesSdbhArgs',
+    'InstanceConfigDevicesSdbhArgsDict',
+    'InstanceConfigDevicesSdbiArgs',
+    'InstanceConfigDevicesSdbiArgsDict',
+    'InstanceConfigDevicesSdbjArgs',
+    'InstanceConfigDevicesSdbjArgsDict',
+    'InstanceConfigDevicesSdbkArgs',
+    'InstanceConfigDevicesSdbkArgsDict',
+    'InstanceConfigDevicesSdblArgs',
+    'InstanceConfigDevicesSdblArgsDict',
     'InstanceConfigDevicesSdcArgs',
     'InstanceConfigDevicesSdcArgsDict',
     'InstanceConfigDevicesSddArgs',
@@ -77,6 +155,42 @@ __all__ = [
     'InstanceConfigDevicesSdgArgsDict',
     'InstanceConfigDevicesSdhArgs',
     'InstanceConfigDevicesSdhArgsDict',
+    'InstanceConfigDevicesSdiArgs',
+    'InstanceConfigDevicesSdiArgsDict',
+    'InstanceConfigDevicesSdjArgs',
+    'InstanceConfigDevicesSdjArgsDict',
+    'InstanceConfigDevicesSdkArgs',
+    'InstanceConfigDevicesSdkArgsDict',
+    'InstanceConfigDevicesSdlArgs',
+    'InstanceConfigDevicesSdlArgsDict',
+    'InstanceConfigDevicesSdmArgs',
+    'InstanceConfigDevicesSdmArgsDict',
+    'InstanceConfigDevicesSdnArgs',
+    'InstanceConfigDevicesSdnArgsDict',
+    'InstanceConfigDevicesSdoArgs',
+    'InstanceConfigDevicesSdoArgsDict',
+    'InstanceConfigDevicesSdpArgs',
+    'InstanceConfigDevicesSdpArgsDict',
+    'InstanceConfigDevicesSdqArgs',
+    'InstanceConfigDevicesSdqArgsDict',
+    'InstanceConfigDevicesSdrArgs',
+    'InstanceConfigDevicesSdrArgsDict',
+    'InstanceConfigDevicesSdsArgs',
+    'InstanceConfigDevicesSdsArgsDict',
+    'InstanceConfigDevicesSdtArgs',
+    'InstanceConfigDevicesSdtArgsDict',
+    'InstanceConfigDevicesSduArgs',
+    'InstanceConfigDevicesSduArgsDict',
+    'InstanceConfigDevicesSdvArgs',
+    'InstanceConfigDevicesSdvArgsDict',
+    'InstanceConfigDevicesSdwArgs',
+    'InstanceConfigDevicesSdwArgsDict',
+    'InstanceConfigDevicesSdxArgs',
+    'InstanceConfigDevicesSdxArgsDict',
+    'InstanceConfigDevicesSdyArgs',
+    'InstanceConfigDevicesSdyArgsDict',
+    'InstanceConfigDevicesSdzArgs',
+    'InstanceConfigDevicesSdzArgsDict',
     'InstanceConfigHelperArgs',
     'InstanceConfigHelperArgsDict',
     'InstanceConfigHelpersArgs',
@@ -179,8 +293,36 @@ __all__ = [
     'LkeNodePoolNodeArgsDict',
     'LkeNodePoolTaintArgs',
     'LkeNodePoolTaintArgsDict',
+    'MonitorAlertDefinitionAlertChannelArgs',
+    'MonitorAlertDefinitionAlertChannelArgsDict',
+    'MonitorAlertDefinitionEntitiesArgs',
+    'MonitorAlertDefinitionEntitiesArgsDict',
+    'MonitorAlertDefinitionRuleCriteriaArgs',
+    'MonitorAlertDefinitionRuleCriteriaArgsDict',
+    'MonitorAlertDefinitionRuleCriteriaRuleArgs',
+    'MonitorAlertDefinitionRuleCriteriaRuleArgsDict',
+    'MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs',
+    'MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgsDict',
+    'MonitorAlertDefinitionTriggerConditionsArgs',
+    'MonitorAlertDefinitionTriggerConditionsArgsDict',
+    'MonitorLogsDestinationAkamaiObjectStorageDetailsArgs',
+    'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict',
+    'MonitorLogsDestinationCustomHttpsDetailsArgs',
+    'MonitorLogsDestinationCustomHttpsDetailsArgsDict',
+    'MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs',
+    'MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgsDict',
+    'MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgs',
+    'MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgsDict',
+    'MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgs',
+    'MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgsDict',
+    'MonitorLogsStreamDetailsArgs',
+    'MonitorLogsStreamDetailsArgsDict',
+    'NetworkingIpAssignedEntityArgs',
+    'NetworkingIpAssignedEntityArgsDict',
     'NetworkingIpAssignmentAssignmentArgs',
     'NetworkingIpAssignmentAssignmentArgsDict',
+    'NetworkingIpAssignmentAssignmentAssignedEntityArgs',
+    'NetworkingIpAssignmentAssignmentAssignedEntityArgsDict',
     'NetworkingIpVpcNat11Args',
     'NetworkingIpVpcNat11ArgsDict',
     'NodeBalancerConfigNodeStatusArgs',
@@ -191,6 +333,8 @@ __all__ = [
     'NodeBalancerFirewallInboundArgsDict',
     'NodeBalancerFirewallOutboundArgs',
     'NodeBalancerFirewallOutboundArgsDict',
+    'NodeBalancerLkeClusterArgs',
+    'NodeBalancerLkeClusterArgsDict',
     'NodeBalancerTransferArgs',
     'NodeBalancerTransferArgsDict',
     'NodeBalancerVpcArgs',
@@ -213,8 +357,14 @@ __all__ = [
     'ProducerImageShareGroupImageArgsDict',
     'RdnsTimeoutsArgs',
     'RdnsTimeoutsArgsDict',
+    'ReservedIpAssignedEntityArgs',
+    'ReservedIpAssignedEntityArgsDict',
+    'ReservedIpAssignmentAssignedEntityArgs',
+    'ReservedIpAssignmentAssignedEntityArgsDict',
     'ReservedIpAssignmentVpcNat11Args',
     'ReservedIpAssignmentVpcNat11ArgsDict',
+    'ReservedIpVpcNat11Args',
+    'ReservedIpVpcNat11ArgsDict',
     'StackScriptUserDefinedFieldArgs',
     'StackScriptUserDefinedFieldArgsDict',
     'UserDomainGrantArgs',
@@ -239,6 +389,8 @@ __all__ = [
     'UserVpcGrantArgsDict',
     'VolumeTimeoutsArgs',
     'VolumeTimeoutsArgsDict',
+    'VpcIpv4Args',
+    'VpcIpv4ArgsDict',
     'VpcIpv6Args',
     'VpcIpv6ArgsDict',
     'VpcSubnetDatabaseArgs',
@@ -251,6 +403,10 @@ __all__ = [
     'VpcSubnetLinodeArgsDict',
     'VpcSubnetLinodeInterfaceArgs',
     'VpcSubnetLinodeInterfaceArgsDict',
+    'VpcSubnetNodebalancerArgs',
+    'VpcSubnetNodebalancerArgsDict',
+    'VpcSubnetNodebalancerIpv6RangeArgs',
+    'VpcSubnetNodebalancerIpv6RangeArgsDict',
     'GetAccountAvailabilitiesFilterArgs',
     'GetAccountAvailabilitiesFilterArgsDict',
     'GetAccountLoginsFilterArgs',
@@ -283,6 +439,8 @@ __all__ = [
     'GetFirewallTemplatesFilterArgsDict',
     'GetFirewallsFilterArgs',
     'GetFirewallsFilterArgsDict',
+    'GetIamEntitiesFilterArgs',
+    'GetIamEntitiesFilterArgsDict',
     'GetImagesFilterArgs',
     'GetImagesFilterArgsDict',
     'GetInstanceTypesFilterArgs',
@@ -301,6 +459,16 @@ __all__ = [
     'GetLocksFilterArgsDict',
     'GetMaintenancePoliciesFilterArgs',
     'GetMaintenancePoliciesFilterArgsDict',
+    'GetMonitorAlertChannelsFilterArgs',
+    'GetMonitorAlertChannelsFilterArgsDict',
+    'GetMonitorAlertDefinitionEntitiesFilterArgs',
+    'GetMonitorAlertDefinitionEntitiesFilterArgsDict',
+    'GetMonitorAlertDefinitionsFilterArgs',
+    'GetMonitorAlertDefinitionsFilterArgsDict',
+    'GetMonitorLogsDestinationsFilterArgs',
+    'GetMonitorLogsDestinationsFilterArgsDict',
+    'GetMonitorLogsStreamsFilterArgs',
+    'GetMonitorLogsStreamsFilterArgsDict',
     'GetNbTypesFilterArgs',
     'GetNbTypesFilterArgsDict',
     'GetNetworkTransferPricesFilterArgs',
@@ -315,6 +483,8 @@ __all__ = [
     'GetNodebalancersFilterArgsDict',
     'GetObjectStorageEndpointsFilterArgs',
     'GetObjectStorageEndpointsFilterArgsDict',
+    'GetObjectStorageGlobalQuotasFilterArgs',
+    'GetObjectStorageGlobalQuotasFilterArgsDict',
     'GetObjectStorageQuotasFilterArgs',
     'GetObjectStorageQuotasFilterArgsDict',
     'GetPlacementGroupsFilterArgs',
@@ -339,6 +509,8 @@ __all__ = [
     'GetProducerImageShareGroupsImageShareGroupArgsDict',
     'GetRegionsFilterArgs',
     'GetRegionsFilterArgsDict',
+    'GetReservedIpTypesFilterArgs',
+    'GetReservedIpTypesFilterArgsDict',
     'GetSshkeysFilterArgs',
     'GetSshkeysFilterArgsDict',
     'GetStackScriptsFilterArgs',
@@ -1082,7 +1254,7 @@ class FirewallInboundArgsDict(TypedDict):
     """
     protocol: pulumi.Input[_builtins.str]
     """
-    The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+    The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
     """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1114,7 +1286,7 @@ class FirewallInboundArgs:
         """
         :param pulumi.Input[_builtins.str] action: Controls whether traffic is accepted or dropped by this rule (`ACCEPT`, `DROP`). Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[_builtins.str] label: Used to identify this rule. For display purposes only.
-        :param pulumi.Input[_builtins.str] protocol: The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        :param pulumi.Input[_builtins.str] protocol: The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
         :param pulumi.Input[_builtins.str] description: Used to describe this rule. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask (CIDR) format.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask (CIDR) format.
@@ -1160,7 +1332,7 @@ class FirewallInboundArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
         """
         return pulumi.get(self, "protocol")
 
@@ -1228,7 +1400,7 @@ class FirewallOutboundArgsDict(TypedDict):
     """
     protocol: pulumi.Input[_builtins.str]
     """
-    The network protocol this rule controls.
+    The network protocol this rule controls. Accepted values are ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
     """
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1260,7 +1432,7 @@ class FirewallOutboundArgs:
         """
         :param pulumi.Input[_builtins.str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall's inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
         :param pulumi.Input[_builtins.str] label: This Firewall's unique label.
-        :param pulumi.Input[_builtins.str] protocol: The network protocol this rule controls.
+        :param pulumi.Input[_builtins.str] protocol: The network protocol this rule controls. Accepted values are ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
         :param pulumi.Input[_builtins.str] description: Used to describe this rule. For display purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A list of CIDR blocks or 0.0.0.0/0 (to allow all) this rule applies to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6s: A list of IPv6 addresses or networks this rule applies to.
@@ -1306,7 +1478,7 @@ class FirewallOutboundArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        The network protocol this rule controls.
+        The network protocol this rule controls. Accepted values are ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
         """
         return pulumi.get(self, "protocol")
 
@@ -1452,14 +1624,80 @@ class FirewallSettingsDefaultFirewallIdsArgs:
         pulumi.set(self, "vpc_interface", value)
 
 
+class IamUserEntityAccessArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The unique ID for the entity.
+    """
+    roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of the roles for this entity and specific user.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of product for the entity. (eg. Volume)
+    """
+
+@pulumi.input_type
+class IamUserEntityAccessArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] id: The unique ID for the entity.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: A list of the roles for this entity and specific user.
+        :param pulumi.Input[_builtins.str] type: The type of product for the entity. (eg. Volume)
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "roles", roles)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The unique ID for the entity.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def roles(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        A list of the roles for this entity and specific user.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "roles", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of product for the entity. (eg. Volume)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
 class ImageImageSharingArgsDict(TypedDict):
     shared_by: NotRequired[pulumi.Input[Optional['ImageImageSharingSharedByArgsDict']]]
     """
-    Details about who the image is shared by.
+    (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
     """
     shared_with: NotRequired[pulumi.Input[Optional['ImageImageSharingSharedWithArgsDict']]]
     """
-    Details about who the image is shared with.
+    (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
     """
 
 @pulumi.input_type
@@ -1468,8 +1706,8 @@ class ImageImageSharingArgs:
                  shared_by: pulumi.Input[Optional['ImageImageSharingSharedByArgs']] = None,
                  shared_with: pulumi.Input[Optional['ImageImageSharingSharedWithArgs']] = None):
         """
-        :param pulumi.Input['ImageImageSharingSharedByArgs'] shared_by: Details about who the image is shared by.
-        :param pulumi.Input['ImageImageSharingSharedWithArgs'] shared_with: Details about who the image is shared with.
+        :param pulumi.Input['ImageImageSharingSharedByArgs'] shared_by: (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
+        :param pulumi.Input['ImageImageSharingSharedWithArgs'] shared_with: (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
         """
         if shared_by is not None:
             pulumi.set(__self__, "shared_by", shared_by)
@@ -1480,7 +1718,7 @@ class ImageImageSharingArgs:
     @pulumi.getter(name="sharedBy")
     def shared_by(self) -> pulumi.Input[Optional['ImageImageSharingSharedByArgs']]:
         """
-        Details about who the image is shared by.
+        (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
         """
         return pulumi.get(self, "shared_by")
 
@@ -1492,7 +1730,7 @@ class ImageImageSharingArgs:
     @pulumi.getter(name="sharedWith")
     def shared_with(self) -> pulumi.Input[Optional['ImageImageSharingSharedWithArgs']]:
         """
-        Details about who the image is shared with.
+        (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
         """
         return pulumi.get(self, "shared_with")
 
@@ -1834,6 +2072,9 @@ class InstanceBackupArgsDict(TypedDict):
     If this Linode has the Backup service enabled.
     """
     schedules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBackupScheduleArgsDict']]]]]
+    """
+    (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+    """
 
 @pulumi.input_type
 class InstanceBackupArgs:
@@ -1844,6 +2085,7 @@ class InstanceBackupArgs:
         """
         :param pulumi.Input[_builtins.bool] available: Whether this Backup is available for restoration.
         :param pulumi.Input[_builtins.bool] enabled: If this Linode has the Backup service enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceBackupScheduleArgs']]] schedules: (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
         """
         if available is not None:
             pulumi.set(__self__, "available", available)
@@ -1879,6 +2121,9 @@ class InstanceBackupArgs:
     @_builtins.property
     @pulumi.getter
     def schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceBackupScheduleArgs']]]]:
+        """
+        (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+        """
         return pulumi.get(self, "schedules")
 
     @schedules.setter
@@ -1946,7 +2191,7 @@ class InstanceConfigArgsDict(TypedDict):
     """
     devices: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesArgsDict']]]
     """
-    Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+    Device sda-sdbl can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
     """
     helpers: NotRequired[pulumi.Input[Optional['InstanceConfigHelpersArgsDict']]]
     """
@@ -1998,7 +2243,7 @@ class InstanceConfigArgs:
         """
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
-        :param pulumi.Input['InstanceConfigDevicesArgs'] devices: Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesArgs'] devices: Device sda-sdbl can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigHelpersArgs'] helpers: Helpers enabled when booting to this Linode Config.
         :param pulumi.Input[_builtins.int] id: The ID of the Placement Group.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceArgs']]] interfaces: An array of Network Interfaces for this Linode’s Configuration Profile.
@@ -2058,7 +2303,7 @@ class InstanceConfigArgs:
     @pulumi.getter
     def devices(self) -> pulumi.Input[Optional['InstanceConfigDevicesArgs']]:
         """
-        Device sda-sdh can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
+        Device sda-sdbl can be either a Disk or Volume identified by disk_label or volume_id. Only one type per slot allowed.
         """
         return pulumi.get(self, "devices")
 
@@ -2166,7 +2411,7 @@ class InstanceConfigArgs:
 class InstanceConfigDeviceArgsDict(TypedDict):
     device_name: pulumi.Input[_builtins.str]
     """
-    The Disk ID to map to this disk slot
+    The device slot identifier (for example, sda, sdb) to map a disk or volume into
     """
     disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -2184,7 +2429,7 @@ class InstanceConfigDeviceArgs:
                  disk_id: pulumi.Input[Optional[_builtins.int]] = None,
                  volume_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] device_name: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.str] device_name: The device slot identifier (for example, sda, sdb) to map a disk or volume into
         :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
         :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
         """
@@ -2198,7 +2443,7 @@ class InstanceConfigDeviceArgs:
     @pulumi.getter(name="deviceName")
     def device_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The Disk ID to map to this disk slot
+        The device slot identifier (for example, sda, sdb) to map a disk or volume into
         """
         return pulumi.get(self, "device_name")
 
@@ -2234,9 +2479,161 @@ class InstanceConfigDeviceArgs:
 class InstanceConfigDevicesArgsDict(TypedDict):
     sda: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaArgsDict']]]
     """
-    ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+    ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `disk_id` or `volume_id`. Referenced with an index (e.g. `sda.0.disk_id`).
+    """
+    sdaa: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaaArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdab: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdabArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdac: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdacArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdad: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdadArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdae: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaeArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdaf: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdafArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdag: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdagArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdah: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdahArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdai: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaiArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdaj: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdajArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdak: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdakArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdal: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdalArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdam: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdamArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdan: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdanArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdao: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaoArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdap: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdapArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdaq: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaqArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdar: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdarArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdas: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdasArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdat: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdatArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdau: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdauArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdav: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdavArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdaw: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdawArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdax: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdaxArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sday: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdayArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdaz: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdazArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
     sdb: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdba: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbaArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbb: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbbArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbc: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbcArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbd: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbdArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbe: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbeArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbf: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbfArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbg: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbgArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbh: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbhArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbi: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbiArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbj: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbjArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbk: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdbkArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdbl: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdblArgsDict']]]
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
@@ -2264,32 +2661,292 @@ class InstanceConfigDevicesArgsDict(TypedDict):
     """
     Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
     """
+    sdi: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdiArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdj: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdjArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdk: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdkArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdl: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdlArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdm: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdmArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdn: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdnArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdo: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdoArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdp: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdpArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdq: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdqArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdr: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdrArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sds: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdsArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdt: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdtArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdu: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSduArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdv: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdvArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdw: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdwArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdx: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdxArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdy: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdyArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
+    sdz: NotRequired[pulumi.Input[Optional['InstanceConfigDevicesSdzArgsDict']]]
+    """
+    Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+    """
 
 @pulumi.input_type
 class InstanceConfigDevicesArgs:
     def __init__(__self__, *,
                  sda: pulumi.Input[Optional['InstanceConfigDevicesSdaArgs']] = None,
+                 sdaa: pulumi.Input[Optional['InstanceConfigDevicesSdaaArgs']] = None,
+                 sdab: pulumi.Input[Optional['InstanceConfigDevicesSdabArgs']] = None,
+                 sdac: pulumi.Input[Optional['InstanceConfigDevicesSdacArgs']] = None,
+                 sdad: pulumi.Input[Optional['InstanceConfigDevicesSdadArgs']] = None,
+                 sdae: pulumi.Input[Optional['InstanceConfigDevicesSdaeArgs']] = None,
+                 sdaf: pulumi.Input[Optional['InstanceConfigDevicesSdafArgs']] = None,
+                 sdag: pulumi.Input[Optional['InstanceConfigDevicesSdagArgs']] = None,
+                 sdah: pulumi.Input[Optional['InstanceConfigDevicesSdahArgs']] = None,
+                 sdai: pulumi.Input[Optional['InstanceConfigDevicesSdaiArgs']] = None,
+                 sdaj: pulumi.Input[Optional['InstanceConfigDevicesSdajArgs']] = None,
+                 sdak: pulumi.Input[Optional['InstanceConfigDevicesSdakArgs']] = None,
+                 sdal: pulumi.Input[Optional['InstanceConfigDevicesSdalArgs']] = None,
+                 sdam: pulumi.Input[Optional['InstanceConfigDevicesSdamArgs']] = None,
+                 sdan: pulumi.Input[Optional['InstanceConfigDevicesSdanArgs']] = None,
+                 sdao: pulumi.Input[Optional['InstanceConfigDevicesSdaoArgs']] = None,
+                 sdap: pulumi.Input[Optional['InstanceConfigDevicesSdapArgs']] = None,
+                 sdaq: pulumi.Input[Optional['InstanceConfigDevicesSdaqArgs']] = None,
+                 sdar: pulumi.Input[Optional['InstanceConfigDevicesSdarArgs']] = None,
+                 sdas: pulumi.Input[Optional['InstanceConfigDevicesSdasArgs']] = None,
+                 sdat: pulumi.Input[Optional['InstanceConfigDevicesSdatArgs']] = None,
+                 sdau: pulumi.Input[Optional['InstanceConfigDevicesSdauArgs']] = None,
+                 sdav: pulumi.Input[Optional['InstanceConfigDevicesSdavArgs']] = None,
+                 sdaw: pulumi.Input[Optional['InstanceConfigDevicesSdawArgs']] = None,
+                 sdax: pulumi.Input[Optional['InstanceConfigDevicesSdaxArgs']] = None,
+                 sday: pulumi.Input[Optional['InstanceConfigDevicesSdayArgs']] = None,
+                 sdaz: pulumi.Input[Optional['InstanceConfigDevicesSdazArgs']] = None,
                  sdb: pulumi.Input[Optional['InstanceConfigDevicesSdbArgs']] = None,
+                 sdba: pulumi.Input[Optional['InstanceConfigDevicesSdbaArgs']] = None,
+                 sdbb: pulumi.Input[Optional['InstanceConfigDevicesSdbbArgs']] = None,
+                 sdbc: pulumi.Input[Optional['InstanceConfigDevicesSdbcArgs']] = None,
+                 sdbd: pulumi.Input[Optional['InstanceConfigDevicesSdbdArgs']] = None,
+                 sdbe: pulumi.Input[Optional['InstanceConfigDevicesSdbeArgs']] = None,
+                 sdbf: pulumi.Input[Optional['InstanceConfigDevicesSdbfArgs']] = None,
+                 sdbg: pulumi.Input[Optional['InstanceConfigDevicesSdbgArgs']] = None,
+                 sdbh: pulumi.Input[Optional['InstanceConfigDevicesSdbhArgs']] = None,
+                 sdbi: pulumi.Input[Optional['InstanceConfigDevicesSdbiArgs']] = None,
+                 sdbj: pulumi.Input[Optional['InstanceConfigDevicesSdbjArgs']] = None,
+                 sdbk: pulumi.Input[Optional['InstanceConfigDevicesSdbkArgs']] = None,
+                 sdbl: pulumi.Input[Optional['InstanceConfigDevicesSdblArgs']] = None,
                  sdc: pulumi.Input[Optional['InstanceConfigDevicesSdcArgs']] = None,
                  sdd: pulumi.Input[Optional['InstanceConfigDevicesSddArgs']] = None,
                  sde: pulumi.Input[Optional['InstanceConfigDevicesSdeArgs']] = None,
                  sdf: pulumi.Input[Optional['InstanceConfigDevicesSdfArgs']] = None,
                  sdg: pulumi.Input[Optional['InstanceConfigDevicesSdgArgs']] = None,
-                 sdh: pulumi.Input[Optional['InstanceConfigDevicesSdhArgs']] = None):
+                 sdh: pulumi.Input[Optional['InstanceConfigDevicesSdhArgs']] = None,
+                 sdi: pulumi.Input[Optional['InstanceConfigDevicesSdiArgs']] = None,
+                 sdj: pulumi.Input[Optional['InstanceConfigDevicesSdjArgs']] = None,
+                 sdk: pulumi.Input[Optional['InstanceConfigDevicesSdkArgs']] = None,
+                 sdl: pulumi.Input[Optional['InstanceConfigDevicesSdlArgs']] = None,
+                 sdm: pulumi.Input[Optional['InstanceConfigDevicesSdmArgs']] = None,
+                 sdn: pulumi.Input[Optional['InstanceConfigDevicesSdnArgs']] = None,
+                 sdo: pulumi.Input[Optional['InstanceConfigDevicesSdoArgs']] = None,
+                 sdp: pulumi.Input[Optional['InstanceConfigDevicesSdpArgs']] = None,
+                 sdq: pulumi.Input[Optional['InstanceConfigDevicesSdqArgs']] = None,
+                 sdr: pulumi.Input[Optional['InstanceConfigDevicesSdrArgs']] = None,
+                 sds: pulumi.Input[Optional['InstanceConfigDevicesSdsArgs']] = None,
+                 sdt: pulumi.Input[Optional['InstanceConfigDevicesSdtArgs']] = None,
+                 sdu: pulumi.Input[Optional['InstanceConfigDevicesSduArgs']] = None,
+                 sdv: pulumi.Input[Optional['InstanceConfigDevicesSdvArgs']] = None,
+                 sdw: pulumi.Input[Optional['InstanceConfigDevicesSdwArgs']] = None,
+                 sdx: pulumi.Input[Optional['InstanceConfigDevicesSdxArgs']] = None,
+                 sdy: pulumi.Input[Optional['InstanceConfigDevicesSdyArgs']] = None,
+                 sdz: pulumi.Input[Optional['InstanceConfigDevicesSdzArgs']] = None):
         """
-        :param pulumi.Input['InstanceConfigDevicesSdaArgs'] sda: ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        :param pulumi.Input['InstanceConfigDevicesSdaArgs'] sda: ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `disk_id` or `volume_id`. Referenced with an index (e.g. `sda.0.disk_id`).
+        :param pulumi.Input['InstanceConfigDevicesSdaaArgs'] sdaa: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdabArgs'] sdab: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdacArgs'] sdac: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdadArgs'] sdad: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdaeArgs'] sdae: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdafArgs'] sdaf: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdagArgs'] sdag: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdahArgs'] sdah: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdaiArgs'] sdai: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdajArgs'] sdaj: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdakArgs'] sdak: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdalArgs'] sdal: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdamArgs'] sdam: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdanArgs'] sdan: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdaoArgs'] sdao: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdapArgs'] sdap: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdaqArgs'] sdaq: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdarArgs'] sdar: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdasArgs'] sdas: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdatArgs'] sdat: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdauArgs'] sdau: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdavArgs'] sdav: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdawArgs'] sdaw: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdaxArgs'] sdax: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdayArgs'] sday: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdazArgs'] sdaz: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdbArgs'] sdb: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbaArgs'] sdba: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbbArgs'] sdbb: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbcArgs'] sdbc: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbdArgs'] sdbd: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbeArgs'] sdbe: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbfArgs'] sdbf: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbgArgs'] sdbg: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbhArgs'] sdbh: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbiArgs'] sdbi: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbjArgs'] sdbj: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdbkArgs'] sdbk: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdblArgs'] sdbl: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdcArgs'] sdc: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSddArgs'] sdd: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdeArgs'] sde: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdfArgs'] sdf: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdgArgs'] sdg: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         :param pulumi.Input['InstanceConfigDevicesSdhArgs'] sdh: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdiArgs'] sdi: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdjArgs'] sdj: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdkArgs'] sdk: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdlArgs'] sdl: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdmArgs'] sdm: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdnArgs'] sdn: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdoArgs'] sdo: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdpArgs'] sdp: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdqArgs'] sdq: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdrArgs'] sdr: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdsArgs'] sds: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdtArgs'] sdt: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSduArgs'] sdu: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdvArgs'] sdv: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdwArgs'] sdw: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdxArgs'] sdx: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdyArgs'] sdy: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        :param pulumi.Input['InstanceConfigDevicesSdzArgs'] sdz: Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
         """
         if sda is not None:
             pulumi.set(__self__, "sda", sda)
+        if sdaa is not None:
+            pulumi.set(__self__, "sdaa", sdaa)
+        if sdab is not None:
+            pulumi.set(__self__, "sdab", sdab)
+        if sdac is not None:
+            pulumi.set(__self__, "sdac", sdac)
+        if sdad is not None:
+            pulumi.set(__self__, "sdad", sdad)
+        if sdae is not None:
+            pulumi.set(__self__, "sdae", sdae)
+        if sdaf is not None:
+            pulumi.set(__self__, "sdaf", sdaf)
+        if sdag is not None:
+            pulumi.set(__self__, "sdag", sdag)
+        if sdah is not None:
+            pulumi.set(__self__, "sdah", sdah)
+        if sdai is not None:
+            pulumi.set(__self__, "sdai", sdai)
+        if sdaj is not None:
+            pulumi.set(__self__, "sdaj", sdaj)
+        if sdak is not None:
+            pulumi.set(__self__, "sdak", sdak)
+        if sdal is not None:
+            pulumi.set(__self__, "sdal", sdal)
+        if sdam is not None:
+            pulumi.set(__self__, "sdam", sdam)
+        if sdan is not None:
+            pulumi.set(__self__, "sdan", sdan)
+        if sdao is not None:
+            pulumi.set(__self__, "sdao", sdao)
+        if sdap is not None:
+            pulumi.set(__self__, "sdap", sdap)
+        if sdaq is not None:
+            pulumi.set(__self__, "sdaq", sdaq)
+        if sdar is not None:
+            pulumi.set(__self__, "sdar", sdar)
+        if sdas is not None:
+            pulumi.set(__self__, "sdas", sdas)
+        if sdat is not None:
+            pulumi.set(__self__, "sdat", sdat)
+        if sdau is not None:
+            pulumi.set(__self__, "sdau", sdau)
+        if sdav is not None:
+            pulumi.set(__self__, "sdav", sdav)
+        if sdaw is not None:
+            pulumi.set(__self__, "sdaw", sdaw)
+        if sdax is not None:
+            pulumi.set(__self__, "sdax", sdax)
+        if sday is not None:
+            pulumi.set(__self__, "sday", sday)
+        if sdaz is not None:
+            pulumi.set(__self__, "sdaz", sdaz)
         if sdb is not None:
             pulumi.set(__self__, "sdb", sdb)
+        if sdba is not None:
+            pulumi.set(__self__, "sdba", sdba)
+        if sdbb is not None:
+            pulumi.set(__self__, "sdbb", sdbb)
+        if sdbc is not None:
+            pulumi.set(__self__, "sdbc", sdbc)
+        if sdbd is not None:
+            pulumi.set(__self__, "sdbd", sdbd)
+        if sdbe is not None:
+            pulumi.set(__self__, "sdbe", sdbe)
+        if sdbf is not None:
+            pulumi.set(__self__, "sdbf", sdbf)
+        if sdbg is not None:
+            pulumi.set(__self__, "sdbg", sdbg)
+        if sdbh is not None:
+            pulumi.set(__self__, "sdbh", sdbh)
+        if sdbi is not None:
+            pulumi.set(__self__, "sdbi", sdbi)
+        if sdbj is not None:
+            pulumi.set(__self__, "sdbj", sdbj)
+        if sdbk is not None:
+            pulumi.set(__self__, "sdbk", sdbk)
+        if sdbl is not None:
+            pulumi.set(__self__, "sdbl", sdbl)
         if sdc is not None:
             pulumi.set(__self__, "sdc", sdc)
         if sdd is not None:
@@ -2302,18 +2959,366 @@ class InstanceConfigDevicesArgs:
             pulumi.set(__self__, "sdg", sdg)
         if sdh is not None:
             pulumi.set(__self__, "sdh", sdh)
+        if sdi is not None:
+            pulumi.set(__self__, "sdi", sdi)
+        if sdj is not None:
+            pulumi.set(__self__, "sdj", sdj)
+        if sdk is not None:
+            pulumi.set(__self__, "sdk", sdk)
+        if sdl is not None:
+            pulumi.set(__self__, "sdl", sdl)
+        if sdm is not None:
+            pulumi.set(__self__, "sdm", sdm)
+        if sdn is not None:
+            pulumi.set(__self__, "sdn", sdn)
+        if sdo is not None:
+            pulumi.set(__self__, "sdo", sdo)
+        if sdp is not None:
+            pulumi.set(__self__, "sdp", sdp)
+        if sdq is not None:
+            pulumi.set(__self__, "sdq", sdq)
+        if sdr is not None:
+            pulumi.set(__self__, "sdr", sdr)
+        if sds is not None:
+            pulumi.set(__self__, "sds", sds)
+        if sdt is not None:
+            pulumi.set(__self__, "sdt", sdt)
+        if sdu is not None:
+            pulumi.set(__self__, "sdu", sdu)
+        if sdv is not None:
+            pulumi.set(__self__, "sdv", sdv)
+        if sdw is not None:
+            pulumi.set(__self__, "sdw", sdw)
+        if sdx is not None:
+            pulumi.set(__self__, "sdx", sdx)
+        if sdy is not None:
+            pulumi.set(__self__, "sdy", sdy)
+        if sdz is not None:
+            pulumi.set(__self__, "sdz", sdz)
 
     @_builtins.property
     @pulumi.getter
     def sda(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaArgs']]:
         """
-        ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `disk_id` or `volume_id`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virt_mode`.
+        ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `disk_id` or `volume_id`. Referenced with an index (e.g. `sda.0.disk_id`).
         """
         return pulumi.get(self, "sda")
 
     @sda.setter
     def sda(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaArgs']]):
         pulumi.set(self, "sda", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdaa(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaaArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdaa")
+
+    @sdaa.setter
+    def sdaa(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaaArgs']]):
+        pulumi.set(self, "sdaa", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdab(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdabArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdab")
+
+    @sdab.setter
+    def sdab(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdabArgs']]):
+        pulumi.set(self, "sdab", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdac(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdacArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdac")
+
+    @sdac.setter
+    def sdac(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdacArgs']]):
+        pulumi.set(self, "sdac", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdad(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdadArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdad")
+
+    @sdad.setter
+    def sdad(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdadArgs']]):
+        pulumi.set(self, "sdad", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdae(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaeArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdae")
+
+    @sdae.setter
+    def sdae(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaeArgs']]):
+        pulumi.set(self, "sdae", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdaf(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdafArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdaf")
+
+    @sdaf.setter
+    def sdaf(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdafArgs']]):
+        pulumi.set(self, "sdaf", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdag(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdagArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdag")
+
+    @sdag.setter
+    def sdag(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdagArgs']]):
+        pulumi.set(self, "sdag", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdah(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdahArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdah")
+
+    @sdah.setter
+    def sdah(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdahArgs']]):
+        pulumi.set(self, "sdah", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdai(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaiArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdai")
+
+    @sdai.setter
+    def sdai(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaiArgs']]):
+        pulumi.set(self, "sdai", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdaj(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdajArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdaj")
+
+    @sdaj.setter
+    def sdaj(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdajArgs']]):
+        pulumi.set(self, "sdaj", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdak(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdakArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdak")
+
+    @sdak.setter
+    def sdak(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdakArgs']]):
+        pulumi.set(self, "sdak", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdal(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdalArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdal")
+
+    @sdal.setter
+    def sdal(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdalArgs']]):
+        pulumi.set(self, "sdal", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdam(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdamArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdam")
+
+    @sdam.setter
+    def sdam(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdamArgs']]):
+        pulumi.set(self, "sdam", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdan(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdanArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdan")
+
+    @sdan.setter
+    def sdan(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdanArgs']]):
+        pulumi.set(self, "sdan", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdao(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaoArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdao")
+
+    @sdao.setter
+    def sdao(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaoArgs']]):
+        pulumi.set(self, "sdao", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdap(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdapArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdap")
+
+    @sdap.setter
+    def sdap(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdapArgs']]):
+        pulumi.set(self, "sdap", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdaq(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaqArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdaq")
+
+    @sdaq.setter
+    def sdaq(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaqArgs']]):
+        pulumi.set(self, "sdaq", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdar(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdarArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdar")
+
+    @sdar.setter
+    def sdar(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdarArgs']]):
+        pulumi.set(self, "sdar", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdas(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdasArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdas")
+
+    @sdas.setter
+    def sdas(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdasArgs']]):
+        pulumi.set(self, "sdas", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdat(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdatArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdat")
+
+    @sdat.setter
+    def sdat(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdatArgs']]):
+        pulumi.set(self, "sdat", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdau(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdauArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdau")
+
+    @sdau.setter
+    def sdau(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdauArgs']]):
+        pulumi.set(self, "sdau", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdav(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdavArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdav")
+
+    @sdav.setter
+    def sdav(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdavArgs']]):
+        pulumi.set(self, "sdav", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdaw(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdawArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdaw")
+
+    @sdaw.setter
+    def sdaw(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdawArgs']]):
+        pulumi.set(self, "sdaw", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdax(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdaxArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdax")
+
+    @sdax.setter
+    def sdax(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdaxArgs']]):
+        pulumi.set(self, "sdax", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sday(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdayArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sday")
+
+    @sday.setter
+    def sday(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdayArgs']]):
+        pulumi.set(self, "sday", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdaz(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdazArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdaz")
+
+    @sdaz.setter
+    def sdaz(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdazArgs']]):
+        pulumi.set(self, "sdaz", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2326,6 +3331,150 @@ class InstanceConfigDevicesArgs:
     @sdb.setter
     def sdb(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbArgs']]):
         pulumi.set(self, "sdb", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdba(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbaArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdba")
+
+    @sdba.setter
+    def sdba(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbaArgs']]):
+        pulumi.set(self, "sdba", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbb(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbbArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbb")
+
+    @sdbb.setter
+    def sdbb(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbbArgs']]):
+        pulumi.set(self, "sdbb", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbc(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbcArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbc")
+
+    @sdbc.setter
+    def sdbc(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbcArgs']]):
+        pulumi.set(self, "sdbc", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbd(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbdArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbd")
+
+    @sdbd.setter
+    def sdbd(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbdArgs']]):
+        pulumi.set(self, "sdbd", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbe(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbeArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbe")
+
+    @sdbe.setter
+    def sdbe(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbeArgs']]):
+        pulumi.set(self, "sdbe", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbf(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbfArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbf")
+
+    @sdbf.setter
+    def sdbf(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbfArgs']]):
+        pulumi.set(self, "sdbf", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbg(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbgArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbg")
+
+    @sdbg.setter
+    def sdbg(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbgArgs']]):
+        pulumi.set(self, "sdbg", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbh(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbhArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbh")
+
+    @sdbh.setter
+    def sdbh(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbhArgs']]):
+        pulumi.set(self, "sdbh", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbi(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbiArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbi")
+
+    @sdbi.setter
+    def sdbi(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbiArgs']]):
+        pulumi.set(self, "sdbi", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbj(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbjArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbj")
+
+    @sdbj.setter
+    def sdbj(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbjArgs']]):
+        pulumi.set(self, "sdbj", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbk(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdbkArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbk")
+
+    @sdbk.setter
+    def sdbk(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdbkArgs']]):
+        pulumi.set(self, "sdbk", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdbl(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdblArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdbl")
+
+    @sdbl.setter
+    def sdbl(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdblArgs']]):
+        pulumi.set(self, "sdbl", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2399,6 +3548,222 @@ class InstanceConfigDevicesArgs:
     def sdh(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdhArgs']]):
         pulumi.set(self, "sdh", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def sdi(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdiArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdi")
+
+    @sdi.setter
+    def sdi(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdiArgs']]):
+        pulumi.set(self, "sdi", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdj(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdjArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdj")
+
+    @sdj.setter
+    def sdj(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdjArgs']]):
+        pulumi.set(self, "sdj", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdk(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdkArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdk")
+
+    @sdk.setter
+    def sdk(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdkArgs']]):
+        pulumi.set(self, "sdk", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdl(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdlArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdl")
+
+    @sdl.setter
+    def sdl(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdlArgs']]):
+        pulumi.set(self, "sdl", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdm(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdmArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdm")
+
+    @sdm.setter
+    def sdm(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdmArgs']]):
+        pulumi.set(self, "sdm", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdn(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdnArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdn")
+
+    @sdn.setter
+    def sdn(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdnArgs']]):
+        pulumi.set(self, "sdn", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdo(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdoArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdo")
+
+    @sdo.setter
+    def sdo(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdoArgs']]):
+        pulumi.set(self, "sdo", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdp(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdpArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdp")
+
+    @sdp.setter
+    def sdp(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdpArgs']]):
+        pulumi.set(self, "sdp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdq(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdqArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdq")
+
+    @sdq.setter
+    def sdq(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdqArgs']]):
+        pulumi.set(self, "sdq", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdr(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdrArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdr")
+
+    @sdr.setter
+    def sdr(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdrArgs']]):
+        pulumi.set(self, "sdr", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sds(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdsArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sds")
+
+    @sds.setter
+    def sds(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdsArgs']]):
+        pulumi.set(self, "sds", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdt(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdtArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdt")
+
+    @sdt.setter
+    def sdt(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdtArgs']]):
+        pulumi.set(self, "sdt", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdu(self) -> pulumi.Input[Optional['InstanceConfigDevicesSduArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdu")
+
+    @sdu.setter
+    def sdu(self, value: pulumi.Input[Optional['InstanceConfigDevicesSduArgs']]):
+        pulumi.set(self, "sdu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdv(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdvArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdv")
+
+    @sdv.setter
+    def sdv(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdvArgs']]):
+        pulumi.set(self, "sdv", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdw(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdwArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdw")
+
+    @sdw.setter
+    def sdw(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdwArgs']]):
+        pulumi.set(self, "sdw", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdx(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdxArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdx")
+
+    @sdx.setter
+    def sdx(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdxArgs']]):
+        pulumi.set(self, "sdx", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdy(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdyArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdy")
+
+    @sdy.setter
+    def sdy(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdyArgs']]):
+        pulumi.set(self, "sdy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def sdz(self) -> pulumi.Input[Optional['InstanceConfigDevicesSdzArgs']]:
+        """
+        Device can be either a Disk or Volume identified by disk_id or volume_id. Only one type per slot allowed.
+        """
+        return pulumi.get(self, "sdz")
+
+    @sdz.setter
+    def sdz(self, value: pulumi.Input[Optional['InstanceConfigDevicesSdzArgs']]):
+        pulumi.set(self, "sdz", value)
+
 
 class InstanceConfigDevicesSdaArgsDict(TypedDict):
     disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -2449,6 +3814,1280 @@ class InstanceConfigDevicesSdaArgs:
         pulumi.set(self, "volume_id", value)
 
 
+class InstanceConfigDevicesSdaaArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdaaArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdabArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdabArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdacArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdacArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdadArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdadArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdaeArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdaeArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdafArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdafArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdagArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdagArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdahArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdahArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdaiArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdaiArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdajArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdajArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdakArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdakArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdalArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdalArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdamArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdamArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdanArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdanArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdaoArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdaoArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdapArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdapArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdaqArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdaqArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdarArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdarArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdasArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdasArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdatArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdatArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdauArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdauArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdavArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdavArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdawArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdawArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdaxArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdaxArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdayArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdayArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdazArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdazArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
 class InstanceConfigDevicesSdbArgsDict(TypedDict):
     disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -2461,6 +5100,594 @@ class InstanceConfigDevicesSdbArgsDict(TypedDict):
 
 @pulumi.input_type
 class InstanceConfigDevicesSdbArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbaArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbaArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbbArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbbArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbcArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbcArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbdArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbdArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbeArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbeArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbfArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbfArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbgArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbgArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbhArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbhArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbiArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbiArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbjArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbjArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdbkArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdbkArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdblArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdblArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[Optional[_builtins.int]] = None,
                  volume_id: pulumi.Input[Optional[_builtins.int]] = None):
@@ -2792,6 +6019,888 @@ class InstanceConfigDevicesSdhArgs:
         pulumi.set(self, "volume_id", value)
 
 
+class InstanceConfigDevicesSdiArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdiArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdjArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdjArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdkArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdkArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdlArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdlArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdmArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdmArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdnArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdnArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdoArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdoArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdpArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdpArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdqArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdqArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdrArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdrArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdsArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdsArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdtArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdtArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSduArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSduArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdvArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdvArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdwArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdwArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdxArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdxArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdyArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdyArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
+class InstanceConfigDevicesSdzArgsDict(TypedDict):
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Disk ID to map to this disk slot
+    """
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Block Storage volume ID to map to this disk slot
+    """
+
+@pulumi.input_type
+class InstanceConfigDevicesSdzArgs:
+    def __init__(__self__, *,
+                 disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] disk_id: The Disk ID to map to this disk slot
+        :param pulumi.Input[_builtins.int] volume_id: The Block Storage volume ID to map to this disk slot
+        """
+        if disk_id is not None:
+            pulumi.set(__self__, "disk_id", disk_id)
+        if volume_id is not None:
+            pulumi.set(__self__, "volume_id", volume_id)
+
+    @_builtins.property
+    @pulumi.getter(name="diskId")
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Disk ID to map to this disk slot
+        """
+        return pulumi.get(self, "disk_id")
+
+    @disk_id.setter
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "disk_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeId")
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Block Storage volume ID to map to this disk slot
+        """
+        return pulumi.get(self, "volume_id")
+
+    @volume_id.setter
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "volume_id", value)
+
+
 class InstanceConfigHelperArgsDict(TypedDict):
     devtmpfs_automount: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -3047,9 +7156,9 @@ class InstanceConfigInterfaceArgsDict(TypedDict):
     """
     Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
-    * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+    * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
 
-    * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+    * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
     """
     subnet_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -3085,9 +7194,9 @@ class InstanceConfigInterfaceArgs:
         :param pulumi.Input[_builtins.str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param pulumi.Input[_builtins.bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
-               * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+               * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
                
-               * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+               * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         :param pulumi.Input[_builtins.int] subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param pulumi.Input[_builtins.int] vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -3215,9 +7324,9 @@ class InstanceConfigInterfaceArgs:
         """
         Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
-        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
 
-        * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         """
         return pulumi.get(self, "primary")
 
@@ -3304,9 +7413,9 @@ class InstanceConfigInterfaceIpv6ArgsDict(TypedDict):
     """
     If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
 
-    * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+    * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
 
-    * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+    * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
     """
     ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6RangeArgsDict']]]]]
     """
@@ -3326,9 +7435,9 @@ class InstanceConfigInterfaceIpv6Args:
         """
         :param pulumi.Input[_builtins.bool] is_public: If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
                
-               * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+               * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
                
-               * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+               * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6RangeArgs']]] ranges: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigInterfaceIpv6SlaacArgs']]] slaacs: An array of SLAAC prefixes to use for this interface.
         """
@@ -3345,9 +7454,9 @@ class InstanceConfigInterfaceIpv6Args:
         """
         If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
 
-        * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+        * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
 
-        * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
         """
         return pulumi.get(self, "is_public")
 
@@ -3833,9 +7942,9 @@ class InstanceInterfaceArgsDict(TypedDict):
     """
     Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
-    * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+    * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
 
-    * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+    * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
     """
     subnet_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -3873,9 +7982,9 @@ class InstanceInterfaceArgs:
         :param pulumi.Input[_builtins.str] label: The name of the VLAN to join. This field is only allowed and required for interfaces with the `vlan` purpose.
         :param pulumi.Input[_builtins.bool] primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
                
-               * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+               * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
                
-               * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+               * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         :param pulumi.Input[_builtins.int] subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
         :param pulumi.Input[_builtins.int] vpc_id: The ID of VPC which this interface is attached to.
         """
@@ -4005,9 +8114,9 @@ class InstanceInterfaceArgs:
         """
         Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
 
-        * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+        * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
 
-        * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
         """
         return pulumi.get(self, "primary")
 
@@ -4094,9 +8203,9 @@ class InstanceInterfaceIpv6ArgsDict(TypedDict):
     """
     If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
 
-    * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+    * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
 
-    * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+    * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
     """
     ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInterfaceIpv6RangeArgsDict']]]]]
     """
@@ -4116,9 +8225,9 @@ class InstanceInterfaceIpv6Args:
         """
         :param pulumi.Input[_builtins.bool] is_public: If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
                
-               * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+               * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
                
-               * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+               * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceIpv6RangeArgs']]] ranges: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceInterfaceIpv6SlaacArgs']]] slaacs: An array of SLAAC prefixes to use for this interface.
         """
@@ -4135,9 +8244,9 @@ class InstanceInterfaceIpv6Args:
         """
         If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
 
-        * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+        * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
 
-        * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+        * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
         """
         return pulumi.get(self, "is_public")
 
@@ -4291,10 +8400,16 @@ class InstanceInterfaceIpv6SlaacArgs:
 class InstanceIpVpcNat11ArgsDict(TypedDict):
     address: pulumi.Input[_builtins.str]
     """
-    The resulting IPv4 address.
+    The VPC IPv4 address this address is NATted with.
     """
     subnet_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the VPC subnet containing the NATted address.
+    """
     vpc_id: pulumi.Input[_builtins.int]
+    """
+    The ID of the VPC containing the NATted address.
+    """
 
 @pulumi.input_type
 class InstanceIpVpcNat11Args:
@@ -4303,7 +8418,9 @@ class InstanceIpVpcNat11Args:
                  subnet_id: pulumi.Input[_builtins.int],
                  vpc_id: pulumi.Input[_builtins.int]):
         """
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
+        :param pulumi.Input[_builtins.str] address: The VPC IPv4 address this address is NATted with.
+        :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet containing the NATted address.
+        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC containing the NATted address.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
@@ -4313,7 +8430,7 @@ class InstanceIpVpcNat11Args:
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
         """
-        The resulting IPv4 address.
+        The VPC IPv4 address this address is NATted with.
         """
         return pulumi.get(self, "address")
 
@@ -4324,6 +8441,9 @@ class InstanceIpVpcNat11Args:
     @_builtins.property
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the VPC subnet containing the NATted address.
+        """
         return pulumi.get(self, "subnet_id")
 
     @subnet_id.setter
@@ -4333,6 +8453,9 @@ class InstanceIpVpcNat11Args:
     @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the VPC containing the NATted address.
+        """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
@@ -4651,11 +8774,11 @@ class InterfaceDefaultRouteArgs:
 class InterfacePublicArgsDict(TypedDict):
     ipv4: NotRequired[pulumi.Input[Optional['InterfacePublicIpv4ArgsDict']]]
     """
-    IPv4 addresses for this interface.
+    IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
     """
     ipv6: NotRequired[pulumi.Input[Optional['InterfacePublicIpv6ArgsDict']]]
     """
-    IPv6 addresses for this interface.
+    IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
     """
 
 @pulumi.input_type
@@ -4664,8 +8787,8 @@ class InterfacePublicArgs:
                  ipv4: pulumi.Input[Optional['InterfacePublicIpv4Args']] = None,
                  ipv6: pulumi.Input[Optional['InterfacePublicIpv6Args']] = None):
         """
-        :param pulumi.Input['InterfacePublicIpv4Args'] ipv4: IPv4 addresses for this interface.
-        :param pulumi.Input['InterfacePublicIpv6Args'] ipv6: IPv6 addresses for this interface.
+        :param pulumi.Input['InterfacePublicIpv4Args'] ipv4: IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
+        :param pulumi.Input['InterfacePublicIpv6Args'] ipv6: IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -4676,7 +8799,7 @@ class InterfacePublicArgs:
     @pulumi.getter
     def ipv4(self) -> pulumi.Input[Optional['InterfacePublicIpv4Args']]:
         """
-        IPv4 addresses for this interface.
+        IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
         """
         return pulumi.get(self, "ipv4")
 
@@ -4688,7 +8811,7 @@ class InterfacePublicArgs:
     @pulumi.getter
     def ipv6(self) -> pulumi.Input[Optional['InterfacePublicIpv6Args']]:
         """
-        IPv6 addresses for this interface.
+        IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
         """
         return pulumi.get(self, "ipv6")
 
@@ -4704,11 +8827,11 @@ class InterfacePublicIpv4ArgsDict(TypedDict):
     """
     assigned_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgsDict']]]]]
     """
-    (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+    (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     shareds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgsDict']]]]]
     """
-    (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+    (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
 
 @pulumi.input_type
@@ -4719,8 +8842,8 @@ class InterfacePublicIpv4Args:
                  shareds: pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AddressArgs']]] addresses: IPv4 addresses configured for this Linode interface. Each object in this list supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]] assigned_addresses: (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]] shareds: (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]] assigned_addresses: (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]] shareds: (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -4745,7 +8868,7 @@ class InterfacePublicIpv4Args:
     @pulumi.getter(name="assignedAddresses")
     def assigned_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4AssignedAddressArgs']]]]:
         """
-        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "assigned_addresses")
 
@@ -4757,7 +8880,7 @@ class InterfacePublicIpv4Args:
     @pulumi.getter
     def shareds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv4SharedArgs']]]]:
         """
-        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "shareds")
 
@@ -4916,7 +9039,7 @@ class InterfacePublicIpv4SharedArgs:
 class InterfacePublicIpv6ArgsDict(TypedDict):
     assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgsDict']]]]]
     """
-    Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+    (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgsDict']]]]]
     """
@@ -4924,11 +9047,11 @@ class InterfacePublicIpv6ArgsDict(TypedDict):
     """
     shareds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgsDict']]]]]
     """
-    (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+    (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgsDict']]]]]
     """
-    (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+    (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
 
 @pulumi.input_type
@@ -4939,10 +9062,10 @@ class InterfacePublicIpv6Args:
                  shareds: pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]]] = None,
                  slaacs: pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]] assigned_ranges: Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]] assigned_ranges: (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6RangeArgs']]] ranges: Configured IPv6 range in CIDR notation (2600:0db8::1/64) or prefix-only (/64). Each object in this list supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]] shareds: (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]] slaacs: (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]] shareds: (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]] slaacs: (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         if assigned_ranges is not None:
             pulumi.set(__self__, "assigned_ranges", assigned_ranges)
@@ -4957,7 +9080,7 @@ class InterfacePublicIpv6Args:
     @pulumi.getter(name="assignedRanges")
     def assigned_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6AssignedRangeArgs']]]]:
         """
-        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "assigned_ranges")
 
@@ -4981,7 +9104,7 @@ class InterfacePublicIpv6Args:
     @pulumi.getter
     def shareds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SharedArgs']]]]:
         """
-        (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "shareds")
 
@@ -4993,7 +9116,7 @@ class InterfacePublicIpv6Args:
     @pulumi.getter
     def slaacs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfacePublicIpv6SlaacArgs']]]]:
         """
-        (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+        (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "slaacs")
 
@@ -5232,11 +9355,11 @@ class InterfaceVpcArgsDict(TypedDict):
     """
     ipv4: NotRequired[pulumi.Input[Optional['InterfaceVpcIpv4ArgsDict']]]
     """
-    IPv4 configuration for the VPC interface.
+    IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
     """
     ipv6: NotRequired[pulumi.Input[Optional['InterfaceVpcIpv6ArgsDict']]]
     """
-    IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+    IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
     """
 
 @pulumi.input_type
@@ -5247,8 +9370,8 @@ class InterfaceVpcArgs:
                  ipv6: pulumi.Input[Optional['InterfaceVpcIpv6Args']] = None):
         """
         :param pulumi.Input[_builtins.int] subnet_id: The VPC subnet identifier for this interface.
-        :param pulumi.Input['InterfaceVpcIpv4Args'] ipv4: IPv4 configuration for the VPC interface.
-        :param pulumi.Input['InterfaceVpcIpv6Args'] ipv6: IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        :param pulumi.Input['InterfaceVpcIpv4Args'] ipv4: IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
+        :param pulumi.Input['InterfaceVpcIpv6Args'] ipv6: IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
         if ipv4 is not None:
@@ -5272,7 +9395,7 @@ class InterfaceVpcArgs:
     @pulumi.getter
     def ipv4(self) -> pulumi.Input[Optional['InterfaceVpcIpv4Args']]:
         """
-        IPv4 configuration for the VPC interface.
+        IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
         """
         return pulumi.get(self, "ipv4")
 
@@ -5284,7 +9407,7 @@ class InterfaceVpcArgs:
     @pulumi.getter
     def ipv6(self) -> pulumi.Input[Optional['InterfaceVpcIpv6Args']]:
         """
-        IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
         """
         return pulumi.get(self, "ipv6")
 
@@ -5300,11 +9423,11 @@ class InterfaceVpcIpv4ArgsDict(TypedDict):
     """
     assigned_addresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgsDict']]]]]
     """
-    (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+    (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgsDict']]]]]
     """
-    Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+    (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgsDict']]]]]
     """
@@ -5320,8 +9443,8 @@ class InterfaceVpcIpv4Args:
                  ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AddressArgs']]] addresses: Specifies the IPv4 addresses to use in the VPC subnet. Each object in this list supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]] assigned_addresses: (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
-        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]] assigned_ranges: Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]] assigned_addresses: (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]] assigned_ranges: (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv4RangeArgs']]] ranges: IPv4 ranges in CIDR notation (1.2.3.4/24) or prefix-only format (/24). Each object in this list supports:
         """
         if addresses is not None:
@@ -5349,7 +9472,7 @@ class InterfaceVpcIpv4Args:
     @pulumi.getter(name="assignedAddresses")
     def assigned_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedAddressArgs']]]]:
         """
-        (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+        (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "assigned_addresses")
 
@@ -5361,7 +9484,7 @@ class InterfaceVpcIpv4Args:
     @pulumi.getter(name="assignedRanges")
     def assigned_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv4AssignedRangeArgs']]]]:
         """
-        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "assigned_ranges")
 
@@ -5580,11 +9703,11 @@ class InterfaceVpcIpv4RangeArgs:
 class InterfaceVpcIpv6ArgsDict(TypedDict):
     assigned_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgsDict']]]]]
     """
-    Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+    (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     assigned_slaacs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgsDict']]]]]
     """
-    Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+    (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     is_public: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -5608,8 +9731,8 @@ class InterfaceVpcIpv6Args:
                  ranges: pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]]] = None,
                  slaacs: pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]] assigned_ranges: Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
-        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]] assigned_slaacs: Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]] assigned_ranges: (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]] assigned_slaacs: (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.bool] is_public: Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
         :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6RangeArgs']]] ranges: Defines additional IPv6 network ranges.
         :param pulumi.Input[Sequence[pulumi.Input['InterfaceVpcIpv6SlaacArgs']]] slaacs: Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
@@ -5629,7 +9752,7 @@ class InterfaceVpcIpv6Args:
     @pulumi.getter(name="assignedRanges")
     def assigned_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedRangeArgs']]]]:
         """
-        Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+        (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "assigned_ranges")
 
@@ -5641,7 +9764,7 @@ class InterfaceVpcIpv6Args:
     @pulumi.getter(name="assignedSlaacs")
     def assigned_slaacs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InterfaceVpcIpv6AssignedSlaacArgs']]]]:
         """
-        Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+        (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "assigned_slaacs")
 
@@ -5831,7 +9954,7 @@ class LkeClusterControlPlaneArgsDict(TypedDict):
     """
     Enables audit logs on the cluster's control plane.
 
-    * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+    * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster's control plane. Referenced with an index (e.g. `acl.0.enabled`).
     """
     high_availability: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -5848,7 +9971,7 @@ class LkeClusterControlPlaneArgs:
         :param pulumi.Input['LkeClusterControlPlaneAclArgs'] acl: Defines the ACL configuration for an LKE cluster's control plane.
         :param pulumi.Input[_builtins.bool] audit_logs_enabled: Enables audit logs on the cluster's control plane.
                
-               * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+               * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster's control plane. Referenced with an index (e.g. `acl.0.enabled`).
         :param pulumi.Input[_builtins.bool] high_availability: Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
         """
         if acl is not None:
@@ -5876,7 +9999,7 @@ class LkeClusterControlPlaneArgs:
         """
         Enables audit logs on the cluster's control plane.
 
-        * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster's control plane. Referenced with an index (e.g. `acl.0.enabled`).
         """
         return pulumi.get(self, "audit_logs_enabled")
 
@@ -5906,7 +10029,7 @@ class LkeClusterControlPlaneAclArgsDict(TypedDict):
     """
     Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
 
-    * `addresses` - (Optional) A list of ip addresses to allow.
+    * `addresses` - (Optional, Block List) A list of ip addresses to allow.
     """
 
 @pulumi.input_type
@@ -5918,7 +10041,7 @@ class LkeClusterControlPlaneAclArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterControlPlaneAclAddressArgs']]] addresses: A list of ip addresses to allow.
         :param pulumi.Input[_builtins.bool] enabled: Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
                
-               * `addresses` - (Optional) A list of ip addresses to allow.
+               * `addresses` - (Optional, Block List) A list of ip addresses to allow.
         """
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
@@ -5943,7 +10066,7 @@ class LkeClusterControlPlaneAclArgs:
         """
         Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
 
-        * `addresses` - (Optional) A list of ip addresses to allow.
+        * `addresses` - (Optional, Block List) A list of ip addresses to allow.
         """
         return pulumi.get(self, "enabled")
 
@@ -6016,7 +10139,7 @@ class LkeClusterPoolArgsDict(TypedDict):
     """
     disk_encryption: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The disk encryption policy for nodes in this pool.
+    The disk encryption policy for nodes in this pool. Must be `enabled` or `disabled`. If omitted, the account default encryption policy is applied. Changing this value will cause the pool to be replaced (deleted and recreated).
     """
     firewall_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -6048,7 +10171,7 @@ class LkeClusterPoolArgsDict(TypedDict):
     """
     taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolTaintArgsDict']]]]]
     """
-    Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+    Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
     """
     update_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -6075,7 +10198,7 @@ class LkeClusterPoolArgs:
         :param pulumi.Input[_builtins.str] type: A Linode Type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input['LkeClusterPoolAutoscalerArgs'] autoscaler: When specified, the number of nodes autoscales within the defined minimum and maximum values.
         :param pulumi.Input[_builtins.int] count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
-        :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
+        :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool. Must be `enabled` or `disabled`. If omitted, the account default encryption policy is applied. Changing this value will cause the pool to be replaced (deleted and recreated).
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param pulumi.Input[_builtins.int] id: The ID of the node.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -6083,7 +10206,7 @@ class LkeClusterPoolArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key/value pairs to apply to all nodes in the pool. Labels are used to identify and organize Kubernetes resources within your cluster.
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolNodeArgs']]] nodes: The nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags applied to this node pool. Tags can be used to flag node pools as externally managed. See Externally Managed Node Pools for more details.
-        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] update_strategy: The strategy for updating the Node Pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         """
         pulumi.set(__self__, "type", type)
@@ -6152,7 +10275,7 @@ class LkeClusterPoolArgs:
     @pulumi.getter(name="diskEncryption")
     def disk_encryption(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The disk encryption policy for nodes in this pool.
+        The disk encryption policy for nodes in this pool. Must be `enabled` or `disabled`. If omitted, the account default encryption policy is applied. Changing this value will cause the pool to be replaced (deleted and recreated).
         """
         return pulumi.get(self, "disk_encryption")
 
@@ -6248,7 +10371,7 @@ class LkeClusterPoolArgs:
     @pulumi.getter
     def taints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolTaintArgs']]]]:
         """
-        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "taints")
 
@@ -6398,7 +10521,7 @@ class LkeClusterPoolTaintArgsDict(TypedDict):
     """
     The Kubernetes taint value.
 
-    * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+    * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
     """
 
 @pulumi.input_type
@@ -6412,7 +10535,7 @@ class LkeClusterPoolTaintArgs:
         :param pulumi.Input[_builtins.str] key: The Kubernetes taint key.
         :param pulumi.Input[_builtins.str] value: The Kubernetes taint value.
                
-               * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+               * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
         """
         pulumi.set(__self__, "effect", effect)
         pulumi.set(__self__, "key", key)
@@ -6448,7 +10571,7 @@ class LkeClusterPoolTaintArgs:
         """
         The Kubernetes taint value.
 
-        * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
         """
         return pulumi.get(self, "value")
 
@@ -6638,6 +10761,1104 @@ class LkeNodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
+class MonitorAlertDefinitionAlertChannelArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The unique identifier assigned to the alert channel.
+    """
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The label for the alert definition.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of alert channel.
+    """
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The URL of the alert channel.
+    """
+
+@pulumi.input_type
+class MonitorAlertDefinitionAlertChannelArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] id: The unique identifier assigned to the alert channel.
+        :param pulumi.Input[_builtins.str] label: The label for the alert definition.
+        :param pulumi.Input[_builtins.str] type: The type of alert channel.
+        :param pulumi.Input[_builtins.str] url: The URL of the alert channel.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The unique identifier assigned to the alert channel.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The label for the alert definition.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of alert channel.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL of the alert channel.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+class MonitorAlertDefinitionEntitiesArgsDict(TypedDict):
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of entities associated with the alert definition.
+    """
+    has_more_resources: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether there are additional entities associated with the alert.
+    """
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The URL of the alert channel.
+    """
+
+@pulumi.input_type
+class MonitorAlertDefinitionEntitiesArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 has_more_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] count: The number of entities associated with the alert definition.
+        :param pulumi.Input[_builtins.bool] has_more_resources: Whether there are additional entities associated with the alert.
+        :param pulumi.Input[_builtins.str] url: The URL of the alert channel.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if has_more_resources is not None:
+            pulumi.set(__self__, "has_more_resources", has_more_resources)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of entities associated with the alert definition.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "count", value)
+
+    @_builtins.property
+    @pulumi.getter(name="hasMoreResources")
+    def has_more_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether there are additional entities associated with the alert.
+        """
+        return pulumi.get(self, "has_more_resources")
+
+    @has_more_resources.setter
+    def has_more_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "has_more_resources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL of the alert channel.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+
+class MonitorAlertDefinitionRuleCriteriaArgsDict(TypedDict):
+    rules: pulumi.Input[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleArgsDict']]]
+    """
+    The individual rules that make up the alert definition.
+    """
+
+@pulumi.input_type
+class MonitorAlertDefinitionRuleCriteriaArgs:
+    def __init__(__self__, *,
+                 rules: pulumi.Input[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleArgs']]] rules: The individual rules that make up the alert definition.
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleArgs']]]:
+        """
+        The individual rules that make up the alert definition.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+class MonitorAlertDefinitionRuleCriteriaRuleArgsDict(TypedDict):
+    aggregate_function: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The aggregate function to apply to the metric data.
+    * `dimension_filters` - (Optional, Nested Attribute List) A list of dimension filter objects to filter the metric data.
+    """
+    dimension_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgsDict']]]]]
+    """
+    Individual objects that define dimension filters for the rule.
+    """
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the individual rule. This is used for display purposes in Akamai Cloud Manager.
+    """
+    metric: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The metric to query.
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The operator to apply to the metric. Allowed values: eq, gt, lt, gte, lte.
+    """
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.float]]]
+    """
+    The predefined value or condition that triggers an alert when met or exceeded.
+    """
+    unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+    """
+
+@pulumi.input_type
+class MonitorAlertDefinitionRuleCriteriaRuleArgs:
+    def __init__(__self__, *,
+                 aggregate_function: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimension_filters: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs']]]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.float]] = None,
+                 unit: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] aggregate_function: The aggregate function to apply to the metric data.
+               * `dimension_filters` - (Optional, Nested Attribute List) A list of dimension filter objects to filter the metric data.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs']]] dimension_filters: Individual objects that define dimension filters for the rule.
+        :param pulumi.Input[_builtins.str] label: The name of the individual rule. This is used for display purposes in Akamai Cloud Manager.
+        :param pulumi.Input[_builtins.str] metric: The metric to query.
+        :param pulumi.Input[_builtins.str] operator: The operator to apply to the metric. Allowed values: eq, gt, lt, gte, lte.
+        :param pulumi.Input[_builtins.float] threshold: The predefined value or condition that triggers an alert when met or exceeded.
+        :param pulumi.Input[_builtins.str] unit: The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+        """
+        if aggregate_function is not None:
+            pulumi.set(__self__, "aggregate_function", aggregate_function)
+        if dimension_filters is not None:
+            pulumi.set(__self__, "dimension_filters", dimension_filters)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if metric is not None:
+            pulumi.set(__self__, "metric", metric)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if unit is not None:
+            pulumi.set(__self__, "unit", unit)
+
+    @_builtins.property
+    @pulumi.getter(name="aggregateFunction")
+    def aggregate_function(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The aggregate function to apply to the metric data.
+        * `dimension_filters` - (Optional, Nested Attribute List) A list of dimension filter objects to filter the metric data.
+        """
+        return pulumi.get(self, "aggregate_function")
+
+    @aggregate_function.setter
+    def aggregate_function(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "aggregate_function", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dimensionFilters")
+    def dimension_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs']]]]:
+        """
+        Individual objects that define dimension filters for the rule.
+        """
+        return pulumi.get(self, "dimension_filters")
+
+    @dimension_filters.setter
+    def dimension_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs']]]]):
+        pulumi.set(self, "dimension_filters", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the individual rule. This is used for display purposes in Akamai Cloud Manager.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The metric to query.
+        """
+        return pulumi.get(self, "metric")
+
+    @metric.setter
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metric", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The operator to apply to the metric. Allowed values: eq, gt, lt, gte, lte.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def threshold(self) -> pulumi.Input[Optional[_builtins.float]]:
+        """
+        The predefined value or condition that triggers an alert when met or exceeded.
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: pulumi.Input[Optional[_builtins.float]]):
+        pulumi.set(self, "threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def unit(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+        """
+        return pulumi.get(self, "unit")
+
+    @unit.setter
+    def unit(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "unit", value)
+
+
+class MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgsDict(TypedDict):
+    dimension_label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The label of the dimension to filter on.
+    """
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name of the dimension filter. Used for display purposes.
+    """
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The value to compare the dimension_label against.
+    """
+
+@pulumi.input_type
+class MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs:
+    def __init__(__self__, *,
+                 dimension_label: pulumi.Input[Optional[_builtins.str]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] dimension_label: The label of the dimension to filter on.
+        :param pulumi.Input[_builtins.str] label: The name of the dimension filter. Used for display purposes.
+        :param pulumi.Input[_builtins.str] operator: The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+        :param pulumi.Input[_builtins.str] value: The value to compare the dimension_label against.
+        """
+        if dimension_label is not None:
+            pulumi.set(__self__, "dimension_label", dimension_label)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dimensionLabel")
+    def dimension_label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The label of the dimension to filter on.
+        """
+        return pulumi.get(self, "dimension_label")
+
+    @dimension_label.setter
+    def dimension_label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dimension_label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name of the dimension filter. Used for display purposes.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The value to compare the dimension_label against.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class MonitorAlertDefinitionTriggerConditionsArgsDict(TypedDict):
+    criteria_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The logical operation applied. Currently only 'ALL' allowed.
+    """
+    evaluation_period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Time period over which data is collected before evaluating the threshold.
+    """
+    polling_interval_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Frequency at which the metric data is polled.
+    """
+    trigger_occurrences: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Number of times the condition must be met before triggering an alert.
+    """
+
+@pulumi.input_type
+class MonitorAlertDefinitionTriggerConditionsArgs:
+    def __init__(__self__, *,
+                 criteria_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 polling_interval_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 trigger_occurrences: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] criteria_condition: The logical operation applied. Currently only 'ALL' allowed.
+        :param pulumi.Input[_builtins.int] evaluation_period_seconds: Time period over which data is collected before evaluating the threshold.
+        :param pulumi.Input[_builtins.int] polling_interval_seconds: Frequency at which the metric data is polled.
+        :param pulumi.Input[_builtins.int] trigger_occurrences: Number of times the condition must be met before triggering an alert.
+        """
+        if criteria_condition is not None:
+            pulumi.set(__self__, "criteria_condition", criteria_condition)
+        if evaluation_period_seconds is not None:
+            pulumi.set(__self__, "evaluation_period_seconds", evaluation_period_seconds)
+        if polling_interval_seconds is not None:
+            pulumi.set(__self__, "polling_interval_seconds", polling_interval_seconds)
+        if trigger_occurrences is not None:
+            pulumi.set(__self__, "trigger_occurrences", trigger_occurrences)
+
+    @_builtins.property
+    @pulumi.getter(name="criteriaCondition")
+    def criteria_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The logical operation applied. Currently only 'ALL' allowed.
+        """
+        return pulumi.get(self, "criteria_condition")
+
+    @criteria_condition.setter
+    def criteria_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "criteria_condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="evaluationPeriodSeconds")
+    def evaluation_period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Time period over which data is collected before evaluating the threshold.
+        """
+        return pulumi.get(self, "evaluation_period_seconds")
+
+    @evaluation_period_seconds.setter
+    def evaluation_period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "evaluation_period_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pollingIntervalSeconds")
+    def polling_interval_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Frequency at which the metric data is polled.
+        """
+        return pulumi.get(self, "polling_interval_seconds")
+
+    @polling_interval_seconds.setter
+    def polling_interval_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "polling_interval_seconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="triggerOccurrences")
+    def trigger_occurrences(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Number of times the condition must be met before triggering an alert.
+        """
+        return pulumi.get(self, "trigger_occurrences")
+
+    @trigger_occurrences.setter
+    def trigger_occurrences(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "trigger_occurrences", value)
+
+
+class MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict(TypedDict):
+    access_key_id: pulumi.Input[_builtins.str]
+    """
+    The access key ID for the object storage bucket.
+    """
+    access_key_secret: pulumi.Input[_builtins.str]
+    """
+    The access key secret for the object storage bucket. This value is write-only and will not be returned by the API.
+    """
+    bucket_name: pulumi.Input[_builtins.str]
+    """
+    The name of the object storage bucket.
+    """
+    host: pulumi.Input[_builtins.str]
+    """
+    The hostname of the object storage endpoint.
+    """
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The path within the bucket where logs will be stored.
+    """
+
+@pulumi.input_type
+class MonitorLogsDestinationAkamaiObjectStorageDetailsArgs:
+    def __init__(__self__, *,
+                 access_key_id: pulumi.Input[_builtins.str],
+                 access_key_secret: pulumi.Input[_builtins.str],
+                 bucket_name: pulumi.Input[_builtins.str],
+                 host: pulumi.Input[_builtins.str],
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_key_id: The access key ID for the object storage bucket.
+        :param pulumi.Input[_builtins.str] access_key_secret: The access key secret for the object storage bucket. This value is write-only and will not be returned by the API.
+        :param pulumi.Input[_builtins.str] bucket_name: The name of the object storage bucket.
+        :param pulumi.Input[_builtins.str] host: The hostname of the object storage endpoint.
+        :param pulumi.Input[_builtins.str] path: The path within the bucket where logs will be stored.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "access_key_secret", access_key_secret)
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        pulumi.set(__self__, "host", host)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The access key ID for the object storage bucket.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeySecret")
+    def access_key_secret(self) -> pulumi.Input[_builtins.str]:
+        """
+        The access key secret for the object storage bucket. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "access_key_secret")
+
+    @access_key_secret.setter
+    def access_key_secret(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_key_secret", value)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the object storage bucket.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        The hostname of the object storage endpoint.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The path within the bucket where logs will be stored.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "path", value)
+
+
+class MonitorLogsDestinationCustomHttpsDetailsArgsDict(TypedDict):
+    authentication: pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgsDict']
+    """
+    Authentication configuration for the HTTPS endpoint.
+    """
+    content_type: pulumi.Input[_builtins.str]
+    """
+    The content type of the log data. One of: `application/json`, `application/json; charset=utf-8`.
+    """
+    data_compression: pulumi.Input[_builtins.str]
+    """
+    The compression format for log data. One of: `none`, `gzip`.
+
+    * `authentication` - (Required, Nested Attribute) Authentication configuration for the HTTPS endpoint. Referenced directly (e.g. `custom_https_details.authentication.type`).
+
+    * `client_certificate_details` - (Optional, Nested Attribute) TLS client certificate configuration. Referenced directly (e.g. `custom_https_details.client_certificate_details.tls_hostname`).
+
+    * `custom_headers` - (Optional, Nested Attribute List) Custom HTTP headers to include in log delivery requests.
+    """
+    endpoint_url: pulumi.Input[_builtins.str]
+    """
+    The HTTPS endpoint URL to send logs to.
+    """
+    client_certificate_details: NotRequired[pulumi.Input[Optional['MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgsDict']]]
+    """
+    TLS client certificate configuration.
+    """
+    custom_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgsDict']]]]]
+    """
+    Custom HTTP headers to include in log delivery requests.
+    """
+
+@pulumi.input_type
+class MonitorLogsDestinationCustomHttpsDetailsArgs:
+    def __init__(__self__, *,
+                 authentication: pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs'],
+                 content_type: pulumi.Input[_builtins.str],
+                 data_compression: pulumi.Input[_builtins.str],
+                 endpoint_url: pulumi.Input[_builtins.str],
+                 client_certificate_details: pulumi.Input[Optional['MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgs']] = None,
+                 custom_headers: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgs']]]] = None):
+        """
+        :param pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs'] authentication: Authentication configuration for the HTTPS endpoint.
+        :param pulumi.Input[_builtins.str] content_type: The content type of the log data. One of: `application/json`, `application/json; charset=utf-8`.
+        :param pulumi.Input[_builtins.str] data_compression: The compression format for log data. One of: `none`, `gzip`.
+               
+               * `authentication` - (Required, Nested Attribute) Authentication configuration for the HTTPS endpoint. Referenced directly (e.g. `custom_https_details.authentication.type`).
+               
+               * `client_certificate_details` - (Optional, Nested Attribute) TLS client certificate configuration. Referenced directly (e.g. `custom_https_details.client_certificate_details.tls_hostname`).
+               
+               * `custom_headers` - (Optional, Nested Attribute List) Custom HTTP headers to include in log delivery requests.
+        :param pulumi.Input[_builtins.str] endpoint_url: The HTTPS endpoint URL to send logs to.
+        :param pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgs'] client_certificate_details: TLS client certificate configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgs']]] custom_headers: Custom HTTP headers to include in log delivery requests.
+        """
+        pulumi.set(__self__, "authentication", authentication)
+        pulumi.set(__self__, "content_type", content_type)
+        pulumi.set(__self__, "data_compression", data_compression)
+        pulumi.set(__self__, "endpoint_url", endpoint_url)
+        if client_certificate_details is not None:
+            pulumi.set(__self__, "client_certificate_details", client_certificate_details)
+        if custom_headers is not None:
+            pulumi.set(__self__, "custom_headers", custom_headers)
+
+    @_builtins.property
+    @pulumi.getter
+    def authentication(self) -> pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs']:
+        """
+        Authentication configuration for the HTTPS endpoint.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs']):
+        pulumi.set(self, "authentication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The content type of the log data. One of: `application/json`, `application/json; charset=utf-8`.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "content_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataCompression")
+    def data_compression(self) -> pulumi.Input[_builtins.str]:
+        """
+        The compression format for log data. One of: `none`, `gzip`.
+
+        * `authentication` - (Required, Nested Attribute) Authentication configuration for the HTTPS endpoint. Referenced directly (e.g. `custom_https_details.authentication.type`).
+
+        * `client_certificate_details` - (Optional, Nested Attribute) TLS client certificate configuration. Referenced directly (e.g. `custom_https_details.client_certificate_details.tls_hostname`).
+
+        * `custom_headers` - (Optional, Nested Attribute List) Custom HTTP headers to include in log delivery requests.
+        """
+        return pulumi.get(self, "data_compression")
+
+    @data_compression.setter
+    def data_compression(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "data_compression", value)
+
+    @_builtins.property
+    @pulumi.getter(name="endpointUrl")
+    def endpoint_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The HTTPS endpoint URL to send logs to.
+        """
+        return pulumi.get(self, "endpoint_url")
+
+    @endpoint_url.setter
+    def endpoint_url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "endpoint_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificateDetails")
+    def client_certificate_details(self) -> pulumi.Input[Optional['MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgs']]:
+        """
+        TLS client certificate configuration.
+        """
+        return pulumi.get(self, "client_certificate_details")
+
+    @client_certificate_details.setter
+    def client_certificate_details(self, value: pulumi.Input[Optional['MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgs']]):
+        pulumi.set(self, "client_certificate_details", value)
+
+    @_builtins.property
+    @pulumi.getter(name="customHeaders")
+    def custom_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgs']]]]:
+        """
+        Custom HTTP headers to include in log delivery requests.
+        """
+        return pulumi.get(self, "custom_headers")
+
+    @custom_headers.setter
+    def custom_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgs']]]]):
+        pulumi.set(self, "custom_headers", value)
+
+
+class MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The authentication type. One of: `basic`, `none`.
+    """
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The password for basic authentication. This value is write-only and will not be returned by the API.
+    """
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The username for basic authentication. This value is write-only and will not be returned by the API.
+    """
+
+@pulumi.input_type
+class MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The authentication type. One of: `basic`, `none`.
+        :param pulumi.Input[_builtins.str] password: The password for basic authentication. This value is write-only and will not be returned by the API.
+        :param pulumi.Input[_builtins.str] username: The username for basic authentication. This value is write-only and will not be returned by the API.
+        """
+        pulumi.set(__self__, "type", type)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The authentication type. One of: `basic`, `none`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password for basic authentication. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The username for basic authentication. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "username", value)
+
+
+class MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgsDict(TypedDict):
+    client_ca_certificate: pulumi.Input[_builtins.str]
+    """
+    The client CA certificate. This value is write-only and will not be returned by the API.
+    """
+    client_certificate: pulumi.Input[_builtins.str]
+    """
+    The client certificate. This value is write-only and will not be returned by the API.
+    """
+    client_private_key: pulumi.Input[_builtins.str]
+    """
+    The client private key. This value is write-only and will not be returned by the API.
+    """
+    tls_hostname: pulumi.Input[_builtins.str]
+    """
+    The TLS hostname for certificate verification.
+    """
+
+@pulumi.input_type
+class MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetailsArgs:
+    def __init__(__self__, *,
+                 client_ca_certificate: pulumi.Input[_builtins.str],
+                 client_certificate: pulumi.Input[_builtins.str],
+                 client_private_key: pulumi.Input[_builtins.str],
+                 tls_hostname: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] client_ca_certificate: The client CA certificate. This value is write-only and will not be returned by the API.
+        :param pulumi.Input[_builtins.str] client_certificate: The client certificate. This value is write-only and will not be returned by the API.
+        :param pulumi.Input[_builtins.str] client_private_key: The client private key. This value is write-only and will not be returned by the API.
+        :param pulumi.Input[_builtins.str] tls_hostname: The TLS hostname for certificate verification.
+        """
+        pulumi.set(__self__, "client_ca_certificate", client_ca_certificate)
+        pulumi.set(__self__, "client_certificate", client_certificate)
+        pulumi.set(__self__, "client_private_key", client_private_key)
+        pulumi.set(__self__, "tls_hostname", tls_hostname)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCaCertificate")
+    def client_ca_certificate(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client CA certificate. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "client_ca_certificate")
+
+    @client_ca_certificate.setter
+    def client_ca_certificate(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_ca_certificate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client certificate. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @client_certificate.setter
+    def client_certificate(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_certificate", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientPrivateKey")
+    def client_private_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The client private key. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "client_private_key")
+
+    @client_private_key.setter
+    def client_private_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "client_private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsHostname")
+    def tls_hostname(self) -> pulumi.Input[_builtins.str]:
+        """
+        The TLS hostname for certificate verification.
+        """
+        return pulumi.get(self, "tls_hostname")
+
+    @tls_hostname.setter
+    def tls_hostname(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "tls_hostname", value)
+
+
+class MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the HTTP header.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The value of the HTTP header. This value is write-only and will not be returned by the API.
+    """
+
+@pulumi.input_type
+class MonitorLogsDestinationCustomHttpsDetailsCustomHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the HTTP header.
+        :param pulumi.Input[_builtins.str] value: The value of the HTTP header. This value is write-only and will not be returned by the API.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the HTTP header.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        The value of the HTTP header. This value is write-only and will not be returned by the API.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+class MonitorLogsStreamDetailsArgsDict(TypedDict):
+    cluster_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    The list of LKE cluster IDs to include in this stream.
+    """
+    is_auto_add_all_clusters_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, all LKE clusters are automatically added to this stream.
+    """
+
+@pulumi.input_type
+class MonitorLogsStreamDetailsArgs:
+    def __init__(__self__, *,
+                 cluster_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 is_auto_add_all_clusters_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] cluster_ids: The list of LKE cluster IDs to include in this stream.
+        :param pulumi.Input[_builtins.bool] is_auto_add_all_clusters_enabled: When true, all LKE clusters are automatically added to this stream.
+        """
+        if cluster_ids is not None:
+            pulumi.set(__self__, "cluster_ids", cluster_ids)
+        if is_auto_add_all_clusters_enabled is not None:
+            pulumi.set(__self__, "is_auto_add_all_clusters_enabled", is_auto_add_all_clusters_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterIds")
+    def cluster_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        The list of LKE cluster IDs to include in this stream.
+        """
+        return pulumi.get(self, "cluster_ids")
+
+    @cluster_ids.setter
+    def cluster_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "cluster_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAutoAddAllClustersEnabled")
+    def is_auto_add_all_clusters_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, all LKE clusters are automatically added to this stream.
+        """
+        return pulumi.get(self, "is_auto_add_all_clusters_enabled")
+
+    @is_auto_add_all_clusters_enabled.setter
+    def is_auto_add_all_clusters_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "is_auto_add_all_clusters_enabled", value)
+
+
+class NetworkingIpAssignedEntityArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the entity.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of IP address. (ipv4, ipv6, etc.)
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The URL of the entity.
+    """
+
+@pulumi.input_type
+class NetworkingIpAssignedEntityArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 label: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] id: The ID of the entity.
+        :param pulumi.Input[_builtins.str] label: The label of the entity.
+        :param pulumi.Input[_builtins.str] type: The type of IP address. (ipv4, ipv6, etc.)
+        :param pulumi.Input[_builtins.str] url: The URL of the entity.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the entity.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label of the entity.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of IP address. (ipv4, ipv6, etc.)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the entity.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+
 class NetworkingIpAssignmentAssignmentArgsDict(TypedDict):
     address: pulumi.Input[_builtins.str]
     """
@@ -6647,18 +11868,42 @@ class NetworkingIpAssignmentAssignmentArgsDict(TypedDict):
     """
     The ID of the Linode to which the IP address will be assigned.
     """
+    assigned_entity: NotRequired[pulumi.Input[Optional['NetworkingIpAssignmentAssignmentAssignedEntityArgsDict']]]
+    """
+    (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+    """
+    reserved: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether this IP address is a reserved IP.
+    """
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    A set of tags associated with this IP address.
+    """
 
 @pulumi.input_type
 class NetworkingIpAssignmentAssignmentArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
-                 linode_id: pulumi.Input[_builtins.int]):
+                 linode_id: pulumi.Input[_builtins.int],
+                 assigned_entity: pulumi.Input[Optional['NetworkingIpAssignmentAssignmentAssignedEntityArgs']] = None,
+                 reserved: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IPv4 address or IPv6 range to assign.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to which the IP address will be assigned.
+        :param pulumi.Input['NetworkingIpAssignmentAssignmentAssignedEntityArgs'] assigned_entity: (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+        :param pulumi.Input[_builtins.bool] reserved: Whether this IP address is a reserved IP.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags associated with this IP address.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "linode_id", linode_id)
+        if assigned_entity is not None:
+            pulumi.set(__self__, "assigned_entity", assigned_entity)
+        if reserved is not None:
+            pulumi.set(__self__, "reserved", reserved)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @_builtins.property
     @pulumi.getter
@@ -6683,6 +11928,127 @@ class NetworkingIpAssignmentAssignmentArgs:
     @linode_id.setter
     def linode_id(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "linode_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedEntity")
+    def assigned_entity(self) -> pulumi.Input[Optional['NetworkingIpAssignmentAssignmentAssignedEntityArgs']]:
+        """
+        (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+        """
+        return pulumi.get(self, "assigned_entity")
+
+    @assigned_entity.setter
+    def assigned_entity(self, value: pulumi.Input[Optional['NetworkingIpAssignmentAssignmentAssignedEntityArgs']]):
+        pulumi.set(self, "assigned_entity", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def reserved(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether this IP address is a reserved IP.
+        """
+        return pulumi.get(self, "reserved")
+
+    @reserved.setter
+    def reserved(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "reserved", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of tags associated with this IP address.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+
+class NetworkingIpAssignmentAssignmentAssignedEntityArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the entity.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the entity.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The URL of the entity.
+    """
+
+@pulumi.input_type
+class NetworkingIpAssignmentAssignmentAssignedEntityArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 label: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] id: The ID of the entity.
+        :param pulumi.Input[_builtins.str] label: The label of the entity.
+        :param pulumi.Input[_builtins.str] type: The type of the entity.
+        :param pulumi.Input[_builtins.str] url: The URL of the entity.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the entity.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label of the entity.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the entity.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the entity.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
 
 class NetworkingIpVpcNat11ArgsDict(TypedDict):
@@ -6805,7 +12171,7 @@ class NodeBalancerFirewallArgsDict(TypedDict):
     """
     id: pulumi.Input[_builtins.int]
     """
-    (Required) The Firewall's ID.
+    The ID of the related LKE cluster.
     """
     inbound_policy: pulumi.Input[_builtins.str]
     """
@@ -6849,7 +12215,7 @@ class NodeBalancerFirewallArgs:
                  updated: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] created: When this firewall was created.
-        :param pulumi.Input[_builtins.int] id: (Required) The Firewall's ID.
+        :param pulumi.Input[_builtins.int] id: The ID of the related LKE cluster.
         :param pulumi.Input[_builtins.str] inbound_policy: The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[_builtins.str] outbound_policy: The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
@@ -6884,7 +12250,7 @@ class NodeBalancerFirewallArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        (Required) The Firewall's ID.
+        The ID of the related LKE cluster.
         """
         return pulumi.get(self, "id")
 
@@ -6991,7 +12357,7 @@ class NodeBalancerFirewallInboundArgsDict(TypedDict):
     description: pulumi.Input[_builtins.str]
     ipv4s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    A list of IPv4 addresses or networks. Must be in IP/mask format.
+    The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
     """
     ipv6s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
@@ -7022,7 +12388,7 @@ class NodeBalancerFirewallInboundArgs:
                  protocol: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[_builtins.str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -7061,7 +12427,7 @@ class NodeBalancerFirewallInboundArgs:
     @pulumi.getter
     def ipv4s(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         """
         return pulumi.get(self, "ipv4s")
 
@@ -7126,7 +12492,7 @@ class NodeBalancerFirewallOutboundArgsDict(TypedDict):
     description: pulumi.Input[_builtins.str]
     ipv4s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    A list of IPv4 addresses or networks. Must be in IP/mask format.
+    The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
     """
     ipv6s: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
@@ -7157,7 +12523,7 @@ class NodeBalancerFirewallOutboundArgs:
                  protocol: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] action: Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inbound_policy if this is an inbound rule, or the outbound_policy if this is an outbound rule.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A list of IPv4 addresses or networks. Must be in IP/mask format.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6s: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
         :param pulumi.Input[_builtins.str] ports: A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
@@ -7196,7 +12562,7 @@ class NodeBalancerFirewallOutboundArgs:
     @pulumi.getter
     def ipv4s(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        A list of IPv4 addresses or networks. Must be in IP/mask format.
+        The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         """
         return pulumi.get(self, "ipv4s")
 
@@ -7251,6 +12617,95 @@ class NodeBalancerFirewallOutboundArgs:
     @protocol.setter
     def protocol(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "protocol", value)
+
+
+class NodeBalancerLkeClusterArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The ID of the related LKE cluster.
+    """
+    label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The label of the Linode NodeBalancer
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The type of the related LKE cluster.
+    """
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The URL where you can access the related LKE cluster.
+    """
+
+@pulumi.input_type
+class NodeBalancerLkeClusterArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 label: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] id: The ID of the related LKE cluster.
+        :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
+        :param pulumi.Input[_builtins.str] type: The type of the related LKE cluster.
+        :param pulumi.Input[_builtins.str] url: The URL where you can access the related LKE cluster.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The ID of the related LKE cluster.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The label of the Linode NodeBalancer
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the related LKE cluster.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URL where you can access the related LKE cluster.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "url", value)
 
 
 class NodeBalancerTransferArgsDict(TypedDict):
@@ -7333,24 +12788,32 @@ class NodeBalancerVpcArgsDict(TypedDict):
     **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
     (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
     """
+    ipv6_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    (Optional) A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+    """
 
 @pulumi.input_type
 class NodeBalancerVpcArgs:
     def __init__(__self__, *,
                  subnet_id: pulumi.Input[_builtins.int],
                  ipv4_range: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4_range_auto_assign: pulumi.Input[Optional[_builtins.bool]] = None):
+                 ipv4_range_auto_assign: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] subnet_id: (Required) The ID of a subnet to assign to this NodeBalancer.
         :param pulumi.Input[_builtins.str] ipv4_range: (Optional) A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
         :param pulumi.Input[_builtins.bool] ipv4_range_auto_assign: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
                (Optional, Write-Only) Enables the use of a larger ipv4_range subnet for multiple NodeBalancers within the same VPC by allocating smaller /30 subnets for each NodeBalancer's backends.
+        :param pulumi.Input[_builtins.str] ipv6_range: (Optional) A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
         """
         pulumi.set(__self__, "subnet_id", subnet_id)
         if ipv4_range is not None:
             pulumi.set(__self__, "ipv4_range", ipv4_range)
         if ipv4_range_auto_assign is not None:
             pulumi.set(__self__, "ipv4_range_auto_assign", ipv4_range_auto_assign)
+        if ipv6_range is not None:
+            pulumi.set(__self__, "ipv6_range", ipv6_range)
 
     @_builtins.property
     @pulumi.getter(name="subnetId")
@@ -7388,6 +12851,18 @@ class NodeBalancerVpcArgs:
     @ipv4_range_auto_assign.setter
     def ipv4_range_auto_assign(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv4_range_auto_assign", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Range")
+    def ipv6_range(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        """
+        return pulumi.get(self, "ipv6_range")
+
+    @ipv6_range.setter
+    def ipv6_range(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_range", value)
 
 
 class ObjectStorageBucketCertArgsDict(TypedDict):
@@ -7446,9 +12921,9 @@ class ObjectStorageBucketLifecycleRuleArgsDict(TypedDict):
     """
     Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 
-    * `expiration` - (Optional) Specifies a period in the object's expire.
+    * `expiration` - (Optional, Block) Specifies a period in the object's expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
 
-    * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+    * `noncurrent_version_expiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
     """
     expiration: NotRequired[pulumi.Input[Optional['ObjectStorageBucketLifecycleRuleExpirationArgsDict']]]
     """
@@ -7480,9 +12955,9 @@ class ObjectStorageBucketLifecycleRuleArgs:
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether the lifecycle rule is active.
         :param pulumi.Input[_builtins.int] abort_incomplete_multipart_upload_days: Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
                
-               * `expiration` - (Optional) Specifies a period in the object's expire.
+               * `expiration` - (Optional, Block) Specifies a period in the object's expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
                
-               * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+               * `noncurrent_version_expiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
         :param pulumi.Input['ObjectStorageBucketLifecycleRuleExpirationArgs'] expiration: Specifies a period in the object's expire.
         :param pulumi.Input[_builtins.str] id: The unique identifier for the rule.
         :param pulumi.Input['ObjectStorageBucketLifecycleRuleNoncurrentVersionExpirationArgs'] noncurrent_version_expiration: Specifies when non-current object versions expire.
@@ -7518,9 +12993,9 @@ class ObjectStorageBucketLifecycleRuleArgs:
         """
         Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
 
-        * `expiration` - (Optional) Specifies a period in the object's expire.
+        * `expiration` - (Optional, Block) Specifies a period in the object's expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
 
-        * `noncurrent_version_expiration` - (Optional) Specifies when non-current object versions expire.
+        * `noncurrent_version_expiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
         """
         return pulumi.get(self, "abort_incomplete_multipart_upload_days")
 
@@ -7683,11 +13158,7 @@ class ObjectStorageKeyBucketAccessArgsDict(TypedDict):
     """
     This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
     """
-    cluster: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    """
-    The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-    """
-    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    region: pulumi.Input[_builtins.str]
     """
     The region where the bucket resides.
     """
@@ -7697,23 +13168,15 @@ class ObjectStorageKeyBucketAccessArgs:
     def __init__(__self__, *,
                  bucket_name: pulumi.Input[_builtins.str],
                  permissions: pulumi.Input[_builtins.str],
-                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None):
+                 region: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] bucket_name: The unique label of the bucket to which the key will grant limited access.
         :param pulumi.Input[_builtins.str] permissions: This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
-        :param pulumi.Input[_builtins.str] cluster: The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         pulumi.set(__self__, "permissions", permissions)
-        if cluster is not None:
-            warnings.warn("""The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""", DeprecationWarning)
-            pulumi.log.warn("""cluster is deprecated: The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""")
-        if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
@@ -7741,27 +13204,14 @@ class ObjectStorageKeyBucketAccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""The `cluster` attribute in a `bucket_access` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`""")
-    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-        """
-        return pulumi.get(self, "cluster")
-
-    @cluster.setter
-    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+    def region(self) -> pulumi.Input[_builtins.str]:
         """
         The region where the bucket resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+    def region(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "region", value)
 
 
@@ -7887,7 +13337,7 @@ class ProducerImageShareGroupImageArgsDict(TypedDict):
     """
     The description of the Image Share Group
 
-    * `images` - (Optional) A list of Images to include in the Image Share Group.
+    * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
     """
     label: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -7904,7 +13354,7 @@ class ProducerImageShareGroupImageArgs:
         :param pulumi.Input[_builtins.str] id: (Required) The ID of the Image to share. This must be in the format `private/<image_id>`.
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
-               * `images` - (Optional) A list of Images to include in the Image Share Group.
+               * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         :param pulumi.Input[_builtins.str] label: The label of the Image Share Group.
         """
         pulumi.set(__self__, "id", id)
@@ -7931,7 +13381,7 @@ class ProducerImageShareGroupImageArgs:
         """
         The description of the Image Share Group
 
-        * `images` - (Optional) A list of Images to include in the Image Share Group.
+        * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         """
         return pulumi.get(self, "description")
 
@@ -8001,10 +13451,189 @@ class RdnsTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
+class ReservedIpAssignedEntityArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the assigned entity.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the assigned entity.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the assigned entity (e.g. `linode`).
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The API URL of the assigned entity.
+    """
+
+@pulumi.input_type
+class ReservedIpAssignedEntityArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 label: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] id: The ID of the assigned entity.
+        :param pulumi.Input[_builtins.str] label: The label of the assigned entity.
+        :param pulumi.Input[_builtins.str] type: The type of the assigned entity (e.g. `linode`).
+        :param pulumi.Input[_builtins.str] url: The API URL of the assigned entity.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the assigned entity.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label of the assigned entity.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the assigned entity (e.g. `linode`).
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The API URL of the assigned entity.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+
+class ReservedIpAssignmentAssignedEntityArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    The ID of the entity.
+    """
+    label: pulumi.Input[_builtins.str]
+    """
+    The label of the entity.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of the entity.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The URL of the entity.
+    """
+
+@pulumi.input_type
+class ReservedIpAssignmentAssignedEntityArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 label: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.int] id: The ID of the entity.
+        :param pulumi.Input[_builtins.str] label: The label of the entity.
+        :param pulumi.Input[_builtins.str] type: The type of the entity.
+        :param pulumi.Input[_builtins.str] url: The URL of the entity.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The ID of the entity.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> pulumi.Input[_builtins.str]:
+        """
+        The label of the entity.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The type of the entity.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The URL of the entity.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+
 class ReservedIpAssignmentVpcNat11ArgsDict(TypedDict):
     address: pulumi.Input[_builtins.str]
+    """
+    The reserved IPv4 address to assign to the Linode.
+    """
     subnet_id: pulumi.Input[_builtins.int]
+    """
+    The `id` of the VPC Subnet for this Interface.
+    """
     vpc_id: pulumi.Input[_builtins.int]
+    """
+    The `id` of the VPC configured for this Interface.
+    """
 
 @pulumi.input_type
 class ReservedIpAssignmentVpcNat11Args:
@@ -8012,6 +13641,11 @@ class ReservedIpAssignmentVpcNat11Args:
                  address: pulumi.Input[_builtins.str],
                  subnet_id: pulumi.Input[_builtins.int],
                  vpc_id: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The reserved IPv4 address to assign to the Linode.
+        :param pulumi.Input[_builtins.int] subnet_id: The `id` of the VPC Subnet for this Interface.
+        :param pulumi.Input[_builtins.int] vpc_id: The `id` of the VPC configured for this Interface.
+        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -8019,6 +13653,67 @@ class ReservedIpAssignmentVpcNat11Args:
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The reserved IPv4 address to assign to the Linode.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The `id` of the VPC Subnet for this Interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        The `id` of the VPC configured for this Interface.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "vpc_id", value)
+
+
+class ReservedIpVpcNat11ArgsDict(TypedDict):
+    address: pulumi.Input[_builtins.str]
+    """
+    The reserved IPv4 address.
+    """
+    subnet_id: pulumi.Input[_builtins.int]
+    vpc_id: pulumi.Input[_builtins.int]
+
+@pulumi.input_type
+class ReservedIpVpcNat11Args:
+    def __init__(__self__, *,
+                 address: pulumi.Input[_builtins.str],
+                 subnet_id: pulumi.Input[_builtins.int],
+                 vpc_id: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.str] address: The reserved IPv4 address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[_builtins.str]:
+        """
+        The reserved IPv4 address.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -8928,6 +14623,34 @@ class VolumeTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
+class VpcIpv4ArgsDict(TypedDict):
+    range: pulumi.Input[_builtins.str]
+    """
+    The IPv4 range assigned to this VPC.
+    """
+
+@pulumi.input_type
+class VpcIpv4Args:
+    def __init__(__self__, *,
+                 range: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] range: The IPv4 range assigned to this VPC.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        The IPv4 range assigned to this VPC.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
+
+
 class VpcIpv6ArgsDict(TypedDict):
     allocated_range: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -9003,15 +14726,15 @@ class VpcIpv6Args:
 class VpcSubnetDatabaseArgsDict(TypedDict):
     id: pulumi.Input[_builtins.int]
     """
-    ID of a managed database assigned to the VPC Subnet.
+    ID of a NodeBalancer assigned to the VPC Subnet.
     """
     ipv4_range: pulumi.Input[_builtins.str]
     """
-    IPv4 range assigned to the database.
+    IPv4 range assigned to the NodeBalancer.
     """
     ipv6_ranges: pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgsDict']]]
     """
-    A list of IPv6 ranges assigned to the database.
+    (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
     """
 
 @pulumi.input_type
@@ -9021,9 +14744,9 @@ class VpcSubnetDatabaseArgs:
                  ipv4_range: pulumi.Input[_builtins.str],
                  ipv6_ranges: pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]]):
         """
-        :param pulumi.Input[_builtins.int] id: ID of a managed database assigned to the VPC Subnet.
-        :param pulumi.Input[_builtins.str] ipv4_range: IPv4 range assigned to the database.
-        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]] ipv6_ranges: A list of IPv6 ranges assigned to the database.
+        :param pulumi.Input[_builtins.int] id: ID of a NodeBalancer assigned to the VPC Subnet.
+        :param pulumi.Input[_builtins.str] ipv4_range: IPv4 range assigned to the NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]] ipv6_ranges: (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "ipv4_range", ipv4_range)
@@ -9033,7 +14756,7 @@ class VpcSubnetDatabaseArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        ID of a managed database assigned to the VPC Subnet.
+        ID of a NodeBalancer assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -9045,7 +14768,7 @@ class VpcSubnetDatabaseArgs:
     @pulumi.getter(name="ipv4Range")
     def ipv4_range(self) -> pulumi.Input[_builtins.str]:
         """
-        IPv4 range assigned to the database.
+        IPv4 range assigned to the NodeBalancer.
         """
         return pulumi.get(self, "ipv4_range")
 
@@ -9057,7 +14780,7 @@ class VpcSubnetDatabaseArgs:
     @pulumi.getter(name="ipv6Ranges")
     def ipv6_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseIpv6RangeArgs']]]:
         """
-        A list of IPv6 ranges assigned to the database.
+        (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
         """
         return pulumi.get(self, "ipv6_ranges")
 
@@ -9146,11 +14869,11 @@ class VpcSubnetIpv6Args:
 class VpcSubnetLinodeArgsDict(TypedDict):
     id: pulumi.Input[_builtins.int]
     """
-    ID of a managed database assigned to the VPC Subnet.
+    ID of a NodeBalancer assigned to the VPC Subnet.
     """
     interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgsDict']]]
     """
-    A list of networking interfaces objects.
+    (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
     """
 
 @pulumi.input_type
@@ -9159,8 +14882,8 @@ class VpcSubnetLinodeArgs:
                  id: pulumi.Input[_builtins.int],
                  interfaces: pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]]):
         """
-        :param pulumi.Input[_builtins.int] id: ID of a managed database assigned to the VPC Subnet.
-        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]] interfaces: A list of networking interfaces objects.
+        :param pulumi.Input[_builtins.int] id: ID of a NodeBalancer assigned to the VPC Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]] interfaces: (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "interfaces", interfaces)
@@ -9169,7 +14892,7 @@ class VpcSubnetLinodeArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        ID of a managed database assigned to the VPC Subnet.
+        ID of a NodeBalancer assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -9181,7 +14904,7 @@ class VpcSubnetLinodeArgs:
     @pulumi.getter
     def interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeInterfaceArgs']]]:
         """
-        A list of networking interfaces objects.
+        (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
         """
         return pulumi.get(self, "interfaces")
 
@@ -9201,7 +14924,7 @@ class VpcSubnetLinodeInterfaceArgsDict(TypedDict):
     """
     id: pulumi.Input[_builtins.int]
     """
-    ID of a managed database assigned to the VPC Subnet.
+    ID of a NodeBalancer assigned to the VPC Subnet.
     """
 
 @pulumi.input_type
@@ -9213,7 +14936,7 @@ class VpcSubnetLinodeInterfaceArgs:
         """
         :param pulumi.Input[_builtins.bool] active: Whether the Interface is actively in use.
         :param pulumi.Input[_builtins.int] config_id: ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
-        :param pulumi.Input[_builtins.int] id: ID of a managed database assigned to the VPC Subnet.
+        :param pulumi.Input[_builtins.int] id: ID of a NodeBalancer assigned to the VPC Subnet.
         """
         pulumi.set(__self__, "active", active)
         pulumi.set(__self__, "config_id", config_id)
@@ -9247,13 +14970,107 @@ class VpcSubnetLinodeInterfaceArgs:
     @pulumi.getter
     def id(self) -> pulumi.Input[_builtins.int]:
         """
-        ID of a managed database assigned to the VPC Subnet.
+        ID of a NodeBalancer assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
     @id.setter
     def id(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "id", value)
+
+
+class VpcSubnetNodebalancerArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.int]
+    """
+    ID of a NodeBalancer assigned to the VPC Subnet.
+    """
+    ipv4_range: pulumi.Input[_builtins.str]
+    """
+    IPv4 range assigned to the NodeBalancer.
+    """
+    ipv6_ranges: pulumi.Input[Sequence[pulumi.Input['VpcSubnetNodebalancerIpv6RangeArgsDict']]]
+    """
+    (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
+    """
+
+@pulumi.input_type
+class VpcSubnetNodebalancerArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.int],
+                 ipv4_range: pulumi.Input[_builtins.str],
+                 ipv6_ranges: pulumi.Input[Sequence[pulumi.Input['VpcSubnetNodebalancerIpv6RangeArgs']]]):
+        """
+        :param pulumi.Input[_builtins.int] id: ID of a NodeBalancer assigned to the VPC Subnet.
+        :param pulumi.Input[_builtins.str] ipv4_range: IPv4 range assigned to the NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetNodebalancerIpv6RangeArgs']]] ipv6_ranges: (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.int]:
+        """
+        ID of a NodeBalancer assigned to the VPC Subnet.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> pulumi.Input[_builtins.str]:
+        """
+        IPv4 range assigned to the NodeBalancer.
+        """
+        return pulumi.get(self, "ipv4_range")
+
+    @ipv4_range.setter
+    def ipv4_range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ipv4_range", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['VpcSubnetNodebalancerIpv6RangeArgs']]]:
+        """
+        (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
+        """
+        return pulumi.get(self, "ipv6_ranges")
+
+    @ipv6_ranges.setter
+    def ipv6_ranges(self, value: pulumi.Input[Sequence[pulumi.Input['VpcSubnetNodebalancerIpv6RangeArgs']]]):
+        pulumi.set(self, "ipv6_ranges", value)
+
+
+class VpcSubnetNodebalancerIpv6RangeArgsDict(TypedDict):
+    range: pulumi.Input[_builtins.str]
+    """
+    An IPv6 address range in CIDR notation.
+    """
+
+@pulumi.input_type
+class VpcSubnetNodebalancerIpv6RangeArgs:
+    def __init__(__self__, *,
+                 range: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] range: An IPv6 address range in CIDR notation.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> pulumi.Input[_builtins.str]:
+        """
+        An IPv6 address range in CIDR notation.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "range", value)
 
 
 class GetAccountAvailabilitiesFilterArgsDict(TypedDict):
@@ -9547,7 +15364,7 @@ class GetConsumerImageShareGroupImageSharesImageShareArgsDict(TypedDict):
     """
     image_sharing: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict'
     """
-    Details about image sharing, including who the image is shared with and by.
+    (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
     """
     is_public: _builtins.bool
     """
@@ -9600,7 +15417,7 @@ class GetConsumerImageShareGroupImageSharesImageShareArgs:
         :param _builtins.bool deprecated: Whether this Image is deprecated.
         :param _builtins.str description: A description of the Image Share.
         :param _builtins.str id: The unique ID assigned to this Image Share.
-        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs' image_sharing: Details about image sharing, including who the image is shared with and by.
+        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs' image_sharing: (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
         :param _builtins.bool is_public: True if the Image is public.
         :param _builtins.str label: The label of the Image Share.
         :param _builtins.int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
@@ -9687,7 +15504,7 @@ class GetConsumerImageShareGroupImageSharesImageShareArgs:
     @pulumi.getter(name="imageSharing")
     def image_sharing(self) -> 'GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs':
         """
-        Details about image sharing, including who the image is shared with and by.
+        (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
         """
         return pulumi.get(self, "image_sharing")
 
@@ -9783,11 +15600,11 @@ class GetConsumerImageShareGroupImageSharesImageShareArgs:
 class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgsDict(TypedDict):
     shared_by: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict'
     """
-    Details about who the image is shared by.
+    (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
     """
     shared_with: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict'
     """
-    Details about who the image is shared with.
+    (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
     """
 
 @pulumi.input_type
@@ -9796,8 +15613,8 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs:
                  shared_by: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs',
                  shared_with: 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs'):
         """
-        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
-        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs' shared_by: (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
+        :param 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs' shared_with: (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
         """
         pulumi.set(__self__, "shared_by", shared_by)
         pulumi.set(__self__, "shared_with", shared_with)
@@ -9806,7 +15623,7 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs:
     @pulumi.getter(name="sharedBy")
     def shared_by(self) -> 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs':
         """
-        Details about who the image is shared by.
+        (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
         """
         return pulumi.get(self, "shared_by")
 
@@ -9818,7 +15635,7 @@ class GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs:
     @pulumi.getter(name="sharedWith")
     def shared_with(self) -> 'GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs':
         """
-        Details about who the image is shared with.
+        (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
         """
         return pulumi.get(self, "shared_with")
 
@@ -10626,6 +16443,73 @@ class GetFirewallsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+class GetIamEntitiesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the attribute to filter on.
+    """
+    values: Sequence[_builtins.str]
+    """
+    The value(s) to be used in the filter.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The type of comparison to use for this filter.
+    """
+
+@pulumi.input_type
+class GetIamEntitiesFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the attribute to filter on.
+        :param Sequence[_builtins.str] values: The value(s) to be used in the filter.
+        :param _builtins.str match_by: The type of comparison to use for this filter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the attribute to filter on.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The value(s) to be used in the filter.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The type of comparison to use for this filter.
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
 class GetImagesFilterArgsDict(TypedDict):
     name: _builtins.str
     """
@@ -11229,6 +17113,341 @@ class GetMaintenancePoliciesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+class GetMonitorAlertChannelsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetMonitorAlertChannelsFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMonitorAlertDefinitionEntitiesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetMonitorAlertDefinitionEntitiesFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMonitorAlertDefinitionsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetMonitorAlertDefinitionsFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMonitorLogsDestinationsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetMonitorLogsDestinationsFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetMonitorLogsStreamsFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetMonitorLogsStreamsFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
 class GetNbTypesFilterArgsDict(TypedDict):
     name: _builtins.str
     """
@@ -11698,6 +17917,73 @@ class GetObjectStorageEndpointsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
+class GetObjectStorageGlobalQuotasFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetObjectStorageGlobalQuotasFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
 class GetObjectStorageQuotasFilterArgsDict(TypedDict):
     name: _builtins.str
     """
@@ -11922,7 +18208,7 @@ class GetProducerImageShareGroupImageSharesImageShareArgsDict(TypedDict):
     """
     image_sharing: 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict'
     """
-    Details about image sharing, including who the image is shared with and by.
+    (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
     """
     is_public: _builtins.bool
     """
@@ -11975,7 +18261,7 @@ class GetProducerImageShareGroupImageSharesImageShareArgs:
         :param _builtins.bool deprecated: Whether this Image is deprecated.
         :param _builtins.str description: A description of the Image Share.
         :param _builtins.str id: The unique ID assigned to this Image Share.
-        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgs' image_sharing: Details about image sharing, including who the image is shared with and by.
+        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgs' image_sharing: (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
         :param _builtins.bool is_public: True if the Image is public.
         :param _builtins.str label: The label of the Image Share.
         :param _builtins.int size: The minimum size this Image needs to deploy. Size is in MB. example: 2500
@@ -12062,7 +18348,7 @@ class GetProducerImageShareGroupImageSharesImageShareArgs:
     @pulumi.getter(name="imageSharing")
     def image_sharing(self) -> 'GetProducerImageShareGroupImageSharesImageShareImageSharingArgs':
         """
-        Details about image sharing, including who the image is shared with and by.
+        (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
         """
         return pulumi.get(self, "image_sharing")
 
@@ -12158,11 +18444,11 @@ class GetProducerImageShareGroupImageSharesImageShareArgs:
 class GetProducerImageShareGroupImageSharesImageShareImageSharingArgsDict(TypedDict):
     shared_by: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDict'
     """
-    Details about who the image is shared by.
+    (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
     """
     shared_with: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgsDict'
     """
-    Details about who the image is shared with.
+    (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
     """
 
 @pulumi.input_type
@@ -12171,8 +18457,8 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingArgs:
                  shared_by: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs',
                  shared_with: 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs'):
         """
-        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs' shared_by: Details about who the image is shared by.
-        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs' shared_with: Details about who the image is shared with.
+        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs' shared_by: (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
+        :param 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs' shared_with: (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
         """
         pulumi.set(__self__, "shared_by", shared_by)
         pulumi.set(__self__, "shared_with", shared_with)
@@ -12181,7 +18467,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingArgs:
     @pulumi.getter(name="sharedBy")
     def shared_by(self) -> 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs':
         """
-        Details about who the image is shared by.
+        (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
         """
         return pulumi.get(self, "shared_by")
 
@@ -12193,7 +18479,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingArgs:
     @pulumi.getter(name="sharedWith")
     def shared_with(self) -> 'GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs':
         """
-        Details about who the image is shared with.
+        (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
         """
         return pulumi.get(self, "shared_with")
 
@@ -12207,7 +18493,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgsDic
     """
     The ID of the Image Share Group to list shared Images from.
 
-    * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+    * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
     """
     sharegroup_label: _builtins.str
     """
@@ -12232,7 +18518,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs:
         """
         :param _builtins.int sharegroup_id: The ID of the Image Share Group to list shared Images from.
                
-               * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+               * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
         :param _builtins.str sharegroup_label: The label from the associated im_ImageShareGroup row.
         :param _builtins.str sharegroup_uuid: The sharegroup_uuid from the im_ImageShare row.
         :param _builtins.str source_image_id: The image id of the base image (will only be shown to producers, will be null for consumers).
@@ -12248,7 +18534,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs:
         """
         The ID of the Image Share Group to list shared Images from.
 
-        * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
         """
         return pulumi.get(self, "sharegroup_id")
 
@@ -12831,6 +19117,73 @@ class GetRegionsFilterArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetRegionsFilterArgs:
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str name: The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        :param Sequence[_builtins.str] values: A list of values for the filter to allow. These values should all be in string form.
+        :param _builtins.str match_by: The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "values", values)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: _builtins.str):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values for the filter to allow. These values should all be in string form.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+        """
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+class GetReservedIpTypesFilterArgsDict(TypedDict):
+    name: _builtins.str
+    """
+    The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values for the filter to allow. These values should all be in string form.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+    """
+
+@pulumi.input_type
+class GetReservedIpTypesFilterArgs:
     def __init__(__self__, *,
                  name: _builtins.str,
                  values: Sequence[_builtins.str],

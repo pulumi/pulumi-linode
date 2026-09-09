@@ -78,7 +78,8 @@ type GetIpv6RangesArgs struct {
 type GetIpv6RangesResult struct {
 	Filters []GetIpv6RangesFilter `pulumi:"filters"`
 	Id      string                `pulumi:"id"`
-	Ranges  []GetIpv6RangesRange  `pulumi:"ranges"`
+	// (Nested Attribute List) A list of Linode IPv6 ranges.
+	Ranges []GetIpv6RangesRange `pulumi:"ranges"`
 }
 
 func GetIpv6RangesOutput(ctx *pulumi.Context, args GetIpv6RangesOutputArgs, opts ...pulumi.InvokeOption) GetIpv6RangesResultOutput {
@@ -118,6 +119,7 @@ func (o GetIpv6RangesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIpv6RangesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) A list of Linode IPv6 ranges.
 func (o GetIpv6RangesResultOutput) Ranges() GetIpv6RangesRangeArrayOutput {
 	return o.ApplyT(func(v GetIpv6RangesResult) []GetIpv6RangesRange { return v.Ranges }).(GetIpv6RangesRangeArrayOutput)
 }

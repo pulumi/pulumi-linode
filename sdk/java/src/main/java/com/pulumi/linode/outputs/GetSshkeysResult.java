@@ -23,6 +23,10 @@ public final class GetSshkeysResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The SSH Keys returned by this data source.
+     * 
+     */
     private List<GetSshkeysSshkey> sshkeys;
 
     private GetSshkeysResult() {}
@@ -42,6 +46,10 @@ public final class GetSshkeysResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The SSH Keys returned by this data source.
+     * 
+     */
     public List<GetSshkeysSshkey> sshkeys() {
         return this.sshkeys;
     }

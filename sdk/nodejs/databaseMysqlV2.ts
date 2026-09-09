@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     label: "mydatabase",
  *     engineId: "mysql/8",
+ *     label: "mydatabase",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
  * });
@@ -30,11 +30,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     label: "mydatabase",
- *     engineId: "mysql/8",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  *     allowLists: ["0.0.0.0/0"],
+ *     engineId: "mysql/8",
+ *     label: "mydatabase",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -42,17 +42,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     label: "mydatabase",
- *     engineId: "mysql/8",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  *     allowLists: ["10.0.0.3/32"],
  *     clusterSize: 3,
+ *     engineId: "mysql/8",
+ *     label: "mydatabase",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     updates: {
+ *         day_of_week: 3,
  *         duration: 4,
  *         frequency: "weekly",
- *         hourOfDay: 22,
- *         dayOfWeek: 3,
+ *         hour_of_day: 22,
  *     },
  * });
  * ```
@@ -61,10 +61,6 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     label: "mydatabase",
- *     engineId: "mysql/8",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  *     engineConfigBinlogRetentionPeriod: 3600,
  *     engineConfigMysqlConnectTimeout: 10,
  *     engineConfigMysqlDefaultTimeZone: "+00:00",
@@ -93,18 +89,10 @@ import * as utilities from "./utilities";
  *     engineConfigMysqlSqlRequirePrimaryKey: false,
  *     engineConfigMysqlTmpTableSize: 16777216,
  *     engineConfigMysqlWaitTimeout: 28800,
- * });
- * ```
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as linode from "@pulumi/linode";
- *
- * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     label: "mydatabase",
  *     engineId: "mysql/8",
+ *     label: "mydatabase",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
- *     forkSource: 12345,
  * });
  * ```
  * ```typescript
@@ -112,15 +100,27 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     engineId: "mysql/8",
+ *     forkSource: 12345,
  *     label: "mydatabase",
- *     engineId: "mysql/16",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     engineId: "mysql/8",
+ *     label: "mydatabase",
  *     privateNetwork: {
- *         vpcId: 123,
- *         subnetId: 456,
- *         publicAccess: false,
+ *         public_access: false,
+ *         subnet_id: 456,
+ *         vpc_id: 123,
  *     },
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  * });
  * ```
  *
@@ -341,9 +341,9 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
     /**
      * The ID of the database that was forked from.
      *
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      */
     declare public readonly forkSource: pulumi.Output<number | undefined>;
     /**
@@ -373,7 +373,7 @@ export class DatabaseMysqlV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly oldestRestoreTime: pulumi.Output<string>;
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public /*out*/ readonly pendingUpdates: pulumi.Output<outputs.DatabaseMysqlV2PendingUpdate[]>;
     /**
@@ -734,9 +734,9 @@ export interface DatabaseMysqlV2State {
     /**
      * The ID of the database that was forked from.
      *
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      */
     forkSource?: pulumi.Input<number | undefined>;
     /**
@@ -766,7 +766,7 @@ export interface DatabaseMysqlV2State {
      */
     oldestRestoreTime?: pulumi.Input<string | undefined>;
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     pendingUpdates?: pulumi.Input<pulumi.Input<inputs.DatabaseMysqlV2PendingUpdate>[] | undefined>;
     /**
@@ -961,9 +961,9 @@ export interface DatabaseMysqlV2Args {
     /**
      * The ID of the database that was forked from.
      *
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      */
     forkSource?: pulumi.Input<number | undefined>;
     /**

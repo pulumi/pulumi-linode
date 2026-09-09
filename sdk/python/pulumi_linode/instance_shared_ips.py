@@ -122,12 +122,12 @@ class InstanceSharedIps(pulumi.CustomResource):
         import pulumi_linode as linode
 
         # Create a single primary node
-        primary_instance = linode.Instance("primary",
+        primary_instance = linode.Instance("primaryInstance",
             label="node-primary",
             type="g6-nanode-1",
             region="eu-central")
         # Allocate an IP under the primary node
-        primary = linode.InstanceIp("primary", linode_id=primary_instance.id.apply(lambda x: int(x)))
+        primary_instance_ip = linode.InstanceIp("primaryInstanceIp", linode_id=primary_instance.id.apply(lambda x: int(x)))
         # Create a secondary node
         secondary = linode.Instance("secondary",
             label="node-secondary",
@@ -136,7 +136,7 @@ class InstanceSharedIps(pulumi.CustomResource):
         # Share the IP with the secondary node
         share_primary = linode.InstanceSharedIps("share-primary",
             linode_id=secondary.id.apply(lambda x: int(x)),
-            addresses=[primary.address])
+            addresses=[primary_instance_ip.address])
         ```
 
 
@@ -168,12 +168,12 @@ class InstanceSharedIps(pulumi.CustomResource):
         import pulumi_linode as linode
 
         # Create a single primary node
-        primary_instance = linode.Instance("primary",
+        primary_instance = linode.Instance("primaryInstance",
             label="node-primary",
             type="g6-nanode-1",
             region="eu-central")
         # Allocate an IP under the primary node
-        primary = linode.InstanceIp("primary", linode_id=primary_instance.id.apply(lambda x: int(x)))
+        primary_instance_ip = linode.InstanceIp("primaryInstanceIp", linode_id=primary_instance.id.apply(lambda x: int(x)))
         # Create a secondary node
         secondary = linode.Instance("secondary",
             label="node-secondary",
@@ -182,7 +182,7 @@ class InstanceSharedIps(pulumi.CustomResource):
         # Share the IP with the secondary node
         share_primary = linode.InstanceSharedIps("share-primary",
             linode_id=secondary.id.apply(lambda x: int(x)),
-            addresses=[primary.address])
+            addresses=[primary_instance_ip.address])
         ```
 
 

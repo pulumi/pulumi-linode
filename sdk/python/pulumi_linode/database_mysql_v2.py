@@ -103,9 +103,9 @@ class DatabaseMysqlV2Args:
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs'] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input['DatabaseMysqlV2UpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
@@ -615,9 +615,9 @@ class DatabaseMysqlV2Args:
         """
         The ID of the database that was forked from.
 
-        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         """
         return pulumi.get(self, "fork_source")
 
@@ -773,16 +773,16 @@ class _DatabaseMysqlV2State:
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
         :param pulumi.Input[_builtins.str] host_standby: The standby host for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
-        :param pulumi.Input[Sequence[pulumi.Input['DatabaseMysqlV2PendingUpdateArgs']]] pending_updates: A set of pending updates.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseMysqlV2PendingUpdateArgs']]] pending_updates: (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
         :param pulumi.Input['DatabaseMysqlV2PrivateNetworkArgs'] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
@@ -1357,9 +1357,9 @@ class _DatabaseMysqlV2State:
         """
         The ID of the database that was forked from.
 
-        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         """
         return pulumi.get(self, "fork_source")
 
@@ -1444,7 +1444,7 @@ class _DatabaseMysqlV2State:
     @pulumi.getter(name="pendingUpdates")
     def pending_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseMysqlV2PendingUpdateArgs']]]]:
         """
-        A set of pending updates.
+        (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "pending_updates")
 
@@ -1680,8 +1680,8 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
             engine_id="mysql/8",
+            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -1690,28 +1690,28 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
+            allow_lists=["0.0.0.0/0"],
             engine_id="mysql/8",
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            allow_lists=["0.0.0.0/0"])
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
-            engine_id="mysql/8",
-            region="us-mia",
-            type="g6-nanode-1",
             allow_lists=["10.0.0.3/32"],
             cluster_size=3,
+            engine_id="mysql/8",
+            label="mydatabase",
+            region="us-mia",
+            type="g6-nanode-1",
             updates={
+                "day_of_week": 3,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
-                "day_of_week": 3,
             })
         ```
         ```python
@@ -1719,10 +1719,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
-            engine_id="mysql/8",
-            region="us-mia",
-            type="g6-nanode-1",
             engine_config_binlog_retention_period=3600,
             engine_config_mysql_connect_timeout=10,
             engine_config_mysql_default_time_zone="+00:00",
@@ -1750,33 +1746,37 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             engine_config_mysql_sql_mode="TRADITIONAL,ANSI",
             engine_config_mysql_sql_require_primary_key=False,
             engine_config_mysql_tmp_table_size=16777216,
-            engine_config_mysql_wait_timeout=28800)
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
+            engine_config_mysql_wait_timeout=28800,
             engine_id="mysql/8",
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            fork_source=12345)
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
+            engine_id="mysql/8",
+            fork_source=12345,
             label="mydatabase",
-            engine_id="mysql/16",
             region="us-mia",
-            type="g6-nanode-1",
+            type="g6-nanode-1")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            engine_id="mysql/8",
+            label="mydatabase",
             private_network={
-                "vpc_id": 123,
-                "subnet_id": 456,
                 "public_access": False,
-            })
+                "subnet_id": 456,
+                "vpc_id": 123,
+            },
+            region="us-mia",
+            type="g6-nanode-1")
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
@@ -1858,9 +1858,9 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
@@ -1889,8 +1889,8 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
             engine_id="mysql/8",
+            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -1899,28 +1899,28 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
+            allow_lists=["0.0.0.0/0"],
             engine_id="mysql/8",
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            allow_lists=["0.0.0.0/0"])
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
-            engine_id="mysql/8",
-            region="us-mia",
-            type="g6-nanode-1",
             allow_lists=["10.0.0.3/32"],
             cluster_size=3,
+            engine_id="mysql/8",
+            label="mydatabase",
+            region="us-mia",
+            type="g6-nanode-1",
             updates={
+                "day_of_week": 3,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
-                "day_of_week": 3,
             })
         ```
         ```python
@@ -1928,10 +1928,6 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
-            engine_id="mysql/8",
-            region="us-mia",
-            type="g6-nanode-1",
             engine_config_binlog_retention_period=3600,
             engine_config_mysql_connect_timeout=10,
             engine_config_mysql_default_time_zone="+00:00",
@@ -1959,33 +1955,37 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             engine_config_mysql_sql_mode="TRADITIONAL,ANSI",
             engine_config_mysql_sql_require_primary_key=False,
             engine_config_mysql_tmp_table_size=16777216,
-            engine_config_mysql_wait_timeout=28800)
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysqlV2("foobar",
-            label="mydatabase",
+            engine_config_mysql_wait_timeout=28800,
             engine_id="mysql/8",
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            fork_source=12345)
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
+            engine_id="mysql/8",
+            fork_source=12345,
             label="mydatabase",
-            engine_id="mysql/16",
             region="us-mia",
-            type="g6-nanode-1",
+            type="g6-nanode-1")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            engine_id="mysql/8",
+            label="mydatabase",
             private_network={
-                "vpc_id": 123,
-                "subnet_id": 456,
                 "public_access": False,
-            })
+                "subnet_id": 456,
+                "vpc_id": 123,
+            },
+            region="us-mia",
+            type="g6-nanode-1")
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
@@ -2276,16 +2276,16 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
         :param pulumi.Input[_builtins.str] host_standby: The standby host for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict']]]] pending_updates: A set of pending updates.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict']]]] pending_updates: (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
         :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
@@ -2660,9 +2660,9 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         """
         The ID of the database that was forked from.
 
-        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         """
         return pulumi.get(self, "fork_source")
 
@@ -2719,7 +2719,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
     @pulumi.getter(name="pendingUpdates")
     def pending_updates(self) -> pulumi.Output[Sequence['outputs.DatabaseMysqlV2PendingUpdate']]:
         """
-        A set of pending updates.
+        (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "pending_updates")
 

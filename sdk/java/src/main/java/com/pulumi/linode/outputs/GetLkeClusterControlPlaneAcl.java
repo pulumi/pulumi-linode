@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeClusterControlPlaneAcl {
     /**
-     * @return A list of ip addresses to allow.
+     * @return (Nested Attribute List) A list of ip addresses to allow.
      * 
      */
     private List<GetLkeClusterControlPlaneAclAddress> addresses;
@@ -25,7 +25,7 @@ public final class GetLkeClusterControlPlaneAcl {
 
     private GetLkeClusterControlPlaneAcl() {}
     /**
-     * @return A list of ip addresses to allow.
+     * @return (Nested Attribute List) A list of ip addresses to allow.
      * 
      */
     public List<GetLkeClusterControlPlaneAclAddress> addresses() {

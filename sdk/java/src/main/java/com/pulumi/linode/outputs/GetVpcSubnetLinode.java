@@ -18,7 +18,7 @@ public final class GetVpcSubnetLinode {
      */
     private Integer id;
     /**
-     * @return A list of networking interfaces objects.
+     * @return (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `linodes.0.interfaces.0.id`).
      * 
      */
     private List<GetVpcSubnetLinodeInterface> interfaces;
@@ -32,7 +32,7 @@ public final class GetVpcSubnetLinode {
         return this.id;
     }
     /**
-     * @return A list of networking interfaces objects.
+     * @return (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `linodes.0.interfaces.0.id`).
      * 
      */
     public List<GetVpcSubnetLinodeInterface> interfaces() {

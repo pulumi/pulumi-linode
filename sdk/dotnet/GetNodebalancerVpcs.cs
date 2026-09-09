@@ -44,7 +44,6 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
-        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -56,6 +55,33 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
+        ///         NodebalancerId = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
+        ///             {
+        ///                 Name = "ipv6_range",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2a01:7e04:e403:3::/64",
+        ///                 },
+        ///             },
+        ///         },
+        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -66,6 +92,8 @@ namespace Pulumi.Linode
         /// * `Id`
         /// 
         /// * `Ipv4Range`
+        /// 
+        /// * `Ipv6Range`
         /// 
         /// * `NodebalancerId`
         /// 
@@ -109,7 +137,6 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
-        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -121,6 +148,33 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
+        ///         NodebalancerId = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
+        ///             {
+        ///                 Name = "ipv6_range",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2a01:7e04:e403:3::/64",
+        ///                 },
+        ///             },
+        ///         },
+        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -131,6 +185,8 @@ namespace Pulumi.Linode
         /// * `Id`
         /// 
         /// * `Ipv4Range`
+        /// 
+        /// * `Ipv6Range`
         /// 
         /// * `NodebalancerId`
         /// 
@@ -174,7 +230,6 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
-        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -186,6 +241,33 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
+        ///         NodebalancerId = 12345,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
+        ///             {
+        ///                 Name = "ipv6_range",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "2a01:7e04:e403:3::/64",
+        ///                 },
+        ///             },
+        ///         },
+        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -196,6 +278,8 @@ namespace Pulumi.Linode
         /// * `Id`
         /// 
         /// * `Ipv4Range`
+        /// 
+        /// * `Ipv6Range`
         /// 
         /// * `NodebalancerId`
         /// 
@@ -221,7 +305,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to list VPC configurations for.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public int NodebalancerId { get; set; }
@@ -257,7 +341,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to list VPC configurations for.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public Input<int> NodebalancerId { get; set; } = null!;
@@ -295,6 +379,9 @@ namespace Pulumi.Linode
         public readonly int NodebalancerId;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) A list of VPC configurations.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodebalancerVpcsVpcConfigResult> VpcConfigs;
 
         [OutputConstructor]

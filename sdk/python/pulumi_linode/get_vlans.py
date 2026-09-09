@@ -68,6 +68,9 @@ class GetVlansResult:
     @_builtins.property
     @pulumi.getter
     def vlans(self) -> Sequence['outputs.GetVlansVlanResult']:
+        """
+        (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+        """
         return pulumi.get(self, "vlans")
 
 
@@ -102,7 +105,7 @@ def get_vlans(filters: Optional[Sequence[Union['GetVlansFilterArgs', 'GetVlansFi
     import pulumi
     import pulumi_linode as linode
 
-    my_instance = linode.Instance("my_instance",
+    my_instance = linode.Instance("myInstance",
         label="my_instance",
         image="linode/ubuntu22.04",
         region="us-southeast",
@@ -160,7 +163,7 @@ def get_vlans_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['Get
     import pulumi
     import pulumi_linode as linode
 
-    my_instance = linode.Instance("my_instance",
+    my_instance = linode.Instance("myInstance",
         label="my_instance",
         image="linode/ubuntu22.04",
         region="us-southeast",

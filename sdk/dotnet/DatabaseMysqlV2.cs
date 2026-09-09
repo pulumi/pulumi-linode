@@ -27,8 +27,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
+    ///         Label = "mydatabase",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
     ///     });
@@ -45,14 +45,14 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "mysql/8",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "0.0.0.0/0",
     ///         },
+    ///         EngineId = "mysql/8",
+    ///         Label = "mydatabase",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -67,21 +67,21 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "mysql/8",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "10.0.0.3/32",
     ///         },
     ///         ClusterSize = 3,
+    ///         EngineId = "mysql/8",
+    ///         Label = "mydatabase",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         Updates = new Linode.Inputs.DatabaseMysqlV2UpdatesArgs
     ///         {
+    ///             Day_of_week = 3,
     ///             Duration = 4,
     ///             Frequency = "weekly",
-    ///             HourOfDay = 22,
-    ///             DayOfWeek = 3,
+    ///             Hour_of_day = 22,
     ///         },
     ///     });
     /// 
@@ -97,10 +97,6 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "mysql/8",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         EngineConfigBinlogRetentionPeriod = 3600,
     ///         EngineConfigMysqlConnectTimeout = 10,
     ///         EngineConfigMysqlDefaultTimeZone = "+00:00",
@@ -129,25 +125,10 @@ namespace Pulumi.Linode
     ///         EngineConfigMysqlSqlRequirePrimaryKey = false,
     ///         EngineConfigMysqlTmpTableSize = 16777216,
     ///         EngineConfigMysqlWaitTimeout = 28800,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
-    ///     {
-    ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
+    ///         Label = "mydatabase",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
-    ///         ForkSource = 12345,
     ///     });
     /// 
     /// });
@@ -162,16 +143,35 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
+    ///         EngineId = "mysql/8",
+    ///         ForkSource = 12345,
     ///         Label = "mydatabase",
-    ///         EngineId = "mysql/16",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
+    ///     {
+    ///         EngineId = "mysql/8",
+    ///         Label = "mydatabase",
     ///         PrivateNetwork = new Linode.Inputs.DatabaseMysqlV2PrivateNetworkArgs
     ///         {
-    ///             VpcId = 123,
-    ///             SubnetId = 456,
-    ///             PublicAccess = false,
+    ///             Public_access = false,
+    ///             Subnet_id = 456,
+    ///             Vpc_id = 123,
     ///         },
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -441,9 +441,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Output("forkSource")]
         public Output<int?> ForkSource { get; private set; } = null!;
@@ -485,7 +485,7 @@ namespace Pulumi.Linode
         public Output<string> OldestRestoreTime { get; private set; } = null!;
 
         /// <summary>
-        /// A set of pending updates.
+        /// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("pendingUpdates")]
         public Output<ImmutableArray<Outputs.DatabaseMysqlV2PendingUpdate>> PendingUpdates { get; private set; } = null!;
@@ -826,9 +826,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -1117,9 +1117,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -1170,7 +1170,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.DatabaseMysqlV2PendingUpdateGetArgs>? _pendingUpdates;
 
         /// <summary>
-        /// A set of pending updates.
+        /// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.DatabaseMysqlV2PendingUpdateGetArgs> PendingUpdates
         {

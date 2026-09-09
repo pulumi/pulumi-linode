@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Details about image sharing, including who the image is shared with and by.
+        /// (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
         /// </summary>
         public readonly Outputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingResult ImageSharing;
         /// <summary>

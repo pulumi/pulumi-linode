@@ -83,7 +83,8 @@ type GetConsumerImageShareGroupTokensArgs struct {
 	Filters []GetConsumerImageShareGroupTokensFilter `pulumi:"filters"`
 	Order   *string                                  `pulumi:"order"`
 	OrderBy *string                                  `pulumi:"orderBy"`
-	Tokens  []GetConsumerImageShareGroupTokensToken  `pulumi:"tokens"`
+	// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+	Tokens []GetConsumerImageShareGroupTokensToken `pulumi:"tokens"`
 }
 
 // A collection of values returned by getConsumerImageShareGroupTokens.
@@ -92,7 +93,8 @@ type GetConsumerImageShareGroupTokensResult struct {
 	Id      string                                   `pulumi:"id"`
 	Order   *string                                  `pulumi:"order"`
 	OrderBy *string                                  `pulumi:"orderBy"`
-	Tokens  []GetConsumerImageShareGroupTokensToken  `pulumi:"tokens"`
+	// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+	Tokens []GetConsumerImageShareGroupTokensToken `pulumi:"tokens"`
 }
 
 func GetConsumerImageShareGroupTokensOutput(ctx *pulumi.Context, args GetConsumerImageShareGroupTokensOutputArgs, opts ...pulumi.InvokeOption) GetConsumerImageShareGroupTokensResultOutput {
@@ -105,7 +107,8 @@ type GetConsumerImageShareGroupTokensOutputArgs struct {
 	Filters GetConsumerImageShareGroupTokensFilterArrayInput `pulumi:"filters"`
 	Order   pulumi.StringPtrInput                            `pulumi:"order"`
 	OrderBy pulumi.StringPtrInput                            `pulumi:"orderBy"`
-	Tokens  GetConsumerImageShareGroupTokensTokenArrayInput  `pulumi:"tokens"`
+	// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+	Tokens GetConsumerImageShareGroupTokensTokenArrayInput `pulumi:"tokens"`
 }
 
 func (GetConsumerImageShareGroupTokensOutputArgs) ElementType() reflect.Type {
@@ -145,6 +148,7 @@ func (o GetConsumerImageShareGroupTokensResultOutput) OrderBy() pulumi.StringPtr
 	return o.ApplyT(func(v GetConsumerImageShareGroupTokensResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
 func (o GetConsumerImageShareGroupTokensResultOutput) Tokens() GetConsumerImageShareGroupTokensTokenArrayOutput {
 	return o.ApplyT(func(v GetConsumerImageShareGroupTokensResult) []GetConsumerImageShareGroupTokensToken {
 		return v.Tokens

@@ -54,7 +54,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetNodebalancerVpcs(ctx, &linode.GetNodebalancerVpcsArgs{
-//				NodebalancerId: 12345,
 //				Filters: []linode.GetNodebalancerVpcsFilter{
 //					{
 //						Name: "ipv4_range",
@@ -63,6 +62,38 @@ import (
 //						},
 //					},
 //				},
+//				NodebalancerId: 12345,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.GetNodebalancerVpcs(ctx, &linode.GetNodebalancerVpcsArgs{
+//				Filters: []linode.GetNodebalancerVpcsFilter{
+//					{
+//						Name: "ipv6_range",
+//						Values: []string{
+//							"2a01:7e04:e403:3::/64",
+//						},
+//					},
+//				},
+//				NodebalancerId: 12345,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -78,6 +109,8 @@ import (
 // * `id`
 //
 // * `ipv4Range`
+//
+// * `ipv6Range`
 //
 // * `nodebalancerId`
 //
@@ -99,7 +132,7 @@ type GetNodebalancerVpcsArgs struct {
 	Filters []GetNodebalancerVpcsFilter `pulumi:"filters"`
 	// The ID of the NodeBalancer to list VPC configurations for.
 	//
-	// * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
 	NodebalancerId int `pulumi:"nodebalancerId"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -113,10 +146,11 @@ type GetNodebalancerVpcsResult struct {
 	// The ID of the VPC configuration.
 	Id string `pulumi:"id"`
 	// The ID of the parent NodeBalancer for this VPC configuration.
-	NodebalancerId int                            `pulumi:"nodebalancerId"`
-	Order          *string                        `pulumi:"order"`
-	OrderBy        *string                        `pulumi:"orderBy"`
-	VpcConfigs     []GetNodebalancerVpcsVpcConfig `pulumi:"vpcConfigs"`
+	NodebalancerId int     `pulumi:"nodebalancerId"`
+	Order          *string `pulumi:"order"`
+	OrderBy        *string `pulumi:"orderBy"`
+	// (Nested Attribute List) A list of VPC configurations.
+	VpcConfigs []GetNodebalancerVpcsVpcConfig `pulumi:"vpcConfigs"`
 }
 
 func GetNodebalancerVpcsOutput(ctx *pulumi.Context, args GetNodebalancerVpcsOutputArgs, opts ...pulumi.InvokeOption) GetNodebalancerVpcsResultOutput {
@@ -129,7 +163,7 @@ type GetNodebalancerVpcsOutputArgs struct {
 	Filters GetNodebalancerVpcsFilterArrayInput `pulumi:"filters"`
 	// The ID of the NodeBalancer to list VPC configurations for.
 	//
-	// * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
 	NodebalancerId pulumi.IntInput `pulumi:"nodebalancerId"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
@@ -178,6 +212,7 @@ func (o GetNodebalancerVpcsResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNodebalancerVpcsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) A list of VPC configurations.
 func (o GetNodebalancerVpcsResultOutput) VpcConfigs() GetNodebalancerVpcsVpcConfigArrayOutput {
 	return o.ApplyT(func(v GetNodebalancerVpcsResult) []GetNodebalancerVpcsVpcConfig { return v.VpcConfigs }).(GetNodebalancerVpcsVpcConfigArrayOutput)
 }

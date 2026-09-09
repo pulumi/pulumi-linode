@@ -186,11 +186,11 @@ class Token(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.Token("foo",
+        foo_token = linode.Token("fooToken",
+            expiry="2100-01-02T03:04:05Z",
             label="token",
-            scopes="linodes:read_only",
-            expiry="2100-01-02T03:04:05Z")
-        foo_instance = linode.Instance("foo")
+            scopes="linodes:read_only")
+        foo_instance = linode.Instance("fooInstance")
         ```
 
         ## Import
@@ -229,11 +229,11 @@ class Token(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.Token("foo",
+        foo_token = linode.Token("fooToken",
+            expiry="2100-01-02T03:04:05Z",
             label="token",
-            scopes="linodes:read_only",
-            expiry="2100-01-02T03:04:05Z")
-        foo_instance = linode.Instance("foo")
+            scopes="linodes:read_only")
+        foo_instance = linode.Instance("fooInstance")
         ```
 
         ## Import

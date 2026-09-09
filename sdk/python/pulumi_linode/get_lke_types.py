@@ -71,6 +71,9 @@ class GetLkeTypesResult:
     @_builtins.property
     @pulumi.getter
     def types(self) -> Sequence['outputs.GetLkeTypesTypeResult']:
+        """
+        (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
+        """
         return pulumi.get(self, "types")
 
 
@@ -94,6 +97,32 @@ def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'Get
     """
     Provides information about Linode LKE types that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_label = linode.get_lke_types(filters=[{
+        "name": "label",
+        "values": ["LKE Standard Availability"],
+    }])
+    pulumi.export("typeId", [__item.id for __item in specific_label.types])
+    ```
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_types = linode.get_lke_types()
+    pulumi.export("typeId", [__item.id for __item in all_types.types])
+    ```
+
+    ## Filterable Fields
+
+    * `label`
+
+    * `transfer`
 
 
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
@@ -119,6 +148,32 @@ def get_lke_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union[
     """
     Provides information about Linode LKE types that match a set of filters.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    specific_label = linode.get_lke_types(filters=[{
+        "name": "label",
+        "values": ["LKE Standard Availability"],
+    }])
+    pulumi.export("typeId", [__item.id for __item in specific_label.types])
+    ```
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    all_types = linode.get_lke_types()
+    pulumi.export("typeId", [__item.id for __item in all_types.types])
+    ```
+
+    ## Filterable Fields
+
+    * `label`
+
+    * `transfer`
 
 
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)

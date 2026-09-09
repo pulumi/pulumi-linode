@@ -62,7 +62,7 @@ type GetProfileResult struct {
 	IpWhitelistEnabled bool `pulumi:"ipWhitelistEnabled"`
 	// The methods of authentication allowed when connecting via Lish. 'keys_only' is the most secure with the intent to use Lish, and 'disabled' is recommended for users that will not use Lish at all.
 	LishAuthMethod string `pulumi:"lishAuthMethod"`
-	// Credit Card information associated with this Account.
+	// (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
 	Referrals []GetProfileReferral `pulumi:"referrals"`
 	// If true, the user has restrictions on what can be accessed on the Account.
 	Restricted bool `pulumi:"restricted"`
@@ -123,7 +123,7 @@ func (o GetProfileResultOutput) LishAuthMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProfileResult) string { return v.LishAuthMethod }).(pulumi.StringOutput)
 }
 
-// Credit Card information associated with this Account.
+// (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
 func (o GetProfileResultOutput) Referrals() GetProfileReferralArrayOutput {
 	return o.ApplyT(func(v GetProfileResult) []GetProfileReferral { return v.Referrals }).(GetProfileReferralArrayOutput)
 }

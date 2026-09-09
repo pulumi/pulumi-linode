@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.VpcArgs;
 import com.pulumi.linode.inputs.VpcState;
+import com.pulumi.linode.outputs.VpcIpv4;
 import com.pulumi.linode.outputs.VpcIpv6;
 import java.lang.String;
 import java.util.List;
@@ -47,9 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Vpc("test", VpcArgs.builder()
+ *             .description("My first VPC.")
  *             .label("test-vpc")
  *             .region("us-iad")
- *             .description("My first VPC.")
  *             .build());
  * 
  *     }
@@ -84,11 +85,47 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // NOTE: IPv6 VPCs may not currently be available to all users.
  *         var test = new Vpc("test", VpcArgs.builder()
- *             .label("test-vpc")
- *             .region("us-iad")
  *             .ipv6s(VpcIpv6Args.builder()
  *                 .range("/52")
  *                 .build())
+ *             .label("test-vpc")
+ *             .region("us-iad")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Vpc;
+ * import com.pulumi.linode.VpcArgs;
+ * import com.pulumi.linode.inputs.VpcIpv4Args;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
+ *         var test = new Vpc("test", VpcArgs.builder()
+ *             .ipv4s(VpcIpv4Args.builder()
+ *                 .range("10.0.0.0/8")
+ *                 .build())
+ *             .label("test-vpc")
+ *             .region("us-iad")
  *             .build());
  * 
  *     }
@@ -107,6 +144,14 @@ import javax.annotation.Nullable;
  * * `allocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
  * 
  * * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+ * 
+ * ## IPv4
+ * 
+ * &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+ * 
+ * Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
+ * 
+ * * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
  * 
  */
 @ResourceType(type="linode:index/vpc:Vpc")
@@ -128,8 +173,6 @@ public class Vpc extends com.pulumi.resources.CustomResource {
     /**
      * The user-defined description of this VPC.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
-     * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
@@ -137,11 +180,23 @@ public class Vpc extends com.pulumi.resources.CustomResource {
     /**
      * @return The user-defined description of this VPC.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
-     * 
      */
     public Output<String> description() {
         return this.description;
+    }
+    /**
+     * The IPv4 configuration of this VPC.
+     * 
+     */
+    @Export(name="ipv4s", refs={List.class,VpcIpv4.class}, tree="[0,1]")
+    private Output<List<VpcIpv4>> ipv4s;
+
+    /**
+     * @return The IPv4 configuration of this VPC.
+     * 
+     */
+    public Output<List<VpcIpv4>> ipv4s() {
+        return this.ipv4s;
     }
     /**
      * The IPv6 configuration of this VPC.
@@ -198,6 +253,28 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updated() {
         return this.updated;
+    }
+    /**
+     * The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     * 
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     * 
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    @Export(name="vpcType", refs={String.class}, tree="[0]")
+    private Output<String> vpcType;
+
+    /**
+     * @return The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     * 
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     * 
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    public Output<String> vpcType() {
+        return this.vpcType;
     }
 
     /**

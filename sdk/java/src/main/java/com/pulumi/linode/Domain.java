@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var foobar = new Domain("foobar", DomainArgs.builder()
+ *         var foobarDomain = new Domain("foobarDomain", DomainArgs.builder()
  *             .type("master")
  *             .domain("foobar.example")
  *             .soaEmail("example}{@literal @}{@code foobar.example")
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobarDomainRecord = new DomainRecord("foobarDomainRecord", DomainRecordArgs.builder()
- *             .domainId(foobar.id())
+ *             .domainId(foobarDomain.id())
  *             .name("www")
  *             .recordType("CNAME")
  *             .target("foobar.example")
@@ -135,20 +135,6 @@ public class Domain extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> expireSec() {
         return Codegen.optional(this.expireSec);
-    }
-    /**
-     * The group this Domain belongs to. This is for display purposes only.
-     * 
-     */
-    @Export(name="group", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> group;
-
-    /**
-     * @return The group this Domain belongs to. This is for display purposes only.
-     * 
-     */
-    public Output<Optional<String>> group() {
-        return Codegen.optional(this.group);
     }
     /**
      * The IP addresses representing the master DNS for this Domain.

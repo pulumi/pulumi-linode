@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.ReservedIpAssignmentArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.ReservedIpAssignmentState;
+import com.pulumi.linode.outputs.ReservedIpAssignmentAssignedEntity;
 import com.pulumi.linode.outputs.ReservedIpAssignmentVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -17,59 +18,114 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * Manages the assignment of a reserved IPv4 address to a Linode instance.
+ * 
+ * For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-add-linode-ip).
+ * 
+ * ## Example Usage
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.ReservedIpAssignment;
+ * import com.pulumi.linode.ReservedIpAssignmentArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new ReservedIpAssignment("example", ReservedIpAssignmentArgs.builder()
+ *             .linodeId(linode_instance.example().id())
+ *             .address(linode_networking_ip.reserved().address())
+ *             .public_(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ */
 @ResourceType(type="linode:index/reservedIpAssignment:ReservedIpAssignment")
 public class ReservedIpAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * The resulting IPv4 address.
+     * The reserved IPv4 address to assign to the Linode.
      * 
      */
     @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
-     * @return The resulting IPv4 address.
+     * @return The reserved IPv4 address to assign to the Linode.
      * 
      */
     public Output<String> address() {
         return this.address;
     }
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      * 
      */
     @Export(name="applyImmediately", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> applyImmediately;
 
     /**
-     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * @return If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      * 
      */
     public Output<Boolean> applyImmediately() {
         return this.applyImmediately;
     }
     /**
-     * The default gateway for this address
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    @Export(name="assignedEntity", refs={ReservedIpAssignmentAssignedEntity.class}, tree="[0]")
+    private Output<ReservedIpAssignmentAssignedEntity> assignedEntity;
+
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public Output<ReservedIpAssignmentAssignedEntity> assignedEntity() {
+        return this.assignedEntity;
+    }
+    /**
+     * The default gateway for this address.
      * 
      */
     @Export(name="gateway", refs={String.class}, tree="[0]")
     private Output<String> gateway;
 
     /**
-     * @return The default gateway for this address
+     * @return The default gateway for this address.
      * 
      */
     public Output<String> gateway() {
         return this.gateway;
     }
     /**
-     * The ID of the Linode to allocate an IPv4 address for.
+     * The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      * 
      */
     @Export(name="linodeId", refs={Integer.class}, tree="[0]")
     private Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to allocate an IPv4 address for.
+     * @return The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      * 
      */
     public Output<Integer> linodeId() {
@@ -90,28 +146,28 @@ public class ReservedIpAssignment extends com.pulumi.resources.CustomResource {
         return this.prefix;
     }
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
      * 
      */
     @Export(name="public", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> public_;
 
     /**
-     * @return Whether the IPv4 address is public or private.
+     * @return Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
      * 
      */
     public Output<Boolean> public_() {
         return this.public_;
     }
     /**
-     * The reverse DNS assigned to this address.
+     * The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      * 
      */
     @Export(name="rdns", refs={String.class}, tree="[0]")
     private Output<String> rdns;
 
     /**
-     * @return The reverse DNS assigned to this address.
+     * @return The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      * 
      */
     public Output<String> rdns() {
@@ -132,14 +188,14 @@ public class ReservedIpAssignment extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * The reservation status of the IP address
+     * The reservation status of the IP address.
      * 
      */
     @Export(name="reserved", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reserved;
 
     /**
-     * @return The reservation status of the IP address
+     * @return The reservation status of the IP address.
      * 
      */
     public Output<Boolean> reserved() {
@@ -160,28 +216,42 @@ public class ReservedIpAssignment extends com.pulumi.resources.CustomResource {
         return this.subnetMask;
     }
     /**
-     * The type of IP address.
+     * A set of tags associated with this IP address.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tags;
+
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public Output<List<String>> tags() {
+        return this.tags;
+    }
+    /**
+     * The type of the entity.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of IP address.
+     * @return The type of the entity.
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     @Export(name="vpcNat11s", refs={List.class,ReservedIpAssignmentVpcNat11.class}, tree="[0,1]")
     private Output<List<ReservedIpAssignmentVpcNat11>> vpcNat11s;
 
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     public Output<List<ReservedIpAssignmentVpcNat11>> vpcNat11s() {

@@ -34,12 +34,12 @@ import (
 //				Region: pulumi.String("us-mia"),
 //				Assignments: linode.NetworkingIpAssignmentAssignmentArray{
 //					&linode.NetworkingIpAssignmentAssignmentArgs{
-//						Address:  pulumi.Any(reservedIp1.Address),
-//						LinodeId: pulumi.Any(terraform_web1.Id),
+//						Address:   pulumi.Any(linode_networking_ip.Reserved_ip1.Address),
+//						Linode_id: linode_instance.TerraformWeb1.Id,
 //					},
 //					&linode.NetworkingIpAssignmentAssignmentArgs{
-//						Address:  pulumi.Any(reservedIp2.Address),
-//						LinodeId: pulumi.Any(terraform_web2.Id),
+//						Address:   pulumi.Any(linode_networking_ip.Reserved_ip2.Address),
+//						Linode_id: linode_instance.TerraformWeb2.Id,
 //					},
 //				},
 //			})

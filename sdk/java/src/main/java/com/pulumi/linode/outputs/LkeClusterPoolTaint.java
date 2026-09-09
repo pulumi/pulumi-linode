@@ -23,7 +23,7 @@ public final class LkeClusterPoolTaint {
     /**
      * @return The Kubernetes taint value.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
      * 
      */
     private String value;
@@ -46,7 +46,7 @@ public final class LkeClusterPoolTaint {
     /**
      * @return The Kubernetes taint value.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
      * 
      */
     public String value() {

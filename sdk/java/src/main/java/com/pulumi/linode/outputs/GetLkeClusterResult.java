@@ -26,7 +26,7 @@ public final class GetLkeClusterResult {
      */
     private Boolean aplEnabled;
     /**
-     * @return The settings for the Kubernetes Control Plane.
+     * @return (Nested Attribute List) The settings for the Kubernetes Control Plane.
      * 
      */
     private List<GetLkeClusterControlPlane> controlPlanes;
@@ -35,11 +35,6 @@ public final class GetLkeClusterResult {
      * 
      */
     private String created;
-    /**
-     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    private String dashboardUrl;
     /**
      * @return The ID of the node.
      * 
@@ -61,7 +56,7 @@ public final class GetLkeClusterResult {
      */
     private String label;
     /**
-     * @return Node pools associated with this cluster.
+     * @return (Nested Attribute List) Node pools associated with this cluster.
      * 
      */
     private List<GetLkeClusterPool> pools;
@@ -122,7 +117,7 @@ public final class GetLkeClusterResult {
         return this.aplEnabled;
     }
     /**
-     * @return The settings for the Kubernetes Control Plane.
+     * @return (Nested Attribute List) The settings for the Kubernetes Control Plane.
      * 
      */
     public List<GetLkeClusterControlPlane> controlPlanes() {
@@ -134,13 +129,6 @@ public final class GetLkeClusterResult {
      */
     public String created() {
         return this.created;
-    }
-    /**
-     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    public String dashboardUrl() {
-        return this.dashboardUrl;
     }
     /**
      * @return The ID of the node.
@@ -171,7 +159,7 @@ public final class GetLkeClusterResult {
         return this.label;
     }
     /**
-     * @return Node pools associated with this cluster.
+     * @return (Nested Attribute List) Node pools associated with this cluster.
      * 
      */
     public List<GetLkeClusterPool> pools() {
@@ -247,7 +235,6 @@ public final class GetLkeClusterResult {
         private Boolean aplEnabled;
         private List<GetLkeClusterControlPlane> controlPlanes;
         private String created;
-        private String dashboardUrl;
         private Integer id;
         private String k8sVersion;
         private String kubeconfig;
@@ -268,7 +255,6 @@ public final class GetLkeClusterResult {
     	      this.aplEnabled = defaults.aplEnabled;
     	      this.controlPlanes = defaults.controlPlanes;
     	      this.created = defaults.created;
-    	      this.dashboardUrl = defaults.dashboardUrl;
     	      this.id = defaults.id;
     	      this.k8sVersion = defaults.k8sVersion;
     	      this.kubeconfig = defaults.kubeconfig;
@@ -320,14 +306,6 @@ public final class GetLkeClusterResult {
               throw new MissingRequiredPropertyException("GetLkeClusterResult", "created");
             }
             this.created = created;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder dashboardUrl(String dashboardUrl) {
-            if (dashboardUrl == null) {
-              throw new MissingRequiredPropertyException("GetLkeClusterResult", "dashboardUrl");
-            }
-            this.dashboardUrl = dashboardUrl;
             return this;
         }
         @CustomType.Setter
@@ -446,7 +424,6 @@ public final class GetLkeClusterResult {
             _resultValue.aplEnabled = aplEnabled;
             _resultValue.controlPlanes = controlPlanes;
             _resultValue.created = created;
-            _resultValue.dashboardUrl = dashboardUrl;
             _resultValue.id = id;
             _resultValue.k8sVersion = k8sVersion;
             _resultValue.kubeconfig = kubeconfig;

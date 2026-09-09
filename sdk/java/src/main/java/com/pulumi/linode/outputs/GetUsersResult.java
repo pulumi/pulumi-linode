@@ -23,6 +23,10 @@ public final class GetUsersResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
+     * 
+     */
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
@@ -42,6 +46,10 @@ public final class GetUsersResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
+     * 
+     */
     public List<GetUsersUser> users() {
         return this.users;
     }

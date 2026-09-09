@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myInstance = new linode.Instance("my_instance", {
+ * const myInstance = new linode.Instance("myInstance", {
  *     label: "my_instance",
  *     image: "linode/ubuntu22.04",
  *     region: "us-southeast",
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     rootPass: "bogusPassword$",
  *     swapSize: 256,
  * });
- * const myFirewall = new linode.Firewall("my_firewall", {
+ * const myFirewall = new linode.Firewall("myFirewall", {
  *     label: "my_firewall",
  *     inbounds: [
  *         {
@@ -115,13 +115,17 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      *
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+     * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
      */
     declare public readonly disabled: pulumi.Output<boolean>;
     /**
+     * The fingerprint of the current Firewall rules.
+     */
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
+    /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+     * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
      */
     declare public readonly inboundPolicy: pulumi.Output<string>;
     /**
@@ -164,6 +168,10 @@ export class Firewall extends pulumi.CustomResource {
      * When this firewall was last updated
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
+    /**
+     * The current version of the Firewall rules.
+     */
+    declare public /*out*/ readonly version: pulumi.Output<number>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -181,6 +189,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["created"] = state?.created;
             resourceInputs["devices"] = state?.devices;
             resourceInputs["disabled"] = state?.disabled;
+            resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["inboundPolicy"] = state?.inboundPolicy;
             resourceInputs["inbounds"] = state?.inbounds;
             resourceInputs["interfaces"] = state?.interfaces;
@@ -192,6 +201,7 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["status"] = state?.status;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["updated"] = state?.updated;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
             if (args?.inboundPolicy === undefined && !opts.urn) {
@@ -215,8 +225,10 @@ export class Firewall extends pulumi.CustomResource {
             resourceInputs["tags"] = args?.tags;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["devices"] = undefined /*out*/;
+            resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Firewall.__pulumiType, name, resourceInputs, opts);
@@ -238,13 +250,17 @@ export interface FirewallState {
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      *
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+     * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
      */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
+     * The fingerprint of the current Firewall rules.
+     */
+    fingerprint?: pulumi.Input<string | undefined>;
+    /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+     * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
      */
     inboundPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -287,6 +303,10 @@ export interface FirewallState {
      * When this firewall was last updated
      */
     updated?: pulumi.Input<string | undefined>;
+    /**
+     * The current version of the Firewall rules.
+     */
+    version?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -296,13 +316,13 @@ export interface FirewallArgs {
     /**
      * If `true`, the Firewall's rules are not enforced (defaults to `false`).
      *
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+     * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
      */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      *
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+     * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
      */
     inboundPolicy: pulumi.Input<string>;
     /**

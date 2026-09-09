@@ -14,15 +14,19 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceNetworkingIpv4SharedResult
     {
         /// <summary>
-        /// The address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// (Read-Only Object) The entity this IP address has been assigned to. This is `Null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+        /// </summary>
+        public readonly Outputs.GetInstanceNetworkingIpv4SharedAssignedEntityResult AssignedEntity;
         /// <summary>
         /// The default gateway for this address.
         /// </summary>
         public readonly string Gateway;
         /// <summary>
-        /// The globally general API entity identifier for the Linode interface.
+        /// The Linode interface ID that this IP address is assigned to.
         /// </summary>
         public readonly int InterfaceId;
         /// <summary>
@@ -46,21 +50,31 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// Whether this IP address is a reserved IP.
+        /// </summary>
+        public readonly bool Reserved;
+        /// <summary>
         /// The subnet mask.
         /// </summary>
         public readonly string SubnetMask;
+        /// <summary>
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// The type of address this is.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// IPv4 address configured as a 1:1 NAT for this Interface.
+        /// (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
         /// </summary>
         public readonly Outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result VpcNat11;
 
         [OutputConstructor]
         private GetInstanceNetworkingIpv4SharedResult(
             string address,
+
+            Outputs.GetInstanceNetworkingIpv4SharedAssignedEntityResult assignedEntity,
 
             string gateway,
 
@@ -76,13 +90,18 @@ namespace Pulumi.Linode.Outputs
 
             string region,
 
+            bool reserved,
+
             string subnetMask,
+
+            ImmutableArray<string> tags,
 
             string type,
 
             Outputs.GetInstanceNetworkingIpv4SharedVpcNat11Result vpcNat11)
         {
             Address = address;
+            AssignedEntity = assignedEntity;
             Gateway = gateway;
             InterfaceId = interfaceId;
             LinodeId = linodeId;
@@ -90,7 +109,9 @@ namespace Pulumi.Linode.Outputs
             Public = @public;
             Rdns = rdns;
             Region = region;
+            Reserved = reserved;
             SubnetMask = subnetMask;
+            Tags = tags;
             Type = type;
             VpcNat11 = vpcNat11;
         }

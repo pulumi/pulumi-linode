@@ -22,6 +22,10 @@ public final class GetInstancesInstanceBackup {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `schedule.0.day`).
+     * 
+     */
     private List<GetInstancesInstanceBackupSchedule> schedules;
 
     private GetInstancesInstanceBackup() {}
@@ -39,6 +43,10 @@ public final class GetInstancesInstanceBackup {
     public Boolean enabled() {
         return this.enabled;
     }
+    /**
+     * @return (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `schedule.0.day`).
+     * 
+     */
     public List<GetInstancesInstanceBackupSchedule> schedules() {
         return this.schedules;
     }

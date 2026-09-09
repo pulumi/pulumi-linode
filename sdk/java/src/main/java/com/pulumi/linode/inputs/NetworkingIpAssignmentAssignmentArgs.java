@@ -6,9 +6,14 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.NetworkingIpAssignmentAssignmentAssignedEntityArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resources.ResourceArgs {
@@ -31,6 +36,21 @@ public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resou
     }
 
     /**
+     * (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    @Import(name="assignedEntity")
+    private @Nullable Output<NetworkingIpAssignmentAssignmentAssignedEntityArgs> assignedEntity;
+
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public Optional<Output<NetworkingIpAssignmentAssignmentAssignedEntityArgs>> assignedEntity() {
+        return Optional.ofNullable(this.assignedEntity);
+    }
+
+    /**
      * The ID of the Linode to which the IP address will be assigned.
      * 
      */
@@ -45,11 +65,44 @@ public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resou
         return this.linodeId;
     }
 
+    /**
+     * Whether this IP address is a reserved IP.
+     * 
+     */
+    @Import(name="reserved")
+    private @Nullable Output<Boolean> reserved;
+
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
+    public Optional<Output<Boolean>> reserved() {
+        return Optional.ofNullable(this.reserved);
+    }
+
+    /**
+     * A set of tags associated with this IP address.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     private NetworkingIpAssignmentAssignmentArgs() {}
 
     private NetworkingIpAssignmentAssignmentArgs(NetworkingIpAssignmentAssignmentArgs $) {
         this.address = $.address;
+        this.assignedEntity = $.assignedEntity;
         this.linodeId = $.linodeId;
+        this.reserved = $.reserved;
+        this.tags = $.tags;
     }
 
     public static Builder builder() {
@@ -92,6 +145,27 @@ public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resou
         }
 
         /**
+         * @param assignedEntity (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assignedEntity(@Nullable Output<NetworkingIpAssignmentAssignmentAssignedEntityArgs> assignedEntity) {
+            $.assignedEntity = assignedEntity;
+            return this;
+        }
+
+        /**
+         * @param assignedEntity (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assignedEntity(NetworkingIpAssignmentAssignmentAssignedEntityArgs assignedEntity) {
+            return assignedEntity(Output.of(assignedEntity));
+        }
+
+        /**
          * @param linodeId The ID of the Linode to which the IP address will be assigned.
          * 
          * @return builder
@@ -110,6 +184,58 @@ public final class NetworkingIpAssignmentAssignmentArgs extends com.pulumi.resou
          */
         public Builder linodeId(Integer linodeId) {
             return linodeId(Output.of(linodeId));
+        }
+
+        /**
+         * @param reserved Whether this IP address is a reserved IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reserved(@Nullable Output<Boolean> reserved) {
+            $.reserved = reserved;
+            return this;
+        }
+
+        /**
+         * @param reserved Whether this IP address is a reserved IP.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder reserved(Boolean reserved) {
+            return reserved(Output.of(reserved));
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         public NetworkingIpAssignmentAssignmentArgs build() {

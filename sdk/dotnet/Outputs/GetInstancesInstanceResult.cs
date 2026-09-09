@@ -13,9 +13,12 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstancesInstanceResult
     {
+        /// <summary>
+        /// (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
+        /// </summary>
         public readonly Outputs.GetInstancesInstanceAlertsResult Alerts;
         /// <summary>
-        /// Information about this Linode's backups status.
+        /// (Read-Only Object List) Information about the Linode's backup status. Referenced with an index (e.g. `backups.0.enabled`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceBackupResult> Backups;
         /// <summary>
@@ -27,7 +30,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Capabilities;
         /// <summary>
-        /// Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        /// (Read-Only Object List) A list of configs associated with the Linode. Referenced with an index (e.g. `config.0.label`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigResult> Configs;
         /// <summary>
@@ -35,13 +38,9 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string DiskEncryption;
         /// <summary>
-        /// Disks associated with this Linode.
+        /// (Read-Only Object List) A list of disks associated with the Linode. Referenced with an index (e.g. `disk.0.label`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceDiskResult> Disks;
-        /// <summary>
-        /// The display group of the Linode instance.
-        /// </summary>
-        public readonly string Group;
         /// <summary>
         /// Whether this Instance was created with user-data.
         /// </summary>
@@ -90,6 +89,9 @@ namespace Pulumi.Linode.Outputs
         /// The maintenance policy of this Linode instance.
         /// </summary>
         public readonly string MaintenancePolicy;
+        /// <summary>
+        /// (Read-Only Object List) Information about the Linode's Placement Groups. Referenced with an index (e.g. `placement_group.0.id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstancePlacementGroupResult> PlacementGroups;
         /// <summary>
         /// This Linode's Private IPv4 Address, if enabled.  The regional private IP address range, 192.168.128.0/17, is shared by all Linode Instances in a region.
@@ -99,6 +101,9 @@ namespace Pulumi.Linode.Outputs
         /// This is the location where the Linode is deployed. Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).
         /// </summary>
         public readonly string Region;
+        /// <summary>
+        /// (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceSpecResult> Specs;
         /// <summary>
         /// The status of the instance, indicating the current readiness state. (`Running`, `Offline`, ...)
@@ -136,8 +141,6 @@ namespace Pulumi.Linode.Outputs
             string diskEncryption,
 
             ImmutableArray<Outputs.GetInstancesInstanceDiskResult> disks,
-
-            string group,
 
             bool hasUserData,
 
@@ -188,7 +191,6 @@ namespace Pulumi.Linode.Outputs
             Configs = configs;
             DiskEncryption = diskEncryption;
             Disks = disks;
-            Group = group;
             HasUserData = hasUserData;
             HostUuid = hostUuid;
             Id = id;

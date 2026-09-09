@@ -26,13 +26,16 @@ class GetNodebalancerVpcResult:
     """
     A collection of values returned by getNodebalancerVpc.
     """
-    def __init__(__self__, id=None, ipv4_range=None, nodebalancer_id=None, subnet_id=None, vpc_id=None):
+    def __init__(__self__, id=None, ipv4_range=None, ipv6_range=None, nodebalancer_id=None, subnet_id=None, vpc_id=None):
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
         if ipv4_range and not isinstance(ipv4_range, str):
             raise TypeError("Expected argument 'ipv4_range' to be a str")
         pulumi.set(__self__, "ipv4_range", ipv4_range)
+        if ipv6_range and not isinstance(ipv6_range, str):
+            raise TypeError("Expected argument 'ipv6_range' to be a str")
+        pulumi.set(__self__, "ipv6_range", ipv6_range)
         if nodebalancer_id and not isinstance(nodebalancer_id, int):
             raise TypeError("Expected argument 'nodebalancer_id' to be a int")
         pulumi.set(__self__, "nodebalancer_id", nodebalancer_id)
@@ -55,6 +58,14 @@ class GetNodebalancerVpcResult:
         A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
         """
         return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Range")
+    def ipv6_range(self) -> _builtins.str:
+        """
+        A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        """
+        return pulumi.get(self, "ipv6_range")
 
     @_builtins.property
     @pulumi.getter(name="nodebalancerId")
@@ -86,6 +97,7 @@ class AwaitableGetNodebalancerVpcResult(GetNodebalancerVpcResult):
         return GetNodebalancerVpcResult(
             id=self.id,
             ipv4_range=self.ipv4_range,
+            ipv6_range=self.ipv6_range,
             nodebalancer_id=self.nodebalancer_id,
             subnet_id=self.subnet_id,
             vpc_id=self.vpc_id)
@@ -106,8 +118,8 @@ def get_nodebalancer_vpc(id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    vpc_config = linode.get_nodebalancer_vpc(nodebalancer_id=123,
-        id=456)
+    vpc_config = linode.get_nodebalancer_vpc(id=456,
+        nodebalancer_id=123)
     ```
 
 
@@ -123,6 +135,7 @@ def get_nodebalancer_vpc(id: Optional[_builtins.int] = None,
     return AwaitableGetNodebalancerVpcResult(
         id=pulumi.get(__ret__, 'id'),
         ipv4_range=pulumi.get(__ret__, 'ipv4_range'),
+        ipv6_range=pulumi.get(__ret__, 'ipv6_range'),
         nodebalancer_id=pulumi.get(__ret__, 'nodebalancer_id'),
         subnet_id=pulumi.get(__ret__, 'subnet_id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
@@ -141,8 +154,8 @@ def get_nodebalancer_vpc_output(id: pulumi.Input[Optional[_builtins.int]] = None
     import pulumi
     import pulumi_linode as linode
 
-    vpc_config = linode.get_nodebalancer_vpc(nodebalancer_id=123,
-        id=456)
+    vpc_config = linode.get_nodebalancer_vpc(id=456,
+        nodebalancer_id=123)
     ```
 
 
@@ -157,6 +170,7 @@ def get_nodebalancer_vpc_output(id: pulumi.Input[Optional[_builtins.int]] = None
     return __ret__.apply(lambda __response__: GetNodebalancerVpcResult(
         id=pulumi.get(__response__, 'id'),
         ipv4_range=pulumi.get(__response__, 'ipv4_range'),
+        ipv6_range=pulumi.get(__response__, 'ipv6_range'),
         nodebalancer_id=pulumi.get(__response__, 'nodebalancer_id'),
         subnet_id=pulumi.get(__response__, 'subnet_id'),
         vpc_id=pulumi.get(__response__, 'vpc_id')))

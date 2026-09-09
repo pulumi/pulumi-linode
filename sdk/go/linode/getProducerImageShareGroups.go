@@ -74,7 +74,8 @@ func GetProducerImageShareGroups(ctx *pulumi.Context, args *GetProducerImageShar
 
 // A collection of arguments for invoking getProducerImageShareGroups.
 type GetProducerImageShareGroupsArgs struct {
-	Filters          []GetProducerImageShareGroupsFilter          `pulumi:"filters"`
+	Filters []GetProducerImageShareGroupsFilter `pulumi:"filters"`
+	// (Block List) The list of Image Share Groups.
 	ImageShareGroups []GetProducerImageShareGroupsImageShareGroup `pulumi:"imageShareGroups"`
 	Order            *string                                      `pulumi:"order"`
 	OrderBy          *string                                      `pulumi:"orderBy"`
@@ -84,7 +85,8 @@ type GetProducerImageShareGroupsArgs struct {
 type GetProducerImageShareGroupsResult struct {
 	Filters []GetProducerImageShareGroupsFilter `pulumi:"filters"`
 	// The ID of the Image Share Group.
-	Id               string                                       `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Block List) The list of Image Share Groups.
 	ImageShareGroups []GetProducerImageShareGroupsImageShareGroup `pulumi:"imageShareGroups"`
 	Order            *string                                      `pulumi:"order"`
 	OrderBy          *string                                      `pulumi:"orderBy"`
@@ -97,7 +99,8 @@ func GetProducerImageShareGroupsOutput(ctx *pulumi.Context, args GetProducerImag
 
 // A collection of arguments for invoking getProducerImageShareGroups.
 type GetProducerImageShareGroupsOutputArgs struct {
-	Filters          GetProducerImageShareGroupsFilterArrayInput          `pulumi:"filters"`
+	Filters GetProducerImageShareGroupsFilterArrayInput `pulumi:"filters"`
+	// (Block List) The list of Image Share Groups.
 	ImageShareGroups GetProducerImageShareGroupsImageShareGroupArrayInput `pulumi:"imageShareGroups"`
 	Order            pulumi.StringPtrInput                                `pulumi:"order"`
 	OrderBy          pulumi.StringPtrInput                                `pulumi:"orderBy"`
@@ -131,6 +134,7 @@ func (o GetProducerImageShareGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProducerImageShareGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Block List) The list of Image Share Groups.
 func (o GetProducerImageShareGroupsResultOutput) ImageShareGroups() GetProducerImageShareGroupsImageShareGroupArrayOutput {
 	return o.ApplyT(func(v GetProducerImageShareGroupsResult) []GetProducerImageShareGroupsImageShareGroup {
 		return v.ImageShareGroups

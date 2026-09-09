@@ -69,7 +69,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("firewallIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-30)))
+// ctx.Export("firewallIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getFirewalls:getFirewalls.pp:2,11-29)))
 // return nil
 // })
 // }
@@ -81,7 +81,7 @@ import (
 //
 // * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
 //
-// * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+// * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
 //
 // * `ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 //
@@ -131,7 +131,8 @@ type GetFirewallsArgs struct {
 
 // A collection of values returned by getFirewalls.
 type GetFirewallsResult struct {
-	Filters   []GetFirewallsFilter   `pulumi:"filters"`
+	Filters []GetFirewallsFilter `pulumi:"filters"`
+	// (Nested Attribute List) The list of Linode Cloud Firewalls.
 	Firewalls []GetFirewallsFirewall `pulumi:"firewalls"`
 	// The unique ID assigned to this Firewall.
 	Id      string  `pulumi:"id"`
@@ -176,6 +177,7 @@ func (o GetFirewallsResultOutput) Filters() GetFirewallsFilterArrayOutput {
 	return o.ApplyT(func(v GetFirewallsResult) []GetFirewallsFilter { return v.Filters }).(GetFirewallsFilterArrayOutput)
 }
 
+// (Nested Attribute List) The list of Linode Cloud Firewalls.
 func (o GetFirewallsResultOutput) Firewalls() GetFirewallsFirewallArrayOutput {
 	return o.ApplyT(func(v GetFirewallsResult) []GetFirewallsFirewall { return v.Firewalls }).(GetFirewallsFirewallArrayOutput)
 }

@@ -19,12 +19,12 @@ public final class InterfacePublicIpv4 {
      */
     private @Nullable List<InterfacePublicIpv4Address> addresses;
     /**
-     * @return (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfacePublicIpv4AssignedAddress> assignedAddresses;
     /**
-     * @return (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfacePublicIpv4Shared> shareds;
@@ -38,14 +38,14 @@ public final class InterfacePublicIpv4 {
         return this.addresses == null ? List.of() : this.addresses;
     }
     /**
-     * @return (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfacePublicIpv4AssignedAddress> assignedAddresses() {
         return this.assignedAddresses == null ? List.of() : this.assignedAddresses;
     }
     /**
-     * @return (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfacePublicIpv4Shared> shareds() {

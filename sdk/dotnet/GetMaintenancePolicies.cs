@@ -129,6 +129,9 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetMaintenancePoliciesFilterResult> Filters;
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetMaintenancePoliciesMaintenancePolicyResult> MaintenancePolicies;
 
         [OutputConstructor]

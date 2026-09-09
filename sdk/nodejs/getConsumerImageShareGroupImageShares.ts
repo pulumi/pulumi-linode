@@ -57,13 +57,16 @@ export function getConsumerImageShareGroupImageShares(args: GetConsumerImageShar
  */
 export interface GetConsumerImageShareGroupImageSharesArgs {
     filters?: inputs.GetConsumerImageShareGroupImageSharesFilter[];
+    /**
+     * (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     */
     imageShares?: inputs.GetConsumerImageShareGroupImageSharesImageShare[];
     order?: string;
     orderBy?: string;
     /**
      * The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     tokenUuid: string;
 }
@@ -77,6 +80,9 @@ export interface GetConsumerImageShareGroupImageSharesResult {
      * The unique ID assigned to this Image Share.
      */
     readonly id: string;
+    /**
+     * (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     */
     readonly imageShares?: outputs.GetConsumerImageShareGroupImageSharesImageShare[];
     readonly order?: string;
     readonly orderBy?: string;
@@ -133,13 +139,16 @@ export function getConsumerImageShareGroupImageSharesOutput(args: GetConsumerIma
  */
 export interface GetConsumerImageShareGroupImageSharesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesFilterArgs>[] | undefined>;
+    /**
+     * (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     */
     imageShares?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareArgs>[] | undefined>;
     order?: pulumi.Input<string | undefined>;
     orderBy?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     tokenUuid: pulumi.Input<string>;
 }

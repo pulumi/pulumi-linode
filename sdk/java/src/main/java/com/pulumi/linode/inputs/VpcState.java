@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.VpcIpv4Args;
 import com.pulumi.linode.inputs.VpcIpv6Args;
 import java.lang.String;
 import java.util.List;
@@ -35,8 +36,6 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-defined description of this VPC.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
-     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
@@ -44,11 +43,24 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The user-defined description of this VPC.
      * 
-     * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
-     * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The IPv4 configuration of this VPC.
+     * 
+     */
+    @Import(name="ipv4s")
+    private @Nullable Output<List<VpcIpv4Args>> ipv4s;
+
+    /**
+     * @return The IPv4 configuration of this VPC.
+     * 
+     */
+    public Optional<Output<List<VpcIpv4Args>>> ipv4s() {
+        return Optional.ofNullable(this.ipv4s);
     }
 
     /**
@@ -111,15 +123,40 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updated);
     }
 
+    /**
+     * The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     * 
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     * 
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    @Import(name="vpcType")
+    private @Nullable Output<String> vpcType;
+
+    /**
+     * @return The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+     * 
+     * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+     * 
+     * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    public Optional<Output<String>> vpcType() {
+        return Optional.ofNullable(this.vpcType);
+    }
+
     private VpcState() {}
 
     private VpcState(VpcState $) {
         this.created = $.created;
         this.description = $.description;
+        this.ipv4s = $.ipv4s;
         this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.region = $.region;
         this.updated = $.updated;
+        this.vpcType = $.vpcType;
     }
 
     public static Builder builder() {
@@ -164,8 +201,6 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description The user-defined description of this VPC.
          * 
-         * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
-         * 
          * @return builder
          * 
          */
@@ -177,13 +212,42 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param description The user-defined description of this VPC.
          * 
-         * * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
-         * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param ipv4s The IPv4 configuration of this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4s(@Nullable Output<List<VpcIpv4Args>> ipv4s) {
+            $.ipv4s = ipv4s;
+            return this;
+        }
+
+        /**
+         * @param ipv4s The IPv4 configuration of this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4s(List<VpcIpv4Args> ipv4s) {
+            return ipv4s(Output.of(ipv4s));
+        }
+
+        /**
+         * @param ipv4s The IPv4 configuration of this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4s(VpcIpv4Args... ipv4s) {
+            return ipv4s(List.of(ipv4s));
         }
 
         /**
@@ -278,6 +342,35 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updated(String updated) {
             return updated(Output.of(updated));
+        }
+
+        /**
+         * @param vpcType The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+         * 
+         * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+         * 
+         * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcType(@Nullable Output<String> vpcType) {
+            $.vpcType = vpcType;
+            return this;
+        }
+
+        /**
+         * @param vpcType The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+         * 
+         * * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+         * 
+         * * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcType(String vpcType) {
+            return vpcType(Output.of(vpcType));
         }
 
         public VpcState build() {

@@ -25,20 +25,20 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
-    ///         },
+    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 3,
+    ///                 Type = "g6-standard-2",
     ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -54,26 +54,26 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.LkeCluster("test", new()
     ///     {
-    ///         Label = "lke-e-cluster",
-    ///         Region = "us-lax",
     ///         K8sVersion = "v1.31.8+lke5",
-    ///         Tags = new[]
-    ///         {
-    ///             "test",
-    ///         },
-    ///         Tier = "enterprise",
+    ///         Label = "lke-e-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g7-premium-2",
     ///                 Count = 3,
     ///                 Tags = new[]
     ///                 {
     ///                     "test",
     ///                 },
+    ///                 Type = "g7-premium-2",
     ///             },
     ///         },
+    ///         Region = "us-lax",
+    ///         Tags = new[]
+    ///         {
+    ///             "test",
+    ///         },
+    ///         Tier = "enterprise",
     ///     });
     /// 
     /// });
@@ -88,24 +88,24 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
-    ///         },
+    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
     ///                 {
-    ///                     Min = 3,
     ///                     Max = 10,
+    ///                     Min = 3,
     ///                 },
+    ///                 Type = "g6-standard-2",
     ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -121,42 +121,42 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.LkeCluster("test", new()
     ///     {
-    ///         Label = "my-cluster",
-    ///         K8sVersion = "1.32",
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
-    ///         },
     ///         ControlPlane = new Linode.Inputs.LkeClusterControlPlaneArgs
     ///         {
-    ///             HighAvailability = true,
     ///             Acl = new Linode.Inputs.LkeClusterControlPlaneAclArgs
     ///             {
-    ///                 Enabled = true,
     ///                 Addresses = new[]
     ///                 {
     ///                     new Linode.Inputs.LkeClusterControlPlaneAclAddressArgs
     ///                     {
-    ///                         Ipv4s = new[]
+    ///                         Ipv4 = new[]
     ///                         {
     ///                             "0.0.0.0/0",
     ///                         },
-    ///                         Ipv6s = new[]
+    ///                         Ipv6 = new[]
     ///                         {
     ///                             "2001:db8::/32",
     ///                         },
     ///                     },
     ///                 },
+    ///                 Enabled = true,
     ///             },
+    ///             HighAvailability = true,
     ///         },
+    ///         K8sVersion = "1.32",
+    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 1,
+    ///                 Type = "g6-standard-2",
     ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -172,27 +172,27 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
-    ///         },
+    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 2,
     ///                 Label = "db-pool",
+    ///                 Type = "g6-standard-2",
     ///             },
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-1",
     ///                 Count = 3,
     ///                 Label = "app-pool",
+    ///                 Type = "g6-standard-1",
     ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -208,22 +208,22 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
-    ///         },
+    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 2,
-    ///                 Label = "db-pool",
     ///                 FirewallId = 12345,
+    ///                 Label = "db-pool",
+    ///                 Type = "g6-standard-2",
     ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -239,35 +239,71 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         Label = "my-cluster",
     ///         K8sVersion = "1.32",
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
-    ///         },
+    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 2,
     ///                 Labels = 
     ///                 {
-    ///                     { "role", "database" },
     ///                     { "environment", "production" },
+    ///                     { "role", "database" },
     ///                 },
+    ///                 Type = "g6-standard-2",
     ///             },
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-1",
     ///                 Count = 3,
     ///                 Labels = 
     ///                 {
-    ///                     { "role", "application" },
     ///                     { "environment", "production" },
+    ///                     { "role", "application" },
     ///                 },
+    ///                 Type = "g6-standard-1",
     ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         K8sVersion = "1.32",
+    ///         Label = "my-cluster",
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Count = 2,
+    ///                 DiskEncryption = "enabled",
+    ///                 Type = "g6-standard-2",
+    ///             },
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Count = 1,
+    ///                 DiskEncryption = "disabled",
+    ///                 Type = "g6-standard-1",
+    ///             },
+    ///         },
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -294,13 +330,13 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-1",
     ///                 Count = 2,
+    ///                 Type = "g6-standard-1",
     ///             },
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 3,
+    ///                 Type = "g6-standard-2",
     ///             },
     ///         },
     ///     });
@@ -321,8 +357,8 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Type = "g6-standard-2",
     ///                 Count = 3,
+    ///                 Type = "g6-standard-2",
     ///             },
     ///         },
     ///     });
@@ -409,12 +445,6 @@ namespace Pulumi.Linode
         public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
 
         /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        /// </summary>
-        [Output("dashboardUrl")]
-        public Output<string> DashboardUrl { get; private set; } = null!;
-
-        /// <summary>
         /// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         /// </summary>
         [Output("externalPoolTags")]
@@ -439,7 +469,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// (Block List) Additional nested attributes:
         /// </summary>
         [Output("pools")]
         public Output<ImmutableArray<Outputs.LkeClusterPool>> Pools { get; private set; } = null!;
@@ -447,9 +477,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -580,7 +610,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeClusterPoolArgs>? _pools;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// (Block List) Additional nested attributes:
         /// </summary>
         public InputList<Inputs.LkeClusterPoolArgs> Pools
         {
@@ -591,9 +621,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -666,12 +696,6 @@ namespace Pulumi.Linode
         [Input("controlPlane")]
         public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
 
-        /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        /// </summary>
-        [Input("dashboardUrl")]
-        public Input<string>? DashboardUrl { get; set; }
-
         [Input("externalPoolTags")]
         private InputList<string>? _externalPoolTags;
 
@@ -716,7 +740,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeClusterPoolGetArgs>? _pools;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// (Block List) Additional nested attributes:
         /// </summary>
         public InputList<Inputs.LkeClusterPoolGetArgs> Pools
         {
@@ -727,9 +751,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

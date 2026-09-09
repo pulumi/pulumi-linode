@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myFirewall, err := linode.NewFirewall(ctx, "my_firewall", &linode.FirewallArgs{
+//			myFirewall, err := linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
 //				Label: pulumi.String("my_firewall"),
 //				Inbounds: linode.FirewallInboundArray{
 //					&linode.FirewallInboundArgs{
@@ -55,7 +55,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			myInstance, err := linode.NewInstance(ctx, "my_instance", &linode.InstanceArgs{
+//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
 //				Label:  pulumi.String("my_instance"),
 //				Region: pulumi.String("us-southeast"),
 //				Type:   pulumi.String("g6-standard-1"),
@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewFirewallDevice(ctx, "my_device", &linode.FirewallDeviceArgs{
+//			_, err = linode.NewFirewallDevice(ctx, "myDevice", &linode.FirewallDeviceArgs{
 //				FirewallId: myFirewall.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				EntityId:   myInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})

@@ -15,7 +15,7 @@ public final class ProducerImageShareGroupImage {
     /**
      * @return The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     private @Nullable String description;
@@ -34,7 +34,7 @@ public final class ProducerImageShareGroupImage {
     /**
      * @return The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     public Optional<String> description() {

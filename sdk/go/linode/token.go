@@ -34,15 +34,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewToken(ctx, "foo", &linode.TokenArgs{
+//			_, err := linode.NewToken(ctx, "fooToken", &linode.TokenArgs{
+//				Expiry: pulumi.String("2100-01-02T03:04:05Z"),
 //				Label:  pulumi.String("token"),
 //				Scopes: pulumi.String("linodes:read_only"),
-//				Expiry: pulumi.String("2100-01-02T03:04:05Z"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "foo", nil)
+//			_, err = linode.NewInstance(ctx, "fooInstance", nil)
 //			if err != nil {
 //				return err
 //			}

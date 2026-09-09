@@ -26,9 +26,17 @@ public final class GetProducerImageShareGroupImageSharesPlainArgs extends com.pu
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * (Block List) The Image Shares returned by this data source.
+     * 
+     */
     @Import(name="imageShares")
     private @Nullable List<GetProducerImageShareGroupImageSharesImageShare> imageShares;
 
+    /**
+     * @return (Block List) The Image Shares returned by this data source.
+     * 
+     */
     public Optional<List<GetProducerImageShareGroupImageSharesImageShare>> imageShares() {
         return Optional.ofNullable(this.imageShares);
     }
@@ -50,7 +58,7 @@ public final class GetProducerImageShareGroupImageSharesPlainArgs extends com.pu
     /**
      * The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     @Import(name="sharegroupId", required=true)
@@ -59,7 +67,7 @@ public final class GetProducerImageShareGroupImageSharesPlainArgs extends com.pu
     /**
      * @return The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     public Integer sharegroupId() {
@@ -103,11 +111,23 @@ public final class GetProducerImageShareGroupImageSharesPlainArgs extends com.pu
             return filters(List.of(filters));
         }
 
+        /**
+         * @param imageShares (Block List) The Image Shares returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(@Nullable List<GetProducerImageShareGroupImageSharesImageShare> imageShares) {
             $.imageShares = imageShares;
             return this;
         }
 
+        /**
+         * @param imageShares (Block List) The Image Shares returned by this data source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(GetProducerImageShareGroupImageSharesImageShare... imageShares) {
             return imageShares(List.of(imageShares));
         }
@@ -125,7 +145,7 @@ public final class GetProducerImageShareGroupImageSharesPlainArgs extends com.pu
         /**
          * @param sharegroupId The ID of the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 

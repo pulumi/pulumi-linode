@@ -80,6 +80,7 @@ type GetRegionsArgs struct {
 type GetRegionsResult struct {
 	Filters []GetRegionsFilter `pulumi:"filters"`
 	Id      string             `pulumi:"id"`
+	// (Nested Attribute List) The Regions returned by this data source.
 	Regions []GetRegionsRegion `pulumi:"regions"`
 }
 
@@ -120,6 +121,7 @@ func (o GetRegionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The Regions returned by this data source.
 func (o GetRegionsResultOutput) Regions() GetRegionsRegionArrayOutput {
 	return o.ApplyT(func(v GetRegionsResult) []GetRegionsRegion { return v.Regions }).(GetRegionsRegionArrayOutput)
 }

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewInstance(ctx, "my_instance", &linode.InstanceArgs{
+//			_, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
 //				Label:    pulumi.String("my_instance"),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				Region:   pulumi.String("us-southeast"),
@@ -98,7 +98,8 @@ type GetVlansResult struct {
 	Id      string           `pulumi:"id"`
 	Order   *string          `pulumi:"order"`
 	OrderBy *string          `pulumi:"orderBy"`
-	Vlans   []GetVlansVlan   `pulumi:"vlans"`
+	// (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+	Vlans []GetVlansVlan `pulumi:"vlans"`
 }
 
 func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi.InvokeOption) GetVlansResultOutput {
@@ -150,6 +151,7 @@ func (o GetVlansResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVlansResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
 func (o GetVlansResultOutput) Vlans() GetVlansVlanArrayOutput {
 	return o.ApplyT(func(v GetVlansResult) []GetVlansVlan { return v.Vlans }).(GetVlansVlanArrayOutput)
 }

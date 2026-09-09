@@ -29,11 +29,11 @@ class ReservedIpAssignmentArgs:
         """
         The set of arguments for constructing a ReservedIpAssignment resource.
 
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
-        :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private.
-        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address.
+        :param pulumi.Input[_builtins.str] address: The reserved IPv4 address to assign to the Linode.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
+        :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "linode_id", linode_id)
@@ -48,7 +48,7 @@ class ReservedIpAssignmentArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
         """
-        The resulting IPv4 address.
+        The reserved IPv4 address to assign to the Linode.
         """
         return pulumi.get(self, "address")
 
@@ -60,7 +60,7 @@ class ReservedIpAssignmentArgs:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Input[_builtins.int]:
         """
-        The ID of the Linode to allocate an IPv4 address for.
+        The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         """
         return pulumi.get(self, "linode_id")
 
@@ -72,7 +72,7 @@ class ReservedIpAssignmentArgs:
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+        If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
         """
         return pulumi.get(self, "apply_immediately")
 
@@ -84,7 +84,7 @@ class ReservedIpAssignmentArgs:
     @pulumi.getter
     def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the IPv4 address is public or private.
+        Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
         """
         return pulumi.get(self, "public")
 
@@ -96,7 +96,7 @@ class ReservedIpAssignmentArgs:
     @pulumi.getter
     def rdns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The reverse DNS assigned to this address.
+        The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         """
         return pulumi.get(self, "rdns")
 
@@ -110,6 +110,7 @@ class _ReservedIpAssignmentState:
     def __init__(__self__, *,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 assigned_entity: pulumi.Input[Optional['ReservedIpAssignmentAssignedEntityArgs']] = None,
                  gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  prefix: pulumi.Input[Optional[_builtins.int]] = None,
@@ -118,28 +119,33 @@ class _ReservedIpAssignmentState:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  reserved: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input['ReservedIpAssignmentVpcNat11Args']]]] = None):
         """
         Input properties used for looking up and filtering ReservedIpAssignment resources.
 
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
-        :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
+        :param pulumi.Input[_builtins.str] address: The reserved IPv4 address to assign to the Linode.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
+        :param pulumi.Input['ReservedIpAssignmentAssignedEntityArgs'] assigned_entity: (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
-        :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private.
-        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address.
+        :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         :param pulumi.Input[_builtins.str] region: The region this IP resides in.
-        :param pulumi.Input[_builtins.bool] reserved: The reservation status of the IP address
+        :param pulumi.Input[_builtins.bool] reserved: The reservation status of the IP address.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
-        :param pulumi.Input[_builtins.str] type: The type of IP address.
-        :param pulumi.Input[Sequence[pulumi.Input['ReservedIpAssignmentVpcNat11Args']]] vpc_nat11s: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags associated with this IP address.
+        :param pulumi.Input[_builtins.str] type: The type of the entity.
+        :param pulumi.Input[Sequence[pulumi.Input['ReservedIpAssignmentVpcNat11Args']]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
         if apply_immediately is not None:
             pulumi.set(__self__, "apply_immediately", apply_immediately)
+        if assigned_entity is not None:
+            pulumi.set(__self__, "assigned_entity", assigned_entity)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
         if linode_id is not None:
@@ -156,6 +162,8 @@ class _ReservedIpAssignmentState:
             pulumi.set(__self__, "reserved", reserved)
         if subnet_mask is not None:
             pulumi.set(__self__, "subnet_mask", subnet_mask)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vpc_nat11s is not None:
@@ -165,7 +173,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter
     def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resulting IPv4 address.
+        The reserved IPv4 address to assign to the Linode.
         """
         return pulumi.get(self, "address")
 
@@ -177,7 +185,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+        If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
         """
         return pulumi.get(self, "apply_immediately")
 
@@ -186,10 +194,22 @@ class _ReservedIpAssignmentState:
         pulumi.set(self, "apply_immediately", value)
 
     @_builtins.property
+    @pulumi.getter(name="assignedEntity")
+    def assigned_entity(self) -> pulumi.Input[Optional['ReservedIpAssignmentAssignedEntityArgs']]:
+        """
+        (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        """
+        return pulumi.get(self, "assigned_entity")
+
+    @assigned_entity.setter
+    def assigned_entity(self, value: pulumi.Input[Optional['ReservedIpAssignmentAssignedEntityArgs']]):
+        pulumi.set(self, "assigned_entity", value)
+
+    @_builtins.property
     @pulumi.getter
     def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The default gateway for this address
+        The default gateway for this address.
         """
         return pulumi.get(self, "gateway")
 
@@ -201,7 +221,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The ID of the Linode to allocate an IPv4 address for.
+        The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         """
         return pulumi.get(self, "linode_id")
 
@@ -225,7 +245,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter
     def public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether the IPv4 address is public or private.
+        Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
         """
         return pulumi.get(self, "public")
 
@@ -237,7 +257,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter
     def rdns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The reverse DNS assigned to this address.
+        The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         """
         return pulumi.get(self, "rdns")
 
@@ -261,7 +281,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter
     def reserved(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        The reservation status of the IP address
+        The reservation status of the IP address.
         """
         return pulumi.get(self, "reserved")
 
@@ -283,9 +303,21 @@ class _ReservedIpAssignmentState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of tags associated with this IP address.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of IP address.
+        The type of the entity.
         """
         return pulumi.get(self, "type")
 
@@ -297,7 +329,7 @@ class _ReservedIpAssignmentState:
     @pulumi.getter(name="vpcNat11s")
     def vpc_nat11s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReservedIpAssignmentVpcNat11Args']]]]:
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         return pulumi.get(self, "vpc_nat11s")
 
@@ -319,15 +351,30 @@ class ReservedIpAssignment(pulumi.CustomResource):
                  rdns: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a ReservedIpAssignment resource with the given unique name, props, and options.
+        Manages the assignment of a reserved IPv4 address to a Linode instance.
+
+        For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-add-linode-ip).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        example = linode.ReservedIpAssignment("example",
+            linode_id=int(linode_instance["example"]["id"]),
+            address=linode_networking_ip["reserved"]["address"],
+            public=True)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
-        :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private.
-        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address.
+        :param pulumi.Input[_builtins.str] address: The reserved IPv4 address to assign to the Linode.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
+        :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         """
         ...
     @overload
@@ -336,7 +383,22 @@ class ReservedIpAssignment(pulumi.CustomResource):
                  args: ReservedIpAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ReservedIpAssignment resource with the given unique name, props, and options.
+        Manages the assignment of a reserved IPv4 address to a Linode instance.
+
+        For more information, see the corresponding [API documentation](https://techdocs.akamai.com/linode-api/reference/post-add-linode-ip).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        example = linode.ReservedIpAssignment("example",
+            linode_id=int(linode_instance["example"]["id"]),
+            address=linode_networking_ip["reserved"]["address"],
+            public=True)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservedIpAssignmentArgs args: The arguments to use to populate this resource's properties.
@@ -376,11 +438,13 @@ class ReservedIpAssignment(pulumi.CustomResource):
             __props__.__dict__["linode_id"] = linode_id
             __props__.__dict__["public"] = public
             __props__.__dict__["rdns"] = rdns
+            __props__.__dict__["assigned_entity"] = None
             __props__.__dict__["gateway"] = None
             __props__.__dict__["prefix"] = None
             __props__.__dict__["region"] = None
             __props__.__dict__["reserved"] = None
             __props__.__dict__["subnet_mask"] = None
+            __props__.__dict__["tags"] = None
             __props__.__dict__["type"] = None
             __props__.__dict__["vpc_nat11s"] = None
         super(ReservedIpAssignment, __self__).__init__(
@@ -395,6 +459,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
             apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            assigned_entity: pulumi.Input[Optional[Union['ReservedIpAssignmentAssignedEntityArgs', 'ReservedIpAssignmentAssignedEntityArgsDict']]] = None,
             gateway: pulumi.Input[Optional[_builtins.str]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
             prefix: pulumi.Input[Optional[_builtins.int]] = None,
@@ -403,6 +468,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             reserved: pulumi.Input[Optional[_builtins.bool]] = None,
             subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservedIpAssignmentVpcNat11Args', 'ReservedIpAssignmentVpcNat11ArgsDict']]]]] = None) -> 'ReservedIpAssignment':
         """
@@ -412,18 +478,20 @@ class ReservedIpAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
-        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
-        :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
-        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
+        :param pulumi.Input[_builtins.str] address: The reserved IPv4 address to assign to the Linode.
+        :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
+        :param pulumi.Input[Union['ReservedIpAssignmentAssignedEntityArgs', 'ReservedIpAssignmentAssignedEntityArgsDict']] assigned_entity: (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
+        :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
-        :param pulumi.Input[_builtins.bool] public: Whether the IPv4 address is public or private.
-        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address.
+        :param pulumi.Input[_builtins.bool] public: Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
+        :param pulumi.Input[_builtins.str] rdns: The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         :param pulumi.Input[_builtins.str] region: The region this IP resides in.
-        :param pulumi.Input[_builtins.bool] reserved: The reservation status of the IP address
+        :param pulumi.Input[_builtins.bool] reserved: The reservation status of the IP address.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
-        :param pulumi.Input[_builtins.str] type: The type of IP address.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedIpAssignmentVpcNat11Args', 'ReservedIpAssignmentVpcNat11ArgsDict']]]] vpc_nat11s: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags associated with this IP address.
+        :param pulumi.Input[_builtins.str] type: The type of the entity.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedIpAssignmentVpcNat11Args', 'ReservedIpAssignmentVpcNat11ArgsDict']]]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -431,6 +499,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
         __props__.__dict__["address"] = address
         __props__.__dict__["apply_immediately"] = apply_immediately
+        __props__.__dict__["assigned_entity"] = assigned_entity
         __props__.__dict__["gateway"] = gateway
         __props__.__dict__["linode_id"] = linode_id
         __props__.__dict__["prefix"] = prefix
@@ -439,6 +508,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["reserved"] = reserved
         __props__.__dict__["subnet_mask"] = subnet_mask
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["vpc_nat11s"] = vpc_nat11s
         return ReservedIpAssignment(resource_name, opts=opts, __props__=__props__)
@@ -447,7 +517,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:
         """
-        The resulting IPv4 address.
+        The reserved IPv4 address to assign to the Linode.
         """
         return pulumi.get(self, "address")
 
@@ -455,15 +525,23 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter(name="applyImmediately")
     def apply_immediately(self) -> pulumi.Output[_builtins.bool]:
         """
-        If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skip_implicit_reboots` provider argument.
+        If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
         """
         return pulumi.get(self, "apply_immediately")
+
+    @_builtins.property
+    @pulumi.getter(name="assignedEntity")
+    def assigned_entity(self) -> pulumi.Output['outputs.ReservedIpAssignmentAssignedEntity']:
+        """
+        (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        """
+        return pulumi.get(self, "assigned_entity")
 
     @_builtins.property
     @pulumi.getter
     def gateway(self) -> pulumi.Output[_builtins.str]:
         """
-        The default gateway for this address
+        The default gateway for this address.
         """
         return pulumi.get(self, "gateway")
 
@@ -471,7 +549,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter(name="linodeId")
     def linode_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The ID of the Linode to allocate an IPv4 address for.
+        The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
         """
         return pulumi.get(self, "linode_id")
 
@@ -487,7 +565,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter
     def public(self) -> pulumi.Output[_builtins.bool]:
         """
-        Whether the IPv4 address is public or private.
+        Whether the IP address is public. Defaults to `true`. This must match the reserved IP's existing public/private status. Changing this forces creation of a new resource.
         """
         return pulumi.get(self, "public")
 
@@ -495,7 +573,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter
     def rdns(self) -> pulumi.Output[_builtins.str]:
         """
-        The reverse DNS assigned to this address.
+        The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
         """
         return pulumi.get(self, "rdns")
 
@@ -511,7 +589,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter
     def reserved(self) -> pulumi.Output[_builtins.bool]:
         """
-        The reservation status of the IP address
+        The reservation status of the IP address.
         """
         return pulumi.get(self, "reserved")
 
@@ -525,9 +603,17 @@ class ReservedIpAssignment(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A set of tags associated with this IP address.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of IP address.
+        The type of the entity.
         """
         return pulumi.get(self, "type")
 
@@ -535,7 +621,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
     @pulumi.getter(name="vpcNat11s")
     def vpc_nat11s(self) -> pulumi.Output[Sequence['outputs.ReservedIpAssignmentVpcNat11']]:
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         return pulumi.get(self, "vpc_nat11s")
 

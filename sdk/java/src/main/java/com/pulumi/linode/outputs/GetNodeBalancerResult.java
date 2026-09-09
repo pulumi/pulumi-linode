@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetNodeBalancerFirewall;
+import com.pulumi.linode.outputs.GetNodeBalancerLkeCluster;
 import com.pulumi.linode.outputs.GetNodeBalancerTransfer;
 import com.pulumi.linode.outputs.GetNodeBalancerVpc;
 import java.lang.Integer;
@@ -37,7 +38,7 @@ public final class GetNodeBalancerResult {
      */
     private String hostname;
     /**
-     * @return The Firewall&#39;s ID.
+     * @return The ID of the related LKE cluster.
      * 
      */
     private Integer id;
@@ -52,10 +53,11 @@ public final class GetNodeBalancerResult {
      */
     private String ipv6;
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return The label of the related LKE cluster.
      * 
      */
     private String label;
+    private List<GetNodeBalancerLkeCluster> lkeClusters;
     /**
      * @return The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
      * 
@@ -107,7 +109,7 @@ public final class GetNodeBalancerResult {
         return this.hostname;
     }
     /**
-     * @return The Firewall&#39;s ID.
+     * @return The ID of the related LKE cluster.
      * 
      */
     public Integer id() {
@@ -128,11 +130,14 @@ public final class GetNodeBalancerResult {
         return this.ipv6;
     }
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return The label of the related LKE cluster.
      * 
      */
     public String label() {
         return this.label;
+    }
+    public List<GetNodeBalancerLkeCluster> lkeClusters() {
+        return this.lkeClusters;
     }
     /**
      * @return The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
@@ -180,6 +185,7 @@ public final class GetNodeBalancerResult {
         private String ipv4;
         private String ipv6;
         private String label;
+        private List<GetNodeBalancerLkeCluster> lkeClusters;
         private String region;
         private List<String> tags;
         private List<GetNodeBalancerTransfer> transfers;
@@ -197,6 +203,7 @@ public final class GetNodeBalancerResult {
     	      this.ipv4 = defaults.ipv4;
     	      this.ipv6 = defaults.ipv6;
     	      this.label = defaults.label;
+    	      this.lkeClusters = defaults.lkeClusters;
     	      this.region = defaults.region;
     	      this.tags = defaults.tags;
     	      this.transfers = defaults.transfers;
@@ -280,6 +287,17 @@ public final class GetNodeBalancerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder lkeClusters(List<GetNodeBalancerLkeCluster> lkeClusters) {
+            if (lkeClusters == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "lkeClusters");
+            }
+            this.lkeClusters = lkeClusters;
+            return this;
+        }
+        public Builder lkeClusters(GetNodeBalancerLkeCluster... lkeClusters) {
+            return lkeClusters(List.of(lkeClusters));
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetNodeBalancerResult", "region");
@@ -339,6 +357,7 @@ public final class GetNodeBalancerResult {
             _resultValue.ipv4 = ipv4;
             _resultValue.ipv6 = ipv6;
             _resultValue.label = label;
+            _resultValue.lkeClusters = lkeClusters;
             _resultValue.region = region;
             _resultValue.tags = tags;
             _resultValue.transfers = transfers;

@@ -30,17 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("my-cluster"),
 //				K8sVersion: pulumi.String("1.32"),
-//				Region:     pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
-//				},
+//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(3),
+//						Type:  pulumi.String("g6-standard-2"),
 //					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -64,22 +64,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "test", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("lke-e-cluster"),
-//				Region:     pulumi.String("us-lax"),
 //				K8sVersion: pulumi.String("v1.31.8+lke5"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("test"),
-//				},
-//				Tier: pulumi.String("enterprise"),
+//				Label:      pulumi.String("lke-e-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g7-premium-2"),
 //						Count: pulumi.Int(3),
 //						Tags: pulumi.StringArray{
 //							pulumi.String("test"),
 //						},
+//						Type: pulumi.String("g7-premium-2"),
 //					},
 //				},
+//				Region: pulumi.String("us-lax"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("test"),
+//				},
+//				Tier: pulumi.String("enterprise"),
 //			})
 //			if err != nil {
 //				return err
@@ -102,20 +102,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("my-cluster"),
 //				K8sVersion: pulumi.String("1.32"),
-//				Region:     pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
-//				},
+//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type: pulumi.String("g6-standard-2"),
 //						Autoscaler: &linode.LkeClusterPoolAutoscalerArgs{
-//							Min: pulumi.Int(3),
 //							Max: pulumi.Int(10),
+//							Min: pulumi.Int(3),
 //						},
+//						Type: pulumi.String("g6-standard-2"),
 //					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -139,33 +139,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "test", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("my-cluster"),
-//				K8sVersion: pulumi.String("1.32"),
-//				Region:     pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
-//				},
 //				ControlPlane: &linode.LkeClusterControlPlaneArgs{
-//					HighAvailability: pulumi.Bool(true),
 //					Acl: &linode.LkeClusterControlPlaneAclArgs{
-//						Enabled: pulumi.Bool(true),
 //						Addresses: linode.LkeClusterControlPlaneAclAddressArray{
 //							&linode.LkeClusterControlPlaneAclAddressArgs{
-//								Ipv4s: pulumi.StringArray{
-//									pulumi.String("0.0.0.0/0"),
+//								Ipv4: []string{
+//									"0.0.0.0/0",
 //								},
-//								Ipv6s: pulumi.StringArray{
-//									pulumi.String("2001:db8::/32"),
+//								Ipv6: []string{
+//									"2001:db8::/32",
 //								},
 //							},
 //						},
+//						Enabled: pulumi.Bool(true),
 //					},
+//					HighAvailability: pulumi.Bool(true),
 //				},
+//				K8sVersion: pulumi.String("1.32"),
+//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(1),
+//						Type:  pulumi.String("g6-standard-2"),
 //					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -189,23 +189,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("my-cluster"),
 //				K8sVersion: pulumi.String("1.32"),
-//				Region:     pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
-//				},
+//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(2),
 //						Label: pulumi.String("db-pool"),
+//						Type:  pulumi.String("g6-standard-2"),
 //					},
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-1"),
 //						Count: pulumi.Int(3),
 //						Label: pulumi.String("app-pool"),
+//						Type:  pulumi.String("g6-standard-1"),
 //					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -229,19 +229,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("my-cluster"),
 //				K8sVersion: pulumi.String("1.32"),
-//				Region:     pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
-//				},
+//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:       pulumi.String("g6-standard-2"),
 //						Count:      pulumi.Int(2),
-//						Label:      pulumi.String("db-pool"),
 //						FirewallId: pulumi.Int(12345),
+//						Label:      pulumi.String("db-pool"),
+//						Type:       pulumi.String("g6-standard-2"),
 //					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -265,29 +265,69 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				Label:      pulumi.String("my-cluster"),
 //				K8sVersion: pulumi.String("1.32"),
-//				Region:     pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
-//				},
+//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(2),
 //						Labels: pulumi.StringMap{
-//							"role":        pulumi.String("database"),
 //							"environment": pulumi.String("production"),
+//							"role":        pulumi.String("database"),
 //						},
+//						Type: pulumi.String("g6-standard-2"),
 //					},
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-1"),
 //						Count: pulumi.Int(3),
 //						Labels: pulumi.StringMap{
-//							"role":        pulumi.String("application"),
 //							"environment": pulumi.String("production"),
+//							"role":        pulumi.String("application"),
 //						},
+//						Type: pulumi.String("g6-standard-1"),
 //					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
+//				K8sVersion: pulumi.String("1.32"),
+//				Label:      pulumi.String("my-cluster"),
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Count:          pulumi.Int(2),
+//						DiskEncryption: pulumi.String("enabled"),
+//						Type:           pulumi.String("g6-standard-2"),
+//					},
+//					&linode.LkeClusterPoolArgs{
+//						Count:          pulumi.Int(1),
+//						DiskEncryption: pulumi.String("disabled"),
+//						Type:           pulumi.String("g6-standard-1"),
+//					},
+//				},
+//				Region: pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -320,12 +360,12 @@ import (
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-1"),
 //						Count: pulumi.Int(2),
+//						Type:  pulumi.String("g6-standard-1"),
 //					},
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(3),
+//						Type:  pulumi.String("g6-standard-2"),
 //					},
 //				},
 //			})
@@ -352,8 +392,8 @@ import (
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(3),
+//						Type:  pulumi.String("g6-standard-2"),
 //					},
 //				},
 //			})
@@ -437,8 +477,6 @@ type LkeCluster struct {
 	AplEnabled pulumi.BoolOutput `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlaneOutput `pulumi:"controlPlane"`
-	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayOutput `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
@@ -447,13 +485,13 @@ type LkeCluster struct {
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// Additional nested attributes:
+	// (Block List) Additional nested attributes:
 	Pools LkeClusterPoolArrayOutput `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	// * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+	// * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The networking stack type of the Kubernetes cluster.
 	StackType pulumi.StringOutput `pulumi:"stackType"`
@@ -518,8 +556,6 @@ type lkeClusterState struct {
 	AplEnabled *bool `pulumi:"aplEnabled"`
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane *LkeClusterControlPlane `pulumi:"controlPlane"`
-	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-	DashboardUrl *string `pulumi:"dashboardUrl"`
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags []string `pulumi:"externalPoolTags"`
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
@@ -528,13 +564,13 @@ type lkeClusterState struct {
 	Kubeconfig *string `pulumi:"kubeconfig"`
 	// This Kubernetes cluster's unique label.
 	Label *string `pulumi:"label"`
-	// Additional nested attributes:
+	// (Block List) Additional nested attributes:
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	// * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+	// * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
 	Region *string `pulumi:"region"`
 	// The networking stack type of the Kubernetes cluster.
 	StackType *string `pulumi:"stackType"`
@@ -557,8 +593,6 @@ type LkeClusterState struct {
 	AplEnabled pulumi.BoolPtrInput
 	// Defines settings for the Kubernetes Control Plane.
 	ControlPlane LkeClusterControlPlanePtrInput
-	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-	DashboardUrl pulumi.StringPtrInput
 	// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 	ExternalPoolTags pulumi.StringArrayInput
 	// The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
@@ -567,13 +601,13 @@ type LkeClusterState struct {
 	Kubeconfig pulumi.StringPtrInput
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringPtrInput
-	// Additional nested attributes:
+	// (Block List) Additional nested attributes:
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
 	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	// * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+	// * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
 	Region pulumi.StringPtrInput
 	// The networking stack type of the Kubernetes cluster.
 	StackType pulumi.StringPtrInput
@@ -604,13 +638,13 @@ type lkeClusterArgs struct {
 	K8sVersion string `pulumi:"k8sVersion"`
 	// This Kubernetes cluster's unique label.
 	Label string `pulumi:"label"`
-	// Additional nested attributes:
+	// (Block List) Additional nested attributes:
 	Pools []LkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	// * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+	// * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
 	Region string `pulumi:"region"`
 	// The networking stack type of the Kubernetes cluster.
 	StackType *string `pulumi:"stackType"`
@@ -636,13 +670,13 @@ type LkeClusterArgs struct {
 	K8sVersion pulumi.StringInput
 	// This Kubernetes cluster's unique label.
 	Label pulumi.StringInput
-	// Additional nested attributes:
+	// (Block List) Additional nested attributes:
 	Pools LkeClusterPoolArrayInput
 	// This Kubernetes cluster's location.
 	//
-	// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+	// * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 	//
-	// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+	// * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
 	Region pulumi.StringInput
 	// The networking stack type of the Kubernetes cluster.
 	StackType pulumi.StringPtrInput
@@ -758,11 +792,6 @@ func (o LkeClusterOutput) ControlPlane() LkeClusterControlPlaneOutput {
 	return o.ApplyT(func(v *LkeCluster) LkeClusterControlPlaneOutput { return v.ControlPlane }).(LkeClusterControlPlaneOutput)
 }
 
-// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-func (o LkeClusterOutput) DashboardUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.DashboardUrl }).(pulumi.StringOutput)
-}
-
 // A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
 func (o LkeClusterOutput) ExternalPoolTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringArrayOutput { return v.ExternalPoolTags }).(pulumi.StringArrayOutput)
@@ -783,16 +812,16 @@ func (o LkeClusterOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// Additional nested attributes:
+// (Block List) Additional nested attributes:
 func (o LkeClusterOutput) Pools() LkeClusterPoolArrayOutput {
 	return o.ApplyT(func(v *LkeCluster) LkeClusterPoolArrayOutput { return v.Pools }).(LkeClusterPoolArrayOutput)
 }
 
 // This Kubernetes cluster's location.
 //
-// * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+// * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
 //
-// * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+// * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
 func (o LkeClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

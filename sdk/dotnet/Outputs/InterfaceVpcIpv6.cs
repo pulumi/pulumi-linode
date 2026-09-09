@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class InterfaceVpcIpv6
     {
         /// <summary>
-        /// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input.
+        /// (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfaceVpcIpv6AssignedRange> AssignedRanges;
         /// <summary>
-        /// Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `Slaac` input.
+        /// (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `Slaac` input. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfaceVpcIpv6AssignedSlaac> AssignedSlaacs;
         /// <summary>

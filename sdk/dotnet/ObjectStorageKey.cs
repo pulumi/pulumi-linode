@@ -45,16 +45,16 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.ObjectStorageKey("foobar", new()
     ///     {
-    ///         Label = "my-key",
     ///         BucketAccesses = new[]
     ///         {
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "my-bucket-name",
-    ///                 Region = "us-mia",
     ///                 Permissions = "read_write",
+    ///                 Region = "us-mia",
     ///             },
     ///         },
+    ///         Label = "my-key",
     ///     });
     /// 
     /// });
@@ -72,22 +72,22 @@ namespace Pulumi.Linode
     /// {
     ///     var foo = new Linode.ObjectStorageKey("foo", new()
     ///     {
-    ///         Label = "image-access",
     ///         BucketAccesses = new[]
     ///         {
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "foobar1",
-    ///                 Region = "us-mia",
     ///                 Permissions = "read_write",
+    ///                 Region = "us-mia",
     ///             },
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "foobar2",
-    ///                 Region = "gb-lon",
     ///                 Permissions = "read_write",
+    ///                 Region = "gb-lon",
     ///             },
     ///         },
+    ///         Label = "image-access",
     ///     });
     /// 
     /// });
@@ -103,7 +103,7 @@ namespace Pulumi.Linode
         public Output<string> AccessKey { get; private set; } = null!;
 
         /// <summary>
-        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("bucketAccesses")]
         public Output<ImmutableArray<Outputs.ObjectStorageKeyBucketAccess>> BucketAccesses { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
-        /// A set of objects containing the detailed info of the regions where this key can access.
+        /// (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("regionsDetails")]
         public Output<ImmutableArray<Outputs.ObjectStorageKeyRegionsDetail>> RegionsDetails { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ObjectStorageKeyBucketAccessArgs>? _bucketAccesses;
 
         /// <summary>
-        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.ObjectStorageKeyBucketAccessArgs> BucketAccesses
         {
@@ -240,7 +240,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ObjectStorageKeyBucketAccessGetArgs>? _bucketAccesses;
 
         /// <summary>
-        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+        /// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.ObjectStorageKeyBucketAccessGetArgs> BucketAccesses
         {
@@ -278,7 +278,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.ObjectStorageKeyRegionsDetailGetArgs>? _regionsDetails;
 
         /// <summary>
-        /// A set of objects containing the detailed info of the regions where this key can access.
+        /// (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.ObjectStorageKeyRegionsDetailGetArgs> RegionsDetails
         {

@@ -11,6 +11,7 @@ import com.pulumi.linode.NodeBalancerArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.NodeBalancerState;
 import com.pulumi.linode.outputs.NodeBalancerFirewall;
+import com.pulumi.linode.outputs.NodeBalancerLkeCluster;
 import com.pulumi.linode.outputs.NodeBalancerTransfer;
 import com.pulumi.linode.outputs.NodeBalancerVpc;
 import java.lang.Integer;
@@ -50,10 +51,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()
- *             .label("mynodebalancer")
- *             .region("us-east")
  *             .clientConnThrottle(20)
  *             .clientUdpSessThrottle(10)
+ *             .label("mynodebalancer")
+ *             .region("us-east")
  *             .tags("foobar")
  *             .build());
  * 
@@ -92,8 +93,52 @@ import javax.annotation.Nullable;
  *             .label("mynodebalancer")
  *             .region("us-mia")
  *             .vpcs(NodeBalancerVpcArgs.builder()
- *                 .subnetId(test.id())
+ *                 .subnet_id(linode_vpc_subnet.test().id())
  *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * The following example shows how to create a NodeBalancer with a pre-reserved IPv4 address.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.NetworkingIp;
+ * import com.pulumi.linode.NetworkingIpArgs;
+ * import com.pulumi.linode.NodeBalancer;
+ * import com.pulumi.linode.NodeBalancerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myReservedIp = new NetworkingIp("myReservedIp", NetworkingIpArgs.builder()
+ *             .region("us-east")
+ *             .type("ipv4")
+ *             .public_(true)
+ *             .reserved(true)
+ *             .build());
+ * 
+ *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()
+ *             .label("mynodebalancer")
+ *             .region("us-east")
+ *             .ipv4(myReservedIp.address())
  *             .build());
  * 
  *     }
@@ -201,14 +246,14 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
         return this.hostname;
     }
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     @Export(name="ipv4", refs={String.class}, tree="[0]")
     private Output<String> ipv4;
 
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     public Output<String> ipv4() {
@@ -241,6 +286,20 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> label() {
         return Codegen.optional(this.label);
+    }
+    /**
+     * The related LKE cluster for this NodeBalancer, if any.
+     * 
+     */
+    @Export(name="lkeClusters", refs={List.class,NodeBalancerLkeCluster.class}, tree="[0,1]")
+    private Output<List<NodeBalancerLkeCluster>> lkeClusters;
+
+    /**
+     * @return The related LKE cluster for this NodeBalancer, if any.
+     * 
+     */
+    public Output<List<NodeBalancerLkeCluster>> lkeClusters() {
+        return this.lkeClusters;
     }
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `&#34;us-east&#34;`, `&#34;us-west&#34;`, `&#34;ap-south&#34;`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.

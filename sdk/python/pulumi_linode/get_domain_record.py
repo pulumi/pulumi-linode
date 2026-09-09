@@ -197,10 +197,10 @@ def get_domain_record(domain_id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_record = linode.get_domain_record(id=14950401,
-        domain_id=3150401)
-    my_www_record = linode.get_domain_record(name="www",
-        domain_id=3150401)
+    my_record = linode.get_domain_record(domain_id=3150401,
+        id=14950401)
+    my_www_record = linode.get_domain_record(domain_id=3150401,
+        name="www")
     ```
 
 
@@ -244,10 +244,10 @@ def get_domain_record_output(domain_id: pulumi.Input[Optional[_builtins.int]] = 
     import pulumi
     import pulumi_linode as linode
 
-    my_record = linode.get_domain_record(id=14950401,
-        domain_id=3150401)
-    my_www_record = linode.get_domain_record(name="www",
-        domain_id=3150401)
+    my_record = linode.get_domain_record(domain_id=3150401,
+        id=14950401)
+    my_www_record = linode.get_domain_record(domain_id=3150401,
+        name="www")
     ```
 
 

@@ -58,13 +58,16 @@ export function getProducerImageShareGroupImageShares(args: GetProducerImageShar
  */
 export interface GetProducerImageShareGroupImageSharesArgs {
     filters?: inputs.GetProducerImageShareGroupImageSharesFilter[];
+    /**
+     * (Block List) The Image Shares returned by this data source.
+     */
     imageShares?: inputs.GetProducerImageShareGroupImageSharesImageShare[];
     order?: string;
     orderBy?: string;
     /**
      * The ID of the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     sharegroupId: number;
 }
@@ -78,6 +81,9 @@ export interface GetProducerImageShareGroupImageSharesResult {
      * The unique ID assigned to this Image Share.
      */
     readonly id: string;
+    /**
+     * (Block List) The Image Shares returned by this data source.
+     */
     readonly imageShares?: outputs.GetProducerImageShareGroupImageSharesImageShare[];
     readonly order?: string;
     readonly orderBy?: string;
@@ -138,13 +144,16 @@ export function getProducerImageShareGroupImageSharesOutput(args: GetProducerIma
  */
 export interface GetProducerImageShareGroupImageSharesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupImageSharesFilterArgs>[] | undefined>;
+    /**
+     * (Block List) The Image Shares returned by this data source.
+     */
     imageShares?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareArgs>[] | undefined>;
     order?: pulumi.Input<string | undefined>;
     orderBy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     sharegroupId: pulumi.Input<number>;
 }

@@ -77,7 +77,7 @@ namespace Pulumi.Linode
         /// 
         /// * `Action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
         /// 
-        /// * `Protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// * `Protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
         /// 
         /// * `Ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         /// 
@@ -176,7 +176,7 @@ namespace Pulumi.Linode
         /// 
         /// * `Action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
         /// 
-        /// * `Protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// * `Protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
         /// 
         /// * `Ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         /// 
@@ -275,7 +275,7 @@ namespace Pulumi.Linode
         /// 
         /// * `Action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
         /// 
-        /// * `Protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+        /// * `Protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
         /// 
         /// * `Ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
         /// 
@@ -371,6 +371,9 @@ namespace Pulumi.Linode
     public sealed class GetFirewallsResult
     {
         public readonly ImmutableArray<Outputs.GetFirewallsFilterResult> Filters;
+        /// <summary>
+        /// (Nested Attribute List) The list of Linode Cloud Firewalls.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFirewallsFirewallResult> Firewalls;
         /// <summary>
         /// The unique ID assigned to this Firewall.

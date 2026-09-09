@@ -24,7 +24,7 @@ public final class GetFirewallTemplateResult {
      */
     private String inboundPolicy;
     /**
-     * @return A list of firewall rules specifying allowed inbound network traffic.
+     * @return (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
      * 
      */
     private List<GetFirewallTemplateInbound> inbounds;
@@ -34,7 +34,7 @@ public final class GetFirewallTemplateResult {
      */
     private String outboundPolicy;
     /**
-     * @return A list of firewall rules specifying allowed outbound network traffic.
+     * @return (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
      * 
      */
     private List<GetFirewallTemplateOutbound> outbounds;
@@ -56,7 +56,7 @@ public final class GetFirewallTemplateResult {
         return this.inboundPolicy;
     }
     /**
-     * @return A list of firewall rules specifying allowed inbound network traffic.
+     * @return (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
      * 
      */
     public List<GetFirewallTemplateInbound> inbounds() {
@@ -70,7 +70,7 @@ public final class GetFirewallTemplateResult {
         return this.outboundPolicy;
     }
     /**
-     * @return A list of firewall rules specifying allowed outbound network traffic.
+     * @return (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
      * 
      */
     public List<GetFirewallTemplateOutbound> outbounds() {

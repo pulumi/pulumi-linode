@@ -73,20 +73,24 @@ type LookupVpcSubnetArgs struct {
 type LookupVpcSubnetResult struct {
 	// The date and time when the VPC Subnet was created.
 	Created string `pulumi:"created"`
-	// A list of Managed databases assigned to the VPC Subnet.
+	// (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
 	Databases []GetVpcSubnetDatabase `pulumi:"databases"`
-	// ID of a managed database assigned to the VPC Subnet.
+	// ID of a NodeBalancer assigned to the VPC Subnet.
 	Id string `pulumi:"id"`
 	// The IPv4 range of this subnet in CIDR format.
 	Ipv4  string             `pulumi:"ipv4"`
 	Ipv6s []GetVpcSubnetIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC subnet.
 	Label string `pulumi:"label"`
-	// A list of Linodes added to this subnet.
+	// (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
 	Linodes []GetVpcSubnetLinode `pulumi:"linodes"`
+	// (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+	Nodebalancers []GetVpcSubnetNodebalancer `pulumi:"nodebalancers"`
 	// The date and time when the VPC Subnet was last updated.
 	Updated string `pulumi:"updated"`
 	VpcId   int    `pulumi:"vpcId"`
+	// The type of the parent VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+	VpcType string `pulumi:"vpcType"`
 }
 
 func LookupVpcSubnetOutput(ctx *pulumi.Context, args LookupVpcSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupVpcSubnetResultOutput {
@@ -126,12 +130,12 @@ func (o LookupVpcSubnetResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// A list of Managed databases assigned to the VPC Subnet.
+// (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
 func (o LookupVpcSubnetResultOutput) Databases() GetVpcSubnetDatabaseArrayOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetDatabase { return v.Databases }).(GetVpcSubnetDatabaseArrayOutput)
 }
 
-// ID of a managed database assigned to the VPC Subnet.
+// ID of a NodeBalancer assigned to the VPC Subnet.
 func (o LookupVpcSubnetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -150,9 +154,14 @@ func (o LookupVpcSubnetResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// A list of Linodes added to this subnet.
+// (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
 func (o LookupVpcSubnetResultOutput) Linodes() GetVpcSubnetLinodeArrayOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetLinode { return v.Linodes }).(GetVpcSubnetLinodeArrayOutput)
+}
+
+// (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+func (o LookupVpcSubnetResultOutput) Nodebalancers() GetVpcSubnetNodebalancerArrayOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) []GetVpcSubnetNodebalancer { return v.Nodebalancers }).(GetVpcSubnetNodebalancerArrayOutput)
 }
 
 // The date and time when the VPC Subnet was last updated.
@@ -162,6 +171,11 @@ func (o LookupVpcSubnetResultOutput) Updated() pulumi.StringOutput {
 
 func (o LookupVpcSubnetResultOutput) VpcId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVpcSubnetResult) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+// The type of the parent VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+func (o LookupVpcSubnetResultOutput) VpcType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcSubnetResult) string { return v.VpcType }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -21,12 +21,12 @@ import * as utilities from "./utilities";
  *     region: "us-mia",
  *     assignments: [
  *         {
- *             address: reservedIp1.address,
- *             linodeId: Number(terraform_web1.id),
+ *             address: linode_networking_ip.reserved_ip1.address,
+ *             linode_id: linode_instance["terraform-web1"].id,
  *         },
  *         {
- *             address: reservedIp2.address,
- *             linodeId: Number(terraform_web2.id),
+ *             address: linode_networking_ip.reserved_ip2.address,
+ *             linode_id: linode_instance["terraform-web2"].id,
  *         },
  *     ],
  * });

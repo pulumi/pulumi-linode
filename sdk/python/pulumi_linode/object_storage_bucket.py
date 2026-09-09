@@ -22,14 +22,13 @@ __all__ = ['ObjectStorageBucketArgs', 'ObjectStorageBucket']
 class ObjectStorageBucketArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
+                 region: pulumi.Input[_builtins.str],
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
                  cert: pulumi.Input[Optional['ObjectStorageBucketCertArgs']] = None,
-                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_key: pulumi.Input[Optional[_builtins.str]] = None,
                  versioning: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -37,47 +36,39 @@ class ObjectStorageBucketArgs:
         The set of arguments for constructing a ObjectStorageBucket resource.
 
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
+        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] access_key: The access key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_access_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
-        :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-               For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
-        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[_builtins.str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[_builtins.str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
                
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
                
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
+               * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "region", region)
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
-        if cluster is not None:
-            warnings.warn("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""", DeprecationWarning)
-            pulumi.log.warn("""cluster is deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-        if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
         if cors_enabled is not None:
             pulumi.set(__self__, "cors_enabled", cors_enabled)
         if endpoint_type is not None:
             pulumi.set(__self__, "endpoint_type", endpoint_type)
         if lifecycle_rules is not None:
             pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if s3_endpoint is not None:
             pulumi.set(__self__, "s3_endpoint", s3_endpoint)
         if secret_key is not None:
@@ -96,6 +87,18 @@ class ObjectStorageBucketArgs:
     @label.setter
     def label(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "label", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[_builtins.str]:
+        """
+        The region of the Linode Object Storage Bucket.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
@@ -136,20 +139,6 @@ class ObjectStorageBucketArgs:
         pulumi.set(self, "cert", value)
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-        For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        """
-        return pulumi.get(self, "cluster")
-
-    @cluster.setter
-    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster", value)
-
-    @_builtins.property
     @pulumi.getter(name="corsEnabled")
     def cors_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -186,18 +175,6 @@ class ObjectStorageBucketArgs:
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
-    @pulumi.getter
-    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "region", value)
-
-    @_builtins.property
     @pulumi.getter(name="s3Endpoint")
     def s3_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -229,9 +206,9 @@ class ObjectStorageBucketArgs:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
 
-        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
 
-        * `cert` - (Optional) The bucket's TLS/SSL certificate.
+        * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         return pulumi.get(self, "versioning")
 
@@ -246,7 +223,6 @@ class _ObjectStorageBucketState:
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
                  cert: pulumi.Input[Optional['ObjectStorageBucketCertArgs']] = None,
-                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -265,24 +241,22 @@ class _ObjectStorageBucketState:
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         :param pulumi.Input['ObjectStorageBucketCertArgs'] cert: The cert used by this Object Storage Bucket.
-        :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-               For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectStorageBucketLifecycleRuleArgs']]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
-        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[_builtins.str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
                
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
                
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
+               * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -290,11 +264,6 @@ class _ObjectStorageBucketState:
             pulumi.set(__self__, "acl", acl)
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
-        if cluster is not None:
-            warnings.warn("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""", DeprecationWarning)
-            pulumi.log.warn("""cluster is deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-        if cluster is not None:
-            pulumi.set(__self__, "cluster", cluster)
         if cors_enabled is not None:
             pulumi.set(__self__, "cors_enabled", cors_enabled)
         if endpoint is not None:
@@ -356,20 +325,6 @@ class _ObjectStorageBucketState:
     @cert.setter
     def cert(self, value: pulumi.Input[Optional['ObjectStorageBucketCertArgs']]):
         pulumi.set(self, "cert", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-    def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-        For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        """
-        return pulumi.get(self, "cluster")
-
-    @cluster.setter
-    def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="corsEnabled")
@@ -448,7 +403,7 @@ class _ObjectStorageBucketState:
     @pulumi.getter
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        The region of the Linode Object Storage Bucket.
         """
         return pulumi.get(self, "region")
 
@@ -488,9 +443,9 @@ class _ObjectStorageBucketState:
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
 
-        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
 
-        * `cert` - (Optional) The bucket's TLS/SSL certificate.
+        * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         return pulumi.get(self, "versioning")
 
@@ -508,7 +463,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
                  cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
-                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -529,8 +483,8 @@ class ObjectStorageBucket(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.ObjectStorageBucket("foobar",
-            region="us-mia",
-            label="mybucket")
+            label="mybucket",
+            region="us-mia")
         ```
         ```python
         import pulumi
@@ -556,7 +510,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         ## Import
 
-        Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
+        Linodes Object Storage Buckets can be imported using the resource `id` which is made of `region:label`, e.g.
 
         ```sh
         $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
@@ -570,22 +524,20 @@ class ObjectStorageBucket(pulumi.CustomResource):
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']] cert: The cert used by this Object Storage Bucket.
-        :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-               For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
-        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[_builtins.str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
                
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
                
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
+               * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         ...
     @overload
@@ -604,8 +556,8 @@ class ObjectStorageBucket(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.ObjectStorageBucket("foobar",
-            region="us-mia",
-            label="mybucket")
+            label="mybucket",
+            region="us-mia")
         ```
         ```python
         import pulumi
@@ -631,7 +583,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
 
         ## Import
 
-        Linodes Object Storage Buckets can be imported using the resource `id` which is made of `cluster:label`, e.g.
+        Linodes Object Storage Buckets can be imported using the resource `id` which is made of `region:label`, e.g.
 
         ```sh
         $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
@@ -656,7 +608,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
                  cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
-                 cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,13 +628,14 @@ class ObjectStorageBucket(pulumi.CustomResource):
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["acl"] = acl
             __props__.__dict__["cert"] = cert
-            __props__.__dict__["cluster"] = cluster
             __props__.__dict__["cors_enabled"] = cors_enabled
             __props__.__dict__["endpoint_type"] = endpoint_type
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["s3_endpoint"] = s3_endpoint
             __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
@@ -705,7 +657,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
             acl: pulumi.Input[Optional[_builtins.str]] = None,
             cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
-            cluster: pulumi.Input[Optional[_builtins.str]] = None,
             cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -728,24 +679,22 @@ class ObjectStorageBucket(pulumi.CustomResource):
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
         :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']] cert: The cert used by this Object Storage Bucket.
-        :param pulumi.Input[_builtins.str] cluster: The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-               For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
         :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
-        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[_builtins.str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
                * configured by `obj_secret_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.bool] versioning: Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
                
-               * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+               * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
                
-               * `cert` - (Optional) The bucket's TLS/SSL certificate.
+               * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -754,7 +703,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
         __props__.__dict__["access_key"] = access_key
         __props__.__dict__["acl"] = acl
         __props__.__dict__["cert"] = cert
-        __props__.__dict__["cluster"] = cluster
         __props__.__dict__["cors_enabled"] = cors_enabled
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["endpoint_type"] = endpoint_type
@@ -792,16 +740,6 @@ class ObjectStorageBucket(pulumi.CustomResource):
         The cert used by this Object Storage Bucket.
         """
         return pulumi.get(self, "cert")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.""")
-    def cluster(self) -> pulumi.Output[_builtins.str]:
-        """
-        The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-        For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-        """
-        return pulumi.get(self, "cluster")
 
     @_builtins.property
     @pulumi.getter(name="corsEnabled")
@@ -856,7 +794,7 @@ class ObjectStorageBucket(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+        The region of the Linode Object Storage Bucket.
         """
         return pulumi.get(self, "region")
 
@@ -884,9 +822,9 @@ class ObjectStorageBucket(pulumi.CustomResource):
         """
         Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `access_key` and `secret_key`)
 
-        * `lifecycle_rule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
+        * `lifecycle_rule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `access_key` and `secret_key`)
 
-        * `cert` - (Optional) The bucket's TLS/SSL certificate.
+        * `cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         """
         return pulumi.get(self, "versioning")
 

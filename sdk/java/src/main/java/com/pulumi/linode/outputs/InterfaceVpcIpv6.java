@@ -17,12 +17,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterfaceVpcIpv6 {
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfaceVpcIpv6AssignedRange> assignedRanges;
     /**
-     * @return Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     * @return (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfaceVpcIpv6AssignedSlaac> assignedSlaacs;
@@ -44,14 +44,14 @@ public final class InterfaceVpcIpv6 {
 
     private InterfaceVpcIpv6() {}
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfaceVpcIpv6AssignedRange> assignedRanges() {
         return this.assignedRanges == null ? List.of() : this.assignedRanges;
     }
     /**
-     * @return Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     * @return (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfaceVpcIpv6AssignedSlaac> assignedSlaacs() {

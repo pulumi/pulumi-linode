@@ -25,8 +25,8 @@ namespace Pulumi.Linode
     /// {
     ///     var example = new Linode.ConsumerImageShareGroupToken("example", new()
     ///     {
-    ///         ValidForSharegroupUuid = "03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
     ///         Label = "example-token",
+    ///         ValidForSharegroupUuid = "03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
     ///     });
     /// 
     /// });

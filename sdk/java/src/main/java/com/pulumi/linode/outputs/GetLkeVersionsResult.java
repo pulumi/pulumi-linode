@@ -24,6 +24,10 @@ public final class GetLkeVersionsResult {
      * 
      */
     private @Nullable String tier;
+    /**
+     * @return (Nested Attribute List) The Linode LKE Versions returned by this data source.
+     * 
+     */
     private List<GetLkeVersionsVersion> versions;
 
     private GetLkeVersionsResult() {}
@@ -41,6 +45,10 @@ public final class GetLkeVersionsResult {
     public Optional<String> tier() {
         return Optional.ofNullable(this.tier);
     }
+    /**
+     * @return (Nested Attribute List) The Linode LKE Versions returned by this data source.
+     * 
+     */
     public List<GetLkeVersionsVersion> versions() {
         return this.versions;
     }

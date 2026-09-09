@@ -27,8 +27,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
+    ///         Label = "mydatabase",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
     ///     });
@@ -45,14 +45,14 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "postgresql/16",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "0.0.0.0/0",
     ///         },
+    ///         EngineId = "postgresql/16",
+    ///         Label = "mydatabase",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -67,21 +67,21 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "postgresql/16",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "10.0.0.3/32",
     ///         },
     ///         ClusterSize = 3,
+    ///         EngineId = "postgresql/16",
+    ///         Label = "mydatabase",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         Updates = new Linode.Inputs.DatabasePostgresqlV2UpdatesArgs
     ///         {
+    ///             Day_of_week = 2,
     ///             Duration = 4,
     ///             Frequency = "weekly",
-    ///             HourOfDay = 22,
-    ///             DayOfWeek = 2,
+    ///             Hour_of_day = 22,
     ///         },
     ///     });
     /// 
@@ -97,10 +97,6 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
-    ///         EngineId = "postgresql/16",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         EngineConfigPgAutovacuumAnalyzeScaleFactor = 0.1,
     ///         EngineConfigPgAutovacuumAnalyzeThreshold = 50,
     ///         EngineConfigPgAutovacuumMaxWorkers = 3,
@@ -136,6 +132,7 @@ namespace Pulumi.Linode
     ///         EngineConfigPgPgStatMonitorPgsmEnableQueryPlan = true,
     ///         EngineConfigPgPgStatMonitorPgsmMaxBuckets = 5,
     ///         EngineConfigPgPgStatStatementsTrack = "all",
+    ///         EngineConfigPgStatMonitorEnable = true,
     ///         EngineConfigPgTempFileLimit = 100,
     ///         EngineConfigPgTimezone = "Europe/Helsinki",
     ///         EngineConfigPgTrackActivityQuerySize = 2048,
@@ -144,10 +141,13 @@ namespace Pulumi.Linode
     ///         EngineConfigPgTrackIoTiming = "on",
     ///         EngineConfigPgWalSenderTimeout = 60000,
     ///         EngineConfigPgWalWriterDelay = 200,
-    ///         EngineConfigPgStatMonitorEnable = true,
     ///         EngineConfigPglookoutMaxFailoverReplicationTimeLag = 10000,
     ///         EngineConfigSharedBuffersPercentage = 25,
     ///         EngineConfigWorkMem = 400,
+    ///         EngineId = "postgresql/16",
+    ///         Label = "mydatabase",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -162,11 +162,11 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         ForkSource = 12345,
+    ///         Label = "mydatabase",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -181,16 +181,16 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
+    ///         Label = "mydatabase",
     ///         PrivateNetwork = new Linode.Inputs.DatabasePostgresqlV2PrivateNetworkArgs
     ///         {
-    ///             VpcId = 123,
-    ///             SubnetId = 456,
-    ///             PublicAccess = false,
+    ///             Public_access = false,
+    ///             Subnet_id = 456,
+    ///             Vpc_id = 123,
     ///         },
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -574,9 +574,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Output("forkSource")]
         public Output<int?> ForkSource { get; private set; } = null!;
@@ -618,7 +618,7 @@ namespace Pulumi.Linode
         public Output<string> OldestRestoreTime { get; private set; } = null!;
 
         /// <summary>
-        /// A set of pending updates.
+        /// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("pendingUpdates")]
         public Output<ImmutableArray<Outputs.DatabasePostgresqlV2PendingUpdate>> PendingUpdates { get; private set; } = null!;
@@ -1073,9 +1073,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -1478,9 +1478,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -1531,7 +1531,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.DatabasePostgresqlV2PendingUpdateGetArgs>? _pendingUpdates;
 
         /// <summary>
-        /// A set of pending updates.
+        /// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.DatabasePostgresqlV2PendingUpdateGetArgs> PendingUpdates
         {

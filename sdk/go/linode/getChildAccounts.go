@@ -61,8 +61,8 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("allAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:16,11-37)))
-// ctx.Export("filteredAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:20,11-42)))
+// ctx.Export("allAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getChildAccounts:getChildAccounts.pp:16,11-36)))
+// ctx.Export("filteredAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getChildAccounts:getChildAccounts.pp:20,11-41)))
 // return nil
 // })
 // }
@@ -114,6 +114,7 @@ type GetChildAccountsArgs struct {
 
 // A collection of values returned by getChildAccounts.
 type GetChildAccountsResult struct {
+	// (Nested Attribute List) A list of Child Accounts.
 	ChildAccounts []GetChildAccountsChildAccount `pulumi:"childAccounts"`
 	Filters       []GetChildAccountsFilter       `pulumi:"filters"`
 	Id            string                         `pulumi:"id"`
@@ -148,6 +149,7 @@ func (o GetChildAccountsResultOutput) ToGetChildAccountsResultOutputWithContext(
 	return o
 }
 
+// (Nested Attribute List) A list of Child Accounts.
 func (o GetChildAccountsResultOutput) ChildAccounts() GetChildAccountsChildAccountArrayOutput {
 	return o.ApplyT(func(v GetChildAccountsResult) []GetChildAccountsChildAccount { return v.ChildAccounts }).(GetChildAccountsChildAccountArrayOutput)
 }

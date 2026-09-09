@@ -35,8 +35,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-//				Image:  pulumi.String("linode/alpine3.19"),
+//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//				Image:  pulumi.String("linode/arch"),
 //				Label:  pulumi.String("foobar-test"),
 //				Type:   pulumi.String("g6-nanode-1"),
 //				Region: pulumi.String("us-east"),
@@ -44,8 +44,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstanceIp(ctx, "foo", &linode.InstanceIpArgs{
-//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//			_, err = linode.NewInstanceIp(ctx, "fooInstanceIp", &linode.InstanceIpArgs{
+//				LinodeId: fooInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Public:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -59,7 +59,7 @@ import (
 type InstanceIp struct {
 	pulumi.CustomResourceState
 
-	// The resulting IPv4 address.
+	// The VPC IPv4 address this address is NATted with.
 	Address pulumi.StringOutput `pulumi:"address"`
 	// If true, the instance will be rebooted to update network interfaces.
 	ApplyImmediately pulumi.BoolOutput `pulumi:"applyImmediately"`
@@ -79,7 +79,7 @@ type InstanceIp struct {
 	SubnetMask pulumi.StringOutput `pulumi:"subnetMask"`
 	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 	VpcNat11s InstanceIpVpcNat11ArrayOutput `pulumi:"vpcNat11s"`
 }
 
@@ -116,7 +116,7 @@ func GetInstanceIp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceIp resources.
 type instanceIpState struct {
-	// The resulting IPv4 address.
+	// The VPC IPv4 address this address is NATted with.
 	Address *string `pulumi:"address"`
 	// If true, the instance will be rebooted to update network interfaces.
 	ApplyImmediately *bool `pulumi:"applyImmediately"`
@@ -136,12 +136,12 @@ type instanceIpState struct {
 	SubnetMask *string `pulumi:"subnetMask"`
 	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type *string `pulumi:"type"`
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 	VpcNat11s []InstanceIpVpcNat11 `pulumi:"vpcNat11s"`
 }
 
 type InstanceIpState struct {
-	// The resulting IPv4 address.
+	// The VPC IPv4 address this address is NATted with.
 	Address pulumi.StringPtrInput
 	// If true, the instance will be rebooted to update network interfaces.
 	ApplyImmediately pulumi.BoolPtrInput
@@ -161,7 +161,7 @@ type InstanceIpState struct {
 	SubnetMask pulumi.StringPtrInput
 	// The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
 	Type pulumi.StringPtrInput
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 	VpcNat11s InstanceIpVpcNat11ArrayInput
 }
 
@@ -279,7 +279,7 @@ func (o InstanceIpOutput) ToInstanceIpOutputWithContext(ctx context.Context) Ins
 	return o
 }
 
-// The resulting IPv4 address.
+// The VPC IPv4 address this address is NATted with.
 func (o InstanceIpOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
@@ -329,7 +329,7 @@ func (o InstanceIpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
 func (o InstanceIpOutput) VpcNat11s() InstanceIpVpcNat11ArrayOutput {
 	return o.ApplyT(func(v *InstanceIp) InstanceIpVpcNat11ArrayOutput { return v.VpcNat11s }).(InstanceIpVpcNat11ArrayOutput)
 }

@@ -13,26 +13,26 @@ import java.util.Objects;
 @CustomType
 public final class VpcSubnetLinode {
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     private Integer id;
     /**
-     * @return A list of networking interfaces objects.
+     * @return (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      * 
      */
     private List<VpcSubnetLinodeInterface> interfaces;
 
     private VpcSubnetLinode() {}
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return A list of networking interfaces objects.
+     * @return (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      * 
      */
     public List<VpcSubnetLinodeInterface> interfaces() {

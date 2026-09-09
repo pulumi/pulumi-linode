@@ -100,19 +100,13 @@ namespace Pulumi.Linode
     public sealed class GetLinodeObjectStorageBucketArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Object Storage Cluster this bucket is in. Required if `Region` is not configured.
-        /// </summary>
-        [Input("cluster")]
-        public string? Cluster { get; set; }
-
-        /// <summary>
         /// The name of this bucket.
         /// </summary>
         [Input("label", required: true)]
         public string Label { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the region this bucket is in. Required if `Cluster` is not configured.
+        /// The ID of the region this bucket is in.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -126,19 +120,13 @@ namespace Pulumi.Linode
     public sealed class GetLinodeObjectStorageBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Object Storage Cluster this bucket is in. Required if `Region` is not configured.
-        /// </summary>
-        [Input("cluster")]
-        public Input<string>? Cluster { get; set; }
-
-        /// <summary>
         /// The name of this bucket.
         /// </summary>
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the region this bucket is in. Required if `Cluster` is not configured.
+        /// The ID of the region this bucket is in.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -153,7 +141,6 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetLinodeObjectStorageBucketResult
     {
-        public readonly string Cluster;
         public readonly string Created;
         public readonly string EndpointType;
         public readonly string Hostname;
@@ -166,8 +153,6 @@ namespace Pulumi.Linode
 
         [OutputConstructor]
         private GetLinodeObjectStorageBucketResult(
-            string cluster,
-
             string created,
 
             string endpointType,
@@ -186,7 +171,6 @@ namespace Pulumi.Linode
 
             int size)
         {
-            Cluster = cluster;
             Created = created;
             EndpointType = endpointType;
             Hostname = hostname;

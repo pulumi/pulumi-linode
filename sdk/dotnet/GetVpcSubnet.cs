@@ -182,11 +182,11 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// A list of Managed databases assigned to the VPC Subnet.
+        /// (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetDatabaseResult> Databases;
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -199,14 +199,22 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// A list of Linodes added to this subnet.
+        /// (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetLinodeResult> Linodes;
+        /// <summary>
+        /// (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcSubnetNodebalancerResult> Nodebalancers;
         /// <summary>
         /// The date and time when the VPC Subnet was last updated.
         /// </summary>
         public readonly string Updated;
         public readonly int VpcId;
+        /// <summary>
+        /// The type of the parent VPC (`Regular` or `Rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+        /// </summary>
+        public readonly string VpcType;
 
         [OutputConstructor]
         private GetVpcSubnetResult(
@@ -224,9 +232,13 @@ namespace Pulumi.Linode
 
             ImmutableArray<Outputs.GetVpcSubnetLinodeResult> linodes,
 
+            ImmutableArray<Outputs.GetVpcSubnetNodebalancerResult> nodebalancers,
+
             string updated,
 
-            int vpcId)
+            int vpcId,
+
+            string vpcType)
         {
             Created = created;
             Databases = databases;
@@ -235,8 +247,10 @@ namespace Pulumi.Linode
             Ipv6s = ipv6s;
             Label = label;
             Linodes = linodes;
+            Nodebalancers = nodebalancers;
             Updated = updated;
             VpcId = vpcId;
+            VpcType = vpcType;
         }
     }
 }

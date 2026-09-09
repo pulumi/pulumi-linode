@@ -64,9 +64,9 @@ type LookupPlacementGroupResult struct {
 	IsCompliant bool `pulumi:"isCompliant"`
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
-	// A set of Linodes currently assigned to this Placement Group.
+	// (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	Members []GetPlacementGroupMember `pulumi:"members"`
-	// Any Linodes that are being migrated to or from the placement group.
+	// (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
 	Migrations GetPlacementGroupMigrations `pulumi:"migrations"`
 	// Whether Linodes must be able to become compliant during assignment. (Default `strict`)
 	PlacementGroupPolicy string `pulumi:"placementGroupPolicy"`
@@ -120,12 +120,12 @@ func (o LookupPlacementGroupResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// A set of Linodes currently assigned to this Placement Group.
+// (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o LookupPlacementGroupResultOutput) Members() GetPlacementGroupMemberArrayOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) []GetPlacementGroupMember { return v.Members }).(GetPlacementGroupMemberArrayOutput)
 }
 
-// Any Linodes that are being migrated to or from the placement group.
+// (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
 func (o LookupPlacementGroupResultOutput) Migrations() GetPlacementGroupMigrationsOutput {
 	return o.ApplyT(func(v LookupPlacementGroupResult) GetPlacementGroupMigrations { return v.Migrations }).(GetPlacementGroupMigrationsOutput)
 }

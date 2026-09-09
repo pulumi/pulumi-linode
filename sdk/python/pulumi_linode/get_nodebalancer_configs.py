@@ -64,6 +64,9 @@ class GetNodebalancerConfigsResult:
     @_builtins.property
     @pulumi.getter(name="nodebalancerConfigs")
     def nodebalancer_configs(self) -> Sequence['outputs.GetNodebalancerConfigsNodebalancerConfigResult']:
+        """
+        (Nested Attribute List) The list of Linode NodeBalancer Configs.
+        """
         return pulumi.get(self, "nodebalancer_configs")
 
     @_builtins.property
@@ -153,7 +156,7 @@ def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerCo
 
     :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to access.
            
-           * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -226,7 +229,7 @@ def get_nodebalancer_configs_output(filters: pulumi.Input[Optional[Optional[Sequ
 
     :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to access.
            
-           * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

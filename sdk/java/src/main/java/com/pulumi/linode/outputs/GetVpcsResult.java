@@ -20,6 +20,10 @@ public final class GetVpcsResult {
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The VPCs returned by this data source.
+     * 
+     */
     private List<GetVpcsVpc> vpcs;
 
     private GetVpcsResult() {}
@@ -33,6 +37,10 @@ public final class GetVpcsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The VPCs returned by this data source.
+     * 
+     */
     public List<GetVpcsVpc> vpcs() {
         return this.vpcs;
     }

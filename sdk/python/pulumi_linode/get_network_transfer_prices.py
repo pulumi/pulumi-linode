@@ -71,6 +71,9 @@ class GetNetworkTransferPricesResult:
     @_builtins.property
     @pulumi.getter
     def types(self) -> Sequence['outputs.GetNetworkTransferPricesTypeResult']:
+        """
+        (Nested Attribute List) The Network Transfer Prices returned by this data source.
+        """
         return pulumi.get(self, "types")
 
 

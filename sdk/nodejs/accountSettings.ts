@@ -16,15 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myaccount = new linode.AccountSettings("myaccount", {
- *     longviewSubscription: "longview-40",
- *     backupsEnabled: true,
- * });
+ * const myaccount = new linode.AccountSettings("myaccount", {backupsEnabled: true});
  * ```
  *
  * ## Additional Results
  *
  * * `managed` - Enables monitoring for connectivity, response, and total request time.
+ *
+ * * `longviewSubscription` - (Deprecated) The Longview Pro tier you are currently subscribed to.
  *
  * * `objectStorage` - A string describing the status of this account’s Object Storage service enrollment.
  */
@@ -65,9 +64,9 @@ export class AccountSettings extends pulumi.CustomResource {
      */
     declare public readonly interfacesForNewLinodes: pulumi.Output<string>;
     /**
-     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+     * The Longview Pro tier you are currently subscribed to.
      */
-    declare public readonly longviewSubscription: pulumi.Output<string>;
+    declare public /*out*/ readonly longviewSubscription: pulumi.Output<string>;
     /**
      * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
      */
@@ -109,9 +108,9 @@ export class AccountSettings extends pulumi.CustomResource {
             const args = argsOrState as AccountSettingsArgs | undefined;
             resourceInputs["backupsEnabled"] = args?.backupsEnabled;
             resourceInputs["interfacesForNewLinodes"] = args?.interfacesForNewLinodes;
-            resourceInputs["longviewSubscription"] = args?.longviewSubscription;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["networkHelper"] = args?.networkHelper;
+            resourceInputs["longviewSubscription"] = undefined /*out*/;
             resourceInputs["managed"] = undefined /*out*/;
             resourceInputs["objectStorage"] = undefined /*out*/;
         }
@@ -133,7 +132,7 @@ export interface AccountSettingsState {
      */
     interfacesForNewLinodes?: pulumi.Input<string | undefined>;
     /**
-     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+     * The Longview Pro tier you are currently subscribed to.
      */
     longviewSubscription?: pulumi.Input<string | undefined>;
     /**
@@ -166,10 +165,6 @@ export interface AccountSettingsArgs {
      * Type of interfaces for new Linode instances. Available values are `"legacyConfigOnly"`, `"legacyConfigDefaultButLinodeAllowed"`, `"linodeDefaultButLegacyConfigAllowed"`, and `"linodeOnly"`.
      */
     interfacesForNewLinodes?: pulumi.Input<string | undefined>;
-    /**
-     * The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-     */
-    longviewSubscription?: pulumi.Input<string | undefined>;
     /**
      * The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
      */

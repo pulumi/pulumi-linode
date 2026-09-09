@@ -215,13 +215,13 @@ class Ipv6Range(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foobar = linode.Instance("foobar",
+        foobar_instance = linode.Instance("foobarInstance",
             label="my-linode",
-            image="linode/alpine3.19",
+            image="linode/arch",
             type="g6-nanode-1",
             region="us-southeast")
-        foobar_ipv6_range = linode.Ipv6Range("foobar",
-            linode_id=foobar.id.apply(lambda x: int(x)),
+        foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
+            linode_id=foobar_instance.id.apply(lambda x: int(x)),
             prefix_length=64)
         ```
 
@@ -250,13 +250,13 @@ class Ipv6Range(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foobar = linode.Instance("foobar",
+        foobar_instance = linode.Instance("foobarInstance",
             label="my-linode",
-            image="linode/alpine3.19",
+            image="linode/arch",
             type="g6-nanode-1",
             region="us-southeast")
-        foobar_ipv6_range = linode.Ipv6Range("foobar",
-            linode_id=foobar.id.apply(lambda x: int(x)),
+        foobar_ipv6_range = linode.Ipv6Range("foobarIpv6Range",
+            linode_id=foobar_instance.id.apply(lambda x: int(x)),
             prefix_length=64)
         ```
 

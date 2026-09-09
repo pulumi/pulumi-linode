@@ -15,47 +15,6 @@ namespace Pulumi.Linode
     /// 
     /// **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
     /// 
-    /// ## Example Usage
-    /// 
-    /// The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Linode = Pulumi.Linode;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var foo = new Linode.SshKey("foo", new()
-    ///     {
-    ///         Label = "foo",
-    ///         SshKeyName = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "~/.ssh/id_rsa.pub",
-    ///         }).Apply(invoke =&gt; Std.Chomp.Invoke(new()
-    ///         {
-    ///             Input = invoke.Result,
-    ///         })).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    ///     var fooInstance = new Linode.Instance("foo", new()
-    ///     {
-    ///         Image = "linode/ubuntu22.04",
-    ///         Label = "foo",
-    ///         Region = "us-east",
-    ///         Type = "g6-nanode-1",
-    ///         AuthorizedKeys = new[]
-    ///         {
-    ///             foo.SshKeyName,
-    ///         },
-    ///         RootPass = "...",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Linodes SSH Keys can be imported using the Linode SSH Key `Id`, e.g.

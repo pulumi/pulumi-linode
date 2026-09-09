@@ -35,14 +35,14 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="bucketAccesses")
     private @Nullable Output<List<ObjectStorageKeyBucketAccessArgs>> bucketAccesses;
 
     /**
-     * @return Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * @return Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<ObjectStorageKeyBucketAccessArgs>>> bucketAccesses() {
@@ -99,14 +99,14 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A set of objects containing the detailed info of the regions where this key can access.
+     * (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="regionsDetails")
     private @Nullable Output<List<ObjectStorageKeyRegionsDetailArgs>> regionsDetails;
 
     /**
-     * @return A set of objects containing the detailed info of the regions where this key can access.
+     * @return (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<ObjectStorageKeyRegionsDetailArgs>>> regionsDetails() {
@@ -180,7 +180,7 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+         * @param bucketAccesses Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionsDetails A set of objects containing the detailed info of the regions where this key can access.
+         * @param regionsDetails (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionsDetails A set of objects containing the detailed info of the regions where this key can access.
+         * @param regionsDetails (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class ObjectStorageKeyState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param regionsDetails A set of objects containing the detailed info of the regions where this key can access.
+         * @param regionsDetails (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

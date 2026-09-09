@@ -25,9 +25,17 @@ public final class GetConsumerImageShareGroupImageSharesPlainArgs extends com.pu
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     * 
+     */
     @Import(name="imageShares")
     private @Nullable List<GetConsumerImageShareGroupImageSharesImageShare> imageShares;
 
+    /**
+     * @return (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     * 
+     */
     public Optional<List<GetConsumerImageShareGroupImageSharesImageShare>> imageShares() {
         return Optional.ofNullable(this.imageShares);
     }
@@ -49,7 +57,7 @@ public final class GetConsumerImageShareGroupImageSharesPlainArgs extends com.pu
     /**
      * The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     @Import(name="tokenUuid", required=true)
@@ -58,7 +66,7 @@ public final class GetConsumerImageShareGroupImageSharesPlainArgs extends com.pu
     /**
      * @return The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     public String tokenUuid() {
@@ -102,11 +110,23 @@ public final class GetConsumerImageShareGroupImageSharesPlainArgs extends com.pu
             return filters(List.of(filters));
         }
 
+        /**
+         * @param imageShares (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(@Nullable List<GetConsumerImageShareGroupImageSharesImageShare> imageShares) {
             $.imageShares = imageShares;
             return this;
         }
 
+        /**
+         * @param imageShares (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(GetConsumerImageShareGroupImageSharesImageShare... imageShares) {
             return imageShares(List.of(imageShares));
         }
@@ -124,7 +144,7 @@ public final class GetConsumerImageShareGroupImageSharesPlainArgs extends com.pu
         /**
          * @param tokenUuid The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 

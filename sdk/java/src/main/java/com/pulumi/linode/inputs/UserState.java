@@ -28,14 +28,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     public static final UserState Empty = new UserState();
 
     /**
-     * The domains the user has permissions access to.
+     * The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="domainGrants")
     private @Nullable Output<List<UserDomainGrantArgs>> domainGrants;
 
     /**
-     * @return The domains the user has permissions access to.
+     * @return The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserDomainGrantArgs>>> domainGrants() {
@@ -58,14 +58,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The firewalls the user has permissions access to.
+     * The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="firewallGrants")
     private @Nullable Output<List<UserFirewallGrantArgs>> firewallGrants;
 
     /**
-     * @return The firewalls the user has permissions access to.
+     * @return The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserFirewallGrantArgs>>> firewallGrants() {
@@ -88,14 +88,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The images the user has permissions access to.
+     * The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="imageGrants")
     private @Nullable Output<List<UserImageGrantArgs>> imageGrants;
 
     /**
-     * @return The images the user has permissions access to.
+     * @return The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserImageGrantArgs>>> imageGrants() {
@@ -103,14 +103,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Linodes the user has permissions access to.
+     * The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="linodeGrants")
     private @Nullable Output<List<UserLinodeGrantArgs>> linodeGrants;
 
     /**
-     * @return The Linodes the user has permissions access to.
+     * @return The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserLinodeGrantArgs>>> linodeGrants() {
@@ -118,14 +118,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The longview the user has permissions access to.
+     * The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="longviewGrants")
     private @Nullable Output<List<UserLongviewGrantArgs>> longviewGrants;
 
     /**
-     * @return The longview the user has permissions access to.
+     * @return The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserLongviewGrantArgs>>> longviewGrants() {
@@ -133,14 +133,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The NodeBalancers the user has permissions access to.
+     * The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="nodebalancerGrants")
     private @Nullable Output<List<UserNodebalancerGrantArgs>> nodebalancerGrants;
 
     /**
-     * @return The NodeBalancers the user has permissions access to.
+     * @return The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserNodebalancerGrantArgs>>> nodebalancerGrants() {
@@ -150,7 +150,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -161,7 +161,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If true, this user will only have explicit permissions granted.
      * 
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -186,14 +186,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The StackScripts the user has permissions access to.
+     * The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="stackscriptGrants")
     private @Nullable Output<List<UserStackscriptGrantArgs>> stackscriptGrants;
 
     /**
-     * @return The StackScripts the user has permissions access to.
+     * @return The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserStackscriptGrantArgs>>> stackscriptGrants() {
@@ -246,14 +246,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The volumes the user has permissions access to.
+     * The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="volumeGrants")
     private @Nullable Output<List<UserVolumeGrantArgs>> volumeGrants;
 
     /**
-     * @return The volumes the user has permissions access to.
+     * @return The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserVolumeGrantArgs>>> volumeGrants() {
@@ -261,14 +261,14 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="vpcGrants")
     private @Nullable Output<List<UserVpcGrantArgs>> vpcGrants;
 
     /**
-     * @return The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * @return The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<UserVpcGrantArgs>>> vpcGrants() {
@@ -315,7 +315,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainGrants The domains the user has permissions access to.
+         * @param domainGrants The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainGrants The domains the user has permissions access to.
+         * @param domainGrants The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainGrants The domains the user has permissions access to.
+         * @param domainGrants The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallGrants The firewalls the user has permissions access to.
+         * @param firewallGrants The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallGrants The firewalls the user has permissions access to.
+         * @param firewallGrants The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firewallGrants The firewalls the user has permissions access to.
+         * @param firewallGrants The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageGrants The images the user has permissions access to.
+         * @param imageGrants The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageGrants The images the user has permissions access to.
+         * @param imageGrants The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageGrants The images the user has permissions access to.
+         * @param imageGrants The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeGrants The Linodes the user has permissions access to.
+         * @param linodeGrants The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeGrants The Linodes the user has permissions access to.
+         * @param linodeGrants The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param linodeGrants The Linodes the user has permissions access to.
+         * @param linodeGrants The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param longviewGrants The longview the user has permissions access to.
+         * @param longviewGrants The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param longviewGrants The longview the user has permissions access to.
+         * @param longviewGrants The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param longviewGrants The longview the user has permissions access to.
+         * @param longviewGrants The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodebalancerGrants The NodeBalancers the user has permissions access to.
+         * @param nodebalancerGrants The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodebalancerGrants The NodeBalancers the user has permissions access to.
+         * @param nodebalancerGrants The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodebalancerGrants The NodeBalancers the user has permissions access to.
+         * @param nodebalancerGrants The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -545,7 +545,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param restricted If true, this user will only have explicit permissions granted.
          * 
-         * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+         * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
          * 
          * The following arguments are sets of entity grants:
          * 
@@ -560,7 +560,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param restricted If true, this user will only have explicit permissions granted.
          * 
-         * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+         * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
          * 
          * The following arguments are sets of entity grants:
          * 
@@ -603,7 +603,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptGrants The StackScripts the user has permissions access to.
+         * @param stackscriptGrants The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -614,7 +614,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptGrants The StackScripts the user has permissions access to.
+         * @param stackscriptGrants The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -624,7 +624,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptGrants The StackScripts the user has permissions access to.
+         * @param stackscriptGrants The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeGrants The volumes the user has permissions access to.
+         * @param volumeGrants The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeGrants The volumes the user has permissions access to.
+         * @param volumeGrants The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -718,7 +718,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeGrants The volumes the user has permissions access to.
+         * @param volumeGrants The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -728,7 +728,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to.
+         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -739,7 +739,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to.
+         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -749,7 +749,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to.
+         * @param vpcGrants The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

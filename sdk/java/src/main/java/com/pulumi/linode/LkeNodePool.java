@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
  *             .clusterId(150003)
- *             .type("g6-standard-2")
  *             .nodeCount(3)
+ *             .type("g6-standard-2")
  *             .build());
  * 
  *     }
@@ -88,9 +88,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
  *             .clusterId(150003)
- *             .type("g6-standard-2")
- *             .nodeCount(3)
  *             .label("app-pool")
+ *             .nodeCount(3)
+ *             .type("g6-standard-2")
  *             .build());
  * 
  *     }
@@ -121,9 +121,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
  *             .clusterId(150003)
- *             .type("g6-standard-2")
  *             .firewallId(12345)
  *             .nodeCount(3)
+ *             .type("g6-standard-2")
  *             .build());
  * 
  *     }
@@ -154,12 +154,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
+ *             .autoscaler(LkeNodePoolAutoscalerArgs.builder()
+ *                 .max(10)
+ *                 .min(3)
+ *                 .build())
  *             .clusterId(150003)
  *             .type("g6-standard-2")
- *             .autoscaler(LkeNodePoolAutoscalerArgs.builder()
- *                 .min(3)
- *                 .max(10)
- *                 .build())
  *             .build());
  * 
  *     }
@@ -391,9 +391,9 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
     /**
      * The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
      * 
-     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="updateStrategy", refs={String.class}, tree="[0]")
@@ -402,9 +402,9 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
     /**
      * @return The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
      * 
-     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<String> updateStrategy() {

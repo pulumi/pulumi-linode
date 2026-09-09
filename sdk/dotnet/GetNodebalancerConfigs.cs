@@ -230,7 +230,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public int NodebalancerId { get; set; }
@@ -266,7 +266,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public Input<int> NodebalancerId { get; set; } = null!;
@@ -298,6 +298,9 @@ namespace Pulumi.Linode
         /// The config's ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The list of Linode NodeBalancer Configs.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodebalancerConfigsNodebalancerConfigResult> NodebalancerConfigs;
         /// <summary>
         /// The ID of the NodeBalancer that contains the config.

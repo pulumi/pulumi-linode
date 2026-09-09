@@ -182,7 +182,7 @@ class FirewallDevice(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        my_firewall = linode.Firewall("my_firewall",
+        my_firewall = linode.Firewall("myFirewall",
             label="my_firewall",
             inbounds=[{
                 "label": "http",
@@ -194,11 +194,11 @@ class FirewallDevice(pulumi.CustomResource):
             }],
             inbound_policy="DROP",
             outbound_policy="ACCEPT")
-        my_instance = linode.Instance("my_instance",
+        my_instance = linode.Instance("myInstance",
             label="my_instance",
             region="us-southeast",
             type="g6-standard-1")
-        my_device = linode.FirewallDevice("my_device",
+        my_device = linode.FirewallDevice("myDevice",
             firewall_id=my_firewall.id.apply(lambda x: int(x)),
             entity_id=my_instance.id.apply(lambda x: int(x)))
         ```
@@ -236,7 +236,7 @@ class FirewallDevice(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        my_firewall = linode.Firewall("my_firewall",
+        my_firewall = linode.Firewall("myFirewall",
             label="my_firewall",
             inbounds=[{
                 "label": "http",
@@ -248,11 +248,11 @@ class FirewallDevice(pulumi.CustomResource):
             }],
             inbound_policy="DROP",
             outbound_policy="ACCEPT")
-        my_instance = linode.Instance("my_instance",
+        my_instance = linode.Instance("myInstance",
             label="my_instance",
             region="us-southeast",
             type="g6-standard-1")
-        my_device = linode.FirewallDevice("my_device",
+        my_device = linode.FirewallDevice("myDevice",
             firewall_id=my_firewall.id.apply(lambda x: int(x)),
             entity_id=my_instance.id.apply(lambda x: int(x)))
         ```

@@ -26,8 +26,8 @@ namespace Pulumi.Linode
     ///     var test = new Linode.PlacementGroup("test", new()
     ///     {
     ///         Label = "my-placement-group",
-    ///         Region = "us-mia",
     ///         PlacementGroupType = "anti_affinity:local",
+    ///         Region = "us-mia",
     ///     });
     /// 
     /// });

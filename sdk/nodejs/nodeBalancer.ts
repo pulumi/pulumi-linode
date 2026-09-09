@@ -19,10 +19,10 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.NodeBalancer("foobar", {
- *     label: "mynodebalancer",
- *     region: "us-east",
  *     clientConnThrottle: 20,
  *     clientUdpSessThrottle: 10,
+ *     label: "mynodebalancer",
+ *     region: "us-east",
  *     tags: ["foobar"],
  * });
  * ```
@@ -38,8 +38,27 @@ import * as utilities from "./utilities";
  *     label: "mynodebalancer",
  *     region: "us-mia",
  *     vpcs: [{
- *         subnetId: Number(test.id),
+ *         subnet_id: linode_vpc_subnet.test.id,
  *     }],
+ * });
+ * ```
+ *
+ * The following example shows how to create a NodeBalancer with a pre-reserved IPv4 address.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const myReservedIp = new linode.NetworkingIp("myReservedIp", {
+ *     region: "us-east",
+ *     type: "ipv4",
+ *     "public": true,
+ *     reserved: true,
+ * });
+ * const foobar = new linode.NodeBalancer("foobar", {
+ *     label: "mynodebalancer",
+ *     region: "us-east",
+ *     ipv4: myReservedIp.address,
  * });
  * ```
  *
@@ -106,9 +125,9 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly hostname: pulumi.Output<string>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      */
-    declare public /*out*/ readonly ipv4: pulumi.Output<string>;
+    declare public readonly ipv4: pulumi.Output<string>;
     /**
      * A list of IPv6 addresses or networks. Must be in IP/mask format.
      */
@@ -117,6 +136,10 @@ export class NodeBalancer extends pulumi.CustomResource {
      * The label of the Linode NodeBalancer
      */
     declare public readonly label: pulumi.Output<string | undefined>;
+    /**
+     * The related LKE cluster for this NodeBalancer, if any.
+     */
+    declare public /*out*/ readonly lkeClusters: pulumi.Output<outputs.NodeBalancerLkeCluster[]>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      *
@@ -162,6 +185,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["ipv4"] = state?.ipv4;
             resourceInputs["ipv6"] = state?.ipv6;
             resourceInputs["label"] = state?.label;
+            resourceInputs["lkeClusters"] = state?.lkeClusters;
             resourceInputs["region"] = state?.region;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["transfers"] = state?.transfers;
@@ -172,6 +196,7 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["clientConnThrottle"] = args?.clientConnThrottle;
             resourceInputs["clientUdpSessThrottle"] = args?.clientUdpSessThrottle;
             resourceInputs["firewallId"] = args?.firewallId;
+            resourceInputs["ipv4"] = args?.ipv4;
             resourceInputs["label"] = args?.label;
             resourceInputs["region"] = args?.region;
             resourceInputs["tags"] = args?.tags;
@@ -179,8 +204,8 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["firewalls"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
-            resourceInputs["ipv4"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
+            resourceInputs["lkeClusters"] = undefined /*out*/;
             resourceInputs["transfers"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
@@ -220,7 +245,7 @@ export interface NodeBalancerState {
      */
     hostname?: pulumi.Input<string | undefined>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      */
     ipv4?: pulumi.Input<string | undefined>;
     /**
@@ -231,6 +256,10 @@ export interface NodeBalancerState {
      * The label of the Linode NodeBalancer
      */
     label?: pulumi.Input<string | undefined>;
+    /**
+     * The related LKE cluster for this NodeBalancer, if any.
+     */
+    lkeClusters?: pulumi.Input<pulumi.Input<inputs.NodeBalancerLkeCluster>[] | undefined>;
     /**
      * The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
      *
@@ -273,6 +302,10 @@ export interface NodeBalancerArgs {
      * ID for the firewall you'd like to use with this NodeBalancer.
      */
     firewallId?: pulumi.Input<number | undefined>;
+    /**
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+     */
+    ipv4?: pulumi.Input<string | undefined>;
     /**
      * The label of the Linode NodeBalancer
      */

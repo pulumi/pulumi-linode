@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcsVpcIpv4;
 import com.pulumi.linode.outputs.GetVpcsVpcIpv6;
 import java.lang.String;
 import java.util.List;
@@ -28,7 +29,12 @@ public final class GetVpcsVpc {
      */
     private String id;
     /**
-     * @return A list of IPv6 allocations under this VPC.
+     * @return (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    private List<GetVpcsVpcIpv4> ipv4s;
+    /**
+     * @return (Nested Attribute List) A list of IPv6 allocations under this VPC.
      * 
      */
     private List<GetVpcsVpcIpv6> ipv6s;
@@ -47,6 +53,11 @@ public final class GetVpcsVpc {
      * 
      */
     private String updated;
+    /**
+     * @return The type of the VPC (&#39;regular&#39; or &#39;rdma&#39;). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     * 
+     */
+    private String vpcType;
 
     private GetVpcsVpc() {}
     /**
@@ -71,7 +82,14 @@ public final class GetVpcsVpc {
         return this.id;
     }
     /**
-     * @return A list of IPv6 allocations under this VPC.
+     * @return (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    public List<GetVpcsVpcIpv4> ipv4s() {
+        return this.ipv4s;
+    }
+    /**
+     * @return (Nested Attribute List) A list of IPv6 allocations under this VPC.
      * 
      */
     public List<GetVpcsVpcIpv6> ipv6s() {
@@ -98,6 +116,13 @@ public final class GetVpcsVpc {
     public String updated() {
         return this.updated;
     }
+    /**
+     * @return The type of the VPC (&#39;regular&#39; or &#39;rdma&#39;). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     * 
+     */
+    public String vpcType() {
+        return this.vpcType;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -111,20 +136,24 @@ public final class GetVpcsVpc {
         private String created;
         private String description;
         private String id;
+        private List<GetVpcsVpcIpv4> ipv4s;
         private List<GetVpcsVpcIpv6> ipv6s;
         private String label;
         private String region;
         private String updated;
+        private String vpcType;
         public Builder() {}
         public Builder(GetVpcsVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.region = defaults.region;
     	      this.updated = defaults.updated;
+    	      this.vpcType = defaults.vpcType;
         }
 
         @CustomType.Setter
@@ -150,6 +179,17 @@ public final class GetVpcsVpc {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv4s(List<GetVpcsVpcIpv4> ipv4s) {
+            if (ipv4s == null) {
+              throw new MissingRequiredPropertyException("GetVpcsVpc", "ipv4s");
+            }
+            this.ipv4s = ipv4s;
+            return this;
+        }
+        public Builder ipv4s(GetVpcsVpcIpv4... ipv4s) {
+            return ipv4s(List.of(ipv4s));
         }
         @CustomType.Setter
         public Builder ipv6s(List<GetVpcsVpcIpv6> ipv6s) {
@@ -186,15 +226,25 @@ public final class GetVpcsVpc {
             this.updated = updated;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcType(String vpcType) {
+            if (vpcType == null) {
+              throw new MissingRequiredPropertyException("GetVpcsVpc", "vpcType");
+            }
+            this.vpcType = vpcType;
+            return this;
+        }
         public GetVpcsVpc build() {
             final var _resultValue = new GetVpcsVpc();
             _resultValue.created = created;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.region = region;
             _resultValue.updated = updated;
+            _resultValue.vpcType = vpcType;
             return _resultValue;
         }
     }

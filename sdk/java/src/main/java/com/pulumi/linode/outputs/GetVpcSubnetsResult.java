@@ -17,11 +17,15 @@ import javax.annotation.Nullable;
 public final class GetVpcSubnetsResult {
     private @Nullable List<GetVpcSubnetsFilter> filters;
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     private String id;
     private Integer vpcId;
+    /**
+     * @return (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
+     * 
+     */
     private List<GetVpcSubnetsVpcSubnet> vpcSubnets;
 
     private GetVpcSubnetsResult() {}
@@ -29,7 +33,7 @@ public final class GetVpcSubnetsResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public String id() {
@@ -38,6 +42,10 @@ public final class GetVpcSubnetsResult {
     public Integer vpcId() {
         return this.vpcId;
     }
+    /**
+     * @return (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
+     * 
+     */
     public List<GetVpcSubnetsVpcSubnet> vpcSubnets() {
         return this.vpcSubnets;
     }

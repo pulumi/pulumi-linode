@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class GetIpv6RangesResult {
     private @Nullable List<GetIpv6RangesFilter> filters;
     private String id;
+    /**
+     * @return (Nested Attribute List) A list of Linode IPv6 ranges.
+     * 
+     */
     private List<GetIpv6RangesRange> ranges;
 
     private GetIpv6RangesResult() {}
@@ -25,6 +29,10 @@ public final class GetIpv6RangesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) A list of Linode IPv6 ranges.
+     * 
+     */
     public List<GetIpv6RangesRange> ranges() {
         return this.ranges;
     }

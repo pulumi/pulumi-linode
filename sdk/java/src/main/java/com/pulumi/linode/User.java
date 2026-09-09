@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var john = new User("john", UserArgs.builder()
- *             .username("john123")
  *             .email("john}{@literal @}{@code acme.io")
+ *             .username("john123")
  *             .build());
  * 
  *     }}{@code
@@ -88,17 +88,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var fooser = new User("fooser", UserArgs.builder()
- *             .username("cooluser123")
  *             .email("cool}{@literal @}{@code acme.io")
- *             .restricted(true)
  *             .globalGrants(UserGlobalGrantsArgs.builder()
- *                 .addLinodes(true)
  *                 .addImages(true)
+ *                 .addLinodes(true)
  *                 .build())
  *             .linodeGrants(UserLinodeGrantArgs.builder()
  *                 .id(12345)
  *                 .permissions("read_write")
  *                 .build())
+ *             .restricted(true)
+ *             .username("cooluser123")
  *             .build());
  * 
  *     }}{@code
@@ -142,14 +142,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/user:User")
 public class User extends com.pulumi.resources.CustomResource {
     /**
-     * The domains the user has permissions access to.
+     * The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="domainGrants", refs={List.class,UserDomainGrant.class}, tree="[0,1]")
     private Output<List<UserDomainGrant>> domainGrants;
 
     /**
-     * @return The domains the user has permissions access to.
+     * @return The domains the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserDomainGrant>> domainGrants() {
@@ -170,14 +170,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.email;
     }
     /**
-     * The firewalls the user has permissions access to.
+     * The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="firewallGrants", refs={List.class,UserFirewallGrant.class}, tree="[0,1]")
     private Output<List<UserFirewallGrant>> firewallGrants;
 
     /**
-     * @return The firewalls the user has permissions access to.
+     * @return The firewalls the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserFirewallGrant>> firewallGrants() {
@@ -198,56 +198,56 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.globalGrants;
     }
     /**
-     * The images the user has permissions access to.
+     * The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="imageGrants", refs={List.class,UserImageGrant.class}, tree="[0,1]")
     private Output<List<UserImageGrant>> imageGrants;
 
     /**
-     * @return The images the user has permissions access to.
+     * @return The images the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserImageGrant>> imageGrants() {
         return this.imageGrants;
     }
     /**
-     * The Linodes the user has permissions access to.
+     * The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="linodeGrants", refs={List.class,UserLinodeGrant.class}, tree="[0,1]")
     private Output<List<UserLinodeGrant>> linodeGrants;
 
     /**
-     * @return The Linodes the user has permissions access to.
+     * @return The Linodes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserLinodeGrant>> linodeGrants() {
         return this.linodeGrants;
     }
     /**
-     * The longview the user has permissions access to.
+     * The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="longviewGrants", refs={List.class,UserLongviewGrant.class}, tree="[0,1]")
     private Output<List<UserLongviewGrant>> longviewGrants;
 
     /**
-     * @return The longview the user has permissions access to.
+     * @return The longview the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserLongviewGrant>> longviewGrants() {
         return this.longviewGrants;
     }
     /**
-     * The NodeBalancers the user has permissions access to.
+     * The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="nodebalancerGrants", refs={List.class,UserNodebalancerGrant.class}, tree="[0,1]")
     private Output<List<UserNodebalancerGrant>> nodebalancerGrants;
 
     /**
-     * @return The NodeBalancers the user has permissions access to.
+     * @return The NodeBalancers the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserNodebalancerGrant>> nodebalancerGrants() {
@@ -256,7 +256,7 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * If true, this user will only have explicit permissions granted.
      * 
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -267,7 +267,7 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return If true, this user will only have explicit permissions granted.
      * 
-     * * `globalGrants` - (optional) A structure containing the Account-level grants a User has.
+     * * `globalGrants` - (optional, Block) A structure containing the Account-level grants a User has. Referenced with an index (e.g. `global_grants.0.account_access`).
      * 
      * The following arguments are sets of entity grants:
      * 
@@ -290,14 +290,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.sshKeys;
     }
     /**
-     * The StackScripts the user has permissions access to.
+     * The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="stackscriptGrants", refs={List.class,UserStackscriptGrant.class}, tree="[0,1]")
     private Output<List<UserStackscriptGrant>> stackscriptGrants;
 
     /**
-     * @return The StackScripts the user has permissions access to.
+     * @return The StackScripts the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserStackscriptGrant>> stackscriptGrants() {
@@ -346,28 +346,28 @@ public class User extends com.pulumi.resources.CustomResource {
         return this.username;
     }
     /**
-     * The volumes the user has permissions access to.
+     * The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="volumeGrants", refs={List.class,UserVolumeGrant.class}, tree="[0,1]")
     private Output<List<UserVolumeGrant>> volumeGrants;
 
     /**
-     * @return The volumes the user has permissions access to.
+     * @return The volumes the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserVolumeGrant>> volumeGrants() {
         return this.volumeGrants;
     }
     /**
-     * The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="vpcGrants", refs={List.class,UserVpcGrant.class}, tree="[0,1]")
     private Output<List<UserVpcGrant>> vpcGrants;
 
     /**
-     * @return The Virtual Private Clouds (VPCs) the user has permissions access to.
+     * @return The Virtual Private Clouds (VPCs) the user has permissions access to. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<UserVpcGrant>> vpcGrants() {

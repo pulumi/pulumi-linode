@@ -17,12 +17,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const myRecord = linode.getDomainRecord({
- *     id: 14950401,
  *     domainId: 3150401,
+ *     id: 14950401,
  * });
  * const myWwwRecord = linode.getDomainRecord({
- *     name: "www",
  *     domainId: 3150401,
+ *     name: "www",
  * });
  * ```
  */
@@ -119,12 +119,12 @@ export interface GetDomainRecordResult {
  * import * as linode from "@pulumi/linode";
  *
  * const myRecord = linode.getDomainRecord({
- *     id: 14950401,
  *     domainId: 3150401,
+ *     id: 14950401,
  * });
  * const myWwwRecord = linode.getDomainRecord({
- *     name: "www",
  *     domainId: 3150401,
+ *     name: "www",
  * });
  * ```
  */

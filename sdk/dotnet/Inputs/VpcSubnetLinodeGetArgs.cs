@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class VpcSubnetLinodeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.VpcSubnetLinodeInterfaceGetArgs>? _interfaces;
 
         /// <summary>
-        /// A list of networking interfaces objects.
+        /// (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
         /// </summary>
         public InputList<Inputs.VpcSubnetLinodeInterfaceGetArgs> Interfaces
         {

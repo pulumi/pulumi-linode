@@ -141,9 +141,9 @@ class DatabasePostgresqlV2Args:
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input['DatabasePostgresqlV2PrivateNetworkArgs'] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input['DatabasePostgresqlV2UpdatesArgs'] updates: Configuration settings for automated patch update maintenance for the Managed Database.
@@ -919,9 +919,9 @@ class DatabasePostgresqlV2Args:
         """
         The ID of the database that was forked from.
 
-        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         """
         return pulumi.get(self, "fork_source")
 
@@ -1115,16 +1115,16 @@ class _DatabasePostgresqlV2State:
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
         :param pulumi.Input[_builtins.str] host_standby: The standby host for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
-        :param pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlV2PendingUpdateArgs']]] pending_updates: A set of pending updates.
+        :param pulumi.Input[Sequence[pulumi.Input['DatabasePostgresqlV2PendingUpdateArgs']]] pending_updates: (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
         :param pulumi.Input['DatabasePostgresqlV2PrivateNetworkArgs'] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
@@ -1965,9 +1965,9 @@ class _DatabasePostgresqlV2State:
         """
         The ID of the database that was forked from.
 
-        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         """
         return pulumi.get(self, "fork_source")
 
@@ -2052,7 +2052,7 @@ class _DatabasePostgresqlV2State:
     @pulumi.getter(name="pendingUpdates")
     def pending_updates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabasePostgresqlV2PendingUpdateArgs']]]]:
         """
-        A set of pending updates.
+        (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "pending_updates")
 
@@ -2307,8 +2307,8 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
             engine_id="postgresql/16",
+            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -2317,28 +2317,28 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
+            allow_lists=["0.0.0.0/0"],
             engine_id="postgresql/16",
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            allow_lists=["0.0.0.0/0"])
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
-            engine_id="postgresql/16",
-            region="us-mia",
-            type="g6-nanode-1",
             allow_lists=["10.0.0.3/32"],
             cluster_size=3,
+            engine_id="postgresql/16",
+            label="mydatabase",
+            region="us-mia",
+            type="g6-nanode-1",
             updates={
+                "day_of_week": 2,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
-                "day_of_week": 2,
             })
         ```
         ```python
@@ -2346,10 +2346,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
-            engine_id="postgresql/16",
-            region="us-mia",
-            type="g6-nanode-1",
             engine_config_pg_autovacuum_analyze_scale_factor=0.1,
             engine_config_pg_autovacuum_analyze_threshold=50,
             engine_config_pg_autovacuum_max_workers=3,
@@ -2385,6 +2381,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=True,
             engine_config_pg_pg_stat_monitor_pgsm_max_buckets=5,
             engine_config_pg_pg_stat_statements_track="all",
+            engine_config_pg_stat_monitor_enable=True,
             engine_config_pg_temp_file_limit=100,
             engine_config_pg_timezone="Europe/Helsinki",
             engine_config_pg_track_activity_query_size=2048,
@@ -2393,36 +2390,39 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_track_io_timing="on",
             engine_config_pg_wal_sender_timeout=60000,
             engine_config_pg_wal_writer_delay=200,
-            engine_config_pg_stat_monitor_enable=True,
             engine_config_pglookout_max_failover_replication_time_lag=10000,
             engine_config_shared_buffers_percentage=float(25),
-            engine_config_work_mem=400)
+            engine_config_work_mem=400,
+            engine_id="postgresql/16",
+            label="mydatabase",
+            region="us-mia",
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
             engine_id="postgresql/16",
+            fork_source=12345,
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            fork_source=12345)
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
             engine_id="postgresql/16",
-            region="us-mia",
-            type="g6-nanode-1",
+            label="mydatabase",
             private_network={
-                "vpc_id": 123,
-                "subnet_id": 456,
                 "public_access": False,
-            })
+                "subnet_id": 456,
+                "vpc_id": 123,
+            },
+            region="us-mia",
+            type="g6-nanode-1")
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
@@ -2523,9 +2523,9 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Union['DatabasePostgresqlV2PrivateNetworkArgs', 'DatabasePostgresqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
@@ -2554,8 +2554,8 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
             engine_id="postgresql/16",
+            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -2564,28 +2564,28 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
+            allow_lists=["0.0.0.0/0"],
             engine_id="postgresql/16",
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            allow_lists=["0.0.0.0/0"])
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
-            engine_id="postgresql/16",
-            region="us-mia",
-            type="g6-nanode-1",
             allow_lists=["10.0.0.3/32"],
             cluster_size=3,
+            engine_id="postgresql/16",
+            label="mydatabase",
+            region="us-mia",
+            type="g6-nanode-1",
             updates={
+                "day_of_week": 2,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
-                "day_of_week": 2,
             })
         ```
         ```python
@@ -2593,10 +2593,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
-            engine_id="postgresql/16",
-            region="us-mia",
-            type="g6-nanode-1",
             engine_config_pg_autovacuum_analyze_scale_factor=0.1,
             engine_config_pg_autovacuum_analyze_threshold=50,
             engine_config_pg_autovacuum_max_workers=3,
@@ -2632,6 +2628,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=True,
             engine_config_pg_pg_stat_monitor_pgsm_max_buckets=5,
             engine_config_pg_pg_stat_statements_track="all",
+            engine_config_pg_stat_monitor_enable=True,
             engine_config_pg_temp_file_limit=100,
             engine_config_pg_timezone="Europe/Helsinki",
             engine_config_pg_track_activity_query_size=2048,
@@ -2640,36 +2637,39 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_track_io_timing="on",
             engine_config_pg_wal_sender_timeout=60000,
             engine_config_pg_wal_writer_delay=200,
-            engine_config_pg_stat_monitor_enable=True,
             engine_config_pglookout_max_failover_replication_time_lag=10000,
             engine_config_shared_buffers_percentage=float(25),
-            engine_config_work_mem=400)
+            engine_config_work_mem=400,
+            engine_id="postgresql/16",
+            label="mydatabase",
+            region="us-mia",
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
             engine_id="postgresql/16",
+            fork_source=12345,
+            label="mydatabase",
             region="us-mia",
-            type="g6-nanode-1",
-            fork_source=12345)
+            type="g6-nanode-1")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            label="mydatabase",
             engine_id="postgresql/16",
-            region="us-mia",
-            type="g6-nanode-1",
+            label="mydatabase",
             private_network={
-                "vpc_id": 123,
-                "subnet_id": 456,
                 "public_access": False,
-            })
+                "subnet_id": 456,
+                "vpc_id": 123,
+            },
+            region="us-mia",
+            type="g6-nanode-1")
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
@@ -3036,16 +3036,16 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] fork_restore_time: The database timestamp from which it was restored.
         :param pulumi.Input[_builtins.int] fork_source: The ID of the database that was forked from.
                
-               * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+               * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
                
-               * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+               * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] host_primary: The primary host for the Managed Database.
         :param pulumi.Input[_builtins.str] host_secondary: The secondary/private host for the managed database.
         :param pulumi.Input[_builtins.str] host_standby: The standby host for the Managed Database.
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlV2PendingUpdateArgs', 'DatabasePostgresqlV2PendingUpdateArgsDict']]]] pending_updates: A set of pending updates.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabasePostgresqlV2PendingUpdateArgs', 'DatabasePostgresqlV2PendingUpdateArgsDict']]]] pending_updates: (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
         :param pulumi.Input[Union['DatabasePostgresqlV2PrivateNetworkArgs', 'DatabasePostgresqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
@@ -3591,9 +3591,9 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         """
         The ID of the database that was forked from.
 
-        * `private_network` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        * `private_network` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
 
-        * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         """
         return pulumi.get(self, "fork_source")
 
@@ -3650,7 +3650,7 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
     @pulumi.getter(name="pendingUpdates")
     def pending_updates(self) -> pulumi.Output[Sequence['outputs.DatabasePostgresqlV2PendingUpdate']]:
         """
-        A set of pending updates.
+        (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "pending_updates")
 

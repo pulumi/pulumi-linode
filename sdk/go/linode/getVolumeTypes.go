@@ -36,10 +36,11 @@ type GetVolumeTypesArgs struct {
 type GetVolumeTypesResult struct {
 	Filters []GetVolumeTypesFilter `pulumi:"filters"`
 	// The ID representing the Volume type.
-	Id      string               `pulumi:"id"`
-	Order   *string              `pulumi:"order"`
-	OrderBy *string              `pulumi:"orderBy"`
-	Types   []GetVolumeTypesType `pulumi:"types"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) Linode Volume types matching the query.
+	Types []GetVolumeTypesType `pulumi:"types"`
 }
 
 func GetVolumeTypesOutput(ctx *pulumi.Context, args GetVolumeTypesOutputArgs, opts ...pulumi.InvokeOption) GetVolumeTypesResultOutput {
@@ -92,6 +93,7 @@ func (o GetVolumeTypesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumeTypesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) Linode Volume types matching the query.
 func (o GetVolumeTypesResultOutput) Types() GetVolumeTypesTypeArrayOutput {
 	return o.ApplyT(func(v GetVolumeTypesResult) []GetVolumeTypesType { return v.Types }).(GetVolumeTypesTypeArrayOutput)
 }

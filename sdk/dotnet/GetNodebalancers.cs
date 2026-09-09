@@ -270,9 +270,12 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetNodebalancersFilterResult> Filters;
         /// <summary>
-        /// The Linode NodeBalancer's unique ID
+        /// The ID of the related LKE cluster.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNodebalancersNodebalancerResult> Nodebalancers;
         public readonly string? Order;
         public readonly string? OrderBy;

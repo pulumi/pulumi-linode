@@ -26,9 +26,17 @@ public final class GetConsumerImageShareGroupImageSharesArgs extends com.pulumi.
         return Optional.ofNullable(this.filters);
     }
 
+    /**
+     * (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     * 
+     */
     @Import(name="imageShares")
     private @Nullable Output<List<GetConsumerImageShareGroupImageSharesImageShareArgs>> imageShares;
 
+    /**
+     * @return (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     * 
+     */
     public Optional<Output<List<GetConsumerImageShareGroupImageSharesImageShareArgs>>> imageShares() {
         return Optional.ofNullable(this.imageShares);
     }
@@ -50,7 +58,7 @@ public final class GetConsumerImageShareGroupImageSharesArgs extends com.pulumi.
     /**
      * The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     @Import(name="tokenUuid", required=true)
@@ -59,7 +67,7 @@ public final class GetConsumerImageShareGroupImageSharesArgs extends com.pulumi.
     /**
      * @return The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     public Output<String> tokenUuid() {
@@ -107,15 +115,33 @@ public final class GetConsumerImageShareGroupImageSharesArgs extends com.pulumi.
             return filters(List.of(filters));
         }
 
+        /**
+         * @param imageShares (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(@Nullable Output<List<GetConsumerImageShareGroupImageSharesImageShareArgs>> imageShares) {
             $.imageShares = imageShares;
             return this;
         }
 
+        /**
+         * @param imageShares (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(List<GetConsumerImageShareGroupImageSharesImageShareArgs> imageShares) {
             return imageShares(Output.of(imageShares));
         }
 
+        /**
+         * @param imageShares (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder imageShares(GetConsumerImageShareGroupImageSharesImageShareArgs... imageShares) {
             return imageShares(List.of(imageShares));
         }
@@ -141,7 +167,7 @@ public final class GetConsumerImageShareGroupImageSharesArgs extends com.pulumi.
         /**
          * @param tokenUuid The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 
@@ -154,7 +180,7 @@ public final class GetConsumerImageShareGroupImageSharesArgs extends com.pulumi.
         /**
          * @param tokenUuid The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 

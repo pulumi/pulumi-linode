@@ -29,7 +29,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -161,7 +161,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("my_instance", new()
+        ///     var myInstance = new Linode.Instance("myInstance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -275,6 +275,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVlansVlanResult> Vlans;
 
         [OutputConstructor]

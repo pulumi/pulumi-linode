@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * const example = new linode.FirewallSettings("example", {defaultFirewallIds: {
  *     linode: 12345,
  *     nodebalancer: 12345,
- *     publicInterface: 12345,
- *     vpcInterface: 12345,
+ *     public_interface: 12345,
+ *     vpc_interface: 12345,
  * }});
  * ```
  *
@@ -57,7 +57,7 @@ export class FirewallSettings extends pulumi.CustomResource {
     }
 
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      */
     declare public readonly defaultFirewallIds: pulumi.Output<outputs.FirewallSettingsDefaultFirewallIds | undefined>;
 
@@ -89,7 +89,7 @@ export class FirewallSettings extends pulumi.CustomResource {
  */
 export interface FirewallSettingsState {
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      */
     defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds | undefined>;
 }
@@ -99,7 +99,7 @@ export interface FirewallSettingsState {
  */
 export interface FirewallSettingsArgs {
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      */
     defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds | undefined>;
 }

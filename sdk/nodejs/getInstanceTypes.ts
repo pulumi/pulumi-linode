@@ -86,6 +86,9 @@ export interface GetInstanceTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The Linode Instance types returned by this data source.
+     */
     readonly types: outputs.GetInstanceTypesType[];
 }
 /**

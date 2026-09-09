@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// IPv4 range assigned to the database.
+        /// IPv4 range assigned to the NodeBalancer.
         /// </summary>
         public readonly string Ipv4Range;
         /// <summary>
-        /// A list of IPv6 ranges assigned to the database.
+        /// (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `nodebalancers.0.ipv6_ranges.0.range`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetDatabaseIpv6RangeResult> Ipv6Ranges;
 

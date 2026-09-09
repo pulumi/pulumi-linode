@@ -51,17 +51,13 @@ export interface GetLkeClusterResult {
      */
     readonly aplEnabled: boolean;
     /**
-     * The settings for the Kubernetes Control Plane.
+     * (Nested Attribute List) The settings for the Kubernetes Control Plane.
      */
     readonly controlPlanes: outputs.GetLkeClusterControlPlane[];
     /**
      * When this Kubernetes cluster was created.
      */
     readonly created: string;
-    /**
-     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     */
-    readonly dashboardUrl: string;
     /**
      * The ID of the node.
      */
@@ -79,7 +75,7 @@ export interface GetLkeClusterResult {
      */
     readonly label: string;
     /**
-     * Node pools associated with this cluster.
+     * (Nested Attribute List) Node pools associated with this cluster.
      */
     readonly pools: outputs.GetLkeClusterPool[];
     /**

@@ -68,6 +68,21 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+     * 
+     */
+    @Import(name="ipv4")
+    private @Nullable Output<String> ipv4;
+
+    /**
+     * @return The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+     * 
+     */
+    public Optional<Output<String>> ipv4() {
+        return Optional.ofNullable(this.ipv4);
+    }
+
+    /**
      * The label of the Linode NodeBalancer
      * 
      */
@@ -137,6 +152,7 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.clientConnThrottle = $.clientConnThrottle;
         this.clientUdpSessThrottle = $.clientUdpSessThrottle;
         this.firewallId = $.firewallId;
+        this.ipv4 = $.ipv4;
         this.label = $.label;
         this.region = $.region;
         this.tags = $.tags;
@@ -226,6 +242,27 @@ public final class NodeBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder firewallId(Integer firewallId) {
             return firewallId(Output.of(firewallId));
+        }
+
+        /**
+         * @param ipv4 The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4(@Nullable Output<String> ipv4) {
+            $.ipv4 = ipv4;
+            return this;
+        }
+
+        /**
+         * @param ipv4 The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv4(String ipv4) {
+            return ipv4(Output.of(ipv4));
         }
 
         /**

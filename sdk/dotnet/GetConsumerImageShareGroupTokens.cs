@@ -205,6 +205,10 @@ namespace Pulumi.Linode
 
         [Input("tokens")]
         private List<Inputs.GetConsumerImageShareGroupTokensTokenArgs>? _tokens;
+
+        /// <summary>
+        /// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+        /// </summary>
         public List<Inputs.GetConsumerImageShareGroupTokensTokenArgs> Tokens
         {
             get => _tokens ?? (_tokens = new List<Inputs.GetConsumerImageShareGroupTokensTokenArgs>());
@@ -235,6 +239,10 @@ namespace Pulumi.Linode
 
         [Input("tokens")]
         private InputList<Inputs.GetConsumerImageShareGroupTokensTokenInputArgs>? _tokens;
+
+        /// <summary>
+        /// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+        /// </summary>
         public InputList<Inputs.GetConsumerImageShareGroupTokensTokenInputArgs> Tokens
         {
             get => _tokens ?? (_tokens = new InputList<Inputs.GetConsumerImageShareGroupTokensTokenInputArgs>());
@@ -255,6 +263,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConsumerImageShareGroupTokensTokenResult> Tokens;
 
         [OutputConstructor]

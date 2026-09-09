@@ -29,14 +29,14 @@ namespace Pulumi.Linode
         /// {
         ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         Id = 14950401,
         ///         DomainId = 3150401,
+        ///         Id = 14950401,
         ///     });
         /// 
         ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         Name = "www",
         ///         DomainId = 3150401,
+        ///         Name = "www",
         ///     });
         /// 
         /// });
@@ -63,14 +63,14 @@ namespace Pulumi.Linode
         /// {
         ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         Id = 14950401,
         ///         DomainId = 3150401,
+        ///         Id = 14950401,
         ///     });
         /// 
         ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         Name = "www",
         ///         DomainId = 3150401,
+        ///         Name = "www",
         ///     });
         /// 
         /// });
@@ -97,14 +97,14 @@ namespace Pulumi.Linode
         /// {
         ///     var myRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         Id = 14950401,
         ///         DomainId = 3150401,
+        ///         Id = 14950401,
         ///     });
         /// 
         ///     var myWwwRecord = Linode.GetDomainRecord.Invoke(new()
         ///     {
-        ///         Name = "www",
         ///         DomainId = 3150401,
+        ///         Name = "www",
         ///     });
         /// 
         /// });

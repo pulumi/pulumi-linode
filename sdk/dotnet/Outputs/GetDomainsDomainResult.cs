@@ -30,10 +30,6 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int ExpireSec;
         /// <summary>
-        /// The group this Domain belongs to.
-        /// </summary>
-        public readonly string Group;
-        /// <summary>
         /// The unique ID of this Domain.
         /// </summary>
         public readonly int? Id;
@@ -80,8 +76,6 @@ namespace Pulumi.Linode.Outputs
 
             int expireSec,
 
-            string group,
-
             int? id,
 
             ImmutableArray<string> masterIps,
@@ -104,7 +98,6 @@ namespace Pulumi.Linode.Outputs
             Description = description;
             Domain = domain;
             ExpireSec = expireSec;
-            Group = group;
             Id = id;
             MasterIps = masterIps;
             RefreshSec = refreshSec;

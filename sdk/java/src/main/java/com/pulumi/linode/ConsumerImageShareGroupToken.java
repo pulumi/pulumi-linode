@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ConsumerImageShareGroupToken("example", ConsumerImageShareGroupTokenArgs.builder()
- *             .validForSharegroupUuid("03fbb93e-c27d-4c4a-9180-67f6e0cd74ca")
  *             .label("example-token")
+ *             .validForSharegroupUuid("03fbb93e-c27d-4c4a-9180-67f6e0cd74ca")
  *             .build());
  * 
  *     }

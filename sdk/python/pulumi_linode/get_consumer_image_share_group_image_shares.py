@@ -64,6 +64,9 @@ class GetConsumerImageShareGroupImageSharesResult:
     @_builtins.property
     @pulumi.getter(name="imageShares")
     def image_shares(self) -> Optional[Sequence['outputs.GetConsumerImageShareGroupImageSharesImageShareResult']]:
+        """
+        (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+        """
         return pulumi.get(self, "image_shares")
 
     @_builtins.property
@@ -132,9 +135,10 @@ def get_consumer_image_share_group_image_shares(filters: Optional[Sequence[Union
     * `label`
 
 
+    :param Sequence[Union['GetConsumerImageShareGroupImageSharesImageShareArgs', 'GetConsumerImageShareGroupImageSharesImageShareArgsDict']] image_shares: (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
     :param _builtins.str token_uuid: The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
            
-           * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -188,9 +192,10 @@ def get_consumer_image_share_group_image_shares_output(filters: pulumi.Input[Opt
     * `label`
 
 
+    :param Sequence[Union['GetConsumerImageShareGroupImageSharesImageShareArgs', 'GetConsumerImageShareGroupImageSharesImageShareArgsDict']] image_shares: (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
     :param _builtins.str token_uuid: The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
            
-           * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters

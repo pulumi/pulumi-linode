@@ -127,27 +127,6 @@ class SshKey(pulumi.CustomResource):
 
         **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
 
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-        import pulumi_std as std
-
-        foo = linode.SshKey("foo",
-            label="foo",
-            ssh_key=std.chomp(input=std.file(input="~/.ssh/id_rsa.pub").result).result)
-        foo_instance = linode.Instance("foo",
-            image="linode/ubuntu22.04",
-            label="foo",
-            region="us-east",
-            type="g6-nanode-1",
-            authorized_keys=[foo.ssh_key],
-            root_pass="...")
-        ```
-
         ## Import
 
         Linodes SSH Keys can be imported using the Linode SSH Key `id`, e.g.
@@ -173,27 +152,6 @@ class SshKey(pulumi.CustomResource):
         For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-keys).
 
         **NOTE**: This does not generate a new ssh key, you must have an existing key generated and saved locally.
-
-        ## Example Usage
-
-        The following example shows how one might use this resource to configure a SSH Key for access to a Linode Instance.
-
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-        import pulumi_std as std
-
-        foo = linode.SshKey("foo",
-            label="foo",
-            ssh_key=std.chomp(input=std.file(input="~/.ssh/id_rsa.pub").result).result)
-        foo_instance = linode.Instance("foo",
-            image="linode/ubuntu22.04",
-            label="foo",
-            region="us-east",
-            type="g6-nanode-1",
-            authorized_keys=[foo.ssh_key],
-            root_pass="...")
-        ```
 
         ## Import
 

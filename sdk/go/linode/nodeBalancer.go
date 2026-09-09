@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-//				Label:                 pulumi.String("mynodebalancer"),
-//				Region:                pulumi.String("us-east"),
 //				ClientConnThrottle:    pulumi.Int(20),
 //				ClientUdpSessThrottle: pulumi.Int(10),
+//				Label:                 pulumi.String("mynodebalancer"),
+//				Region:                pulumi.String("us-east"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foobar"),
 //				},
@@ -68,9 +68,46 @@ import (
 //				Region: pulumi.String("us-mia"),
 //				Vpcs: linode.NodeBalancerVpcArray{
 //					&linode.NodeBalancerVpcArgs{
-//						SubnetId: pulumi.Any(test.Id),
+//						Subnet_id: linode_vpc_subnet.Test.Id,
 //					},
 //				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// The following example shows how to create a NodeBalancer with a pre-reserved IPv4 address.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myReservedIp, err := linode.NewNetworkingIp(ctx, "myReservedIp", &linode.NetworkingIpArgs{
+//				Region:   pulumi.String("us-east"),
+//				Type:     pulumi.String("ipv4"),
+//				Public:   pulumi.Bool(true),
+//				Reserved: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
+//				Label:  pulumi.String("mynodebalancer"),
+//				Region: pulumi.String("us-east"),
+//				Ipv4:   myReservedIp.Address,
 //			})
 //			if err != nil {
 //				return err
@@ -105,12 +142,14 @@ type NodeBalancer struct {
 	Firewalls NodeBalancerFirewallArrayOutput `pulumi:"firewalls"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
 	Ipv4 pulumi.StringOutput `pulumi:"ipv4"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 pulumi.StringOutput `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrOutput `pulumi:"label"`
+	// The related LKE cluster for this NodeBalancer, if any.
+	LkeClusters NodeBalancerLkeClusterArrayOutput `pulumi:"lkeClusters"`
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	//
 	// ***
@@ -169,12 +208,14 @@ type nodeBalancerState struct {
 	Firewalls []NodeBalancerFirewall `pulumi:"firewalls"`
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname *string `pulumi:"hostname"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
 	Ipv4 *string `pulumi:"ipv4"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 *string `pulumi:"ipv6"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
+	// The related LKE cluster for this NodeBalancer, if any.
+	LkeClusters []NodeBalancerLkeCluster `pulumi:"lkeClusters"`
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	//
 	// ***
@@ -204,12 +245,14 @@ type NodeBalancerState struct {
 	Firewalls NodeBalancerFirewallArrayInput
 	// This NodeBalancer's hostname, ending with .nodebalancer.linode.com
 	Hostname pulumi.StringPtrInput
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
 	Ipv4 pulumi.StringPtrInput
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 pulumi.StringPtrInput
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput
+	// The related LKE cluster for this NodeBalancer, if any.
+	LkeClusters NodeBalancerLkeClusterArrayInput
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
 	//
 	// ***
@@ -237,6 +280,8 @@ type nodeBalancerArgs struct {
 	ClientUdpSessThrottle *int `pulumi:"clientUdpSessThrottle"`
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId *int `pulumi:"firewallId"`
+	// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+	Ipv4 *string `pulumi:"ipv4"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -259,6 +304,8 @@ type NodeBalancerArgs struct {
 	ClientUdpSessThrottle pulumi.IntPtrInput
 	// ID for the firewall you'd like to use with this NodeBalancer.
 	FirewallId pulumi.IntPtrInput
+	// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
+	Ipv4 pulumi.StringPtrInput
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput
 	// The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
@@ -390,7 +437,7 @@ func (o NodeBalancerOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// A list of IPv4 addresses or networks. Must be in IP/mask format.
+// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
 func (o NodeBalancerOutput) Ipv4() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Ipv4 }).(pulumi.StringOutput)
 }
@@ -403,6 +450,11 @@ func (o NodeBalancerOutput) Ipv6() pulumi.StringOutput {
 // The label of the Linode NodeBalancer
 func (o NodeBalancerOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.StringPtrOutput { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// The related LKE cluster for this NodeBalancer, if any.
+func (o NodeBalancerOutput) LkeClusters() NodeBalancerLkeClusterArrayOutput {
+	return o.ApplyT(func(v *NodeBalancer) NodeBalancerLkeClusterArrayOutput { return v.LkeClusters }).(NodeBalancerLkeClusterArrayOutput)
 }
 
 // The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.

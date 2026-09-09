@@ -421,12 +421,12 @@ class DomainRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foobar = linode.Domain("foobar",
+        foobar_domain = linode.Domain("foobarDomain",
             type="master",
             domain="foobar.example",
             soa_email="example@foobar.example")
-        foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id.apply(lambda x: int(x)),
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")
@@ -475,12 +475,12 @@ class DomainRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foobar = linode.Domain("foobar",
+        foobar_domain = linode.Domain("foobarDomain",
             type="master",
             domain="foobar.example",
             soa_email="example@foobar.example")
-        foobar_domain_record = linode.DomainRecord("foobar",
-            domain_id=foobar.id.apply(lambda x: int(x)),
+        foobar_domain_record = linode.DomainRecord("foobarDomainRecord",
+            domain_id=foobar_domain.id.apply(lambda x: int(x)),
             name="www",
             record_type="CNAME",
             target="foobar.example")

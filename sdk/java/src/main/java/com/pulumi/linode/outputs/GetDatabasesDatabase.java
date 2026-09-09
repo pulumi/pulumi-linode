@@ -40,6 +40,16 @@ public final class GetDatabasesDatabase {
      */
     private String engine;
     /**
+     * @return The database timestamp from which it was restored.
+     * 
+     */
+    private String forkRestoreTime;
+    /**
+     * @return The ID of the database that was forked from.
+     * 
+     */
+    private Integer forkSource;
+    /**
      * @return The primary host for the Managed Database.
      * 
      */
@@ -73,6 +83,11 @@ public final class GetDatabasesDatabase {
      * 
      */
     private String label;
+    /**
+     * @return The oldest time to which a database can be restored.
+     * 
+     */
+    private String oldestRestoreTime;
     /**
      * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
@@ -141,6 +156,20 @@ public final class GetDatabasesDatabase {
         return this.engine;
     }
     /**
+     * @return The database timestamp from which it was restored.
+     * 
+     */
+    public String forkRestoreTime() {
+        return this.forkRestoreTime;
+    }
+    /**
+     * @return The ID of the database that was forked from.
+     * 
+     */
+    public Integer forkSource() {
+        return this.forkSource;
+    }
+    /**
      * @return The primary host for the Managed Database.
      * 
      */
@@ -185,6 +214,13 @@ public final class GetDatabasesDatabase {
      */
     public String label() {
         return this.label;
+    }
+    /**
+     * @return The oldest time to which a database can be restored.
+     * 
+     */
+    public String oldestRestoreTime() {
+        return this.oldestRestoreTime;
     }
     /**
      * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
@@ -243,12 +279,15 @@ public final class GetDatabasesDatabase {
         private String created;
         private Boolean encrypted;
         private String engine;
+        private String forkRestoreTime;
+        private Integer forkSource;
         private String hostPrimary;
         private String hostSecondary;
         private String hostStandby;
         private Integer id;
         private String instanceUri;
         private String label;
+        private String oldestRestoreTime;
         private GetDatabasesDatabasePrivateNetwork privateNetwork;
         private String region;
         private String status;
@@ -263,12 +302,15 @@ public final class GetDatabasesDatabase {
     	      this.created = defaults.created;
     	      this.encrypted = defaults.encrypted;
     	      this.engine = defaults.engine;
+    	      this.forkRestoreTime = defaults.forkRestoreTime;
+    	      this.forkSource = defaults.forkSource;
     	      this.hostPrimary = defaults.hostPrimary;
     	      this.hostSecondary = defaults.hostSecondary;
     	      this.hostStandby = defaults.hostStandby;
     	      this.id = defaults.id;
     	      this.instanceUri = defaults.instanceUri;
     	      this.label = defaults.label;
+    	      this.oldestRestoreTime = defaults.oldestRestoreTime;
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.region = defaults.region;
     	      this.status = defaults.status;
@@ -321,6 +363,22 @@ public final class GetDatabasesDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder forkRestoreTime(String forkRestoreTime) {
+            if (forkRestoreTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "forkRestoreTime");
+            }
+            this.forkRestoreTime = forkRestoreTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forkSource(Integer forkSource) {
+            if (forkSource == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "forkSource");
+            }
+            this.forkSource = forkSource;
+            return this;
+        }
+        @CustomType.Setter
         public Builder hostPrimary(String hostPrimary) {
             if (hostPrimary == null) {
               throw new MissingRequiredPropertyException("GetDatabasesDatabase", "hostPrimary");
@@ -366,6 +424,14 @@ public final class GetDatabasesDatabase {
               throw new MissingRequiredPropertyException("GetDatabasesDatabase", "label");
             }
             this.label = label;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder oldestRestoreTime(String oldestRestoreTime) {
+            if (oldestRestoreTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "oldestRestoreTime");
+            }
+            this.oldestRestoreTime = oldestRestoreTime;
             return this;
         }
         @CustomType.Setter
@@ -423,12 +489,15 @@ public final class GetDatabasesDatabase {
             _resultValue.created = created;
             _resultValue.encrypted = encrypted;
             _resultValue.engine = engine;
+            _resultValue.forkRestoreTime = forkRestoreTime;
+            _resultValue.forkSource = forkSource;
             _resultValue.hostPrimary = hostPrimary;
             _resultValue.hostSecondary = hostSecondary;
             _resultValue.hostStandby = hostStandby;
             _resultValue.id = id;
             _resultValue.instanceUri = instanceUri;
             _resultValue.label = label;
+            _resultValue.oldestRestoreTime = oldestRestoreTime;
             _resultValue.privateNetwork = privateNetwork;
             _resultValue.region = region;
             _resultValue.status = status;

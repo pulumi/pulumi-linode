@@ -32,7 +32,7 @@ class VpcSubnetArgs:
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
                
-               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]] ipv6s: The IPv6 ranges of this subnet.
         """
         pulumi.set(__self__, "label", label)
@@ -72,7 +72,7 @@ class VpcSubnetArgs:
         """
         The IPv4 range of this subnet in CIDR format.
 
-        * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         """
         return pulumi.get(self, "ipv4")
 
@@ -102,21 +102,25 @@ class _VpcSubnetState:
                  ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetIpv6Args']]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  linodes: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]]] = None,
+                 nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetNodebalancerArgs']]]] = None,
                  updated: pulumi.Input[Optional[_builtins.str]] = None,
-                 vpc_id: pulumi.Input[Optional[_builtins.int]] = None):
+                 vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcSubnet resources.
 
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
-        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseArgs']]] databases: A list of Managed databases assigned to the VPC Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetDatabaseArgs']]] databases: (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
                
-               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetIpv6Args']]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]] linodes: A list of Linodes added to this subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]] linodes: (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetNodebalancerArgs']]] nodebalancers: (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
+        :param pulumi.Input[_builtins.str] vpc_type: The type of the parent VPC (`regular` or `rdma`).
         """
         if created is not None:
             pulumi.set(__self__, "created", created)
@@ -130,10 +134,14 @@ class _VpcSubnetState:
             pulumi.set(__self__, "label", label)
         if linodes is not None:
             pulumi.set(__self__, "linodes", linodes)
+        if nodebalancers is not None:
+            pulumi.set(__self__, "nodebalancers", nodebalancers)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_type is not None:
+            pulumi.set(__self__, "vpc_type", vpc_type)
 
     @_builtins.property
     @pulumi.getter
@@ -151,7 +159,7 @@ class _VpcSubnetState:
     @pulumi.getter
     def databases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetDatabaseArgs']]]]:
         """
-        A list of Managed databases assigned to the VPC Subnet.
+        (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         """
         return pulumi.get(self, "databases")
 
@@ -165,7 +173,7 @@ class _VpcSubnetState:
         """
         The IPv4 range of this subnet in CIDR format.
 
-        * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         """
         return pulumi.get(self, "ipv4")
 
@@ -201,13 +209,25 @@ class _VpcSubnetState:
     @pulumi.getter
     def linodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]]]:
         """
-        A list of Linodes added to this subnet.
+        (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         """
         return pulumi.get(self, "linodes")
 
     @linodes.setter
     def linodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetLinodeArgs']]]]):
         pulumi.set(self, "linodes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetNodebalancerArgs']]]]:
+        """
+        (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        """
+        return pulumi.get(self, "nodebalancers")
+
+    @nodebalancers.setter
+    def nodebalancers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetNodebalancerArgs']]]]):
+        pulumi.set(self, "nodebalancers", value)
 
     @_builtins.property
     @pulumi.getter
@@ -233,6 +253,18 @@ class _VpcSubnetState:
     def vpc_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vpc_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The type of the parent VPC (`regular` or `rdma`).
+        """
+        return pulumi.get(self, "vpc_type")
+
+    @vpc_type.setter
+    def vpc_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_type", value)
+
 
 @pulumi.type_token("linode:index/vpcSubnet:VpcSubnet")
 class VpcSubnet(pulumi.CustomResource):
@@ -256,22 +288,22 @@ class VpcSubnet(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.VpcSubnet("test",
-            vpc_id=123,
+            ipv4="10.0.0.0/24",
             label="test-subnet",
-            ipv4="10.0.0.0/24")
+            vpc_id=123)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
-        test_vpc = linode.Vpc("test",
+        test_vpc = linode.Vpc("testVpc",
             label="test-vpc",
             region="us-mia",
             ipv6s=[{
                 "range": "/52",
             }])
         # NOTE: IPv6 VPCs may not currently be available to all users.
-        test = linode.VpcSubnet("test",
+        test_vpc_subnet = linode.VpcSubnet("testVpcSubnet",
             vpc_id=test_vpc.id.apply(lambda x: int(x)),
             label="test-subnet",
             ipv4="10.0.0.0/24",
@@ -303,7 +335,7 @@ class VpcSubnet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
                
-               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
@@ -325,22 +357,22 @@ class VpcSubnet(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.VpcSubnet("test",
-            vpc_id=123,
+            ipv4="10.0.0.0/24",
             label="test-subnet",
-            ipv4="10.0.0.0/24")
+            vpc_id=123)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
-        test_vpc = linode.Vpc("test",
+        test_vpc = linode.Vpc("testVpc",
             label="test-vpc",
             region="us-mia",
             ipv6s=[{
                 "range": "/52",
             }])
         # NOTE: IPv6 VPCs may not currently be available to all users.
-        test = linode.VpcSubnet("test",
+        test_vpc_subnet = linode.VpcSubnet("testVpcSubnet",
             vpc_id=test_vpc.id.apply(lambda x: int(x)),
             label="test-subnet",
             ipv4="10.0.0.0/24",
@@ -407,7 +439,9 @@ class VpcSubnet(pulumi.CustomResource):
             __props__.__dict__["created"] = None
             __props__.__dict__["databases"] = None
             __props__.__dict__["linodes"] = None
+            __props__.__dict__["nodebalancers"] = None
             __props__.__dict__["updated"] = None
+            __props__.__dict__["vpc_type"] = None
         super(VpcSubnet, __self__).__init__(
             'linode:index/vpcSubnet:VpcSubnet',
             resource_name,
@@ -424,8 +458,10 @@ class VpcSubnet(pulumi.CustomResource):
             ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             linodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]]] = None,
+            nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetNodebalancerArgs', 'VpcSubnetNodebalancerArgsDict']]]]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'VpcSubnet':
+            vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcSubnet':
         """
         Get an existing VpcSubnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -434,15 +470,17 @@ class VpcSubnet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetDatabaseArgs', 'VpcSubnetDatabaseArgsDict']]]] databases: A list of Managed databases assigned to the VPC Subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetDatabaseArgs', 'VpcSubnetDatabaseArgsDict']]]] databases: (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 range of this subnet in CIDR format.
                
-               * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+               * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict']]]] ipv6s: The IPv6 ranges of this subnet.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. Only contains ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]] linodes: A list of Linodes added to this subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict']]]] linodes: (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetNodebalancerArgs', 'VpcSubnetNodebalancerArgsDict']]]] nodebalancers: (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.int] vpc_id: The id of the parent VPC for this VPC subnet.
+        :param pulumi.Input[_builtins.str] vpc_type: The type of the parent VPC (`regular` or `rdma`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -454,8 +492,10 @@ class VpcSubnet(pulumi.CustomResource):
         __props__.__dict__["ipv6s"] = ipv6s
         __props__.__dict__["label"] = label
         __props__.__dict__["linodes"] = linodes
+        __props__.__dict__["nodebalancers"] = nodebalancers
         __props__.__dict__["updated"] = updated
         __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["vpc_type"] = vpc_type
         return VpcSubnet(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -470,7 +510,7 @@ class VpcSubnet(pulumi.CustomResource):
     @pulumi.getter
     def databases(self) -> pulumi.Output[Sequence['outputs.VpcSubnetDatabase']]:
         """
-        A list of Managed databases assigned to the VPC Subnet.
+        (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         """
         return pulumi.get(self, "databases")
 
@@ -480,7 +520,7 @@ class VpcSubnet(pulumi.CustomResource):
         """
         The IPv4 range of this subnet in CIDR format.
 
-        * `ipv6` - (Optional) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
+        * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 ranges under this VPC subnet. NOTE: IPv6 VPCs may not currently be available to all users.
         """
         return pulumi.get(self, "ipv4")
 
@@ -504,9 +544,17 @@ class VpcSubnet(pulumi.CustomResource):
     @pulumi.getter
     def linodes(self) -> pulumi.Output[Sequence['outputs.VpcSubnetLinode']]:
         """
-        A list of Linodes added to this subnet.
+        (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         """
         return pulumi.get(self, "linodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancers(self) -> pulumi.Output[Sequence['outputs.VpcSubnetNodebalancer']]:
+        """
+        (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        """
+        return pulumi.get(self, "nodebalancers")
 
     @_builtins.property
     @pulumi.getter
@@ -523,4 +571,12 @@ class VpcSubnet(pulumi.CustomResource):
         The id of the parent VPC for this VPC subnet.
         """
         return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> pulumi.Output[_builtins.str]:
+        """
+        The type of the parent VPC (`regular` or `rdma`).
+        """
+        return pulumi.get(self, "vpc_type")
 

@@ -23,6 +23,10 @@ public final class GetInstanceTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The Linode Instance types returned by this data source.
+     * 
+     */
     private List<GetInstanceTypesType> types;
 
     private GetInstanceTypesResult() {}
@@ -42,6 +46,10 @@ public final class GetInstanceTypesResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The Linode Instance types returned by this data source.
+     * 
+     */
     public List<GetInstanceTypesType> types() {
         return this.types;
     }

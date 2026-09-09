@@ -55,6 +55,9 @@ class GetAccountLoginsResult:
     @_builtins.property
     @pulumi.getter
     def logins(self) -> Sequence['outputs.GetAccountLoginsLoginResult']:
+        """
+        (Nested Attribute List) The list of Linode account logins.
+        """
         return pulumi.get(self, "logins")
 
 

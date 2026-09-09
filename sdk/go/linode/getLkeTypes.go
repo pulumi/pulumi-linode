@@ -13,6 +13,65 @@ import (
 
 // Provides information about Linode LKE types that match a set of filters.
 // For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// specific_label, err := linode.GetLkeTypes(ctx, &linode.GetLkeTypesArgs{
+// Filters: []linode.GetLkeTypesFilter{
+// {
+// Name: "label",
+// Values: []string{
+// "LKE Standard Availability",
+// },
+// },
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("typeId", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getLkeTypes:getLkeTypes.pp:7,11-36)))
+// return nil
+// })
+// }
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// all_types, err := linode.GetLkeTypes(ctx, &linode.GetLkeTypesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("typeId", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getLkeTypes:getLkeTypes.pp:2,11-31)))
+// return nil
+// })
+// }
+// ```
+//
+// ## Filterable Fields
+//
+// * `label`
+//
+// * `transfer`
 func GetLkeTypes(ctx *pulumi.Context, args *GetLkeTypesArgs, opts ...pulumi.InvokeOption) (*GetLkeTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLkeTypesResult
@@ -36,10 +95,11 @@ type GetLkeTypesArgs struct {
 type GetLkeTypesResult struct {
 	Filters []GetLkeTypesFilter `pulumi:"filters"`
 	// The ID representing the Kubernetes type.
-	Id      string            `pulumi:"id"`
-	Order   *string           `pulumi:"order"`
-	OrderBy *string           `pulumi:"orderBy"`
-	Types   []GetLkeTypesType `pulumi:"types"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
+	Types []GetLkeTypesType `pulumi:"types"`
 }
 
 func GetLkeTypesOutput(ctx *pulumi.Context, args GetLkeTypesOutputArgs, opts ...pulumi.InvokeOption) GetLkeTypesResultOutput {
@@ -92,6 +152,7 @@ func (o GetLkeTypesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLkeTypesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
 func (o GetLkeTypesResultOutput) Types() GetLkeTypesTypeArrayOutput {
 	return o.ApplyT(func(v GetLkeTypesResult) []GetLkeTypesType { return v.Types }).(GetLkeTypesTypeArrayOutput)
 }

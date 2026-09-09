@@ -60,7 +60,7 @@ export interface GetVpcSubnetsArgs {
     /**
      * The id of the parent VPC for the list of VPCs.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
      */
     vpcId: number;
 }
@@ -71,10 +71,13 @@ export interface GetVpcSubnetsArgs {
 export interface GetVpcSubnetsResult {
     readonly filters?: outputs.GetVpcSubnetsFilter[];
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     readonly id: string;
     readonly vpcId: number;
+    /**
+     * (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
+     */
     readonly vpcSubnets: outputs.GetVpcSubnetsVpcSubnet[];
 }
 /**
@@ -131,7 +134,7 @@ export interface GetVpcSubnetsOutputArgs {
     /**
      * The id of the parent VPC for the list of VPCs.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
      */
     vpcId: pulumi.Input<number>;
 }

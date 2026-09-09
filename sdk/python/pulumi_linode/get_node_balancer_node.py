@@ -162,9 +162,9 @@ def get_node_balancer_node(config_id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    my_node = linode.get_node_balancer_node(id=123,
-        nodebalancer_id=456,
-        config_id=789)
+    my_node = linode.get_node_balancer_node(config_id=789,
+        id=123,
+        nodebalancer_id=456)
     ```
 
 
@@ -204,9 +204,9 @@ def get_node_balancer_node_output(config_id: pulumi.Input[Optional[_builtins.int
     import pulumi
     import pulumi_linode as linode
 
-    my_node = linode.get_node_balancer_node(id=123,
-        nodebalancer_id=456,
-        config_id=789)
+    my_node = linode.get_node_balancer_node(config_id=789,
+        id=123,
+        nodebalancer_id=456)
     ```
 
 

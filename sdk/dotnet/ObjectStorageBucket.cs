@@ -25,8 +25,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.ObjectStorageBucket("foobar", new()
     ///     {
-    ///         Region = "us-mia",
     ///         Label = "mybucket",
+    ///         Region = "us-mia",
     ///     });
     /// 
     /// });
@@ -72,7 +72,7 @@ namespace Pulumi.Linode
     /// 
     /// ## Import
     /// 
-    /// Linodes Object Storage Buckets can be imported using the resource `Id` which is made of `cluster:label`, e.g.
+    /// Linodes Object Storage Buckets can be imported using the resource `Id` which is made of `region:label`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import linode:index/objectStorageBucket:ObjectStorageBucket mybucket us-east-1:foobar
@@ -100,13 +100,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("cert")]
         public Output<Outputs.ObjectStorageBucketCert?> Cert { get; private set; } = null!;
-
-        /// <summary>
-        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `Region` attribute.
-        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `Region` and `Cluster` is required for creating a bucket.
-        /// </summary>
-        [Output("cluster")]
-        public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
         /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
@@ -145,7 +138,7 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.ObjectStorageBucketLifecycleRule>> LifecycleRules { get; private set; } = null!;
 
         /// <summary>
-        /// The region of the Linode Object Storage Bucket. Exactly one of `Region` and `Cluster` is required for creating a bucket.
+        /// The region of the Linode Object Storage Bucket.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -167,9 +160,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `LifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
+        /// * `LifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `Cert` - (Optional) The bucket's TLS/SSL certificate.
+        /// * `Cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         /// </summary>
         [Output("versioning")]
         public Output<bool> Versioning { get; private set; } = null!;
@@ -245,13 +238,6 @@ namespace Pulumi.Linode
         public Input<Inputs.ObjectStorageBucketCertArgs>? Cert { get; set; }
 
         /// <summary>
-        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `Region` attribute.
-        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `Region` and `Cluster` is required for creating a bucket.
-        /// </summary>
-        [Input("cluster")]
-        public Input<string>? Cluster { get; set; }
-
-        /// <summary>
         /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         /// </summary>
         [Input("corsEnabled")]
@@ -282,10 +268,10 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The region of the Linode Object Storage Bucket. Exactly one of `Region` and `Cluster` is required for creating a bucket.
+        /// The region of the Linode Object Storage Bucket.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// The user's s3 endpoint URL, based on the `EndpointType` and `Region`.
@@ -314,9 +300,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `LifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
+        /// * `LifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `Cert` - (Optional) The bucket's TLS/SSL certificate.
+        /// * `Cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }
@@ -348,13 +334,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("cert")]
         public Input<Inputs.ObjectStorageBucketCertGetArgs>? Cert { get; set; }
-
-        /// <summary>
-        /// The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `Region` attribute.
-        /// For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `Region` and `Cluster` is required for creating a bucket.
-        /// </summary>
-        [Input("cluster")]
-        public Input<string>? Cluster { get; set; }
 
         /// <summary>
         /// If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
@@ -399,7 +378,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The region of the Linode Object Storage Bucket. Exactly one of `Region` and `Cluster` is required for creating a bucket.
+        /// The region of the Linode Object Storage Bucket.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -431,9 +410,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `LifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
+        /// * `LifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `AccessKey` and `SecretKey`)
         /// 
-        /// * `Cert` - (Optional) The bucket's TLS/SSL certificate.
+        /// * `Cert` - (Optional, Block) The bucket's TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
         /// </summary>
         [Input("versioning")]
         public Input<bool>? Versioning { get; set; }

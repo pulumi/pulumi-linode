@@ -82,6 +82,9 @@ class GetNodebalancerVpcsResult:
     @_builtins.property
     @pulumi.getter(name="vpcConfigs")
     def vpc_configs(self) -> Sequence['outputs.GetNodebalancerVpcsVpcConfigResult']:
+        """
+        (Nested Attribute List) A list of VPC configurations.
+        """
         return pulumi.get(self, "vpc_configs")
 
 
@@ -122,11 +125,21 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
     import pulumi
     import pulumi_linode as linode
 
-    vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345,
-        filters=[{
+    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
             "name": "ipv4_range",
             "values": ["10.0.0.4/30"],
-        }])
+        }],
+        nodebalancer_id=12345)
+    ```
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
+            "name": "ipv6_range",
+            "values": ["2a01:7e04:e403:3::/64"],
+        }],
+        nodebalancer_id=12345)
     ```
 
     ## Filterable Fields
@@ -134,6 +147,8 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
     * `id`
 
     * `ipv4_range`
+
+    * `ipv6_range`
 
     * `nodebalancer_id`
 
@@ -144,7 +159,7 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
 
     :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to list VPC configurations for.
            
-           * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
@@ -186,11 +201,21 @@ def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequenc
     import pulumi
     import pulumi_linode as linode
 
-    vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345,
-        filters=[{
+    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
             "name": "ipv4_range",
             "values": ["10.0.0.4/30"],
-        }])
+        }],
+        nodebalancer_id=12345)
+    ```
+    ```python
+    import pulumi
+    import pulumi_linode as linode
+
+    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
+            "name": "ipv6_range",
+            "values": ["2a01:7e04:e403:3::/64"],
+        }],
+        nodebalancer_id=12345)
     ```
 
     ## Filterable Fields
@@ -198,6 +223,8 @@ def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequenc
     * `id`
 
     * `ipv4_range`
+
+    * `ipv6_range`
 
     * `nodebalancer_id`
 
@@ -208,7 +235,7 @@ def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequenc
 
     :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to list VPC configurations for.
            
-           * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """

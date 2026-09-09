@@ -181,6 +181,10 @@ namespace Pulumi.Linode
 
         [Input("imageShares")]
         private List<Inputs.GetConsumerImageShareGroupImageSharesImageShareArgs>? _imageShares;
+
+        /// <summary>
+        /// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+        /// </summary>
         public List<Inputs.GetConsumerImageShareGroupImageSharesImageShareArgs> ImageShares
         {
             get => _imageShares ?? (_imageShares = new List<Inputs.GetConsumerImageShareGroupImageSharesImageShareArgs>());
@@ -196,7 +200,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
         /// </summary>
         [Input("tokenUuid", required: true)]
         public string TokenUuid { get; set; } = null!;
@@ -219,6 +223,10 @@ namespace Pulumi.Linode
 
         [Input("imageShares")]
         private InputList<Inputs.GetConsumerImageShareGroupImageSharesImageShareInputArgs>? _imageShares;
+
+        /// <summary>
+        /// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+        /// </summary>
         public InputList<Inputs.GetConsumerImageShareGroupImageSharesImageShareInputArgs> ImageShares
         {
             get => _imageShares ?? (_imageShares = new InputList<Inputs.GetConsumerImageShareGroupImageSharesImageShareInputArgs>());
@@ -234,7 +242,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
         /// </summary>
         [Input("tokenUuid", required: true)]
         public Input<string> TokenUuid { get; set; } = null!;
@@ -254,6 +262,9 @@ namespace Pulumi.Linode
         /// The unique ID assigned to this Image Share.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetConsumerImageShareGroupImageSharesImageShareResult> ImageShares;
         public readonly string? Order;
         public readonly string? OrderBy;

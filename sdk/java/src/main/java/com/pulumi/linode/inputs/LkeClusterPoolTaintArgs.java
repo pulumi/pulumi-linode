@@ -47,7 +47,7 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
     /**
      * The Kubernetes taint value.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
      * 
      */
     @Import(name="value", required=true)
@@ -56,7 +56,7 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
     /**
      * @return The Kubernetes taint value.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
      * 
      */
     public Output<String> value() {
@@ -134,7 +134,7 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
         /**
          * @param value The Kubernetes taint value.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class LkeClusterPoolTaintArgs extends com.pulumi.resources.Resource
         /**
          * @param value The Kubernetes taint value.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
          * 
          * @return builder
          * 

@@ -16,44 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// ### Uploading a file to a bucket
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokePathexpand, err := std.Pathexpand(ctx, &std.PathexpandArgs{
-//				Input: "~/files/log.txt",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
-//				Bucket:    pulumi.String("my-bucket"),
-//				Region:    pulumi.String("us-mia"),
-//				Key:       pulumi.String("my-object"),
-//				SecretKey: pulumi.Any(myKey.SecretKey),
-//				AccessKey: pulumi.Any(myKey.AccessKey),
-//				Source:    pulumi.String(invokePathexpand.Result),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ### Uploading plaintext to a bucket
 //
 // ```go
@@ -72,47 +34,11 @@ import (
 //				Bucket:          pulumi.String("my-bucket"),
 //				Region:          pulumi.String("us-mia"),
 //				Key:             pulumi.String("my-object"),
-//				SecretKey:       pulumi.Any(myKey.SecretKey),
-//				AccessKey:       pulumi.Any(myKey.AccessKey),
+//				SecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),
+//				AccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),
 //				Content:         pulumi.String("This is the content of the Object..."),
 //				ContentType:     pulumi.String("text/plain"),
 //				ContentLanguage: pulumi.String("en"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Creating an object using implicitly created object credentials
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokePathexpand, err := std.Pathexpand(ctx, &std.PathexpandArgs{
-//				Input: "~/files/log.txt",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
-//				Bucket: pulumi.String("my-bucket"),
-//				Region: pulumi.String("us-mia"),
-//				Key:    pulumi.String("my-object"),
-//				Source: pulumi.String(invokePathexpand.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -135,10 +61,6 @@ type ObjectStorageObject struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl pulumi.StringPtrOutput `pulumi:"cacheControl"`
-	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-	//
-	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-	Cluster pulumi.StringPtrOutput `pulumi:"cluster"`
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
@@ -161,8 +83,8 @@ type ObjectStorageObject struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// A map of keys/values to provision metadata.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// The cluster the bucket is in. Required if `cluster` is not configured.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// The region the bucket is in.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
 	// * configuring the `objSecretKey` in the provider configuration;
 	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
@@ -187,6 +109,9 @@ func NewObjectStorageObject(ctx *pulumi.Context,
 	}
 	if args.Key == nil {
 		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	if args.SecretKey != nil {
 		args.SecretKey = pulumi.ToSecret(args.SecretKey).(pulumi.StringPtrInput)
@@ -228,10 +153,6 @@ type objectStorageObjectState struct {
 	Bucket *string `pulumi:"bucket"`
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl *string `pulumi:"cacheControl"`
-	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-	//
-	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-	Cluster *string `pulumi:"cluster"`
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content *string `pulumi:"content"`
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
@@ -254,7 +175,7 @@ type objectStorageObjectState struct {
 	Key *string `pulumi:"key"`
 	// A map of keys/values to provision metadata.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The cluster the bucket is in. Required if `cluster` is not configured.
+	// The region the bucket is in.
 	Region *string `pulumi:"region"`
 	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
 	// * configuring the `objSecretKey` in the provider configuration;
@@ -279,10 +200,6 @@ type ObjectStorageObjectState struct {
 	Bucket pulumi.StringPtrInput
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl pulumi.StringPtrInput
-	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-	//
-	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-	Cluster pulumi.StringPtrInput
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content pulumi.StringPtrInput
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
@@ -305,7 +222,7 @@ type ObjectStorageObjectState struct {
 	Key pulumi.StringPtrInput
 	// A map of keys/values to provision metadata.
 	Metadata pulumi.StringMapInput
-	// The cluster the bucket is in. Required if `cluster` is not configured.
+	// The region the bucket is in.
 	Region pulumi.StringPtrInput
 	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
 	// * configuring the `objSecretKey` in the provider configuration;
@@ -334,10 +251,6 @@ type objectStorageObjectArgs struct {
 	Bucket string `pulumi:"bucket"`
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl *string `pulumi:"cacheControl"`
-	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-	//
-	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-	Cluster *string `pulumi:"cluster"`
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content *string `pulumi:"content"`
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
@@ -360,8 +273,8 @@ type objectStorageObjectArgs struct {
 	Key string `pulumi:"key"`
 	// A map of keys/values to provision metadata.
 	Metadata map[string]string `pulumi:"metadata"`
-	// The cluster the bucket is in. Required if `cluster` is not configured.
-	Region *string `pulumi:"region"`
+	// The region the bucket is in.
+	Region string `pulumi:"region"`
 	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
 	// * configuring the `objSecretKey` in the provider configuration;
 	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
@@ -384,10 +297,6 @@ type ObjectStorageObjectArgs struct {
 	Bucket pulumi.StringInput
 	// Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
 	CacheControl pulumi.StringPtrInput
-	// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-	//
-	// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-	Cluster pulumi.StringPtrInput
 	// Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 	Content pulumi.StringPtrInput
 	// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
@@ -410,8 +319,8 @@ type ObjectStorageObjectArgs struct {
 	Key pulumi.StringInput
 	// A map of keys/values to provision metadata.
 	Metadata pulumi.StringMapInput
-	// The cluster the bucket is in. Required if `cluster` is not configured.
-	Region pulumi.StringPtrInput
+	// The region the bucket is in.
+	Region pulumi.StringInput
 	// The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by
 	// * configuring the `objSecretKey` in the provider configuration;
 	// * or, opting-in generating it implicitly at apply-time using `objUseTempKeys` at provider-level.
@@ -531,13 +440,6 @@ func (o ObjectStorageObjectOutput) CacheControl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.CacheControl }).(pulumi.StringPtrOutput)
 }
 
-// The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-//
-// Deprecated: The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-func (o ObjectStorageObjectOutput) Cluster() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Cluster }).(pulumi.StringPtrOutput)
-}
-
 // Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
 func (o ObjectStorageObjectOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
@@ -593,9 +495,9 @@ func (o ObjectStorageObjectOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// The cluster the bucket is in. Required if `cluster` is not configured.
-func (o ObjectStorageObjectOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+// The region the bucket is in.
+func (o ObjectStorageObjectOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectStorageObject) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The REQUIRED secret key to authenticate with. If it's not specified with the resource, you must provide its value by

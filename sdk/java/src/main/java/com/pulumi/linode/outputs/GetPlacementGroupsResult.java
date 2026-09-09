@@ -19,6 +19,10 @@ public final class GetPlacementGroupsResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The Placement Groups returned by this data source.
+     * 
+     */
     private List<GetPlacementGroupsPlacementGroup> placementGroups;
 
     private GetPlacementGroupsResult() {}
@@ -34,6 +38,10 @@ public final class GetPlacementGroupsResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The Placement Groups returned by this data source.
+     * 
+     */
     public List<GetPlacementGroupsPlacementGroup> placementGroups() {
         return this.placementGroups;
     }

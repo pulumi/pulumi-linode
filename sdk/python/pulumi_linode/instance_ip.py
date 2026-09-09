@@ -107,7 +107,7 @@ class _InstanceIpState:
         """
         Input properties used for looking up and filtering InstanceIp resources.
 
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
+        :param pulumi.Input[_builtins.str] address: The VPC IPv4 address this address is NATted with.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
@@ -117,7 +117,7 @@ class _InstanceIpState:
         :param pulumi.Input[_builtins.str] region: The region this IP resides in.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[_builtins.str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]] vpc_nat11s: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -146,7 +146,7 @@ class _InstanceIpState:
     @pulumi.getter
     def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resulting IPv4 address.
+        The VPC IPv4 address this address is NATted with.
         """
         return pulumi.get(self, "address")
 
@@ -266,7 +266,7 @@ class _InstanceIpState:
     @pulumi.getter(name="vpcNat11s")
     def vpc_nat11s(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceIpVpcNat11Args']]]]:
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         return pulumi.get(self, "vpc_nat11s")
 
@@ -300,13 +300,13 @@ class InstanceIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.Instance("foo",
-            image="linode/alpine3.19",
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/arch",
             label="foobar-test",
             type="g6-nanode-1",
             region="us-east")
-        foo_instance_ip = linode.InstanceIp("foo",
-            linode_id=foo.id.apply(lambda x: int(x)),
+        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
+            linode_id=foo_instance.id.apply(lambda x: int(x)),
             public=True)
         ```
 
@@ -338,13 +338,13 @@ class InstanceIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.Instance("foo",
-            image="linode/alpine3.19",
+        foo_instance = linode.Instance("fooInstance",
+            image="linode/arch",
             label="foobar-test",
             type="g6-nanode-1",
             region="us-east")
-        foo_instance_ip = linode.InstanceIp("foo",
-            linode_id=foo.id.apply(lambda x: int(x)),
+        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
+            linode_id=foo_instance.id.apply(lambda x: int(x)),
             public=True)
         ```
 
@@ -418,7 +418,7 @@ class InstanceIp(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The resulting IPv4 address.
+        :param pulumi.Input[_builtins.str] address: The VPC IPv4 address this address is NATted with.
         :param pulumi.Input[_builtins.bool] apply_immediately: If true, the instance will be rebooted to update network interfaces.
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for.
@@ -428,7 +428,7 @@ class InstanceIp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region this IP resides in.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[_builtins.str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict']]]] vpc_nat11s: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict']]]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -451,7 +451,7 @@ class InstanceIp(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:
         """
-        The resulting IPv4 address.
+        The VPC IPv4 address this address is NATted with.
         """
         return pulumi.get(self, "address")
 
@@ -531,7 +531,7 @@ class InstanceIp(pulumi.CustomResource):
     @pulumi.getter(name="vpcNat11s")
     def vpc_nat11s(self) -> pulumi.Output[Sequence['outputs.InstanceIpVpcNat11']]:
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         return pulumi.get(self, "vpc_nat11s")
 

@@ -182,7 +182,7 @@ export interface FirewallInbound {
      */
     ports?: pulumi.Input<string | undefined>;
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      */
     protocol: pulumi.Input<string>;
 }
@@ -213,7 +213,7 @@ export interface FirewallOutbound {
      */
     ports?: pulumi.Input<string | undefined>;
     /**
-     * The network protocol this rule controls.
+     * The network protocol this rule controls. Accepted values are ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
      */
     protocol: pulumi.Input<string>;
 }
@@ -379,7 +379,7 @@ export interface GetConsumerImageShareGroupImageSharesImageShare {
      */
     id?: string;
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing?: inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharing;
     /**
@@ -434,7 +434,7 @@ export interface GetConsumerImageShareGroupImageSharesImageShareArgs {
      */
     id?: pulumi.Input<string | undefined>;
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs | undefined>;
     /**
@@ -469,22 +469,22 @@ export interface GetConsumerImageShareGroupImageSharesImageShareArgs {
 
 export interface GetConsumerImageShareGroupImageSharesImageShareImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      */
     sharedBy?: inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      */
     sharedWith?: inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWith;
 }
 
 export interface GetConsumerImageShareGroupImageSharesImageShareImageSharingArgs {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      */
     sharedBy?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedByArgs | undefined>;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      */
     sharedWith?: pulumi.Input<inputs.GetConsumerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs | undefined>;
 }
@@ -845,6 +845,36 @@ export interface GetFirewallsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetIamEntitiesFilter {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: string;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: string;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: string[];
+}
+
+export interface GetIamEntitiesFilterArgs {
+    /**
+     * The type of comparison to use for this filter.
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the attribute to filter on.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value(s) to be used in the filter.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetImagesFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1115,6 +1145,156 @@ export interface GetMaintenancePoliciesFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetMonitorAlertChannelsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorAlertChannelsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMonitorAlertDefinitionEntitiesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorAlertDefinitionEntitiesFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMonitorAlertDefinitionsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorAlertDefinitionsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMonitorLogsDestinationsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorLogsDestinationsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetMonitorLogsStreamsFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetMonitorLogsStreamsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetNbTypesFilter {
     /**
      * The type of comparison to use for this filter.
@@ -1325,6 +1505,36 @@ export interface GetObjectStorageEndpointsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface GetObjectStorageGlobalQuotasFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetObjectStorageGlobalQuotasFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GetObjectStorageQuotasFilter {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
@@ -1437,7 +1647,7 @@ export interface GetProducerImageShareGroupImageSharesImageShare {
      */
     id?: string;
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing?: inputs.GetProducerImageShareGroupImageSharesImageShareImageSharing;
     /**
@@ -1492,7 +1702,7 @@ export interface GetProducerImageShareGroupImageSharesImageShareArgs {
      */
     id?: pulumi.Input<string | undefined>;
     /**
-     * Details about image sharing, including who the image is shared with and by.
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      */
     imageSharing?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingArgs | undefined>;
     /**
@@ -1527,22 +1737,22 @@ export interface GetProducerImageShareGroupImageSharesImageShareArgs {
 
 export interface GetProducerImageShareGroupImageSharesImageShareImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
      */
     sharedBy?: inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedBy;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
      */
     sharedWith?: inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWith;
 }
 
 export interface GetProducerImageShareGroupImageSharesImageShareImageSharingArgs {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
      */
     sharedBy?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs | undefined>;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
      */
     sharedWith?: pulumi.Input<inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs | undefined>;
 }
@@ -1551,7 +1761,7 @@ export interface GetProducerImageShareGroupImageSharesImageShareImageSharingShar
     /**
      * The ID of the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     sharegroupId?: number;
     /**
@@ -1572,7 +1782,7 @@ export interface GetProducerImageShareGroupImageSharesImageShareImageSharingShar
     /**
      * The ID of the Image Share Group to list shared Images from.
      *
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      */
     sharegroupId?: pulumi.Input<number | undefined>;
     /**
@@ -1835,6 +2045,36 @@ export interface GetRegionsFilter {
 }
 
 export interface GetRegionsFilterArgs {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetReservedIpTypesFilter {
+    /**
+     * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+     */
+    matchBy?: string;
+    /**
+     * The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+     */
+    name: string;
+    /**
+     * A list of values for the filter to allow. These values should all be in string form.
+     */
+    values: string[];
+}
+
+export interface GetReservedIpTypesFilterArgs {
     /**
      * The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
      */
@@ -2419,13 +2659,28 @@ export interface GetVpcsFilterArgs {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface IamUserEntityAccess {
+    /**
+     * The unique ID for the entity.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * A list of the roles for this entity and specific user.
+     */
+    roles: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The type of product for the entity. (eg. Volume)
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface ImageImageSharing {
     /**
-     * Details about who the image is shared by.
+     * (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      */
     sharedBy?: pulumi.Input<inputs.ImageImageSharingSharedBy | undefined>;
     /**
-     * Details about who the image is shared with.
+     * (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      */
     sharedWith?: pulumi.Input<inputs.ImageImageSharingSharedWith | undefined>;
 }
@@ -2510,6 +2765,9 @@ export interface InstanceBackup {
      * If this Linode has the Backup service enabled.
      */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+     */
     schedules?: pulumi.Input<pulumi.Input<inputs.InstanceBackupSchedule>[] | undefined>;
 }
 
@@ -2530,7 +2788,7 @@ export interface InstanceConfig {
      */
     comments?: pulumi.Input<string | undefined>;
     /**
-     * Device sda-sdh can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
+     * Device sda-sdbl can be either a Disk or Volume identified by diskLabel or volume_id. Only one type per slot allowed.
      */
     devices?: pulumi.Input<inputs.InstanceConfigDevices | undefined>;
     /**
@@ -2573,7 +2831,7 @@ export interface InstanceConfig {
 
 export interface InstanceConfigDevice {
     /**
-     * The Disk ID to map to this disk slot
+     * The device slot identifier (for example, sda, sdb) to map a disk or volume into
      */
     deviceName: pulumi.Input<string>;
     /**
@@ -2588,13 +2846,165 @@ export interface InstanceConfigDevice {
 
 export interface InstanceConfigDevices {
     /**
-     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `"fullvirt"` `virtMode`.
+     * ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
      */
     sda?: pulumi.Input<inputs.InstanceConfigDevicesSda | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
+    sdaa?: pulumi.Input<inputs.InstanceConfigDevicesSdaa | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdab?: pulumi.Input<inputs.InstanceConfigDevicesSdab | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdac?: pulumi.Input<inputs.InstanceConfigDevicesSdac | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdad?: pulumi.Input<inputs.InstanceConfigDevicesSdad | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdae?: pulumi.Input<inputs.InstanceConfigDevicesSdae | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaf?: pulumi.Input<inputs.InstanceConfigDevicesSdaf | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdag?: pulumi.Input<inputs.InstanceConfigDevicesSdag | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdah?: pulumi.Input<inputs.InstanceConfigDevicesSdah | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdai?: pulumi.Input<inputs.InstanceConfigDevicesSdai | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaj?: pulumi.Input<inputs.InstanceConfigDevicesSdaj | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdak?: pulumi.Input<inputs.InstanceConfigDevicesSdak | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdal?: pulumi.Input<inputs.InstanceConfigDevicesSdal | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdam?: pulumi.Input<inputs.InstanceConfigDevicesSdam | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdan?: pulumi.Input<inputs.InstanceConfigDevicesSdan | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdao?: pulumi.Input<inputs.InstanceConfigDevicesSdao | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdap?: pulumi.Input<inputs.InstanceConfigDevicesSdap | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaq?: pulumi.Input<inputs.InstanceConfigDevicesSdaq | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdar?: pulumi.Input<inputs.InstanceConfigDevicesSdar | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdas?: pulumi.Input<inputs.InstanceConfigDevicesSdas | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdat?: pulumi.Input<inputs.InstanceConfigDevicesSdat | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdau?: pulumi.Input<inputs.InstanceConfigDevicesSdau | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdav?: pulumi.Input<inputs.InstanceConfigDevicesSdav | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaw?: pulumi.Input<inputs.InstanceConfigDevicesSdaw | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdax?: pulumi.Input<inputs.InstanceConfigDevicesSdax | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sday?: pulumi.Input<inputs.InstanceConfigDevicesSday | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdaz?: pulumi.Input<inputs.InstanceConfigDevicesSdaz | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
     sdb?: pulumi.Input<inputs.InstanceConfigDevicesSdb | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdba?: pulumi.Input<inputs.InstanceConfigDevicesSdba | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbb?: pulumi.Input<inputs.InstanceConfigDevicesSdbb | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbc?: pulumi.Input<inputs.InstanceConfigDevicesSdbc | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbd?: pulumi.Input<inputs.InstanceConfigDevicesSdbd | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbe?: pulumi.Input<inputs.InstanceConfigDevicesSdbe | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbf?: pulumi.Input<inputs.InstanceConfigDevicesSdbf | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbg?: pulumi.Input<inputs.InstanceConfigDevicesSdbg | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbh?: pulumi.Input<inputs.InstanceConfigDevicesSdbh | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbi?: pulumi.Input<inputs.InstanceConfigDevicesSdbi | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbj?: pulumi.Input<inputs.InstanceConfigDevicesSdbj | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbk?: pulumi.Input<inputs.InstanceConfigDevicesSdbk | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdbl?: pulumi.Input<inputs.InstanceConfigDevicesSdbl | undefined>;
     /**
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
@@ -2619,6 +3029,78 @@ export interface InstanceConfigDevices {
      * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      */
     sdh?: pulumi.Input<inputs.InstanceConfigDevicesSdh | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdi?: pulumi.Input<inputs.InstanceConfigDevicesSdi | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdj?: pulumi.Input<inputs.InstanceConfigDevicesSdj | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdk?: pulumi.Input<inputs.InstanceConfigDevicesSdk | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdl?: pulumi.Input<inputs.InstanceConfigDevicesSdl | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdm?: pulumi.Input<inputs.InstanceConfigDevicesSdm | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdn?: pulumi.Input<inputs.InstanceConfigDevicesSdn | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdo?: pulumi.Input<inputs.InstanceConfigDevicesSdo | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdp?: pulumi.Input<inputs.InstanceConfigDevicesSdp | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdq?: pulumi.Input<inputs.InstanceConfigDevicesSdq | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdr?: pulumi.Input<inputs.InstanceConfigDevicesSdr | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sds?: pulumi.Input<inputs.InstanceConfigDevicesSds | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdt?: pulumi.Input<inputs.InstanceConfigDevicesSdt | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdu?: pulumi.Input<inputs.InstanceConfigDevicesSdu | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdv?: pulumi.Input<inputs.InstanceConfigDevicesSdv | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdw?: pulumi.Input<inputs.InstanceConfigDevicesSdw | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdx?: pulumi.Input<inputs.InstanceConfigDevicesSdx | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdy?: pulumi.Input<inputs.InstanceConfigDevicesSdy | undefined>;
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     */
+    sdz?: pulumi.Input<inputs.InstanceConfigDevicesSdz | undefined>;
 }
 
 export interface InstanceConfigDevicesSda {
@@ -2632,7 +3114,425 @@ export interface InstanceConfigDevicesSda {
     volumeId?: pulumi.Input<number | undefined>;
 }
 
+export interface InstanceConfigDevicesSdaa {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdab {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdac {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdad {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdae {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdaf {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdag {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdah {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdai {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdaj {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdak {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdal {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdam {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdan {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdao {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdap {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdaq {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdar {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdas {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdat {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdau {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdav {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdaw {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdax {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSday {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdaz {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
 export interface InstanceConfigDevicesSdb {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdba {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbb {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbc {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbd {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbe {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbf {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbg {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbh {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbi {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbj {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbk {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdbl {
     /**
      * The Disk ID to map to this disk slot
      */
@@ -2699,6 +3599,204 @@ export interface InstanceConfigDevicesSdg {
 }
 
 export interface InstanceConfigDevicesSdh {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdi {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdj {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdk {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdl {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdm {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdn {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdo {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdp {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdq {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdr {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSds {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdt {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdu {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdv {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdw {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdx {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdy {
+    /**
+     * The Disk ID to map to this disk slot
+     */
+    diskId?: pulumi.Input<number | undefined>;
+    /**
+     * The Block Storage volume ID to map to this disk slot
+     */
+    volumeId?: pulumi.Input<number | undefined>;
+}
+
+export interface InstanceConfigDevicesSdz {
     /**
      * The Disk ID to map to this disk slot
      */
@@ -2787,9 +3885,9 @@ export interface InstanceConfigInterface {
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
-     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
      *
-     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      */
     primary?: pulumi.Input<boolean | undefined>;
     /**
@@ -2821,9 +3919,9 @@ export interface InstanceConfigInterfaceIpv6 {
     /**
      * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
      *
-     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     * * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
      *
-     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     * * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
      */
     isPublic?: pulumi.Input<boolean | undefined>;
     /**
@@ -2958,9 +4056,9 @@ export interface InstanceInterface {
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      *
-     * * `ipv4` - (Optional) The IPv4 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose.
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
      *
-     * * `ipv6` - (Optional) The IPv6 configuration of the VPC interface. This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
      */
     primary?: pulumi.Input<boolean | undefined>;
     /**
@@ -2992,9 +4090,9 @@ export interface InstanceInterfaceIpv6 {
     /**
      * If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
      *
-     * * `slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+     * * `slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
      *
-     * * `range` - (Optional) An array of IPv6 ranges to use for this interface.
+     * * `range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
      */
     isPublic?: pulumi.Input<boolean | undefined>;
     /**
@@ -3035,10 +4133,16 @@ export interface InstanceInterfaceIpv6Slaac {
 
 export interface InstanceIpVpcNat11 {
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      */
     address: pulumi.Input<string>;
+    /**
+     * The ID of the VPC subnet containing the NATted address.
+     */
     subnetId: pulumi.Input<number>;
+    /**
+     * The ID of the VPC containing the NATted address.
+     */
     vpcId: pulumi.Input<number>;
 }
 
@@ -3109,11 +4213,11 @@ export interface InterfaceDefaultRoute {
 
 export interface InterfacePublic {
     /**
-     * IPv4 addresses for this interface.
+     * IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
      */
     ipv4?: pulumi.Input<inputs.InterfacePublicIpv4 | undefined>;
     /**
-     * IPv6 addresses for this interface.
+     * IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
      */
     ipv6?: pulumi.Input<inputs.InterfacePublicIpv6 | undefined>;
 }
@@ -3124,11 +4228,11 @@ export interface InterfacePublicIpv4 {
      */
     addresses?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4Address>[] | undefined>;
     /**
-     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedAddresses?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4AssignedAddress>[] | undefined>;
     /**
-     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     shareds?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv4Shared>[] | undefined>;
 }
@@ -3168,7 +4272,7 @@ export interface InterfacePublicIpv4Shared {
 
 export interface InterfacePublicIpv6 {
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6AssignedRange>[] | undefined>;
     /**
@@ -3176,11 +4280,11 @@ export interface InterfacePublicIpv6 {
      */
     ranges?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Range>[] | undefined>;
     /**
-     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     shareds?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Shared>[] | undefined>;
     /**
-     * (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     slaacs?: pulumi.Input<pulumi.Input<inputs.InterfacePublicIpv6Slaac>[] | undefined>;
 }
@@ -3238,11 +4342,11 @@ export interface InterfaceVlan {
 
 export interface InterfaceVpc {
     /**
-     * IPv4 configuration for the VPC interface.
+     * IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
      */
     ipv4?: pulumi.Input<inputs.InterfaceVpcIpv4 | undefined>;
     /**
-     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
      */
     ipv6?: pulumi.Input<inputs.InterfaceVpcIpv6 | undefined>;
     /**
@@ -3257,11 +4361,11 @@ export interface InterfaceVpcIpv4 {
      */
     addresses?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4Address>[] | undefined>;
     /**
-     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedAddresses?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4AssignedAddress>[] | undefined>;
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv4AssignedRange>[] | undefined>;
     /**
@@ -3316,11 +4420,11 @@ export interface InterfaceVpcIpv4Range {
 
 export interface InterfaceVpcIpv6 {
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedRanges?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6AssignedRange>[] | undefined>;
     /**
-     * Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     * (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     assignedSlaacs?: pulumi.Input<pulumi.Input<inputs.InterfaceVpcIpv6AssignedSlaac>[] | undefined>;
     /**
@@ -3377,7 +4481,7 @@ export interface LkeClusterControlPlane {
     /**
      * Enables audit logs on the cluster's control plane.
      *
-     * * `acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+     * * `acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster's control plane. Referenced with an index (e.g. `acl.0.enabled`).
      */
     auditLogsEnabled?: pulumi.Input<boolean | undefined>;
     /**
@@ -3394,7 +4498,7 @@ export interface LkeClusterControlPlaneAcl {
     /**
      * Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      *
-     * * `addresses` - (Optional) A list of ip addresses to allow.
+     * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
      */
     enabled?: pulumi.Input<boolean | undefined>;
 }
@@ -3420,7 +4524,7 @@ export interface LkeClusterPool {
      */
     count?: pulumi.Input<number | undefined>;
     /**
-     * The disk encryption policy for nodes in this pool.
+     * The disk encryption policy for nodes in this pool. Must be `enabled` or `disabled`. If omitted, the account default encryption policy is applied. Changing this value will cause the pool to be replaced (deleted and recreated).
      */
     diskEncryption?: pulumi.Input<string | undefined>;
     /**
@@ -3452,7 +4556,7 @@ export interface LkeClusterPool {
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. See [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     taints?: pulumi.Input<pulumi.Input<inputs.LkeClusterPoolTaint>[] | undefined>;
     /**
@@ -3503,7 +4607,7 @@ export interface LkeClusterPoolTaint {
     /**
      * The Kubernetes taint value.
      *
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block) If defined, an autoscaler will be enabled with the given configuration. Referenced with an index (e.g. `autoscaler.0.min`).
      */
     value: pulumi.Input<string>;
 }
@@ -3549,15 +4653,288 @@ export interface LkeNodePoolTaint {
     value: pulumi.Input<string>;
 }
 
+export interface MonitorAlertDefinitionAlertChannel {
+    /**
+     * The unique identifier assigned to the alert channel.
+     */
+    id?: pulumi.Input<number | undefined>;
+    /**
+     * The label for the alert definition.
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * The type of alert channel.
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
+     * The URL of the alert channel.
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
+export interface MonitorAlertDefinitionEntities {
+    /**
+     * The number of entities associated with the alert definition.
+     */
+    count?: pulumi.Input<number | undefined>;
+    /**
+     * Whether there are additional entities associated with the alert.
+     */
+    hasMoreResources?: pulumi.Input<boolean | undefined>;
+    /**
+     * The URL of the alert channel.
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
+export interface MonitorAlertDefinitionRuleCriteria {
+    /**
+     * The individual rules that make up the alert definition.
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.MonitorAlertDefinitionRuleCriteriaRule>[]>;
+}
+
+export interface MonitorAlertDefinitionRuleCriteriaRule {
+    /**
+     * The aggregate function to apply to the metric data.
+     * * `dimensionFilters` - (Optional, Nested Attribute List) A list of dimension filter objects to filter the metric data.
+     */
+    aggregateFunction?: pulumi.Input<string | undefined>;
+    /**
+     * Individual objects that define dimension filters for the rule.
+     */
+    dimensionFilters?: pulumi.Input<pulumi.Input<inputs.MonitorAlertDefinitionRuleCriteriaRuleDimensionFilter>[] | undefined>;
+    /**
+     * The name of the individual rule. This is used for display purposes in Akamai Cloud Manager.
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * The metric to query.
+     */
+    metric?: pulumi.Input<string | undefined>;
+    /**
+     * The operator to apply to the metric. Allowed values: eq, gt, lt, gte, lte.
+     */
+    operator?: pulumi.Input<string | undefined>;
+    /**
+     * The predefined value or condition that triggers an alert when met or exceeded.
+     */
+    threshold?: pulumi.Input<number | undefined>;
+    /**
+     * The unit of the metric. This can be values like percent for percentage or GB for gigabyte.
+     */
+    unit?: pulumi.Input<string | undefined>;
+}
+
+export interface MonitorAlertDefinitionRuleCriteriaRuleDimensionFilter {
+    /**
+     * The label of the dimension to filter on.
+     */
+    dimensionLabel?: pulumi.Input<string | undefined>;
+    /**
+     * The name of the dimension filter. Used for display purposes.
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * The operator to apply to the dimension. Allowed values: eq, neq, startswith, endswith.
+     */
+    operator?: pulumi.Input<string | undefined>;
+    /**
+     * The value to compare the dimensionLabel against.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface MonitorAlertDefinitionTriggerConditions {
+    /**
+     * The logical operation applied. Currently only 'ALL' allowed.
+     */
+    criteriaCondition?: pulumi.Input<string | undefined>;
+    /**
+     * Time period over which data is collected before evaluating the threshold.
+     */
+    evaluationPeriodSeconds?: pulumi.Input<number | undefined>;
+    /**
+     * Frequency at which the metric data is polled.
+     */
+    pollingIntervalSeconds?: pulumi.Input<number | undefined>;
+    /**
+     * Number of times the condition must be met before triggering an alert.
+     */
+    triggerOccurrences?: pulumi.Input<number | undefined>;
+}
+
+export interface MonitorLogsDestinationAkamaiObjectStorageDetails {
+    /**
+     * The access key ID for the object storage bucket.
+     */
+    accessKeyId: pulumi.Input<string>;
+    /**
+     * The access key secret for the object storage bucket. This value is write-only and will not be returned by the API.
+     */
+    accessKeySecret: pulumi.Input<string>;
+    /**
+     * The name of the object storage bucket.
+     */
+    bucketName: pulumi.Input<string>;
+    /**
+     * The hostname of the object storage endpoint.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The path within the bucket where logs will be stored.
+     */
+    path?: pulumi.Input<string | undefined>;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetails {
+    /**
+     * Authentication configuration for the HTTPS endpoint.
+     */
+    authentication: pulumi.Input<inputs.MonitorLogsDestinationCustomHttpsDetailsAuthentication>;
+    /**
+     * TLS client certificate configuration.
+     */
+    clientCertificateDetails?: pulumi.Input<inputs.MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetails | undefined>;
+    /**
+     * The content type of the log data. One of: `application/json`, `application/json; charset=utf-8`.
+     */
+    contentType: pulumi.Input<string>;
+    /**
+     * Custom HTTP headers to include in log delivery requests.
+     */
+    customHeaders?: pulumi.Input<pulumi.Input<inputs.MonitorLogsDestinationCustomHttpsDetailsCustomHeader>[] | undefined>;
+    /**
+     * The compression format for log data. One of: `none`, `gzip`.
+     *
+     * * `authentication` - (Required, Nested Attribute) Authentication configuration for the HTTPS endpoint. Referenced directly (e.g. `custom_https_details.authentication.type`).
+     *
+     * * `clientCertificateDetails` - (Optional, Nested Attribute) TLS client certificate configuration. Referenced directly (e.g. `custom_https_details.client_certificate_details.tls_hostname`).
+     *
+     * * `customHeaders` - (Optional, Nested Attribute List) Custom HTTP headers to include in log delivery requests.
+     */
+    dataCompression: pulumi.Input<string>;
+    /**
+     * The HTTPS endpoint URL to send logs to.
+     */
+    endpointUrl: pulumi.Input<string>;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetailsAuthentication {
+    /**
+     * The password for basic authentication. This value is write-only and will not be returned by the API.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * The authentication type. One of: `basic`, `none`.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The username for basic authentication. This value is write-only and will not be returned by the API.
+     */
+    username?: pulumi.Input<string | undefined>;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetailsClientCertificateDetails {
+    /**
+     * The client CA certificate. This value is write-only and will not be returned by the API.
+     */
+    clientCaCertificate: pulumi.Input<string>;
+    /**
+     * The client certificate. This value is write-only and will not be returned by the API.
+     */
+    clientCertificate: pulumi.Input<string>;
+    /**
+     * The client private key. This value is write-only and will not be returned by the API.
+     */
+    clientPrivateKey: pulumi.Input<string>;
+    /**
+     * The TLS hostname for certificate verification.
+     */
+    tlsHostname: pulumi.Input<string>;
+}
+
+export interface MonitorLogsDestinationCustomHttpsDetailsCustomHeader {
+    /**
+     * The name of the HTTP header.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The value of the HTTP header. This value is write-only and will not be returned by the API.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface MonitorLogsStreamDetails {
+    /**
+     * The list of LKE cluster IDs to include in this stream.
+     */
+    clusterIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
+     * When true, all LKE clusters are automatically added to this stream.
+     */
+    isAutoAddAllClustersEnabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface NetworkingIpAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The label of the entity.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The type of IP address. (ipv4, ipv6, etc.)
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The URL of the entity.
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface NetworkingIpAssignmentAssignment {
     /**
      * The IPv4 address or IPv6 range to assign.
      */
     address: pulumi.Input<string>;
     /**
+     * (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    assignedEntity?: pulumi.Input<inputs.NetworkingIpAssignmentAssignmentAssignedEntity | undefined>;
+    /**
      * The ID of the Linode to which the IP address will be assigned.
      */
     linodeId: pulumi.Input<number>;
+    /**
+     * Whether this IP address is a reserved IP.
+     */
+    reserved?: pulumi.Input<boolean | undefined>;
+    /**
+     * A set of tags associated with this IP address.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface NetworkingIpAssignmentAssignmentAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The label of the entity.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The type of the entity.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The URL of the entity.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface NetworkingIpVpcNat11 {
@@ -3592,7 +4969,7 @@ export interface NodeBalancerFirewall {
      */
     created: pulumi.Input<string>;
     /**
-     * (Required) The Firewall's ID.
+     * The ID of the related LKE cluster.
      */
     id: pulumi.Input<number>;
     /**
@@ -3630,7 +5007,7 @@ export interface NodeBalancerFirewallInbound {
     action: pulumi.Input<string>;
     description: pulumi.Input<string>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      */
     ipv4s: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3658,7 +5035,7 @@ export interface NodeBalancerFirewallOutbound {
     action: pulumi.Input<string>;
     description: pulumi.Input<string>;
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      */
     ipv4s: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3677,6 +5054,25 @@ export interface NodeBalancerFirewallOutbound {
      * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
      */
     protocol: pulumi.Input<string>;
+}
+
+export interface NodeBalancerLkeCluster {
+    /**
+     * The ID of the related LKE cluster.
+     */
+    id?: pulumi.Input<number | undefined>;
+    /**
+     * The label of the Linode NodeBalancer
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * The type of the related LKE cluster.
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
+     * The URL where you can access the related LKE cluster.
+     */
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface NodeBalancerTransfer {
@@ -3705,6 +5101,10 @@ export interface NodeBalancerVpc {
      */
     ipv4RangeAutoAssign?: pulumi.Input<boolean | undefined>;
     /**
+     * (Optional) A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     */
+    ipv6Range?: pulumi.Input<string | undefined>;
+    /**
      * (Required) The ID of a subnet to assign to this NodeBalancer.
      */
     subnetId: pulumi.Input<number>;
@@ -3725,9 +5125,9 @@ export interface ObjectStorageBucketLifecycleRule {
     /**
      * Specifies the number of days after initiating a multipart upload when the multipart upload must be completed.
      *
-     * * `expiration` - (Optional) Specifies a period in the object's expire.
+     * * `expiration` - (Optional, Block) Specifies a period in the object's expire. Referenced with an index (e.g. `lifecycle_rule.0.expiration.0.date`).
      *
-     * * `noncurrentVersionExpiration` - (Optional) Specifies when non-current object versions expire.
+     * * `noncurrentVersionExpiration` - (Optional, Block) Specifies when non-current object versions expire. Referenced with an index (e.g. `lifecycle_rule.0.noncurrent_version_expiration.0.days`).
      */
     abortIncompleteMultipartUploadDays?: pulumi.Input<number | undefined>;
     /**
@@ -3780,19 +5180,13 @@ export interface ObjectStorageKeyBucketAccess {
      */
     bucketName: pulumi.Input<string>;
     /**
-     * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-     *
-     * @deprecated The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
-     */
-    cluster?: pulumi.Input<string | undefined>;
-    /**
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      */
     permissions: pulumi.Input<string>;
     /**
      * The region where the bucket resides.
      */
-    region?: pulumi.Input<string | undefined>;
+    region: pulumi.Input<string>;
 }
 
 export interface ObjectStorageKeyRegionsDetail {
@@ -3825,7 +5219,7 @@ export interface ProducerImageShareGroupImage {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -3849,7 +5243,63 @@ export interface RdnsTimeouts {
     update?: pulumi.Input<string | undefined>;
 }
 
+export interface ReservedIpAssignedEntity {
+    /**
+     * The ID of the assigned entity.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The label of the assigned entity.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The type of the assigned entity (e.g. `linode`).
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The API URL of the assigned entity.
+     */
+    url: pulumi.Input<string>;
+}
+
+export interface ReservedIpAssignmentAssignedEntity {
+    /**
+     * The ID of the entity.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * The label of the entity.
+     */
+    label: pulumi.Input<string>;
+    /**
+     * The type of the entity.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The URL of the entity.
+     */
+    url: pulumi.Input<string>;
+}
+
 export interface ReservedIpAssignmentVpcNat11 {
+    /**
+     * The reserved IPv4 address to assign to the Linode.
+     */
+    address: pulumi.Input<string>;
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     */
+    subnetId: pulumi.Input<number>;
+    /**
+     * The `id` of the VPC configured for this Interface.
+     */
+    vpcId: pulumi.Input<number>;
+}
+
+export interface ReservedIpVpcNat11 {
+    /**
+     * The reserved IPv4 address.
+     */
     address: pulumi.Input<string>;
     subnetId: pulumi.Input<number>;
     vpcId: pulumi.Input<number>;
@@ -4051,6 +5501,13 @@ export interface VolumeTimeouts {
     update?: pulumi.Input<string | undefined>;
 }
 
+export interface VpcIpv4 {
+    /**
+     * The IPv4 range assigned to this VPC.
+     */
+    range: pulumi.Input<string>;
+}
+
 export interface VpcIpv6 {
     /**
      * The IPv6 range assigned to this VPC.
@@ -4069,15 +5526,15 @@ export interface VpcIpv6 {
 
 export interface VpcSubnetDatabase {
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: pulumi.Input<number>;
     /**
-     * IPv4 range assigned to the database.
+     * IPv4 range assigned to the NodeBalancer.
      */
     ipv4Range: pulumi.Input<string>;
     /**
-     * A list of IPv6 ranges assigned to the database.
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      */
     ipv6Ranges: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabaseIpv6Range>[]>;
 }
@@ -4102,11 +5559,11 @@ export interface VpcSubnetIpv6 {
 
 export interface VpcSubnetLinode {
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: pulumi.Input<number>;
     /**
-     * A list of networking interfaces objects.
+     * (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
      */
     interfaces: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinodeInterface>[]>;
 }
@@ -4121,7 +5578,29 @@ export interface VpcSubnetLinodeInterface {
      */
     configId: pulumi.Input<number>;
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     id: pulumi.Input<number>;
+}
+
+export interface VpcSubnetNodebalancer {
+    /**
+     * ID of a NodeBalancer assigned to the VPC Subnet.
+     */
+    id: pulumi.Input<number>;
+    /**
+     * IPv4 range assigned to the NodeBalancer.
+     */
+    ipv4Range: pulumi.Input<string>;
+    /**
+     * (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
+     */
+    ipv6Ranges: pulumi.Input<pulumi.Input<inputs.VpcSubnetNodebalancerIpv6Range>[]>;
+}
+
+export interface VpcSubnetNodebalancerIpv6Range {
+    /**
+     * An IPv6 address range in CIDR notation.
+     */
+    range: pulumi.Input<string>;
 }

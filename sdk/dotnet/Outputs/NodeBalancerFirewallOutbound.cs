@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Outputs
         public readonly string Action;
         public readonly string Description;
         /// <summary>
-        /// A list of IPv4 addresses or networks. Must be in IP/mask format.
+        /// The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `Ipv4` forces the creation of a new Linode NodeBalancer.*
         /// </summary>
         public readonly ImmutableArray<string> Ipv4s;
         /// <summary>

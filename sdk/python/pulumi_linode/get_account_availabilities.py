@@ -42,6 +42,9 @@ class GetAccountAvailabilitiesResult:
     @_builtins.property
     @pulumi.getter
     def availabilities(self) -> Sequence['outputs.GetAccountAvailabilitiesAvailabilityResult']:
+        """
+        (Nested Attribute List) The account availabilities returned by this data source.
+        """
         return pulumi.get(self, "availabilities")
 
     @_builtins.property

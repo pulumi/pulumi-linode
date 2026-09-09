@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool AplEnabled;
         /// <summary>
-        /// Defines settings for the Kubernetes Control Plane.
+        /// (Nested Attribute) The cluster Control Plane configuration. Referenced directly (e.g. `lke_clusters[0].control_plane.high_availability`).
         /// </summary>
         public readonly Outputs.GetLkeClustersLkeClusterControlPlaneResult ControlPlane;
         /// <summary>

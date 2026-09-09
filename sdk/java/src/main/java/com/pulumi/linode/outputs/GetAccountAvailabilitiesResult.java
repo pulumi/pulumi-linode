@@ -14,11 +14,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountAvailabilitiesResult {
+    /**
+     * @return (Nested Attribute List) The account availabilities returned by this data source.
+     * 
+     */
     private List<GetAccountAvailabilitiesAvailability> availabilities;
     private @Nullable List<GetAccountAvailabilitiesFilter> filters;
     private String id;
 
     private GetAccountAvailabilitiesResult() {}
+    /**
+     * @return (Nested Attribute List) The account availabilities returned by this data source.
+     * 
+     */
     public List<GetAccountAvailabilitiesAvailability> availabilities() {
         return this.availabilities;
     }

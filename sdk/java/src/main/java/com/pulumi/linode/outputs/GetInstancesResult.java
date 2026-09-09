@@ -21,6 +21,10 @@ public final class GetInstancesResult {
      * 
      */
     private String id;
+    /**
+     * @return (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
+     * 
+     */
     private List<GetInstancesInstance> instances;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -36,6 +40,10 @@ public final class GetInstancesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
+     * 
+     */
     public List<GetInstancesInstance> instances() {
         return this.instances;
     }

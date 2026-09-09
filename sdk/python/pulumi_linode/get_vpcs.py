@@ -55,6 +55,9 @@ class GetVpcsResult:
     @_builtins.property
     @pulumi.getter
     def vpcs(self) -> Sequence['outputs.GetVpcsVpcResult']:
+        """
+        (Nested Attribute List) The VPCs returned by this data source.
+        """
         return pulumi.get(self, "vpcs")
 
 
@@ -97,6 +100,14 @@ def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilte
     Contains information about a single IPv6 allocation under a VPC.
 
     * `range` - The allocated range in CIDR format.
+
+    ## IPv4
+
+    > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+
+    Contains information about a single IPv4 range under this VPC.
+
+    * `range` - The IPv4 range in CIDR format.
 
     ## Filterable Fields
 
@@ -145,6 +156,14 @@ def get_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetV
     Contains information about a single IPv6 allocation under a VPC.
 
     * `range` - The allocated range in CIDR format.
+
+    ## IPv4
+
+    > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+
+    Contains information about a single IPv4 range under this VPC.
+
+    * `range` - The IPv4 range in CIDR format.
 
     ## Filterable Fields
 

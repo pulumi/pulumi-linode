@@ -22,7 +22,7 @@ public final class GetLocksResult {
      */
     private String id;
     /**
-     * @return A list of Linode Locks that match the filter criteria.
+     * @return (Nested Attribute List) A list of Linode Locks that match the filter criteria.
      * 
      */
     private List<GetLocksLock> locks;
@@ -41,7 +41,7 @@ public final class GetLocksResult {
         return this.id;
     }
     /**
-     * @return A list of Linode Locks that match the filter criteria.
+     * @return (Nested Attribute List) A list of Linode Locks that match the filter criteria.
      * 
      */
     public List<GetLocksLock> locks() {

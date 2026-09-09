@@ -216,8 +216,8 @@ class PlacementGroup(pulumi.CustomResource):
 
         test = linode.PlacementGroup("test",
             label="my-placement-group",
-            region="us-mia",
-            placement_group_type="anti_affinity:local")
+            placement_group_type="anti_affinity:local",
+            region="us-mia")
         ```
 
         ## Import
@@ -254,8 +254,8 @@ class PlacementGroup(pulumi.CustomResource):
 
         test = linode.PlacementGroup("test",
             label="my-placement-group",
-            region="us-mia",
-            placement_group_type="anti_affinity:local")
+            placement_group_type="anti_affinity:local",
+            region="us-mia")
         ```
 
         ## Import

@@ -17,14 +17,14 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     label: "my-cluster",
  *     k8sVersion: "1.32",
+ *     label: "my-cluster",
+ *     pools: [{
+ *         count: 3,
+ *         type: "g6-standard-2",
+ *     }],
  *     region: "us-central",
  *     tags: ["prod"],
- *     pools: [{
- *         type: "g6-standard-2",
- *         count: 3,
- *     }],
  * });
  * ```
  * ```typescript
@@ -32,16 +32,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.LkeCluster("test", {
- *     label: "lke-e-cluster",
- *     region: "us-lax",
  *     k8sVersion: "v1.31.8+lke5",
- *     tags: ["test"],
- *     tier: "enterprise",
+ *     label: "lke-e-cluster",
  *     pools: [{
- *         type: "g7-premium-2",
  *         count: 3,
  *         tags: ["test"],
+ *         type: "g7-premium-2",
  *     }],
+ *     region: "us-lax",
+ *     tags: ["test"],
+ *     tier: "enterprise",
  * });
  * ```
  * ```typescript
@@ -49,17 +49,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     label: "my-cluster",
  *     k8sVersion: "1.32",
+ *     label: "my-cluster",
+ *     pools: [{
+ *         autoscaler: {
+ *             max: 10,
+ *             min: 3,
+ *         },
+ *         type: "g6-standard-2",
+ *     }],
  *     region: "us-central",
  *     tags: ["prod"],
- *     pools: [{
- *         type: "g6-standard-2",
- *         autoscaler: {
- *             min: 3,
- *             max: 10,
- *         },
- *     }],
  * });
  * ```
  * ```typescript
@@ -67,24 +67,24 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.LkeCluster("test", {
- *     label: "my-cluster",
+ *     controlPlane: {
+ *         acl: {
+ *             addresses: [{
+ *                 ipv4: ["0.0.0.0/0"],
+ *                 ipv6: ["2001:db8::/32"],
+ *             }],
+ *             enabled: true,
+ *         },
+ *         highAvailability: true,
+ *     },
  *     k8sVersion: "1.32",
+ *     label: "my-cluster",
+ *     pools: [{
+ *         count: 1,
+ *         type: "g6-standard-2",
+ *     }],
  *     region: "us-central",
  *     tags: ["prod"],
- *     controlPlane: {
- *         highAvailability: true,
- *         acl: {
- *             enabled: true,
- *             addresses: [{
- *                 ipv4s: ["0.0.0.0/0"],
- *                 ipv6s: ["2001:db8::/32"],
- *             }],
- *         },
- *     },
- *     pools: [{
- *         type: "g6-standard-2",
- *         count: 1,
- *     }],
  * });
  * ```
  * ```typescript
@@ -92,22 +92,22 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     label: "my-cluster",
  *     k8sVersion: "1.32",
- *     region: "us-central",
- *     tags: ["prod"],
+ *     label: "my-cluster",
  *     pools: [
  *         {
- *             type: "g6-standard-2",
  *             count: 2,
  *             label: "db-pool",
+ *             type: "g6-standard-2",
  *         },
  *         {
- *             type: "g6-standard-1",
  *             count: 3,
  *             label: "app-pool",
+ *             type: "g6-standard-1",
  *         },
  *     ],
+ *     region: "us-central",
+ *     tags: ["prod"],
  * });
  * ```
  * ```typescript
@@ -115,16 +115,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     label: "my-cluster",
  *     k8sVersion: "1.32",
- *     region: "us-central",
- *     tags: ["prod"],
+ *     label: "my-cluster",
  *     pools: [{
- *         type: "g6-standard-2",
  *         count: 2,
- *         label: "db-pool",
  *         firewallId: 12345,
+ *         label: "db-pool",
+ *         type: "g6-standard-2",
  *     }],
+ *     region: "us-central",
+ *     tags: ["prod"],
  * });
  * ```
  * ```typescript
@@ -132,28 +132,51 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     label: "my-cluster",
  *     k8sVersion: "1.32",
- *     region: "us-central",
- *     tags: ["prod"],
+ *     label: "my-cluster",
  *     pools: [
  *         {
- *             type: "g6-standard-2",
  *             count: 2,
  *             labels: {
- *                 role: "database",
  *                 environment: "production",
+ *                 role: "database",
  *             },
+ *             type: "g6-standard-2",
  *         },
  *         {
- *             type: "g6-standard-1",
  *             count: 3,
  *             labels: {
- *                 role: "application",
  *                 environment: "production",
+ *                 role: "application",
  *             },
+ *             type: "g6-standard-1",
  *         },
  *     ],
+ *     region: "us-central",
+ *     tags: ["prod"],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     k8sVersion: "1.32",
+ *     label: "my-cluster",
+ *     pools: [
+ *         {
+ *             count: 2,
+ *             diskEncryption: "enabled",
+ *             type: "g6-standard-2",
+ *         },
+ *         {
+ *             count: 1,
+ *             diskEncryption: "disabled",
+ *             type: "g6-standard-1",
+ *         },
+ *     ],
+ *     region: "us-central",
+ *     tags: ["prod"],
  * });
  * ```
  *
@@ -169,12 +192,12 @@ import * as utilities from "./utilities";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {pools: [
  *     {
- *         type: "g6-standard-1",
  *         count: 2,
+ *         type: "g6-standard-1",
  *     },
  *     {
- *         type: "g6-standard-2",
  *         count: 3,
+ *         type: "g6-standard-2",
  *     },
  * ]});
  * ```
@@ -183,8 +206,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {pools: [{
- *     type: "g6-standard-2",
  *     count: 3,
+ *     type: "g6-standard-2",
  * }]});
  * ```
  * ## Externally Managed Node Pools
@@ -266,10 +289,6 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public readonly controlPlane: pulumi.Output<outputs.LkeClusterControlPlane>;
     /**
-     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     */
-    declare public /*out*/ readonly dashboardUrl: pulumi.Output<string>;
-    /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
     declare public readonly externalPoolTags: pulumi.Output<string[] | undefined>;
@@ -286,15 +305,15 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public readonly label: pulumi.Output<string>;
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      */
     declare public readonly pools: pulumi.Output<outputs.LkeClusterPool[] | undefined>;
     /**
      * This Kubernetes cluster's location.
      *
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      *
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -338,7 +357,6 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["apiEndpoints"] = state?.apiEndpoints;
             resourceInputs["aplEnabled"] = state?.aplEnabled;
             resourceInputs["controlPlane"] = state?.controlPlane;
-            resourceInputs["dashboardUrl"] = state?.dashboardUrl;
             resourceInputs["externalPoolTags"] = state?.externalPoolTags;
             resourceInputs["k8sVersion"] = state?.k8sVersion;
             resourceInputs["kubeconfig"] = state?.kubeconfig;
@@ -375,7 +393,6 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["tier"] = args?.tier;
             resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["apiEndpoints"] = undefined /*out*/;
-            resourceInputs["dashboardUrl"] = undefined /*out*/;
             resourceInputs["kubeconfig"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -403,10 +420,6 @@ export interface LkeClusterState {
      */
     controlPlane?: pulumi.Input<inputs.LkeClusterControlPlane | undefined>;
     /**
-     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     */
-    dashboardUrl?: pulumi.Input<string | undefined>;
-    /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      */
     externalPoolTags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -423,15 +436,15 @@ export interface LkeClusterState {
      */
     label?: pulumi.Input<string | undefined>;
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      */
     pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[] | undefined>;
     /**
      * This Kubernetes cluster's location.
      *
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      *
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      */
     region?: pulumi.Input<string | undefined>;
     /**
@@ -485,15 +498,15 @@ export interface LkeClusterArgs {
      */
     label: pulumi.Input<string>;
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      */
     pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[] | undefined>;
     /**
      * This Kubernetes cluster's location.
      *
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      *
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      */
     region: pulumi.Input<string>;
     /**

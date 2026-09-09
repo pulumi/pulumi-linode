@@ -20,12 +20,12 @@ public final class InterfaceVpcIpv4 {
      */
     private @Nullable List<InterfaceVpcIpv4Address> addresses;
     /**
-     * @return (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfaceVpcIpv4AssignedAddress> assignedAddresses;
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfaceVpcIpv4AssignedRange> assignedRanges;
@@ -44,14 +44,14 @@ public final class InterfaceVpcIpv4 {
         return this.addresses == null ? List.of() : this.addresses;
     }
     /**
-     * @return (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfaceVpcIpv4AssignedAddress> assignedAddresses() {
         return this.assignedAddresses == null ? List.of() : this.assignedAddresses;
     }
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfaceVpcIpv4AssignedRange> assignedRanges() {

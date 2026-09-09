@@ -28,13 +28,13 @@ namespace Pulumi.Linode
     ///         Label = "myinstance",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
-    ///         Image = "linode/alpine3.19",
+    ///         Image = "linode/arch",
     ///     });
     /// 
     ///     var my_db = new Linode.DatabaseMysqlV2("my-db", new()
     ///     {
     ///         Label = "mydatabase",
-    ///         EngineId = "mysql/8.0.30",
+    ///         EngineId = "mysql/8",
     ///         Region = "us-southeast",
     ///         Type = "g6-nanode-1",
     ///     });

@@ -29,8 +29,8 @@ namespace Pulumi.Linode
     ///         {
     ///             Linode = 12345,
     ///             Nodebalancer = 12345,
-    ///             PublicInterface = 12345,
-    ///             VpcInterface = 12345,
+    ///             Public_interface = 12345,
+    ///             Vpc_interface = 12345,
     ///         },
     ///     });
     /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Linode
     public partial class FirewallSettings : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A map of default firewall IDs for various interfaces.
+        /// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         /// </summary>
         [Output("defaultFirewallIds")]
         public Output<Outputs.FirewallSettingsDefaultFirewallIds?> DefaultFirewallIds { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.Linode
     public sealed class FirewallSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A map of default firewall IDs for various interfaces.
+        /// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         /// </summary>
         [Input("defaultFirewallIds")]
         public Input<Inputs.FirewallSettingsDefaultFirewallIdsArgs>? DefaultFirewallIds { get; set; }
@@ -111,7 +111,7 @@ namespace Pulumi.Linode
     public sealed class FirewallSettingsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A map of default firewall IDs for various interfaces.
+        /// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         /// </summary>
         [Input("defaultFirewallIds")]
         public Input<Inputs.FirewallSettingsDefaultFirewallIdsGetArgs>? DefaultFirewallIds { get; set; }

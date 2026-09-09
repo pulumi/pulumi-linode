@@ -159,6 +159,7 @@ class _VolumeState:
     def __init__(__self__, *,
                  encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  filesystem_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -172,6 +173,7 @@ class _VolumeState:
 
         :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
+        :param pulumi.Input[_builtins.bool] io_ready: Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[_builtins.str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
@@ -186,6 +188,8 @@ class _VolumeState:
             pulumi.set(__self__, "encryption", encryption)
         if filesystem_path is not None:
             pulumi.set(__self__, "filesystem_path", filesystem_path)
+        if io_ready is not None:
+            pulumi.set(__self__, "io_ready", io_ready)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if linode_id is not None:
@@ -226,6 +230,18 @@ class _VolumeState:
     @filesystem_path.setter
     def filesystem_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filesystem_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ioReady")
+    def io_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        """
+        return pulumi.get(self, "io_ready")
+
+    @io_ready.setter
+    def io_ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "io_ready", value)
 
     @_builtins.property
     @pulumi.getter
@@ -368,11 +384,11 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.Instance("foo",
+        foo_instance = linode.Instance("fooInstance",
             region="us-east",
             type="g6-nanode-1")
-        foo_instance_config = linode.InstanceConfig("foo",
-            linode_id=foo.id.apply(lambda x: int(x)),
+        foo_instance_config = linode.InstanceConfig("fooInstanceConfig",
+            linode_id=foo_instance.id.apply(lambda x: int(x)),
             label="boot-existing-volume",
             kernel="linode/grub2",
             devices=[{
@@ -450,11 +466,11 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo = linode.Instance("foo",
+        foo_instance = linode.Instance("fooInstance",
             region="us-east",
             type="g6-nanode-1")
-        foo_instance_config = linode.InstanceConfig("foo",
-            linode_id=foo.id.apply(lambda x: int(x)),
+        foo_instance_config = linode.InstanceConfig("fooInstanceConfig",
+            linode_id=foo_instance.id.apply(lambda x: int(x)),
             label="boot-existing-volume",
             kernel="linode/grub2",
             devices=[{
@@ -527,6 +543,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["filesystem_path"] = None
+            __props__.__dict__["io_ready"] = None
             __props__.__dict__["status"] = None
         super(Volume, __self__).__init__(
             'linode:index/volume:Volume',
@@ -540,6 +557,7 @@ class Volume(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             encryption: pulumi.Input[Optional[_builtins.str]] = None,
             filesystem_path: pulumi.Input[Optional[_builtins.str]] = None,
+            io_ready: pulumi.Input[Optional[_builtins.bool]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -557,6 +575,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] encryption: Whether Block Storage Disk Encryption is enabled or disabled on this Volume.
         :param pulumi.Input[_builtins.str] filesystem_path: The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
+        :param pulumi.Input[_builtins.bool] io_ready: Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Volume
         :param pulumi.Input[_builtins.int] linode_id: The ID of a Linode Instance where the Volume should be attached.
         :param pulumi.Input[_builtins.str] region: The region where this volume will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions). This field is optional for cloned volumes. *Changing `region` forces the creation of a new Linode Volume.*.
@@ -573,6 +592,7 @@ class Volume(pulumi.CustomResource):
 
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["filesystem_path"] = filesystem_path
+        __props__.__dict__["io_ready"] = io_ready
         __props__.__dict__["label"] = label
         __props__.__dict__["linode_id"] = linode_id
         __props__.__dict__["region"] = region
@@ -598,6 +618,14 @@ class Volume(pulumi.CustomResource):
         The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
         """
         return pulumi.get(self, "filesystem_path")
+
+    @_builtins.property
+    @pulumi.getter(name="ioReady")
+    def io_ready(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        """
+        return pulumi.get(self, "io_ready")
 
     @_builtins.property
     @pulumi.getter

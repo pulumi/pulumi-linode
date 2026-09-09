@@ -29,7 +29,7 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
     /**
      * The ID of the NodeBalancer to access.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      * 
      */
     @Import(name="nodebalancerId", required=true)
@@ -38,7 +38,7 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
     /**
      * @return The ID of the NodeBalancer to access.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      * 
      */
     public Output<Integer> nodebalancerId() {
@@ -118,7 +118,7 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
         /**
          * @param nodebalancerId The ID of the NodeBalancer to access.
          * 
-         * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetNodebalancerConfigsArgs extends com.pulumi.resources.Invok
         /**
          * @param nodebalancerId The ID of the NodeBalancer to access.
          * 
-         * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
          * 
          * @return builder
          * 

@@ -78,93 +78,6 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.Image;
- * import com.pulumi.linode.ImageArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.Filemd5Args;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foobar = new Image("foobar", ImageArgs.builder()
- *             .label("foobar-image")
- *             .description("An image uploaded from Terraform!")
- *             .region("us-southeast")
- *             .tags(            
- *                 "image-tag",
- *                 "test")
- *             .filePath("path/to/image.img.gz")
- *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
- *                 .input("path/to/image.img.gz")
- *                 .build()).result())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.linode.Image;
- * import com.pulumi.linode.ImageArgs;
- * import com.pulumi.std.StdFunctions;
- * import com.pulumi.std.inputs.Filemd5Args;
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foobar = new Image("foobar", ImageArgs.builder()
- *             .label("foobar-image")
- *             .description("An image uploaded from Terraform!")
- *             .region("us-southeast")
- *             .tags(            
- *                 "image-tag",
- *                 "test")
- *             .filePath("path/to/image.img.gz")
- *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
- *                 .input("path/to/image.img.gz")
- *                 .build()).result())
- *             .replicaRegions(            
- *                 "us-southeast",
- *                 "us-east",
- *                 "eu-west")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * 
  * ## Import
  * 
  * Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -317,14 +230,14 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.filePath);
     }
     /**
-     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     @Export(name="imageSharing", refs={ImageImageSharing.class}, tree="[0]")
     private Output<ImageImageSharing> imageSharing;
 
     /**
-     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     public Output<ImageImageSharing> imageSharing() {
@@ -423,14 +336,14 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.replicaRegions);
     }
     /**
-     * A list of image replications region and corresponding status.
+     * (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
      * 
      */
     @Export(name="replications", refs={List.class,ImageReplication.class}, tree="[0,1]")
     private Output<List<ImageReplication>> replications;
 
     /**
-     * @return A list of image replications region and corresponding status.
+     * @return (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
      * 
      */
     public Output<List<ImageReplication>> replications() {

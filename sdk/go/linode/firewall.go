@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myInstance, err := linode.NewInstance(ctx, "my_instance", &linode.InstanceArgs{
+//			myInstance, err := linode.NewInstance(ctx, "myInstance", &linode.InstanceArgs{
 //				Label:    pulumi.String("my_instance"),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				Region:   pulumi.String("us-southeast"),
@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewFirewall(ctx, "my_firewall", &linode.FirewallArgs{
+//			_, err = linode.NewFirewall(ctx, "myFirewall", &linode.FirewallArgs{
 //				Label: pulumi.String("my_firewall"),
 //				Inbounds: linode.FirewallInboundArray{
 //					&linode.FirewallInboundArgs{
@@ -127,11 +127,13 @@ type Firewall struct {
 	Devices FirewallDeviceTypeArrayOutput `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	//
-	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+	// * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
+	// The fingerprint of the current Firewall rules.
+	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	//
-	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+	// * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy pulumi.StringOutput `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayOutput `pulumi:"inbounds"`
@@ -153,6 +155,8 @@ type Firewall struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// When this firewall was last updated
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// The current version of the Firewall rules.
+	Version pulumi.IntOutput `pulumi:"version"`
 }
 
 // NewFirewall registers a new resource with the given unique name, arguments, and options.
@@ -200,11 +204,13 @@ type firewallState struct {
 	Devices []FirewallDeviceType `pulumi:"devices"`
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	//
-	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+	// * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled *bool `pulumi:"disabled"`
+	// The fingerprint of the current Firewall rules.
+	Fingerprint *string `pulumi:"fingerprint"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	//
-	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+	// * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy *string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
@@ -226,6 +232,8 @@ type firewallState struct {
 	Tags []string `pulumi:"tags"`
 	// When this firewall was last updated
 	Updated *string `pulumi:"updated"`
+	// The current version of the Firewall rules.
+	Version *int `pulumi:"version"`
 }
 
 type FirewallState struct {
@@ -235,11 +243,13 @@ type FirewallState struct {
 	Devices FirewallDeviceTypeArrayInput
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	//
-	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+	// * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled pulumi.BoolPtrInput
+	// The fingerprint of the current Firewall rules.
+	Fingerprint pulumi.StringPtrInput
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	//
-	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+	// * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy pulumi.StringPtrInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
@@ -261,6 +271,8 @@ type FirewallState struct {
 	Tags pulumi.StringArrayInput
 	// When this firewall was last updated
 	Updated pulumi.StringPtrInput
+	// The current version of the Firewall rules.
+	Version pulumi.IntPtrInput
 }
 
 func (FirewallState) ElementType() reflect.Type {
@@ -270,11 +282,11 @@ func (FirewallState) ElementType() reflect.Type {
 type firewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	//
-	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+	// * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled *bool `pulumi:"disabled"`
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	//
-	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+	// * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy string `pulumi:"inboundPolicy"`
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds []FirewallInbound `pulumi:"inbounds"`
@@ -298,11 +310,11 @@ type firewallArgs struct {
 type FirewallArgs struct {
 	// If `true`, the Firewall's rules are not enforced (defaults to `false`).
 	//
-	// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+	// * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
 	Disabled pulumi.BoolPtrInput
 	// The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 	//
-	// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+	// * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
 	InboundPolicy pulumi.StringInput
 	// A firewall rule that specifies what inbound network traffic is allowed.
 	Inbounds FirewallInboundArrayInput
@@ -421,14 +433,19 @@ func (o FirewallOutput) Devices() FirewallDeviceTypeArrayOutput {
 
 // If `true`, the Firewall's rules are not enforced (defaults to `false`).
 //
-// * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+// * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
 func (o FirewallOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.BoolOutput { return v.Disabled }).(pulumi.BoolOutput)
 }
 
+// The fingerprint of the current Firewall rules.
+func (o FirewallOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
 // The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
 //
-// * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+// * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
 func (o FirewallOutput) InboundPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.InboundPolicy }).(pulumi.StringOutput)
 }
@@ -481,6 +498,11 @@ func (o FirewallOutput) Tags() pulumi.StringArrayOutput {
 // When this firewall was last updated
 func (o FirewallOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Firewall) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The current version of the Firewall rules.
+func (o FirewallOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *Firewall) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
 }
 
 type FirewallArrayOutput struct{ *pulumi.OutputState }

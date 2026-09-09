@@ -27,7 +27,7 @@ class GetVpcResult:
     """
     A collection of values returned by getVpc.
     """
-    def __init__(__self__, created=None, description=None, id=None, ipv6s=None, label=None, region=None, updated=None):
+    def __init__(__self__, created=None, description=None, id=None, ipv4s=None, ipv6s=None, label=None, region=None, updated=None, vpc_type=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -37,6 +37,9 @@ class GetVpcResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if ipv4s and not isinstance(ipv4s, list):
+            raise TypeError("Expected argument 'ipv4s' to be a list")
+        pulumi.set(__self__, "ipv4s", ipv4s)
         if ipv6s and not isinstance(ipv6s, list):
             raise TypeError("Expected argument 'ipv6s' to be a list")
         pulumi.set(__self__, "ipv6s", ipv6s)
@@ -49,6 +52,9 @@ class GetVpcResult:
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
+        if vpc_type and not isinstance(vpc_type, str):
+            raise TypeError("Expected argument 'vpc_type' to be a str")
+        pulumi.set(__self__, "vpc_type", vpc_type)
 
     @_builtins.property
     @pulumi.getter
@@ -73,9 +79,17 @@ class GetVpcResult:
 
     @_builtins.property
     @pulumi.getter
+    def ipv4s(self) -> Sequence['outputs.GetVpcIpv4Result']:
+        """
+        (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @_builtins.property
+    @pulumi.getter
     def ipv6s(self) -> Sequence['outputs.GetVpcIpv6Result']:
         """
-        A list of IPv6 allocations under this VPC.
+        (Nested Attribute List) A list of IPv6 allocations under this VPC.
         """
         return pulumi.get(self, "ipv6s")
 
@@ -103,6 +117,14 @@ class GetVpcResult:
         """
         return pulumi.get(self, "updated")
 
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> _builtins.str:
+        """
+        The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+        """
+        return pulumi.get(self, "vpc_type")
+
 
 class AwaitableGetVpcResult(GetVpcResult):
     # pylint: disable=using-constant-test
@@ -113,10 +135,12 @@ class AwaitableGetVpcResult(GetVpcResult):
             created=self.created,
             description=self.description,
             id=self.id,
+            ipv4s=self.ipv4s,
             ipv6s=self.ipv6s,
             label=self.label,
             region=self.region,
-            updated=self.updated)
+            updated=self.updated,
+            vpc_type=self.vpc_type)
 
 
 def get_vpc(id: Optional[_builtins.str] = None,
@@ -145,6 +169,14 @@ def get_vpc(id: Optional[_builtins.str] = None,
 
     * `range` - The allocated range in CIDR format.
 
+    ## IPv4
+
+    > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+
+    Contains information about a single IPv4 range under this VPC.
+
+    * `range` - The IPv4 range in CIDR format.
+
     ### Subnets Reference
 
     To list all subnets under a VPC, please refer to the get_vpc_subnets data source.
@@ -161,10 +193,12 @@ def get_vpc(id: Optional[_builtins.str] = None,
         created=pulumi.get(__ret__, 'created'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
+        ipv4s=pulumi.get(__ret__, 'ipv4s'),
         ipv6s=pulumi.get(__ret__, 'ipv6s'),
         label=pulumi.get(__ret__, 'label'),
         region=pulumi.get(__ret__, 'region'),
-        updated=pulumi.get(__ret__, 'updated'))
+        updated=pulumi.get(__ret__, 'updated'),
+        vpc_type=pulumi.get(__ret__, 'vpc_type'))
 def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcResult]:
     """
@@ -191,6 +225,14 @@ def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
 
     * `range` - The allocated range in CIDR format.
 
+    ## IPv4
+
+    > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+
+    Contains information about a single IPv4 range under this VPC.
+
+    * `range` - The IPv4 range in CIDR format.
+
     ### Subnets Reference
 
     To list all subnets under a VPC, please refer to the get_vpc_subnets data source.
@@ -206,7 +248,9 @@ def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         created=pulumi.get(__response__, 'created'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
+        ipv4s=pulumi.get(__response__, 'ipv4s'),
         ipv6s=pulumi.get(__response__, 'ipv6s'),
         label=pulumi.get(__response__, 'label'),
         region=pulumi.get(__response__, 'region'),
-        updated=pulumi.get(__response__, 'updated')))
+        updated=pulumi.get(__response__, 'updated'),
+        vpc_type=pulumi.get(__response__, 'vpc_type')))

@@ -65,6 +65,9 @@ export interface GetAccountLoginsResult {
      * The unique ID of this login object.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The list of Linode account logins.
+     */
     readonly logins: outputs.GetAccountLoginsLogin[];
 }
 /**

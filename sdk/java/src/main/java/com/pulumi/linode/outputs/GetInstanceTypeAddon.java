@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypeAddon {
+    /**
+     * @return (Read-Only Object List) Backups add-on pricing information. Referenced with an index (e.g. `addons.0.backups.0.price`).
+     * 
+     */
     private List<GetInstanceTypeAddonBackup> backups;
 
     private GetInstanceTypeAddon() {}
+    /**
+     * @return (Read-Only Object List) Backups add-on pricing information. Referenced with an index (e.g. `addons.0.backups.0.price`).
+     * 
+     */
     public List<GetInstanceTypeAddonBackup> backups() {
         return this.backups;
     }

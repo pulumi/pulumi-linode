@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  *
  * const test = new linode.PlacementGroup("test", {
  *     label: "my-placement-group",
- *     region: "us-mia",
  *     placementGroupType: "anti_affinity:local",
+ *     region: "us-mia",
  * });
  * ```
  *

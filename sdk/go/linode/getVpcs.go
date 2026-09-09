@@ -58,6 +58,14 @@ import (
 //
 // * `range` - The allocated range in CIDR format.
 //
+// ## IPv4
+//
+// > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+//
+// Contains information about a single IPv4 range under this VPC.
+//
+// * `range` - The IPv4 range in CIDR format.
+//
 // ## Filterable Fields
 //
 // * `id`
@@ -86,7 +94,8 @@ type GetVpcsArgs struct {
 type GetVpcsResult struct {
 	Filters []GetVpcsFilter `pulumi:"filters"`
 	// The unique id of this VPC.
-	Id   string       `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The VPCs returned by this data source.
 	Vpcs []GetVpcsVpc `pulumi:"vpcs"`
 }
 
@@ -128,6 +137,7 @@ func (o GetVpcsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The VPCs returned by this data source.
 func (o GetVpcsResultOutput) Vpcs() GetVpcsVpcArrayOutput {
 	return o.ApplyT(func(v GetVpcsResult) []GetVpcsVpc { return v.Vpcs }).(GetVpcsVpcArrayOutput)
 }

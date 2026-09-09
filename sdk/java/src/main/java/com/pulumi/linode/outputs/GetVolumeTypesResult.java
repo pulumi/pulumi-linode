@@ -23,6 +23,10 @@ public final class GetVolumeTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) Linode Volume types matching the query.
+     * 
+     */
     private List<GetVolumeTypesType> types;
 
     private GetVolumeTypesResult() {}
@@ -42,6 +46,10 @@ public final class GetVolumeTypesResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) Linode Volume types matching the query.
+     * 
+     */
     public List<GetVolumeTypesType> types() {
         return this.types;
     }

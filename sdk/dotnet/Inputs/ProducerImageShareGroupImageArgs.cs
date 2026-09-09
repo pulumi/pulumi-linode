@@ -15,7 +15,7 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

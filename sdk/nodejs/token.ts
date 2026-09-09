@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foo = new linode.Token("foo", {
+ * const fooToken = new linode.Token("fooToken", {
+ *     expiry: "2100-01-02T03:04:05Z",
  *     label: "token",
  *     scopes: "linodes:read_only",
- *     expiry: "2100-01-02T03:04:05Z",
  * });
- * const fooInstance = new linode.Instance("foo", {});
+ * const fooInstance = new linode.Instance("fooInstance", {});
  * ```
  *
  * ## Import

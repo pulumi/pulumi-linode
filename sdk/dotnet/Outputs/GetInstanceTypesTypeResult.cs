@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int AcceleratedDevices;
         /// <summary>
-        /// Information about the optional Backup service offered for Linodes.
+        /// (Read-Only Object List) Add-on information for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonResult> Addons;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int NetworkOut;
         /// <summary>
-        /// Cost in US dollars, broken down into hourly and monthly charges.
+        /// (Read-Only Object List) The base cost for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypePriceResult> Prices;
         /// <summary>
-        /// A list of region-specific prices for this plan.
+        /// (Read-Only Object List) Region-specific pricing for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeRegionPriceResult> RegionPrices;
         /// <summary>

@@ -73,8 +73,6 @@ type GetKernelResult struct {
 	Pvops bool `pulumi:"pvops"`
 	// Linux Kernel version
 	Version string `pulumi:"version"`
-	// If this Kernel is suitable for Xen Linodes.
-	Xen bool `pulumi:"xen"`
 }
 
 func GetKernelOutput(ctx *pulumi.Context, args GetKernelOutputArgs, opts ...pulumi.InvokeOption) GetKernelResultOutput {
@@ -143,11 +141,6 @@ func (o GetKernelResultOutput) Pvops() pulumi.BoolOutput {
 // Linux Kernel version
 func (o GetKernelResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelResult) string { return v.Version }).(pulumi.StringOutput)
-}
-
-// If this Kernel is suitable for Xen Linodes.
-func (o GetKernelResultOutput) Xen() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetKernelResult) bool { return v.Xen }).(pulumi.BoolOutput)
 }
 
 func init() {

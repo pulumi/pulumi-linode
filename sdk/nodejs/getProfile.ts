@@ -53,7 +53,7 @@ export interface GetProfileResult {
      */
     readonly lishAuthMethod: string;
     /**
-     * Credit Card information associated with this Account.
+     * (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
      */
     readonly referrals: outputs.GetProfileReferral[];
     /**

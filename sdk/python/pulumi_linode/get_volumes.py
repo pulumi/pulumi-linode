@@ -71,6 +71,9 @@ class GetVolumesResult:
     @_builtins.property
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.GetVolumesVolumeResult']:
+        """
+        (Nested Attribute List) The Volumes returned by this data source.
+        """
         return pulumi.get(self, "volumes")
 
 

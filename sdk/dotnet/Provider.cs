@@ -93,6 +93,7 @@ namespace Pulumi.Linode
                 AdditionalSecretOutputs =
                 {
                     "objSecretKey",
+                    "token",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -228,11 +229,21 @@ namespace Pulumi.Linode
         [Input("skipLkeClusterDeletePoll", json: true)]
         public Input<bool>? SkipLkeClusterDeletePoll { get; set; }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The token that allows you access to your Linode account
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// An HTTP User-Agent Prefix to prepend in API requests.

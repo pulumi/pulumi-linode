@@ -31,13 +31,13 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.NetworkingIpAssignmentAssignmentArgs
     ///             {
-    ///                 Address = reservedIp1.Address,
-    ///                 LinodeId = terraform_web1.Id,
+    ///                 Address = linode_networking_ip.Reserved_ip1.Address,
+    ///                 Linode_id = linode_instance.Terraform_web1.Id,
     ///             },
     ///             new Linode.Inputs.NetworkingIpAssignmentAssignmentArgs
     ///             {
-    ///                 Address = reservedIp2.Address,
-    ///                 LinodeId = terraform_web2.Id,
+    ///                 Address = linode_networking_ip.Reserved_ip2.Address,
+    ///                 Linode_id = linode_instance.Terraform_web2.Id,
     ///             },
     ///         },
     ///     });

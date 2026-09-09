@@ -49,15 +49,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new Instance("foobar", InstanceArgs.builder()
+ *         var foobarInstance = new Instance("foobarInstance", InstanceArgs.builder()
  *             .label("my-linode")
- *             .image("linode/alpine3.19")
+ *             .image("linode/arch")
  *             .type("g6-nanode-1")
  *             .region("us-southeast")
  *             .build());
  * 
  *         var foobarIpv6Range = new Ipv6Range("foobarIpv6Range", Ipv6RangeArgs.builder()
- *             .linodeId(foobar.id())
+ *             .linodeId(foobarInstance.id())
  *             .prefixLength(64)
  *             .build());
  * 

@@ -5,24 +5,269 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSd;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSda;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaa;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdab;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdac;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdad;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdae;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaf;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdag;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdah;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdai;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaj;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdak;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdal;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdam;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdan;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdao;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdap;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaq;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdar;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdat;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaus;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdav;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaw;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaxis;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSday;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdaz;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdb;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdba;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbb;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbc;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbd;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbe;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbf;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbg;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbh;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbi;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbj;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbk;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdbl;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdc;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdd;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSde;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdf;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdg;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdh;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdi;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdj;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdk;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdl;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdm;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdn;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdo;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdp;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdq;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdr;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdt;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdus;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdv;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdw;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdx;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdy;
+import com.pulumi.linode.outputs.GetInstancesInstanceConfigDeviceSdz;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstancesInstanceConfigDevice {
     /**
-     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+     * @return ... `sdbl` - (Read-Only Object List) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskLabel` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_label`).
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSda> sda;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaa> sdaas;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdab> sdabs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdac> sdacs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdad> sdads;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdae> sdaes;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaf> sdafs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdag> sdags;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdah> sdahs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdai> sdais;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaj> sdajs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdak> sdaks;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdal> sdals;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdam> sdams;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdan> sdans;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdao> sdaos;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdap> sdaps;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaq> sdaqs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdar> sdars;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSda> sdas;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdat> sdats;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaus> sdaus;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdav> sdavs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaw> sdaws;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaxis> sdaxes;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSday> sdays;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdaz> sdazs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdba> sdbas;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbb> sdbbs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbc> sdbcs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbd> sdbds;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbe> sdbes;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbf> sdbfs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbg> sdbgs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbh> sdbhs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbi> sdbis;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbj> sdbjs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbk> sdbks;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdbl> sdbls;
     /**
      * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
@@ -58,14 +303,370 @@ public final class GetInstancesInstanceConfigDevice {
      * 
      */
     private List<GetInstancesInstanceConfigDeviceSdh> sdhs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdy> sdies;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdi> sdis;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdj> sdjs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdk> sdks;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdl> sdls;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdm> sdms;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdn> sdns;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdo> sdos;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdp> sdps;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdq> sdqs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdr> sdrs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSd> sds;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdt> sdts;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdus> sdus;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdv> sdvs;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdw> sdws;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdx> sdxes;
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    private List<GetInstancesInstanceConfigDeviceSdz> sdzs;
 
     private GetInstancesInstanceConfigDevice() {}
     /**
-     * @return ... `sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskLabel` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+     * @return ... `sdbl` - (Read-Only Object List) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskLabel` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_label`).
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSda> sda() {
+        return this.sda;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaa> sdaas() {
+        return this.sdaas;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdab> sdabs() {
+        return this.sdabs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdac> sdacs() {
+        return this.sdacs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdad> sdads() {
+        return this.sdads;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdae> sdaes() {
+        return this.sdaes;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaf> sdafs() {
+        return this.sdafs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdag> sdags() {
+        return this.sdags;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdah> sdahs() {
+        return this.sdahs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdai> sdais() {
+        return this.sdais;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaj> sdajs() {
+        return this.sdajs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdak> sdaks() {
+        return this.sdaks;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdal> sdals() {
+        return this.sdals;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdam> sdams() {
+        return this.sdams;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdan> sdans() {
+        return this.sdans;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdao> sdaos() {
+        return this.sdaos;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdap> sdaps() {
+        return this.sdaps;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaq> sdaqs() {
+        return this.sdaqs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdar> sdars() {
+        return this.sdars;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
      * 
      */
     public List<GetInstancesInstanceConfigDeviceSda> sdas() {
         return this.sdas;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdat> sdats() {
+        return this.sdats;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaus> sdaus() {
+        return this.sdaus;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdav> sdavs() {
+        return this.sdavs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaw> sdaws() {
+        return this.sdaws;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaxis> sdaxes() {
+        return this.sdaxes;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSday> sdays() {
+        return this.sdays;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdaz> sdazs() {
+        return this.sdazs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdba> sdbas() {
+        return this.sdbas;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbb> sdbbs() {
+        return this.sdbbs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbc> sdbcs() {
+        return this.sdbcs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbd> sdbds() {
+        return this.sdbds;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbe> sdbes() {
+        return this.sdbes;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbf> sdbfs() {
+        return this.sdbfs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbg> sdbgs() {
+        return this.sdbgs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbh> sdbhs() {
+        return this.sdbhs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbi> sdbis() {
+        return this.sdbis;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbj> sdbjs() {
+        return this.sdbjs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbk> sdbks() {
+        return this.sdbks;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdbl> sdbls() {
+        return this.sdbls;
     }
     /**
      * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
@@ -116,6 +717,132 @@ public final class GetInstancesInstanceConfigDevice {
     public List<GetInstancesInstanceConfigDeviceSdh> sdhs() {
         return this.sdhs;
     }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdy> sdies() {
+        return this.sdies;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdi> sdis() {
+        return this.sdis;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdj> sdjs() {
+        return this.sdjs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdk> sdks() {
+        return this.sdks;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdl> sdls() {
+        return this.sdls;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdm> sdms() {
+        return this.sdms;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdn> sdns() {
+        return this.sdns;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdo> sdos() {
+        return this.sdos;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdp> sdps() {
+        return this.sdps;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdq> sdqs() {
+        return this.sdqs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdr> sdrs() {
+        return this.sdrs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSd> sds() {
+        return this.sds;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdt> sdts() {
+        return this.sdts;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdus> sdus() {
+        return this.sdus;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdv> sdvs() {
+        return this.sdvs;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdw> sdws() {
+        return this.sdws;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdx> sdxes() {
+        return this.sdxes;
+    }
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public List<GetInstancesInstanceConfigDeviceSdz> sdzs() {
+        return this.sdzs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -126,7 +853,45 @@ public final class GetInstancesInstanceConfigDevice {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetInstancesInstanceConfigDeviceSda> sda;
+        private List<GetInstancesInstanceConfigDeviceSdaa> sdaas;
+        private List<GetInstancesInstanceConfigDeviceSdab> sdabs;
+        private List<GetInstancesInstanceConfigDeviceSdac> sdacs;
+        private List<GetInstancesInstanceConfigDeviceSdad> sdads;
+        private List<GetInstancesInstanceConfigDeviceSdae> sdaes;
+        private List<GetInstancesInstanceConfigDeviceSdaf> sdafs;
+        private List<GetInstancesInstanceConfigDeviceSdag> sdags;
+        private List<GetInstancesInstanceConfigDeviceSdah> sdahs;
+        private List<GetInstancesInstanceConfigDeviceSdai> sdais;
+        private List<GetInstancesInstanceConfigDeviceSdaj> sdajs;
+        private List<GetInstancesInstanceConfigDeviceSdak> sdaks;
+        private List<GetInstancesInstanceConfigDeviceSdal> sdals;
+        private List<GetInstancesInstanceConfigDeviceSdam> sdams;
+        private List<GetInstancesInstanceConfigDeviceSdan> sdans;
+        private List<GetInstancesInstanceConfigDeviceSdao> sdaos;
+        private List<GetInstancesInstanceConfigDeviceSdap> sdaps;
+        private List<GetInstancesInstanceConfigDeviceSdaq> sdaqs;
+        private List<GetInstancesInstanceConfigDeviceSdar> sdars;
         private List<GetInstancesInstanceConfigDeviceSda> sdas;
+        private List<GetInstancesInstanceConfigDeviceSdat> sdats;
+        private List<GetInstancesInstanceConfigDeviceSdaus> sdaus;
+        private List<GetInstancesInstanceConfigDeviceSdav> sdavs;
+        private List<GetInstancesInstanceConfigDeviceSdaw> sdaws;
+        private List<GetInstancesInstanceConfigDeviceSdaxis> sdaxes;
+        private List<GetInstancesInstanceConfigDeviceSday> sdays;
+        private List<GetInstancesInstanceConfigDeviceSdaz> sdazs;
+        private List<GetInstancesInstanceConfigDeviceSdba> sdbas;
+        private List<GetInstancesInstanceConfigDeviceSdbb> sdbbs;
+        private List<GetInstancesInstanceConfigDeviceSdbc> sdbcs;
+        private List<GetInstancesInstanceConfigDeviceSdbd> sdbds;
+        private List<GetInstancesInstanceConfigDeviceSdbe> sdbes;
+        private List<GetInstancesInstanceConfigDeviceSdbf> sdbfs;
+        private List<GetInstancesInstanceConfigDeviceSdbg> sdbgs;
+        private List<GetInstancesInstanceConfigDeviceSdbh> sdbhs;
+        private List<GetInstancesInstanceConfigDeviceSdbi> sdbis;
+        private List<GetInstancesInstanceConfigDeviceSdbj> sdbjs;
+        private List<GetInstancesInstanceConfigDeviceSdbk> sdbks;
+        private List<GetInstancesInstanceConfigDeviceSdbl> sdbls;
         private List<GetInstancesInstanceConfigDeviceSdb> sdbs;
         private List<GetInstancesInstanceConfigDeviceSdc> sdcs;
         private List<GetInstancesInstanceConfigDeviceSdd> sdds;
@@ -134,10 +899,66 @@ public final class GetInstancesInstanceConfigDevice {
         private List<GetInstancesInstanceConfigDeviceSdf> sdfs;
         private List<GetInstancesInstanceConfigDeviceSdg> sdgs;
         private List<GetInstancesInstanceConfigDeviceSdh> sdhs;
+        private List<GetInstancesInstanceConfigDeviceSdy> sdies;
+        private List<GetInstancesInstanceConfigDeviceSdi> sdis;
+        private List<GetInstancesInstanceConfigDeviceSdj> sdjs;
+        private List<GetInstancesInstanceConfigDeviceSdk> sdks;
+        private List<GetInstancesInstanceConfigDeviceSdl> sdls;
+        private List<GetInstancesInstanceConfigDeviceSdm> sdms;
+        private List<GetInstancesInstanceConfigDeviceSdn> sdns;
+        private List<GetInstancesInstanceConfigDeviceSdo> sdos;
+        private List<GetInstancesInstanceConfigDeviceSdp> sdps;
+        private List<GetInstancesInstanceConfigDeviceSdq> sdqs;
+        private List<GetInstancesInstanceConfigDeviceSdr> sdrs;
+        private List<GetInstancesInstanceConfigDeviceSd> sds;
+        private List<GetInstancesInstanceConfigDeviceSdt> sdts;
+        private List<GetInstancesInstanceConfigDeviceSdus> sdus;
+        private List<GetInstancesInstanceConfigDeviceSdv> sdvs;
+        private List<GetInstancesInstanceConfigDeviceSdw> sdws;
+        private List<GetInstancesInstanceConfigDeviceSdx> sdxes;
+        private List<GetInstancesInstanceConfigDeviceSdz> sdzs;
         public Builder() {}
         public Builder(GetInstancesInstanceConfigDevice defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.sda = defaults.sda;
+    	      this.sdaas = defaults.sdaas;
+    	      this.sdabs = defaults.sdabs;
+    	      this.sdacs = defaults.sdacs;
+    	      this.sdads = defaults.sdads;
+    	      this.sdaes = defaults.sdaes;
+    	      this.sdafs = defaults.sdafs;
+    	      this.sdags = defaults.sdags;
+    	      this.sdahs = defaults.sdahs;
+    	      this.sdais = defaults.sdais;
+    	      this.sdajs = defaults.sdajs;
+    	      this.sdaks = defaults.sdaks;
+    	      this.sdals = defaults.sdals;
+    	      this.sdams = defaults.sdams;
+    	      this.sdans = defaults.sdans;
+    	      this.sdaos = defaults.sdaos;
+    	      this.sdaps = defaults.sdaps;
+    	      this.sdaqs = defaults.sdaqs;
+    	      this.sdars = defaults.sdars;
     	      this.sdas = defaults.sdas;
+    	      this.sdats = defaults.sdats;
+    	      this.sdaus = defaults.sdaus;
+    	      this.sdavs = defaults.sdavs;
+    	      this.sdaws = defaults.sdaws;
+    	      this.sdaxes = defaults.sdaxes;
+    	      this.sdays = defaults.sdays;
+    	      this.sdazs = defaults.sdazs;
+    	      this.sdbas = defaults.sdbas;
+    	      this.sdbbs = defaults.sdbbs;
+    	      this.sdbcs = defaults.sdbcs;
+    	      this.sdbds = defaults.sdbds;
+    	      this.sdbes = defaults.sdbes;
+    	      this.sdbfs = defaults.sdbfs;
+    	      this.sdbgs = defaults.sdbgs;
+    	      this.sdbhs = defaults.sdbhs;
+    	      this.sdbis = defaults.sdbis;
+    	      this.sdbjs = defaults.sdbjs;
+    	      this.sdbks = defaults.sdbks;
+    	      this.sdbls = defaults.sdbls;
     	      this.sdbs = defaults.sdbs;
     	      this.sdcs = defaults.sdcs;
     	      this.sdds = defaults.sdds;
@@ -145,8 +966,235 @@ public final class GetInstancesInstanceConfigDevice {
     	      this.sdfs = defaults.sdfs;
     	      this.sdgs = defaults.sdgs;
     	      this.sdhs = defaults.sdhs;
+    	      this.sdies = defaults.sdies;
+    	      this.sdis = defaults.sdis;
+    	      this.sdjs = defaults.sdjs;
+    	      this.sdks = defaults.sdks;
+    	      this.sdls = defaults.sdls;
+    	      this.sdms = defaults.sdms;
+    	      this.sdns = defaults.sdns;
+    	      this.sdos = defaults.sdos;
+    	      this.sdps = defaults.sdps;
+    	      this.sdqs = defaults.sdqs;
+    	      this.sdrs = defaults.sdrs;
+    	      this.sds = defaults.sds;
+    	      this.sdts = defaults.sdts;
+    	      this.sdus = defaults.sdus;
+    	      this.sdvs = defaults.sdvs;
+    	      this.sdws = defaults.sdws;
+    	      this.sdxes = defaults.sdxes;
+    	      this.sdzs = defaults.sdzs;
         }
 
+        @CustomType.Setter
+        public Builder sda(List<GetInstancesInstanceConfigDeviceSda> sda) {
+            if (sda == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sda");
+            }
+            this.sda = sda;
+            return this;
+        }
+        public Builder sda(GetInstancesInstanceConfigDeviceSda... sda) {
+            return sda(List.of(sda));
+        }
+        @CustomType.Setter
+        public Builder sdaas(List<GetInstancesInstanceConfigDeviceSdaa> sdaas) {
+            if (sdaas == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaas");
+            }
+            this.sdaas = sdaas;
+            return this;
+        }
+        public Builder sdaas(GetInstancesInstanceConfigDeviceSdaa... sdaas) {
+            return sdaas(List.of(sdaas));
+        }
+        @CustomType.Setter
+        public Builder sdabs(List<GetInstancesInstanceConfigDeviceSdab> sdabs) {
+            if (sdabs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdabs");
+            }
+            this.sdabs = sdabs;
+            return this;
+        }
+        public Builder sdabs(GetInstancesInstanceConfigDeviceSdab... sdabs) {
+            return sdabs(List.of(sdabs));
+        }
+        @CustomType.Setter
+        public Builder sdacs(List<GetInstancesInstanceConfigDeviceSdac> sdacs) {
+            if (sdacs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdacs");
+            }
+            this.sdacs = sdacs;
+            return this;
+        }
+        public Builder sdacs(GetInstancesInstanceConfigDeviceSdac... sdacs) {
+            return sdacs(List.of(sdacs));
+        }
+        @CustomType.Setter
+        public Builder sdads(List<GetInstancesInstanceConfigDeviceSdad> sdads) {
+            if (sdads == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdads");
+            }
+            this.sdads = sdads;
+            return this;
+        }
+        public Builder sdads(GetInstancesInstanceConfigDeviceSdad... sdads) {
+            return sdads(List.of(sdads));
+        }
+        @CustomType.Setter
+        public Builder sdaes(List<GetInstancesInstanceConfigDeviceSdae> sdaes) {
+            if (sdaes == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaes");
+            }
+            this.sdaes = sdaes;
+            return this;
+        }
+        public Builder sdaes(GetInstancesInstanceConfigDeviceSdae... sdaes) {
+            return sdaes(List.of(sdaes));
+        }
+        @CustomType.Setter
+        public Builder sdafs(List<GetInstancesInstanceConfigDeviceSdaf> sdafs) {
+            if (sdafs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdafs");
+            }
+            this.sdafs = sdafs;
+            return this;
+        }
+        public Builder sdafs(GetInstancesInstanceConfigDeviceSdaf... sdafs) {
+            return sdafs(List.of(sdafs));
+        }
+        @CustomType.Setter
+        public Builder sdags(List<GetInstancesInstanceConfigDeviceSdag> sdags) {
+            if (sdags == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdags");
+            }
+            this.sdags = sdags;
+            return this;
+        }
+        public Builder sdags(GetInstancesInstanceConfigDeviceSdag... sdags) {
+            return sdags(List.of(sdags));
+        }
+        @CustomType.Setter
+        public Builder sdahs(List<GetInstancesInstanceConfigDeviceSdah> sdahs) {
+            if (sdahs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdahs");
+            }
+            this.sdahs = sdahs;
+            return this;
+        }
+        public Builder sdahs(GetInstancesInstanceConfigDeviceSdah... sdahs) {
+            return sdahs(List.of(sdahs));
+        }
+        @CustomType.Setter
+        public Builder sdais(List<GetInstancesInstanceConfigDeviceSdai> sdais) {
+            if (sdais == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdais");
+            }
+            this.sdais = sdais;
+            return this;
+        }
+        public Builder sdais(GetInstancesInstanceConfigDeviceSdai... sdais) {
+            return sdais(List.of(sdais));
+        }
+        @CustomType.Setter
+        public Builder sdajs(List<GetInstancesInstanceConfigDeviceSdaj> sdajs) {
+            if (sdajs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdajs");
+            }
+            this.sdajs = sdajs;
+            return this;
+        }
+        public Builder sdajs(GetInstancesInstanceConfigDeviceSdaj... sdajs) {
+            return sdajs(List.of(sdajs));
+        }
+        @CustomType.Setter
+        public Builder sdaks(List<GetInstancesInstanceConfigDeviceSdak> sdaks) {
+            if (sdaks == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaks");
+            }
+            this.sdaks = sdaks;
+            return this;
+        }
+        public Builder sdaks(GetInstancesInstanceConfigDeviceSdak... sdaks) {
+            return sdaks(List.of(sdaks));
+        }
+        @CustomType.Setter
+        public Builder sdals(List<GetInstancesInstanceConfigDeviceSdal> sdals) {
+            if (sdals == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdals");
+            }
+            this.sdals = sdals;
+            return this;
+        }
+        public Builder sdals(GetInstancesInstanceConfigDeviceSdal... sdals) {
+            return sdals(List.of(sdals));
+        }
+        @CustomType.Setter
+        public Builder sdams(List<GetInstancesInstanceConfigDeviceSdam> sdams) {
+            if (sdams == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdams");
+            }
+            this.sdams = sdams;
+            return this;
+        }
+        public Builder sdams(GetInstancesInstanceConfigDeviceSdam... sdams) {
+            return sdams(List.of(sdams));
+        }
+        @CustomType.Setter
+        public Builder sdans(List<GetInstancesInstanceConfigDeviceSdan> sdans) {
+            if (sdans == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdans");
+            }
+            this.sdans = sdans;
+            return this;
+        }
+        public Builder sdans(GetInstancesInstanceConfigDeviceSdan... sdans) {
+            return sdans(List.of(sdans));
+        }
+        @CustomType.Setter
+        public Builder sdaos(List<GetInstancesInstanceConfigDeviceSdao> sdaos) {
+            if (sdaos == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaos");
+            }
+            this.sdaos = sdaos;
+            return this;
+        }
+        public Builder sdaos(GetInstancesInstanceConfigDeviceSdao... sdaos) {
+            return sdaos(List.of(sdaos));
+        }
+        @CustomType.Setter
+        public Builder sdaps(List<GetInstancesInstanceConfigDeviceSdap> sdaps) {
+            if (sdaps == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaps");
+            }
+            this.sdaps = sdaps;
+            return this;
+        }
+        public Builder sdaps(GetInstancesInstanceConfigDeviceSdap... sdaps) {
+            return sdaps(List.of(sdaps));
+        }
+        @CustomType.Setter
+        public Builder sdaqs(List<GetInstancesInstanceConfigDeviceSdaq> sdaqs) {
+            if (sdaqs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaqs");
+            }
+            this.sdaqs = sdaqs;
+            return this;
+        }
+        public Builder sdaqs(GetInstancesInstanceConfigDeviceSdaq... sdaqs) {
+            return sdaqs(List.of(sdaqs));
+        }
+        @CustomType.Setter
+        public Builder sdars(List<GetInstancesInstanceConfigDeviceSdar> sdars) {
+            if (sdars == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdars");
+            }
+            this.sdars = sdars;
+            return this;
+        }
+        public Builder sdars(GetInstancesInstanceConfigDeviceSdar... sdars) {
+            return sdars(List.of(sdars));
+        }
         @CustomType.Setter
         public Builder sdas(List<GetInstancesInstanceConfigDeviceSda> sdas) {
             if (sdas == null) {
@@ -157,6 +1205,215 @@ public final class GetInstancesInstanceConfigDevice {
         }
         public Builder sdas(GetInstancesInstanceConfigDeviceSda... sdas) {
             return sdas(List.of(sdas));
+        }
+        @CustomType.Setter
+        public Builder sdats(List<GetInstancesInstanceConfigDeviceSdat> sdats) {
+            if (sdats == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdats");
+            }
+            this.sdats = sdats;
+            return this;
+        }
+        public Builder sdats(GetInstancesInstanceConfigDeviceSdat... sdats) {
+            return sdats(List.of(sdats));
+        }
+        @CustomType.Setter
+        public Builder sdaus(List<GetInstancesInstanceConfigDeviceSdaus> sdaus) {
+            if (sdaus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaus");
+            }
+            this.sdaus = sdaus;
+            return this;
+        }
+        public Builder sdaus(GetInstancesInstanceConfigDeviceSdaus... sdaus) {
+            return sdaus(List.of(sdaus));
+        }
+        @CustomType.Setter
+        public Builder sdavs(List<GetInstancesInstanceConfigDeviceSdav> sdavs) {
+            if (sdavs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdavs");
+            }
+            this.sdavs = sdavs;
+            return this;
+        }
+        public Builder sdavs(GetInstancesInstanceConfigDeviceSdav... sdavs) {
+            return sdavs(List.of(sdavs));
+        }
+        @CustomType.Setter
+        public Builder sdaws(List<GetInstancesInstanceConfigDeviceSdaw> sdaws) {
+            if (sdaws == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaws");
+            }
+            this.sdaws = sdaws;
+            return this;
+        }
+        public Builder sdaws(GetInstancesInstanceConfigDeviceSdaw... sdaws) {
+            return sdaws(List.of(sdaws));
+        }
+        @CustomType.Setter
+        public Builder sdaxes(List<GetInstancesInstanceConfigDeviceSdaxis> sdaxes) {
+            if (sdaxes == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdaxes");
+            }
+            this.sdaxes = sdaxes;
+            return this;
+        }
+        public Builder sdaxes(GetInstancesInstanceConfigDeviceSdaxis... sdaxes) {
+            return sdaxes(List.of(sdaxes));
+        }
+        @CustomType.Setter
+        public Builder sdays(List<GetInstancesInstanceConfigDeviceSday> sdays) {
+            if (sdays == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdays");
+            }
+            this.sdays = sdays;
+            return this;
+        }
+        public Builder sdays(GetInstancesInstanceConfigDeviceSday... sdays) {
+            return sdays(List.of(sdays));
+        }
+        @CustomType.Setter
+        public Builder sdazs(List<GetInstancesInstanceConfigDeviceSdaz> sdazs) {
+            if (sdazs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdazs");
+            }
+            this.sdazs = sdazs;
+            return this;
+        }
+        public Builder sdazs(GetInstancesInstanceConfigDeviceSdaz... sdazs) {
+            return sdazs(List.of(sdazs));
+        }
+        @CustomType.Setter
+        public Builder sdbas(List<GetInstancesInstanceConfigDeviceSdba> sdbas) {
+            if (sdbas == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbas");
+            }
+            this.sdbas = sdbas;
+            return this;
+        }
+        public Builder sdbas(GetInstancesInstanceConfigDeviceSdba... sdbas) {
+            return sdbas(List.of(sdbas));
+        }
+        @CustomType.Setter
+        public Builder sdbbs(List<GetInstancesInstanceConfigDeviceSdbb> sdbbs) {
+            if (sdbbs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbbs");
+            }
+            this.sdbbs = sdbbs;
+            return this;
+        }
+        public Builder sdbbs(GetInstancesInstanceConfigDeviceSdbb... sdbbs) {
+            return sdbbs(List.of(sdbbs));
+        }
+        @CustomType.Setter
+        public Builder sdbcs(List<GetInstancesInstanceConfigDeviceSdbc> sdbcs) {
+            if (sdbcs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbcs");
+            }
+            this.sdbcs = sdbcs;
+            return this;
+        }
+        public Builder sdbcs(GetInstancesInstanceConfigDeviceSdbc... sdbcs) {
+            return sdbcs(List.of(sdbcs));
+        }
+        @CustomType.Setter
+        public Builder sdbds(List<GetInstancesInstanceConfigDeviceSdbd> sdbds) {
+            if (sdbds == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbds");
+            }
+            this.sdbds = sdbds;
+            return this;
+        }
+        public Builder sdbds(GetInstancesInstanceConfigDeviceSdbd... sdbds) {
+            return sdbds(List.of(sdbds));
+        }
+        @CustomType.Setter
+        public Builder sdbes(List<GetInstancesInstanceConfigDeviceSdbe> sdbes) {
+            if (sdbes == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbes");
+            }
+            this.sdbes = sdbes;
+            return this;
+        }
+        public Builder sdbes(GetInstancesInstanceConfigDeviceSdbe... sdbes) {
+            return sdbes(List.of(sdbes));
+        }
+        @CustomType.Setter
+        public Builder sdbfs(List<GetInstancesInstanceConfigDeviceSdbf> sdbfs) {
+            if (sdbfs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbfs");
+            }
+            this.sdbfs = sdbfs;
+            return this;
+        }
+        public Builder sdbfs(GetInstancesInstanceConfigDeviceSdbf... sdbfs) {
+            return sdbfs(List.of(sdbfs));
+        }
+        @CustomType.Setter
+        public Builder sdbgs(List<GetInstancesInstanceConfigDeviceSdbg> sdbgs) {
+            if (sdbgs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbgs");
+            }
+            this.sdbgs = sdbgs;
+            return this;
+        }
+        public Builder sdbgs(GetInstancesInstanceConfigDeviceSdbg... sdbgs) {
+            return sdbgs(List.of(sdbgs));
+        }
+        @CustomType.Setter
+        public Builder sdbhs(List<GetInstancesInstanceConfigDeviceSdbh> sdbhs) {
+            if (sdbhs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbhs");
+            }
+            this.sdbhs = sdbhs;
+            return this;
+        }
+        public Builder sdbhs(GetInstancesInstanceConfigDeviceSdbh... sdbhs) {
+            return sdbhs(List.of(sdbhs));
+        }
+        @CustomType.Setter
+        public Builder sdbis(List<GetInstancesInstanceConfigDeviceSdbi> sdbis) {
+            if (sdbis == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbis");
+            }
+            this.sdbis = sdbis;
+            return this;
+        }
+        public Builder sdbis(GetInstancesInstanceConfigDeviceSdbi... sdbis) {
+            return sdbis(List.of(sdbis));
+        }
+        @CustomType.Setter
+        public Builder sdbjs(List<GetInstancesInstanceConfigDeviceSdbj> sdbjs) {
+            if (sdbjs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbjs");
+            }
+            this.sdbjs = sdbjs;
+            return this;
+        }
+        public Builder sdbjs(GetInstancesInstanceConfigDeviceSdbj... sdbjs) {
+            return sdbjs(List.of(sdbjs));
+        }
+        @CustomType.Setter
+        public Builder sdbks(List<GetInstancesInstanceConfigDeviceSdbk> sdbks) {
+            if (sdbks == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbks");
+            }
+            this.sdbks = sdbks;
+            return this;
+        }
+        public Builder sdbks(GetInstancesInstanceConfigDeviceSdbk... sdbks) {
+            return sdbks(List.of(sdbks));
+        }
+        @CustomType.Setter
+        public Builder sdbls(List<GetInstancesInstanceConfigDeviceSdbl> sdbls) {
+            if (sdbls == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdbls");
+            }
+            this.sdbls = sdbls;
+            return this;
+        }
+        public Builder sdbls(GetInstancesInstanceConfigDeviceSdbl... sdbls) {
+            return sdbls(List.of(sdbls));
         }
         @CustomType.Setter
         public Builder sdbs(List<GetInstancesInstanceConfigDeviceSdb> sdbs) {
@@ -235,9 +1492,245 @@ public final class GetInstancesInstanceConfigDevice {
         public Builder sdhs(GetInstancesInstanceConfigDeviceSdh... sdhs) {
             return sdhs(List.of(sdhs));
         }
+        @CustomType.Setter
+        public Builder sdies(List<GetInstancesInstanceConfigDeviceSdy> sdies) {
+            if (sdies == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdies");
+            }
+            this.sdies = sdies;
+            return this;
+        }
+        public Builder sdies(GetInstancesInstanceConfigDeviceSdy... sdies) {
+            return sdies(List.of(sdies));
+        }
+        @CustomType.Setter
+        public Builder sdis(List<GetInstancesInstanceConfigDeviceSdi> sdis) {
+            if (sdis == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdis");
+            }
+            this.sdis = sdis;
+            return this;
+        }
+        public Builder sdis(GetInstancesInstanceConfigDeviceSdi... sdis) {
+            return sdis(List.of(sdis));
+        }
+        @CustomType.Setter
+        public Builder sdjs(List<GetInstancesInstanceConfigDeviceSdj> sdjs) {
+            if (sdjs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdjs");
+            }
+            this.sdjs = sdjs;
+            return this;
+        }
+        public Builder sdjs(GetInstancesInstanceConfigDeviceSdj... sdjs) {
+            return sdjs(List.of(sdjs));
+        }
+        @CustomType.Setter
+        public Builder sdks(List<GetInstancesInstanceConfigDeviceSdk> sdks) {
+            if (sdks == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdks");
+            }
+            this.sdks = sdks;
+            return this;
+        }
+        public Builder sdks(GetInstancesInstanceConfigDeviceSdk... sdks) {
+            return sdks(List.of(sdks));
+        }
+        @CustomType.Setter
+        public Builder sdls(List<GetInstancesInstanceConfigDeviceSdl> sdls) {
+            if (sdls == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdls");
+            }
+            this.sdls = sdls;
+            return this;
+        }
+        public Builder sdls(GetInstancesInstanceConfigDeviceSdl... sdls) {
+            return sdls(List.of(sdls));
+        }
+        @CustomType.Setter
+        public Builder sdms(List<GetInstancesInstanceConfigDeviceSdm> sdms) {
+            if (sdms == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdms");
+            }
+            this.sdms = sdms;
+            return this;
+        }
+        public Builder sdms(GetInstancesInstanceConfigDeviceSdm... sdms) {
+            return sdms(List.of(sdms));
+        }
+        @CustomType.Setter
+        public Builder sdns(List<GetInstancesInstanceConfigDeviceSdn> sdns) {
+            if (sdns == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdns");
+            }
+            this.sdns = sdns;
+            return this;
+        }
+        public Builder sdns(GetInstancesInstanceConfigDeviceSdn... sdns) {
+            return sdns(List.of(sdns));
+        }
+        @CustomType.Setter
+        public Builder sdos(List<GetInstancesInstanceConfigDeviceSdo> sdos) {
+            if (sdos == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdos");
+            }
+            this.sdos = sdos;
+            return this;
+        }
+        public Builder sdos(GetInstancesInstanceConfigDeviceSdo... sdos) {
+            return sdos(List.of(sdos));
+        }
+        @CustomType.Setter
+        public Builder sdps(List<GetInstancesInstanceConfigDeviceSdp> sdps) {
+            if (sdps == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdps");
+            }
+            this.sdps = sdps;
+            return this;
+        }
+        public Builder sdps(GetInstancesInstanceConfigDeviceSdp... sdps) {
+            return sdps(List.of(sdps));
+        }
+        @CustomType.Setter
+        public Builder sdqs(List<GetInstancesInstanceConfigDeviceSdq> sdqs) {
+            if (sdqs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdqs");
+            }
+            this.sdqs = sdqs;
+            return this;
+        }
+        public Builder sdqs(GetInstancesInstanceConfigDeviceSdq... sdqs) {
+            return sdqs(List.of(sdqs));
+        }
+        @CustomType.Setter
+        public Builder sdrs(List<GetInstancesInstanceConfigDeviceSdr> sdrs) {
+            if (sdrs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdrs");
+            }
+            this.sdrs = sdrs;
+            return this;
+        }
+        public Builder sdrs(GetInstancesInstanceConfigDeviceSdr... sdrs) {
+            return sdrs(List.of(sdrs));
+        }
+        @CustomType.Setter
+        public Builder sds(List<GetInstancesInstanceConfigDeviceSd> sds) {
+            if (sds == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sds");
+            }
+            this.sds = sds;
+            return this;
+        }
+        public Builder sds(GetInstancesInstanceConfigDeviceSd... sds) {
+            return sds(List.of(sds));
+        }
+        @CustomType.Setter
+        public Builder sdts(List<GetInstancesInstanceConfigDeviceSdt> sdts) {
+            if (sdts == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdts");
+            }
+            this.sdts = sdts;
+            return this;
+        }
+        public Builder sdts(GetInstancesInstanceConfigDeviceSdt... sdts) {
+            return sdts(List.of(sdts));
+        }
+        @CustomType.Setter
+        public Builder sdus(List<GetInstancesInstanceConfigDeviceSdus> sdus) {
+            if (sdus == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdus");
+            }
+            this.sdus = sdus;
+            return this;
+        }
+        public Builder sdus(GetInstancesInstanceConfigDeviceSdus... sdus) {
+            return sdus(List.of(sdus));
+        }
+        @CustomType.Setter
+        public Builder sdvs(List<GetInstancesInstanceConfigDeviceSdv> sdvs) {
+            if (sdvs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdvs");
+            }
+            this.sdvs = sdvs;
+            return this;
+        }
+        public Builder sdvs(GetInstancesInstanceConfigDeviceSdv... sdvs) {
+            return sdvs(List.of(sdvs));
+        }
+        @CustomType.Setter
+        public Builder sdws(List<GetInstancesInstanceConfigDeviceSdw> sdws) {
+            if (sdws == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdws");
+            }
+            this.sdws = sdws;
+            return this;
+        }
+        public Builder sdws(GetInstancesInstanceConfigDeviceSdw... sdws) {
+            return sdws(List.of(sdws));
+        }
+        @CustomType.Setter
+        public Builder sdxes(List<GetInstancesInstanceConfigDeviceSdx> sdxes) {
+            if (sdxes == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdxes");
+            }
+            this.sdxes = sdxes;
+            return this;
+        }
+        public Builder sdxes(GetInstancesInstanceConfigDeviceSdx... sdxes) {
+            return sdxes(List.of(sdxes));
+        }
+        @CustomType.Setter
+        public Builder sdzs(List<GetInstancesInstanceConfigDeviceSdz> sdzs) {
+            if (sdzs == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDevice", "sdzs");
+            }
+            this.sdzs = sdzs;
+            return this;
+        }
+        public Builder sdzs(GetInstancesInstanceConfigDeviceSdz... sdzs) {
+            return sdzs(List.of(sdzs));
+        }
         public GetInstancesInstanceConfigDevice build() {
             final var _resultValue = new GetInstancesInstanceConfigDevice();
+            _resultValue.sda = sda;
+            _resultValue.sdaas = sdaas;
+            _resultValue.sdabs = sdabs;
+            _resultValue.sdacs = sdacs;
+            _resultValue.sdads = sdads;
+            _resultValue.sdaes = sdaes;
+            _resultValue.sdafs = sdafs;
+            _resultValue.sdags = sdags;
+            _resultValue.sdahs = sdahs;
+            _resultValue.sdais = sdais;
+            _resultValue.sdajs = sdajs;
+            _resultValue.sdaks = sdaks;
+            _resultValue.sdals = sdals;
+            _resultValue.sdams = sdams;
+            _resultValue.sdans = sdans;
+            _resultValue.sdaos = sdaos;
+            _resultValue.sdaps = sdaps;
+            _resultValue.sdaqs = sdaqs;
+            _resultValue.sdars = sdars;
             _resultValue.sdas = sdas;
+            _resultValue.sdats = sdats;
+            _resultValue.sdaus = sdaus;
+            _resultValue.sdavs = sdavs;
+            _resultValue.sdaws = sdaws;
+            _resultValue.sdaxes = sdaxes;
+            _resultValue.sdays = sdays;
+            _resultValue.sdazs = sdazs;
+            _resultValue.sdbas = sdbas;
+            _resultValue.sdbbs = sdbbs;
+            _resultValue.sdbcs = sdbcs;
+            _resultValue.sdbds = sdbds;
+            _resultValue.sdbes = sdbes;
+            _resultValue.sdbfs = sdbfs;
+            _resultValue.sdbgs = sdbgs;
+            _resultValue.sdbhs = sdbhs;
+            _resultValue.sdbis = sdbis;
+            _resultValue.sdbjs = sdbjs;
+            _resultValue.sdbks = sdbks;
+            _resultValue.sdbls = sdbls;
             _resultValue.sdbs = sdbs;
             _resultValue.sdcs = sdcs;
             _resultValue.sdds = sdds;
@@ -245,6 +1738,24 @@ public final class GetInstancesInstanceConfigDevice {
             _resultValue.sdfs = sdfs;
             _resultValue.sdgs = sdgs;
             _resultValue.sdhs = sdhs;
+            _resultValue.sdies = sdies;
+            _resultValue.sdis = sdis;
+            _resultValue.sdjs = sdjs;
+            _resultValue.sdks = sdks;
+            _resultValue.sdls = sdls;
+            _resultValue.sdms = sdms;
+            _resultValue.sdns = sdns;
+            _resultValue.sdos = sdos;
+            _resultValue.sdps = sdps;
+            _resultValue.sdqs = sdqs;
+            _resultValue.sdrs = sdrs;
+            _resultValue.sds = sds;
+            _resultValue.sdts = sdts;
+            _resultValue.sdus = sdus;
+            _resultValue.sdvs = sdvs;
+            _resultValue.sdws = sdws;
+            _resultValue.sdxes = sdxes;
+            _resultValue.sdzs = sdzs;
             return _resultValue;
         }
     }

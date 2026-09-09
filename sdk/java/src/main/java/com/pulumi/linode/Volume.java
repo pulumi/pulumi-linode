@@ -11,6 +11,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.VolumeArgs;
 import com.pulumi.linode.inputs.VolumeState;
 import com.pulumi.linode.outputs.VolumeTimeouts;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -94,13 +95,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new Instance("foo", InstanceArgs.builder()
+ *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
  *             .region("us-east")
  *             .type("g6-nanode-1")
  *             .build());
  * 
  *         var fooInstanceConfig = new InstanceConfig("fooInstanceConfig", InstanceConfigArgs.builder()
- *             .linodeId(foo.id())
+ *             .linodeId(fooInstance.id())
  *             .label("boot-existing-volume")
  *             .kernel("linode/grub2")
  *             .devices(com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()
@@ -187,6 +188,20 @@ public class Volume extends com.pulumi.resources.CustomResource {
      */
     public Output<String> filesystemPath() {
         return this.filesystemPath;
+    }
+    /**
+     * Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     * 
+     */
+    @Export(name="ioReady", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> ioReady;
+
+    /**
+     * @return Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     * 
+     */
+    public Output<Boolean> ioReady() {
+        return this.ioReady;
     }
     /**
      * The label of the Linode Volume

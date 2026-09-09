@@ -18,7 +18,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeNodePoolResult {
     /**
-     * @return When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+     * @return (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
      * 
      */
     private GetLkeNodePoolAutoscaler autoscaler;
@@ -29,7 +29,7 @@ public final class GetLkeNodePoolResult {
      */
     private String diskEncryption;
     /**
-     * @return This node pool&#39;s custom disk layout.
+     * @return (Nested Attribute List) This node pool&#39;s custom disk layout.
      * 
      */
     private List<GetLkeNodePoolDisk> disks;
@@ -64,7 +64,7 @@ public final class GetLkeNodePoolResult {
      */
     private Integer nodeCount;
     /**
-     * @return Status information for the nodes that are members of this node pool.
+     * @return (Nested Attribute List) Status information for the nodes that are members of this node pool.
      * 
      */
     private List<GetLkeNodePoolNode> nodes;
@@ -74,7 +74,7 @@ public final class GetLkeNodePoolResult {
      */
     private List<String> tags;
     /**
-     * @return Kubernetes taints to add to node pool nodes.
+     * @return (Nested Attribute List) Kubernetes taints to add to node pool nodes.
      * 
      */
     private List<GetLkeNodePoolTaint> taints;
@@ -91,7 +91,7 @@ public final class GetLkeNodePoolResult {
 
     private GetLkeNodePoolResult() {}
     /**
-     * @return When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+     * @return (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
      * 
      */
     public GetLkeNodePoolAutoscaler autoscaler() {
@@ -108,7 +108,7 @@ public final class GetLkeNodePoolResult {
         return this.diskEncryption;
     }
     /**
-     * @return This node pool&#39;s custom disk layout.
+     * @return (Nested Attribute List) This node pool&#39;s custom disk layout.
      * 
      */
     public List<GetLkeNodePoolDisk> disks() {
@@ -157,7 +157,7 @@ public final class GetLkeNodePoolResult {
         return this.nodeCount;
     }
     /**
-     * @return Status information for the nodes that are members of this node pool.
+     * @return (Nested Attribute List) Status information for the nodes that are members of this node pool.
      * 
      */
     public List<GetLkeNodePoolNode> nodes() {
@@ -171,7 +171,7 @@ public final class GetLkeNodePoolResult {
         return this.tags;
     }
     /**
-     * @return Kubernetes taints to add to node pool nodes.
+     * @return (Nested Attribute List) Kubernetes taints to add to node pool nodes.
      * 
      */
     public List<GetLkeNodePoolTaint> taints() {

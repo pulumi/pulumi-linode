@@ -116,6 +116,25 @@
                 "current": "linode:index/firewallSettings:FirewallSettings",
                 "majorVersion": 6
             },
+            "linode_iam_user": {
+                "current": "linode:index/iamUser:IamUser",
+                "majorVersion": 6,
+                "fields": {
+                    "account_access": {
+                        "maxItemsOne": false
+                    },
+                    "entity_access": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_image": {
                 "current": "linode:index/image:Image",
                 "majorVersion": 6,
@@ -171,7 +190,121 @@
                                             "sda": {
                                                 "maxItemsOne": true
                                             },
+                                            "sdaa": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdab": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdac": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdad": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdae": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdaf": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdag": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdah": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdai": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdaj": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdak": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdal": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdam": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdan": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdao": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdap": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdaq": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdar": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdas": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdat": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdau": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdav": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdaw": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdax": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sday": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdaz": {
+                                                "maxItemsOne": true
+                                            },
                                             "sdb": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdba": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbb": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbc": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbd": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbe": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbf": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbg": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbh": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbi": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbj": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbk": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdbl": {
                                                 "maxItemsOne": true
                                             },
                                             "sdc": {
@@ -190,6 +323,60 @@
                                                 "maxItemsOne": true
                                             },
                                             "sdh": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdi": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdj": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdk": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdl": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdm": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdn": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdo": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdp": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdq": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdr": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sds": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdt": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdu": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdv": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdw": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdx": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdy": {
+                                                "maxItemsOne": true
+                                            },
+                                            "sdz": {
                                                 "maxItemsOne": true
                                             }
                                         }
@@ -303,7 +490,121 @@
                                 "sda": {
                                     "maxItemsOne": true
                                 },
+                                "sdaa": {
+                                    "maxItemsOne": true
+                                },
+                                "sdab": {
+                                    "maxItemsOne": true
+                                },
+                                "sdac": {
+                                    "maxItemsOne": true
+                                },
+                                "sdad": {
+                                    "maxItemsOne": true
+                                },
+                                "sdae": {
+                                    "maxItemsOne": true
+                                },
+                                "sdaf": {
+                                    "maxItemsOne": true
+                                },
+                                "sdag": {
+                                    "maxItemsOne": true
+                                },
+                                "sdah": {
+                                    "maxItemsOne": true
+                                },
+                                "sdai": {
+                                    "maxItemsOne": true
+                                },
+                                "sdaj": {
+                                    "maxItemsOne": true
+                                },
+                                "sdak": {
+                                    "maxItemsOne": true
+                                },
+                                "sdal": {
+                                    "maxItemsOne": true
+                                },
+                                "sdam": {
+                                    "maxItemsOne": true
+                                },
+                                "sdan": {
+                                    "maxItemsOne": true
+                                },
+                                "sdao": {
+                                    "maxItemsOne": true
+                                },
+                                "sdap": {
+                                    "maxItemsOne": true
+                                },
+                                "sdaq": {
+                                    "maxItemsOne": true
+                                },
+                                "sdar": {
+                                    "maxItemsOne": true
+                                },
+                                "sdas": {
+                                    "maxItemsOne": true
+                                },
+                                "sdat": {
+                                    "maxItemsOne": true
+                                },
+                                "sdau": {
+                                    "maxItemsOne": true
+                                },
+                                "sdav": {
+                                    "maxItemsOne": true
+                                },
+                                "sdaw": {
+                                    "maxItemsOne": true
+                                },
+                                "sdax": {
+                                    "maxItemsOne": true
+                                },
+                                "sday": {
+                                    "maxItemsOne": true
+                                },
+                                "sdaz": {
+                                    "maxItemsOne": true
+                                },
                                 "sdb": {
+                                    "maxItemsOne": true
+                                },
+                                "sdba": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbb": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbc": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbd": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbe": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbf": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbg": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbh": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbi": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbj": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbk": {
+                                    "maxItemsOne": true
+                                },
+                                "sdbl": {
                                     "maxItemsOne": true
                                 },
                                 "sdc": {
@@ -322,6 +623,60 @@
                                     "maxItemsOne": true
                                 },
                                 "sdh": {
+                                    "maxItemsOne": true
+                                },
+                                "sdi": {
+                                    "maxItemsOne": true
+                                },
+                                "sdj": {
+                                    "maxItemsOne": true
+                                },
+                                "sdk": {
+                                    "maxItemsOne": true
+                                },
+                                "sdl": {
+                                    "maxItemsOne": true
+                                },
+                                "sdm": {
+                                    "maxItemsOne": true
+                                },
+                                "sdn": {
+                                    "maxItemsOne": true
+                                },
+                                "sdo": {
+                                    "maxItemsOne": true
+                                },
+                                "sdp": {
+                                    "maxItemsOne": true
+                                },
+                                "sdq": {
+                                    "maxItemsOne": true
+                                },
+                                "sdr": {
+                                    "maxItemsOne": true
+                                },
+                                "sds": {
+                                    "maxItemsOne": true
+                                },
+                                "sdt": {
+                                    "maxItemsOne": true
+                                },
+                                "sdu": {
+                                    "maxItemsOne": true
+                                },
+                                "sdv": {
+                                    "maxItemsOne": true
+                                },
+                                "sdw": {
+                                    "maxItemsOne": true
+                                },
+                                "sdx": {
+                                    "maxItemsOne": true
+                                },
+                                "sdy": {
+                                    "maxItemsOne": true
+                                },
+                                "sdz": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -555,16 +910,92 @@
                 "current": "linode:index/lock:Lock",
                 "majorVersion": 6
             },
+            "linode_monitor_alert_definition": {
+                "current": "linode:index/monitorAlertDefinition:MonitorAlertDefinition",
+                "majorVersion": 6,
+                "fields": {
+                    "alert_channels": {
+                        "maxItemsOne": false
+                    },
+                    "channel_ids": {
+                        "maxItemsOne": false
+                    },
+                    "entity_ids": {
+                        "maxItemsOne": false
+                    },
+                    "group_by": {
+                        "maxItemsOne": false
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    },
+                    "rule_criteria": {
+                        "fields": {
+                            "rules": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "dimension_filters": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_logs_destination": {
+                "current": "linode:index/monitorLogsDestination:MonitorLogsDestination",
+                "majorVersion": 6,
+                "fields": {
+                    "custom_https_details": {
+                        "fields": {
+                            "custom_headers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_logs_stream": {
+                "current": "linode:index/monitorLogsStream:MonitorLogsStream",
+                "majorVersion": 6,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
+                    },
+                    "details": {
+                        "fields": {
+                            "cluster_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "linode_networking_ip": {
                 "current": "linode:index/networkingIp:NetworkingIp",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_networking_ip_assignment": {
                 "current": "linode:index/networkingIpAssignment:NetworkingIpAssignment",
                 "majorVersion": 6,
                 "fields": {
                     "assignments": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -607,6 +1038,9 @@
                                 }
                             }
                         }
+                    },
+                    "lke_cluster": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -703,10 +1137,28 @@
                 "current": "linode:index/rdns:Rdns",
                 "majorVersion": 6
             },
+            "linode_reserved_ip": {
+                "current": "linode:index/reservedIp:ReservedIp",
+                "majorVersion": 6,
+                "fields": {
+                    "assigned_entity": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vpc_nat_1_1": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_reserved_ip_assignment": {
                 "current": "linode:index/reservedIpAssignment:ReservedIpAssignment",
                 "majorVersion": 6,
                 "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    },
                     "vpc_nat_1_1": {
                         "maxItemsOne": false
                     }
@@ -784,6 +1236,9 @@
                 "current": "linode:index/vpc:Vpc",
                 "majorVersion": 6,
                 "fields": {
+                    "ipv4": {
+                        "maxItemsOne": false
+                    },
                     "ipv6": {
                         "maxItemsOne": false
                     }
@@ -811,6 +1266,16 @@
                         "elem": {
                             "fields": {
                                 "interfaces": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "nodebalancers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv6_ranges": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1410,6 +1875,44 @@
                     }
                 }
             },
+            "linode_iam_entities": {
+                "current": "linode:index/getIamEntities:getIamEntities",
+                "majorVersion": 6,
+                "fields": {
+                    "entities": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_iam_user": {
+                "current": "linode:index/getIamUser:getIamUser",
+                "majorVersion": 6,
+                "fields": {
+                    "account_access": {
+                        "maxItemsOne": false
+                    },
+                    "entity_access": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "roles": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "linode_image": {
                 "current": "linode:index/getImage:getImage",
                 "majorVersion": 6,
@@ -1511,19 +2014,54 @@
                         "elem": {
                             "fields": {
                                 "private": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "public": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "reserved": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "shared": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "vpc": {
-                                    "maxItemsOne": false
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1534,6 +2072,30 @@
                             "fields": {
                                 "global": {
                                     "maxItemsOne": false
+                                },
+                                "link_local": {
+                                    "fields": {
+                                        "tags": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "slaac": {
+                                    "fields": {
+                                        "tags": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                },
+                                "vpc": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1666,7 +2228,121 @@
                                                         "sda": {
                                                             "maxItemsOne": false
                                                         },
+                                                        "sdaa": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdab": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdac": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdad": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdae": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdaf": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdag": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdah": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdai": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdaj": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdak": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdal": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdam": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdan": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdao": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdap": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdaq": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdar": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdas": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdat": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdau": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdav": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdaw": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdax": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sday": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdaz": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "sdb": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdba": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbb": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbc": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbd": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbe": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbf": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbg": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbh": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbi": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbj": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbk": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdbl": {
                                                             "maxItemsOne": false
                                                         },
                                                         "sdc": {
@@ -1685,6 +2361,60 @@
                                                             "maxItemsOne": false
                                                         },
                                                         "sdh": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdi": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdj": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdk": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdl": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdm": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdn": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdo": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdp": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdq": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdr": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sds": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdt": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdu": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdv": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdw": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdx": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdy": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "sdz": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -2042,6 +2772,215 @@
                     }
                 }
             },
+            "linode_monitor_alert_channels": {
+                "current": "linode:index/getMonitorAlertChannels:getMonitorAlertChannels",
+                "majorVersion": 6,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "monitor_alert_channels": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "details": {
+                                    "fields": {
+                                        "email": {
+                                            "fields": {
+                                                "usernames": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_alert_definition": {
+                "current": "linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition",
+                "majorVersion": 6,
+                "fields": {
+                    "alert_channels": {
+                        "maxItemsOne": false
+                    },
+                    "group_by": {
+                        "maxItemsOne": false
+                    },
+                    "regions": {
+                        "maxItemsOne": false
+                    },
+                    "rule_criteria": {
+                        "fields": {
+                            "rules": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "dimension_filters": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_alert_definition_entities": {
+                "current": "linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities",
+                "majorVersion": 6,
+                "fields": {
+                    "entities": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_alert_definitions": {
+                "current": "linode:index/getMonitorAlertDefinitions:getMonitorAlertDefinitions",
+                "majorVersion": 6,
+                "fields": {
+                    "alert_definitions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "alert_channels": {
+                                    "maxItemsOne": false
+                                },
+                                "group_by": {
+                                    "maxItemsOne": false
+                                },
+                                "regions": {
+                                    "maxItemsOne": false
+                                },
+                                "rule_criteria": {
+                                    "fields": {
+                                        "rules": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "dimension_filters": {
+                                                        "maxItemsOne": false
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_logs_destination": {
+                "current": "linode:index/getMonitorLogsDestination:getMonitorLogsDestination",
+                "majorVersion": 6
+            },
+            "linode_monitor_logs_destinations": {
+                "current": "linode:index/getMonitorLogsDestinations:getMonitorLogsDestinations",
+                "majorVersion": 6,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_logs_stream": {
+                "current": "linode:index/getMonitorLogsStream:getMonitorLogsStream",
+                "majorVersion": 6,
+                "fields": {
+                    "destinations": {
+                        "maxItemsOne": false
+                    },
+                    "details": {
+                        "fields": {
+                            "cluster_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_logs_stream_history": {
+                "current": "linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory",
+                "majorVersion": 6,
+                "fields": {
+                    "streams": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "destinations": {
+                                    "maxItemsOne": false
+                                },
+                                "details": {
+                                    "fields": {
+                                        "cluster_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_monitor_logs_streams": {
+                "current": "linode:index/getMonitorLogsStreams:getMonitorLogsStreams",
+                "majorVersion": 6,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "streams": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_nb_types": {
                 "current": "linode:index/getNbTypes:getNbTypes",
                 "majorVersion": 6,
@@ -2102,7 +3041,12 @@
             },
             "linode_networking_ip": {
                 "current": "linode:index/getNetworkingIp:getNetworkingIp",
-                "majorVersion": 6
+                "majorVersion": 6,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "linode_networking_ips": {
                 "current": "linode:index/getNetworkingIps:getNetworkingIps",
@@ -2119,7 +3063,14 @@
                         }
                     },
                     "ip_addresses": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2162,6 +3113,9 @@
                                 }
                             }
                         }
+                    },
+                    "lke_cluster": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false
@@ -2254,6 +3208,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "lke_cluster": {
+                                    "maxItemsOne": false
+                                },
                                 "tags": {
                                     "maxItemsOne": false
                                 },
@@ -2267,10 +3224,6 @@
             },
             "linode_object_storage_bucket": {
                 "current": "linode:index/getLinodeObjectStorageBucket:getLinodeObjectStorageBucket",
-                "majorVersion": 6
-            },
-            "linode_object_storage_cluster": {
-                "current": "linode:index/getObjectStorageCluster:getObjectStorageCluster",
                 "majorVersion": 6
             },
             "linode_object_storage_endpoints": {
@@ -2289,6 +3242,29 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "linode_object_storage_global_quota": {
+                "current": "linode:index/getObjectStorageGlobalQuota:getObjectStorageGlobalQuota",
+                "majorVersion": 6
+            },
+            "linode_object_storage_global_quotas": {
+                "current": "linode:index/getObjectStorageGlobalQuotas:getObjectStorageGlobalQuotas",
+                "majorVersion": 6,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "quotas": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2482,6 +3458,15 @@
                     }
                 }
             },
+            "linode_region_vpc_availability": {
+                "current": "linode:index/getRegionVpcAvailability:getRegionVpcAvailability",
+                "majorVersion": 6,
+                "fields": {
+                    "available_ipv6_prefix_lengths": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_regions": {
                 "current": "linode:index/getRegions:getRegions",
                 "majorVersion": 6,
@@ -2517,6 +3502,51 @@
                                     "maxItemsOne": false
                                 },
                                 "resolvers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_regions_vpc_availability": {
+                "current": "linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability",
+                "majorVersion": 6,
+                "fields": {
+                    "regions_vpc_availability": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "available_ipv6_prefix_lengths": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "linode_reserved_ip_types": {
+                "current": "linode:index/getReservedIpTypes:getReservedIpTypes",
+                "majorVersion": 6,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "types": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "price": {
+                                    "maxItemsOne": false
+                                },
+                                "region_prices": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2585,6 +3615,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "linode_tag": {
+                "current": "linode:index/getTag:getTag",
+                "majorVersion": 6,
+                "fields": {
+                    "objects": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2783,7 +3822,22 @@
                 "current": "linode:index/getVpc:getVpc",
                 "majorVersion": 6,
                 "fields": {
+                    "ipv4": {
+                        "maxItemsOne": false
+                    },
                     "ipv6": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "linode_vpc_default_ranges": {
+                "current": "linode:index/getVpcDefaultRanges:getVpcDefaultRanges",
+                "majorVersion": 6,
+                "fields": {
+                    "default_ipv4_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "forbidden_ipv4_ranges": {
                         "maxItemsOne": false
                     }
                 }
@@ -2840,6 +3894,16 @@
                                 }
                             }
                         }
+                    },
+                    "nodebalancers": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ipv6_ranges": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2883,6 +3947,16 @@
                                             }
                                         }
                                     }
+                                },
+                                "nodebalancers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2907,6 +3981,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "ipv4": {
+                                    "maxItemsOne": false
+                                },
                                 "ipv6": {
                                     "maxItemsOne": false
                                 }
@@ -2931,6 +4008,11 @@
             "linode_firewall": {},
             "linode_firewall_device": {},
             "linode_firewall_settings": {},
+            "linode_iam_user": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
             "linode_image": {},
             "linode_instance_disk": {},
             "linode_instance_ip": {},
@@ -2939,6 +4021,15 @@
             "linode_ipv6_range": {},
             "linode_lke_node_pool": {},
             "linode_lock": {},
+            "linode_monitor_alert_definition": {
+                "fields": {
+                    "id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "linode_monitor_logs_destination": {},
+            "linode_monitor_logs_stream": {},
             "linode_networking_ip": {},
             "linode_networking_ip_assignment": {},
             "linode_nodebalancer": {},
@@ -2961,6 +4052,7 @@
                 }
             },
             "linode_rdns": {},
+            "linode_reserved_ip": {},
             "linode_reserved_ip_assignment": {},
             "linode_sshkey": {},
             "linode_stackscript": {},
@@ -2982,6 +4074,7 @@
             "linode:index/firewall:Firewall": 1,
             "linode:index/firewallDevice:FirewallDevice": 1,
             "linode:index/firewallSettings:FirewallSettings": 1,
+            "linode:index/iamUser:IamUser": 1,
             "linode:index/image:Image": 1,
             "linode:index/instance:Instance": 0,
             "linode:index/instanceConfig:InstanceConfig": 0,
@@ -2993,6 +4086,9 @@
             "linode:index/lkeCluster:LkeCluster": 0,
             "linode:index/lkeNodePool:LkeNodePool": 1,
             "linode:index/lock:Lock": 1,
+            "linode:index/monitorAlertDefinition:MonitorAlertDefinition": 1,
+            "linode:index/monitorLogsDestination:MonitorLogsDestination": 1,
+            "linode:index/monitorLogsStream:MonitorLogsStream": 1,
             "linode:index/networkingIp:NetworkingIp": 1,
             "linode:index/networkingIpAssignment:NetworkingIpAssignment": 1,
             "linode:index/nodeBalancer:NodeBalancer": 1,
@@ -3006,6 +4102,7 @@
             "linode:index/producerImageShareGroup:ProducerImageShareGroup": 1,
             "linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember": 1,
             "linode:index/rdns:Rdns": 1,
+            "linode:index/reservedIp:ReservedIp": 1,
             "linode:index/reservedIpAssignment:ReservedIpAssignment": 1,
             "linode:index/sshKey:SshKey": 1,
             "linode:index/stackScript:StackScript": 1,
@@ -3043,6 +4140,8 @@
             "linode:index/getFirewallTemplate:getFirewallTemplate": 1,
             "linode:index/getFirewallTemplates:getFirewallTemplates": 1,
             "linode:index/getFirewalls:getFirewalls": 1,
+            "linode:index/getIamEntities:getIamEntities": 1,
+            "linode:index/getIamUser:getIamUser": 1,
             "linode:index/getImage:getImage": 1,
             "linode:index/getImages:getImages": 1,
             "linode:index/getInstanceBackups:getInstanceBackups": 1,
@@ -3065,6 +4164,15 @@
             "linode:index/getLock:getLock": 1,
             "linode:index/getLocks:getLocks": 1,
             "linode:index/getMaintenancePolicies:getMaintenancePolicies": 1,
+            "linode:index/getMonitorAlertChannels:getMonitorAlertChannels": 1,
+            "linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition": 1,
+            "linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities": 1,
+            "linode:index/getMonitorAlertDefinitions:getMonitorAlertDefinitions": 1,
+            "linode:index/getMonitorLogsDestination:getMonitorLogsDestination": 1,
+            "linode:index/getMonitorLogsDestinations:getMonitorLogsDestinations": 1,
+            "linode:index/getMonitorLogsStream:getMonitorLogsStream": 1,
+            "linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory": 1,
+            "linode:index/getMonitorLogsStreams:getMonitorLogsStreams": 1,
             "linode:index/getNbTypes:getNbTypes": 1,
             "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,
             "linode:index/getNetworkingIp:getNetworkingIp": 1,
@@ -3076,8 +4184,9 @@
             "linode:index/getNodebalancerVpc:getNodebalancerVpc": 1,
             "linode:index/getNodebalancerVpcs:getNodebalancerVpcs": 1,
             "linode:index/getNodebalancers:getNodebalancers": 1,
-            "linode:index/getObjectStorageCluster:getObjectStorageCluster": 1,
             "linode:index/getObjectStorageEndpoints:getObjectStorageEndpoints": 1,
+            "linode:index/getObjectStorageGlobalQuota:getObjectStorageGlobalQuota": 1,
+            "linode:index/getObjectStorageGlobalQuotas:getObjectStorageGlobalQuotas": 1,
             "linode:index/getObjectStorageQuota:getObjectStorageQuota": 1,
             "linode:index/getObjectStorageQuotas:getObjectStorageQuotas": 1,
             "linode:index/getPlacementGroup:getPlacementGroup": 1,
@@ -3089,11 +4198,15 @@
             "linode:index/getProducerImageShareGroups:getProducerImageShareGroups": 1,
             "linode:index/getProfile:getProfile": 1,
             "linode:index/getRegion:getRegion": 1,
+            "linode:index/getRegionVpcAvailability:getRegionVpcAvailability": 1,
             "linode:index/getRegions:getRegions": 1,
+            "linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability": 1,
+            "linode:index/getReservedIpTypes:getReservedIpTypes": 1,
             "linode:index/getSshKey:getSshKey": 1,
             "linode:index/getSshkeys:getSshkeys": 1,
             "linode:index/getStackScript:getStackScript": 1,
             "linode:index/getStackScripts:getStackScripts": 1,
+            "linode:index/getTag:getTag": 1,
             "linode:index/getUser:getUser": 1,
             "linode:index/getUsers:getUsers": 1,
             "linode:index/getVlans:getVlans": 1,
@@ -3101,6 +4214,7 @@
             "linode:index/getVolumeTypes:getVolumeTypes": 1,
             "linode:index/getVolumes:getVolumes": 1,
             "linode:index/getVpc:getVpc": 1,
+            "linode:index/getVpcDefaultRanges:getVpcDefaultRanges": 1,
             "linode:index/getVpcIps:getVpcIps": 1,
             "linode:index/getVpcSubnet:getVpcSubnet": 1,
             "linode:index/getVpcSubnets:getVpcSubnets": 1,

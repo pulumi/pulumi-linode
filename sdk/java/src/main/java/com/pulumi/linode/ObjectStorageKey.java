@@ -83,12 +83,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new ObjectStorageKey("foobar", ObjectStorageKeyArgs.builder()
- *             .label("my-key")
  *             .bucketAccesses(ObjectStorageKeyBucketAccessArgs.builder()
  *                 .bucketName("my-bucket-name")
- *                 .region("us-mia")
  *                 .permissions("read_write")
+ *                 .region("us-mia")
  *                 .build())
+ *             .label("my-key")
  *             .build());
  * 
  *     }
@@ -122,18 +122,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()
- *             .label("image-access")
  *             .bucketAccesses(            
  *                 ObjectStorageKeyBucketAccessArgs.builder()
  *                     .bucketName("foobar1")
- *                     .region("us-mia")
  *                     .permissions("read_write")
+ *                     .region("us-mia")
  *                     .build(),
  *                 ObjectStorageKeyBucketAccessArgs.builder()
  *                     .bucketName("foobar2")
- *                     .region("gb-lon")
  *                     .permissions("read_write")
+ *                     .region("gb-lon")
  *                     .build())
+ *             .label("image-access")
  *             .build());
  * 
  *     }
@@ -159,14 +159,14 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
         return this.accessKey;
     }
     /**
-     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="bucketAccesses", refs={List.class,ObjectStorageKeyBucketAccess.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ObjectStorageKeyBucketAccess>> bucketAccesses;
 
     /**
-     * @return Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key.
+     * @return Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<Optional<List<ObjectStorageKeyBucketAccess>>> bucketAccesses() {
@@ -219,14 +219,14 @@ public class ObjectStorageKey extends com.pulumi.resources.CustomResource {
         return this.regions;
     }
     /**
-     * A set of objects containing the detailed info of the regions where this key can access.
+     * (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="regionsDetails", refs={List.class,ObjectStorageKeyRegionsDetail.class}, tree="[0,1]")
     private Output<List<ObjectStorageKeyRegionsDetail>> regionsDetails;
 
     /**
-     * @return A set of objects containing the detailed info of the regions where this key can access.
+     * @return (Read-Only Object Set) A set of objects containing the detailed info of the regions where this key can access. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<ObjectStorageKeyRegionsDetail>> regionsDetails() {

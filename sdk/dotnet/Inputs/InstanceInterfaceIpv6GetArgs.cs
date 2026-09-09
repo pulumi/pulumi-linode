@@ -15,9 +15,9 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `False`)
         /// 
-        /// * `Slaac` - (Optional) An array of SLAAC prefixes to use for this interface.
+        /// * `Slaac` - (Optional, Block List) An array of SLAAC prefixes to use for this interface.
         /// 
-        /// * `Range` - (Optional) An array of IPv6 ranges to use for this interface.
+        /// * `Range` - (Optional, Block List) An array of IPv6 ranges to use for this interface.
         /// </summary>
         [Input("isPublic")]
         public Input<bool>? IsPublic { get; set; }

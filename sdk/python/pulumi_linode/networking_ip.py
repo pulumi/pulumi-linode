@@ -111,6 +111,7 @@ class NetworkingIpArgs:
 class _NetworkingIpState:
     def __init__(__self__, *,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
+                 assigned_entity: pulumi.Input[Optional['NetworkingIpAssignedEntityArgs']] = None,
                  gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  prefix: pulumi.Input[Optional[_builtins.int]] = None,
@@ -119,12 +120,14 @@ class _NetworkingIpState:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  reserved: pulumi.Input[Optional[_builtins.bool]] = None,
                  subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_nat11: pulumi.Input[Optional['NetworkingIpVpcNat11Args']] = None):
         """
         Input properties used for looking up and filtering NetworkingIp resources.
 
         :param pulumi.Input[_builtins.str] address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        :param pulumi.Input['NetworkingIpAssignedEntityArgs'] assigned_entity: (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
@@ -133,11 +136,14 @@ class _NetworkingIpState:
         :param pulumi.Input[_builtins.str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[_builtins.bool] reserved: Whether the IPv4 address should be reserved.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags associated with this IP address.
         :param pulumi.Input[_builtins.str] type: The type of IP address. (ipv4, ipv6, etc.)
-        :param pulumi.Input['NetworkingIpVpcNat11Args'] vpc_nat11: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        :param pulumi.Input['NetworkingIpVpcNat11Args'] vpc_nat11: (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
+        if assigned_entity is not None:
+            pulumi.set(__self__, "assigned_entity", assigned_entity)
         if gateway is not None:
             pulumi.set(__self__, "gateway", gateway)
         if linode_id is not None:
@@ -154,6 +160,8 @@ class _NetworkingIpState:
             pulumi.set(__self__, "reserved", reserved)
         if subnet_mask is not None:
             pulumi.set(__self__, "subnet_mask", subnet_mask)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vpc_nat11 is not None:
@@ -170,6 +178,18 @@ class _NetworkingIpState:
     @address.setter
     def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedEntity")
+    def assigned_entity(self) -> pulumi.Input[Optional['NetworkingIpAssignedEntityArgs']]:
+        """
+        (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        """
+        return pulumi.get(self, "assigned_entity")
+
+    @assigned_entity.setter
+    def assigned_entity(self, value: pulumi.Input[Optional['NetworkingIpAssignedEntityArgs']]):
+        pulumi.set(self, "assigned_entity", value)
 
     @_builtins.property
     @pulumi.getter
@@ -269,6 +289,18 @@ class _NetworkingIpState:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A set of tags associated with this IP address.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IP address. (ipv4, ipv6, etc.)
@@ -283,7 +315,7 @@ class _NetworkingIpState:
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> pulumi.Input[Optional['NetworkingIpVpcNat11Args']]:
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         """
         return pulumi.get(self, "vpc_nat11")
 
@@ -315,10 +347,10 @@ class NetworkingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        test_ip = linode.NetworkingIp("test_ip",
-            type="ipv4",
+        test_ip = linode.NetworkingIp("testIp",
             linode_id=12345,
-            public=True)
+            public=True,
+            type="ipv4")
         ```
 
         ## Import
@@ -355,10 +387,10 @@ class NetworkingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        test_ip = linode.NetworkingIp("test_ip",
-            type="ipv4",
+        test_ip = linode.NetworkingIp("testIp",
             linode_id=12345,
-            public=True)
+            public=True,
+            type="ipv4")
         ```
 
         ## Import
@@ -405,10 +437,12 @@ class NetworkingIp(pulumi.CustomResource):
             __props__.__dict__["reserved"] = reserved
             __props__.__dict__["type"] = type
             __props__.__dict__["address"] = None
+            __props__.__dict__["assigned_entity"] = None
             __props__.__dict__["gateway"] = None
             __props__.__dict__["prefix"] = None
             __props__.__dict__["rdns"] = None
             __props__.__dict__["subnet_mask"] = None
+            __props__.__dict__["tags"] = None
             __props__.__dict__["vpc_nat11"] = None
         super(NetworkingIp, __self__).__init__(
             'linode:index/networkingIp:NetworkingIp',
@@ -421,6 +455,7 @@ class NetworkingIp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
+            assigned_entity: pulumi.Input[Optional[Union['NetworkingIpAssignedEntityArgs', 'NetworkingIpAssignedEntityArgsDict']]] = None,
             gateway: pulumi.Input[Optional[_builtins.str]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
             prefix: pulumi.Input[Optional[_builtins.int]] = None,
@@ -429,6 +464,7 @@ class NetworkingIp(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             reserved: pulumi.Input[Optional[_builtins.bool]] = None,
             subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_nat11: pulumi.Input[Optional[Union['NetworkingIpVpcNat11Args', 'NetworkingIpVpcNat11ArgsDict']]] = None) -> 'NetworkingIp':
         """
@@ -439,6 +475,7 @@ class NetworkingIp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+        :param pulumi.Input[Union['NetworkingIpAssignedEntityArgs', 'NetworkingIpAssignedEntityArgsDict']] assigned_entity: (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
@@ -447,14 +484,16 @@ class NetworkingIp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region for the reserved IPv4 address. Required when reserved is true and linode_id is not set.
         :param pulumi.Input[_builtins.bool] reserved: Whether the IPv4 address should be reserved.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags associated with this IP address.
         :param pulumi.Input[_builtins.str] type: The type of IP address. (ipv4, ipv6, etc.)
-        :param pulumi.Input[Union['NetworkingIpVpcNat11Args', 'NetworkingIpVpcNat11ArgsDict']] vpc_nat11: Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        :param pulumi.Input[Union['NetworkingIpVpcNat11Args', 'NetworkingIpVpcNat11ArgsDict']] vpc_nat11: (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _NetworkingIpState.__new__(_NetworkingIpState)
 
         __props__.__dict__["address"] = address
+        __props__.__dict__["assigned_entity"] = assigned_entity
         __props__.__dict__["gateway"] = gateway
         __props__.__dict__["linode_id"] = linode_id
         __props__.__dict__["prefix"] = prefix
@@ -463,6 +502,7 @@ class NetworkingIp(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["reserved"] = reserved
         __props__.__dict__["subnet_mask"] = subnet_mask
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["vpc_nat11"] = vpc_nat11
         return NetworkingIp(resource_name, opts=opts, __props__=__props__)
@@ -474,6 +514,14 @@ class NetworkingIp(pulumi.CustomResource):
         The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         """
         return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="assignedEntity")
+    def assigned_entity(self) -> pulumi.Output['outputs.NetworkingIpAssignedEntity']:
+        """
+        (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        """
+        return pulumi.get(self, "assigned_entity")
 
     @_builtins.property
     @pulumi.getter
@@ -541,6 +589,14 @@ class NetworkingIp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A set of tags associated with this IP address.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
         The type of IP address. (ipv4, ipv6, etc.)
@@ -551,7 +607,7 @@ class NetworkingIp(pulumi.CustomResource):
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> pulumi.Output['outputs.NetworkingIpVpcNat11']:
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         """
         return pulumi.get(self, "vpc_nat11")
 

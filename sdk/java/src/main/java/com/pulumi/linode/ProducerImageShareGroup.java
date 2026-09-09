@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_empty = new ProducerImageShareGroup("test-empty", ProducerImageShareGroupArgs.builder()
- *             .label("my-image-share-group")
  *             .description("My description.")
+ *             .label("my-image-share-group")
  *             .build());
  * 
  *     }
@@ -79,13 +79,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test_images = new ProducerImageShareGroup("test-images", ProducerImageShareGroupArgs.builder()
- *             .label("my-image-share-group")
  *             .description("My description.")
  *             .images(ProducerImageShareGroupImageArgs.builder()
+ *                 .description("My image description.")
  *                 .id("private/12345")
  *                 .label("my-image")
- *                 .description("My image description.")
  *                 .build())
+ *             .label("my-image-share-group")
  *             .build());
  * 
  *     }
@@ -113,7 +113,7 @@ public class ProducerImageShareGroup extends com.pulumi.resources.CustomResource
     /**
      * The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
@@ -122,7 +122,7 @@ public class ProducerImageShareGroup extends com.pulumi.resources.CustomResource
     /**
      * @return The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     public Output<Optional<String>> description() {

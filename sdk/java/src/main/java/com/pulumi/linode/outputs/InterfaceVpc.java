@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterfaceVpc {
     /**
-     * @return IPv4 configuration for the VPC interface.
+     * @return IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
      * 
      */
     private @Nullable InterfaceVpcIpv4 ipv4;
     /**
-     * @return IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     * @return IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
      * 
      */
     private @Nullable InterfaceVpcIpv6 ipv6;
@@ -32,14 +32,14 @@ public final class InterfaceVpc {
 
     private InterfaceVpc() {}
     /**
-     * @return IPv4 configuration for the VPC interface.
+     * @return IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
      * 
      */
     public Optional<InterfaceVpcIpv4> ipv4() {
         return Optional.ofNullable(this.ipv4);
     }
     /**
-     * @return IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     * @return IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
      * 
      */
     public Optional<InterfaceVpcIpv6> ipv6() {

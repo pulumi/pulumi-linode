@@ -40,7 +40,7 @@ public final class GetProfileResult {
      */
     private String lishAuthMethod;
     /**
-     * @return Credit Card information associated with this Account.
+     * @return (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
      * 
      */
     private List<GetProfileReferral> referrals;
@@ -105,7 +105,7 @@ public final class GetProfileResult {
         return this.lishAuthMethod;
     }
     /**
-     * @return Credit Card information associated with this Account.
+     * @return (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
      * 
      */
     public List<GetProfileReferral> referrals() {

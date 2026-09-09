@@ -27,7 +27,6 @@ namespace Pulumi.Linode
     /// {
     ///     var myaccount = new Linode.AccountSettings("myaccount", new()
     ///     {
-    ///         LongviewSubscription = "longview-40",
     ///         BackupsEnabled = true,
     ///     });
     /// 
@@ -37,6 +36,8 @@ namespace Pulumi.Linode
     /// ## Additional Results
     /// 
     /// * `Managed` - Enables monitoring for connectivity, response, and total request time.
+    /// 
+    /// * `LongviewSubscription` - (Deprecated) The Longview Pro tier you are currently subscribed to.
     /// 
     /// * `ObjectStorage` - A string describing the status of this account’s Object Storage service enrollment.
     /// </summary>
@@ -56,7 +57,7 @@ namespace Pulumi.Linode
         public Output<string> InterfacesForNewLinodes { get; private set; } = null!;
 
         /// <summary>
-        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+        /// The Longview Pro tier you are currently subscribed to.
         /// </summary>
         [Output("longviewSubscription")]
         public Output<string> LongviewSubscription { get; private set; } = null!;
@@ -144,12 +145,6 @@ namespace Pulumi.Linode
         public Input<string>? InterfacesForNewLinodes { get; set; }
 
         /// <summary>
-        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
-        /// </summary>
-        [Input("longviewSubscription")]
-        public Input<string>? LongviewSubscription { get; set; }
-
-        /// <summary>
         /// The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`.
         /// </summary>
         [Input("maintenancePolicy")]
@@ -182,7 +177,7 @@ namespace Pulumi.Linode
         public Input<string>? InterfacesForNewLinodes { get; set; }
 
         /// <summary>
-        /// The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
+        /// The Longview Pro tier you are currently subscribed to.
         /// </summary>
         [Input("longviewSubscription")]
         public Input<string>? LongviewSubscription { get; set; }

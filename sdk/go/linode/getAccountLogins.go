@@ -48,7 +48,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("loginIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:11,11-47)))
+// ctx.Export("loginIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getAccountLogins:getAccountLogins.pp:11,11-46)))
 // return nil
 // })
 // }
@@ -80,7 +80,8 @@ type GetAccountLoginsArgs struct {
 type GetAccountLoginsResult struct {
 	Filters []GetAccountLoginsFilter `pulumi:"filters"`
 	// The unique ID of this login object.
-	Id     string                  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The list of Linode account logins.
 	Logins []GetAccountLoginsLogin `pulumi:"logins"`
 }
 
@@ -122,6 +123,7 @@ func (o GetAccountLoginsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountLoginsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The list of Linode account logins.
 func (o GetAccountLoginsResultOutput) Logins() GetAccountLoginsLoginArrayOutput {
 	return o.ApplyT(func(v GetAccountLoginsResult) []GetAccountLoginsLogin { return v.Logins }).(GetAccountLoginsLoginArrayOutput)
 }

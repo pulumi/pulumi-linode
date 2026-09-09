@@ -52,6 +52,9 @@ class GetRegionsResult:
     @_builtins.property
     @pulumi.getter
     def regions(self) -> Sequence['outputs.GetRegionsRegionResult']:
+        """
+        (Nested Attribute List) The Regions returned by this data source.
+        """
         return pulumi.get(self, "regions")
 
 

@@ -21,14 +21,14 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InterfaceArgs Empty = new InterfaceArgs();
 
     /**
-     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      * 
      */
     @Import(name="defaultRoute")
     private @Nullable Output<InterfaceDefaultRouteArgs> defaultRoute;
 
     /**
-     * @return Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * @return Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      * 
      */
     public Optional<Output<InterfaceDefaultRouteArgs>> defaultRoute() {
@@ -66,14 +66,14 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     @Import(name="public")
     private @Nullable Output<InterfacePublicArgs> public_;
 
     /**
-     * @return Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * @return Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     public Optional<Output<InterfacePublicArgs>> public_() {
@@ -81,14 +81,14 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     @Import(name="vlan")
     private @Nullable Output<InterfaceVlanArgs> vlan;
 
     /**
-     * @return Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * @return Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     public Optional<Output<InterfaceVlanArgs>> vlan() {
@@ -96,14 +96,14 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     @Import(name="vpc")
     private @Nullable Output<InterfaceVpcArgs> vpc;
 
     /**
-     * @return Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * @return Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     public Optional<Output<InterfaceVpcArgs>> vpc() {
@@ -140,7 +140,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRoute Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+         * @param defaultRoute Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultRoute Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+         * @param defaultRoute Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+         * @param public_ Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+         * @param public_ Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlan Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+         * @param vlan Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlan Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+         * @param vlan Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpc Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+         * @param vpc Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpc Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+         * @param vpc Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
          * 
          * @return builder
          * 

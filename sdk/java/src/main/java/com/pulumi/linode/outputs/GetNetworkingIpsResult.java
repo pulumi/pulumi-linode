@@ -16,7 +16,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNetworkingIpsResult {
     private @Nullable List<GetNetworkingIpsFilter> filters;
+    /**
+     * @return The ID of the entity.
+     * 
+     */
     private String id;
+    /**
+     * @return (Nested Attribute List) The list of IP addresses.
+     * 
+     */
     private List<GetNetworkingIpsIpAddress> ipAddresses;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -25,9 +33,17 @@ public final class GetNetworkingIpsResult {
     public List<GetNetworkingIpsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return The ID of the entity.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The list of IP addresses.
+     * 
+     */
     public List<GetNetworkingIpsIpAddress> ipAddresses() {
         return this.ipAddresses;
     }

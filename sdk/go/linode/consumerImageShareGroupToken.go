@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewConsumerImageShareGroupToken(ctx, "example", &linode.ConsumerImageShareGroupTokenArgs{
-//				ValidForSharegroupUuid: pulumi.String("03fbb93e-c27d-4c4a-9180-67f6e0cd74ca"),
 //				Label:                  pulumi.String("example-token"),
+//				ValidForSharegroupUuid: pulumi.String("03fbb93e-c27d-4c4a-9180-67f6e0cd74ca"),
 //			})
 //			if err != nil {
 //				return err

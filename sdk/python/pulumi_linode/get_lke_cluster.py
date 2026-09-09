@@ -27,7 +27,7 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, dashboard_url=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, stack_type=None, status=None, subnet_id=None, tags=None, tier=None, updated=None, vpc_id=None):
+    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, stack_type=None, status=None, subnet_id=None, tags=None, tier=None, updated=None, vpc_id=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -40,9 +40,6 @@ class GetLkeClusterResult:
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
-        if dashboard_url and not isinstance(dashboard_url, str):
-            raise TypeError("Expected argument 'dashboard_url' to be a str")
-        pulumi.set(__self__, "dashboard_url", dashboard_url)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -103,7 +100,7 @@ class GetLkeClusterResult:
     @pulumi.getter(name="controlPlanes")
     def control_planes(self) -> Sequence['outputs.GetLkeClusterControlPlaneResult']:
         """
-        The settings for the Kubernetes Control Plane.
+        (Nested Attribute List) The settings for the Kubernetes Control Plane.
         """
         return pulumi.get(self, "control_planes")
 
@@ -114,14 +111,6 @@ class GetLkeClusterResult:
         When this Kubernetes cluster was created.
         """
         return pulumi.get(self, "created")
-
-    @_builtins.property
-    @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> _builtins.str:
-        """
-        The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        """
-        return pulumi.get(self, "dashboard_url")
 
     @_builtins.property
     @pulumi.getter
@@ -159,7 +148,7 @@ class GetLkeClusterResult:
     @pulumi.getter
     def pools(self) -> Sequence['outputs.GetLkeClusterPoolResult']:
         """
-        Node pools associated with this cluster.
+        (Nested Attribute List) Node pools associated with this cluster.
         """
         return pulumi.get(self, "pools")
 
@@ -238,7 +227,6 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             apl_enabled=self.apl_enabled,
             control_planes=self.control_planes,
             created=self.created,
-            dashboard_url=self.dashboard_url,
             id=self.id,
             k8s_version=self.k8s_version,
             kubeconfig=self.kubeconfig,
@@ -282,7 +270,6 @@ def get_lke_cluster(id: Optional[_builtins.int] = None,
         apl_enabled=pulumi.get(__ret__, 'apl_enabled'),
         control_planes=pulumi.get(__ret__, 'control_planes'),
         created=pulumi.get(__ret__, 'created'),
-        dashboard_url=pulumi.get(__ret__, 'dashboard_url'),
         id=pulumi.get(__ret__, 'id'),
         k8s_version=pulumi.get(__ret__, 'k8s_version'),
         kubeconfig=pulumi.get(__ret__, 'kubeconfig'),
@@ -323,7 +310,6 @@ def get_lke_cluster_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         apl_enabled=pulumi.get(__response__, 'apl_enabled'),
         control_planes=pulumi.get(__response__, 'control_planes'),
         created=pulumi.get(__response__, 'created'),
-        dashboard_url=pulumi.get(__response__, 'dashboard_url'),
         id=pulumi.get(__response__, 'id'),
         k8s_version=pulumi.get(__response__, 'k8s_version'),
         kubeconfig=pulumi.get(__response__, 'kubeconfig'),

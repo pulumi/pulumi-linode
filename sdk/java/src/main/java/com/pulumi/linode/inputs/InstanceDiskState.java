@@ -20,14 +20,14 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceDiskState Empty = new InstanceDiskState();
 
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     @Import(name="authorizedKeys")
     private @Nullable Output<List<String>> authorizedKeys;
 
     /**
-     * @return A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * @return A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     public Optional<Output<List<String>>> authorizedKeys() {
@@ -35,14 +35,14 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     @Import(name="authorizedUsers")
     private @Nullable Output<List<String>> authorizedUsers;
 
     /**
-     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+     * @return A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     public Optional<Output<List<String>>> authorizedUsers() {
@@ -140,14 +140,14 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * The root user&#39;s password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     @Import(name="rootPass")
     private @Nullable Output<String> rootPass;
 
     /**
-     * @return The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * @return The root user&#39;s password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      * 
      */
     public Optional<Output<String>> rootPass() {
@@ -279,7 +279,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+         * @param authorizedKeys A list of public SSH keys that will be automatically appended to the root user&#39;s ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. (Requires `image`)
+         * @param authorizedUsers A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user&#39;s ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+         * @param rootPass The root user&#39;s password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 
@@ -478,7 +478,7 @@ public final class InstanceDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+         * @param rootPass The root user&#39;s password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
          * 
          * @return builder
          * 

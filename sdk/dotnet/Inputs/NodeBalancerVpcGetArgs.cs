@@ -36,6 +36,12 @@ namespace Pulumi.Linode.Inputs
         }
 
         /// <summary>
+        /// (Optional) A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        /// </summary>
+        [Input("ipv6Range")]
+        public Input<string>? Ipv6Range { get; set; }
+
+        /// <summary>
         /// (Required) The ID of a subnet to assign to this NodeBalancer.
         /// </summary>
         [Input("subnetId", required: true)]

@@ -61,11 +61,11 @@ type GetFirewallTemplateResult struct {
 	Id string `pulumi:"id"`
 	// The default behavior for inbound traffic. This can be overridden by individual firewall rules.
 	InboundPolicy string `pulumi:"inboundPolicy"`
-	// A list of firewall rules specifying allowed inbound network traffic.
+	// (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
 	Inbounds []GetFirewallTemplateInbound `pulumi:"inbounds"`
 	// The default behavior for outbound traffic. This can be overridden by individual firewall rules.
 	OutboundPolicy string `pulumi:"outboundPolicy"`
-	// A list of firewall rules specifying allowed outbound network traffic.
+	// (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
 	Outbounds []GetFirewallTemplateOutbound `pulumi:"outbounds"`
 	Slug      string                        `pulumi:"slug"`
 }
@@ -110,7 +110,7 @@ func (o GetFirewallTemplateResultOutput) InboundPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallTemplateResult) string { return v.InboundPolicy }).(pulumi.StringOutput)
 }
 
-// A list of firewall rules specifying allowed inbound network traffic.
+// (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
 func (o GetFirewallTemplateResultOutput) Inbounds() GetFirewallTemplateInboundArrayOutput {
 	return o.ApplyT(func(v GetFirewallTemplateResult) []GetFirewallTemplateInbound { return v.Inbounds }).(GetFirewallTemplateInboundArrayOutput)
 }
@@ -120,7 +120,7 @@ func (o GetFirewallTemplateResultOutput) OutboundPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFirewallTemplateResult) string { return v.OutboundPolicy }).(pulumi.StringOutput)
 }
 
-// A list of firewall rules specifying allowed outbound network traffic.
+// (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
 func (o GetFirewallTemplateResultOutput) Outbounds() GetFirewallTemplateOutboundArrayOutput {
 	return o.ApplyT(func(v GetFirewallTemplateResult) []GetFirewallTemplateOutbound { return v.Outbounds }).(GetFirewallTemplateOutboundArrayOutput)
 }

@@ -38,7 +38,7 @@ public final class GetFirewallOutbound {
      */
     private String ports;
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      */
     private String protocol;
@@ -83,7 +83,7 @@ public final class GetFirewallOutbound {
         return this.ports;
     }
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      */
     public String protocol() {

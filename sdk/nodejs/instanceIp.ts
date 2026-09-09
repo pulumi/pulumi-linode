@@ -20,14 +20,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const foo = new linode.Instance("foo", {
- *     image: "linode/alpine3.19",
+ * const fooInstance = new linode.Instance("fooInstance", {
+ *     image: "linode/arch",
  *     label: "foobar-test",
  *     type: "g6-nanode-1",
  *     region: "us-east",
  * });
- * const fooInstanceIp = new linode.InstanceIp("foo", {
- *     linodeId: foo.id.apply(x =>Number(x)),
+ * const fooInstanceIp = new linode.InstanceIp("fooInstanceIp", {
+ *     linodeId: fooInstance.id.apply(x =>Number(x)),
  *     "public": true,
  * });
  * ```
@@ -61,7 +61,7 @@ export class InstanceIp extends pulumi.CustomResource {
     }
 
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      */
     declare public /*out*/ readonly address: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class InstanceIp extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      */
     declare public /*out*/ readonly vpcNat11s: pulumi.Output<outputs.InstanceIpVpcNat11[]>;
 
@@ -156,7 +156,7 @@ export class InstanceIp extends pulumi.CustomResource {
  */
 export interface InstanceIpState {
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      */
     address?: pulumi.Input<string | undefined>;
     /**
@@ -196,7 +196,7 @@ export interface InstanceIpState {
      */
     type?: pulumi.Input<string | undefined>;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      */
     vpcNat11s?: pulumi.Input<pulumi.Input<inputs.InstanceIpVpcNat11>[] | undefined>;
 }

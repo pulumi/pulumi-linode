@@ -19,12 +19,6 @@ namespace Pulumi.Linode.Inputs
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// The Object Storage cluster where the bucket resides. Deprecated in favor of `Region`.
-        /// </summary>
-        [Input("cluster")]
-        public Input<string>? Cluster { get; set; }
-
-        /// <summary>
         /// This Limited Access Key’s permissions for the selected bucket. *Changing `Permissions` forces the creation of a new Object Storage Key.* (`ReadWrite`, `ReadOnly`)
         /// </summary>
         [Input("permissions", required: true)]
@@ -33,8 +27,8 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// The region where the bucket resides.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         public ObjectStorageKeyBucketAccessArgs()
         {

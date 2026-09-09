@@ -19,7 +19,7 @@ public final class ProducerImageShareGroupImageArgs extends com.pulumi.resources
     /**
      * The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     @Import(name="description")
@@ -28,7 +28,7 @@ public final class ProducerImageShareGroupImageArgs extends com.pulumi.resources
     /**
      * @return The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     public Optional<Output<String>> description() {
@@ -94,7 +94,7 @@ public final class ProducerImageShareGroupImageArgs extends com.pulumi.resources
         /**
          * @param description The description of the Image Share Group
          * 
-         * * `images` - (Optional) A list of Images to include in the Image Share Group.
+         * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ProducerImageShareGroupImageArgs extends com.pulumi.resources
         /**
          * @param description The description of the Image Share Group
          * 
-         * * `images` - (Optional) A list of Images to include in the Image Share Group.
+         * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
          * 
          * @return builder
          * 

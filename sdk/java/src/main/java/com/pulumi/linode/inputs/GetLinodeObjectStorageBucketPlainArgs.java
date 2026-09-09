@@ -16,29 +16,6 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
     public static final GetLinodeObjectStorageBucketPlainArgs Empty = new GetLinodeObjectStorageBucketPlainArgs();
 
     /**
-     * The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    @Import(name="cluster")
-    private @Nullable String cluster;
-
-    /**
-     * @return The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    public Optional<String> cluster() {
-        return Optional.ofNullable(this.cluster);
-    }
-
-    /**
      * The name of this bucket.
      * 
      */
@@ -54,14 +31,14 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
     }
 
     /**
-     * The ID of the region this bucket is in. Required if `cluster` is not configured.
+     * The ID of the region this bucket is in.
      * 
      */
     @Import(name="region")
     private @Nullable String region;
 
     /**
-     * @return The ID of the region this bucket is in. Required if `cluster` is not configured.
+     * @return The ID of the region this bucket is in.
      * 
      */
     public Optional<String> region() {
@@ -71,7 +48,6 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
     private GetLinodeObjectStorageBucketPlainArgs() {}
 
     private GetLinodeObjectStorageBucketPlainArgs(GetLinodeObjectStorageBucketPlainArgs $) {
-        this.cluster = $.cluster;
         this.label = $.label;
         this.region = $.region;
     }
@@ -95,21 +71,6 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param cluster The ID of the Object Storage Cluster this bucket is in. Required if `region` is not configured.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-         * 
-         */
-        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-        public Builder cluster(@Nullable String cluster) {
-            $.cluster = cluster;
-            return this;
-        }
-
-        /**
          * @param label The name of this bucket.
          * 
          * @return builder
@@ -121,7 +82,7 @@ public final class GetLinodeObjectStorageBucketPlainArgs extends com.pulumi.reso
         }
 
         /**
-         * @param region The ID of the region this bucket is in. Required if `cluster` is not configured.
+         * @param region The ID of the region this bucket is in.
          * 
          * @return builder
          * 

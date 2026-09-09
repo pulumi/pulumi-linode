@@ -23,6 +23,10 @@ public final class GetLkeTypesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
+     * 
+     */
     private List<GetLkeTypesType> types;
 
     private GetLkeTypesResult() {}
@@ -42,6 +46,10 @@ public final class GetLkeTypesResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
+     * 
+     */
     public List<GetLkeTypesType> types() {
         return this.types;
     }

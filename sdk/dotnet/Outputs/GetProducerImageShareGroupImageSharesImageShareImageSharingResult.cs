@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetProducerImageShareGroupImageSharesImageShareImageSharingResult
     {
         /// <summary>
-        /// Details about who the image is shared by.
+        /// (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
         /// </summary>
         public readonly Outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByResult SharedBy;
         /// <summary>
-        /// Details about who the image is shared with.
+        /// (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
         /// </summary>
         public readonly Outputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithResult SharedWith;
 

@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class InterfaceVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 configuration for the VPC interface.
+        /// IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.InterfaceVpcIpv4Args>? Ipv4 { get; set; }
 
         /// <summary>
-        /// IPv6 assigned through `Slaac` and `Ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `Slaac` or `Ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+        /// IPv6 assigned through `Slaac` and `Ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `Slaac` or `Ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.InterfaceVpcIpv6Args>? Ipv6 { get; set; }

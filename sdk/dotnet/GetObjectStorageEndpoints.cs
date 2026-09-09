@@ -271,6 +271,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetObjectStorageEndpointsResult
     {
+        /// <summary>
+        /// (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetObjectStorageEndpointsEndpointResult> Endpoints;
         public readonly ImmutableArray<Outputs.GetObjectStorageEndpointsFilterResult> Filters;
         public readonly string Id;

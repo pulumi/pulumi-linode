@@ -27,17 +27,17 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Linode.Instance("foo", new()
+    ///     var fooInstance = new Linode.Instance("fooInstance", new()
     ///     {
-    ///         Image = "linode/alpine3.19",
+    ///         Image = "linode/arch",
     ///         Label = "foobar-test",
     ///         Type = "g6-nanode-1",
     ///         Region = "us-east",
     ///     });
     /// 
-    ///     var fooInstanceIp = new Linode.InstanceIp("foo", new()
+    ///     var fooInstanceIp = new Linode.InstanceIp("fooInstanceIp", new()
     ///     {
-    ///         LinodeId = foo.Id,
+    ///         LinodeId = fooInstance.Id,
     ///         Public = true,
     ///     });
     /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Linode
     public partial class InstanceIp : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The VPC IPv4 address this address is NATted with.
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.Linode
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         /// </summary>
         [Output("vpcNat11s")]
         public Output<ImmutableArray<Outputs.InstanceIpVpcNat11>> VpcNat11s { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Linode
     public sealed class InstanceIpState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The VPC IPv4 address this address is NATted with.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.InstanceIpVpcNat11GetArgs>? _vpcNat11s;
 
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         /// </summary>
         public InputList<Inputs.InstanceIpVpcNat11GetArgs> VpcNat11s
         {

@@ -97,14 +97,14 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      * 
      */
     @Import(name="pools")
     private @Nullable Output<List<LkeClusterPoolArgs>> pools;
 
     /**
-     * @return Additional nested attributes:
+     * @return (Block List) Additional nested attributes:
      * 
      */
     public Optional<Output<List<LkeClusterPoolArgs>>> pools() {
@@ -114,9 +114,9 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     @Import(name="region", required=true)
@@ -125,9 +125,9 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     public Output<String> region() {
@@ -360,7 +360,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pools Additional nested attributes:
+         * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pools Additional nested attributes:
+         * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pools Additional nested attributes:
+         * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
          * 
@@ -393,9 +393,9 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param region This Kubernetes cluster&#39;s location.
          * 
-         * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+         * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
          * 
-         * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
          * 
          * @return builder
          * 
@@ -408,9 +408,9 @@ public final class LkeClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param region This Kubernetes cluster&#39;s location.
          * 
-         * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+         * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
          * 
-         * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+         * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
          * 
          * @return builder
          * 

@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFirewallsResult {
     private @Nullable List<GetFirewallsFilter> filters;
+    /**
+     * @return (Nested Attribute List) The list of Linode Cloud Firewalls.
+     * 
+     */
     private List<GetFirewallsFirewall> firewalls;
     /**
      * @return The unique ID assigned to this Firewall.
@@ -29,6 +33,10 @@ public final class GetFirewallsResult {
     public List<GetFirewallsFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return (Nested Attribute List) The list of Linode Cloud Firewalls.
+     * 
+     */
     public List<GetFirewallsFirewall> firewalls() {
         return this.firewalls;
     }

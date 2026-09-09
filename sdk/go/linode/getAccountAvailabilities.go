@@ -42,7 +42,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("regions-without-linodes", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-59)))
+// ctx.Export("regions-without-linodes", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getAccountAvailabilities:getAccountAvailabilities.pp:7,11-58)))
 // return nil
 // })
 // }
@@ -72,6 +72,7 @@ type GetAccountAvailabilitiesArgs struct {
 
 // A collection of values returned by getAccountAvailabilities.
 type GetAccountAvailabilitiesResult struct {
+	// (Nested Attribute List) The account availabilities returned by this data source.
 	Availabilities []GetAccountAvailabilitiesAvailability `pulumi:"availabilities"`
 	Filters        []GetAccountAvailabilitiesFilter       `pulumi:"filters"`
 	Id             string                                 `pulumi:"id"`
@@ -106,6 +107,7 @@ func (o GetAccountAvailabilitiesResultOutput) ToGetAccountAvailabilitiesResultOu
 	return o
 }
 
+// (Nested Attribute List) The account availabilities returned by this data source.
 func (o GetAccountAvailabilitiesResultOutput) Availabilities() GetAccountAvailabilitiesAvailabilityArrayOutput {
 	return o.ApplyT(func(v GetAccountAvailabilitiesResult) []GetAccountAvailabilitiesAvailability { return v.Availabilities }).(GetAccountAvailabilitiesAvailabilityArrayOutput)
 }

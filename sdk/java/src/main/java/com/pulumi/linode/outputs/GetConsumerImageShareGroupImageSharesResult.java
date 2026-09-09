@@ -21,6 +21,10 @@ public final class GetConsumerImageShareGroupImageSharesResult {
      * 
      */
     private String id;
+    /**
+     * @return (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     * 
+     */
     private @Nullable List<GetConsumerImageShareGroupImageSharesImageShare> imageShares;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -37,6 +41,10 @@ public final class GetConsumerImageShareGroupImageSharesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
+     * 
+     */
     public List<GetConsumerImageShareGroupImageSharesImageShare> imageShares() {
         return this.imageShares == null ? List.of() : this.imageShares;
     }
