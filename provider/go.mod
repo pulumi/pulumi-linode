@@ -3,8 +3,8 @@ module github.com/pulumi/pulumi-linode/provider/v6
 go 1.25.11
 
 require (
-	github.com/linode/terraform-provider-linode/v4 v4.4.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.138.0
+	github.com/linode/terraform-provider-linode/v4 v4.5.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.139.0
 	github.com/pulumi/pulumi/sdk/v3 v3.259.0
 )
 
@@ -129,6 +129,7 @@ require (
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-plugin v1.8.0 // indirect
+	github.com/hashicorp/go-set/v3 v3.0.1 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/go-version v1.9.0 // indirect
 	github.com/hashicorp/hcl v1.0.1-vault-7 // indirect
@@ -156,7 +157,7 @@ require (
 	github.com/klauspost/compress v1.18.7 // indirect
 	github.com/klauspost/cpuid/v2 v2.3.0 // indirect
 	github.com/linode/linodego/k8s v1.26.1 // indirect
-	github.com/linode/linodego/v2 v2.5.0 // indirect
+	github.com/linode/linodego/v2 v2.6.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.4.1 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
