@@ -504,14 +504,14 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["skip_instance_delete_poll"] = pulumi.Output.from_input(skip_instance_delete_poll).apply(pulumi.runtime.to_json) if skip_instance_delete_poll is not None else None
             __props__.__dict__["skip_instance_ready_poll"] = pulumi.Output.from_input(skip_instance_ready_poll).apply(pulumi.runtime.to_json) if skip_instance_ready_poll is not None else None
             __props__.__dict__["skip_lke_cluster_delete_poll"] = pulumi.Output.from_input(skip_lke_cluster_delete_poll).apply(pulumi.runtime.to_json) if skip_lke_cluster_delete_poll is not None else None
-            __props__.__dict__["token"] = token
+            __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             if ua_prefix is None:
                 ua_prefix = _utilities.get_env('LINODE_UA_PREFIX')
             __props__.__dict__["ua_prefix"] = ua_prefix
             if url is None:
                 url = _utilities.get_env('LINODE_URL')
             __props__.__dict__["url"] = url
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["objSecretKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["objSecretKey", "token"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Provider, __self__).__init__(
             'linode',

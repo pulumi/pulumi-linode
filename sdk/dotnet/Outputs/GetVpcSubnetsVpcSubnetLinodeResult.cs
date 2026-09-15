@@ -14,11 +14,11 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetVpcSubnetsVpcSubnetLinodeResult
     {
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         public readonly int Id;
         /// <summary>
-        /// A list of networking interfaces objects.
+        /// (Read-Only Object List) A list of networking interfaces objects. Referenced with an index (e.g. `interfaces.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetLinodeInterfaceResult> Interfaces;
 

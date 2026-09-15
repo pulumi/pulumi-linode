@@ -187,6 +187,10 @@ namespace Pulumi.Linode
 
         [Input("imageShares")]
         private List<Inputs.GetProducerImageShareGroupImageSharesImageShareArgs>? _imageShares;
+
+        /// <summary>
+        /// (Block List) The Image Shares returned by this data source.
+        /// </summary>
         public List<Inputs.GetProducerImageShareGroupImageSharesImageShareArgs> ImageShares
         {
             get => _imageShares ?? (_imageShares = new List<Inputs.GetProducerImageShareGroupImageSharesImageShareArgs>());
@@ -202,7 +206,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Image Share Group to list shared Images from.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
         /// </summary>
         [Input("sharegroupId", required: true)]
         public int SharegroupId { get; set; }
@@ -225,6 +229,10 @@ namespace Pulumi.Linode
 
         [Input("imageShares")]
         private InputList<Inputs.GetProducerImageShareGroupImageSharesImageShareInputArgs>? _imageShares;
+
+        /// <summary>
+        /// (Block List) The Image Shares returned by this data source.
+        /// </summary>
         public InputList<Inputs.GetProducerImageShareGroupImageSharesImageShareInputArgs> ImageShares
         {
             get => _imageShares ?? (_imageShares = new InputList<Inputs.GetProducerImageShareGroupImageSharesImageShareInputArgs>());
@@ -240,7 +248,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the Image Share Group to list shared Images from.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
         /// </summary>
         [Input("sharegroupId", required: true)]
         public Input<int> SharegroupId { get; set; } = null!;
@@ -260,6 +268,9 @@ namespace Pulumi.Linode
         /// The unique ID assigned to this Image Share.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Block List) The Image Shares returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetProducerImageShareGroupImageSharesImageShareResult> ImageShares;
         public readonly string? Order;
         public readonly string? OrderBy;

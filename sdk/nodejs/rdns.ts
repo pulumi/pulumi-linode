@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const fooInstance = new linode.Instance("foo", {
- *     image: "linode/alpine3.19",
+ *     image: "linode/arch",
  *     region: "ca-east",
  *     type: "g6-dedicated-2",
  * });

@@ -332,6 +332,51 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeCluster;
+ * import com.pulumi.linode.LkeClusterArgs;
+ * import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
+ *             .label("my-cluster")
+ *             .k8sVersion("1.32")
+ *             .region("us-central")
+ *             .tags("prod")
+ *             .pools(            
+ *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-2")
+ *                     .count(2)
+ *                     .diskEncryption("enabled")
+ *                     .build(),
+ *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-1")
+ *                     .count(1)
+ *                     .diskEncryption("disabled")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Nested Node Pool Caveats
  * 
@@ -523,20 +568,6 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.controlPlane;
     }
     /**
-     * The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    @Export(name="dashboardUrl", refs={String.class}, tree="[0]")
-    private Output<String> dashboardUrl;
-
-    /**
-     * @return The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-     * 
-     */
-    public Output<String> dashboardUrl() {
-        return this.dashboardUrl;
-    }
-    /**
      * A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
      * 
      */
@@ -593,14 +624,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
-     * Additional nested attributes:
+     * (Block List) Additional nested attributes:
      * 
      */
     @Export(name="pools", refs={List.class,LkeClusterPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LkeClusterPool>> pools;
 
     /**
-     * @return Additional nested attributes:
+     * @return (Block List) Additional nested attributes:
      * 
      */
     public Output<Optional<List<LkeClusterPool>>> pools() {
@@ -609,9 +640,9 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
@@ -620,9 +651,9 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * @return This Kubernetes cluster&#39;s location.
      * 
-     * * `pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+     * * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
      * 
-     * * `controlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+     * * `controlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
      * 
      */
     public Output<String> region() {

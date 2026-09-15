@@ -19,12 +19,12 @@ public final class GetVpcSubnetDatabase {
      */
     private Integer id;
     /**
-     * @return IPv4 range assigned to the database.
+     * @return IPv4 range assigned to the NodeBalancer.
      * 
      */
     private String ipv4Range;
     /**
-     * @return A list of IPv6 ranges assigned to the database.
+     * @return (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `nodebalancers.0.ipv6_ranges.0.range`).
      * 
      */
     private List<GetVpcSubnetDatabaseIpv6Range> ipv6Ranges;
@@ -38,14 +38,14 @@ public final class GetVpcSubnetDatabase {
         return this.id;
     }
     /**
-     * @return IPv4 range assigned to the database.
+     * @return IPv4 range assigned to the NodeBalancer.
      * 
      */
     public String ipv4Range() {
         return this.ipv4Range;
     }
     /**
-     * @return A list of IPv6 ranges assigned to the database.
+     * @return (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `nodebalancers.0.ipv6_ranges.0.range`).
      * 
      */
     public List<GetVpcSubnetDatabaseIpv6Range> ipv6Ranges() {

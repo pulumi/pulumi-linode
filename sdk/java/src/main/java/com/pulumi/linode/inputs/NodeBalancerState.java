@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.NodeBalancerFirewallArgs;
+import com.pulumi.linode.inputs.NodeBalancerLkeClusterArgs;
 import com.pulumi.linode.inputs.NodeBalancerTransferArgs;
 import com.pulumi.linode.inputs.NodeBalancerVpcArgs;
 import java.lang.Integer;
@@ -115,14 +116,14 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<String> ipv4;
 
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     public Optional<Output<String>> ipv4() {
@@ -157,6 +158,21 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
+    }
+
+    /**
+     * The related LKE cluster for this NodeBalancer, if any.
+     * 
+     */
+    @Import(name="lkeClusters")
+    private @Nullable Output<List<NodeBalancerLkeClusterArgs>> lkeClusters;
+
+    /**
+     * @return The related LKE cluster for this NodeBalancer, if any.
+     * 
+     */
+    public Optional<Output<List<NodeBalancerLkeClusterArgs>>> lkeClusters() {
+        return Optional.ofNullable(this.lkeClusters);
     }
 
     /**
@@ -250,6 +266,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         this.ipv4 = $.ipv4;
         this.ipv6 = $.ipv6;
         this.label = $.label;
+        this.lkeClusters = $.lkeClusters;
         this.region = $.region;
         this.tags = $.tags;
         this.transfers = $.transfers;
@@ -416,7 +433,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4 A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4 The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
          * 
          * @return builder
          * 
@@ -427,7 +444,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4 A list of IPv4 addresses or networks. Must be in IP/mask format.
+         * @param ipv4 The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
          * 
          * @return builder
          * 
@@ -476,6 +493,37 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param lkeClusters The related LKE cluster for this NodeBalancer, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lkeClusters(@Nullable Output<List<NodeBalancerLkeClusterArgs>> lkeClusters) {
+            $.lkeClusters = lkeClusters;
+            return this;
+        }
+
+        /**
+         * @param lkeClusters The related LKE cluster for this NodeBalancer, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lkeClusters(List<NodeBalancerLkeClusterArgs> lkeClusters) {
+            return lkeClusters(Output.of(lkeClusters));
+        }
+
+        /**
+         * @param lkeClusters The related LKE cluster for this NodeBalancer, if any.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lkeClusters(NodeBalancerLkeClusterArgs... lkeClusters) {
+            return lkeClusters(List.of(lkeClusters));
         }
 
         /**

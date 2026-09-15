@@ -13,8 +13,17 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class ReservedIpAssignmentVpcNat11
     {
+        /// <summary>
+        /// The reserved IPv4 address to assign to the Linode.
+        /// </summary>
         public readonly string Address;
+        /// <summary>
+        /// The `Id` of the VPC Subnet for this Interface.
+        /// </summary>
         public readonly int SubnetId;
+        /// <summary>
+        /// The `Id` of the VPC configured for this Interface.
+        /// </summary>
         public readonly int VpcId;
 
         [OutputConstructor]

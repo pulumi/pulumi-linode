@@ -15,6 +15,7 @@ import com.pulumi.linode.outputs.InstanceBackup;
 import com.pulumi.linode.outputs.InstanceConfig;
 import com.pulumi.linode.outputs.InstanceDisk;
 import com.pulumi.linode.outputs.InstanceInterface;
+import com.pulumi.linode.outputs.InstanceLinodeInterface;
 import com.pulumi.linode.outputs.InstanceMetadata;
 import com.pulumi.linode.outputs.InstancePlacementGroup;
 import com.pulumi.linode.outputs.InstanceSpec;
@@ -68,6 +69,45 @@ import javax.annotation.Nullable;
  *             .tags("foo")
  *             .swapSize(256)
  *             .privateIp(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * 
+ * ### Linode Instance Without Root Password
+ * 
+ * When deploying from an image, you can use `authorizedKeys` or `authorizedUsers` instead of `rootPass`. At least one of the three must be provided.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Instance;
+ * import com.pulumi.linode.InstanceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var web = new Instance("web", InstanceArgs.builder()
+ *             .label("simple_instance")
+ *             .image("linode/ubuntu22.04")
+ *             .region("us-central")
+ *             .type("g6-standard-1")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
  *             .build());
  * 
  *     }}{@code
@@ -272,42 +312,62 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Configuration options for alert triggers on this Linode.
+     * The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     * 
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
      * 
      */
     @Export(name="alerts", refs={InstanceAlerts.class}, tree="[0]")
     private Output<InstanceAlerts> alerts;
 
     /**
-     * @return Configuration options for alert triggers on this Linode.
+     * @return The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     * 
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
      * 
      */
     public Output<InstanceAlerts> alerts() {
         return this.alerts;
     }
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     @Export(name="authorizedKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedKeys;
 
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     public Output<Optional<List<String>>> authorizedKeys() {
         return Codegen.optional(this.authorizedKeys);
     }
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     @Export(name="authorizedUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> authorizedUsers;
 
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     public Output<Optional<List<String>>> authorizedUsers() {
@@ -328,14 +388,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backupId);
     }
     /**
-     * Information about this Linode&#39;s backups status.
+     * (Read-Only Object List) Information about this Linode&#39;s backups status. Referenced with an index (e.g. `backups.0.enabled`).
      * 
      */
     @Export(name="backups", refs={List.class,InstanceBackup.class}, tree="[0,1]")
     private Output<List<InstanceBackup>> backups;
 
     /**
-     * @return Information about this Linode&#39;s backups status.
+     * @return (Read-Only Object List) Information about this Linode&#39;s backups status. Referenced with an index (e.g. `backups.0.enabled`).
      * 
      */
     public Output<List<InstanceBackup>> backups() {
@@ -368,6 +428,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> bootConfigLabel() {
         return this.bootConfigLabel;
+    }
+    /**
+     * The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance&#39;s plan.
+     * 
+     */
+    @Export(name="bootSize", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> bootSize;
+
+    /**
+     * @return The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance&#39;s plan.
+     * 
+     */
+    public Output<Optional<Integer>> bootSize() {
+        return Codegen.optional(this.bootSize);
     }
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
@@ -418,16 +492,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
      * 
-     * * **NOTE: Disk encryption may not currently be available to all users.**
-     * 
      */
     @Export(name="diskEncryption", refs={String.class}, tree="[0]")
     private Output<String> diskEncryption;
 
     /**
      * @return The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
-     * 
-     * * **NOTE: Disk encryption may not currently be available to all users.**
      * 
      */
     public Output<String> diskEncryption() {
@@ -458,24 +528,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> firewallId() {
         return Codegen.optional(this.firewallId);
-    }
-    /**
-     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     * 
-     * @deprecated
-     * Group label is deprecated. We recommend using tags instead.
-     * 
-     */
-    @Deprecated /* Group label is deprecated. We recommend using tags instead. */
-    @Export(name="group", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> group;
-
-    /**
-     * @return A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     * 
-     */
-    public Output<Optional<String>> group() {
-        return Codegen.optional(this.group);
     }
     /**
      * Whether this Instance was created with user-data.
@@ -602,6 +654,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.ipv6;
     }
     /**
+     * The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     * 
+     */
+    @Export(name="kernel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kernel;
+
+    /**
+     * @return The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     * 
+     */
+    public Output<Optional<String>> kernel() {
+        return Codegen.optional(this.kernel);
+    }
+    /**
      * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
@@ -614,6 +680,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> label() {
         return this.label;
+    }
+    /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    @Export(name="linodeInterfaces", refs={List.class,InstanceLinodeInterface.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceLinodeInterface>> linodeInterfaces;
+
+    /**
+     * @return An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    public Output<Optional<List<InstanceLinodeInterface>>> linodeInterfaces() {
+        return Codegen.optional(this.linodeInterfaces);
     }
     /**
      * If applicable, the ID of the LKE cluster this instance is a part of.
@@ -658,14 +738,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maintenancePolicy;
     }
     /**
-     * Various fields related to the Linode Metadata service.
+     * Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     @Export(name="metadatas", refs={List.class,InstanceMetadata.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceMetadata>> metadatas;
 
     /**
-     * @return Various fields related to the Linode Metadata service.
+     * @return Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     public Output<Optional<List<InstanceMetadata>>> metadatas() {
@@ -690,6 +774,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+     * 
      */
     @Export(name="networkHelper", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> networkHelper;
@@ -699,19 +785,25 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+     * 
      */
     public Output<Optional<Boolean>> networkHelper() {
         return Codegen.optional(this.networkHelper);
     }
     /**
-     * Information about the Placement Group this Linode is assigned to.
+     * Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      * 
      */
     @Export(name="placementGroup", refs={InstancePlacementGroup.class}, tree="[0]")
     private Output</* @Nullable */ InstancePlacementGroup> placementGroup;
 
     /**
-     * @return Information about the Placement Group this Linode is assigned to.
+     * @return Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      * 
      */
     public Output<Optional<InstancePlacementGroup>> placementGroup() {
@@ -776,16 +868,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-     * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-     * 
      */
     @Export(name="resizeDisk", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> resizeDisk;
@@ -793,29 +875,19 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-     * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-     * 
      */
     public Output<Optional<Boolean>> resizeDisk() {
         return Codegen.optional(this.resizeDisk);
     }
     /**
-     * The password that will be initially assigned to the &#39;root&#39; user account.
+     * The password that will be initially assigned to the &#39;root&#39; user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     @Export(name="rootPass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rootPass;
 
     /**
-     * @return The password that will be initially assigned to the &#39;root&#39; user account.
+     * @return The password that will be initially assigned to the &#39;root&#39; user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     public Output<Optional<String>> rootPass() {
@@ -824,10 +896,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     * 
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-     * 
      */
     @Export(name="sharedIpv4s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> sharedIpv4s;
@@ -835,51 +903,47 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     * 
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-     * 
      */
     public Output<List<String>> sharedIpv4s() {
         return this.sharedIpv4s;
     }
     /**
-     * Information about the resources available to this Linode.
+     * (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
      * 
      */
     @Export(name="specs", refs={List.class,InstanceSpec.class}, tree="[0,1]")
     private Output<List<InstanceSpec>> specs;
 
     /**
-     * @return Information about the resources available to this Linode.
+     * @return (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
      * 
      */
     public Output<List<InstanceSpec>> specs() {
         return this.specs;
     }
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Export(name="stackscriptData", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Output<Optional<Map<String,String>>> stackscriptData() {
         return Codegen.optional(this.stackscriptData);
     }
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Export(name="stackscriptId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Output<Optional<Integer>> stackscriptId() {

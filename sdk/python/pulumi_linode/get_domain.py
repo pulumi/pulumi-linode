@@ -26,7 +26,7 @@ class GetDomainResult:
     """
     A collection of values returned by getDomain.
     """
-    def __init__(__self__, axfr_ips=None, description=None, domain=None, expire_sec=None, group=None, id=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None):
+    def __init__(__self__, axfr_ips=None, description=None, domain=None, expire_sec=None, id=None, master_ips=None, refresh_sec=None, retry_sec=None, soa_email=None, status=None, tags=None, ttl_sec=None, type=None):
         if axfr_ips and not isinstance(axfr_ips, list):
             raise TypeError("Expected argument 'axfr_ips' to be a list")
         pulumi.set(__self__, "axfr_ips", axfr_ips)
@@ -39,9 +39,6 @@ class GetDomainResult:
         if expire_sec and not isinstance(expire_sec, int):
             raise TypeError("Expected argument 'expire_sec' to be a int")
         pulumi.set(__self__, "expire_sec", expire_sec)
-        if group and not isinstance(group, str):
-            raise TypeError("Expected argument 'group' to be a str")
-        pulumi.set(__self__, "group", group)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -101,14 +98,6 @@ class GetDomainResult:
         The amount of time in seconds that may pass before this Domain is no longer authoritative.
         """
         return pulumi.get(self, "expire_sec")
-
-    @_builtins.property
-    @pulumi.getter
-    def group(self) -> _builtins.str:
-        """
-        The group this Domain belongs to.
-        """
-        return pulumi.get(self, "group")
 
     @_builtins.property
     @pulumi.getter
@@ -193,7 +182,6 @@ class AwaitableGetDomainResult(GetDomainResult):
             description=self.description,
             domain=self.domain,
             expire_sec=self.expire_sec,
-            group=self.group,
             id=self.id,
             master_ips=self.master_ips,
             refresh_sec=self.refresh_sec,
@@ -239,7 +227,6 @@ def get_domain(domain: Optional[_builtins.str] = None,
         description=pulumi.get(__ret__, 'description'),
         domain=pulumi.get(__ret__, 'domain'),
         expire_sec=pulumi.get(__ret__, 'expire_sec'),
-        group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         master_ips=pulumi.get(__ret__, 'master_ips'),
         refresh_sec=pulumi.get(__ret__, 'refresh_sec'),
@@ -282,7 +269,6 @@ def get_domain_output(domain: pulumi.Input[Optional[Optional[_builtins.str]]] = 
         description=pulumi.get(__response__, 'description'),
         domain=pulumi.get(__response__, 'domain'),
         expire_sec=pulumi.get(__response__, 'expire_sec'),
-        group=pulumi.get(__response__, 'group'),
         id=pulumi.get(__response__, 'id'),
         master_ips=pulumi.get(__response__, 'master_ips'),
         refresh_sec=pulumi.get(__response__, 'refresh_sec'),

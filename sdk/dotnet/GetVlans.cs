@@ -275,6 +275,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVlansVlanResult> Vlans;
 
         [OutputConstructor]

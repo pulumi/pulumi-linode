@@ -54,11 +54,11 @@ export interface GetPlacementGroupResult {
      */
     readonly label: string;
     /**
-     * A set of Linodes currently assigned to this Placement Group.
+     * (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     readonly members: outputs.GetPlacementGroupMember[];
     /**
-     * Any Linodes that are being migrated to or from the placement group.
+     * (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
      */
     readonly migrations: outputs.GetPlacementGroupMigrations;
     /**

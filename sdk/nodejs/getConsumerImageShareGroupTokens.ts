@@ -65,6 +65,9 @@ export interface GetConsumerImageShareGroupTokensArgs {
     filters?: inputs.GetConsumerImageShareGroupTokensFilter[];
     order?: string;
     orderBy?: string;
+    /**
+     * (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     */
     tokens?: inputs.GetConsumerImageShareGroupTokensToken[];
 }
 
@@ -76,6 +79,9 @@ export interface GetConsumerImageShareGroupTokensResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     */
     readonly tokens?: outputs.GetConsumerImageShareGroupTokensToken[];
 }
 /**
@@ -137,5 +143,8 @@ export interface GetConsumerImageShareGroupTokensOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupTokensFilterArgs>[] | undefined>;
     order?: pulumi.Input<string | undefined>;
     orderBy?: pulumi.Input<string | undefined>;
+    /**
+     * (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+     */
     tokens?: pulumi.Input<pulumi.Input<inputs.GetConsumerImageShareGroupTokensTokenArgs>[] | undefined>;
 }

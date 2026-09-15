@@ -26,6 +26,10 @@ namespace Pulumi.Linode.Inputs
 
         [Input("schedules")]
         private InputList<Inputs.InstanceBackupScheduleArgs>? _schedules;
+
+        /// <summary>
+        /// (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+        /// </summary>
         public InputList<Inputs.InstanceBackupScheduleArgs> Schedules
         {
             get => _schedules ?? (_schedules = new InputList<Inputs.InstanceBackupScheduleArgs>());

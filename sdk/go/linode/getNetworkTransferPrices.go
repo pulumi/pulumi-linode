@@ -36,10 +36,11 @@ type GetNetworkTransferPricesArgs struct {
 type GetNetworkTransferPricesResult struct {
 	Filters []GetNetworkTransferPricesFilter `pulumi:"filters"`
 	// The ID representing the Network Transfer Price.
-	Id      string                         `pulumi:"id"`
-	Order   *string                        `pulumi:"order"`
-	OrderBy *string                        `pulumi:"orderBy"`
-	Types   []GetNetworkTransferPricesType `pulumi:"types"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The Network Transfer Prices returned by this data source.
+	Types []GetNetworkTransferPricesType `pulumi:"types"`
 }
 
 func GetNetworkTransferPricesOutput(ctx *pulumi.Context, args GetNetworkTransferPricesOutputArgs, opts ...pulumi.InvokeOption) GetNetworkTransferPricesResultOutput {
@@ -92,6 +93,7 @@ func (o GetNetworkTransferPricesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The Network Transfer Prices returned by this data source.
 func (o GetNetworkTransferPricesResultOutput) Types() GetNetworkTransferPricesTypeArrayOutput {
 	return o.ApplyT(func(v GetNetworkTransferPricesResult) []GetNetworkTransferPricesType { return v.Types }).(GetNetworkTransferPricesTypeArrayOutput)
 }

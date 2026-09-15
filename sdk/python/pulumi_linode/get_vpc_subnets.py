@@ -51,7 +51,7 @@ class GetVpcSubnetsResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of a managed database assigned to the VPC Subnet.
+        ID of a NodeBalancer assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -63,6 +63,9 @@ class GetVpcSubnetsResult:
     @_builtins.property
     @pulumi.getter(name="vpcSubnets")
     def vpc_subnets(self) -> Sequence['outputs.GetVpcSubnetsVpcSubnetResult']:
+        """
+        (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
+        """
         return pulumi.get(self, "vpc_subnets")
 
 
@@ -120,7 +123,7 @@ def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 
 
     :param _builtins.int vpc_id: The id of the parent VPC for the list of VPCs.
            
-           * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -175,7 +178,7 @@ def get_vpc_subnets_output(filters: pulumi.Input[Optional[Optional[Sequence[Unio
 
     :param _builtins.int vpc_id: The id of the parent VPC for the list of VPCs.
            
-           * `filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters

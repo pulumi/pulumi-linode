@@ -93,7 +93,8 @@ type GetLkeVersionsResult struct {
 	// The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
 	Id string `pulumi:"id"`
 	// The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
-	Tier     *string                 `pulumi:"tier"`
+	Tier *string `pulumi:"tier"`
+	// (Nested Attribute List) The Linode LKE Versions returned by this data source.
 	Versions []GetLkeVersionsVersion `pulumi:"versions"`
 }
 
@@ -137,6 +138,7 @@ func (o GetLkeVersionsResultOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetLkeVersionsResult) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The Linode LKE Versions returned by this data source.
 func (o GetLkeVersionsResultOutput) Versions() GetLkeVersionsVersionArrayOutput {
 	return o.ApplyT(func(v GetLkeVersionsResult) []GetLkeVersionsVersion { return v.Versions }).(GetLkeVersionsVersionArrayOutput)
 }

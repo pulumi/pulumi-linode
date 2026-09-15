@@ -54,7 +54,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     /**
      * If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
      * 
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+     * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     @Import(name="disabled")
@@ -63,7 +63,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
      * 
-     * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+     * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -71,9 +71,24 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The fingerprint of the current Firewall rules.
+     * 
+     */
+    @Import(name="fingerprint")
+    private @Nullable Output<String> fingerprint;
+
+    /**
+     * @return The fingerprint of the current Firewall rules.
+     * 
+     */
+    public Optional<Output<String>> fingerprint() {
+        return Optional.ofNullable(this.fingerprint);
+    }
+
+    /**
      * The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      * 
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+     * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
     @Import(name="inboundPolicy")
@@ -82,7 +97,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
      * 
-     * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+     * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
      * 
      */
     public Optional<Output<String>> inboundPolicy() {
@@ -239,12 +254,28 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updated);
     }
 
+    /**
+     * The current version of the Firewall rules.
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<Integer> version;
+
+    /**
+     * @return The current version of the Firewall rules.
+     * 
+     */
+    public Optional<Output<Integer>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private FirewallState() {}
 
     private FirewallState(FirewallState $) {
         this.created = $.created;
         this.devices = $.devices;
         this.disabled = $.disabled;
+        this.fingerprint = $.fingerprint;
         this.inboundPolicy = $.inboundPolicy;
         this.inbounds = $.inbounds;
         this.interfaces = $.interfaces;
@@ -256,6 +287,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.tags = $.tags;
         this.updated = $.updated;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -331,7 +363,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disabled If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
          * 
-         * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+         * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -344,7 +376,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param disabled If `true`, the Firewall&#39;s rules are not enforced (defaults to `false`).
          * 
-         * * `inbound` - (Optional) A firewall rule that specifies what inbound network traffic is allowed.
+         * * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -354,9 +386,30 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param fingerprint The fingerprint of the current Firewall rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fingerprint(@Nullable Output<String> fingerprint) {
+            $.fingerprint = fingerprint;
+            return this;
+        }
+
+        /**
+         * @param fingerprint The fingerprint of the current Firewall rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fingerprint(String fingerprint) {
+            return fingerprint(Output.of(fingerprint));
+        }
+
+        /**
          * @param inboundPolicy The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
          * 
-         * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+         * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -369,7 +422,7 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param inboundPolicy The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
          * 
-         * * `outbound` - (Optional) A firewall rule that specifies what outbound network traffic is allowed.
+         * * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
          * 
          * @return builder
          * 
@@ -646,6 +699,27 @@ public final class FirewallState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updated(String updated) {
             return updated(Output.of(updated));
+        }
+
+        /**
+         * @param version The current version of the Firewall rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<Integer> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version The current version of the Firewall rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(Integer version) {
+            return version(Output.of(version));
         }
 
         public FirewallState build() {

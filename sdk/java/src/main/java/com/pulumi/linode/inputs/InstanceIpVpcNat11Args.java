@@ -16,30 +16,46 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
     public static final InstanceIpVpcNat11Args Empty = new InstanceIpVpcNat11Args();
 
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      * 
      */
     @Import(name="address", required=true)
     private Output<String> address;
 
     /**
-     * @return The resulting IPv4 address.
+     * @return The VPC IPv4 address this address is NATted with.
      * 
      */
     public Output<String> address() {
         return this.address;
     }
 
+    /**
+     * The ID of the VPC subnet containing the NATted address.
+     * 
+     */
     @Import(name="subnetId", required=true)
     private Output<Integer> subnetId;
 
+    /**
+     * @return The ID of the VPC subnet containing the NATted address.
+     * 
+     */
     public Output<Integer> subnetId() {
         return this.subnetId;
     }
 
+    /**
+     * The ID of the VPC containing the NATted address.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private Output<Integer> vpcId;
 
+    /**
+     * @return The ID of the VPC containing the NATted address.
+     * 
+     */
     public Output<Integer> vpcId() {
         return this.vpcId;
     }
@@ -71,7 +87,7 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The VPC IPv4 address this address is NATted with.
          * 
          * @return builder
          * 
@@ -82,7 +98,7 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The VPC IPv4 address this address is NATted with.
          * 
          * @return builder
          * 
@@ -91,20 +107,44 @@ public final class InstanceIpVpcNat11Args extends com.pulumi.resources.ResourceA
             return address(Output.of(address));
         }
 
+        /**
+         * @param subnetId The ID of the VPC subnet containing the NATted address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnetId(Output<Integer> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
 
+        /**
+         * @param subnetId The ID of the VPC subnet containing the NATted address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnetId(Integer subnetId) {
             return subnetId(Output.of(subnetId));
         }
 
+        /**
+         * @param vpcId The ID of the VPC containing the NATted address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Output<Integer> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The ID of the VPC containing the NATted address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Integer vpcId) {
             return vpcId(Output.of(vpcId));
         }

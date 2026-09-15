@@ -15,23 +15,47 @@ public final class ReservedIpAssignmentVpcNat11Args extends com.pulumi.resources
 
     public static final ReservedIpAssignmentVpcNat11Args Empty = new ReservedIpAssignmentVpcNat11Args();
 
+    /**
+     * The reserved IPv4 address to assign to the Linode.
+     * 
+     */
     @Import(name="address", required=true)
     private Output<String> address;
 
+    /**
+     * @return The reserved IPv4 address to assign to the Linode.
+     * 
+     */
     public Output<String> address() {
         return this.address;
     }
 
+    /**
+     * The `id` of the VPC Subnet for this Interface.
+     * 
+     */
     @Import(name="subnetId", required=true)
     private Output<Integer> subnetId;
 
+    /**
+     * @return The `id` of the VPC Subnet for this Interface.
+     * 
+     */
     public Output<Integer> subnetId() {
         return this.subnetId;
     }
 
+    /**
+     * The `id` of the VPC configured for this Interface.
+     * 
+     */
     @Import(name="vpcId", required=true)
     private Output<Integer> vpcId;
 
+    /**
+     * @return The `id` of the VPC configured for this Interface.
+     * 
+     */
     public Output<Integer> vpcId() {
         return this.vpcId;
     }
@@ -62,29 +86,65 @@ public final class ReservedIpAssignmentVpcNat11Args extends com.pulumi.resources
             $ = new ReservedIpAssignmentVpcNat11Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address The reserved IPv4 address to assign to the Linode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address The reserved IPv4 address to assign to the Linode.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
 
+        /**
+         * @param subnetId The `id` of the VPC Subnet for this Interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnetId(Output<Integer> subnetId) {
             $.subnetId = subnetId;
             return this;
         }
 
+        /**
+         * @param subnetId The `id` of the VPC Subnet for this Interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subnetId(Integer subnetId) {
             return subnetId(Output.of(subnetId));
         }
 
+        /**
+         * @param vpcId The `id` of the VPC configured for this Interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Output<Integer> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
+        /**
+         * @param vpcId The `id` of the VPC configured for this Interface.
+         * 
+         * @return builder
+         * 
+         */
         public Builder vpcId(Integer vpcId) {
             return vpcId(Output.of(vpcId));
         }

@@ -20,7 +20,7 @@ public final class GetLkeClustersLkeCluster {
      */
     private Boolean aplEnabled;
     /**
-     * @return Defines settings for the Kubernetes Control Plane.
+     * @return (Nested Attribute) The cluster Control Plane configuration. Referenced directly (e.g. `lke_clusters[0].control_plane.high_availability`).
      * 
      */
     private GetLkeClustersLkeClusterControlPlane controlPlane;
@@ -94,7 +94,7 @@ public final class GetLkeClustersLkeCluster {
         return this.aplEnabled;
     }
     /**
-     * @return Defines settings for the Kubernetes Control Plane.
+     * @return (Nested Attribute) The cluster Control Plane configuration. Referenced directly (e.g. `lke_clusters[0].control_plane.high_availability`).
      * 
      */
     public GetLkeClustersLkeClusterControlPlane controlPlane() {

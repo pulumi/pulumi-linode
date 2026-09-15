@@ -111,7 +111,7 @@ def get_database_postgresql_config(opts: Optional[pulumi.InvokeOptions] = None) 
 
     The following arguments are supported in the `pglookout` specification block:
 
-    * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+    * `max_failover_replication_time_lag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
 
     ## max_failover_replication_time_lag
 
@@ -163,91 +163,91 @@ def get_database_postgresql_config(opts: Optional[pulumi.InvokeOptions] = None) 
 
     The following arguments are supported in the `pg` specification block:
 
-    * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+    * `autovacuum_analyze_scale_factor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
 
-    * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+    * `autovacuum_analyze_threshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
 
-    * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+    * `autovacuum_max_workers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
 
-    * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+    * `autovacuum_naptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
 
-    * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+    * `autovacuum_vacuum_cost_delay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
 
-    * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+    * `autovacuum_vacuum_cost_limit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
 
-    * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+    * `autovacuum_vacuum_scale_factor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
 
-    * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+    * `autovacuum_vacuum_threshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
 
-    * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+    * `bgwriter_delay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
 
-    * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+    * `bgwriter_flush_after` - (Read-Only Object) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
 
-    * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+    * `bgwriter_lru_maxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
 
-    * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+    * `bgwriter_lru_multiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
 
-    * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+    * `deadlock_timeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
 
-    * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+    * `default_toast_compression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
 
-    * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+    * `idle_in_transaction_session_timeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
 
-    * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+    * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
 
-    * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+    * `max_files_per_process` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
 
-    * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+    * `max_locks_per_transaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
 
-    * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+    * `max_logical_replication_workers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
 
-    * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+    * `max_parallel_workers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
 
-    * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+    * `max_parallel_workers_per_gather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
 
-    * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+    * `max_pred_locks_per_transaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
 
-    * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+    * `max_replication_slots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
 
-    * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+    * `max_slot_wal_keep_size` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
 
-    * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+    * `max_stack_depth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
 
-    * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+    * `max_standby_archive_delay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
 
-    * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+    * `max_standby_streaming_delay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
 
-    * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+    * `max_wal_senders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
 
-    * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+    * `max_worker_processes` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
 
-    * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+    * `password_encryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
 
-    * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks.
+    * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman's scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
 
-    * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled background tasks.
+    * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman's scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
 
-    * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+    * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
 
-    * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+    * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
 
-    * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+    * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
 
-    * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+    * `temp_file_limit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
 
-    * `timezone` - (Optional) PostgreSQL service timezone.
+    * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
 
-    * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+    * `track_activity_query_size` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
 
-    * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+    * `track_commit_timestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
 
-    * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+    * `track_functions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
 
-    * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+    * `track_io_timing` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
 
-    * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+    * `wal_sender_timeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
 
-    * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+    * `wal_writer_delay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
 
     ## autovacuum_analyze_scale_factor
 
@@ -903,7 +903,7 @@ def get_database_postgresql_config_output(opts: Optional[Union[pulumi.InvokeOpti
 
     The following arguments are supported in the `pglookout` specification block:
 
-    * `max_failover_replication_time_lag` - The maximum failover replication time lag for `pglookout`.
+    * `max_failover_replication_time_lag` - (Read-Only Object) The maximum failover replication time lag for `pglookout`. Referenced directly (e.g. `max_failover_replication_time_lag.description`).
 
     ## max_failover_replication_time_lag
 
@@ -955,91 +955,91 @@ def get_database_postgresql_config_output(opts: Optional[Union[pulumi.InvokeOpti
 
     The following arguments are supported in the `pg` specification block:
 
-    * `autovacuum_analyze_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size)
+    * `autovacuum_analyze_scale_factor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_analyze_scale_factor.description`).
 
-    * `autovacuum_analyze_threshold` - (Optional) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
+    * `autovacuum_analyze_threshold` - (Read-Only Object) Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_analyze_threshold.description`).
 
-    * `autovacuum_max_workers` - (Optional) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
+    * `autovacuum_max_workers` - (Read-Only Object) Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start. Referenced directly (e.g. `autovacuum_max_workers.description`).
 
-    * `autovacuum_naptime` - (Optional) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute
+    * `autovacuum_naptime` - (Read-Only Object) Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute Referenced directly (e.g. `autovacuum_naptime.description`).
 
-    * `autovacuum_vacuum_cost_delay` - (Optional) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds
+    * `autovacuum_vacuum_cost_delay` - (Read-Only Object) Specifies the cost delay value that will be used in automatic VACUUM operations. If -1 is specified, the regular vacuum_cost_delay value will be used. The default value is 20 milliseconds Referenced directly (e.g. `autovacuum_vacuum_cost_delay.description`).
 
-    * `autovacuum_vacuum_cost_limit` - (Optional) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+    * `autovacuum_vacuum_cost_limit` - (Read-Only Object) Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used. Referenced directly (e.g. `autovacuum_vacuum_cost_limit.description`).
 
-    * `autovacuum_vacuum_scale_factor` - (Optional) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size)
+    * `autovacuum_vacuum_scale_factor` - (Read-Only Object) Specifies a fraction of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size) Referenced directly (e.g. `autovacuum_vacuum_scale_factor.description`).
 
-    * `autovacuum_vacuum_threshold` - (Optional) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
+    * `autovacuum_vacuum_threshold` - (Read-Only Object) Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples. Referenced directly (e.g. `autovacuum_vacuum_threshold.description`).
 
-    * `bgwriter_delay` - (Optional) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+    * `bgwriter_delay` - (Read-Only Object) Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Referenced directly (e.g. `bgwriter_delay.description`).
 
-    * `bgwriter_flush_after` - (Optional) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+    * `bgwriter_flush_after` - (Read-Only Object) Whenever more than bgwriter_flush_after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Referenced directly (e.g. `bgwriter_flush_after.description`).
 
-    * `bgwriter_lru_maxpages` - (Optional) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+    * `bgwriter_lru_maxpages` - (Read-Only Object) In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Referenced directly (e.g. `bgwriter_lru_maxpages.description`).
 
-    * `bgwriter_lru_multiplier` - (Optional) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+    * `bgwriter_lru_multiplier` - (Read-Only Object) The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Referenced directly (e.g. `bgwriter_lru_multiplier.description`).
 
-    * `deadlock_timeout` - (Optional) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+    * `deadlock_timeout` - (Read-Only Object) This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Referenced directly (e.g. `deadlock_timeout.description`).
 
-    * `default_toast_compression` - (Optional) Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+    * `default_toast_compression` - (Read-Only Object) Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Referenced directly (e.g. `default_toast_compression.description`).
 
-    * `idle_in_transaction_session_timeout` - (Optional) Time out sessions with open transactions after this number of milliseconds.
+    * `idle_in_transaction_session_timeout` - (Read-Only Object) Time out sessions with open transactions after this number of milliseconds. Referenced directly (e.g. `idle_in_transaction_session_timeout.description`).
 
-    * `jit` - (Optional) Controls system-wide use of Just-in-Time Compilation (JIT).
+    * `jit` - (Read-Only Object) Controls system-wide use of Just-in-Time Compilation (JIT). Referenced directly (e.g. `jit.description`).
 
-    * `max_files_per_process` - (Optional) PostgreSQL maximum number of files that can be open per process.
+    * `max_files_per_process` - (Read-Only Object) PostgreSQL maximum number of files that can be open per process. Referenced directly (e.g. `max_files_per_process.description`).
 
-    * `max_locks_per_transaction` - (Optional) PostgreSQL maximum locks per transaction.
+    * `max_locks_per_transaction` - (Read-Only Object) PostgreSQL maximum locks per transaction. Referenced directly (e.g. `max_locks_per_transaction.description`).
 
-    * `max_logical_replication_workers` - (Optional) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
+    * `max_logical_replication_workers` - (Read-Only Object) PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers). Referenced directly (e.g. `max_logical_replication_workers.description`).
 
-    * `max_parallel_workers` - (Optional) Sets the maximum number of workers that the system can support for parallel queries.
+    * `max_parallel_workers` - (Read-Only Object) Sets the maximum number of workers that the system can support for parallel queries. Referenced directly (e.g. `max_parallel_workers.description`).
 
-    * `max_parallel_workers_per_gather` - (Optional) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
+    * `max_parallel_workers_per_gather` - (Read-Only Object) Sets the maximum number of workers that can be started by a single Gather or Gather Merge node. Referenced directly (e.g. `max_parallel_workers_per_gather.description`).
 
-    * `max_pred_locks_per_transaction` - (Optional) PostgreSQL maximum predicate locks per transaction.
+    * `max_pred_locks_per_transaction` - (Read-Only Object) PostgreSQL maximum predicate locks per transaction. Referenced directly (e.g. `max_pred_locks_per_transaction.description`).
 
-    * `max_replication_slots` - (Optional) PostgreSQL maximum replication slots.
+    * `max_replication_slots` - (Read-Only Object) PostgreSQL maximum replication slots. Referenced directly (e.g. `max_replication_slots.description`).
 
-    * `max_slot_wal_keep_size` - (Optional) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this.
+    * `max_slot_wal_keep_size` - (Read-Only Object) PostgreSQL maximum WAL size (MB) reserved for replication slots. Default is -1 (unlimited). wal_keep_size minimum WAL size setting takes precedence over this. Referenced directly (e.g. `max_slot_wal_keep_size.description`).
 
-    * `max_stack_depth` - (Optional) Maximum depth of the stack in bytes.
+    * `max_stack_depth` - (Read-Only Object) Maximum depth of the stack in bytes. Referenced directly (e.g. `max_stack_depth.description`).
 
-    * `max_standby_archive_delay` - (Optional) Max standby archive delay in milliseconds.
+    * `max_standby_archive_delay` - (Read-Only Object) Max standby archive delay in milliseconds. Referenced directly (e.g. `max_standby_archive_delay.description`).
 
-    * `max_standby_streaming_delay` - (Optional) Max standby streaming delay in milliseconds.
+    * `max_standby_streaming_delay` - (Read-Only Object) Max standby streaming delay in milliseconds. Referenced directly (e.g. `max_standby_streaming_delay.description`).
 
-    * `max_wal_senders` - (Optional) PostgreSQL maximum WAL senders.
+    * `max_wal_senders` - (Read-Only Object) PostgreSQL maximum WAL senders. Referenced directly (e.g. `max_wal_senders.description`).
 
-    * `max_worker_processes` - (Optional) Sets the maximum number of background processes that the system can support.
+    * `max_worker_processes` - (Read-Only Object) Sets the maximum number of background processes that the system can support. Referenced directly (e.g. `max_worker_processes.description`).
 
-    * `password_encryption` - (Optional) Chooses the algorithm for encrypting passwords.
+    * `password_encryption` - (Read-Only Object) Chooses the algorithm for encrypting passwords. Referenced directly (e.g. `password_encryption.description`).
 
-    * `pg_partman_bgw.interval` - (Optional) Sets the time interval to run pg_partman's scheduled tasks.
+    * `pg_partman_bgw.interval` - (Read-Only Object) Sets the time interval to run pg_partman's scheduled tasks. Referenced directly (e.g. `pg_partman_bgw.interval.description`).
 
-    * `pg_partman_bgw.role` - (Optional) Controls which role to use for pg_partman's scheduled background tasks.
+    * `pg_partman_bgw.role` - (Read-Only Object) Controls which role to use for pg_partman's scheduled background tasks. Referenced directly (e.g. `pg_partman_bgw.role.description`).
 
-    * `pg_stat_monitor.pgsm_enable_query_plan` - (Optional) Enables or disables query plan monitoring.
+    * `pg_stat_monitor.pgsm_enable_query_plan` - (Read-Only Object) Enables or disables query plan monitoring. Referenced directly (e.g. `pg_stat_monitor.pgsm_enable_query_plan.description`).
 
-    * `pg_stat_monitor.pgsm_max_buckets` - (Optional) Sets the maximum number of buckets.
+    * `pg_stat_monitor.pgsm_max_buckets` - (Read-Only Object) Sets the maximum number of buckets. Referenced directly (e.g. `pg_stat_monitor.pgsm_max_buckets.description`).
 
-    * `pg_stat_statements.track` - (Optional) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+    * `pg_stat_statements.track` - (Read-Only Object) Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top. Referenced directly (e.g. `pg_stat_statements.track.description`).
 
-    * `temp_file_limit` - (Optional) PostgreSQL temporary file limit in KiB, -1 for unlimited.
+    * `temp_file_limit` - (Read-Only Object) PostgreSQL temporary file limit in KiB, -1 for unlimited. Referenced directly (e.g. `temp_file_limit.description`).
 
-    * `timezone` - (Optional) PostgreSQL service timezone.
+    * `timezone` - (Read-Only Object) PostgreSQL service timezone. Referenced directly (e.g. `timezone.description`).
 
-    * `track_activity_query_size` - (Optional) Specifies the number of bytes reserved to track the currently executing command for each active session.
+    * `track_activity_query_size` - (Read-Only Object) Specifies the number of bytes reserved to track the currently executing command for each active session. Referenced directly (e.g. `track_activity_query_size.description`).
 
-    * `track_commit_timestamp` - (Optional) Record commit time of transactions.
+    * `track_commit_timestamp` - (Read-Only Object) Record commit time of transactions. Referenced directly (e.g. `track_commit_timestamp.description`).
 
-    * `track_functions` - (Optional) Enables tracking of function call counts and time used.
+    * `track_functions` - (Read-Only Object) Enables tracking of function call counts and time used. Referenced directly (e.g. `track_functions.description`).
 
-    * `track_io_timing` - (Optional) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+    * `track_io_timing` - (Read-Only Object) Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. Referenced directly (e.g. `track_io_timing.description`).
 
-    * `wal_sender_timeout` - (Optional) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+    * `wal_sender_timeout` - (Read-Only Object) Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Referenced directly (e.g. `wal_sender_timeout.description`).
 
-    * `wal_writer_delay` - (Optional) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+    * `wal_writer_delay` - (Read-Only Object) WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Referenced directly (e.g. `wal_writer_delay.description`).
 
     ## autovacuum_analyze_scale_factor
 

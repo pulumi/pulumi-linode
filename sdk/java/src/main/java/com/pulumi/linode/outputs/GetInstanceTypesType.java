@@ -21,7 +21,7 @@ public final class GetInstanceTypesType {
      */
     private Integer acceleratedDevices;
     /**
-     * @return Information about the optional Backup service offered for Linodes.
+     * @return (Read-Only Object List) Add-on information for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
      * 
      */
     private List<GetInstanceTypesTypeAddon> addons;
@@ -56,12 +56,12 @@ public final class GetInstanceTypesType {
      */
     private Integer networkOut;
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) The base cost for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     private List<GetInstanceTypesTypePrice> prices;
     /**
-     * @return A list of region-specific prices for this plan.
+     * @return (Read-Only Object List) Region-specific pricing for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
      * 
      */
     private List<GetInstanceTypesTypeRegionPrice> regionPrices;
@@ -85,7 +85,7 @@ public final class GetInstanceTypesType {
         return this.acceleratedDevices;
     }
     /**
-     * @return Information about the optional Backup service offered for Linodes.
+     * @return (Read-Only Object List) Add-on information for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
      * 
      */
     public List<GetInstanceTypesTypeAddon> addons() {
@@ -134,14 +134,14 @@ public final class GetInstanceTypesType {
         return this.networkOut;
     }
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) The base cost for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     public List<GetInstanceTypesTypePrice> prices() {
         return this.prices;
     }
     /**
-     * @return A list of region-specific prices for this plan.
+     * @return (Read-Only Object List) Region-specific pricing for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
      * 
      */
     public List<GetInstanceTypesTypeRegionPrice> regionPrices() {

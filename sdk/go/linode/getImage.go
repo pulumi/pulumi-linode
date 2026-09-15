@@ -70,7 +70,7 @@ type LookupImageResult struct {
 	Description string `pulumi:"description"`
 	Expiry      string `pulumi:"expiry"`
 	Id          string `pulumi:"id"`
-	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
 	ImageSharing GetImageImageSharing `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic bool `pulumi:"isPublic"`
@@ -78,7 +78,7 @@ type LookupImageResult struct {
 	IsShared bool `pulumi:"isShared"`
 	// A short description of the Image.
 	Label string `pulumi:"label"`
-	// A list of image replication regions and corresponding status.
+	// (Nested Attribute List) A list of image replication regions and corresponding status.
 	Replications []GetImageReplication `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB. example: 2500
 	Size int `pulumi:"size"`
@@ -156,7 +156,7 @@ func (o LookupImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
 func (o LookupImageResultOutput) ImageSharing() GetImageImageSharingOutput {
 	return o.ApplyT(func(v LookupImageResult) GetImageImageSharing { return v.ImageSharing }).(GetImageImageSharingOutput)
 }
@@ -176,7 +176,7 @@ func (o LookupImageResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// A list of image replication regions and corresponding status.
+// (Nested Attribute List) A list of image replication regions and corresponding status.
 func (o LookupImageResultOutput) Replications() GetImageReplicationArrayOutput {
 	return o.ApplyT(func(v LookupImageResult) []GetImageReplication { return v.Replications }).(GetImageReplicationArrayOutput)
 }

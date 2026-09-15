@@ -239,7 +239,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest StackScript will be returned. StackScripts without a valid `Created` field are not included in the result.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode StackScripts that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest StackScript will be returned. StackScripts without a valid `Created` field are not included in the result.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode StackScripts that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
@@ -310,6 +310,9 @@ namespace Pulumi.Linode
         public readonly bool? Latest;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of StackScripts. Referenced by index (e.g. `stackscripts[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetStackScriptsStackscriptResult> Stackscripts;
 
         [OutputConstructor]

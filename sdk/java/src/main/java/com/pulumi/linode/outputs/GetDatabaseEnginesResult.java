@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabaseEnginesResult {
+    /**
+     * @return (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
+     * 
+     */
     private List<GetDatabaseEnginesEngine> engines;
     private @Nullable List<GetDatabaseEnginesFilter> filters;
     /**
@@ -28,6 +32,10 @@ public final class GetDatabaseEnginesResult {
     private @Nullable String orderBy;
 
     private GetDatabaseEnginesResult() {}
+    /**
+     * @return (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
+     * 
+     */
     public List<GetDatabaseEnginesEngine> engines() {
         return this.engines;
     }

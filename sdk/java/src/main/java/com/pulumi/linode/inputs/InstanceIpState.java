@@ -20,14 +20,14 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceIpState Empty = new InstanceIpState();
 
     /**
-     * The resulting IPv4 address.
+     * The VPC IPv4 address this address is NATted with.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The resulting IPv4 address.
+     * @return The VPC IPv4 address this address is NATted with.
      * 
      */
     public Optional<Output<String>> address() {
@@ -170,14 +170,14 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     @Import(name="vpcNat11s")
     private @Nullable Output<List<InstanceIpVpcNat11Args>> vpcNat11s;
 
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     public Optional<Output<List<InstanceIpVpcNat11Args>>> vpcNat11s() {
@@ -219,7 +219,7 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The VPC IPv4 address this address is NATted with.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The VPC IPv4 address this address is NATted with.
          * 
          * @return builder
          * 
@@ -429,7 +429,7 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11s (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
          * 
          * @return builder
          * 
@@ -440,7 +440,7 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11s (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class InstanceIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11s (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
          * 
          * @return builder
          * 

@@ -108,14 +108,14 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      */
     public Output<String> protocol() {
@@ -299,7 +299,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param protocol The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+         * @param protocol The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class FirewallInboundArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param protocol The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+         * @param protocol The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
          * 
          * @return builder
          * 

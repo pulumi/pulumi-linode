@@ -43,11 +43,6 @@ public final class GetKernelResult {
      * 
      */
     private String version;
-    /**
-     * @return If this Kernel is suitable for Xen Linodes.
-     * 
-     */
-    private Boolean xen;
 
     private GetKernelResult() {}
     /**
@@ -98,13 +93,6 @@ public final class GetKernelResult {
     public String version() {
         return this.version;
     }
-    /**
-     * @return If this Kernel is suitable for Xen Linodes.
-     * 
-     */
-    public Boolean xen() {
-        return this.xen;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -123,7 +111,6 @@ public final class GetKernelResult {
         private String label;
         private Boolean pvops;
         private String version;
-        private Boolean xen;
         public Builder() {}
         public Builder(GetKernelResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -135,7 +122,6 @@ public final class GetKernelResult {
     	      this.label = defaults.label;
     	      this.pvops = defaults.pvops;
     	      this.version = defaults.version;
-    	      this.xen = defaults.xen;
         }
 
         @CustomType.Setter
@@ -202,14 +188,6 @@ public final class GetKernelResult {
             this.version = version;
             return this;
         }
-        @CustomType.Setter
-        public Builder xen(Boolean xen) {
-            if (xen == null) {
-              throw new MissingRequiredPropertyException("GetKernelResult", "xen");
-            }
-            this.xen = xen;
-            return this;
-        }
         public GetKernelResult build() {
             final var _resultValue = new GetKernelResult();
             _resultValue.architecture = architecture;
@@ -220,7 +198,6 @@ public final class GetKernelResult {
             _resultValue.label = label;
             _resultValue.pvops = pvops;
             _resultValue.version = version;
-            _resultValue.xen = xen;
             return _resultValue;
         }
     }

@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallDevice{}
 	case "linode:index/firewallSettings:FirewallSettings":
 		r = &FirewallSettings{}
+	case "linode:index/iamUser:IamUser":
+		r = &IamUser{}
 	case "linode:index/image:Image":
 		r = &Image{}
 	case "linode:index/instance:Instance":
@@ -63,6 +65,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LkeNodePool{}
 	case "linode:index/lock:Lock":
 		r = &Lock{}
+	case "linode:index/monitorAlertDefinition:MonitorAlertDefinition":
+		r = &MonitorAlertDefinition{}
+	case "linode:index/monitorLogsDestination:MonitorLogsDestination":
+		r = &MonitorLogsDestination{}
+	case "linode:index/monitorLogsStream:MonitorLogsStream":
+		r = &MonitorLogsStream{}
 	case "linode:index/networkingIp:NetworkingIp":
 		r = &NetworkingIp{}
 	case "linode:index/networkingIpAssignment:NetworkingIpAssignment":
@@ -89,6 +97,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ProducerImageShareGroupMember{}
 	case "linode:index/rdns:Rdns":
 		r = &Rdns{}
+	case "linode:index/reservedIp:ReservedIp":
+		r = &ReservedIp{}
 	case "linode:index/reservedIpAssignment:ReservedIpAssignment":
 		r = &ReservedIpAssignment{}
 	case "linode:index/sshKey:SshKey":
@@ -188,6 +198,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"linode",
+		"index/iamUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
 		"index/image",
 		&module{version},
 	)
@@ -239,6 +254,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/lock",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/monitorAlertDefinition",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/monitorLogsDestination",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/monitorLogsStream",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -304,6 +334,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"linode",
 		"index/rdns",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"linode",
+		"index/reservedIp",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

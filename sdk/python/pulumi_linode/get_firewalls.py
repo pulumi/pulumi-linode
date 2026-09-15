@@ -53,6 +53,9 @@ class GetFirewallsResult:
     @_builtins.property
     @pulumi.getter
     def firewalls(self) -> Sequence['outputs.GetFirewallsFirewallResult']:
+        """
+        (Nested Attribute List) The list of Linode Cloud Firewalls.
+        """
         return pulumi.get(self, "firewalls")
 
     @_builtins.property
@@ -127,7 +130,7 @@ def get_firewalls(filters: Optional[Sequence[Union['GetFirewallsFilterArgs', 'Ge
 
     * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
 
-    * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+    * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
 
     * `ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 
@@ -214,7 +217,7 @@ def get_firewalls_output(filters: pulumi.Input[Optional[Optional[Sequence[Union[
 
     * `action` - Controls whether traffic is accepted or dropped by this rule (ACCEPT, DROP).
 
-    * `protocol` - The network protocol this rule controls. (TCP, UDP, ICMP)
+    * `protocol` - The network protocol this rule controls. Possible values include `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
 
     * `ports` - A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
 

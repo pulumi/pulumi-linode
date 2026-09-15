@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class GetRegionsResult {
     private @Nullable List<GetRegionsFilter> filters;
     private String id;
+    /**
+     * @return (Nested Attribute List) The Regions returned by this data source.
+     * 
+     */
     private List<GetRegionsRegion> regions;
 
     private GetRegionsResult() {}
@@ -25,6 +29,10 @@ public final class GetRegionsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The Regions returned by this data source.
+     * 
+     */
     public List<GetRegionsRegion> regions() {
         return this.regions;
     }

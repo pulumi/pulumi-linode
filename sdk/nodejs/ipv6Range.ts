@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const foobar = new linode.Instance("foobar", {
  *     label: "my-linode",
- *     image: "linode/alpine3.19",
+ *     image: "linode/arch",
  *     type: "g6-nanode-1",
  *     region: "us-southeast",
  * });

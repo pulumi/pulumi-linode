@@ -114,6 +114,7 @@ type GetChildAccountsArgs struct {
 
 // A collection of values returned by getChildAccounts.
 type GetChildAccountsResult struct {
+	// (Nested Attribute List) A list of Child Accounts.
 	ChildAccounts []GetChildAccountsChildAccount `pulumi:"childAccounts"`
 	Filters       []GetChildAccountsFilter       `pulumi:"filters"`
 	Id            string                         `pulumi:"id"`
@@ -148,6 +149,7 @@ func (o GetChildAccountsResultOutput) ToGetChildAccountsResultOutputWithContext(
 	return o
 }
 
+// (Nested Attribute List) A list of Child Accounts.
 func (o GetChildAccountsResultOutput) ChildAccounts() GetChildAccountsChildAccountArrayOutput {
 	return o.ApplyT(func(v GetChildAccountsResult) []GetChildAccountsChildAccount { return v.ChildAccounts }).(GetChildAccountsChildAccountArrayOutput)
 }

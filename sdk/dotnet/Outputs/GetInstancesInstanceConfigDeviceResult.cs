@@ -14,9 +14,161 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigDeviceResult
     {
         /// <summary>
-        /// ... `Sdh` -  The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `DiskLabel` or `VolumeId`. Only one disk identifier is permitted per slot. Devices mapped from `Sde` through `Sdh` are unavailable in `"fullvirt"` `VirtMode`.
+        /// ... `Sdbl` - (Read-Only Object List) Device slots for attaching disks and volumes (named `Sda`-`Sdz`, `Sdaa`-`Sdaz`, `Sdba`-`Sdbl`). The maximum number of available devices is determined by the instance type's RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `DiskLabel` or `VolumeId`. Referenced with an index (e.g. `sda.0.disk_label`).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaResult> Sda;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaaResult> Sdaas;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdabResult> Sdabs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdacResult> Sdacs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdadResult> Sdads;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaeResult> Sdaes;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdafResult> Sdafs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdagResult> Sdags;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdahResult> Sdahs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaiResult> Sdais;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdajResult> Sdajs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdakResult> Sdaks;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdalResult> Sdals;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdamResult> Sdams;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdanResult> Sdans;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaoResult> Sdaos;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdapResult> Sdaps;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaqResult> Sdaqs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdarResult> Sdars;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaResult> Sdas;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdatResult> Sdats;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdausResult> Sdaus;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdavResult> Sdavs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdawResult> Sdaws;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaxisResult> Sdaxes;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdayResult> Sdays;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdazResult> Sdazs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbaResult> Sdbas;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbbResult> Sdbbs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbcResult> Sdbcs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbdResult> Sdbds;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbeResult> Sdbes;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbfResult> Sdbfs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbgResult> Sdbgs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbhResult> Sdbhs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbiResult> Sdbis;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbjResult> Sdbjs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbkResult> Sdbks;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdblResult> Sdbls;
         /// <summary>
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
@@ -45,10 +197,158 @@ namespace Pulumi.Linode.Outputs
         /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdhResult> Sdhs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdyResult> Sdies;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdiResult> Sdis;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdjResult> Sdjs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdkResult> Sdks;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdlResult> Sdls;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdmResult> Sdms;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdnResult> Sdns;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdoResult> Sdos;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdpResult> Sdps;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdqResult> Sdqs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdrResult> Sdrs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdResult> Sds;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdtResult> Sdts;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdusResult> Sdus;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdvResult> Sdvs;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdwResult> Sdws;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdxResult> Sdxes;
+        /// <summary>
+        /// Device can be either a Disk or Volume identified by DiskId or volume_id. Only one type per slot allowed.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdzResult> Sdzs;
 
         [OutputConstructor]
         private GetInstancesInstanceConfigDeviceResult(
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaResult> sda,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaaResult> sdaas,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdabResult> sdabs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdacResult> sdacs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdadResult> sdads,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaeResult> sdaes,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdafResult> sdafs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdagResult> sdags,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdahResult> sdahs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaiResult> sdais,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdajResult> sdajs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdakResult> sdaks,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdalResult> sdals,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdamResult> sdams,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdanResult> sdans,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaoResult> sdaos,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdapResult> sdaps,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaqResult> sdaqs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdarResult> sdars,
+
             ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaResult> sdas,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdatResult> sdats,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdausResult> sdaus,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdavResult> sdavs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdawResult> sdaws,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdaxisResult> sdaxes,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdayResult> sdays,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdazResult> sdazs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbaResult> sdbas,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbbResult> sdbbs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbcResult> sdbcs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbdResult> sdbds,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbeResult> sdbes,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbfResult> sdbfs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbgResult> sdbgs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbhResult> sdbhs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbiResult> sdbis,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbjResult> sdbjs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbkResult> sdbks,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdblResult> sdbls,
 
             ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdbResult> sdbs,
 
@@ -62,9 +362,83 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdgResult> sdgs,
 
-            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdhResult> sdhs)
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdhResult> sdhs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdyResult> sdies,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdiResult> sdis,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdjResult> sdjs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdkResult> sdks,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdlResult> sdls,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdmResult> sdms,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdnResult> sdns,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdoResult> sdos,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdpResult> sdps,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdqResult> sdqs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdrResult> sdrs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdResult> sds,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdtResult> sdts,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdusResult> sdus,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdvResult> sdvs,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdwResult> sdws,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdxResult> sdxes,
+
+            ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceSdzResult> sdzs)
         {
+            Sda = sda;
+            Sdaas = sdaas;
+            Sdabs = sdabs;
+            Sdacs = sdacs;
+            Sdads = sdads;
+            Sdaes = sdaes;
+            Sdafs = sdafs;
+            Sdags = sdags;
+            Sdahs = sdahs;
+            Sdais = sdais;
+            Sdajs = sdajs;
+            Sdaks = sdaks;
+            Sdals = sdals;
+            Sdams = sdams;
+            Sdans = sdans;
+            Sdaos = sdaos;
+            Sdaps = sdaps;
+            Sdaqs = sdaqs;
+            Sdars = sdars;
             Sdas = sdas;
+            Sdats = sdats;
+            Sdaus = sdaus;
+            Sdavs = sdavs;
+            Sdaws = sdaws;
+            Sdaxes = sdaxes;
+            Sdays = sdays;
+            Sdazs = sdazs;
+            Sdbas = sdbas;
+            Sdbbs = sdbbs;
+            Sdbcs = sdbcs;
+            Sdbds = sdbds;
+            Sdbes = sdbes;
+            Sdbfs = sdbfs;
+            Sdbgs = sdbgs;
+            Sdbhs = sdbhs;
+            Sdbis = sdbis;
+            Sdbjs = sdbjs;
+            Sdbks = sdbks;
+            Sdbls = sdbls;
             Sdbs = sdbs;
             Sdcs = sdcs;
             Sdds = sdds;
@@ -72,6 +446,24 @@ namespace Pulumi.Linode.Outputs
             Sdfs = sdfs;
             Sdgs = sdgs;
             Sdhs = sdhs;
+            Sdies = sdies;
+            Sdis = sdis;
+            Sdjs = sdjs;
+            Sdks = sdks;
+            Sdls = sdls;
+            Sdms = sdms;
+            Sdns = sdns;
+            Sdos = sdos;
+            Sdps = sdps;
+            Sdqs = sdqs;
+            Sdrs = sdrs;
+            Sds = sds;
+            Sdts = sdts;
+            Sdus = sdus;
+            Sdvs = sdvs;
+            Sdws = sdws;
+            Sdxes = sdxes;
+            Sdzs = sdzs;
         }
     }
 }

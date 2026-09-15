@@ -68,6 +68,9 @@ class GetVlansResult:
     @_builtins.property
     @pulumi.getter
     def vlans(self) -> Sequence['outputs.GetVlansVlanResult']:
+        """
+        (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+        """
         return pulumi.get(self, "vlans")
 
 

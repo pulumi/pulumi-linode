@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFirewallTemplatesResult {
     private @Nullable List<GetFirewallTemplatesFilter> filters;
+    /**
+     * @return (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
+     * 
+     */
     private List<GetFirewallTemplatesFirewallTemplate> firewallTemplates;
     private String id;
 
@@ -22,6 +26,10 @@ public final class GetFirewallTemplatesResult {
     public List<GetFirewallTemplatesFilter> filters() {
         return this.filters == null ? List.of() : this.filters;
     }
+    /**
+     * @return (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
+     * 
+     */
     public List<GetFirewallTemplatesFirewallTemplate> firewallTemplates() {
         return this.firewallTemplates;
     }

@@ -97,6 +97,7 @@ type GetDatabasesArgs struct {
 
 // A collection of values returned by getDatabases.
 type GetDatabasesResult struct {
+	// (Nested Attribute List) Managed Databases matching the query.
 	Databases []GetDatabasesDatabase `pulumi:"databases"`
 	Filters   []GetDatabasesFilter   `pulumi:"filters"`
 	// The ID of the Managed Database.
@@ -138,6 +139,7 @@ func (o GetDatabasesResultOutput) ToGetDatabasesResultOutputWithContext(ctx cont
 	return o
 }
 
+// (Nested Attribute List) Managed Databases matching the query.
 func (o GetDatabasesResultOutput) Databases() GetDatabasesDatabaseArrayOutput {
 	return o.ApplyT(func(v GetDatabasesResult) []GetDatabasesDatabase { return v.Databases }).(GetDatabasesDatabaseArrayOutput)
 }

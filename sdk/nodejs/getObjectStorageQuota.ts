@@ -53,6 +53,10 @@ export interface GetObjectStorageQuotaResult {
      */
     readonly endpointType: string;
     /**
+     * Whether usage data is available for the Object Storage quota.
+     */
+    readonly hasUsage: boolean;
+    /**
      * The unique ID of the Object Storage quota data source.
      */
     readonly id: string;
@@ -66,7 +70,11 @@ export interface GetObjectStorageQuotaResult {
      */
     readonly quotaName: string;
     /**
-     * The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
+     * The type of the Object Storage quota.
+     */
+    readonly quotaType: string;
+    /**
+     * (Read-Only Object) The usage data for a specific Object Storage related quota on your account. This value is `null` when `hasUsage` is `false`. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage). Referenced directly (e.g. `quota_usage.quota_limit`).
      */
     readonly quotaUsage: outputs.GetObjectStorageQuotaQuotaUsage;
     /**

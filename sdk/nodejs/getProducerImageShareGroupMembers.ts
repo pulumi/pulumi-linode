@@ -60,6 +60,9 @@ export function getProducerImageShareGroupMembers(args: GetProducerImageShareGro
  */
 export interface GetProducerImageShareGroupMembersArgs {
     filters?: inputs.GetProducerImageShareGroupMembersFilter[];
+    /**
+     * (Block List) The Image Share Group members returned by this data source.
+     */
     members?: inputs.GetProducerImageShareGroupMembersMember[];
     order?: string;
     orderBy?: string;
@@ -75,6 +78,9 @@ export interface GetProducerImageShareGroupMembersArgs {
 export interface GetProducerImageShareGroupMembersResult {
     readonly filters?: outputs.GetProducerImageShareGroupMembersFilter[];
     readonly id: string;
+    /**
+     * (Block List) The Image Share Group members returned by this data source.
+     */
     readonly members?: outputs.GetProducerImageShareGroupMembersMember[];
     readonly order?: string;
     readonly orderBy?: string;
@@ -134,6 +140,9 @@ export function getProducerImageShareGroupMembersOutput(args: GetProducerImageSh
  */
 export interface GetProducerImageShareGroupMembersOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupMembersFilterArgs>[] | undefined>;
+    /**
+     * (Block List) The Image Share Group members returned by this data source.
+     */
     members?: pulumi.Input<pulumi.Input<inputs.GetProducerImageShareGroupMembersMemberArgs>[] | undefined>;
     order?: pulumi.Input<string | undefined>;
     orderBy?: pulumi.Input<string | undefined>;

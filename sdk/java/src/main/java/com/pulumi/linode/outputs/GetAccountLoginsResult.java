@@ -20,6 +20,10 @@ public final class GetAccountLoginsResult {
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The list of Linode account logins.
+     * 
+     */
     private List<GetAccountLoginsLogin> logins;
 
     private GetAccountLoginsResult() {}
@@ -33,6 +37,10 @@ public final class GetAccountLoginsResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The list of Linode account logins.
+     * 
+     */
     public List<GetAccountLoginsLogin> logins() {
         return this.logins;
     }

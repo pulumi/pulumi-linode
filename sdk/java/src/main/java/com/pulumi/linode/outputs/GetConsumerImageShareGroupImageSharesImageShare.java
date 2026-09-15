@@ -40,7 +40,7 @@ public final class GetConsumerImageShareGroupImageSharesImageShare {
      */
     private String id;
     /**
-     * @return Details about image sharing, including who the image is shared with and by.
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     private GetConsumerImageShareGroupImageSharesImageShareImageSharing imageSharing;
@@ -117,7 +117,7 @@ public final class GetConsumerImageShareGroupImageSharesImageShare {
         return this.id;
     }
     /**
-     * @return Details about image sharing, including who the image is shared with and by.
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     public GetConsumerImageShareGroupImageSharesImageShareImageSharing imageSharing() {

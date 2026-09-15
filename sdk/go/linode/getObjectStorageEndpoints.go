@@ -101,6 +101,7 @@ type GetObjectStorageEndpointsArgs struct {
 
 // A collection of values returned by getObjectStorageEndpoints.
 type GetObjectStorageEndpointsResult struct {
+	// (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
 	Endpoints []GetObjectStorageEndpointsEndpoint `pulumi:"endpoints"`
 	Filters   []GetObjectStorageEndpointsFilter   `pulumi:"filters"`
 	Id        string                              `pulumi:"id"`
@@ -141,6 +142,7 @@ func (o GetObjectStorageEndpointsResultOutput) ToGetObjectStorageEndpointsResult
 	return o
 }
 
+// (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
 func (o GetObjectStorageEndpointsResultOutput) Endpoints() GetObjectStorageEndpointsEndpointArrayOutput {
 	return o.ApplyT(func(v GetObjectStorageEndpointsResult) []GetObjectStorageEndpointsEndpoint { return v.Endpoints }).(GetObjectStorageEndpointsEndpointArrayOutput)
 }

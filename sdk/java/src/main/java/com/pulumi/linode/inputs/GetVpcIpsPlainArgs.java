@@ -34,7 +34,7 @@ public final class GetVpcIpsPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The id of the parent VPC for the list of VPC IPs.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      * 
      */
     @Import(name="vpcId")
@@ -43,7 +43,7 @@ public final class GetVpcIpsPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The id of the parent VPC for the list of VPC IPs.
      * 
-     * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
      * 
      */
     public Optional<Integer> vpcId() {
@@ -93,7 +93,7 @@ public final class GetVpcIpsPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param vpcId The id of the parent VPC for the list of VPC IPs.
          * 
-         * * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
          * 
          * @return builder
          * 

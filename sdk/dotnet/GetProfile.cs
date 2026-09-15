@@ -110,7 +110,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string LishAuthMethod;
         /// <summary>
-        /// Credit Card information associated with this Account.
+        /// (Read-Only Object List) Credit Card information associated with this Account. Referenced with an index (e.g. `referrals.0.code`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProfileReferralResult> Referrals;
         /// <summary>

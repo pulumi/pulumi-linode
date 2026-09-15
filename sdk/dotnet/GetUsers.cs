@@ -239,6 +239,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]

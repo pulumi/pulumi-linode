@@ -75,6 +75,9 @@ export interface GetLkeClustersResult {
      * The LKE Cluster's ID.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The LKE Clusters matching the data source filters.
+     */
     readonly lkeClusters: outputs.GetLkeClustersLkeCluster[];
     readonly order?: string;
     readonly orderBy?: string;

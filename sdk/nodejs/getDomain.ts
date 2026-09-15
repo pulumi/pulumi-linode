@@ -68,10 +68,6 @@ export interface GetDomainResult {
      */
     readonly expireSec: number;
     /**
-     * The group this Domain belongs to.
-     */
-    readonly group: string;
-    /**
      * The unique ID of this Domain.
      */
     readonly id?: number;

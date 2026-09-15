@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcSubnetDatabase;
 import com.pulumi.linode.outputs.GetVpcSubnetIpv6;
 import com.pulumi.linode.outputs.GetVpcSubnetLinode;
+import com.pulumi.linode.outputs.GetVpcSubnetNodebalancer;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -21,12 +22,12 @@ public final class GetVpcSubnetResult {
      */
     private String created;
     /**
-     * @return A list of Managed databases assigned to the VPC Subnet.
+     * @return (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      * 
      */
     private List<GetVpcSubnetDatabase> databases;
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     private String id;
@@ -42,16 +43,26 @@ public final class GetVpcSubnetResult {
      */
     private String label;
     /**
-     * @return A list of Linodes added to this subnet.
+     * @return (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      * 
      */
     private List<GetVpcSubnetLinode> linodes;
+    /**
+     * @return (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     * 
+     */
+    private List<GetVpcSubnetNodebalancer> nodebalancers;
     /**
      * @return The date and time when the VPC Subnet was last updated.
      * 
      */
     private String updated;
     private Integer vpcId;
+    /**
+     * @return The type of the parent VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     * 
+     */
+    private String vpcType;
 
     private GetVpcSubnetResult() {}
     /**
@@ -62,14 +73,14 @@ public final class GetVpcSubnetResult {
         return this.created;
     }
     /**
-     * @return A list of Managed databases assigned to the VPC Subnet.
+     * @return (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      * 
      */
     public List<GetVpcSubnetDatabase> databases() {
         return this.databases;
     }
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public String id() {
@@ -93,11 +104,18 @@ public final class GetVpcSubnetResult {
         return this.label;
     }
     /**
-     * @return A list of Linodes added to this subnet.
+     * @return (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      * 
      */
     public List<GetVpcSubnetLinode> linodes() {
         return this.linodes;
+    }
+    /**
+     * @return (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     * 
+     */
+    public List<GetVpcSubnetNodebalancer> nodebalancers() {
+        return this.nodebalancers;
     }
     /**
      * @return The date and time when the VPC Subnet was last updated.
@@ -108,6 +126,13 @@ public final class GetVpcSubnetResult {
     }
     public Integer vpcId() {
         return this.vpcId;
+    }
+    /**
+     * @return The type of the parent VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     * 
+     */
+    public String vpcType() {
+        return this.vpcType;
     }
 
     public static Builder builder() {
@@ -126,8 +151,10 @@ public final class GetVpcSubnetResult {
         private List<GetVpcSubnetIpv6> ipv6s;
         private String label;
         private List<GetVpcSubnetLinode> linodes;
+        private List<GetVpcSubnetNodebalancer> nodebalancers;
         private String updated;
         private Integer vpcId;
+        private String vpcType;
         public Builder() {}
         public Builder(GetVpcSubnetResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -138,8 +165,10 @@ public final class GetVpcSubnetResult {
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
+    	      this.nodebalancers = defaults.nodebalancers;
     	      this.updated = defaults.updated;
     	      this.vpcId = defaults.vpcId;
+    	      this.vpcType = defaults.vpcType;
         }
 
         @CustomType.Setter
@@ -208,6 +237,17 @@ public final class GetVpcSubnetResult {
             return linodes(List.of(linodes));
         }
         @CustomType.Setter
+        public Builder nodebalancers(List<GetVpcSubnetNodebalancer> nodebalancers) {
+            if (nodebalancers == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "nodebalancers");
+            }
+            this.nodebalancers = nodebalancers;
+            return this;
+        }
+        public Builder nodebalancers(GetVpcSubnetNodebalancer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
+        }
+        @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
               throw new MissingRequiredPropertyException("GetVpcSubnetResult", "updated");
@@ -223,6 +263,14 @@ public final class GetVpcSubnetResult {
             this.vpcId = vpcId;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcType(String vpcType) {
+            if (vpcType == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetResult", "vpcType");
+            }
+            this.vpcType = vpcType;
+            return this;
+        }
         public GetVpcSubnetResult build() {
             final var _resultValue = new GetVpcSubnetResult();
             _resultValue.created = created;
@@ -232,8 +280,10 @@ public final class GetVpcSubnetResult {
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.linodes = linodes;
+            _resultValue.nodebalancers = nodebalancers;
             _resultValue.updated = updated;
             _resultValue.vpcId = vpcId;
+            _resultValue.vpcType = vpcType;
             return _resultValue;
         }
     }

@@ -102,7 +102,7 @@ type StackScript struct {
 	Script pulumi.StringOutput `pulumi:"script"`
 	// The date this StackScript was updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+	// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 	UserDefinedFields StackScriptUserDefinedFieldArrayOutput `pulumi:"userDefinedFields"`
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId pulumi.StringOutput `pulumi:"userGravatarId"`
@@ -174,7 +174,7 @@ type stackScriptState struct {
 	Script *string `pulumi:"script"`
 	// The date this StackScript was updated.
 	Updated *string `pulumi:"updated"`
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+	// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 	UserDefinedFields []StackScriptUserDefinedField `pulumi:"userDefinedFields"`
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId *string `pulumi:"userGravatarId"`
@@ -205,7 +205,7 @@ type StackScriptState struct {
 	Script pulumi.StringPtrInput
 	// The date this StackScript was updated.
 	Updated pulumi.StringPtrInput
-	// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+	// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 	UserDefinedFields StackScriptUserDefinedFieldArrayInput
 	// The Gravatar ID for the User who created the StackScript.
 	UserGravatarId pulumi.StringPtrInput
@@ -391,7 +391,7 @@ func (o StackScriptOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *StackScript) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
 }
 
-// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
 func (o StackScriptOutput) UserDefinedFields() StackScriptUserDefinedFieldArrayOutput {
 	return o.ApplyT(func(v *StackScript) StackScriptUserDefinedFieldArrayOutput { return v.UserDefinedFields }).(StackScriptUserDefinedFieldArrayOutput)
 }

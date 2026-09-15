@@ -9,6 +9,34 @@ import * as utilities from "./utilities";
 /**
  * Provides information about Linode LKE types that match a set of filters.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific_label = linode.getLkeTypes({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["LKE Standard Availability"],
+ *     }],
+ * });
+ * export const typeId = specific_label.then(specific_label => specific_label.types.map(__item => __item.id));
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all_types = linode.getLkeTypes({});
+ * export const typeId = all_types.then(all_types => all_types.types.map(__item => __item.id));
+ * ```
+ *
+ * ## Filterable Fields
+ *
+ * * `label`
+ *
+ * * `transfer`
  */
 export function getLkeTypes(args?: GetLkeTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetLkeTypesResult> {
     args = args || {};
@@ -46,11 +74,42 @@ export interface GetLkeTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
+     */
     readonly types: outputs.GetLkeTypesType[];
 }
 /**
  * Provides information about Linode LKE types that match a set of filters.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const specific_label = linode.getLkeTypes({
+ *     filters: [{
+ *         name: "label",
+ *         values: ["LKE Standard Availability"],
+ *     }],
+ * });
+ * export const typeId = specific_label.then(specific_label => specific_label.types.map(__item => __item.id));
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const all_types = linode.getLkeTypes({});
+ * export const typeId = all_types.then(all_types => all_types.types.map(__item => __item.id));
+ * ```
+ *
+ * ## Filterable Fields
+ *
+ * * `label`
+ *
+ * * `transfer`
  */
 export function getLkeTypesOutput(args?: GetLkeTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLkeTypesResult> {
     args = args || {};

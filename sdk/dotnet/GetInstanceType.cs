@@ -142,6 +142,9 @@ namespace Pulumi.Linode
         /// The number of VPUs this Linode Type offers.
         /// </summary>
         public readonly int AcceleratedDevices;
+        /// <summary>
+        /// (Read-Only Object List) Add-ons available for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypeAddonResult> Addons;
         /// <summary>
         /// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
@@ -167,7 +170,13 @@ namespace Pulumi.Linode
         /// The Mbits outbound bandwidth allocation.
         /// </summary>
         public readonly int NetworkOut;
+        /// <summary>
+        /// (Read-Only Object List) Pricing information for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypePriceResult> Prices;
+        /// <summary>
+        /// (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypeRegionPriceResult> RegionPrices;
         /// <summary>
         /// The monthly outbound transfer amount, in MB.

@@ -21,7 +21,7 @@ public final class LkeClusterControlPlaneAcl {
     /**
      * @return Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      * 
-     * * `addresses` - (Optional) A list of ip addresses to allow.
+     * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
      * 
      */
     private @Nullable Boolean enabled;
@@ -37,7 +37,7 @@ public final class LkeClusterControlPlaneAcl {
     /**
      * @return Defines default policy. A value of true results in a default policy of DENY. A value of false results in default policy of ALLOW, and has the same effect as delete the ACL configuration.
      * 
-     * * `addresses` - (Optional) A list of ip addresses to allow.
+     * * `addresses` - (Optional, Block List) A list of ip addresses to allow.
      * 
      */
     public Optional<Boolean> enabled() {

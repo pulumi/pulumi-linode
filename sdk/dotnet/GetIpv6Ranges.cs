@@ -204,6 +204,9 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetIpv6RangesFilterResult> Filters;
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) A list of Linode IPv6 ranges.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetIpv6RangesRangeResult> Ranges;
 
         [OutputConstructor]

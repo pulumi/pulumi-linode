@@ -49,9 +49,16 @@ export interface GetNetworkingIpResult {
      */
     readonly address: string;
     /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     */
+    readonly assignedEntity: outputs.GetNetworkingIpAssignedEntity;
+    /**
      * The default gateway for this address.
      */
     readonly gateway: string;
+    /**
+     * The ID of the entity.
+     */
     readonly id: string;
     /**
      * The ID of the interface this address is assigned to.
@@ -86,11 +93,15 @@ export interface GetNetworkingIpResult {
      */
     readonly subnetMask: string;
     /**
-     * The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     * A set of tags associated with this IP address.
+     */
+    readonly tags: string[];
+    /**
+     * The type of the entity.
      */
     readonly type: string;
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      */
     readonly vpcNat11: outputs.GetNetworkingIpVpcNat11;
 }

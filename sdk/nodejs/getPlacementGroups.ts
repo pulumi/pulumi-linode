@@ -74,6 +74,9 @@ export interface GetPlacementGroupsResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The Placement Groups returned by this data source.
+     */
     readonly placementGroups: outputs.GetPlacementGroupsPlacementGroup[];
 }
 /**

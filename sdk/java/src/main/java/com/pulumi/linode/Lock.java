@@ -15,13 +15,11 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Early Access** Locks are in Early Access and may not be available to all users.
- * 
  * &gt; **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
  * 
  * Manages a Linode Lock which prevents accidental deletion and modification of resources. Locks protect against deletion, rebuild operations, and service transfers. The `cannotDeleteWithSubresources` lock type also protects subresources such as disks, configs, interfaces, and IP addresses.
  * 
- * For more information, see the Linode APIv4 docs (TBD).
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-resource-lock).
  * 
  * &gt; **Note** Only one lock can exist per resource at a time. You cannot have both `cannotDelete` and `cannotDeleteWithSubresources` locks on the same resource simultaneously.
  * 
@@ -148,14 +146,14 @@ public class Lock extends com.pulumi.resources.CustomResource {
         return this.entityLabel;
     }
     /**
-     * The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+     * The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
      * 
      */
     @Export(name="entityType", refs={String.class}, tree="[0]")
     private Output<String> entityType;
 
     /**
-     * @return The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+     * @return The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
      * 
      */
     public Output<String> entityType() {

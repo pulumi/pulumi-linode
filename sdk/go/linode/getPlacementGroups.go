@@ -87,10 +87,11 @@ type GetPlacementGroupsArgs struct {
 
 // A collection of values returned by getPlacementGroups.
 type GetPlacementGroupsResult struct {
-	Filters         []GetPlacementGroupsFilter         `pulumi:"filters"`
-	Id              string                             `pulumi:"id"`
-	Order           *string                            `pulumi:"order"`
-	OrderBy         *string                            `pulumi:"orderBy"`
+	Filters []GetPlacementGroupsFilter `pulumi:"filters"`
+	Id      string                     `pulumi:"id"`
+	Order   *string                    `pulumi:"order"`
+	OrderBy *string                    `pulumi:"orderBy"`
+	// (Nested Attribute List) The Placement Groups returned by this data source.
 	PlacementGroups []GetPlacementGroupsPlacementGroup `pulumi:"placementGroups"`
 }
 
@@ -141,6 +142,7 @@ func (o GetPlacementGroupsResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetPlacementGroupsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The Placement Groups returned by this data source.
 func (o GetPlacementGroupsResultOutput) PlacementGroups() GetPlacementGroupsPlacementGroupArrayOutput {
 	return o.ApplyT(func(v GetPlacementGroupsResult) []GetPlacementGroupsPlacementGroup { return v.PlacementGroups }).(GetPlacementGroupsPlacementGroupArrayOutput)
 }

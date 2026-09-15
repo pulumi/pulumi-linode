@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
- *             .image("linode/alpine3.19")
+ *             .image("linode/arch")
  *             .region("ca-east")
  *             .type("g6-dedicated-2")
  *             .build());

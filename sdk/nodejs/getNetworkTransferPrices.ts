@@ -46,6 +46,9 @@ export interface GetNetworkTransferPricesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The Network Transfer Prices returned by this data source.
+     */
     readonly types: outputs.GetNetworkTransferPricesType[];
 }
 /**

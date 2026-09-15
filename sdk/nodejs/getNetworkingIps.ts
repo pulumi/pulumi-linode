@@ -81,7 +81,13 @@ export interface GetNetworkingIpsArgs {
  */
 export interface GetNetworkingIpsResult {
     readonly filters?: outputs.GetNetworkingIpsFilter[];
+    /**
+     * The ID of the entity.
+     */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The list of IP addresses.
+     */
     readonly ipAddresses: outputs.GetNetworkingIpsIpAddress[];
     readonly order?: string;
     readonly orderBy?: string;

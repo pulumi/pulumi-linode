@@ -26,6 +26,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool Disabled;
         /// <summary>
+        /// The fingerprint of the current Firewall rules.
+        /// </summary>
+        public readonly string Fingerprint;
+        /// <summary>
         /// The unique ID assigned to this Firewall.
         /// </summary>
         public readonly int Id;
@@ -73,6 +77,10 @@ namespace Pulumi.Linode.Outputs
         /// When this firewall was last updated.
         /// </summary>
         public readonly string Updated;
+        /// <summary>
+        /// The current version of the Firewall rules.
+        /// </summary>
+        public readonly int Version;
 
         [OutputConstructor]
         private GetFirewallsFirewallResult(
@@ -81,6 +89,8 @@ namespace Pulumi.Linode.Outputs
             ImmutableArray<Outputs.GetFirewallsFirewallDeviceResult> devices,
 
             bool disabled,
+
+            string fingerprint,
 
             int id,
 
@@ -104,11 +114,14 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<string> tags,
 
-            string updated)
+            string updated,
+
+            int version)
         {
             Created = created;
             Devices = devices;
             Disabled = disabled;
+            Fingerprint = fingerprint;
             Id = id;
             InboundPolicy = inboundPolicy;
             Inbounds = inbounds;
@@ -121,6 +134,7 @@ namespace Pulumi.Linode.Outputs
             Status = status;
             Tags = tags;
             Updated = updated;
+            Version = version;
         }
     }
 }

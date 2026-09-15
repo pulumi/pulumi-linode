@@ -17,10 +17,14 @@ import javax.annotation.Nullable;
 public final class GetNodebalancersResult {
     private @Nullable List<GetNodebalancersFilter> filters;
     /**
-     * @return The Linode NodeBalancer&#39;s unique ID
+     * @return The ID of the related LKE cluster.
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
+     * 
+     */
     private List<GetNodebalancersNodebalancer> nodebalancers;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -30,12 +34,16 @@ public final class GetNodebalancersResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The Linode NodeBalancer&#39;s unique ID
+     * @return The ID of the related LKE cluster.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
+     * 
+     */
     public List<GetNodebalancersNodebalancer> nodebalancers() {
         return this.nodebalancers;
     }

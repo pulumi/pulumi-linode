@@ -18,7 +18,7 @@ public final class GetProducerImageShareGroupImageSharesImageShareImageSharingSh
     /**
      * The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     @Import(name="sharegroupId", required=true)
@@ -27,7 +27,7 @@ public final class GetProducerImageShareGroupImageSharesImageShareImageSharingSh
     /**
      * @return The ID of the Image Share Group to list shared Images from.
      * 
-     * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
      * 
      */
     public Output<Integer> sharegroupId() {
@@ -109,7 +109,7 @@ public final class GetProducerImageShareGroupImageSharesImageShareImageSharingSh
         /**
          * @param sharegroupId The ID of the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class GetProducerImageShareGroupImageSharesImageShareImageSharingSh
         /**
          * @param sharegroupId The ID of the Image Share Group to list shared Images from.
          * 
-         * * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
          * 
          * @return builder
          * 

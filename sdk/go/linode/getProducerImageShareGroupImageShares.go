@@ -75,13 +75,14 @@ func GetProducerImageShareGroupImageShares(ctx *pulumi.Context, args *GetProduce
 
 // A collection of arguments for invoking getProducerImageShareGroupImageShares.
 type GetProducerImageShareGroupImageSharesArgs struct {
-	Filters     []GetProducerImageShareGroupImageSharesFilter     `pulumi:"filters"`
+	Filters []GetProducerImageShareGroupImageSharesFilter `pulumi:"filters"`
+	// (Block List) The Image Shares returned by this data source.
 	ImageShares []GetProducerImageShareGroupImageSharesImageShare `pulumi:"imageShares"`
 	Order       *string                                           `pulumi:"order"`
 	OrderBy     *string                                           `pulumi:"orderBy"`
 	// The ID of the Image Share Group to list shared Images from.
 	//
-	// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
 	SharegroupId int `pulumi:"sharegroupId"`
 }
 
@@ -89,7 +90,8 @@ type GetProducerImageShareGroupImageSharesArgs struct {
 type GetProducerImageShareGroupImageSharesResult struct {
 	Filters []GetProducerImageShareGroupImageSharesFilter `pulumi:"filters"`
 	// The unique ID assigned to this Image Share.
-	Id          string                                            `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Block List) The Image Shares returned by this data source.
 	ImageShares []GetProducerImageShareGroupImageSharesImageShare `pulumi:"imageShares"`
 	Order       *string                                           `pulumi:"order"`
 	OrderBy     *string                                           `pulumi:"orderBy"`
@@ -104,13 +106,14 @@ func GetProducerImageShareGroupImageSharesOutput(ctx *pulumi.Context, args GetPr
 
 // A collection of arguments for invoking getProducerImageShareGroupImageShares.
 type GetProducerImageShareGroupImageSharesOutputArgs struct {
-	Filters     GetProducerImageShareGroupImageSharesFilterArrayInput     `pulumi:"filters"`
+	Filters GetProducerImageShareGroupImageSharesFilterArrayInput `pulumi:"filters"`
+	// (Block List) The Image Shares returned by this data source.
 	ImageShares GetProducerImageShareGroupImageSharesImageShareArrayInput `pulumi:"imageShares"`
 	Order       pulumi.StringPtrInput                                     `pulumi:"order"`
 	OrderBy     pulumi.StringPtrInput                                     `pulumi:"orderBy"`
 	// The ID of the Image Share Group to list shared Images from.
 	//
-	// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
 	SharegroupId pulumi.IntInput `pulumi:"sharegroupId"`
 }
 
@@ -144,6 +147,7 @@ func (o GetProducerImageShareGroupImageSharesResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Block List) The Image Shares returned by this data source.
 func (o GetProducerImageShareGroupImageSharesResultOutput) ImageShares() GetProducerImageShareGroupImageSharesImageShareArrayOutput {
 	return o.ApplyT(func(v GetProducerImageShareGroupImageSharesResult) []GetProducerImageShareGroupImageSharesImageShare {
 		return v.ImageShares

@@ -144,6 +144,8 @@ type Volume struct {
 	Encryption pulumi.StringOutput `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath pulumi.StringOutput `pulumi:"filesystemPath"`
+	// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+	IoReady pulumi.BoolOutput `pulumi:"ioReady"`
 	// The label of the Linode Volume
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
@@ -200,6 +202,8 @@ type volumeState struct {
 	Encryption *string `pulumi:"encryption"`
 	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath *string `pulumi:"filesystemPath"`
+	// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+	IoReady *bool `pulumi:"ioReady"`
 	// The label of the Linode Volume
 	Label *string `pulumi:"label"`
 	// The ID of a Linode Instance where the Volume should be attached.
@@ -224,6 +228,8 @@ type VolumeState struct {
 	Encryption pulumi.StringPtrInput
 	// The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 	FilesystemPath pulumi.StringPtrInput
+	// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+	IoReady pulumi.BoolPtrInput
 	// The label of the Linode Volume
 	Label pulumi.StringPtrInput
 	// The ID of a Linode Instance where the Volume should be attached.
@@ -383,6 +389,11 @@ func (o VolumeOutput) Encryption() pulumi.StringOutput {
 // The full filesystem path for the Volume based on the Volume's label. The path is "/dev/disk/by-id/scsi-0Linode_Volume_" + the Volume label
 func (o VolumeOutput) FilesystemPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.FilesystemPath }).(pulumi.StringOutput)
+}
+
+// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+func (o VolumeOutput) IoReady() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.IoReady }).(pulumi.BoolOutput)
 }
 
 // The label of the Linode Volume

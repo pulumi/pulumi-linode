@@ -51,7 +51,7 @@ import (
 type FirewallSettings struct {
 	pulumi.CustomResourceState
 
-	// A map of default firewall IDs for various interfaces.
+	// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 	DefaultFirewallIds FirewallSettingsDefaultFirewallIdsPtrOutput `pulumi:"defaultFirewallIds"`
 }
 
@@ -85,12 +85,12 @@ func GetFirewallSettings(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallSettings resources.
 type firewallSettingsState struct {
-	// A map of default firewall IDs for various interfaces.
+	// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 	DefaultFirewallIds *FirewallSettingsDefaultFirewallIds `pulumi:"defaultFirewallIds"`
 }
 
 type FirewallSettingsState struct {
-	// A map of default firewall IDs for various interfaces.
+	// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 	DefaultFirewallIds FirewallSettingsDefaultFirewallIdsPtrInput
 }
 
@@ -99,13 +99,13 @@ func (FirewallSettingsState) ElementType() reflect.Type {
 }
 
 type firewallSettingsArgs struct {
-	// A map of default firewall IDs for various interfaces.
+	// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 	DefaultFirewallIds *FirewallSettingsDefaultFirewallIds `pulumi:"defaultFirewallIds"`
 }
 
 // The set of arguments for constructing a FirewallSettings resource.
 type FirewallSettingsArgs struct {
-	// A map of default firewall IDs for various interfaces.
+	// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 	DefaultFirewallIds FirewallSettingsDefaultFirewallIdsPtrInput
 }
 
@@ -196,7 +196,7 @@ func (o FirewallSettingsOutput) ToFirewallSettingsOutputWithContext(ctx context.
 	return o
 }
 
-// A map of default firewall IDs for various interfaces.
+// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 func (o FirewallSettingsOutput) DefaultFirewallIds() FirewallSettingsDefaultFirewallIdsPtrOutput {
 	return o.ApplyT(func(v *FirewallSettings) FirewallSettingsDefaultFirewallIdsPtrOutput { return v.DefaultFirewallIds }).(FirewallSettingsDefaultFirewallIdsPtrOutput)
 }

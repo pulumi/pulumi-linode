@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLkeClusterPool {
     /**
-     * @return The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+     * @return (Nested Attribute List) The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      * 
      */
     private List<GetLkeClusterPoolAutoscaler> autoscalers;
@@ -35,7 +35,7 @@ public final class GetLkeClusterPool {
      */
     private String diskEncryption;
     /**
-     * @return This Node Pool’s custom disk layout.
+     * @return (Nested Attribute List) This Node Pool’s custom disk layout.
      * 
      */
     private List<GetLkeClusterPoolDisk> disks;
@@ -65,7 +65,7 @@ public final class GetLkeClusterPool {
      */
     private Map<String,String> labels;
     /**
-     * @return The nodes in the Node Pool.
+     * @return (Nested Attribute List) The nodes in the Node Pool.
      * 
      */
     private List<GetLkeClusterPoolNode> nodes;
@@ -75,12 +75,12 @@ public final class GetLkeClusterPool {
      */
     private List<String> tags;
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * @return (Read-Only Object Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private List<GetLkeClusterPoolTaint> taints;
     /**
-     * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+     * @return This custom disk partition’s filesystem type.
      * 
      */
     private String type;
@@ -92,7 +92,7 @@ public final class GetLkeClusterPool {
 
     private GetLkeClusterPool() {}
     /**
-     * @return The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+     * @return (Nested Attribute List) The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
      * 
      */
     public List<GetLkeClusterPoolAutoscaler> autoscalers() {
@@ -113,7 +113,7 @@ public final class GetLkeClusterPool {
         return this.diskEncryption;
     }
     /**
-     * @return This Node Pool’s custom disk layout.
+     * @return (Nested Attribute List) This Node Pool’s custom disk layout.
      * 
      */
     public List<GetLkeClusterPoolDisk> disks() {
@@ -155,7 +155,7 @@ public final class GetLkeClusterPool {
         return this.labels;
     }
     /**
-     * @return The nodes in the Node Pool.
+     * @return (Nested Attribute List) The nodes in the Node Pool.
      * 
      */
     public List<GetLkeClusterPoolNode> nodes() {
@@ -169,14 +169,14 @@ public final class GetLkeClusterPool {
         return this.tags;
     }
     /**
-     * @return Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+     * @return (Read-Only Object Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<GetLkeClusterPoolTaint> taints() {
         return this.taints;
     }
     /**
-     * @return The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+     * @return This custom disk partition’s filesystem type.
      * 
      */
     public String type() {

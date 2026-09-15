@@ -27,10 +27,13 @@ class GetNetworkingIpResult:
     """
     A collection of values returned by getNetworkingIp.
     """
-    def __init__(__self__, address=None, gateway=None, id=None, interface_id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, type=None, vpc_nat11=None):
+    def __init__(__self__, address=None, assigned_entity=None, gateway=None, id=None, interface_id=None, linode_id=None, prefix=None, public=None, rdns=None, region=None, reserved=None, subnet_mask=None, tags=None, type=None, vpc_nat11=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
+        if assigned_entity and not isinstance(assigned_entity, dict):
+            raise TypeError("Expected argument 'assigned_entity' to be a dict")
+        pulumi.set(__self__, "assigned_entity", assigned_entity)
         if gateway and not isinstance(gateway, str):
             raise TypeError("Expected argument 'gateway' to be a str")
         pulumi.set(__self__, "gateway", gateway)
@@ -61,6 +64,9 @@ class GetNetworkingIpResult:
         if subnet_mask and not isinstance(subnet_mask, str):
             raise TypeError("Expected argument 'subnet_mask' to be a str")
         pulumi.set(__self__, "subnet_mask", subnet_mask)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -77,6 +83,14 @@ class GetNetworkingIpResult:
         return pulumi.get(self, "address")
 
     @_builtins.property
+    @pulumi.getter(name="assignedEntity")
+    def assigned_entity(self) -> 'outputs.GetNetworkingIpAssignedEntityResult':
+        """
+        (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        """
+        return pulumi.get(self, "assigned_entity")
+
+    @_builtins.property
     @pulumi.getter
     def gateway(self) -> _builtins.str:
         """
@@ -87,6 +101,9 @@ class GetNetworkingIpResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the entity.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -155,9 +172,17 @@ class GetNetworkingIpResult:
 
     @_builtins.property
     @pulumi.getter
+    def tags(self) -> Sequence[_builtins.str]:
+        """
+        A set of tags associated with this IP address.
+        """
+        return pulumi.get(self, "tags")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        The type of the entity.
         """
         return pulumi.get(self, "type")
 
@@ -165,7 +190,7 @@ class GetNetworkingIpResult:
     @pulumi.getter(name="vpcNat11")
     def vpc_nat11(self) -> 'outputs.GetNetworkingIpVpcNat11Result':
         """
-        Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         """
         return pulumi.get(self, "vpc_nat11")
 
@@ -177,6 +202,7 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
             yield self
         return GetNetworkingIpResult(
             address=self.address,
+            assigned_entity=self.assigned_entity,
             gateway=self.gateway,
             id=self.id,
             interface_id=self.interface_id,
@@ -187,6 +213,7 @@ class AwaitableGetNetworkingIpResult(GetNetworkingIpResult):
             region=self.region,
             reserved=self.reserved,
             subnet_mask=self.subnet_mask,
+            tags=self.tags,
             type=self.type,
             vpc_nat11=self.vpc_nat11)
 
@@ -218,6 +245,7 @@ def get_networking_ip(address: Optional[_builtins.str] = None,
 
     return AwaitableGetNetworkingIpResult(
         address=pulumi.get(__ret__, 'address'),
+        assigned_entity=pulumi.get(__ret__, 'assigned_entity'),
         gateway=pulumi.get(__ret__, 'gateway'),
         id=pulumi.get(__ret__, 'id'),
         interface_id=pulumi.get(__ret__, 'interface_id'),
@@ -228,6 +256,7 @@ def get_networking_ip(address: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         reserved=pulumi.get(__ret__, 'reserved'),
         subnet_mask=pulumi.get(__ret__, 'subnet_mask'),
+        tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         vpc_nat11=pulumi.get(__ret__, 'vpc_nat11'))
 def get_networking_ip_output(address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -256,6 +285,7 @@ def get_networking_ip_output(address: pulumi.Input[Optional[_builtins.str]] = No
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNetworkingIp:getNetworkingIp', __args__, opts=opts, typ=GetNetworkingIpResult)
     return __ret__.apply(lambda __response__: GetNetworkingIpResult(
         address=pulumi.get(__response__, 'address'),
+        assigned_entity=pulumi.get(__response__, 'assigned_entity'),
         gateway=pulumi.get(__response__, 'gateway'),
         id=pulumi.get(__response__, 'id'),
         interface_id=pulumi.get(__response__, 'interface_id'),
@@ -266,5 +296,6 @@ def get_networking_ip_output(address: pulumi.Input[Optional[_builtins.str]] = No
         region=pulumi.get(__response__, 'region'),
         reserved=pulumi.get(__response__, 'reserved'),
         subnet_mask=pulumi.get(__response__, 'subnet_mask'),
+        tags=pulumi.get(__response__, 'tags'),
         type=pulumi.get(__response__, 'type'),
         vpc_nat11=pulumi.get(__response__, 'vpc_nat11')))

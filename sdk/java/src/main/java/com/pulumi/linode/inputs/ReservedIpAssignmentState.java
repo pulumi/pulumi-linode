@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.ReservedIpAssignmentAssignedEntityArgs;
 import com.pulumi.linode.inputs.ReservedIpAssignmentVpcNat11Args;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -20,14 +21,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     public static final ReservedIpAssignmentState Empty = new ReservedIpAssignmentState();
 
     /**
-     * The resulting IPv4 address.
+     * The reserved IPv4 address to assign to the Linode.
      * 
      */
     @Import(name="address")
     private @Nullable Output<String> address;
 
     /**
-     * @return The resulting IPv4 address.
+     * @return The reserved IPv4 address to assign to the Linode.
      * 
      */
     public Optional<Output<String>> address() {
@@ -35,14 +36,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      * 
      */
     @Import(name="applyImmediately")
     private @Nullable Output<Boolean> applyImmediately;
 
     /**
-     * @return If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+     * @return If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> applyImmediately() {
@@ -50,14 +51,29 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The default gateway for this address
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    @Import(name="assignedEntity")
+    private @Nullable Output<ReservedIpAssignmentAssignedEntityArgs> assignedEntity;
+
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public Optional<Output<ReservedIpAssignmentAssignedEntityArgs>> assignedEntity() {
+        return Optional.ofNullable(this.assignedEntity);
+    }
+
+    /**
+     * The default gateway for this address.
      * 
      */
     @Import(name="gateway")
     private @Nullable Output<String> gateway;
 
     /**
-     * @return The default gateway for this address
+     * @return The default gateway for this address.
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -65,14 +81,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The ID of the Linode to allocate an IPv4 address for.
+     * The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      * 
      */
     @Import(name="linodeId")
     private @Nullable Output<Integer> linodeId;
 
     /**
-     * @return The ID of the Linode to allocate an IPv4 address for.
+     * @return The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
      * 
      */
     public Optional<Output<Integer>> linodeId() {
@@ -95,14 +111,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether the IPv4 address is public or private.
+     * Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
      * 
      */
     @Import(name="public")
     private @Nullable Output<Boolean> public_;
 
     /**
-     * @return Whether the IPv4 address is public or private.
+     * @return Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
      * 
      */
     public Optional<Output<Boolean>> public_() {
@@ -110,14 +126,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The reverse DNS assigned to this address.
+     * The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      * 
      */
     @Import(name="rdns")
     private @Nullable Output<String> rdns;
 
     /**
-     * @return The reverse DNS assigned to this address.
+     * @return The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
      * 
      */
     public Optional<Output<String>> rdns() {
@@ -140,14 +156,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The reservation status of the IP address
+     * The reservation status of the IP address.
      * 
      */
     @Import(name="reserved")
     private @Nullable Output<Boolean> reserved;
 
     /**
-     * @return The reservation status of the IP address
+     * @return The reservation status of the IP address.
      * 
      */
     public Optional<Output<Boolean>> reserved() {
@@ -170,14 +186,29 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The type of IP address.
+     * A set of tags associated with this IP address.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The type of the entity.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of IP address.
+     * @return The type of the entity.
      * 
      */
     public Optional<Output<String>> type() {
@@ -185,14 +216,14 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     @Import(name="vpcNat11s")
     private @Nullable Output<List<ReservedIpAssignmentVpcNat11Args>> vpcNat11s;
 
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
      * 
      */
     public Optional<Output<List<ReservedIpAssignmentVpcNat11Args>>> vpcNat11s() {
@@ -204,6 +235,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
     private ReservedIpAssignmentState(ReservedIpAssignmentState $) {
         this.address = $.address;
         this.applyImmediately = $.applyImmediately;
+        this.assignedEntity = $.assignedEntity;
         this.gateway = $.gateway;
         this.linodeId = $.linodeId;
         this.prefix = $.prefix;
@@ -212,6 +244,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         this.region = $.region;
         this.reserved = $.reserved;
         this.subnetMask = $.subnetMask;
+        this.tags = $.tags;
         this.type = $.type;
         this.vpcNat11s = $.vpcNat11s;
     }
@@ -235,7 +268,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The reserved IPv4 address to assign to the Linode.
          * 
          * @return builder
          * 
@@ -246,7 +279,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param address The resulting IPv4 address.
+         * @param address The reserved IPv4 address to assign to the Linode.
          * 
          * @return builder
          * 
@@ -256,7 +289,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -267,7 +300,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. This functionality is not affected by the `skipImplicitReboots` provider argument.
+         * @param applyImmediately If true, the instance will be rebooted to update network interfaces. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -277,7 +310,28 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param gateway The default gateway for this address
+         * @param assignedEntity (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assignedEntity(@Nullable Output<ReservedIpAssignmentAssignedEntityArgs> assignedEntity) {
+            $.assignedEntity = assignedEntity;
+            return this;
+        }
+
+        /**
+         * @param assignedEntity (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assignedEntity(ReservedIpAssignmentAssignedEntityArgs assignedEntity) {
+            return assignedEntity(Output.of(assignedEntity));
+        }
+
+        /**
+         * @param gateway The default gateway for this address.
          * 
          * @return builder
          * 
@@ -288,7 +342,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param gateway The default gateway for this address
+         * @param gateway The default gateway for this address.
          * 
          * @return builder
          * 
@@ -298,7 +352,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param linodeId The ID of the Linode to allocate an IPv4 address for.
+         * @param linodeId The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -309,7 +363,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param linodeId The ID of the Linode to allocate an IPv4 address for.
+         * @param linodeId The ID of the Linode to assign the reserved IP to. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -340,7 +394,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param public_ Whether the IPv4 address is public or private.
+         * @param public_ Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -351,7 +405,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param public_ Whether the IPv4 address is public or private.
+         * @param public_ Whether the IP address is public. Defaults to `true`. This must match the reserved IP&#39;s existing public/private status. Changing this forces creation of a new resource.
          * 
          * @return builder
          * 
@@ -361,7 +415,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rdns The reverse DNS assigned to this address.
+         * @param rdns The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
          * 
          * @return builder
          * 
@@ -372,7 +426,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param rdns The reverse DNS assigned to this address.
+         * @param rdns The reverse DNS assigned to this address. Configured via a separate API call after the IP is assigned.
          * 
          * @return builder
          * 
@@ -403,7 +457,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param reserved The reservation status of the IP address
+         * @param reserved The reservation status of the IP address.
          * 
          * @return builder
          * 
@@ -414,7 +468,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param reserved The reservation status of the IP address
+         * @param reserved The reservation status of the IP address.
          * 
          * @return builder
          * 
@@ -445,7 +499,38 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of IP address.
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+
+        /**
+         * @param type The type of the entity.
          * 
          * @return builder
          * 
@@ -456,7 +541,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type The type of IP address.
+         * @param type The type of the entity.
          * 
          * @return builder
          * 
@@ -466,7 +551,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11s (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
          * 
          * @return builder
          * 
@@ -477,7 +562,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11s (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
          * 
          * @return builder
          * 
@@ -487,7 +572,7 @@ public final class ReservedIpAssignmentState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param vpcNat11s Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11s (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
          * 
          * @return builder
          * 

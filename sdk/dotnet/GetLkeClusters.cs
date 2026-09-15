@@ -243,6 +243,9 @@ namespace Pulumi.Linode
         /// The LKE Cluster's ID.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The LKE Clusters matching the data source filters.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClustersLkeClusterResult> LkeClusters;
         public readonly string? Order;
         public readonly string? OrderBy;

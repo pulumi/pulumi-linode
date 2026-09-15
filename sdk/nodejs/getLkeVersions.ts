@@ -69,6 +69,9 @@ export interface GetLkeVersionsResult {
      * The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
      */
     readonly tier?: string;
+    /**
+     * (Nested Attribute List) The Linode LKE Versions returned by this data source.
+     */
     readonly versions: outputs.GetLkeVersionsVersion[];
 }
 /**

@@ -84,12 +84,6 @@ namespace Pulumi.Linode
         public Output<int?> ExpireSec { get; private set; } = null!;
 
         /// <summary>
-        /// The group this Domain belongs to. This is for display purposes only.
-        /// </summary>
-        [Output("group")]
-        public Output<string?> Group { get; private set; } = null!;
-
-        /// <summary>
         /// The IP addresses representing the master DNS for this Domain.
         /// 
         /// - - -
@@ -215,12 +209,6 @@ namespace Pulumi.Linode
         [Input("expireSec")]
         public Input<int>? ExpireSec { get; set; }
 
-        /// <summary>
-        /// The group this Domain belongs to. This is for display purposes only.
-        /// </summary>
-        [Input("group")]
-        public Input<string>? Group { get; set; }
-
         [Input("masterIps")]
         private InputList<string>? _masterIps;
 
@@ -320,12 +308,6 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("expireSec")]
         public Input<int>? ExpireSec { get; set; }
-
-        /// <summary>
-        /// The group this Domain belongs to. This is for display purposes only.
-        /// </summary>
-        [Input("group")]
-        public Input<string>? Group { get; set; }
 
         [Input("masterIps")]
         private InputList<string>? _masterIps;

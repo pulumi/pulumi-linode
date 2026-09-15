@@ -34,14 +34,14 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="assignedAddresses")
     private @Nullable Output<List<InterfacePublicIpv4AssignedAddressArgs>> assignedAddresses;
 
     /**
-     * @return (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfacePublicIpv4AssignedAddressArgs>>> assignedAddresses() {
@@ -49,14 +49,14 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="shareds")
     private @Nullable Output<List<InterfacePublicIpv4SharedArgs>> shareds;
 
     /**
-     * @return (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfacePublicIpv4SharedArgs>>> shareds() {
@@ -121,7 +121,7 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param assignedAddresses (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+         * @param assignedAddresses (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param assignedAddresses (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+         * @param assignedAddresses (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param assignedAddresses (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports:
+         * @param assignedAddresses (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `addresses` input. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param shareds (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+         * @param shareds (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param shareds (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+         * @param shareds (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class InterfacePublicIpv4Args extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param shareds (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+         * @param shareds (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

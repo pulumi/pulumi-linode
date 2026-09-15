@@ -49,7 +49,7 @@ export interface GetLkeNodePoolArgs {
  */
 export interface GetLkeNodePoolResult {
     /**
-     * When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+     * (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
      */
     readonly autoscaler: outputs.GetLkeNodePoolAutoscaler;
     readonly clusterId: number;
@@ -58,7 +58,7 @@ export interface GetLkeNodePoolResult {
      */
     readonly diskEncryption: string;
     /**
-     * This node pool's custom disk layout.
+     * (Nested Attribute List) This node pool's custom disk layout.
      */
     readonly disks: outputs.GetLkeNodePoolDisk[];
     /**
@@ -69,6 +69,14 @@ export interface GetLkeNodePoolResult {
      * The Node's ID.
      */
     readonly id: number;
+    /**
+     * Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     */
+    readonly isolationPublicIpv4: boolean;
+    /**
+     * Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     */
+    readonly isolationPublicIpv6: boolean;
     /**
      * The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
      */
@@ -86,7 +94,7 @@ export interface GetLkeNodePoolResult {
      */
     readonly nodeCount: number;
     /**
-     * Status information for the nodes that are members of this node pool.
+     * (Nested Attribute List) Status information for the nodes that are members of this node pool.
      */
     readonly nodes: outputs.GetLkeNodePoolNode[];
     /**
@@ -94,7 +102,7 @@ export interface GetLkeNodePoolResult {
      */
     readonly tags: string[];
     /**
-     * Kubernetes taints to add to node pool nodes.
+     * (Nested Attribute List) Kubernetes taints to add to node pool nodes.
      */
     readonly taints: outputs.GetLkeNodePoolTaint[];
     /**

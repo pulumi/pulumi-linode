@@ -18,6 +18,9 @@ namespace Pulumi.Linode.Outputs
         /// Whether this is a public or private IP address.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4PublicResult> Publics;
+        /// <summary>
+        /// Whether this IP address is a reserved IP.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4ReservedResult> Reserveds;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4SharedResult> Shareds;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4VpcResult> Vpcs;

@@ -113,7 +113,7 @@ public class ProducerImageShareGroup extends com.pulumi.resources.CustomResource
     /**
      * The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
@@ -122,7 +122,7 @@ public class ProducerImageShareGroup extends com.pulumi.resources.CustomResource
     /**
      * @return The description of the Image Share Group
      * 
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      * 
      */
     public Output<Optional<String>> description() {

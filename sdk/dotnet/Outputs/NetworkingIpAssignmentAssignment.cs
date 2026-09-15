@@ -18,18 +18,39 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
+        /// (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        public readonly Outputs.NetworkingIpAssignmentAssignmentAssignedEntity? AssignedEntity;
+        /// <summary>
         /// The ID of the Linode to which the IP address will be assigned.
         /// </summary>
         public readonly int LinodeId;
+        /// <summary>
+        /// Whether this IP address is a reserved IP.
+        /// </summary>
+        public readonly bool? Reserved;
+        /// <summary>
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
 
         [OutputConstructor]
         private NetworkingIpAssignmentAssignment(
             string address,
 
-            int linodeId)
+            Outputs.NetworkingIpAssignmentAssignmentAssignedEntity? assignedEntity,
+
+            int linodeId,
+
+            bool? reserved,
+
+            ImmutableArray<string> tags)
         {
             Address = address;
+            AssignedEntity = assignedEntity;
             LinodeId = linodeId;
+            Reserved = reserved;
+            Tags = tags;
         }
     }
 }

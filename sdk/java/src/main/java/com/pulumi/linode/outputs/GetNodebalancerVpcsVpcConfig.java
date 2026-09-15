@@ -22,9 +22,14 @@ public final class GetNodebalancerVpcsVpcConfig {
      */
     private String ipv4Range;
     /**
+     * @return A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    private String ipv6Range;
+    /**
      * @return The ID of the NodeBalancer to list VPC configurations for.
      * 
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      * 
      */
     private Integer nodebalancerId;
@@ -55,9 +60,16 @@ public final class GetNodebalancerVpcsVpcConfig {
         return this.ipv4Range;
     }
     /**
+     * @return A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    public String ipv6Range() {
+        return this.ipv6Range;
+    }
+    /**
      * @return The ID of the NodeBalancer to list VPC configurations for.
      * 
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      * 
      */
     public Integer nodebalancerId() {
@@ -89,6 +101,7 @@ public final class GetNodebalancerVpcsVpcConfig {
     public static final class Builder {
         private Integer id;
         private String ipv4Range;
+        private String ipv6Range;
         private Integer nodebalancerId;
         private Integer subnetId;
         private Integer vpcId;
@@ -97,6 +110,7 @@ public final class GetNodebalancerVpcsVpcConfig {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.ipv4Range = defaults.ipv4Range;
+    	      this.ipv6Range = defaults.ipv6Range;
     	      this.nodebalancerId = defaults.nodebalancerId;
     	      this.subnetId = defaults.subnetId;
     	      this.vpcId = defaults.vpcId;
@@ -116,6 +130,14 @@ public final class GetNodebalancerVpcsVpcConfig {
               throw new MissingRequiredPropertyException("GetNodebalancerVpcsVpcConfig", "ipv4Range");
             }
             this.ipv4Range = ipv4Range;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Range(String ipv6Range) {
+            if (ipv6Range == null) {
+              throw new MissingRequiredPropertyException("GetNodebalancerVpcsVpcConfig", "ipv6Range");
+            }
+            this.ipv6Range = ipv6Range;
             return this;
         }
         @CustomType.Setter
@@ -146,6 +168,7 @@ public final class GetNodebalancerVpcsVpcConfig {
             final var _resultValue = new GetNodebalancerVpcsVpcConfig();
             _resultValue.id = id;
             _resultValue.ipv4Range = ipv4Range;
+            _resultValue.ipv6Range = ipv6Range;
             _resultValue.nodebalancerId = nodebalancerId;
             _resultValue.subnetId = subnetId;
             _resultValue.vpcId = vpcId;

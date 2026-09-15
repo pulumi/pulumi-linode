@@ -30,7 +30,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNodeBalancerFirewallInboundResult> Inbounds;
         /// <summary>
-        /// Used to identify this rule. For display purposes only.
+        /// The label of the related LKE cluster.
         /// </summary>
         public readonly string Label;
         /// <summary>

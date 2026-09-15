@@ -10,6 +10,7 @@ import com.pulumi.linode.inputs.InstanceAlertsArgs;
 import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
 import com.pulumi.linode.inputs.InstanceInterfaceArgs;
+import com.pulumi.linode.inputs.InstanceLinodeInterfaceArgs;
 import com.pulumi.linode.inputs.InstanceMetadataArgs;
 import com.pulumi.linode.inputs.InstancePlacementGroupArgs;
 import java.lang.Boolean;
@@ -27,14 +28,34 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * Configuration options for alert triggers on this Linode.
+     * The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     * 
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
      * 
      */
     @Import(name="alerts")
     private @Nullable Output<InstanceAlertsArgs> alerts;
 
     /**
-     * @return Configuration options for alert triggers on this Linode.
+     * @return The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     * 
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * 
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * 
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
      * 
      */
     public Optional<Output<InstanceAlertsArgs>> alerts() {
@@ -42,14 +63,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     @Import(name="authorizedKeys")
     private @Nullable Output<List<String>> authorizedKeys;
 
     /**
-     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+     * @return A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     public Optional<Output<List<String>>> authorizedKeys() {
@@ -57,14 +78,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     @Import(name="authorizedUsers")
     private @Nullable Output<List<String>> authorizedUsers;
 
     /**
-     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+     * @return A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     public Optional<Output<List<String>>> authorizedUsers() {
@@ -117,6 +138,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance&#39;s plan.
+     * 
+     */
+    @Import(name="bootSize")
+    private @Nullable Output<Integer> bootSize;
+
+    /**
+     * @return The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance&#39;s plan.
+     * 
+     */
+    public Optional<Output<Integer>> bootSize() {
+        return Optional.ofNullable(this.bootSize);
+    }
+
+    /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
      * 
      */
@@ -157,16 +193,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
      * 
-     * * **NOTE: Disk encryption may not currently be available to all users.**
-     * 
      */
     @Import(name="diskEncryption")
     private @Nullable Output<String> diskEncryption;
 
     /**
      * @return The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
-     * 
-     * * **NOTE: Disk encryption may not currently be available to all users.**
      * 
      */
     public Optional<Output<String>> diskEncryption() {
@@ -205,29 +237,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> firewallId() {
         return Optional.ofNullable(this.firewallId);
-    }
-
-    /**
-     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     * 
-     * @deprecated
-     * Group label is deprecated. We recommend using tags instead.
-     * 
-     */
-    @Deprecated /* Group label is deprecated. We recommend using tags instead. */
-    @Import(name="group")
-    private @Nullable Output<String> group;
-
-    /**
-     * @return A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     * 
-     * @deprecated
-     * Group label is deprecated. We recommend using tags instead.
-     * 
-     */
-    @Deprecated /* Group label is deprecated. We recommend using tags instead. */
-    public Optional<Output<String>> group() {
-        return Optional.ofNullable(this.group);
     }
 
     /**
@@ -299,6 +308,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     * 
+     */
+    @Import(name="kernel")
+    private @Nullable Output<String> kernel;
+
+    /**
+     * @return The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     * 
+     */
+    public Optional<Output<String>> kernel() {
+        return Optional.ofNullable(this.kernel);
+    }
+
+    /**
      * The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      * 
      */
@@ -311,6 +335,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
+    }
+
+    /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    @Import(name="linodeInterfaces")
+    private @Nullable Output<List<InstanceLinodeInterfaceArgs>> linodeInterfaces;
+
+    /**
+     * @return An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    public Optional<Output<List<InstanceLinodeInterfaceArgs>>> linodeInterfaces() {
+        return Optional.ofNullable(this.linodeInterfaces);
     }
 
     /**
@@ -329,14 +368,18 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Various fields related to the Linode Metadata service.
+     * Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     @Import(name="metadatas")
     private @Nullable Output<List<InstanceMetadataArgs>> metadatas;
 
     /**
-     * @return Various fields related to the Linode Metadata service.
+     * @return Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     * 
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      * 
      */
     public Optional<Output<List<InstanceMetadataArgs>>> metadatas() {
@@ -363,6 +406,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+     * 
      */
     @Import(name="networkHelper")
     private @Nullable Output<Boolean> networkHelper;
@@ -372,20 +417,26 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+     * 
      */
     public Optional<Output<Boolean>> networkHelper() {
         return Optional.ofNullable(this.networkHelper);
     }
 
     /**
-     * Information about the Placement Group this Linode is assigned to.
+     * Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      * 
      */
     @Import(name="placementGroup")
     private @Nullable Output<InstancePlacementGroupArgs> placementGroup;
 
     /**
-     * @return Information about the Placement Group this Linode is assigned to.
+     * @return Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     * 
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      * 
      */
     public Optional<Output<InstancePlacementGroupArgs>> placementGroup() {
@@ -440,16 +491,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-     * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-     * 
      */
     @Import(name="resizeDisk")
     private @Nullable Output<Boolean> resizeDisk;
@@ -457,30 +498,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-     * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-     * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-     * 
      */
     public Optional<Output<Boolean>> resizeDisk() {
         return Optional.ofNullable(this.resizeDisk);
     }
 
     /**
-     * The password that will be initially assigned to the &#39;root&#39; user account.
+     * The password that will be initially assigned to the &#39;root&#39; user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     @Import(name="rootPass")
     private @Nullable Output<String> rootPass;
 
     /**
-     * @return The password that will be initially assigned to the &#39;root&#39; user account.
+     * @return The password that will be initially assigned to the &#39;root&#39; user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      * 
      */
     public Optional<Output<String>> rootPass() {
@@ -490,10 +521,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     * 
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-     * 
      */
     @Import(name="sharedIpv4s")
     private @Nullable Output<List<String>> sharedIpv4s;
@@ -501,24 +528,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
      * 
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     * 
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-     * 
      */
     public Optional<Output<List<String>>> sharedIpv4s() {
         return Optional.ofNullable(this.sharedIpv4s);
     }
 
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Optional<Output<Map<String,String>>> stackscriptData() {
@@ -526,14 +549,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Import(name="stackscriptId")
     private @Nullable Output<Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Optional<Output<Integer>> stackscriptId() {
@@ -613,17 +636,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.backupId = $.backupId;
         this.backupsEnabled = $.backupsEnabled;
         this.bootConfigLabel = $.bootConfigLabel;
+        this.bootSize = $.bootSize;
         this.booted = $.booted;
         this.configs = $.configs;
         this.diskEncryption = $.diskEncryption;
         this.disks = $.disks;
         this.firewallId = $.firewallId;
-        this.group = $.group;
         this.image = $.image;
         this.interfaceGeneration = $.interfaceGeneration;
         this.interfaces = $.interfaces;
         this.ipv4s = $.ipv4s;
+        this.kernel = $.kernel;
         this.label = $.label;
+        this.linodeInterfaces = $.linodeInterfaces;
         this.maintenancePolicy = $.maintenancePolicy;
         this.metadatas = $.metadatas;
         this.migrationType = $.migrationType;
@@ -662,7 +687,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alerts Configuration options for alert triggers on this Linode.
+         * @param alerts The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+         * 
+         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+         * 
+         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
          * 
          * @return builder
          * 
@@ -673,7 +708,17 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param alerts Configuration options for alert triggers on this Linode.
+         * @param alerts The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+         * 
+         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+         * 
+         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+         * 
+         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
          * 
          * @return builder
          * 
@@ -683,7 +728,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -694,7 +739,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -704,7 +749,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedKeys A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -714,7 +759,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -725,7 +770,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -735,7 +780,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. Only accepted if &#39;image&#39; is provided.
+         * @param authorizedUsers A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user&#39;s `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -808,6 +853,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bootSize The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance&#39;s plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootSize(@Nullable Output<Integer> bootSize) {
+            $.bootSize = bootSize;
+            return this;
+        }
+
+        /**
+         * @param bootSize The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance&#39;s plan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bootSize(Integer bootSize) {
+            return bootSize(Output.of(bootSize));
+        }
+
+        /**
          * @param booted If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode&#39;s power status will not be managed by the Provider.
          * 
          * @return builder
@@ -874,8 +940,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param diskEncryption The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
          * 
-         * * **NOTE: Disk encryption may not currently be available to all users.**
-         * 
          * @return builder
          * 
          */
@@ -886,8 +950,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param diskEncryption The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
-         * 
-         * * **NOTE: Disk encryption may not currently be available to all users.**
          * 
          * @return builder
          * 
@@ -952,35 +1014,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder firewallId(Integer firewallId) {
             return firewallId(Output.of(firewallId));
-        }
-
-        /**
-         * @param group A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Group label is deprecated. We recommend using tags instead.
-         * 
-         */
-        @Deprecated /* Group label is deprecated. We recommend using tags instead. */
-        public Builder group(@Nullable Output<String> group) {
-            $.group = group;
-            return this;
-        }
-
-        /**
-         * @param group A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Group label is deprecated. We recommend using tags instead.
-         * 
-         */
-        @Deprecated /* Group label is deprecated. We recommend using tags instead. */
-        public Builder group(String group) {
-            return group(Output.of(group));
         }
 
         /**
@@ -1098,6 +1131,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param kernel The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernel(@Nullable Output<String> kernel) {
+            $.kernel = kernel;
+            return this;
+        }
+
+        /**
+         * @param kernel The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kernel(String kernel) {
+            return kernel(Output.of(kernel));
+        }
+
+        /**
          * @param label The Linode&#39;s label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
          * 
          * @return builder
@@ -1116,6 +1170,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder label(String label) {
             return label(Output.of(label));
+        }
+
+        /**
+         * @param linodeInterfaces An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linodeInterfaces(@Nullable Output<List<InstanceLinodeInterfaceArgs>> linodeInterfaces) {
+            $.linodeInterfaces = linodeInterfaces;
+            return this;
+        }
+
+        /**
+         * @param linodeInterfaces An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linodeInterfaces(List<InstanceLinodeInterfaceArgs> linodeInterfaces) {
+            return linodeInterfaces(Output.of(linodeInterfaces));
+        }
+
+        /**
+         * @param linodeInterfaces An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linodeInterfaces(InstanceLinodeInterfaceArgs... linodeInterfaces) {
+            return linodeInterfaces(List.of(linodeInterfaces));
         }
 
         /**
@@ -1140,7 +1225,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadatas Various fields related to the Linode Metadata service.
+         * @param metadatas Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+         * 
+         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
          * @return builder
          * 
@@ -1151,7 +1238,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadatas Various fields related to the Linode Metadata service.
+         * @param metadatas Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+         * 
+         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
          * @return builder
          * 
@@ -1161,7 +1250,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadatas Various fields related to the Linode Metadata service.
+         * @param metadatas Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+         * 
+         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
          * 
          * @return builder
          * 
@@ -1196,6 +1287,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
          * 
+         * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+         * 
          * @return builder
          * 
          */
@@ -1209,6 +1302,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * 
          * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
          * 
+         * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+         * 
          * @return builder
          * 
          */
@@ -1217,7 +1312,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementGroup Information about the Placement Group this Linode is assigned to.
+         * @param placementGroup Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+         * 
+         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
          * 
          * @return builder
          * 
@@ -1228,7 +1325,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param placementGroup Information about the Placement Group this Linode is assigned to.
+         * @param placementGroup Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+         * 
+         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
          * 
          * @return builder
          * 
@@ -1303,16 +1402,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resizeDisk If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
          * 
-         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-         * 
-         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-         * 
          * @return builder
          * 
          */
@@ -1324,16 +1413,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param resizeDisk If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
          * 
-         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
-         * 
-         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
-         * 
-         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
-         * 
          * @return builder
          * 
          */
@@ -1342,7 +1421,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The password that will be initially assigned to the &#39;root&#39; user account.
+         * @param rootPass The password that will be initially assigned to the &#39;root&#39; user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -1353,7 +1432,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rootPass The password that will be initially assigned to the &#39;root&#39; user account.
+         * @param rootPass The password that will be initially assigned to the &#39;root&#39; user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
          * 
          * @return builder
          * 
@@ -1364,10 +1443,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-         * 
-         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-         * 
-         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
          * 
          * @return builder
          * 
@@ -1380,10 +1455,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
-         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-         * 
-         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-         * 
          * @return builder
          * 
          */
@@ -1394,10 +1465,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sharedIpv4s A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
          * 
-         * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-         * 
-         * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
-         * 
          * @return builder
          * 
          */
@@ -1406,7 +1473,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 
@@ -1417,7 +1484,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 
@@ -1427,7 +1494,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 
@@ -1438,7 +1505,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 

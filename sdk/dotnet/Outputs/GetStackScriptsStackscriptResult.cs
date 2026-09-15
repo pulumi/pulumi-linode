@@ -58,7 +58,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Updated;
         /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        /// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetStackScriptsStackscriptUserDefinedFieldResult> UserDefinedFields;
         /// <summary>

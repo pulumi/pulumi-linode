@@ -61,6 +61,9 @@ class GetProducerImageShareGroupMembersResult:
     @_builtins.property
     @pulumi.getter
     def members(self) -> Optional[Sequence['outputs.GetProducerImageShareGroupMembersMemberResult']]:
+        """
+        (Block List) The Image Share Group members returned by this data source.
+        """
         return pulumi.get(self, "members")
 
     @_builtins.property
@@ -130,6 +133,7 @@ def get_producer_image_share_group_members(filters: Optional[Sequence[Union['Get
     * `status`
 
 
+    :param Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']] members: (Block List) The Image Share Group members returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group for which to list members.
     """
     __args__ = dict()
@@ -185,6 +189,7 @@ def get_producer_image_share_group_members_output(filters: pulumi.Input[Optional
     * `status`
 
 
+    :param Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']] members: (Block List) The Image Share Group members returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group for which to list members.
     """
     __args__ = dict()

@@ -77,6 +77,36 @@ import (
 //	}
 //
 // ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
+//			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
+//				Label:  pulumi.String("test-vpc"),
+//				Region: pulumi.String("us-iad"),
+//				Ipv4s: linode.VpcIpv4Array{
+//					&linode.VpcIpv4Args{
+//						Range: pulumi.String("10.0.0.0/8"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## IPv6
 //
@@ -89,23 +119,89 @@ import (
 // * `allocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
 //
 // * `allocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+//
+// ## IPv4
+//
+// > **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+//
+// Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
+//
+// * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+//
+// ## Subnets
+//
+// The following attributes are exported under each entry of the `subnets` field:
+//
+// * `id` - The id of the VPC Subnet.
+//
+// * `label` - The label of the VPC Subnet.
+//
+// * `ipv4` - The IPv4 range of this subnet in CIDR format.
+//
+// * `ipv6` - The IPv6 ranges of this subnet.
+//
+//   - `range` - An IPv6 range allocated to this subnet.
+//
+// * `linodes` - A list of Linodes assigned to this subnet.
+//
+//   - `id` - ID of the Linode
+//
+//   - `interfaces` - A list of networking interfaces objects.
+//
+//   - `id` - ID of the interface.
+//
+//   - `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+//
+//   - `active` - Whether the Interface is actively in use.
+//
+// * `databases` - A list of Managed Databases assigned to this subnet.
+//
+//   - `id` - ID of a managed database assigned to the VPC Subnet.
+//
+//   - `ipv4Range` - IPv4 range assigned to the database.
+//
+//   - `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+//
+//   - `range` - An IPv6 address range in CIDR notation.
+//
+// * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+//
+//   - `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+//
+//   - `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+//
+//   - `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+//
+//   - `range` - An IPv6 address range in CIDR notation.
+//
+// * `created` - The date and time when the VPC Subnet was created.
+//
+// * `updated` - The date and time when the VPC Subnet was last updated.
 type Vpc struct {
 	pulumi.CustomResourceState
 
 	// The date and time when the VPC was created.
 	Created pulumi.StringOutput `pulumi:"created"`
 	// The user-defined description of this VPC.
-	//
-	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The IPv4 configuration of this VPC.
+	Ipv4s VpcIpv4ArrayOutput `pulumi:"ipv4s"`
 	// The IPv6 configuration of this VPC.
 	Ipv6s VpcIpv6ArrayOutput `pulumi:"ipv6s"`
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The region of the VPC.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// A list of subnets under this VPC.
+	Subnets VpcSubnetTypeArrayOutput `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
+	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+	//
+	// * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+	//
+	// * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+	VpcType pulumi.StringOutput `pulumi:"vpcType"`
 }
 
 // NewVpc registers a new resource with the given unique name, arguments, and options.
@@ -147,34 +243,50 @@ type vpcState struct {
 	// The date and time when the VPC was created.
 	Created *string `pulumi:"created"`
 	// The user-defined description of this VPC.
-	//
-	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description *string `pulumi:"description"`
+	// The IPv4 configuration of this VPC.
+	Ipv4s []VpcIpv4 `pulumi:"ipv4s"`
 	// The IPv6 configuration of this VPC.
 	Ipv6s []VpcIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label *string `pulumi:"label"`
 	// The region of the VPC.
 	Region *string `pulumi:"region"`
+	// A list of subnets under this VPC.
+	Subnets []VpcSubnetType `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated *string `pulumi:"updated"`
+	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+	//
+	// * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+	//
+	// * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+	VpcType *string `pulumi:"vpcType"`
 }
 
 type VpcState struct {
 	// The date and time when the VPC was created.
 	Created pulumi.StringPtrInput
 	// The user-defined description of this VPC.
-	//
-	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description pulumi.StringPtrInput
+	// The IPv4 configuration of this VPC.
+	Ipv4s VpcIpv4ArrayInput
 	// The IPv6 configuration of this VPC.
 	Ipv6s VpcIpv6ArrayInput
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringPtrInput
 	// The region of the VPC.
 	Region pulumi.StringPtrInput
+	// A list of subnets under this VPC.
+	Subnets VpcSubnetTypeArrayInput
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringPtrInput
+	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+	//
+	// * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+	//
+	// * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+	VpcType pulumi.StringPtrInput
 }
 
 func (VpcState) ElementType() reflect.Type {
@@ -183,29 +295,41 @@ func (VpcState) ElementType() reflect.Type {
 
 type vpcArgs struct {
 	// The user-defined description of this VPC.
-	//
-	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description *string `pulumi:"description"`
+	// The IPv4 configuration of this VPC.
+	Ipv4s []VpcIpv4 `pulumi:"ipv4s"`
 	// The IPv6 configuration of this VPC.
 	Ipv6s []VpcIpv6 `pulumi:"ipv6s"`
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`
 	// The region of the VPC.
 	Region string `pulumi:"region"`
+	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+	//
+	// * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+	//
+	// * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+	VpcType *string `pulumi:"vpcType"`
 }
 
 // The set of arguments for constructing a Vpc resource.
 type VpcArgs struct {
 	// The user-defined description of this VPC.
-	//
-	// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 	Description pulumi.StringPtrInput
+	// The IPv4 configuration of this VPC.
+	Ipv4s VpcIpv4ArrayInput
 	// The IPv6 configuration of this VPC.
 	Ipv6s VpcIpv6ArrayInput
 	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
 	Label pulumi.StringInput
 	// The region of the VPC.
 	Region pulumi.StringInput
+	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+	//
+	// * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+	//
+	// * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+	VpcType pulumi.StringPtrInput
 }
 
 func (VpcArgs) ElementType() reflect.Type {
@@ -301,10 +425,13 @@ func (o VpcOutput) Created() pulumi.StringOutput {
 }
 
 // The user-defined description of this VPC.
-//
-// * `ipv6` - (Optional) A list of IPv6 allocations under this VPC.
 func (o VpcOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The IPv4 configuration of this VPC.
+func (o VpcOutput) Ipv4s() VpcIpv4ArrayOutput {
+	return o.ApplyT(func(v *Vpc) VpcIpv4ArrayOutput { return v.Ipv4s }).(VpcIpv4ArrayOutput)
 }
 
 // The IPv6 configuration of this VPC.
@@ -322,9 +449,23 @@ func (o VpcOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// A list of subnets under this VPC.
+func (o VpcOutput) Subnets() VpcSubnetTypeArrayOutput {
+	return o.ApplyT(func(v *Vpc) VpcSubnetTypeArrayOutput { return v.Subnets }).(VpcSubnetTypeArrayOutput)
+}
+
 // The date and time when the VPC was last updated.
 func (o VpcOutput) Updated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+//
+// * `ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+//
+// * `ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+func (o VpcOutput) VpcType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.VpcType }).(pulumi.StringOutput)
 }
 
 type VpcArrayOutput struct{ *pulumi.OutputState }

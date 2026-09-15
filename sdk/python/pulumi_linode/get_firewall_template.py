@@ -67,7 +67,7 @@ class GetFirewallTemplateResult:
     @pulumi.getter
     def inbounds(self) -> Sequence['outputs.GetFirewallTemplateInboundResult']:
         """
-        A list of firewall rules specifying allowed inbound network traffic.
+        (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
         """
         return pulumi.get(self, "inbounds")
 
@@ -83,7 +83,7 @@ class GetFirewallTemplateResult:
     @pulumi.getter
     def outbounds(self) -> Sequence['outputs.GetFirewallTemplateOutboundResult']:
         """
-        A list of firewall rules specifying allowed outbound network traffic.
+        (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
         """
         return pulumi.get(self, "outbounds")
 

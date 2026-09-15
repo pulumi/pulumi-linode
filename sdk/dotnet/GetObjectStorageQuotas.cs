@@ -12,7 +12,7 @@ namespace Pulumi.Linode
     public static class GetObjectStorageQuotas
     {
         /// <summary>
-        /// Provides details about a list of Object Storage quotas information on your account.
+        /// Provides details about a list of Object Storage quotas on your account.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
         /// 
         /// ## Example Usage
@@ -60,12 +60,16 @@ namespace Pulumi.Linode
         /// * `QuotaLimit`
         /// 
         /// * `ResourceMetric`
+        /// 
+        /// * `QuotaType`
+        /// 
+        /// * `HasUsage`
         /// </summary>
         public static Task<GetObjectStorageQuotasResult> InvokeAsync(GetObjectStorageQuotasArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectStorageQuotasResult>("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args ?? new GetObjectStorageQuotasArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about a list of Object Storage quotas information on your account.
+        /// Provides details about a list of Object Storage quotas on your account.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
         /// 
         /// ## Example Usage
@@ -113,12 +117,16 @@ namespace Pulumi.Linode
         /// * `QuotaLimit`
         /// 
         /// * `ResourceMetric`
+        /// 
+        /// * `QuotaType`
+        /// 
+        /// * `HasUsage`
         /// </summary>
         public static Output<GetObjectStorageQuotasResult> Invoke(GetObjectStorageQuotasInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectStorageQuotasResult>("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args ?? new GetObjectStorageQuotasInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides details about a list of Object Storage quotas information on your account.
+        /// Provides details about a list of Object Storage quotas on your account.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
         /// 
         /// ## Example Usage
@@ -166,6 +174,10 @@ namespace Pulumi.Linode
         /// * `QuotaLimit`
         /// 
         /// * `ResourceMetric`
+        /// 
+        /// * `QuotaType`
+        /// 
+        /// * `HasUsage`
         /// </summary>
         public static Output<GetObjectStorageQuotasResult> Invoke(GetObjectStorageQuotasInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectStorageQuotasResult>("linode:index/getObjectStorageQuotas:getObjectStorageQuotas", args ?? new GetObjectStorageQuotasInvokeArgs(), options.WithDefaults());
@@ -210,6 +222,9 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetObjectStorageQuotasFilterResult> Filters;
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The list of Object Storage quotas.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetObjectStorageQuotasQuotaResult> Quotas;
 
         [OutputConstructor]

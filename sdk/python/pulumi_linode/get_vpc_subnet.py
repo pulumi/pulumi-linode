@@ -27,7 +27,7 @@ class GetVpcSubnetResult:
     """
     A collection of values returned by getVpcSubnet.
     """
-    def __init__(__self__, created=None, databases=None, id=None, ipv4=None, ipv6s=None, label=None, linodes=None, updated=None, vpc_id=None):
+    def __init__(__self__, created=None, databases=None, id=None, ipv4=None, ipv6s=None, label=None, linodes=None, nodebalancers=None, updated=None, vpc_id=None, vpc_type=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -49,12 +49,18 @@ class GetVpcSubnetResult:
         if linodes and not isinstance(linodes, list):
             raise TypeError("Expected argument 'linodes' to be a list")
         pulumi.set(__self__, "linodes", linodes)
+        if nodebalancers and not isinstance(nodebalancers, list):
+            raise TypeError("Expected argument 'nodebalancers' to be a list")
+        pulumi.set(__self__, "nodebalancers", nodebalancers)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
         if vpc_id and not isinstance(vpc_id, int):
             raise TypeError("Expected argument 'vpc_id' to be a int")
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if vpc_type and not isinstance(vpc_type, str):
+            raise TypeError("Expected argument 'vpc_type' to be a str")
+        pulumi.set(__self__, "vpc_type", vpc_type)
 
     @_builtins.property
     @pulumi.getter
@@ -68,7 +74,7 @@ class GetVpcSubnetResult:
     @pulumi.getter
     def databases(self) -> Sequence['outputs.GetVpcSubnetDatabaseResult']:
         """
-        A list of Managed databases assigned to the VPC Subnet.
+        (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
         """
         return pulumi.get(self, "databases")
 
@@ -76,7 +82,7 @@ class GetVpcSubnetResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        ID of a managed database assigned to the VPC Subnet.
+        ID of a NodeBalancer assigned to the VPC Subnet.
         """
         return pulumi.get(self, "id")
 
@@ -105,9 +111,17 @@ class GetVpcSubnetResult:
     @pulumi.getter
     def linodes(self) -> Sequence['outputs.GetVpcSubnetLinodeResult']:
         """
-        A list of Linodes added to this subnet.
+        (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
         """
         return pulumi.get(self, "linodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancers(self) -> Sequence['outputs.GetVpcSubnetNodebalancerResult']:
+        """
+        (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+        """
+        return pulumi.get(self, "nodebalancers")
 
     @_builtins.property
     @pulumi.getter
@@ -121,6 +135,14 @@ class GetVpcSubnetResult:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.int:
         return pulumi.get(self, "vpc_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcType")
+    def vpc_type(self) -> _builtins.str:
+        """
+        The type of the parent VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+        """
+        return pulumi.get(self, "vpc_type")
 
 
 class AwaitableGetVpcSubnetResult(GetVpcSubnetResult):
@@ -136,8 +158,10 @@ class AwaitableGetVpcSubnetResult(GetVpcSubnetResult):
             ipv6s=self.ipv6s,
             label=self.label,
             linodes=self.linodes,
+            nodebalancers=self.nodebalancers,
             updated=self.updated,
-            vpc_id=self.vpc_id)
+            vpc_id=self.vpc_id,
+            vpc_type=self.vpc_type)
 
 
 def get_vpc_subnet(id: Optional[_builtins.str] = None,
@@ -186,8 +210,10 @@ def get_vpc_subnet(id: Optional[_builtins.str] = None,
         ipv6s=pulumi.get(__ret__, 'ipv6s'),
         label=pulumi.get(__ret__, 'label'),
         linodes=pulumi.get(__ret__, 'linodes'),
+        nodebalancers=pulumi.get(__ret__, 'nodebalancers'),
         updated=pulumi.get(__ret__, 'updated'),
-        vpc_id=pulumi.get(__ret__, 'vpc_id'))
+        vpc_id=pulumi.get(__ret__, 'vpc_id'),
+        vpc_type=pulumi.get(__ret__, 'vpc_type'))
 def get_vpc_subnet_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                           vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcSubnetResult]:
@@ -233,5 +259,7 @@ def get_vpc_subnet_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         ipv6s=pulumi.get(__response__, 'ipv6s'),
         label=pulumi.get(__response__, 'label'),
         linodes=pulumi.get(__response__, 'linodes'),
+        nodebalancers=pulumi.get(__response__, 'nodebalancers'),
         updated=pulumi.get(__response__, 'updated'),
-        vpc_id=pulumi.get(__response__, 'vpc_id')))
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vpc_type=pulumi.get(__response__, 'vpc_type')))

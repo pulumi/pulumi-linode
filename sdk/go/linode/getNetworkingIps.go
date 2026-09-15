@@ -109,8 +109,10 @@ type GetNetworkingIpsArgs struct {
 
 // A collection of values returned by getNetworkingIps.
 type GetNetworkingIpsResult struct {
-	Filters     []GetNetworkingIpsFilter    `pulumi:"filters"`
-	Id          string                      `pulumi:"id"`
+	Filters []GetNetworkingIpsFilter `pulumi:"filters"`
+	// The ID of the entity.
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The list of IP addresses.
 	IpAddresses []GetNetworkingIpsIpAddress `pulumi:"ipAddresses"`
 	Order       *string                     `pulumi:"order"`
 	OrderBy     *string                     `pulumi:"orderBy"`
@@ -153,10 +155,12 @@ func (o GetNetworkingIpsResultOutput) Filters() GetNetworkingIpsFilterArrayOutpu
 	return o.ApplyT(func(v GetNetworkingIpsResult) []GetNetworkingIpsFilter { return v.Filters }).(GetNetworkingIpsFilterArrayOutput)
 }
 
+// The ID of the entity.
 func (o GetNetworkingIpsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkingIpsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The list of IP addresses.
 func (o GetNetworkingIpsResultOutput) IpAddresses() GetNetworkingIpsIpAddressArrayOutput {
 	return o.ApplyT(func(v GetNetworkingIpsResult) []GetNetworkingIpsIpAddress { return v.IpAddresses }).(GetNetworkingIpsIpAddressArrayOutput)
 }

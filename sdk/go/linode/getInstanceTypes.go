@@ -107,10 +107,11 @@ type GetInstanceTypesArgs struct {
 type GetInstanceTypesResult struct {
 	Filters []GetInstanceTypesFilter `pulumi:"filters"`
 	// The ID representing the Linode Type.
-	Id      string                 `pulumi:"id"`
-	Order   *string                `pulumi:"order"`
-	OrderBy *string                `pulumi:"orderBy"`
-	Types   []GetInstanceTypesType `pulumi:"types"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The Linode Instance types returned by this data source.
+	Types []GetInstanceTypesType `pulumi:"types"`
 }
 
 func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceTypesResultOutput {
@@ -163,6 +164,7 @@ func (o GetInstanceTypesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The Linode Instance types returned by this data source.
 func (o GetInstanceTypesResultOutput) Types() GetInstanceTypesTypeArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) []GetInstanceTypesType { return v.Types }).(GetInstanceTypesTypeArrayOutput)
 }

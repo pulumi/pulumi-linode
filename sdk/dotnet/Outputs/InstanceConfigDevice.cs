@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class InstanceConfigDevice
     {
         /// <summary>
-        /// The Disk ID to map to this disk slot
+        /// The device slot identifier (for example, sda, sdb) to map a disk or volume into
         /// </summary>
         public readonly string DeviceName;
         /// <summary>

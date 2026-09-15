@@ -90,6 +90,9 @@ export interface GetChildAccountsArgs {
  * A collection of values returned by getChildAccounts.
  */
 export interface GetChildAccountsResult {
+    /**
+     * (Nested Attribute List) A list of Child Accounts.
+     */
     readonly childAccounts: outputs.GetChildAccountsChildAccount[];
     readonly filters?: outputs.GetChildAccountsFilter[];
     readonly id: string;

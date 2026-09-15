@@ -25,12 +25,12 @@ public final class GetLkeTypesType {
      */
     private String label;
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) Pricing information for this LKE type. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     private List<GetLkeTypesTypePrice> prices;
     /**
-     * @return A list of region-specific prices for this LKE Type.
+     * @return (Read-Only Object List) Region-specific pricing information for this LKE type. Referenced with an index (e.g. `region_prices.0.id`).
      * 
      */
     private List<GetLkeTypesTypeRegionPrice> regionPrices;
@@ -56,14 +56,14 @@ public final class GetLkeTypesType {
         return this.label;
     }
     /**
-     * @return Cost in US dollars, broken down into hourly and monthly charges.
+     * @return (Read-Only Object List) Pricing information for this LKE type. Referenced with an index (e.g. `price.0.hourly`).
      * 
      */
     public List<GetLkeTypesTypePrice> prices() {
         return this.prices;
     }
     /**
-     * @return A list of region-specific prices for this LKE Type.
+     * @return (Read-Only Object List) Region-specific pricing information for this LKE type. Referenced with an index (e.g. `region_prices.0.id`).
      * 
      */
     public List<GetLkeTypesTypeRegionPrice> regionPrices() {

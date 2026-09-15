@@ -64,11 +64,11 @@ export interface GetVpcSubnetResult {
      */
     readonly created: string;
     /**
-     * A list of Managed databases assigned to the VPC Subnet.
+     * (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      */
     readonly databases: outputs.GetVpcSubnetDatabase[];
     /**
-     * ID of a managed database assigned to the VPC Subnet.
+     * ID of a NodeBalancer assigned to the VPC Subnet.
      */
     readonly id: string;
     /**
@@ -81,14 +81,22 @@ export interface GetVpcSubnetResult {
      */
     readonly label: string;
     /**
-     * A list of Linodes added to this subnet.
+     * (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      */
     readonly linodes: outputs.GetVpcSubnetLinode[];
+    /**
+     * (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     */
+    readonly nodebalancers: outputs.GetVpcSubnetNodebalancer[];
     /**
      * The date and time when the VPC Subnet was last updated.
      */
     readonly updated: string;
     readonly vpcId: number;
+    /**
+     * The type of the parent VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     */
+    readonly vpcType: string;
 }
 /**
  * Provides information about a Linode VPC subnet.

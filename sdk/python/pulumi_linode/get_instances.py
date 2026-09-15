@@ -61,6 +61,9 @@ class GetInstancesResult:
     @_builtins.property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetInstancesInstanceResult']:
+        """
+        (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
+        """
         return pulumi.get(self, "instances")
 
     @_builtins.property
@@ -125,8 +128,6 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
     ```
 
     ## Filterable Fields
-
-    * `group`
 
     * `id`
 
@@ -199,8 +200,6 @@ def get_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union[
     ```
 
     ## Filterable Fields
-
-    * `group`
 
     * `id`
 

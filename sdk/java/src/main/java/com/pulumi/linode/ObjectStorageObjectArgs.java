@@ -83,29 +83,6 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    @Import(name="cluster")
-    private @Nullable Output<String> cluster;
-
-    /**
-     * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    public Optional<Output<String>> cluster() {
-        return Optional.ofNullable(this.cluster);
-    }
-
-    /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      * 
      */
@@ -271,18 +248,18 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * The region the bucket is in.
      * 
      */
-    @Import(name="region")
-    private @Nullable Output<String> region;
+    @Import(name="region", required=true)
+    private Output<String> region;
 
     /**
-     * @return The cluster the bucket is in. Required if `cluster` is not configured.
+     * @return The region the bucket is in.
      * 
      */
-    public Optional<Output<String>> region() {
-        return Optional.ofNullable(this.region);
+    public Output<String> region() {
+        return this.region;
     }
 
     /**
@@ -341,7 +318,6 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         this.acl = $.acl;
         this.bucket = $.bucket;
         this.cacheControl = $.cacheControl;
-        this.cluster = $.cluster;
         this.content = $.content;
         this.contentBase64 = $.contentBase64;
         this.contentDisposition = $.contentDisposition;
@@ -463,35 +439,6 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
          */
         public Builder cacheControl(String cacheControl) {
             return cacheControl(Output.of(cacheControl));
-        }
-
-        /**
-         * @param cluster The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-         * 
-         */
-        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-        public Builder cluster(@Nullable Output<String> cluster) {
-            $.cluster = cluster;
-            return this;
-        }
-
-        /**
-         * @param cluster The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-         * 
-         */
-        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-        public Builder cluster(String cluster) {
-            return cluster(Output.of(cluster));
         }
 
         /**
@@ -726,18 +673,18 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param region The cluster the bucket is in. Required if `cluster` is not configured.
+         * @param region The region the bucket is in.
          * 
          * @return builder
          * 
          */
-        public Builder region(@Nullable Output<String> region) {
+        public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
 
         /**
-         * @param region The cluster the bucket is in. Required if `cluster` is not configured.
+         * @param region The region the bucket is in.
          * 
          * @return builder
          * 
@@ -819,6 +766,9 @@ public final class ObjectStorageObjectArgs extends com.pulumi.resources.Resource
             }
             if ($.key == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "key");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageObjectArgs", "region");
             }
             return $;
         }

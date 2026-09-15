@@ -13,14 +13,20 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceIpVpcNat11Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The resulting IPv4 address.
+        /// The VPC IPv4 address this address is NATted with.
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC subnet containing the NATted address.
+        /// </summary>
         [Input("subnetId", required: true)]
         public Input<int> SubnetId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the VPC containing the NATted address.
+        /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;
 

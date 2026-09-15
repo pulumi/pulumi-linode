@@ -184,11 +184,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
         /// 
-        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `Devices` block. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// 
-        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+        /// 
+        /// * `Interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Output("comments")]
         public Output<string?> Comments { get; private set; } = null!;
@@ -316,11 +318,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
         /// 
-        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `Devices` block. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// 
-        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+        /// 
+        /// * `Interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }
@@ -428,11 +432,13 @@ namespace Pulumi.Linode
         /// <summary>
         /// Optional field for arbitrary User comments on this Config.
         /// 
-        /// * `Devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        /// * `Devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
         /// 
-        /// * `Helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        /// * `Device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `Devices` block. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// 
-        /// * `Interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        /// * `Helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+        /// 
+        /// * `Interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         /// </summary>
         [Input("comments")]
         public Input<string>? Comments { get; set; }

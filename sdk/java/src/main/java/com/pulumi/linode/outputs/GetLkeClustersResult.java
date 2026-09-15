@@ -21,6 +21,10 @@ public final class GetLkeClustersResult {
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The LKE Clusters matching the data source filters.
+     * 
+     */
     private List<GetLkeClustersLkeCluster> lkeClusters;
     private @Nullable String order;
     private @Nullable String orderBy;
@@ -36,6 +40,10 @@ public final class GetLkeClustersResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The LKE Clusters matching the data source filters.
+     * 
+     */
     public List<GetLkeClustersLkeCluster> lkeClusters() {
         return this.lkeClusters;
     }

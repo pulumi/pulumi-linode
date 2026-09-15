@@ -58,59 +58,59 @@ import (
 //
 // The following arguments are supported in the `mysql` specification block:
 //
-// * `connectTimeout` - The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake".
+// * `connectTimeout` - (Read-Only Object) The number of seconds that the mysqld server waits for a connect packet before responding with "Bad handshake". Referenced directly (e.g. `connect_timeout.description`).
 //
-// * `defaultTimeZone` - Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default.
+// * `defaultTimeZone` - (Read-Only Object) Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Referenced directly (e.g. `default_time_zone.description`).
 //
-// * `groupConcatMaxLen` - The maximum permitted result length in bytes for the `GROUP_CONCAT()` function.
+// * `groupConcatMaxLen` - (Read-Only Object) The maximum permitted result length in bytes for the `GROUP_CONCAT()` function. Referenced directly (e.g. `group_concat_max_len.description`).
 //
-// * `informationSchemaStatsExpiry` - The time, in seconds, before cached statistics expire.
+// * `informationSchemaStatsExpiry` - (Read-Only Object) The time, in seconds, before cached statistics expire. Referenced directly (e.g. `information_schema_stats_expiry.description`).
 //
-// * `innodbChangeBufferMaxSize` - Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+// * `innodbChangeBufferMaxSize` - (Read-Only Object) Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Referenced directly (e.g. `innodb_change_buffer_max_size.description`).
 //
-// * `innodbFlushNeighbors` - Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+// * `innodbFlushNeighbors` - (Read-Only Object) Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Referenced directly (e.g. `innodb_flush_neighbors.description`).
 //
-// * `innodbFtMinTokenSize` - Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+// * `innodbFtMinTokenSize` - (Read-Only Object) Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_ft_min_token_size.description`).
 //
-// * `innodbFtServerStopwordTable` - This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+// * `innodbFtServerStopwordTable` - (Read-Only Object) This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Referenced directly (e.g. `innodb_ft_server_stopword_table.description`).
 //
-// * `innodbLockWaitTimeout` - The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+// * `innodbLockWaitTimeout` - (Read-Only Object) The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Referenced directly (e.g. `innodb_lock_wait_timeout.description`).
 //
-// * `innodbLogBufferSize` - The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+// * `innodbLogBufferSize` - (Read-Only Object) The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Referenced directly (e.g. `innodb_log_buffer_size.description`).
 //
-// * `innodbOnlineAlterLogMaxSize` - The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+// * `innodbOnlineAlterLogMaxSize` - (Read-Only Object) The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Referenced directly (e.g. `innodb_online_alter_log_max_size.description`).
 //
-// * `innodbReadIoThreads` - The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+// * `innodbReadIoThreads` - (Read-Only Object) The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_read_io_threads.description`).
 //
-// * `innodbRollbackOnTimeout` - When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+// * `innodbRollbackOnTimeout` - (Read-Only Object) When enabled, a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_rollback_on_timeout.description`).
 //
-// * `innodbThreadConcurrency` - Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+// * `innodbThreadConcurrency` - (Read-Only Object) Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Referenced directly (e.g. `innodb_thread_concurrency.description`).
 //
-// * `innodbWriteIoThreads` - The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+// * `innodbWriteIoThreads` - (Read-Only Object) The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `innodb_write_io_threads.description`).
 //
-// * `interactiveTimeout` - The number of seconds the server waits for activity on an interactive connection before closing it.
+// * `interactiveTimeout` - (Read-Only Object) The number of seconds the server waits for activity on an interactive connection before closing it. Referenced directly (e.g. `interactive_timeout.description`).
 //
-// * `internalTmpMemStorageEngine` - The storage engine for in-memory internal temporary tables.
+// * `internalTmpMemStorageEngine` - (Read-Only Object) The storage engine for in-memory internal temporary tables. Referenced directly (e.g. `internal_tmp_mem_storage_engine.description`).
 //
-// * `maxAllowedPacket` - Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+// * `maxAllowedPacket` - (Read-Only Object) Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Referenced directly (e.g. `max_allowed_packet.description`).
 //
-// * `maxHeapTableSize` - Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+// * `maxHeapTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M). Referenced directly (e.g. `max_heap_table_size.description`).
 //
-// * `netBufferLength` - Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+// * `netBufferLength` - (Read-Only Object) Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Referenced directly (e.g. `net_buffer_length.description`).
 //
-// * `netReadTimeout` - The number of seconds to wait for more data from a connection before aborting the read.
+// * `netReadTimeout` - (Read-Only Object) The number of seconds to wait for more data from a connection before aborting the read. Referenced directly (e.g. `net_read_timeout.description`).
 //
-// * `netWriteTimeout` - The number of seconds to wait for a block to be written to a connection before aborting the write.
+// * `netWriteTimeout` - (Read-Only Object) The number of seconds to wait for a block to be written to a connection before aborting the write. Referenced directly (e.g. `net_write_timeout.description`).
 //
-// * `sortBufferSize` - Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+// * `sortBufferSize` - (Read-Only Object) Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Referenced directly (e.g. `sort_buffer_size.description`).
 //
-// * `sqlMode` - Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+// * `sqlMode` - (Read-Only Object) Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Referenced directly (e.g. `sql_mode.description`).
 //
-// * `sqlRequirePrimaryKey` - Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+// * `sqlRequirePrimaryKey` - (Read-Only Object) Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them. Referenced directly (e.g. `sql_require_primary_key.description`).
 //
-// * `tmpTableSize` - Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+// * `tmpTableSize` - (Read-Only Object) Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M). Referenced directly (e.g. `tmp_table_size.description`).
 //
-// * `waitTimeout` - The number of seconds the server waits for activity on a noninteractive connection before closing it.
+// * `waitTimeout` - (Read-Only Object) The number of seconds the server waits for activity on a noninteractive connection before closing it. Referenced directly (e.g. `wait_timeout.description`).
 //
 // ## connectTimeout
 //

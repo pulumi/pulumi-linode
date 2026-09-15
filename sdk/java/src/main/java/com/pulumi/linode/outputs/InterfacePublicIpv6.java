@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InterfacePublicIpv6 {
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfacePublicIpv6AssignedRange> assignedRanges;
@@ -25,19 +25,19 @@ public final class InterfacePublicIpv6 {
      */
     private @Nullable List<InterfacePublicIpv6Range> ranges;
     /**
-     * @return (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfacePublicIpv6Shared> shareds;
     /**
-     * @return (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     private @Nullable List<InterfacePublicIpv6Slaac> slaacs;
 
     private InterfacePublicIpv6() {}
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfacePublicIpv6AssignedRange> assignedRanges() {
@@ -51,14 +51,14 @@ public final class InterfacePublicIpv6 {
         return this.ranges == null ? List.of() : this.ranges;
     }
     /**
-     * @return (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfacePublicIpv6Shared> shareds() {
         return this.shareds == null ? List.of() : this.shareds;
     }
     /**
-     * @return (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+     * @return (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public List<InterfacePublicIpv6Slaac> slaacs() {

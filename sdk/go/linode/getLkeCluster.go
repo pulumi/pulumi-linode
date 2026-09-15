@@ -61,12 +61,10 @@ type LookupLkeClusterResult struct {
 	ApiEndpoints []string `pulumi:"apiEndpoints"`
 	// Enables the App Platform Layer
 	AplEnabled bool `pulumi:"aplEnabled"`
-	// The settings for the Kubernetes Control Plane.
+	// (Nested Attribute List) The settings for the Kubernetes Control Plane.
 	ControlPlanes []GetLkeClusterControlPlane `pulumi:"controlPlanes"`
 	// When this Kubernetes cluster was created.
 	Created string `pulumi:"created"`
-	// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-	DashboardUrl string `pulumi:"dashboardUrl"`
 	// The ID of the node.
 	Id int `pulumi:"id"`
 	// The k8s version of the nodes in this Node Pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -75,7 +73,7 @@ type LookupLkeClusterResult struct {
 	Kubeconfig string `pulumi:"kubeconfig"`
 	// The label of the Node Pool.
 	Label string `pulumi:"label"`
-	// Node pools associated with this cluster.
+	// (Nested Attribute List) Node pools associated with this cluster.
 	Pools []GetLkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
 	Region string `pulumi:"region"`
@@ -135,7 +133,7 @@ func (o LookupLkeClusterResultOutput) AplEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) bool { return v.AplEnabled }).(pulumi.BoolOutput)
 }
 
-// The settings for the Kubernetes Control Plane.
+// (Nested Attribute List) The settings for the Kubernetes Control Plane.
 func (o LookupLkeClusterResultOutput) ControlPlanes() GetLkeClusterControlPlaneArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterControlPlane { return v.ControlPlanes }).(GetLkeClusterControlPlaneArrayOutput)
 }
@@ -143,11 +141,6 @@ func (o LookupLkeClusterResultOutput) ControlPlanes() GetLkeClusterControlPlaneA
 // When this Kubernetes cluster was created.
 func (o LookupLkeClusterResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-func (o LookupLkeClusterResultOutput) DashboardUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
 // The ID of the node.
@@ -170,7 +163,7 @@ func (o LookupLkeClusterResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Node pools associated with this cluster.
+// (Nested Attribute List) Node pools associated with this cluster.
 func (o LookupLkeClusterResultOutput) Pools() GetLkeClusterPoolArrayOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterPool { return v.Pools }).(GetLkeClusterPoolArrayOutput)
 }

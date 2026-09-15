@@ -92,7 +92,7 @@ type GetStackScriptsArgs struct {
 	Filters []GetStackScriptsFilter `pulumi:"filters"`
 	// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode StackScripts that meet certain requirements.
 	Latest *bool `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order *string `pulumi:"order"`
@@ -104,10 +104,11 @@ type GetStackScriptsArgs struct {
 type GetStackScriptsResult struct {
 	Filters []GetStackScriptsFilter `pulumi:"filters"`
 	// The unique ID of the StackScript.
-	Id           string                       `pulumi:"id"`
-	Latest       *bool                        `pulumi:"latest"`
-	Order        *string                      `pulumi:"order"`
-	OrderBy      *string                      `pulumi:"orderBy"`
+	Id      string  `pulumi:"id"`
+	Latest  *bool   `pulumi:"latest"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The returned list of StackScripts. Referenced by index (e.g. `stackscripts[0].id`).
 	Stackscripts []GetStackScriptsStackscript `pulumi:"stackscripts"`
 }
 
@@ -121,7 +122,7 @@ type GetStackScriptsOutputArgs struct {
 	Filters GetStackScriptsFilterArrayInput `pulumi:"filters"`
 	// If true, only the latest StackScript will be returned. StackScripts without a valid `created` field are not included in the result.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode StackScripts that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode StackScripts that meet certain requirements.
 	Latest pulumi.BoolPtrInput `pulumi:"latest"`
 	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
@@ -169,6 +170,7 @@ func (o GetStackScriptsResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetStackScriptsResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The returned list of StackScripts. Referenced by index (e.g. `stackscripts[0].id`).
 func (o GetStackScriptsResultOutput) Stackscripts() GetStackScriptsStackscriptArrayOutput {
 	return o.ApplyT(func(v GetStackScriptsResult) []GetStackScriptsStackscript { return v.Stackscripts }).(GetStackScriptsStackscriptArrayOutput)
 }

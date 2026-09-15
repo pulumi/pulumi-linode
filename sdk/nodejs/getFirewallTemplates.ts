@@ -59,6 +59,9 @@ export interface GetFirewallTemplatesArgs {
  */
 export interface GetFirewallTemplatesResult {
     readonly filters?: outputs.GetFirewallTemplatesFilter[];
+    /**
+     * (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
+     */
     readonly firewallTemplates: outputs.GetFirewallTemplatesFirewallTemplate[];
     readonly id: string;
 }

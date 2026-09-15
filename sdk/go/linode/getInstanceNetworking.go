@@ -12,7 +12,7 @@ import (
 )
 
 // Provides details about the networking configuration of an Instance.
-// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
 //
 // ## Example Usage
 //
@@ -57,6 +57,7 @@ type GetInstanceNetworkingArgs struct {
 
 // A collection of values returned by getInstanceNetworking.
 type GetInstanceNetworkingResult struct {
+	// The ID of the entity.
 	Id    string                      `pulumi:"id"`
 	Ipv4s []GetInstanceNetworkingIpv4 `pulumi:"ipv4s"`
 	Ipv6s []GetInstanceNetworkingIpv6 `pulumi:"ipv6s"`
@@ -94,6 +95,7 @@ func (o GetInstanceNetworkingResultOutput) ToGetInstanceNetworkingResultOutputWi
 	return o
 }
 
+// The ID of the entity.
 func (o GetInstanceNetworkingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkingResult) string { return v.Id }).(pulumi.StringOutput)
 }

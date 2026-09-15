@@ -60,6 +60,9 @@ export interface GetRegionsArgs {
 export interface GetRegionsResult {
     readonly filters?: outputs.GetRegionsFilter[];
     readonly id: string;
+    /**
+     * (Nested Attribute List) The Regions returned by this data source.
+     */
     readonly regions: outputs.GetRegionsRegion[];
 }
 /**

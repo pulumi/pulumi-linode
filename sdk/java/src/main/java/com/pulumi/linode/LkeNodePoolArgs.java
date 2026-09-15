@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;
 import com.pulumi.linode.inputs.LkeNodePoolTaintArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -44,6 +45,21 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The disk encryption policy for nodes in this pool.
+     * 
+     */
+    @Import(name="diskEncryption")
+    private @Nullable Output<String> diskEncryption;
+
+    /**
+     * @return The disk encryption policy for nodes in this pool.
+     * 
+     */
+    public Optional<Output<String>> diskEncryption() {
+        return Optional.ofNullable(this.diskEncryption);
+    }
+
+    /**
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      * 
      */
@@ -56,6 +72,36 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> firewallId() {
         return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
+     * Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    @Import(name="isolationPublicIpv4")
+    private @Nullable Output<Boolean> isolationPublicIpv4;
+
+    /**
+     * @return Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    public Optional<Output<Boolean>> isolationPublicIpv4() {
+        return Optional.ofNullable(this.isolationPublicIpv4);
+    }
+
+    /**
+     * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    @Import(name="isolationPublicIpv6")
+    private @Nullable Output<Boolean> isolationPublicIpv6;
+
+    /**
+     * @return Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    public Optional<Output<Boolean>> isolationPublicIpv6() {
+        return Optional.ofNullable(this.isolationPublicIpv6);
     }
 
     /**
@@ -166,9 +212,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
      * 
-     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="updateStrategy")
@@ -177,9 +223,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
      * 
-     * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+     * * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
      * 
-     * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+     * * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<String>> updateStrategy() {
@@ -191,7 +237,10 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     private LkeNodePoolArgs(LkeNodePoolArgs $) {
         this.autoscaler = $.autoscaler;
         this.clusterId = $.clusterId;
+        this.diskEncryption = $.diskEncryption;
         this.firewallId = $.firewallId;
+        this.isolationPublicIpv4 = $.isolationPublicIpv4;
+        this.isolationPublicIpv6 = $.isolationPublicIpv6;
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.labels = $.labels;
@@ -251,6 +300,27 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(@Nullable Output<String> diskEncryption) {
+            $.diskEncryption = diskEncryption;
+            return this;
+        }
+
+        /**
+         * @param diskEncryption The disk encryption policy for nodes in this pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder diskEncryption(String diskEncryption) {
+            return diskEncryption(Output.of(diskEncryption));
+        }
+
+        /**
          * @param firewallId The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
          * 
          * @return builder
@@ -269,6 +339,48 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder firewallId(Integer firewallId) {
             return firewallId(Output.of(firewallId));
+        }
+
+        /**
+         * @param isolationPublicIpv4 Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv4(@Nullable Output<Boolean> isolationPublicIpv4) {
+            $.isolationPublicIpv4 = isolationPublicIpv4;
+            return this;
+        }
+
+        /**
+         * @param isolationPublicIpv4 Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv4(Boolean isolationPublicIpv4) {
+            return isolationPublicIpv4(Output.of(isolationPublicIpv4));
+        }
+
+        /**
+         * @param isolationPublicIpv6 Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv6(@Nullable Output<Boolean> isolationPublicIpv6) {
+            $.isolationPublicIpv6 = isolationPublicIpv6;
+            return this;
+        }
+
+        /**
+         * @param isolationPublicIpv6 Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv6(Boolean isolationPublicIpv6) {
+            return isolationPublicIpv6(Output.of(isolationPublicIpv6));
         }
 
         /**
@@ -441,9 +553,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param updateStrategy The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
          * 
-         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -456,9 +568,9 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param updateStrategy The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
          * 
-         * * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+         * * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
          * 
-         * * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+         * * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

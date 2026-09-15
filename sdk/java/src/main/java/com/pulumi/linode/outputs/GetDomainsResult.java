@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainsResult {
+    /**
+     * @return (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
+     * 
+     */
     private List<GetDomainsDomain> domains;
     private @Nullable List<GetDomainsFilter> filters;
     /**
@@ -26,6 +30,10 @@ public final class GetDomainsResult {
     private @Nullable String orderBy;
 
     private GetDomainsResult() {}
+    /**
+     * @return (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
+     * 
+     */
     public List<GetDomainsDomain> domains() {
         return this.domains;
     }

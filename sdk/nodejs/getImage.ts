@@ -64,7 +64,7 @@ export interface GetImageResult {
     readonly expiry: string;
     readonly id: string;
     /**
-     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      */
     readonly imageSharing: outputs.GetImageImageSharing;
     /**
@@ -80,7 +80,7 @@ export interface GetImageResult {
      */
     readonly label: string;
     /**
-     * A list of image replication regions and corresponding status.
+     * (Nested Attribute List) A list of image replication regions and corresponding status.
      */
     readonly replications: outputs.GetImageReplication[];
     /**

@@ -14,38 +14,38 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcSubnetsVpcSubnetDatabase {
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     private Integer id;
     /**
-     * @return IPv4 range assigned to the database.
+     * @return IPv4 range assigned to the NodeBalancer.
      * 
      */
     private String ipv4Range;
     /**
-     * @return A list of IPv6 ranges assigned to the database.
+     * @return (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      * 
      */
     private List<GetVpcSubnetsVpcSubnetDatabaseIpv6Range> ipv6Ranges;
 
     private GetVpcSubnetsVpcSubnetDatabase() {}
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public Integer id() {
         return this.id;
     }
     /**
-     * @return IPv4 range assigned to the database.
+     * @return IPv4 range assigned to the NodeBalancer.
      * 
      */
     public String ipv4Range() {
         return this.ipv4Range;
     }
     /**
-     * @return A list of IPv6 ranges assigned to the database.
+     * @return (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
      * 
      */
     public List<GetVpcSubnetsVpcSubnetDatabaseIpv6Range> ipv6Ranges() {

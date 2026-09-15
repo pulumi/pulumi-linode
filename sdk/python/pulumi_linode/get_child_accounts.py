@@ -42,6 +42,9 @@ class GetChildAccountsResult:
     @_builtins.property
     @pulumi.getter(name="childAccounts")
     def child_accounts(self) -> Sequence['outputs.GetChildAccountsChildAccountResult']:
+        """
+        (Nested Attribute List) A list of Child Accounts.
+        """
         return pulumi.get(self, "child_accounts")
 
     @_builtins.property

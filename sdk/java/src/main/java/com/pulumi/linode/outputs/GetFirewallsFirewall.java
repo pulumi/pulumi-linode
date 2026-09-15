@@ -32,6 +32,11 @@ public final class GetFirewallsFirewall {
      */
     private Boolean disabled;
     /**
+     * @return The fingerprint of the current Firewall rules.
+     * 
+     */
+    private String fingerprint;
+    /**
      * @return The unique ID assigned to this Firewall.
      * 
      */
@@ -91,6 +96,11 @@ public final class GetFirewallsFirewall {
      * 
      */
     private String updated;
+    /**
+     * @return The current version of the Firewall rules.
+     * 
+     */
+    private Integer version;
 
     private GetFirewallsFirewall() {}
     /**
@@ -113,6 +123,13 @@ public final class GetFirewallsFirewall {
      */
     public Boolean disabled() {
         return this.disabled;
+    }
+    /**
+     * @return The fingerprint of the current Firewall rules.
+     * 
+     */
+    public String fingerprint() {
+        return this.fingerprint;
     }
     /**
      * @return The unique ID assigned to this Firewall.
@@ -198,6 +215,13 @@ public final class GetFirewallsFirewall {
     public String updated() {
         return this.updated;
     }
+    /**
+     * @return The current version of the Firewall rules.
+     * 
+     */
+    public Integer version() {
+        return this.version;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -211,6 +235,7 @@ public final class GetFirewallsFirewall {
         private String created;
         private List<GetFirewallsFirewallDevice> devices;
         private Boolean disabled;
+        private String fingerprint;
         private Integer id;
         private String inboundPolicy;
         private List<GetFirewallsFirewallInbound> inbounds;
@@ -223,12 +248,14 @@ public final class GetFirewallsFirewall {
         private String status;
         private List<String> tags;
         private String updated;
+        private Integer version;
         public Builder() {}
         public Builder(GetFirewallsFirewall defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
     	      this.devices = defaults.devices;
     	      this.disabled = defaults.disabled;
+    	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
     	      this.inboundPolicy = defaults.inboundPolicy;
     	      this.inbounds = defaults.inbounds;
@@ -241,6 +268,7 @@ public final class GetFirewallsFirewall {
     	      this.status = defaults.status;
     	      this.tags = defaults.tags;
     	      this.updated = defaults.updated;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -268,6 +296,14 @@ public final class GetFirewallsFirewall {
               throw new MissingRequiredPropertyException("GetFirewallsFirewall", "disabled");
             }
             this.disabled = disabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fingerprint(String fingerprint) {
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewall", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
@@ -384,11 +420,20 @@ public final class GetFirewallsFirewall {
             this.updated = updated;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(Integer version) {
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetFirewallsFirewall", "version");
+            }
+            this.version = version;
+            return this;
+        }
         public GetFirewallsFirewall build() {
             final var _resultValue = new GetFirewallsFirewall();
             _resultValue.created = created;
             _resultValue.devices = devices;
             _resultValue.disabled = disabled;
+            _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
             _resultValue.inboundPolicy = inboundPolicy;
             _resultValue.inbounds = inbounds;
@@ -401,6 +446,7 @@ public final class GetFirewallsFirewall {
             _resultValue.status = status;
             _resultValue.tags = tags;
             _resultValue.updated = updated;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

@@ -101,6 +101,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) Linode Volume types matching the query.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVolumeTypesTypeResult> Types;
 
         [OutputConstructor]

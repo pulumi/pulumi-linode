@@ -62,8 +62,9 @@ type GetInstanceTypeArgs struct {
 // A collection of values returned by getInstanceType.
 type GetInstanceTypeResult struct {
 	// The number of VPUs this Linode Type offers.
-	AcceleratedDevices int                    `pulumi:"acceleratedDevices"`
-	Addons             []GetInstanceTypeAddon `pulumi:"addons"`
+	AcceleratedDevices int `pulumi:"acceleratedDevices"`
+	// (Read-Only Object List) Add-ons available for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
+	Addons []GetInstanceTypeAddon `pulumi:"addons"`
 	// The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
 	Class string `pulumi:"class"`
 	// The Disk size, in MB, of the Linode Type
@@ -75,8 +76,10 @@ type GetInstanceTypeResult struct {
 	// The amount of RAM included in this Linode Type.
 	Memory int `pulumi:"memory"`
 	// The Mbits outbound bandwidth allocation.
-	NetworkOut   int                          `pulumi:"networkOut"`
-	Prices       []GetInstanceTypePrice       `pulumi:"prices"`
+	NetworkOut int `pulumi:"networkOut"`
+	// (Read-Only Object List) Pricing information for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
+	Prices []GetInstanceTypePrice `pulumi:"prices"`
+	// (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
 	RegionPrices []GetInstanceTypeRegionPrice `pulumi:"regionPrices"`
 	// The monthly outbound transfer amount, in MB.
 	Transfer int `pulumi:"transfer"`
@@ -121,6 +124,7 @@ func (o GetInstanceTypeResultOutput) AcceleratedDevices() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.AcceleratedDevices }).(pulumi.IntOutput)
 }
 
+// (Read-Only Object List) Add-ons available for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
 func (o GetInstanceTypeResultOutput) Addons() GetInstanceTypeAddonArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) []GetInstanceTypeAddon { return v.Addons }).(GetInstanceTypeAddonArrayOutput)
 }
@@ -155,10 +159,12 @@ func (o GetInstanceTypeResultOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
 
+// (Read-Only Object List) Pricing information for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
 func (o GetInstanceTypeResultOutput) Prices() GetInstanceTypePriceArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) []GetInstanceTypePrice { return v.Prices }).(GetInstanceTypePriceArrayOutput)
 }
 
+// (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
 func (o GetInstanceTypeResultOutput) RegionPrices() GetInstanceTypeRegionPriceArrayOutput {
 	return o.ApplyT(func(v GetInstanceTypeResult) []GetInstanceTypeRegionPrice { return v.RegionPrices }).(GetInstanceTypeRegionPriceArrayOutput)
 }

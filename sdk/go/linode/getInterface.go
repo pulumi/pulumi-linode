@@ -33,6 +33,7 @@ type LookupInterfaceResult struct {
 	Id           string                   `pulumi:"id"`
 	LinodeId     int                      `pulumi:"linodeId"`
 	Public       GetInterfacePublic       `pulumi:"public"`
+	RdmaVpc      GetInterfaceRdmaVpc      `pulumi:"rdmaVpc"`
 	Vlan         GetInterfaceVlan         `pulumi:"vlan"`
 	Vpc          GetInterfaceVpc          `pulumi:"vpc"`
 }
@@ -81,6 +82,10 @@ func (o LookupInterfaceResultOutput) LinodeId() pulumi.IntOutput {
 
 func (o LookupInterfaceResultOutput) Public() GetInterfacePublicOutput {
 	return o.ApplyT(func(v LookupInterfaceResult) GetInterfacePublic { return v.Public }).(GetInterfacePublicOutput)
+}
+
+func (o LookupInterfaceResultOutput) RdmaVpc() GetInterfaceRdmaVpcOutput {
+	return o.ApplyT(func(v LookupInterfaceResult) GetInterfaceRdmaVpc { return v.RdmaVpc }).(GetInterfaceRdmaVpcOutput)
 }
 
 func (o LookupInterfaceResultOutput) Vlan() GetInterfaceVlanOutput {

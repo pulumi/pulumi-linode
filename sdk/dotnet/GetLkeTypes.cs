@@ -14,6 +14,60 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode LKE types that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_label = Linode.GetLkeTypes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetLkeTypesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "LKE Standard Availability",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeId"] = specific_label.Apply(specific_label =&gt; specific_label.Apply(getLkeTypesResult =&gt; getLkeTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_types = Linode.GetLkeTypes.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeId"] = all_types.Apply(all_types =&gt; all_types.Apply(getLkeTypesResult =&gt; getLkeTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `Label`
+        /// 
+        /// * `Transfer`
         /// </summary>
         public static Task<GetLkeTypesResult> InvokeAsync(GetLkeTypesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLkeTypesResult>("linode:index/getLkeTypes:getLkeTypes", args ?? new GetLkeTypesArgs(), options.WithDefaults());
@@ -21,6 +75,60 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode LKE types that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_label = Linode.GetLkeTypes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetLkeTypesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "LKE Standard Availability",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeId"] = specific_label.Apply(specific_label =&gt; specific_label.Apply(getLkeTypesResult =&gt; getLkeTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_types = Linode.GetLkeTypes.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeId"] = all_types.Apply(all_types =&gt; all_types.Apply(getLkeTypesResult =&gt; getLkeTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `Label`
+        /// 
+        /// * `Transfer`
         /// </summary>
         public static Output<GetLkeTypesResult> Invoke(GetLkeTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeTypesResult>("linode:index/getLkeTypes:getLkeTypes", args ?? new GetLkeTypesInvokeArgs(), options.WithDefaults());
@@ -28,6 +136,60 @@ namespace Pulumi.Linode
         /// <summary>
         /// Provides information about Linode LKE types that match a set of filters.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-lke-types).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var specific_label = Linode.GetLkeTypes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new Linode.Inputs.GetLkeTypesFilterInputArgs
+        ///             {
+        ///                 Name = "label",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "LKE Standard Availability",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeId"] = specific_label.Apply(specific_label =&gt; specific_label.Apply(getLkeTypesResult =&gt; getLkeTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Linode = Pulumi.Linode;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all_types = Linode.GetLkeTypes.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["typeId"] = all_types.Apply(all_types =&gt; all_types.Apply(getLkeTypesResult =&gt; getLkeTypesResult.Types).Select(__item =&gt; __item.Id).ToList()),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ## Filterable Fields
+        /// 
+        /// * `Label`
+        /// 
+        /// * `Transfer`
         /// </summary>
         public static Output<GetLkeTypesResult> Invoke(GetLkeTypesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetLkeTypesResult>("linode:index/getLkeTypes:getLkeTypes", args ?? new GetLkeTypesInvokeArgs(), options.WithDefaults());
@@ -101,6 +263,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of LKE types. Referenced by index (e.g. `types[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeTypesTypeResult> Types;
 
         [OutputConstructor]

@@ -66,14 +66,15 @@ type LookupNodeBalancerResult struct {
 	Firewalls []GetNodeBalancerFirewall `pulumi:"firewalls"`
 	// This NodeBalancer's hostname, ending with .ip.linodeusercontent.com
 	Hostname string `pulumi:"hostname"`
-	// The Firewall's ID.
+	// The ID of the related LKE cluster.
 	Id int `pulumi:"id"`
 	// A list of IPv4 addresses or networks. Must be in IP/mask format.
 	Ipv4 string `pulumi:"ipv4"`
 	// A list of IPv6 addresses or networks. Must be in IP/mask format.
 	Ipv6 string `pulumi:"ipv6"`
-	// Used to identify this rule. For display purposes only.
-	Label string `pulumi:"label"`
+	// The label of the related LKE cluster.
+	Label       string                      `pulumi:"label"`
+	LkeClusters []GetNodeBalancerLkeCluster `pulumi:"lkeClusters"`
 	// The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
 	Region string `pulumi:"region"`
 	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
@@ -138,7 +139,7 @@ func (o LookupNodeBalancerResultOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// The Firewall's ID.
+// The ID of the related LKE cluster.
 func (o LookupNodeBalancerResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -153,9 +154,13 @@ func (o LookupNodeBalancerResultOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
-// Used to identify this rule. For display purposes only.
+// The label of the related LKE cluster.
 func (o LookupNodeBalancerResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+func (o LookupNodeBalancerResultOutput) LkeClusters() GetNodeBalancerLkeClusterArrayOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerLkeCluster { return v.LkeClusters }).(GetNodeBalancerLkeClusterArrayOutput)
 }
 
 // The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.

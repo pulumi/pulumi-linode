@@ -74,9 +74,10 @@ type GetVolumesArgs struct {
 type GetVolumesResult struct {
 	Filters []GetVolumesFilter `pulumi:"filters"`
 	// The unique ID of this Volume.
-	Id      string             `pulumi:"id"`
-	Order   *string            `pulumi:"order"`
-	OrderBy *string            `pulumi:"orderBy"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The Volumes returned by this data source.
 	Volumes []GetVolumesVolume `pulumi:"volumes"`
 }
 
@@ -130,6 +131,7 @@ func (o GetVolumesResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVolumesResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The Volumes returned by this data source.
 func (o GetVolumesResultOutput) Volumes() GetVolumesVolumeArrayOutput {
 	return o.ApplyT(func(v GetVolumesResult) []GetVolumesVolume { return v.Volumes }).(GetVolumesVolumeArrayOutput)
 }

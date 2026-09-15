@@ -68,6 +68,9 @@ class GetPlacementGroupsResult:
     @_builtins.property
     @pulumi.getter(name="placementGroups")
     def placement_groups(self) -> Sequence['outputs.GetPlacementGroupsPlacementGroupResult']:
+        """
+        (Nested Attribute List) The Placement Groups returned by this data source.
+        """
         return pulumi.get(self, "placement_groups")
 
 

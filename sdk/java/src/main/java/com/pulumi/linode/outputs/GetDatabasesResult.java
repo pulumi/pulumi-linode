@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDatabasesResult {
+    /**
+     * @return (Nested Attribute List) Managed Databases matching the query.
+     * 
+     */
     private List<GetDatabasesDatabase> databases;
     private @Nullable List<GetDatabasesFilter> filters;
     /**
@@ -26,6 +30,10 @@ public final class GetDatabasesResult {
     private @Nullable String orderBy;
 
     private GetDatabasesResult() {}
+    /**
+     * @return (Nested Attribute List) Managed Databases matching the query.
+     * 
+     */
     public List<GetDatabasesDatabase> databases() {
         return this.databases;
     }

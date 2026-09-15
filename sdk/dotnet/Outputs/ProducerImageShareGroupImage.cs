@@ -16,7 +16,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         public readonly string? Description;
         /// <summary>

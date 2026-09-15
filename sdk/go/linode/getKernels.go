@@ -70,8 +70,6 @@ import (
 // * `pvops`
 //
 // * `version`
-//
-// * `xen`
 func GetKernels(ctx *pulumi.Context, args *GetKernelsArgs, opts ...pulumi.InvokeOption) (*GetKernelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKernelsResult
@@ -95,7 +93,8 @@ type GetKernelsArgs struct {
 type GetKernelsResult struct {
 	Filters []GetKernelsFilter `pulumi:"filters"`
 	// The unique ID of this Kernel.
-	Id      string             `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
 	Kernels []GetKernelsKernel `pulumi:"kernels"`
 	Order   *string            `pulumi:"order"`
 	OrderBy *string            `pulumi:"orderBy"`
@@ -143,6 +142,7 @@ func (o GetKernelsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetKernelsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
 func (o GetKernelsResultOutput) Kernels() GetKernelsKernelArrayOutput {
 	return o.ApplyT(func(v GetKernelsResult) []GetKernelsKernel { return v.Kernels }).(GetKernelsKernelArrayOutput)
 }

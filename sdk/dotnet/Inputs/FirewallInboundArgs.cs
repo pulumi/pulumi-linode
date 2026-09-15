@@ -61,7 +61,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Ports { get; set; }
 
         /// <summary>
-        /// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+        /// The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

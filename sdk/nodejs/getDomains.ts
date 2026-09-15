@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *
  * ## Filterable Fields
  *
- * * `group`
- *
  * * `tags`
  *
  * * `domain`
@@ -82,6 +80,9 @@ export interface GetDomainsArgs {
  * A collection of values returned by getDomains.
  */
 export interface GetDomainsResult {
+    /**
+     * (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
+     */
     readonly domains: outputs.GetDomainsDomain[];
     readonly filters?: outputs.GetDomainsFilter[];
     /**
@@ -111,8 +112,6 @@ export interface GetDomainsResult {
  * ```
  *
  * ## Filterable Fields
- *
- * * `group`
  *
  * * `tags`
  *

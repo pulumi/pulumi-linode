@@ -5,7 +5,9 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetVpcIpv4;
 import com.pulumi.linode.outputs.GetVpcIpv6;
+import com.pulumi.linode.outputs.GetVpcSubnet;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -24,7 +26,12 @@ public final class GetVpcResult {
     private String description;
     private String id;
     /**
-     * @return A list of IPv6 allocations under this VPC.
+     * @return (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    private List<GetVpcIpv4> ipv4s;
+    /**
+     * @return (Nested Attribute List) A list of IPv6 allocations under this VPC.
      * 
      */
     private List<GetVpcIpv6> ipv6s;
@@ -38,11 +45,17 @@ public final class GetVpcResult {
      * 
      */
     private String region;
+    private List<GetVpcSubnet> subnets;
     /**
      * @return The date and time when the VPC was last updated.
      * 
      */
     private String updated;
+    /**
+     * @return The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     * 
+     */
+    private String vpcType;
 
     private GetVpcResult() {}
     /**
@@ -63,7 +76,14 @@ public final class GetVpcResult {
         return this.id;
     }
     /**
-     * @return A list of IPv6 allocations under this VPC.
+     * @return (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     * 
+     */
+    public List<GetVpcIpv4> ipv4s() {
+        return this.ipv4s;
+    }
+    /**
+     * @return (Nested Attribute List) A list of IPv6 allocations under this VPC.
      * 
      */
     public List<GetVpcIpv6> ipv6s() {
@@ -83,12 +103,22 @@ public final class GetVpcResult {
     public String region() {
         return this.region;
     }
+    public List<GetVpcSubnet> subnets() {
+        return this.subnets;
+    }
     /**
      * @return The date and time when the VPC was last updated.
      * 
      */
     public String updated() {
         return this.updated;
+    }
+    /**
+     * @return The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+     * 
+     */
+    public String vpcType() {
+        return this.vpcType;
     }
 
     public static Builder builder() {
@@ -103,20 +133,26 @@ public final class GetVpcResult {
         private String created;
         private String description;
         private String id;
+        private List<GetVpcIpv4> ipv4s;
         private List<GetVpcIpv6> ipv6s;
         private String label;
         private String region;
+        private List<GetVpcSubnet> subnets;
         private String updated;
+        private String vpcType;
         public Builder() {}
         public Builder(GetVpcResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.created = defaults.created;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
+    	      this.ipv4s = defaults.ipv4s;
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.region = defaults.region;
+    	      this.subnets = defaults.subnets;
     	      this.updated = defaults.updated;
+    	      this.vpcType = defaults.vpcType;
         }
 
         @CustomType.Setter
@@ -142,6 +178,17 @@ public final class GetVpcResult {
             }
             this.id = id;
             return this;
+        }
+        @CustomType.Setter
+        public Builder ipv4s(List<GetVpcIpv4> ipv4s) {
+            if (ipv4s == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "ipv4s");
+            }
+            this.ipv4s = ipv4s;
+            return this;
+        }
+        public Builder ipv4s(GetVpcIpv4... ipv4s) {
+            return ipv4s(List.of(ipv4s));
         }
         @CustomType.Setter
         public Builder ipv6s(List<GetVpcIpv6> ipv6s) {
@@ -171,6 +218,17 @@ public final class GetVpcResult {
             return this;
         }
         @CustomType.Setter
+        public Builder subnets(List<GetVpcSubnet> subnets) {
+            if (subnets == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "subnets");
+            }
+            this.subnets = subnets;
+            return this;
+        }
+        public Builder subnets(GetVpcSubnet... subnets) {
+            return subnets(List.of(subnets));
+        }
+        @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
               throw new MissingRequiredPropertyException("GetVpcResult", "updated");
@@ -178,15 +236,26 @@ public final class GetVpcResult {
             this.updated = updated;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcType(String vpcType) {
+            if (vpcType == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "vpcType");
+            }
+            this.vpcType = vpcType;
+            return this;
+        }
         public GetVpcResult build() {
             final var _resultValue = new GetVpcResult();
             _resultValue.created = created;
             _resultValue.description = description;
             _resultValue.id = id;
+            _resultValue.ipv4s = ipv4s;
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.region = region;
+            _resultValue.subnets = subnets;
             _resultValue.updated = updated;
+            _resultValue.vpcType = vpcType;
             return _resultValue;
         }
     }

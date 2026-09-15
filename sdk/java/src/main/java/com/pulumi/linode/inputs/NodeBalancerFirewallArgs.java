@@ -34,14 +34,14 @@ public final class NodeBalancerFirewallArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Required) The Firewall&#39;s ID.
+     * The ID of the related LKE cluster.
      * 
      */
     @Import(name="id", required=true)
     private Output<Integer> id;
 
     /**
-     * @return (Required) The Firewall&#39;s ID.
+     * @return The ID of the related LKE cluster.
      * 
      */
     public Output<Integer> id() {
@@ -207,7 +207,7 @@ public final class NodeBalancerFirewallArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id (Required) The Firewall&#39;s ID.
+         * @param id The ID of the related LKE cluster.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class NodeBalancerFirewallArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param id (Required) The Firewall&#39;s ID.
+         * @param id The ID of the related LKE cluster.
          * 
          * @return builder
          * 

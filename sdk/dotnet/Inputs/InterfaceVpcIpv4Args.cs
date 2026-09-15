@@ -28,7 +28,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.InterfaceVpcIpv4AssignedAddressArgs>? _assignedAddresses;
 
         /// <summary>
-        /// (Computed) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `Addresses` input. Each object in this set supports:
+        /// (Computed, Nested Attribute Set) The IPv4 addresses assigned for use in the VPC subnet, calculated from the `Addresses` input. Each object in this set supports: Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.InterfaceVpcIpv4AssignedAddressArgs> AssignedAddresses
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.InterfaceVpcIpv4AssignedRangeArgs>? _assignedRanges;
 
         /// <summary>
-        /// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input.
+        /// (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.InterfaceVpcIpv4AssignedRangeArgs> AssignedRanges
         {

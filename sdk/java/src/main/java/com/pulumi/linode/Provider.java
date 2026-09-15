@@ -186,7 +186,8 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "objSecretKey"
+                "objSecretKey",
+                "token"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

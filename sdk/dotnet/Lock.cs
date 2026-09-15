@@ -10,13 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Linode
 {
     /// <summary>
-    /// &gt; **Early Access** Locks are in Early Access and may not be available to all users.
-    /// 
     /// &gt; **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
     /// 
     /// Manages a Linode Lock which prevents accidental deletion and modification of resources. Locks protect against deletion, rebuild operations, and service transfers. The `CannotDeleteWithSubresources` lock type also protects subresources such as disks, configs, interfaces, and IP addresses.
     /// 
-    /// For more information, see the Linode APIv4 docs (TBD).
+    /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-resource-lock).
     /// 
     /// &gt; **Note** Only one lock can exist per resource at a time. You cannot have both `CannotDelete` and `CannotDeleteWithSubresources` locks on the same resource simultaneously.
     /// 
@@ -95,7 +93,7 @@ namespace Pulumi.Linode
         public Output<string> EntityLabel { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the entity to lock. Currently only `Linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        /// The type of the entity to lock. Supported values are `Linode`, `Nodebalancer`, `Volume`, `Lkecluster`, and `Lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -165,7 +163,7 @@ namespace Pulumi.Linode
         public Input<int> EntityId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the entity to lock. Currently only `Linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        /// The type of the entity to lock. Supported values are `Linode`, `Nodebalancer`, `Volume`, `Lkecluster`, and `Lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
@@ -197,7 +195,7 @@ namespace Pulumi.Linode
         public Input<string>? EntityLabel { get; set; }
 
         /// <summary>
-        /// The type of the entity to lock. Currently only `Linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        /// The type of the entity to lock. Supported values are `Linode`, `Nodebalancer`, `Volume`, `Lkecluster`, and `Lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }

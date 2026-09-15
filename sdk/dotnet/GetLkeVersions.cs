@@ -218,6 +218,9 @@ namespace Pulumi.Linode
         /// The Kubernetes version tier. Only exported if `Tier` was provided when using the datasource.
         /// </summary>
         public readonly string? Tier;
+        /// <summary>
+        /// (Nested Attribute List) The Linode LKE Versions returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeVersionsVersionResult> Versions;
 
         [OutputConstructor]

@@ -506,9 +506,9 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     @Import(name="forkSource")
@@ -517,9 +517,9 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
     /**
      * @return The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     public Optional<Output<Integer>> forkSource() {
@@ -1375,9 +1375,9 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param forkSource The ID of the database that was forked from.
          * 
-         * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
          * 
-         * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+         * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
          * 
          * @return builder
          * 
@@ -1390,9 +1390,9 @@ public final class DatabaseMysqlV2Args extends com.pulumi.resources.ResourceArgs
         /**
          * @param forkSource The ID of the database that was forked from.
          * 
-         * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+         * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
          * 
-         * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+         * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
          * 
          * @return builder
          * 

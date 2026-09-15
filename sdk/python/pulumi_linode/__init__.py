@@ -43,6 +43,8 @@ from .get_firewall_settings import *
 from .get_firewall_template import *
 from .get_firewall_templates import *
 from .get_firewalls import *
+from .get_iam_entities import *
+from .get_iam_user import *
 from .get_image import *
 from .get_images import *
 from .get_instance_backups import *
@@ -65,6 +67,15 @@ from .get_lke_versions import *
 from .get_lock import *
 from .get_locks import *
 from .get_maintenance_policies import *
+from .get_monitor_alert_channels import *
+from .get_monitor_alert_definition import *
+from .get_monitor_alert_definition_entities import *
+from .get_monitor_alert_definitions import *
+from .get_monitor_logs_destination import *
+from .get_monitor_logs_destinations import *
+from .get_monitor_logs_stream import *
+from .get_monitor_logs_stream_history import *
+from .get_monitor_logs_streams import *
 from .get_nb_types import *
 from .get_network_transfer_prices import *
 from .get_networking_ip import *
@@ -76,8 +87,9 @@ from .get_nodebalancer_configs import *
 from .get_nodebalancer_vpc import *
 from .get_nodebalancer_vpcs import *
 from .get_nodebalancers import *
-from .get_object_storage_cluster import *
 from .get_object_storage_endpoints import *
+from .get_object_storage_global_quota import *
+from .get_object_storage_global_quotas import *
 from .get_object_storage_quota import *
 from .get_object_storage_quotas import *
 from .get_placement_group import *
@@ -89,11 +101,15 @@ from .get_producer_image_share_group_members import *
 from .get_producer_image_share_groups import *
 from .get_profile import *
 from .get_region import *
+from .get_region_vpc_availability import *
 from .get_regions import *
+from .get_regions_vpc_availability import *
+from .get_reserved_ip_types import *
 from .get_ssh_key import *
 from .get_sshkeys import *
 from .get_stack_script import *
 from .get_stack_scripts import *
+from .get_tag import *
 from .get_user import *
 from .get_users import *
 from .get_vlans import *
@@ -101,10 +117,12 @@ from .get_volume import *
 from .get_volume_types import *
 from .get_volumes import *
 from .get_vpc import *
+from .get_vpc_default_ranges import *
 from .get_vpc_ips import *
 from .get_vpc_subnet import *
 from .get_vpc_subnets import *
 from .get_vpcs import *
+from .iam_user import *
 from .image import *
 from .instance import *
 from .instance_config import *
@@ -116,6 +134,9 @@ from .ipv6_range import *
 from .lke_cluster import *
 from .lke_node_pool import *
 from .lock import *
+from .monitor_alert_definition import *
+from .monitor_logs_destination import *
+from .monitor_logs_stream import *
 from .networking_ip import *
 from .networking_ip_assignment import *
 from .node_balancer import *
@@ -130,6 +151,7 @@ from .producer_image_share_group import *
 from .producer_image_share_group_member import *
 from .provider import *
 from .rdns import *
+from .reserved_ip import *
 from .reserved_ip_assignment import *
 from .ssh_key import *
 from .stack_script import *
@@ -233,6 +255,14 @@ _utilities.register(
  },
  {
   "pkg": "linode",
+  "mod": "index/iamUser",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/iamUser:IamUser": "IamUser"
+  }
+ },
+ {
+  "pkg": "linode",
   "mod": "index/image",
   "fqn": "pulumi_linode",
   "classes": {
@@ -317,6 +347,30 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/lock:Lock": "Lock"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/monitorAlertDefinition",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/monitorAlertDefinition:MonitorAlertDefinition": "MonitorAlertDefinition"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/monitorLogsDestination",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/monitorLogsDestination:MonitorLogsDestination": "MonitorLogsDestination"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/monitorLogsStream",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/monitorLogsStream:MonitorLogsStream": "MonitorLogsStream"
   }
  },
  {
@@ -421,6 +475,14 @@ _utilities.register(
   "fqn": "pulumi_linode",
   "classes": {
    "linode:index/rdns:Rdns": "Rdns"
+  }
+ },
+ {
+  "pkg": "linode",
+  "mod": "index/reservedIp",
+  "fqn": "pulumi_linode",
+  "classes": {
+   "linode:index/reservedIp:ReservedIp": "ReservedIp"
   }
  },
  {

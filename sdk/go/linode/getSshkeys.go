@@ -87,9 +87,10 @@ type GetSshkeysArgs struct {
 type GetSshkeysResult struct {
 	Filters []GetSshkeysFilter `pulumi:"filters"`
 	// The ID of the SSH Key.
-	Id      string             `pulumi:"id"`
-	Order   *string            `pulumi:"order"`
-	OrderBy *string            `pulumi:"orderBy"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The SSH Keys returned by this data source.
 	Sshkeys []GetSshkeysSshkey `pulumi:"sshkeys"`
 }
 
@@ -143,6 +144,7 @@ func (o GetSshkeysResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSshkeysResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The SSH Keys returned by this data source.
 func (o GetSshkeysResultOutput) Sshkeys() GetSshkeysSshkeyArrayOutput {
 	return o.ApplyT(func(v GetSshkeysResult) []GetSshkeysSshkey { return v.Sshkeys }).(GetSshkeysSshkeyArrayOutput)
 }

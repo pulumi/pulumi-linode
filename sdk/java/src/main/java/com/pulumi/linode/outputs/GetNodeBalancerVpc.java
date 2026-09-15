@@ -17,7 +17,12 @@ public final class GetNodeBalancerVpc {
      */
     private String ipv4Range;
     /**
-     * @return The ID of a subnet to assign to this NodeBalancer.
+     * @return A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    private String ipv6Range;
+    /**
+     * @return The ID of this configuration&#39;s VPC subnet.
      * 
      */
     private Integer subnetId;
@@ -31,7 +36,14 @@ public final class GetNodeBalancerVpc {
         return this.ipv4Range;
     }
     /**
-     * @return The ID of a subnet to assign to this NodeBalancer.
+     * @return A CIDR range for the VPC&#39;s IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+     * 
+     */
+    public String ipv6Range() {
+        return this.ipv6Range;
+    }
+    /**
+     * @return The ID of this configuration&#39;s VPC subnet.
      * 
      */
     public Integer subnetId() {
@@ -48,11 +60,13 @@ public final class GetNodeBalancerVpc {
     @CustomType.Builder
     public static final class Builder {
         private String ipv4Range;
+        private String ipv6Range;
         private Integer subnetId;
         public Builder() {}
         public Builder(GetNodeBalancerVpc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipv4Range = defaults.ipv4Range;
+    	      this.ipv6Range = defaults.ipv6Range;
     	      this.subnetId = defaults.subnetId;
         }
 
@@ -62,6 +76,14 @@ public final class GetNodeBalancerVpc {
               throw new MissingRequiredPropertyException("GetNodeBalancerVpc", "ipv4Range");
             }
             this.ipv4Range = ipv4Range;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Range(String ipv6Range) {
+            if (ipv6Range == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerVpc", "ipv6Range");
+            }
+            this.ipv6Range = ipv6Range;
             return this;
         }
         @CustomType.Setter
@@ -75,6 +97,7 @@ public final class GetNodeBalancerVpc {
         public GetNodeBalancerVpc build() {
             final var _resultValue = new GetNodeBalancerVpc();
             _resultValue.ipv4Range = ipv4Range;
+            _resultValue.ipv6Range = ipv6Range;
             _resultValue.subnetId = subnetId;
             return _resultValue;
         }

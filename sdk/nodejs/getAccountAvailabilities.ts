@@ -58,6 +58,9 @@ export interface GetAccountAvailabilitiesArgs {
  * A collection of values returned by getAccountAvailabilities.
  */
 export interface GetAccountAvailabilitiesResult {
+    /**
+     * (Nested Attribute List) The account availabilities returned by this data source.
+     */
     readonly availabilities: outputs.GetAccountAvailabilitiesAvailability[];
     readonly filters?: outputs.GetAccountAvailabilitiesFilter[];
     readonly id: string;

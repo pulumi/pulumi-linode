@@ -78,7 +78,7 @@ class GetPlacementGroupResult:
     @pulumi.getter
     def members(self) -> Sequence['outputs.GetPlacementGroupMemberResult']:
         """
-        A set of Linodes currently assigned to this Placement Group.
+        (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         """
         return pulumi.get(self, "members")
 
@@ -86,7 +86,7 @@ class GetPlacementGroupResult:
     @pulumi.getter
     def migrations(self) -> 'outputs.GetPlacementGroupMigrationsResult':
         """
-        Any Linodes that are being migrated to or from the placement group.
+        (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
         """
         return pulumi.get(self, "migrations")
 

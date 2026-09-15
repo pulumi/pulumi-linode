@@ -61,6 +61,9 @@ class GetKernelsResult:
     @_builtins.property
     @pulumi.getter
     def kernels(self) -> Sequence['outputs.GetKernelsKernelResult']:
+        """
+        (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
+        """
         return pulumi.get(self, "kernels")
 
     @_builtins.property
@@ -131,8 +134,6 @@ def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKer
 
     * `version`
 
-    * `xen`
-
 
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
@@ -193,8 +194,6 @@ def get_kernels_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['G
     * `pvops`
 
     * `version`
-
-    * `xen`
 
 
     :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)

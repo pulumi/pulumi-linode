@@ -35,14 +35,14 @@ import (
 //				Label:  pulumi.String("myinstance"),
 //				Region: pulumi.String("us-southeast"),
 //				Type:   pulumi.String("g6-nanode-1"),
-//				Image:  pulumi.String("linode/alpine3.19"),
+//				Image:  pulumi.String("linode/arch"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			my_db, err := linode.NewDatabaseMysqlV2(ctx, "my-db", &linode.DatabaseMysqlV2Args{
 //				Label:    pulumi.String("mydatabase"),
-//				EngineId: pulumi.String("mysql/8.0.30"),
+//				EngineId: pulumi.String("mysql/8"),
 //				Region:   pulumi.String("us-southeast"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides details about a list of Object Storage quotas information on your account.
+// Provides details about a list of Object Storage quotas on your account.
 // For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
 //
 // ## Example Usage
@@ -64,6 +64,10 @@ import (
 // * `quotaLimit`
 //
 // * `resourceMetric`
+//
+// * `quotaType`
+//
+// * `hasUsage`
 func GetObjectStorageQuotas(ctx *pulumi.Context, args *GetObjectStorageQuotasArgs, opts ...pulumi.InvokeOption) (*GetObjectStorageQuotasResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetObjectStorageQuotasResult
@@ -83,7 +87,8 @@ type GetObjectStorageQuotasArgs struct {
 type GetObjectStorageQuotasResult struct {
 	Filters []GetObjectStorageQuotasFilter `pulumi:"filters"`
 	Id      string                         `pulumi:"id"`
-	Quotas  []GetObjectStorageQuotasQuota  `pulumi:"quotas"`
+	// (Nested Attribute List) The list of Object Storage quotas.
+	Quotas []GetObjectStorageQuotasQuota `pulumi:"quotas"`
 }
 
 func GetObjectStorageQuotasOutput(ctx *pulumi.Context, args GetObjectStorageQuotasOutputArgs, opts ...pulumi.InvokeOption) GetObjectStorageQuotasResultOutput {
@@ -123,6 +128,7 @@ func (o GetObjectStorageQuotasResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetObjectStorageQuotasResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The list of Object Storage quotas.
 func (o GetObjectStorageQuotasResultOutput) Quotas() GetObjectStorageQuotasQuotaArrayOutput {
 	return o.ApplyT(func(v GetObjectStorageQuotasResult) []GetObjectStorageQuotasQuota { return v.Quotas }).(GetObjectStorageQuotasQuotaArrayOutput)
 }

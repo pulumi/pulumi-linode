@@ -52,6 +52,9 @@ class GetObjectStorageQuotasResult:
     @_builtins.property
     @pulumi.getter
     def quotas(self) -> Sequence['outputs.GetObjectStorageQuotasQuotaResult']:
+        """
+        (Nested Attribute List) The list of Object Storage quotas.
+        """
         return pulumi.get(self, "quotas")
 
 
@@ -69,7 +72,7 @@ class AwaitableGetObjectStorageQuotasResult(GetObjectStorageQuotasResult):
 def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorageQuotasFilterArgs', 'GetObjectStorageQuotasFilterArgsDict']]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageQuotasResult:
     """
-    Provides details about a list of Object Storage quotas information on your account.
+    Provides details about a list of Object Storage quotas on your account.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
 
     ## Example Usage
@@ -101,6 +104,10 @@ def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorage
     * `quota_limit`
 
     * `resource_metric`
+
+    * `quota_type`
+
+    * `has_usage`
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -114,7 +121,7 @@ def get_object_storage_quotas(filters: Optional[Sequence[Union['GetObjectStorage
 def get_object_storage_quotas_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageQuotasFilterArgs', 'GetObjectStorageQuotasFilterArgsDict']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageQuotasResult]:
     """
-    Provides details about a list of Object Storage quotas information on your account.
+    Provides details about a list of Object Storage quotas on your account.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quotas).
 
     ## Example Usage
@@ -146,6 +153,10 @@ def get_object_storage_quotas_output(filters: pulumi.Input[Optional[Optional[Seq
     * `quota_limit`
 
     * `resource_metric`
+
+    * `quota_type`
+
+    * `has_usage`
     """
     __args__ = dict()
     __args__['filters'] = filters

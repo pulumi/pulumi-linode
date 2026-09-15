@@ -163,7 +163,7 @@ namespace Pulumi.Linode
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
     ///         Label = "mydatabase",
-    ///         EngineId = "mysql/16",
+    ///         EngineId = "mysql/8",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
     ///         PrivateNetwork = new Linode.Inputs.DatabaseMysqlV2PrivateNetworkArgs
@@ -441,9 +441,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Output("forkSource")]
         public Output<int?> ForkSource { get; private set; } = null!;
@@ -485,7 +485,7 @@ namespace Pulumi.Linode
         public Output<string> OldestRestoreTime { get; private set; } = null!;
 
         /// <summary>
-        /// A set of pending updates.
+        /// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("pendingUpdates")]
         public Output<ImmutableArray<Outputs.DatabaseMysqlV2PendingUpdate>> PendingUpdates { get; private set; } = null!;
@@ -826,9 +826,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -1117,9 +1117,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the database that was forked from.
         /// 
-        /// * `PrivateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        /// * `PrivateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
         /// 
-        /// * `Updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+        /// * `Updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         /// </summary>
         [Input("forkSource")]
         public Input<int>? ForkSource { get; set; }
@@ -1170,7 +1170,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.DatabaseMysqlV2PendingUpdateGetArgs>? _pendingUpdates;
 
         /// <summary>
-        /// A set of pending updates.
+        /// (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public InputList<Inputs.DatabaseMysqlV2PendingUpdateGetArgs> PendingUpdates
         {

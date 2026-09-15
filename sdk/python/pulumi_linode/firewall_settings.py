@@ -25,7 +25,7 @@ class FirewallSettingsArgs:
         """
         The set of arguments for constructing a FirewallSettings resource.
 
-        :param pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs'] default_firewall_ids: A map of default firewall IDs for various interfaces.
+        :param pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs'] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         if default_firewall_ids is not None:
             pulumi.set(__self__, "default_firewall_ids", default_firewall_ids)
@@ -34,7 +34,7 @@ class FirewallSettingsArgs:
     @pulumi.getter(name="defaultFirewallIds")
     def default_firewall_ids(self) -> pulumi.Input[Optional['FirewallSettingsDefaultFirewallIdsArgs']]:
         """
-        A map of default firewall IDs for various interfaces.
+        A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         return pulumi.get(self, "default_firewall_ids")
 
@@ -50,7 +50,7 @@ class _FirewallSettingsState:
         """
         Input properties used for looking up and filtering FirewallSettings resources.
 
-        :param pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs'] default_firewall_ids: A map of default firewall IDs for various interfaces.
+        :param pulumi.Input['FirewallSettingsDefaultFirewallIdsArgs'] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         if default_firewall_ids is not None:
             pulumi.set(__self__, "default_firewall_ids", default_firewall_ids)
@@ -59,7 +59,7 @@ class _FirewallSettingsState:
     @pulumi.getter(name="defaultFirewallIds")
     def default_firewall_ids(self) -> pulumi.Input[Optional['FirewallSettingsDefaultFirewallIdsArgs']]:
         """
-        A map of default firewall IDs for various interfaces.
+        A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         return pulumi.get(self, "default_firewall_ids")
 
@@ -101,7 +101,7 @@ class FirewallSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces.
+        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         ...
     @overload
@@ -176,7 +176,7 @@ class FirewallSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces.
+        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -189,7 +189,7 @@ class FirewallSettings(pulumi.CustomResource):
     @pulumi.getter(name="defaultFirewallIds")
     def default_firewall_ids(self) -> pulumi.Output[Optional['outputs.FirewallSettingsDefaultFirewallIds']]:
         """
-        A map of default firewall IDs for various interfaces.
+        A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         return pulumi.get(self, "default_firewall_ids")
 

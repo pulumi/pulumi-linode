@@ -21,6 +21,10 @@ public final class GetInstanceNetworkingIpv4 {
      * 
      */
     private List<GetInstanceNetworkingIpv4Public> publics;
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
     private List<GetInstanceNetworkingIpv4Reserved> reserveds;
     private List<GetInstanceNetworkingIpv4Shared> shareds;
     private List<GetInstanceNetworkingIpv4Vpc> vpcs;
@@ -36,6 +40,10 @@ public final class GetInstanceNetworkingIpv4 {
     public List<GetInstanceNetworkingIpv4Public> publics() {
         return this.publics;
     }
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
     public List<GetInstanceNetworkingIpv4Reserved> reserveds() {
         return this.reserveds;
     }

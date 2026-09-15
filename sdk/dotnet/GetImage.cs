@@ -146,7 +146,7 @@ namespace Pulumi.Linode
         public readonly string Expiry;
         public readonly string Id;
         /// <summary>
-        /// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+        /// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         /// </summary>
         public readonly Outputs.GetImageImageSharingResult ImageSharing;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// A list of image replication regions and corresponding status.
+        /// (Nested Attribute List) A list of image replication regions and corresponding status.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImageReplicationResult> Replications;
         /// <summary>

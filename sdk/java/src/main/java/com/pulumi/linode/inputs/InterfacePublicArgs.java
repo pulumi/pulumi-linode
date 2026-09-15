@@ -17,14 +17,14 @@ public final class InterfacePublicArgs extends com.pulumi.resources.ResourceArgs
     public static final InterfacePublicArgs Empty = new InterfacePublicArgs();
 
     /**
-     * IPv4 addresses for this interface.
+     * IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<InterfacePublicIpv4Args> ipv4;
 
     /**
-     * @return IPv4 addresses for this interface.
+     * @return IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
      * 
      */
     public Optional<Output<InterfacePublicIpv4Args>> ipv4() {
@@ -32,14 +32,14 @@ public final class InterfacePublicArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * IPv6 addresses for this interface.
+     * IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<InterfacePublicIpv6Args> ipv6;
 
     /**
-     * @return IPv6 addresses for this interface.
+     * @return IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
      * 
      */
     public Optional<Output<InterfacePublicIpv6Args>> ipv6() {
@@ -72,7 +72,7 @@ public final class InterfacePublicArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv4 IPv4 addresses for this interface.
+         * @param ipv4 IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class InterfacePublicArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv4 IPv4 addresses for this interface.
+         * @param ipv4 IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class InterfacePublicArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv6 IPv6 addresses for this interface.
+         * @param ipv6 IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class InterfacePublicArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipv6 IPv6 addresses for this interface.
+         * @param ipv6 IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
          * 
          * @return builder
          * 

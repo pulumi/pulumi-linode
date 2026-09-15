@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *             .label("myinstance")
  *             .region("us-southeast")
  *             .type("g6-nanode-1")
- *             .image("linode/alpine3.19")
+ *             .image("linode/arch")
  *             .build());
  * 
  *         var my_db = new DatabaseMysqlV2("my-db", DatabaseMysqlV2Args.builder()
  *             .label("mydatabase")
- *             .engineId("mysql/8.0.30")
+ *             .engineId("mysql/8")
  *             .region("us-southeast")
  *             .type("g6-nanode-1")
  *             .build());

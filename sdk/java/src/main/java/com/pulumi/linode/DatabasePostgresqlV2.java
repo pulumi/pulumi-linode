@@ -1112,9 +1112,9 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     @Export(name="forkSource", refs={Integer.class}, tree="[0]")
@@ -1123,9 +1123,9 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     public Output<Optional<Integer>> forkSource() {
@@ -1220,14 +1220,14 @@ public class DatabasePostgresqlV2 extends com.pulumi.resources.CustomResource {
         return this.oldestRestoreTime;
     }
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="pendingUpdates", refs={List.class,DatabasePostgresqlV2PendingUpdate.class}, tree="[0,1]")
     private Output<List<DatabasePostgresqlV2PendingUpdate>> pendingUpdates;
 
     /**
-     * @return A set of pending updates.
+     * @return (Nested Attribute Set) A set of pending updates. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<DatabasePostgresqlV2PendingUpdate>> pendingUpdates() {

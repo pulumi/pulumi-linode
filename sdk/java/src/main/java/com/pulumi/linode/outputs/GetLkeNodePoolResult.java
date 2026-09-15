@@ -9,6 +9,7 @@ import com.pulumi.linode.outputs.GetLkeNodePoolAutoscaler;
 import com.pulumi.linode.outputs.GetLkeNodePoolDisk;
 import com.pulumi.linode.outputs.GetLkeNodePoolNode;
 import com.pulumi.linode.outputs.GetLkeNodePoolTaint;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeNodePoolResult {
     /**
-     * @return When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+     * @return (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
      * 
      */
     private GetLkeNodePoolAutoscaler autoscaler;
@@ -29,7 +30,7 @@ public final class GetLkeNodePoolResult {
      */
     private String diskEncryption;
     /**
-     * @return This node pool&#39;s custom disk layout.
+     * @return (Nested Attribute List) This node pool&#39;s custom disk layout.
      * 
      */
     private List<GetLkeNodePoolDisk> disks;
@@ -43,6 +44,16 @@ public final class GetLkeNodePoolResult {
      * 
      */
     private Integer id;
+    /**
+     * @return Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     * 
+     */
+    private Boolean isolationPublicIpv4;
+    /**
+     * @return Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     * 
+     */
+    private Boolean isolationPublicIpv6;
     /**
      * @return The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
      * 
@@ -64,7 +75,7 @@ public final class GetLkeNodePoolResult {
      */
     private Integer nodeCount;
     /**
-     * @return Status information for the nodes that are members of this node pool.
+     * @return (Nested Attribute List) Status information for the nodes that are members of this node pool.
      * 
      */
     private List<GetLkeNodePoolNode> nodes;
@@ -74,7 +85,7 @@ public final class GetLkeNodePoolResult {
      */
     private List<String> tags;
     /**
-     * @return Kubernetes taints to add to node pool nodes.
+     * @return (Nested Attribute List) Kubernetes taints to add to node pool nodes.
      * 
      */
     private List<GetLkeNodePoolTaint> taints;
@@ -91,7 +102,7 @@ public final class GetLkeNodePoolResult {
 
     private GetLkeNodePoolResult() {}
     /**
-     * @return When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+     * @return (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
      * 
      */
     public GetLkeNodePoolAutoscaler autoscaler() {
@@ -108,7 +119,7 @@ public final class GetLkeNodePoolResult {
         return this.diskEncryption;
     }
     /**
-     * @return This node pool&#39;s custom disk layout.
+     * @return (Nested Attribute List) This node pool&#39;s custom disk layout.
      * 
      */
     public List<GetLkeNodePoolDisk> disks() {
@@ -127,6 +138,20 @@ public final class GetLkeNodePoolResult {
      */
     public Integer id() {
         return this.id;
+    }
+    /**
+     * @return Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     * 
+     */
+    public Boolean isolationPublicIpv4() {
+        return this.isolationPublicIpv4;
+    }
+    /**
+     * @return Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     * 
+     */
+    public Boolean isolationPublicIpv6() {
+        return this.isolationPublicIpv6;
     }
     /**
      * @return The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
@@ -157,7 +182,7 @@ public final class GetLkeNodePoolResult {
         return this.nodeCount;
     }
     /**
-     * @return Status information for the nodes that are members of this node pool.
+     * @return (Nested Attribute List) Status information for the nodes that are members of this node pool.
      * 
      */
     public List<GetLkeNodePoolNode> nodes() {
@@ -171,7 +196,7 @@ public final class GetLkeNodePoolResult {
         return this.tags;
     }
     /**
-     * @return Kubernetes taints to add to node pool nodes.
+     * @return (Nested Attribute List) Kubernetes taints to add to node pool nodes.
      * 
      */
     public List<GetLkeNodePoolTaint> taints() {
@@ -207,6 +232,8 @@ public final class GetLkeNodePoolResult {
         private List<GetLkeNodePoolDisk> disks;
         private Integer firewallId;
         private Integer id;
+        private Boolean isolationPublicIpv4;
+        private Boolean isolationPublicIpv6;
         private String k8sVersion;
         private String label;
         private Map<String,String> labels;
@@ -225,6 +252,8 @@ public final class GetLkeNodePoolResult {
     	      this.disks = defaults.disks;
     	      this.firewallId = defaults.firewallId;
     	      this.id = defaults.id;
+    	      this.isolationPublicIpv4 = defaults.isolationPublicIpv4;
+    	      this.isolationPublicIpv6 = defaults.isolationPublicIpv6;
     	      this.k8sVersion = defaults.k8sVersion;
     	      this.label = defaults.label;
     	      this.labels = defaults.labels;
@@ -285,6 +314,22 @@ public final class GetLkeNodePoolResult {
               throw new MissingRequiredPropertyException("GetLkeNodePoolResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isolationPublicIpv4(Boolean isolationPublicIpv4) {
+            if (isolationPublicIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetLkeNodePoolResult", "isolationPublicIpv4");
+            }
+            this.isolationPublicIpv4 = isolationPublicIpv4;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isolationPublicIpv6(Boolean isolationPublicIpv6) {
+            if (isolationPublicIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetLkeNodePoolResult", "isolationPublicIpv6");
+            }
+            this.isolationPublicIpv6 = isolationPublicIpv6;
             return this;
         }
         @CustomType.Setter
@@ -376,6 +421,8 @@ public final class GetLkeNodePoolResult {
             _resultValue.disks = disks;
             _resultValue.firewallId = firewallId;
             _resultValue.id = id;
+            _resultValue.isolationPublicIpv4 = isolationPublicIpv4;
+            _resultValue.isolationPublicIpv6 = isolationPublicIpv6;
             _resultValue.k8sVersion = k8sVersion;
             _resultValue.label = label;
             _resultValue.labels = labels;

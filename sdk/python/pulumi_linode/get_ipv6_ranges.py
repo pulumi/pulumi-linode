@@ -52,6 +52,9 @@ class GetIpv6RangesResult:
     @_builtins.property
     @pulumi.getter
     def ranges(self) -> Sequence['outputs.GetIpv6RangesRangeResult']:
+        """
+        (Nested Attribute List) A list of Linode IPv6 ranges.
+        """
         return pulumi.get(self, "ranges")
 
 

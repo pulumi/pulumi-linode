@@ -26,11 +26,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// A set of Linodes currently assigned to this Placement Group.
+        /// (Nested Attribute Set) A set of Linodes currently assigned to this Placement Group. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPlacementGroupsPlacementGroupMemberResult> Members;
         /// <summary>
-        /// Any Linodes that are being migrated to or from the placement group.
+        /// (Nested Attribute) Any Linodes that are being migrated to or from the placement group. Referenced directly (e.g. `migrations.inbound`).
         /// </summary>
         public readonly Outputs.GetPlacementGroupsPlacementGroupMigrationsResult Migrations;
         /// <summary>

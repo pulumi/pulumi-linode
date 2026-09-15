@@ -308,7 +308,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         [Input("vpcId")]
         public int? VpcId { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPC IPs.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }
@@ -357,6 +357,9 @@ namespace Pulumi.Linode
         /// The unique globally general API entity identifier for the VPC.
         /// </summary>
         public readonly int? VpcId;
+        /// <summary>
+        /// (Nested Attribute List) The Linode VPC IPs returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcIpsVpcIpResult> VpcIps;
 
         [OutputConstructor]

@@ -57,6 +57,14 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
+        /// ## IPv4
+        /// 
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `Id`
@@ -115,6 +123,14 @@ namespace Pulumi.Linode
         /// Contains information about a single IPv6 allocation under a VPC.
         /// 
         /// * `Range` - The allocated range in CIDR format.
+        /// 
+        /// ## IPv4
+        /// 
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
         /// 
         /// ## Filterable Fields
         /// 
@@ -175,6 +191,14 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
+        /// ## IPv4
+        /// 
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
         /// ## Filterable Fields
         /// 
         /// * `Id`
@@ -231,6 +255,9 @@ namespace Pulumi.Linode
         /// The unique id of this VPC.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The VPCs returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcsVpcResult> Vpcs;
 
         [OutputConstructor]

@@ -199,6 +199,10 @@ type LkeNodePool struct {
 	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId pulumi.IntOutput `pulumi:"firewallId"`
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 pulumi.BoolOutput `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 pulumi.BoolOutput `pulumi:"isolationPublicIpv6"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -217,9 +221,9 @@ type LkeNodePool struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+	// * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
 	//
-	// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+	// * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	UpdateStrategy pulumi.StringOutput `pulumi:"updateStrategy"`
 }
 
@@ -266,6 +270,10 @@ type lkeNodePoolState struct {
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId *int `pulumi:"firewallId"`
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 *bool `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 *bool `pulumi:"isolationPublicIpv6"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -284,9 +292,9 @@ type lkeNodePoolState struct {
 	Type *string `pulumi:"type"`
 	// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+	// * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
 	//
-	// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+	// * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	UpdateStrategy *string `pulumi:"updateStrategy"`
 }
 
@@ -298,6 +306,10 @@ type LkeNodePoolState struct {
 	DiskEncryption pulumi.StringPtrInput
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId pulumi.IntPtrInput
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 pulumi.BoolPtrInput
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 pulumi.BoolPtrInput
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -316,9 +328,9 @@ type LkeNodePoolState struct {
 	Type pulumi.StringPtrInput
 	// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+	// * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
 	//
-	// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+	// * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	UpdateStrategy pulumi.StringPtrInput
 }
 
@@ -330,8 +342,14 @@ type lkeNodePoolArgs struct {
 	Autoscaler *LkeNodePoolAutoscaler `pulumi:"autoscaler"`
 	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId int `pulumi:"clusterId"`
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId *int `pulumi:"firewallId"`
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 *bool `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 *bool `pulumi:"isolationPublicIpv6"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -348,9 +366,9 @@ type lkeNodePoolArgs struct {
 	Type string `pulumi:"type"`
 	// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+	// * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
 	//
-	// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+	// * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	UpdateStrategy *string `pulumi:"updateStrategy"`
 }
 
@@ -359,8 +377,14 @@ type LkeNodePoolArgs struct {
 	Autoscaler LkeNodePoolAutoscalerPtrInput
 	// ID of the LKE Cluster where to create the current Node Pool.
 	ClusterId pulumi.IntInput
+	// The disk encryption policy for nodes in this pool.
+	DiskEncryption pulumi.StringPtrInput
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId pulumi.IntPtrInput
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 pulumi.BoolPtrInput
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 pulumi.BoolPtrInput
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -377,9 +401,9 @@ type LkeNodePoolArgs struct {
 	Type pulumi.StringInput
 	// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 	//
-	// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+	// * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
 	//
-	// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+	// * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	UpdateStrategy pulumi.StringPtrInput
 }
 
@@ -489,6 +513,16 @@ func (o LkeNodePoolOutput) FirewallId() pulumi.IntOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.IntOutput { return v.FirewallId }).(pulumi.IntOutput)
 }
 
+// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+func (o LkeNodePoolOutput) IsolationPublicIpv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LkeNodePool) pulumi.BoolOutput { return v.IsolationPublicIpv4 }).(pulumi.BoolOutput)
+}
+
+// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+func (o LkeNodePoolOutput) IsolationPublicIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LkeNodePool) pulumi.BoolOutput { return v.IsolationPublicIpv6 }).(pulumi.BoolOutput)
+}
+
 // The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 func (o LkeNodePoolOutput) K8sVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.StringOutput { return v.K8sVersion }).(pulumi.StringOutput)
@@ -531,9 +565,9 @@ func (o LkeNodePoolOutput) Type() pulumi.StringOutput {
 
 // The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
 //
-// * `autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+// * `autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
 //
-// * `taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+// * `taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 func (o LkeNodePoolOutput) UpdateStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.StringOutput { return v.UpdateStrategy }).(pulumi.StringOutput)
 }

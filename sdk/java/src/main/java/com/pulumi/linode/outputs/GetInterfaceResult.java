@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInterfaceDefaultRoute;
 import com.pulumi.linode.outputs.GetInterfacePublic;
+import com.pulumi.linode.outputs.GetInterfaceRdmaVpc;
 import com.pulumi.linode.outputs.GetInterfaceVlan;
 import com.pulumi.linode.outputs.GetInterfaceVpc;
 import java.lang.Integer;
@@ -19,6 +20,7 @@ public final class GetInterfaceResult {
     private String id;
     private Integer linodeId;
     private GetInterfacePublic public_;
+    private GetInterfaceRdmaVpc rdmaVpc;
     private GetInterfaceVlan vlan;
     private GetInterfaceVpc vpc;
 
@@ -34,6 +36,9 @@ public final class GetInterfaceResult {
     }
     public GetInterfacePublic public_() {
         return this.public_;
+    }
+    public GetInterfaceRdmaVpc rdmaVpc() {
+        return this.rdmaVpc;
     }
     public GetInterfaceVlan vlan() {
         return this.vlan;
@@ -55,6 +60,7 @@ public final class GetInterfaceResult {
         private String id;
         private Integer linodeId;
         private GetInterfacePublic public_;
+        private GetInterfaceRdmaVpc rdmaVpc;
         private GetInterfaceVlan vlan;
         private GetInterfaceVpc vpc;
         public Builder() {}
@@ -64,6 +70,7 @@ public final class GetInterfaceResult {
     	      this.id = defaults.id;
     	      this.linodeId = defaults.linodeId;
     	      this.public_ = defaults.public_;
+    	      this.rdmaVpc = defaults.rdmaVpc;
     	      this.vlan = defaults.vlan;
     	      this.vpc = defaults.vpc;
         }
@@ -101,6 +108,14 @@ public final class GetInterfaceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder rdmaVpc(GetInterfaceRdmaVpc rdmaVpc) {
+            if (rdmaVpc == null) {
+              throw new MissingRequiredPropertyException("GetInterfaceResult", "rdmaVpc");
+            }
+            this.rdmaVpc = rdmaVpc;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vlan(GetInterfaceVlan vlan) {
             if (vlan == null) {
               throw new MissingRequiredPropertyException("GetInterfaceResult", "vlan");
@@ -122,6 +137,7 @@ public final class GetInterfaceResult {
             _resultValue.id = id;
             _resultValue.linodeId = linodeId;
             _resultValue.public_ = public_;
+            _resultValue.rdmaVpc = rdmaVpc;
             _resultValue.vlan = vlan;
             _resultValue.vpc = vpc;
             return _resultValue;

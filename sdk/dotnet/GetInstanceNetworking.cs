@@ -13,7 +13,7 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
         /// 
         /// ## Example Usage
         /// 
@@ -38,7 +38,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
         /// 
         /// ## Example Usage
         /// 
@@ -63,7 +63,7 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Provides details about the networking configuration of an Instance.
-        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+        /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
         /// 
         /// ## Example Usage
         /// 
@@ -120,6 +120,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetInstanceNetworkingResult
     {
+        /// <summary>
+        /// The ID of the entity.
+        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv4Result> Ipv4s;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkingIpv6Result> Ipv6s;

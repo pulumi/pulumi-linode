@@ -101,6 +101,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The Network Transfer Prices returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkTransferPricesTypeResult> Types;
 
         [OutputConstructor]

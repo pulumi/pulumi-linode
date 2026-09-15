@@ -63,6 +63,35 @@ namespace Pulumi.Linode
     ///         LinodeId = my_instance.Id,
     ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
     ///         Image = "linode/ubuntu22.04",
+    ///         AuthorizedKeys = new[]
+    ///         {
+    ///             "ssh-rsa AAAA...Gw== user@example.local",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_instance = new Linode.Instance("my-instance", new()
+    ///     {
+    ///         Label = "my-instance",
+    ///         Type = "g6-standard-1",
+    ///         Region = "us-southeast",
+    ///     });
+    /// 
+    ///     var boot = new Linode.InstanceDisk("boot", new()
+    ///     {
+    ///         Label = "boot",
+    ///         LinodeId = my_instance.Id,
+    ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
+    ///         Image = "linode/ubuntu22.04",
     ///         RootPass = "myc00lpass!",
     ///         AuthorizedKeys = new[]
     ///         {
@@ -90,13 +119,13 @@ namespace Pulumi.Linode
     public partial class InstanceDisk : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `Image`)
+        /// A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         [Output("authorizedKeys")]
         public Output<ImmutableArray<string>> AuthorizedKeys { get; private set; } = null!;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `Image`)
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         [Output("authorizedUsers")]
         public Output<ImmutableArray<string>> AuthorizedUsers { get; private set; } = null!;
@@ -138,7 +167,7 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `Image`)
+        /// The root user's password on a newly-created Linode Disk when deploying from an Image. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         [Output("rootPass")]
         public Output<string?> RootPass { get; private set; } = null!;
@@ -233,7 +262,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `Image`)
+        /// A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -245,7 +274,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `Image`)
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -281,7 +310,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `Image`)
+        /// The root user's password on a newly-created Linode Disk when deploying from an Image. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         public Input<string>? RootPass
         {
@@ -338,7 +367,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedKeys;
 
         /// <summary>
-        /// A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `Image`)
+        /// A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedKeys
         {
@@ -350,7 +379,7 @@ namespace Pulumi.Linode
         private InputList<string>? _authorizedUsers;
 
         /// <summary>
-        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `Image`)
+        /// A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         public InputList<string> AuthorizedUsers
         {
@@ -398,7 +427,7 @@ namespace Pulumi.Linode
         private Input<string>? _rootPass;
 
         /// <summary>
-        /// The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `Image`)
+        /// The root user's password on a newly-created Linode Disk when deploying from an Image. When `Image` is provided, at least one of `RootPass`, `AuthorizedKeys`, or `AuthorizedUsers` must be specified. (Requires `Image`)
         /// </summary>
         public Input<string>? RootPass
         {

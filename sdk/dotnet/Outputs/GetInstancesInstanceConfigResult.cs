@@ -18,11 +18,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Comments;
         /// <summary>
-        /// A list of `Disk` or `Volume` attachments for this `Config`.  If the `BootConfigLabel` omits a `Devices` block, the Linode will not be booted.
+        /// (Read-Only Object List) A list of `Disk` or `Volume` attachments for this `Config`.  If the `BootConfigLabel` omits a `Devices` block, the Linode will not be booted. Referenced with an index (e.g. `devices.0.sda`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigDeviceResult> Devices;
         /// <summary>
-        /// Helpers enabled when booting to this Linode Config.
+        /// (Read-Only Object List) Helpers enabled when booting to this Linode Config. Referenced with an index (e.g. `helpers.0.distro`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigHelperResult> Helpers;
         /// <summary>

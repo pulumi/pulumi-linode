@@ -278,7 +278,13 @@ namespace Pulumi.Linode
     public sealed class GetNetworkingIpsResult
     {
         public readonly ImmutableArray<Outputs.GetNetworkingIpsFilterResult> Filters;
+        /// <summary>
+        /// The ID of the entity.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The list of IP addresses.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkingIpsIpAddressResult> IpAddresses;
         public readonly string? Order;
         public readonly string? OrderBy;

@@ -22,11 +22,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Cost in US dollars, broken down into hourly and monthly charges.
+        /// (Read-Only Object List) Pricing information for this Linode Volume type. Referenced with an index (e.g. `price.0.hourly`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVolumeTypesTypePriceResult> Prices;
         /// <summary>
-        /// A list of region-specific prices for this Volume Type.
+        /// (Read-Only Object List) Region-specific pricing information for this Linode Volume type. Referenced with an index (e.g. `region_prices.0.hourly`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVolumeTypesTypeRegionPriceResult> RegionPrices;
         /// <summary>

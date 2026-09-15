@@ -71,7 +71,7 @@ export class ProducerImageShareGroup extends pulumi.CustomResource {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
@@ -162,7 +162,7 @@ export interface ProducerImageShareGroupState {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     description?: pulumi.Input<string | undefined>;
     /**
@@ -206,7 +206,7 @@ export interface ProducerImageShareGroupArgs {
     /**
      * The description of the Image Share Group
      *
-     * * `images` - (Optional) A list of Images to include in the Image Share Group.
+     * * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
      */
     description?: pulumi.Input<string | undefined>;
     /**

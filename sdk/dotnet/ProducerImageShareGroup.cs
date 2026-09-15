@@ -69,7 +69,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The description of the Image Share Group
         /// 
-        /// * `Images` - (Optional) A list of Images to include in the Image Share Group.
+        /// * `Images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

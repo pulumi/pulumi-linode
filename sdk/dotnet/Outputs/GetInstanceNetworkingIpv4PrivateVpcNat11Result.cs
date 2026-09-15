@@ -14,15 +14,15 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstanceNetworkingIpv4PrivateVpcNat11Result
     {
         /// <summary>
-        /// The address.
+        /// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// The unique globally general API entity identifier for the VPC subnet.
+        /// The `Id` of the VPC Subnet for this Interface.
         /// </summary>
         public readonly int SubnetId;
         /// <summary>
-        /// The unique globally general API entity identifier for the VPC.
+        /// The `Id` of the VPC configured for this Interface.
         /// </summary>
         public readonly int VpcId;
 

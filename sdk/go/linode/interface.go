@@ -326,17 +326,19 @@ import (
 type Interface struct {
 	pulumi.CustomResourceState
 
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute InterfaceDefaultRouteOutput `pulumi:"defaultRoute"`
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId pulumi.IntPtrOutput `pulumi:"firewallId"`
 	// The ID of the Linode to assign this interface to.
 	LinodeId pulumi.IntOutput `pulumi:"linodeId"`
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
 	Public InterfacePublicPtrOutput `pulumi:"public"`
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+	RdmaVpc InterfaceRdmaVpcPtrOutput `pulumi:"rdmaVpc"`
+	// Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan InterfaceVlanPtrOutput `pulumi:"vlan"`
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc InterfaceVpcPtrOutput `pulumi:"vpc"`
 }
 
@@ -373,32 +375,36 @@ func GetInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Interface resources.
 type interfaceState struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute *InterfaceDefaultRoute `pulumi:"defaultRoute"`
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId *int `pulumi:"firewallId"`
 	// The ID of the Linode to assign this interface to.
 	LinodeId *int `pulumi:"linodeId"`
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
 	Public *InterfacePublic `pulumi:"public"`
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+	RdmaVpc *InterfaceRdmaVpc `pulumi:"rdmaVpc"`
+	// Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan *InterfaceVlan `pulumi:"vlan"`
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc *InterfaceVpc `pulumi:"vpc"`
 }
 
 type InterfaceState struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute InterfaceDefaultRoutePtrInput
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId pulumi.IntPtrInput
 	// The ID of the Linode to assign this interface to.
 	LinodeId pulumi.IntPtrInput
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
 	Public InterfacePublicPtrInput
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+	RdmaVpc InterfaceRdmaVpcPtrInput
+	// Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan InterfaceVlanPtrInput
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc InterfaceVpcPtrInput
 }
 
@@ -407,33 +413,37 @@ func (InterfaceState) ElementType() reflect.Type {
 }
 
 type interfaceArgs struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute *InterfaceDefaultRoute `pulumi:"defaultRoute"`
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId *int `pulumi:"firewallId"`
 	// The ID of the Linode to assign this interface to.
 	LinodeId int `pulumi:"linodeId"`
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
 	Public *InterfacePublic `pulumi:"public"`
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+	RdmaVpc *InterfaceRdmaVpc `pulumi:"rdmaVpc"`
+	// Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan *InterfaceVlan `pulumi:"vlan"`
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc *InterfaceVpc `pulumi:"vpc"`
 }
 
 // The set of arguments for constructing a Interface resource.
 type InterfaceArgs struct {
-	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute InterfaceDefaultRoutePtrInput
 	// The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
 	FirewallId pulumi.IntPtrInput
 	// The ID of the Linode to assign this interface to.
 	LinodeId pulumi.IntInput
-	// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
 	Public InterfacePublicPtrInput
-	// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+	RdmaVpc InterfaceRdmaVpcPtrInput
+	// Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
 	Vlan InterfaceVlanPtrInput
-	// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+	// Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
 	Vpc InterfaceVpcPtrInput
 }
 
@@ -524,7 +534,7 @@ func (o InterfaceOutput) ToInterfaceOutputWithContext(ctx context.Context) Inter
 	return o
 }
 
-// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 func (o InterfaceOutput) DefaultRoute() InterfaceDefaultRouteOutput {
 	return o.ApplyT(func(v *Interface) InterfaceDefaultRouteOutput { return v.DefaultRoute }).(InterfaceDefaultRouteOutput)
 }
@@ -539,17 +549,22 @@ func (o InterfaceOutput) LinodeId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Interface) pulumi.IntOutput { return v.LinodeId }).(pulumi.IntOutput)
 }
 
-// Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+// Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
 func (o InterfaceOutput) Public() InterfacePublicPtrOutput {
 	return o.ApplyT(func(v *Interface) InterfacePublicPtrOutput { return v.Public }).(InterfacePublicPtrOutput)
 }
 
-// Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+// Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+func (o InterfaceOutput) RdmaVpc() InterfaceRdmaVpcPtrOutput {
+	return o.ApplyT(func(v *Interface) InterfaceRdmaVpcPtrOutput { return v.RdmaVpc }).(InterfaceRdmaVpcPtrOutput)
+}
+
+// Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
 func (o InterfaceOutput) Vlan() InterfaceVlanPtrOutput {
 	return o.ApplyT(func(v *Interface) InterfaceVlanPtrOutput { return v.Vlan }).(InterfaceVlanPtrOutput)
 }
 
-// Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+// Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
 func (o InterfaceOutput) Vpc() InterfaceVpcPtrOutput {
 	return o.ApplyT(func(v *Interface) InterfaceVpcPtrOutput { return v.Vpc }).(InterfaceVpcPtrOutput)
 }

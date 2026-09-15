@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceConfigDevice {
     /**
-     * @return The Disk ID to map to this disk slot
+     * @return The device slot identifier (for example, sda, sdb) to map a disk or volume into
      * 
      */
     private String deviceName;
@@ -31,7 +31,7 @@ public final class InstanceConfigDevice {
 
     private InstanceConfigDevice() {}
     /**
-     * @return The Disk ID to map to this disk slot
+     * @return The device slot identifier (for example, sda, sdb) to map a disk or volume into
      * 
      */
     public String deviceName() {

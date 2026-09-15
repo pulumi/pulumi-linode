@@ -78,21 +78,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The group this Domain belongs to. This is for display purposes only.
-     * 
-     */
-    @Import(name="group")
-    private @Nullable Output<String> group;
-
-    /**
-     * @return The group this Domain belongs to. This is for display purposes only.
-     * 
-     */
-    public Optional<Output<String>> group() {
-        return Optional.ofNullable(this.group);
-    }
-
-    /**
      * The IP addresses representing the master DNS for this Domain.
      * 
      * ***
@@ -223,7 +208,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.domain = $.domain;
         this.expireSec = $.expireSec;
-        this.group = $.group;
         this.masterIps = $.masterIps;
         this.refreshSec = $.refreshSec;
         this.retrySec = $.retrySec;
@@ -344,27 +328,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expireSec(Integer expireSec) {
             return expireSec(Output.of(expireSec));
-        }
-
-        /**
-         * @param group The group this Domain belongs to. This is for display purposes only.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder group(@Nullable Output<String> group) {
-            $.group = group;
-            return this;
-        }
-
-        /**
-         * @param group The group this Domain belongs to. This is for display purposes only.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder group(String group) {
-            return group(Output.of(group));
         }
 
         /**

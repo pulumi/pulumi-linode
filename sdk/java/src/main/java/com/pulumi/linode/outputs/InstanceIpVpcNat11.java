@@ -12,24 +12,40 @@ import java.util.Objects;
 @CustomType
 public final class InstanceIpVpcNat11 {
     /**
-     * @return The resulting IPv4 address.
+     * @return The VPC IPv4 address this address is NATted with.
      * 
      */
     private String address;
+    /**
+     * @return The ID of the VPC subnet containing the NATted address.
+     * 
+     */
     private Integer subnetId;
+    /**
+     * @return The ID of the VPC containing the NATted address.
+     * 
+     */
     private Integer vpcId;
 
     private InstanceIpVpcNat11() {}
     /**
-     * @return The resulting IPv4 address.
+     * @return The VPC IPv4 address this address is NATted with.
      * 
      */
     public String address() {
         return this.address;
     }
+    /**
+     * @return The ID of the VPC subnet containing the NATted address.
+     * 
+     */
     public Integer subnetId() {
         return this.subnetId;
     }
+    /**
+     * @return The ID of the VPC containing the NATted address.
+     * 
+     */
     public Integer vpcId() {
         return this.vpcId;
     }

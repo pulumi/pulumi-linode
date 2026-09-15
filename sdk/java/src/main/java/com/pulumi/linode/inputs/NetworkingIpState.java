@@ -5,10 +5,12 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.NetworkingIpAssignedEntityArgs;
 import com.pulumi.linode.inputs.NetworkingIpVpcNat11Args;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -31,6 +33,21 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> address() {
         return Optional.ofNullable(this.address);
+    }
+
+    /**
+     * (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    @Import(name="assignedEntity")
+    private @Nullable Output<NetworkingIpAssignedEntityArgs> assignedEntity;
+
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public Optional<Output<NetworkingIpAssignedEntityArgs>> assignedEntity() {
+        return Optional.ofNullable(this.assignedEntity);
     }
 
     /**
@@ -154,6 +171,21 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A set of tags associated with this IP address.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The type of IP address. (ipv4, ipv6, etc.)
      * 
      */
@@ -169,14 +201,14 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      * 
      */
     @Import(name="vpcNat11")
     private @Nullable Output<NetworkingIpVpcNat11Args> vpcNat11;
 
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      * 
      */
     public Optional<Output<NetworkingIpVpcNat11Args>> vpcNat11() {
@@ -187,6 +219,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
 
     private NetworkingIpState(NetworkingIpState $) {
         this.address = $.address;
+        this.assignedEntity = $.assignedEntity;
         this.gateway = $.gateway;
         this.linodeId = $.linodeId;
         this.prefix = $.prefix;
@@ -195,6 +228,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.reserved = $.reserved;
         this.subnetMask = $.subnetMask;
+        this.tags = $.tags;
         this.type = $.type;
         this.vpcNat11 = $.vpcNat11;
     }
@@ -236,6 +270,27 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder address(String address) {
             return address(Output.of(address));
+        }
+
+        /**
+         * @param assignedEntity (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assignedEntity(@Nullable Output<NetworkingIpAssignedEntityArgs> assignedEntity) {
+            $.assignedEntity = assignedEntity;
+            return this;
+        }
+
+        /**
+         * @param assignedEntity (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder assignedEntity(NetworkingIpAssignedEntityArgs assignedEntity) {
+            return assignedEntity(Output.of(assignedEntity));
         }
 
         /**
@@ -407,6 +462,37 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags A set of tags associated with this IP address.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+
+        /**
          * @param type The type of IP address. (ipv4, ipv6, etc.)
          * 
          * @return builder
@@ -428,7 +514,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11 (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
          * 
          * @return builder
          * 
@@ -439,7 +525,7 @@ public final class NetworkingIpState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcNat11 Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+         * @param vpcNat11 (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
          * 
          * @return builder
          * 

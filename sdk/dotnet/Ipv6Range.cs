@@ -28,7 +28,7 @@ namespace Pulumi.Linode
     ///     var foobar = new Linode.Instance("foobar", new()
     ///     {
     ///         Label = "my-linode",
-    ///         Image = "linode/alpine3.19",
+    ///         Image = "linode/arch",
     ///         Type = "g6-nanode-1",
     ///         Region = "us-southeast",
     ///     });

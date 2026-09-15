@@ -225,6 +225,9 @@ namespace Pulumi.Linode
         /// The unique ID of this login object.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The list of Linode account logins.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountLoginsLoginResult> Logins;
 
         [OutputConstructor]

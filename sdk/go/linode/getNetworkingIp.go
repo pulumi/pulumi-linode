@@ -61,9 +61,12 @@ type LookupNetworkingIpArgs struct {
 type LookupNetworkingIpResult struct {
 	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
 	Address string `pulumi:"address"`
+	// (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+	AssignedEntity GetNetworkingIpAssignedEntity `pulumi:"assignedEntity"`
 	// The default gateway for this address.
 	Gateway string `pulumi:"gateway"`
-	Id      string `pulumi:"id"`
+	// The ID of the entity.
+	Id string `pulumi:"id"`
 	// The ID of the interface this address is assigned to.
 	InterfaceId int `pulumi:"interfaceId"`
 	// The ID of the Linode this address currently belongs to.
@@ -80,9 +83,11 @@ type LookupNetworkingIpResult struct {
 	Reserved bool `pulumi:"reserved"`
 	// The mask that separates host bits from network bits for this address.
 	SubnetMask string `pulumi:"subnetMask"`
-	// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+	// A set of tags associated with this IP address.
+	Tags []string `pulumi:"tags"`
+	// The type of the entity.
 	Type string `pulumi:"type"`
-	// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+	// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
 	VpcNat11 GetNetworkingIpVpcNat11 `pulumi:"vpcNat11"`
 }
 
@@ -121,11 +126,17 @@ func (o LookupNetworkingIpResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Address }).(pulumi.StringOutput)
 }
 
+// (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+func (o LookupNetworkingIpResultOutput) AssignedEntity() GetNetworkingIpAssignedEntityOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) GetNetworkingIpAssignedEntity { return v.AssignedEntity }).(GetNetworkingIpAssignedEntityOutput)
+}
+
 // The default gateway for this address.
 func (o LookupNetworkingIpResultOutput) Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Gateway }).(pulumi.StringOutput)
 }
 
+// The ID of the entity.
 func (o LookupNetworkingIpResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -170,12 +181,17 @@ func (o LookupNetworkingIpResultOutput) SubnetMask() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.SubnetMask }).(pulumi.StringOutput)
 }
 
-// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+// A set of tags associated with this IP address.
+func (o LookupNetworkingIpResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupNetworkingIpResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The type of the entity.
 func (o LookupNetworkingIpResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkingIpResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
 func (o LookupNetworkingIpResultOutput) VpcNat11() GetNetworkingIpVpcNat11Output {
 	return o.ApplyT(func(v LookupNetworkingIpResult) GetNetworkingIpVpcNat11 { return v.VpcNat11 }).(GetNetworkingIpVpcNat11Output)
 }

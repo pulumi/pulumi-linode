@@ -26,7 +26,7 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, created=None, encryption=None, filesystem_path=None, id=None, label=None, linode_id=None, region=None, size=None, status=None, tags=None, updated=None):
+    def __init__(__self__, created=None, encryption=None, filesystem_path=None, id=None, io_ready=None, label=None, linode_id=None, region=None, size=None, status=None, tags=None, updated=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -39,6 +39,9 @@ class GetVolumeResult:
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
+        if io_ready and not isinstance(io_ready, bool):
+            raise TypeError("Expected argument 'io_ready' to be a bool")
+        pulumi.set(__self__, "io_ready", io_ready)
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
@@ -92,6 +95,14 @@ class GetVolumeResult:
         The unique ID of this Volume.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ioReady")
+    def io_ready(self) -> _builtins.bool:
+        """
+        Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        """
+        return pulumi.get(self, "io_ready")
 
     @_builtins.property
     @pulumi.getter
@@ -160,6 +171,7 @@ class AwaitableGetVolumeResult(GetVolumeResult):
             encryption=self.encryption,
             filesystem_path=self.filesystem_path,
             id=self.id,
+            io_ready=self.io_ready,
             label=self.label,
             linode_id=self.linode_id,
             region=self.region,
@@ -199,6 +211,7 @@ def get_volume(id: Optional[_builtins.int] = None,
         encryption=pulumi.get(__ret__, 'encryption'),
         filesystem_path=pulumi.get(__ret__, 'filesystem_path'),
         id=pulumi.get(__ret__, 'id'),
+        io_ready=pulumi.get(__ret__, 'io_ready'),
         label=pulumi.get(__ret__, 'label'),
         linode_id=pulumi.get(__ret__, 'linode_id'),
         region=pulumi.get(__ret__, 'region'),
@@ -235,6 +248,7 @@ def get_volume_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         encryption=pulumi.get(__response__, 'encryption'),
         filesystem_path=pulumi.get(__response__, 'filesystem_path'),
         id=pulumi.get(__response__, 'id'),
+        io_ready=pulumi.get(__response__, 'io_ready'),
         label=pulumi.get(__response__, 'label'),
         linode_id=pulumi.get(__response__, 'linode_id'),
         region=pulumi.get(__response__, 'region'),

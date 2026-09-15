@@ -5,26 +5,33 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6SlaacAssignedEntity;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6SlaacVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetInstanceNetworkingIpv6Slaac {
     /**
-     * @return The address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     private String address;
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     * 
+     */
+    private GetInstanceNetworkingIpv6SlaacAssignedEntity assignedEntity;
     /**
      * @return The default gateway for this address.
      * 
      */
     private String gateway;
     /**
-     * @return The globally general API entity identifier for the Linode interface.
+     * @return The Linode interface ID that this IP address is assigned to.
      * 
      */
     private Integer interfaceId;
@@ -54,28 +61,45 @@ public final class GetInstanceNetworkingIpv6Slaac {
      */
     private String region;
     /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
+    private Boolean reserved;
+    /**
      * @return The subnet mask.
      * 
      */
     private String subnetMask;
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    private List<String> tags;
     /**
      * @return The type of address this is.
      * 
      */
     private String type;
     /**
-     * @return IPv4 address configured as a 1:1 NAT for this Interface.
+     * @return (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      * 
      */
     private GetInstanceNetworkingIpv6SlaacVpcNat11 vpcNat11;
 
     private GetInstanceNetworkingIpv6Slaac() {}
     /**
-     * @return The address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public String address() {
         return this.address;
+    }
+    /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `ipv6.0.slaac.assigned_entity.id`).
+     * 
+     */
+    public GetInstanceNetworkingIpv6SlaacAssignedEntity assignedEntity() {
+        return this.assignedEntity;
     }
     /**
      * @return The default gateway for this address.
@@ -85,7 +109,7 @@ public final class GetInstanceNetworkingIpv6Slaac {
         return this.gateway;
     }
     /**
-     * @return The globally general API entity identifier for the Linode interface.
+     * @return The Linode interface ID that this IP address is assigned to.
      * 
      */
     public Integer interfaceId() {
@@ -127,11 +151,25 @@ public final class GetInstanceNetworkingIpv6Slaac {
         return this.region;
     }
     /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
+    public Boolean reserved() {
+        return this.reserved;
+    }
+    /**
      * @return The subnet mask.
      * 
      */
     public String subnetMask() {
         return this.subnetMask;
+    }
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags;
     }
     /**
      * @return The type of address this is.
@@ -141,7 +179,7 @@ public final class GetInstanceNetworkingIpv6Slaac {
         return this.type;
     }
     /**
-     * @return IPv4 address configured as a 1:1 NAT for this Interface.
+     * @return (Read-Only Object) IPv4 address configured as a 1:1 NAT for this Interface. Referenced directly (e.g. `ipv6.0.slaac.vpc_nat_1_1.address`).
      * 
      */
     public GetInstanceNetworkingIpv6SlaacVpcNat11 vpcNat11() {
@@ -158,6 +196,7 @@ public final class GetInstanceNetworkingIpv6Slaac {
     @CustomType.Builder
     public static final class Builder {
         private String address;
+        private GetInstanceNetworkingIpv6SlaacAssignedEntity assignedEntity;
         private String gateway;
         private Integer interfaceId;
         private Integer linodeId;
@@ -165,13 +204,16 @@ public final class GetInstanceNetworkingIpv6Slaac {
         private Boolean public_;
         private String rdns;
         private String region;
+        private Boolean reserved;
         private String subnetMask;
+        private List<String> tags;
         private String type;
         private GetInstanceNetworkingIpv6SlaacVpcNat11 vpcNat11;
         public Builder() {}
         public Builder(GetInstanceNetworkingIpv6Slaac defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
+    	      this.assignedEntity = defaults.assignedEntity;
     	      this.gateway = defaults.gateway;
     	      this.interfaceId = defaults.interfaceId;
     	      this.linodeId = defaults.linodeId;
@@ -179,7 +221,9 @@ public final class GetInstanceNetworkingIpv6Slaac {
     	      this.public_ = defaults.public_;
     	      this.rdns = defaults.rdns;
     	      this.region = defaults.region;
+    	      this.reserved = defaults.reserved;
     	      this.subnetMask = defaults.subnetMask;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.vpcNat11 = defaults.vpcNat11;
         }
@@ -190,6 +234,14 @@ public final class GetInstanceNetworkingIpv6Slaac {
               throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Slaac", "address");
             }
             this.address = address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder assignedEntity(GetInstanceNetworkingIpv6SlaacAssignedEntity assignedEntity) {
+            if (assignedEntity == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Slaac", "assignedEntity");
+            }
+            this.assignedEntity = assignedEntity;
             return this;
         }
         @CustomType.Setter
@@ -249,12 +301,31 @@ public final class GetInstanceNetworkingIpv6Slaac {
             return this;
         }
         @CustomType.Setter
+        public Builder reserved(Boolean reserved) {
+            if (reserved == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Slaac", "reserved");
+            }
+            this.reserved = reserved;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subnetMask(String subnetMask) {
             if (subnetMask == null) {
               throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Slaac", "subnetMask");
             }
             this.subnetMask = subnetMask;
             return this;
+        }
+        @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6Slaac", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
         @CustomType.Setter
         public Builder type(String type) {
@@ -275,6 +346,7 @@ public final class GetInstanceNetworkingIpv6Slaac {
         public GetInstanceNetworkingIpv6Slaac build() {
             final var _resultValue = new GetInstanceNetworkingIpv6Slaac();
             _resultValue.address = address;
+            _resultValue.assignedEntity = assignedEntity;
             _resultValue.gateway = gateway;
             _resultValue.interfaceId = interfaceId;
             _resultValue.linodeId = linodeId;
@@ -282,7 +354,9 @@ public final class GetInstanceNetworkingIpv6Slaac {
             _resultValue.public_ = public_;
             _resultValue.rdns = rdns;
             _resultValue.region = region;
+            _resultValue.reserved = reserved;
             _resultValue.subnetMask = subnetMask;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.vpcNat11 = vpcNat11;
             return _resultValue;

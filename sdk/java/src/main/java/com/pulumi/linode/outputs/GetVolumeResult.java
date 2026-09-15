@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -32,6 +33,11 @@ public final class GetVolumeResult {
      * 
      */
     private Integer id;
+    /**
+     * @return Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     * 
+     */
+    private Boolean ioReady;
     /**
      * @return This Volume&#39;s label is for display purposes only.
      * 
@@ -98,6 +104,13 @@ public final class GetVolumeResult {
         return this.id;
     }
     /**
+     * @return Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     * 
+     */
+    public Boolean ioReady() {
+        return this.ioReady;
+    }
+    /**
      * @return This Volume&#39;s label is for display purposes only.
      * 
      */
@@ -160,6 +173,7 @@ public final class GetVolumeResult {
         private String encryption;
         private String filesystemPath;
         private Integer id;
+        private Boolean ioReady;
         private String label;
         private Integer linodeId;
         private String region;
@@ -174,6 +188,7 @@ public final class GetVolumeResult {
     	      this.encryption = defaults.encryption;
     	      this.filesystemPath = defaults.filesystemPath;
     	      this.id = defaults.id;
+    	      this.ioReady = defaults.ioReady;
     	      this.label = defaults.label;
     	      this.linodeId = defaults.linodeId;
     	      this.region = defaults.region;
@@ -213,6 +228,14 @@ public final class GetVolumeResult {
               throw new MissingRequiredPropertyException("GetVolumeResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ioReady(Boolean ioReady) {
+            if (ioReady == null) {
+              throw new MissingRequiredPropertyException("GetVolumeResult", "ioReady");
+            }
+            this.ioReady = ioReady;
             return this;
         }
         @CustomType.Setter
@@ -280,6 +303,7 @@ public final class GetVolumeResult {
             _resultValue.encryption = encryption;
             _resultValue.filesystemPath = filesystemPath;
             _resultValue.id = id;
+            _resultValue.ioReady = ioReady;
             _resultValue.label = label;
             _resultValue.linodeId = linodeId;
             _resultValue.region = region;

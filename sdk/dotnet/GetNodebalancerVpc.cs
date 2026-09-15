@@ -146,6 +146,10 @@ namespace Pulumi.Linode
         /// A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
         /// </summary>
         public readonly string Ipv4Range;
+        /// <summary>
+        /// A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+        /// </summary>
+        public readonly string Ipv6Range;
         public readonly int NodebalancerId;
         /// <summary>
         /// The ID of this configuration's VPC subnet.
@@ -162,6 +166,8 @@ namespace Pulumi.Linode
 
             string ipv4Range,
 
+            string ipv6Range,
+
             int nodebalancerId,
 
             int subnetId,
@@ -170,6 +176,7 @@ namespace Pulumi.Linode
         {
             Id = id;
             Ipv4Range = ipv4Range;
+            Ipv6Range = ipv6Range;
             NodebalancerId = nodebalancerId;
             SubnetId = subnetId;
             VpcId = vpcId;

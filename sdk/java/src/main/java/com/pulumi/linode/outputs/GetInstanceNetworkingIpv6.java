@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6Global;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6LinkLocal;
 import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6Slaac;
+import com.pulumi.linode.outputs.GetInstanceNetworkingIpv6Vpc;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,6 +17,7 @@ public final class GetInstanceNetworkingIpv6 {
     private List<GetInstanceNetworkingIpv6Global> globals;
     private GetInstanceNetworkingIpv6LinkLocal linkLocal;
     private GetInstanceNetworkingIpv6Slaac slaac;
+    private List<GetInstanceNetworkingIpv6Vpc> vpcs;
 
     private GetInstanceNetworkingIpv6() {}
     public List<GetInstanceNetworkingIpv6Global> globals() {
@@ -26,6 +28,9 @@ public final class GetInstanceNetworkingIpv6 {
     }
     public GetInstanceNetworkingIpv6Slaac slaac() {
         return this.slaac;
+    }
+    public List<GetInstanceNetworkingIpv6Vpc> vpcs() {
+        return this.vpcs;
     }
 
     public static Builder builder() {
@@ -40,12 +45,14 @@ public final class GetInstanceNetworkingIpv6 {
         private List<GetInstanceNetworkingIpv6Global> globals;
         private GetInstanceNetworkingIpv6LinkLocal linkLocal;
         private GetInstanceNetworkingIpv6Slaac slaac;
+        private List<GetInstanceNetworkingIpv6Vpc> vpcs;
         public Builder() {}
         public Builder(GetInstanceNetworkingIpv6 defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.globals = defaults.globals;
     	      this.linkLocal = defaults.linkLocal;
     	      this.slaac = defaults.slaac;
+    	      this.vpcs = defaults.vpcs;
         }
 
         @CustomType.Setter
@@ -75,11 +82,23 @@ public final class GetInstanceNetworkingIpv6 {
             this.slaac = slaac;
             return this;
         }
+        @CustomType.Setter
+        public Builder vpcs(List<GetInstanceNetworkingIpv6Vpc> vpcs) {
+            if (vpcs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv6", "vpcs");
+            }
+            this.vpcs = vpcs;
+            return this;
+        }
+        public Builder vpcs(GetInstanceNetworkingIpv6Vpc... vpcs) {
+            return vpcs(List.of(vpcs));
+        }
         public GetInstanceNetworkingIpv6 build() {
             final var _resultValue = new GetInstanceNetworkingIpv6();
             _resultValue.globals = globals;
             _resultValue.linkLocal = linkLocal;
             _resultValue.slaac = slaac;
+            _resultValue.vpcs = vpcs;
             return _resultValue;
         }
     }

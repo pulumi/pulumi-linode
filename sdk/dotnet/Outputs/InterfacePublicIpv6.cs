@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class InterfacePublicIpv6
     {
         /// <summary>
-        /// Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input.
+        /// (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `Ranges` input. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv6AssignedRange> AssignedRanges;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv6Range> Ranges;
         /// <summary>
-        /// (Computed) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports:
+        /// (Computed, Nested Attribute Set) The IPv6 ranges assigned to this Linode interface that are also shared with another Linode. Each object in this set supports: Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv6Shared> Shareds;
         /// <summary>
-        /// (Computed) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports:
+        /// (Computed, Nested Attribute Set) The public SLAAC and subnet prefix settings for this public interface. Each object in this set supports: Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterfacePublicIpv6Slaac> Slaacs;
 

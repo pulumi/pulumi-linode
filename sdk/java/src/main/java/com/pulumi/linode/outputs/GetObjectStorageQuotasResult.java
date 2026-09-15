@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class GetObjectStorageQuotasResult {
     private @Nullable List<GetObjectStorageQuotasFilter> filters;
     private String id;
+    /**
+     * @return (Nested Attribute List) The list of Object Storage quotas.
+     * 
+     */
     private List<GetObjectStorageQuotasQuota> quotas;
 
     private GetObjectStorageQuotasResult() {}
@@ -25,6 +29,10 @@ public final class GetObjectStorageQuotasResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The list of Object Storage quotas.
+     * 
+     */
     public List<GetObjectStorageQuotasQuota> quotas() {
         return this.quotas;
     }

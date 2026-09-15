@@ -18,14 +18,14 @@ public final class InstanceConfigDeviceArgs extends com.pulumi.resources.Resourc
     public static final InstanceConfigDeviceArgs Empty = new InstanceConfigDeviceArgs();
 
     /**
-     * The Disk ID to map to this disk slot
+     * The device slot identifier (for example, sda, sdb) to map a disk or volume into
      * 
      */
     @Import(name="deviceName", required=true)
     private Output<String> deviceName;
 
     /**
-     * @return The Disk ID to map to this disk slot
+     * @return The device slot identifier (for example, sda, sdb) to map a disk or volume into
      * 
      */
     public Output<String> deviceName() {
@@ -89,7 +89,7 @@ public final class InstanceConfigDeviceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param deviceName The Disk ID to map to this disk slot
+         * @param deviceName The device slot identifier (for example, sda, sdb) to map a disk or volume into
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class InstanceConfigDeviceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param deviceName The Disk ID to map to this disk slot
+         * @param deviceName The device slot identifier (for example, sda, sdb) to map a disk or volume into
          * 
          * @return builder
          * 

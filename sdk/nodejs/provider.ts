@@ -91,12 +91,12 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["skipInstanceDeletePoll"] = pulumi.output(args?.skipInstanceDeletePoll).apply(JSON.stringify);
             resourceInputs["skipInstanceReadyPoll"] = pulumi.output(args?.skipInstanceReadyPoll).apply(JSON.stringify);
             resourceInputs["skipLkeClusterDeletePoll"] = pulumi.output(args?.skipLkeClusterDeletePoll).apply(JSON.stringify);
-            resourceInputs["token"] = args?.token;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
             resourceInputs["uaPrefix"] = (args?.uaPrefix) ?? utilities.getEnv("LINODE_UA_PREFIX");
             resourceInputs["url"] = (args?.url) ?? utilities.getEnv("LINODE_URL");
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["objSecretKey"] };
+        const secretOpts = { additionalSecretOutputs: ["objSecretKey", "token"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }

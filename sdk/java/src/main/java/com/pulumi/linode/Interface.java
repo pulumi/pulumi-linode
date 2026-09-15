@@ -12,6 +12,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.InterfaceState;
 import com.pulumi.linode.outputs.InterfaceDefaultRoute;
 import com.pulumi.linode.outputs.InterfacePublic;
+import com.pulumi.linode.outputs.InterfaceRdmaVpc;
 import com.pulumi.linode.outputs.InterfaceVlan;
 import com.pulumi.linode.outputs.InterfaceVpc;
 import java.lang.Integer;
@@ -377,14 +378,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/interface:Interface")
 public class Interface extends com.pulumi.resources.CustomResource {
     /**
-     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      * 
      */
     @Export(name="defaultRoute", refs={InterfaceDefaultRoute.class}, tree="[0]")
     private Output<InterfaceDefaultRoute> defaultRoute;
 
     /**
-     * @return Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+     * @return Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
      * 
      */
     public Output<InterfaceDefaultRoute> defaultRoute() {
@@ -419,42 +420,56 @@ public class Interface extends com.pulumi.resources.CustomResource {
         return this.linodeId;
     }
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     @Export(name="public", refs={InterfacePublic.class}, tree="[0]")
     private Output</* @Nullable */ InterfacePublic> public_;
 
     /**
-     * @return Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * @return Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     public Output<Optional<InterfacePublic>> public_() {
         return Codegen.optional(this.public_);
     }
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     * 
+     */
+    @Export(name="rdmaVpc", refs={InterfaceRdmaVpc.class}, tree="[0]")
+    private Output</* @Nullable */ InterfaceRdmaVpc> rdmaVpc;
+
+    /**
+     * @return Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     * 
+     */
+    public Output<Optional<InterfaceRdmaVpc>> rdmaVpc() {
+        return Codegen.optional(this.rdmaVpc);
+    }
+    /**
+     * Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     @Export(name="vlan", refs={InterfaceVlan.class}, tree="[0]")
     private Output</* @Nullable */ InterfaceVlan> vlan;
 
     /**
-     * @return Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * @return Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     public Output<Optional<InterfaceVlan>> vlan() {
         return Codegen.optional(this.vlan);
     }
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     @Export(name="vpc", refs={InterfaceVpc.class}, tree="[0]")
     private Output</* @Nullable */ InterfaceVpc> vpc;
 
     /**
-     * @return Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+     * @return Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     public Output<Optional<InterfaceVpc>> vpc() {

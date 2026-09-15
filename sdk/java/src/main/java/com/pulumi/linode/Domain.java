@@ -137,20 +137,6 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.expireSec);
     }
     /**
-     * The group this Domain belongs to. This is for display purposes only.
-     * 
-     */
-    @Export(name="group", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> group;
-
-    /**
-     * @return The group this Domain belongs to. This is for display purposes only.
-     * 
-     */
-    public Output<Optional<String>> group() {
-        return Codegen.optional(this.group);
-    }
-    /**
      * The IP addresses representing the master DNS for this Domain.
      * 
      * ***

@@ -52,6 +52,9 @@ class GetMaintenancePoliciesResult:
     @_builtins.property
     @pulumi.getter(name="maintenancePolicies")
     def maintenance_policies(self) -> Sequence['outputs.GetMaintenancePoliciesMaintenancePolicyResult']:
+        """
+        (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
+        """
         return pulumi.get(self, "maintenance_policies")
 
 

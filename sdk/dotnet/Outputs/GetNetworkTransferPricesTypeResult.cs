@@ -22,11 +22,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Cost in US dollars, broken down into hourly and monthly charges.
+        /// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkTransferPricesTypePriceResult> Prices;
         /// <summary>
-        /// A list of region-specific prices for this Network Transfer Price.
+        /// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNetworkTransferPricesTypeRegionPriceResult> RegionPrices;
         /// <summary>

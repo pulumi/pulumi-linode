@@ -14,11 +14,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetChildAccountsResult {
+    /**
+     * @return (Nested Attribute List) A list of Child Accounts.
+     * 
+     */
     private List<GetChildAccountsChildAccount> childAccounts;
     private @Nullable List<GetChildAccountsFilter> filters;
     private String id;
 
     private GetChildAccountsResult() {}
+    /**
+     * @return (Nested Attribute List) A list of Child Accounts.
+     * 
+     */
     public List<GetChildAccountsChildAccount> childAccounts() {
         return this.childAccounts;
     }

@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class VpcSubnetDatabaseGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
 
         /// <summary>
-        /// IPv4 range assigned to the database.
+        /// IPv4 range assigned to the NodeBalancer.
         /// </summary>
         [Input("ipv4Range", required: true)]
         public Input<string> Ipv4Range { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Linode.Inputs
         private InputList<Inputs.VpcSubnetDatabaseIpv6RangeGetArgs>? _ipv6Ranges;
 
         /// <summary>
-        /// A list of IPv6 ranges assigned to the database.
+        /// (Read-Only Object List) A list of IPv6 ranges assigned to the NodeBalancer. Referenced with an index (e.g. `ipv6_ranges.0.range`).
         /// </summary>
         public InputList<Inputs.VpcSubnetDatabaseIpv6RangeGetArgs> Ipv6Ranges
         {

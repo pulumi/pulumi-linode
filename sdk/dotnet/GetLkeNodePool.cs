@@ -136,7 +136,7 @@ namespace Pulumi.Linode
     public sealed class GetLkeNodePoolResult
     {
         /// <summary>
-        /// When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+        /// (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
         /// </summary>
         public readonly Outputs.GetLkeNodePoolAutoscalerResult Autoscaler;
         public readonly int ClusterId;
@@ -145,7 +145,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string DiskEncryption;
         /// <summary>
-        /// This node pool's custom disk layout.
+        /// (Nested Attribute List) This node pool's custom disk layout.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeNodePoolDiskResult> Disks;
         /// <summary>
@@ -156,6 +156,14 @@ namespace Pulumi.Linode
         /// The Node's ID.
         /// </summary>
         public readonly int Id;
+        /// <summary>
+        /// Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+        /// </summary>
+        public readonly bool IsolationPublicIpv4;
+        /// <summary>
+        /// Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+        /// </summary>
+        public readonly bool IsolationPublicIpv6;
         /// <summary>
         /// The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
         /// </summary>
@@ -173,7 +181,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
-        /// Status information for the nodes that are members of this node pool.
+        /// (Nested Attribute List) Status information for the nodes that are members of this node pool.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeNodePoolNodeResult> Nodes;
         /// <summary>
@@ -181,7 +189,7 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes.
+        /// (Nested Attribute List) Kubernetes taints to add to node pool nodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeNodePoolTaintResult> Taints;
         /// <summary>
@@ -207,6 +215,10 @@ namespace Pulumi.Linode
 
             int id,
 
+            bool isolationPublicIpv4,
+
+            bool isolationPublicIpv6,
+
             string k8sVersion,
 
             string label,
@@ -231,6 +243,8 @@ namespace Pulumi.Linode
             Disks = disks;
             FirewallId = firewallId;
             Id = id;
+            IsolationPublicIpv4 = isolationPublicIpv4;
+            IsolationPublicIpv6 = isolationPublicIpv6;
             K8sVersion = k8sVersion;
             Label = label;
             Labels = labels;

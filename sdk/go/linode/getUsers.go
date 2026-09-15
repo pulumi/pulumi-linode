@@ -84,10 +84,11 @@ type GetUsersArgs struct {
 type GetUsersResult struct {
 	Filters []GetUsersFilter `pulumi:"filters"`
 	// The ID of entity this grant applies to.
-	Id      string         `pulumi:"id"`
-	Order   *string        `pulumi:"order"`
-	OrderBy *string        `pulumi:"orderBy"`
-	Users   []GetUsersUser `pulumi:"users"`
+	Id      string  `pulumi:"id"`
+	Order   *string `pulumi:"order"`
+	OrderBy *string `pulumi:"orderBy"`
+	// (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
+	Users []GetUsersUser `pulumi:"users"`
 }
 
 func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
@@ -140,6 +141,7 @@ func (o GetUsersResultOutput) OrderBy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetUsersResult) *string { return v.OrderBy }).(pulumi.StringPtrOutput)
 }
 
+// (Nested Attribute List) The returned list of Users. Referenced by index (e.g. `users[0].username`).
 func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
 	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
 }

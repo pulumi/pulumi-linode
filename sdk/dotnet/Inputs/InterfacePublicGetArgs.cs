@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class InterfacePublicGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 addresses for this interface.
+        /// IPv4 addresses for this interface. Referenced directly (e.g. `public.ipv4.addresses`).
         /// </summary>
         [Input("ipv4")]
         public Input<Inputs.InterfacePublicIpv4GetArgs>? Ipv4 { get; set; }
 
         /// <summary>
-        /// IPv6 addresses for this interface.
+        /// IPv6 addresses for this interface. Referenced directly (e.g. `public.ipv6.ranges`).
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.InterfacePublicIpv6GetArgs>? Ipv6 { get; set; }

@@ -16,7 +16,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The public IP that will be used for the one-to-one NAT purpose. If this is `Any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
         /// </summary>
-        public readonly string Nat11;
+        public readonly string? Nat11;
         /// <summary>
         /// The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetInstancesInstanceConfigInterfaceIpv4Result(
-            string nat11,
+            string? nat11,
 
             string vpc)
         {

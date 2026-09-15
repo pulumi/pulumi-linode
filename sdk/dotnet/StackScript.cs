@@ -137,7 +137,7 @@ namespace Pulumi.Linode
         public Output<string> Updated { get; private set; } = null!;
 
         /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        /// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         /// </summary>
         [Output("userDefinedFields")]
         public Output<ImmutableArray<Outputs.StackScriptUserDefinedField>> UserDefinedFields { get; private set; } = null!;
@@ -324,7 +324,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.StackScriptUserDefinedFieldGetArgs>? _userDefinedFields;
 
         /// <summary>
-        /// This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+        /// (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         /// </summary>
         public InputList<Inputs.StackScriptUserDefinedFieldGetArgs> UserDefinedFields
         {

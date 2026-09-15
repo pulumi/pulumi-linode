@@ -61,6 +61,9 @@ class GetProducerImageShareGroupsResult:
     @_builtins.property
     @pulumi.getter(name="imageShareGroups")
     def image_share_groups(self) -> Optional[Sequence['outputs.GetProducerImageShareGroupsImageShareGroupResult']]:
+        """
+        (Block List) The list of Image Share Groups.
+        """
         return pulumi.get(self, "image_share_groups")
 
     @_builtins.property
@@ -120,6 +123,9 @@ def get_producer_image_share_groups(filters: Optional[Sequence[Union['GetProduce
     * `label`
 
     * `is_suspended`
+
+
+    :param Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']] image_share_groups: (Block List) The list of Image Share Groups.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -168,6 +174,9 @@ def get_producer_image_share_groups_output(filters: pulumi.Input[Optional[Option
     * `label`
 
     * `is_suspended`
+
+
+    :param Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']] image_share_groups: (Block List) The list of Image Share Groups.
     """
     __args__ = dict()
     __args__['filters'] = filters

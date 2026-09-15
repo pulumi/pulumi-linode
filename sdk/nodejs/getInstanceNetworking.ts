@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides details about the networking configuration of an Instance.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
  *
  * ## Example Usage
  *
@@ -42,6 +42,9 @@ export interface GetInstanceNetworkingArgs {
  * A collection of values returned by getInstanceNetworking.
  */
 export interface GetInstanceNetworkingResult {
+    /**
+     * The ID of the entity.
+     */
     readonly id: string;
     readonly ipv4s: outputs.GetInstanceNetworkingIpv4[];
     readonly ipv6s: outputs.GetInstanceNetworkingIpv6[];
@@ -52,7 +55,7 @@ export interface GetInstanceNetworkingResult {
 }
 /**
  * Provides details about the networking configuration of an Instance.
- * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+ * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
  *
  * ## Example Usage
  *

@@ -72,7 +72,7 @@ export interface GetNodebalancerConfigsArgs {
     /**
      * The ID of the NodeBalancer to access.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      */
     nodebalancerId: number;
     /**
@@ -94,6 +94,9 @@ export interface GetNodebalancerConfigsResult {
      * The config's ID.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The list of Linode NodeBalancer Configs.
+     */
     readonly nodebalancerConfigs: outputs.GetNodebalancerConfigsNodebalancerConfig[];
     /**
      * The ID of the NodeBalancer that contains the config.
@@ -168,7 +171,7 @@ export interface GetNodebalancerConfigsOutputArgs {
     /**
      * The ID of the NodeBalancer to access.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode NodeBalancers that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
      */
     nodebalancerId: pulumi.Input<number>;
     /**

@@ -25,6 +25,10 @@ public final class GetVpcIpsResult {
      * 
      */
     private @Nullable Integer vpcId;
+    /**
+     * @return (Nested Attribute List) The Linode VPC IPs returned by this data source.
+     * 
+     */
     private List<GetVpcIpsVpcIp> vpcIps;
 
     private GetVpcIpsResult() {}
@@ -44,6 +48,10 @@ public final class GetVpcIpsResult {
     public Optional<Integer> vpcId() {
         return Optional.ofNullable(this.vpcId);
     }
+    /**
+     * @return (Nested Attribute List) The Linode VPC IPs returned by this data source.
+     * 
+     */
     public List<GetVpcIpsVpcIp> vpcIps() {
         return this.vpcIps;
     }

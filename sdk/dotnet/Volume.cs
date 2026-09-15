@@ -125,6 +125,12 @@ namespace Pulumi.Linode
         public Output<string> FilesystemPath { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        /// </summary>
+        [Output("ioReady")]
+        public Output<bool> IoReady { get; private set; } = null!;
+
+        /// <summary>
         /// The label of the Linode Volume
         /// </summary>
         [Output("label")]
@@ -289,6 +295,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("filesystemPath")]
         public Input<string>? FilesystemPath { get; set; }
+
+        /// <summary>
+        /// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+        /// </summary>
+        [Input("ioReady")]
+        public Input<bool>? IoReady { get; set; }
 
         /// <summary>
         /// The label of the Linode Volume

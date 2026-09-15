@@ -30,7 +30,7 @@ namespace Pulumi.Linode
     /// {
     ///     var fooInstance = new Linode.Instance("foo", new()
     ///     {
-    ///         Image = "linode/alpine3.19",
+    ///         Image = "linode/arch",
     ///         Region = "ca-east",
     ///         Type = "g6-dedicated-2",
     ///     });

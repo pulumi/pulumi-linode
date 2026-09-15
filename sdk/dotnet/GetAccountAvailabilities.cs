@@ -196,6 +196,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetAccountAvailabilitiesResult
     {
+        /// <summary>
+        /// (Nested Attribute List) The account availabilities returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAccountAvailabilitiesAvailabilityResult> Availabilities;
         public readonly ImmutableArray<Outputs.GetAccountAvailabilitiesFilterResult> Filters;
         public readonly string Id;

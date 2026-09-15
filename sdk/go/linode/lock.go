@@ -12,13 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Early Access** Locks are in Early Access and may not be available to all users.
-//
 // > **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
 //
 // Manages a Linode Lock which prevents accidental deletion and modification of resources. Locks protect against deletion, rebuild operations, and service transfers. The `cannotDeleteWithSubresources` lock type also protects subresources such as disks, configs, interfaces, and IP addresses.
 //
-// For more information, see the Linode APIv4 docs (TBD).
+// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-resource-lock).
 //
 // > **Note** Only one lock can exist per resource at a time. You cannot have both `cannotDelete` and `cannotDeleteWithSubresources` locks on the same resource simultaneously.
 //
@@ -109,7 +107,7 @@ type Lock struct {
 	EntityId pulumi.IntOutput `pulumi:"entityId"`
 	// The label of the locked entity.
 	EntityLabel pulumi.StringOutput `pulumi:"entityLabel"`
-	// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+	// The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
 	EntityType pulumi.StringOutput `pulumi:"entityType"`
 	// The URL of the locked entity.
 	EntityUrl pulumi.StringOutput `pulumi:"entityUrl"`
@@ -160,7 +158,7 @@ type lockState struct {
 	EntityId *int `pulumi:"entityId"`
 	// The label of the locked entity.
 	EntityLabel *string `pulumi:"entityLabel"`
-	// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+	// The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
 	EntityType *string `pulumi:"entityType"`
 	// The URL of the locked entity.
 	EntityUrl *string `pulumi:"entityUrl"`
@@ -173,7 +171,7 @@ type LockState struct {
 	EntityId pulumi.IntPtrInput
 	// The label of the locked entity.
 	EntityLabel pulumi.StringPtrInput
-	// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+	// The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
 	EntityType pulumi.StringPtrInput
 	// The URL of the locked entity.
 	EntityUrl pulumi.StringPtrInput
@@ -188,7 +186,7 @@ func (LockState) ElementType() reflect.Type {
 type lockArgs struct {
 	// The ID of the entity to lock.
 	EntityId int `pulumi:"entityId"`
-	// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+	// The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
 	EntityType string `pulumi:"entityType"`
 	// The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
 	LockType string `pulumi:"lockType"`
@@ -198,7 +196,7 @@ type lockArgs struct {
 type LockArgs struct {
 	// The ID of the entity to lock.
 	EntityId pulumi.IntInput
-	// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+	// The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
 	EntityType pulumi.StringInput
 	// The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
 	LockType pulumi.StringInput
@@ -301,7 +299,7 @@ func (o LockOutput) EntityLabel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lock) pulumi.StringOutput { return v.EntityLabel }).(pulumi.StringOutput)
 }
 
-// The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+// The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
 func (o LockOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Lock) pulumi.StringOutput { return v.EntityType }).(pulumi.StringOutput)
 }

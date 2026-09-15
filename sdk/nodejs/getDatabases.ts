@@ -71,6 +71,9 @@ export interface GetDatabasesArgs {
  * A collection of values returned by getDatabases.
  */
 export interface GetDatabasesResult {
+    /**
+     * (Nested Attribute List) Managed Databases matching the query.
+     */
     readonly databases: outputs.GetDatabasesDatabase[];
     readonly filters?: outputs.GetDatabasesFilter[];
     /**

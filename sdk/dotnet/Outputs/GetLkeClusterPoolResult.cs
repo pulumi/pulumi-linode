@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClusterPoolResult
     {
         /// <summary>
-        /// The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
+        /// (Nested Attribute List) The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolAutoscalerResult> Autoscalers;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string DiskEncryption;
         /// <summary>
-        /// This Node Pool’s custom disk layout.
+        /// (Nested Attribute List) This Node Pool’s custom disk layout.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolDiskResult> Disks;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The nodes in the Node Pool.
+        /// (Nested Attribute List) The nodes in the Node Pool.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolNodeResult> Nodes;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
+        /// (Read-Only Object Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolTaintResult> Taints;
         /// <summary>
-        /// The linode type for all of the nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
+        /// This custom disk partition’s filesystem type.
         /// </summary>
         public readonly string Type;
         /// <summary>

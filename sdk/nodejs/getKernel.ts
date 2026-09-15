@@ -68,10 +68,6 @@ export interface GetKernelResult {
      * Linux Kernel version
      */
     readonly version: string;
-    /**
-     * If this Kernel is suitable for Xen Linodes.
-     */
-    readonly xen: boolean;
 }
 /**
  * Provides information about a Linode kernel

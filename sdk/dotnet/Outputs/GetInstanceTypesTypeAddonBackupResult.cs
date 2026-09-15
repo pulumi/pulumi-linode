@@ -13,7 +13,13 @@ namespace Pulumi.Linode.Outputs
     [OutputType]
     public sealed class GetInstanceTypesTypeAddonBackupResult
     {
+        /// <summary>
+        /// (Read-Only Object List) Backup add-on costs for this Linode Type. Referenced with an index (e.g. `addons.0.backups.0.price.0.hourly`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupPriceResult> Prices;
+        /// <summary>
+        /// (Read-Only Object List) Region-specific pricing for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeAddonBackupRegionPriceResult> RegionPrices;
 
         [OutputConstructor]

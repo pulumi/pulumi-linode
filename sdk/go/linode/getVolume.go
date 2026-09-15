@@ -67,6 +67,8 @@ type LookupVolumeResult struct {
 	FilesystemPath string `pulumi:"filesystemPath"`
 	// The unique ID of this Volume.
 	Id int `pulumi:"id"`
+	// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+	IoReady bool `pulumi:"ioReady"`
 	// This Volume's label is for display purposes only.
 	Label string `pulumi:"label"`
 	// If a Volume is attached to a specific Linode, the ID of that Linode will be displayed here. If the Volume is unattached, this value will be null.
@@ -131,6 +133,11 @@ func (o LookupVolumeResultOutput) FilesystemPath() pulumi.StringOutput {
 // The unique ID of this Volume.
 func (o LookupVolumeResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupVolumeResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+func (o LookupVolumeResultOutput) IoReady() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVolumeResult) bool { return v.IoReady }).(pulumi.BoolOutput)
 }
 
 // This Volume's label is for display purposes only.

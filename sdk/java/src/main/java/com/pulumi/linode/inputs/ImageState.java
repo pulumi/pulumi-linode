@@ -172,14 +172,14 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     @Import(name="imageSharing")
     private @Nullable Output<ImageImageSharingArgs> imageSharing;
 
     /**
-     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     public Optional<Output<ImageImageSharingArgs>> imageSharing() {
@@ -285,14 +285,14 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of image replications region and corresponding status.
+     * (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
      * 
      */
     @Import(name="replications")
     private @Nullable Output<List<ImageReplicationArgs>> replications;
 
     /**
-     * @return A list of image replications region and corresponding status.
+     * @return (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
      * 
      */
     public Optional<Output<List<ImageReplicationArgs>>> replications() {
@@ -685,7 +685,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSharing Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+         * @param imageSharing (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageSharing Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+         * @param imageSharing (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
          * 
          * @return builder
          * 
@@ -850,7 +850,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replications A list of image replications region and corresponding status.
+         * @param replications (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
          * 
          * @return builder
          * 
@@ -861,7 +861,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replications A list of image replications region and corresponding status.
+         * @param replications (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
          * 
          * @return builder
          * 
@@ -871,7 +871,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replications A list of image replications region and corresponding status.
+         * @param replications (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
          * 
          * @return builder
          * 

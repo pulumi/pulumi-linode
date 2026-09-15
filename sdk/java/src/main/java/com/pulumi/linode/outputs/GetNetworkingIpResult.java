@@ -5,10 +5,12 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetNetworkingIpAssignedEntity;
 import com.pulumi.linode.outputs.GetNetworkingIpVpcNat11;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -19,10 +21,19 @@ public final class GetNetworkingIpResult {
      */
     private String address;
     /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    private GetNetworkingIpAssignedEntity assignedEntity;
+    /**
      * @return The default gateway for this address.
      * 
      */
     private String gateway;
+    /**
+     * @return The ID of the entity.
+     * 
+     */
     private String id;
     /**
      * @return The ID of the interface this address is assigned to.
@@ -65,12 +76,17 @@ public final class GetNetworkingIpResult {
      */
     private String subnetMask;
     /**
-     * @return The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    private List<String> tags;
+    /**
+     * @return The type of the entity.
      * 
      */
     private String type;
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      * 
      */
     private GetNetworkingIpVpcNat11 vpcNat11;
@@ -84,12 +100,23 @@ public final class GetNetworkingIpResult {
         return this.address;
     }
     /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. This is `null` if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public GetNetworkingIpAssignedEntity assignedEntity() {
+        return this.assignedEntity;
+    }
+    /**
      * @return The default gateway for this address.
      * 
      */
     public String gateway() {
         return this.gateway;
     }
+    /**
+     * @return The ID of the entity.
+     * 
+     */
     public String id() {
         return this.id;
     }
@@ -150,14 +177,21 @@ public final class GetNetworkingIpResult {
         return this.subnetMask;
     }
     /**
-     * @return The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return The type of the entity.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+     * @return (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
      * 
      */
     public GetNetworkingIpVpcNat11 vpcNat11() {
@@ -174,6 +208,7 @@ public final class GetNetworkingIpResult {
     @CustomType.Builder
     public static final class Builder {
         private String address;
+        private GetNetworkingIpAssignedEntity assignedEntity;
         private String gateway;
         private String id;
         private Integer interfaceId;
@@ -184,12 +219,14 @@ public final class GetNetworkingIpResult {
         private String region;
         private Boolean reserved;
         private String subnetMask;
+        private List<String> tags;
         private String type;
         private GetNetworkingIpVpcNat11 vpcNat11;
         public Builder() {}
         public Builder(GetNetworkingIpResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
+    	      this.assignedEntity = defaults.assignedEntity;
     	      this.gateway = defaults.gateway;
     	      this.id = defaults.id;
     	      this.interfaceId = defaults.interfaceId;
@@ -200,6 +237,7 @@ public final class GetNetworkingIpResult {
     	      this.region = defaults.region;
     	      this.reserved = defaults.reserved;
     	      this.subnetMask = defaults.subnetMask;
+    	      this.tags = defaults.tags;
     	      this.type = defaults.type;
     	      this.vpcNat11 = defaults.vpcNat11;
         }
@@ -210,6 +248,14 @@ public final class GetNetworkingIpResult {
               throw new MissingRequiredPropertyException("GetNetworkingIpResult", "address");
             }
             this.address = address;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder assignedEntity(GetNetworkingIpAssignedEntity assignedEntity) {
+            if (assignedEntity == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpResult", "assignedEntity");
+            }
+            this.assignedEntity = assignedEntity;
             return this;
         }
         @CustomType.Setter
@@ -293,6 +339,17 @@ public final class GetNetworkingIpResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(List<String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetNetworkingIpResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("GetNetworkingIpResult", "type");
@@ -311,6 +368,7 @@ public final class GetNetworkingIpResult {
         public GetNetworkingIpResult build() {
             final var _resultValue = new GetNetworkingIpResult();
             _resultValue.address = address;
+            _resultValue.assignedEntity = assignedEntity;
             _resultValue.gateway = gateway;
             _resultValue.id = id;
             _resultValue.interfaceId = interfaceId;
@@ -321,6 +379,7 @@ public final class GetNetworkingIpResult {
             _resultValue.region = region;
             _resultValue.reserved = reserved;
             _resultValue.subnetMask = subnetMask;
+            _resultValue.tags = tags;
             _resultValue.type = type;
             _resultValue.vpcNat11 = vpcNat11;
             return _resultValue;

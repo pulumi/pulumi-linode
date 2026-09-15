@@ -130,7 +130,7 @@ type GetVpcIpsArgs struct {
 	Ipv6    *bool             `pulumi:"ipv6"`
 	// The id of the parent VPC for the list of VPC IPs.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
 	VpcId *int `pulumi:"vpcId"`
 }
 
@@ -140,7 +140,8 @@ type GetVpcIpsResult struct {
 	Id      string            `pulumi:"id"`
 	Ipv6    *bool             `pulumi:"ipv6"`
 	// The unique globally general API entity identifier for the VPC.
-	VpcId  *int             `pulumi:"vpcId"`
+	VpcId *int `pulumi:"vpcId"`
+	// (Nested Attribute List) The Linode VPC IPs returned by this data source.
 	VpcIps []GetVpcIpsVpcIp `pulumi:"vpcIps"`
 }
 
@@ -155,7 +156,7 @@ type GetVpcIpsOutputArgs struct {
 	Ipv6    pulumi.BoolPtrInput       `pulumi:"ipv6"`
 	// The id of the parent VPC for the list of VPC IPs.
 	//
-	// * `filter` - (Optional) A set of filters used to select Linode VPC IPs that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Linode VPC IPs that meet certain requirements.
 	VpcId pulumi.IntPtrInput `pulumi:"vpcId"`
 }
 
@@ -195,6 +196,7 @@ func (o GetVpcIpsResultOutput) VpcId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetVpcIpsResult) *int { return v.VpcId }).(pulumi.IntPtrOutput)
 }
 
+// (Nested Attribute List) The Linode VPC IPs returned by this data source.
 func (o GetVpcIpsResultOutput) VpcIps() GetVpcIpsVpcIpArrayOutput {
 	return o.ApplyT(func(v GetVpcIpsResult) []GetVpcIpsVpcIp { return v.VpcIps }).(GetVpcIpsVpcIpArrayOutput)
 }

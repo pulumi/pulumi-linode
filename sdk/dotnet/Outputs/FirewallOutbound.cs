@@ -38,7 +38,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Ports;
         /// <summary>
-        /// The network protocol this rule controls.
+        /// The network protocol this rule controls. Accepted values are ALL, TCP, UDP, ICMP, IPENCAP, or a protocol number from 0 to 255.
         /// </summary>
         public readonly string Protocol;
 

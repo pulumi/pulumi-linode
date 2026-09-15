@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class ReservedIpAssignmentVpcNat11 {
+    /**
+     * @return The reserved IPv4 address to assign to the Linode.
+     * 
+     */
     private String address;
+    /**
+     * @return The `id` of the VPC Subnet for this Interface.
+     * 
+     */
     private Integer subnetId;
+    /**
+     * @return The `id` of the VPC configured for this Interface.
+     * 
+     */
     private Integer vpcId;
 
     private ReservedIpAssignmentVpcNat11() {}
+    /**
+     * @return The reserved IPv4 address to assign to the Linode.
+     * 
+     */
     public String address() {
         return this.address;
     }
+    /**
+     * @return The `id` of the VPC Subnet for this Interface.
+     * 
+     */
     public Integer subnetId() {
         return this.subnetId;
     }
+    /**
+     * @return The `id` of the VPC configured for this Interface.
+     * 
+     */
     public Integer vpcId() {
         return this.vpcId;
     }

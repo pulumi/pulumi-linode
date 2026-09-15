@@ -27,7 +27,7 @@ class GetLkeNodePoolResult:
     """
     A collection of values returned by getLkeNodePool.
     """
-    def __init__(__self__, autoscaler=None, cluster_id=None, disk_encryption=None, disks=None, firewall_id=None, id=None, k8s_version=None, label=None, labels=None, node_count=None, nodes=None, tags=None, taints=None, type=None, update_strategy=None):
+    def __init__(__self__, autoscaler=None, cluster_id=None, disk_encryption=None, disks=None, firewall_id=None, id=None, isolation_public_ipv4=None, isolation_public_ipv6=None, k8s_version=None, label=None, labels=None, node_count=None, nodes=None, tags=None, taints=None, type=None, update_strategy=None):
         if autoscaler and not isinstance(autoscaler, dict):
             raise TypeError("Expected argument 'autoscaler' to be a dict")
         pulumi.set(__self__, "autoscaler", autoscaler)
@@ -46,6 +46,12 @@ class GetLkeNodePoolResult:
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
+        if isolation_public_ipv4 and not isinstance(isolation_public_ipv4, bool):
+            raise TypeError("Expected argument 'isolation_public_ipv4' to be a bool")
+        pulumi.set(__self__, "isolation_public_ipv4", isolation_public_ipv4)
+        if isolation_public_ipv6 and not isinstance(isolation_public_ipv6, bool):
+            raise TypeError("Expected argument 'isolation_public_ipv6' to be a bool")
+        pulumi.set(__self__, "isolation_public_ipv6", isolation_public_ipv6)
         if k8s_version and not isinstance(k8s_version, str):
             raise TypeError("Expected argument 'k8s_version' to be a str")
         pulumi.set(__self__, "k8s_version", k8s_version)
@@ -78,7 +84,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def autoscaler(self) -> 'outputs.GetLkeNodePoolAutoscalerResult':
         """
-        When enabled, the number of nodes autoscales within the defined minimum and maximum values.
+        (Nested Attribute) When enabled, the number of nodes autoscales within the defined minimum and maximum values. Referenced directly (e.g. `autoscaler.enabled`).
         """
         return pulumi.get(self, "autoscaler")
 
@@ -99,7 +105,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def disks(self) -> Sequence['outputs.GetLkeNodePoolDiskResult']:
         """
-        This node pool's custom disk layout.
+        (Nested Attribute List) This node pool's custom disk layout.
         """
         return pulumi.get(self, "disks")
 
@@ -118,6 +124,22 @@ class GetLkeNodePoolResult:
         The Node's ID.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv4")
+    def isolation_public_ipv4(self) -> _builtins.bool:
+        """
+        Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+        """
+        return pulumi.get(self, "isolation_public_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv6")
+    def isolation_public_ipv6(self) -> _builtins.bool:
+        """
+        Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+        """
+        return pulumi.get(self, "isolation_public_ipv6")
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")
@@ -155,7 +177,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def nodes(self) -> Sequence['outputs.GetLkeNodePoolNodeResult']:
         """
-        Status information for the nodes that are members of this node pool.
+        (Nested Attribute List) Status information for the nodes that are members of this node pool.
         """
         return pulumi.get(self, "nodes")
 
@@ -171,7 +193,7 @@ class GetLkeNodePoolResult:
     @pulumi.getter
     def taints(self) -> Sequence['outputs.GetLkeNodePoolTaintResult']:
         """
-        Kubernetes taints to add to node pool nodes.
+        (Nested Attribute List) Kubernetes taints to add to node pool nodes.
         """
         return pulumi.get(self, "taints")
 
@@ -204,6 +226,8 @@ class AwaitableGetLkeNodePoolResult(GetLkeNodePoolResult):
             disks=self.disks,
             firewall_id=self.firewall_id,
             id=self.id,
+            isolation_public_ipv4=self.isolation_public_ipv4,
+            isolation_public_ipv6=self.isolation_public_ipv6,
             k8s_version=self.k8s_version,
             label=self.label,
             labels=self.labels,
@@ -249,6 +273,8 @@ def get_lke_node_pool(cluster_id: Optional[_builtins.int] = None,
         disks=pulumi.get(__ret__, 'disks'),
         firewall_id=pulumi.get(__ret__, 'firewall_id'),
         id=pulumi.get(__ret__, 'id'),
+        isolation_public_ipv4=pulumi.get(__ret__, 'isolation_public_ipv4'),
+        isolation_public_ipv6=pulumi.get(__ret__, 'isolation_public_ipv6'),
         k8s_version=pulumi.get(__ret__, 'k8s_version'),
         label=pulumi.get(__ret__, 'label'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -291,6 +317,8 @@ def get_lke_node_pool_output(cluster_id: pulumi.Input[Optional[_builtins.int]] =
         disks=pulumi.get(__response__, 'disks'),
         firewall_id=pulumi.get(__response__, 'firewall_id'),
         id=pulumi.get(__response__, 'id'),
+        isolation_public_ipv4=pulumi.get(__response__, 'isolation_public_ipv4'),
+        isolation_public_ipv6=pulumi.get(__response__, 'isolation_public_ipv6'),
         k8s_version=pulumi.get(__response__, 'k8s_version'),
         label=pulumi.get(__response__, 'label'),
         labels=pulumi.get(__response__, 'labels'),

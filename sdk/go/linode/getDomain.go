@@ -75,8 +75,6 @@ type LookupDomainResult struct {
 	Domain *string `pulumi:"domain"`
 	// The amount of time in seconds that may pass before this Domain is no longer authoritative.
 	ExpireSec int `pulumi:"expireSec"`
-	// The group this Domain belongs to.
-	Group string `pulumi:"group"`
 	// The unique ID of this Domain.
 	Id *int `pulumi:"id"`
 	// The IP addresses representing the master DNS for this Domain.
@@ -147,11 +145,6 @@ func (o LookupDomainResultOutput) Domain() pulumi.StringPtrOutput {
 // The amount of time in seconds that may pass before this Domain is no longer authoritative.
 func (o LookupDomainResultOutput) ExpireSec() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDomainResult) int { return v.ExpireSec }).(pulumi.IntOutput)
-}
-
-// The group this Domain belongs to.
-func (o LookupDomainResultOutput) Group() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDomainResult) string { return v.Group }).(pulumi.StringOutput)
 }
 
 // The unique ID of this Domain.

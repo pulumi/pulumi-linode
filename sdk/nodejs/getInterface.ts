@@ -30,6 +30,7 @@ export interface GetInterfaceResult {
     readonly id: string;
     readonly linodeId: number;
     readonly public: outputs.GetInterfacePublic;
+    readonly rdmaVpc: outputs.GetInterfaceRdmaVpc;
     readonly vlan: outputs.GetInterfaceVlan;
     readonly vpc: outputs.GetInterfaceVpc;
 }

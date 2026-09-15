@@ -25,6 +25,10 @@ public final class GetStackScriptsResult {
     private @Nullable Boolean latest;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The returned list of StackScripts. Referenced by index (e.g. `stackscripts[0].id`).
+     * 
+     */
     private List<GetStackScriptsStackscript> stackscripts;
 
     private GetStackScriptsResult() {}
@@ -47,6 +51,10 @@ public final class GetStackScriptsResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The returned list of StackScripts. Referenced by index (e.g. `stackscripts[0].id`).
+     * 
+     */
     public List<GetStackScriptsStackscript> stackscripts() {
         return this.stackscripts;
     }

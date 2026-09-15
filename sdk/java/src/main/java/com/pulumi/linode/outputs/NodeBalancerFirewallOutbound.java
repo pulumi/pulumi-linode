@@ -18,7 +18,7 @@ public final class NodeBalancerFirewallOutbound {
     private String action;
     private String description;
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     private List<String> ipv4s;
@@ -55,7 +55,7 @@ public final class NodeBalancerFirewallOutbound {
         return this.description;
     }
     /**
-     * @return A list of IPv4 addresses or networks. Must be in IP/mask format.
+     * @return The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
      * 
      */
     public List<String> ipv4s() {

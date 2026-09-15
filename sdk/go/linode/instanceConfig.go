@@ -202,11 +202,13 @@ type InstanceConfig struct {
 	Booted pulumi.BoolOutput `pulumi:"booted"`
 	// Optional field for arbitrary User comments on this Config.
 	//
-	// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+	// * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 	//
-	// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+	// * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	//
-	// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+	// * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+	//
+	// * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
 	// Blocks for device disks in a Linode's configuration profile.
 	Device InstanceConfigDeviceArrayOutput `pulumi:"device"`
@@ -276,11 +278,13 @@ type instanceConfigState struct {
 	Booted *bool `pulumi:"booted"`
 	// Optional field for arbitrary User comments on this Config.
 	//
-	// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+	// * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 	//
-	// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+	// * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	//
-	// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+	// * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+	//
+	// * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
 	Comments *string `pulumi:"comments"`
 	// Blocks for device disks in a Linode's configuration profile.
 	Device []InstanceConfigDevice `pulumi:"device"`
@@ -315,11 +319,13 @@ type InstanceConfigState struct {
 	Booted pulumi.BoolPtrInput
 	// Optional field for arbitrary User comments on this Config.
 	//
-	// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+	// * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 	//
-	// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+	// * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	//
-	// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+	// * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+	//
+	// * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
 	Comments pulumi.StringPtrInput
 	// Blocks for device disks in a Linode's configuration profile.
 	Device InstanceConfigDeviceArrayInput
@@ -358,11 +364,13 @@ type instanceConfigArgs struct {
 	Booted *bool `pulumi:"booted"`
 	// Optional field for arbitrary User comments on this Config.
 	//
-	// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+	// * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 	//
-	// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+	// * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	//
-	// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+	// * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+	//
+	// * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
 	Comments *string `pulumi:"comments"`
 	// Blocks for device disks in a Linode's configuration profile.
 	Device []InstanceConfigDevice `pulumi:"device"`
@@ -398,11 +406,13 @@ type InstanceConfigArgs struct {
 	Booted pulumi.BoolPtrInput
 	// Optional field for arbitrary User comments on this Config.
 	//
-	// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+	// * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 	//
-	// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+	// * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	//
-	// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+	// * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+	//
+	// * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
 	Comments pulumi.StringPtrInput
 	// Blocks for device disks in a Linode's configuration profile.
 	Device InstanceConfigDeviceArrayInput
@@ -526,11 +536,13 @@ func (o InstanceConfigOutput) Booted() pulumi.BoolOutput {
 
 // Optional field for arbitrary User comments on this Config.
 //
-// * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+// * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 //
-// * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+// * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 //
-// * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+// * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+//
+// * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
 func (o InstanceConfigOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceConfig) pulumi.StringPtrOutput { return v.Comments }).(pulumi.StringPtrOutput)
 }

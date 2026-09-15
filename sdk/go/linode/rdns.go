@@ -37,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			fooInstance, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
-//				Image:  pulumi.String("linode/alpine3.19"),
+//				Image:  pulumi.String("linode/arch"),
 //				Region: pulumi.String("ca-east"),
 //				Type:   pulumi.String("g6-dedicated-2"),
 //			})

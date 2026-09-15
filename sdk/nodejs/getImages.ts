@@ -79,7 +79,7 @@ export interface GetImagesArgs {
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -101,6 +101,9 @@ export interface GetImagesResult {
      * The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
      */
     readonly id: string;
+    /**
+     * (Nested Attribute List) The returned list of Images. Referenced by index (e.g. `images[0].id`).
+     */
     readonly images: outputs.GetImagesImage[];
     readonly latest?: boolean;
     readonly order?: string;
@@ -179,7 +182,7 @@ export interface GetImagesOutputArgs {
     /**
      * If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
      *
-     * * `filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
      */
     latest?: pulumi.Input<boolean | undefined>;
     /**

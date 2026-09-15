@@ -13,13 +13,13 @@ namespace Pulumi.Linode.Inputs
     public sealed class GetProducerImageShareGroupImageSharesImageShareImageSharingArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Details about who the image is shared by.
+        /// (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `image_sharing.shared_by.sharegroup_id`).
         /// </summary>
         [Input("sharedBy", required: true)]
         public Inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedByArgs SharedBy { get; set; } = null!;
 
         /// <summary>
-        /// Details about who the image is shared with.
+        /// (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `image_sharing.shared_with.sharegroup_count`).
         /// </summary>
         [Input("sharedWith", required: true)]
         public Inputs.GetProducerImageShareGroupImageSharesImageShareImageSharingSharedWithArgs SharedWith { get; set; } = null!;

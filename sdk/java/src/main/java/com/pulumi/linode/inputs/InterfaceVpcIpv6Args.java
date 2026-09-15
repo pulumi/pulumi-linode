@@ -21,14 +21,14 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
     public static final InterfaceVpcIpv6Args Empty = new InterfaceVpcIpv6Args();
 
     /**
-     * Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="assignedRanges")
     private @Nullable Output<List<InterfaceVpcIpv6AssignedRangeArgs>> assignedRanges;
 
     /**
-     * @return Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+     * @return (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfaceVpcIpv6AssignedRangeArgs>>> assignedRanges() {
@@ -36,14 +36,14 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     * (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Import(name="assignedSlaacs")
     private @Nullable Output<List<InterfaceVpcIpv6AssignedSlaacArgs>> assignedSlaacs;
 
     /**
-     * @return Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+     * @return (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Optional<Output<List<InterfaceVpcIpv6AssignedSlaacArgs>>> assignedSlaacs() {
@@ -124,7 +124,7 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedRanges Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input.
+         * @param assignedRanges (Nested Attribute Set) Assigned additional IPv6 ranges to use in the VPC subnet, calculated from `ranges` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedSlaacs Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+         * @param assignedSlaacs (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedSlaacs Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+         * @param assignedSlaacs (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class InterfaceVpcIpv6Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param assignedSlaacs Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input.
+         * @param assignedSlaacs (Nested Attribute Set) Assigned IPv6 SLAAC address ranges to use in the VPC subnet, calculated from `slaac` input. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
          * 
          * @return builder
          * 

@@ -273,6 +273,42 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 2,
+    ///                 DiskEncryption = "enabled",
+    ///             },
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 1,
+    ///                 DiskEncryption = "disabled",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Nested Node Pool Caveats
     /// 
@@ -409,12 +445,6 @@ namespace Pulumi.Linode
         public Output<Outputs.LkeClusterControlPlane> ControlPlane { get; private set; } = null!;
 
         /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        /// </summary>
-        [Output("dashboardUrl")]
-        public Output<string> DashboardUrl { get; private set; } = null!;
-
-        /// <summary>
         /// A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         /// </summary>
         [Output("externalPoolTags")]
@@ -439,7 +469,7 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// (Block List) Additional nested attributes:
         /// </summary>
         [Output("pools")]
         public Output<ImmutableArray<Outputs.LkeClusterPool>> Pools { get; private set; } = null!;
@@ -447,9 +477,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -580,7 +610,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeClusterPoolArgs>? _pools;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// (Block List) Additional nested attributes:
         /// </summary>
         public InputList<Inputs.LkeClusterPoolArgs> Pools
         {
@@ -591,9 +621,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -666,12 +696,6 @@ namespace Pulumi.Linode
         [Input("controlPlane")]
         public Input<Inputs.LkeClusterControlPlaneGetArgs>? ControlPlane { get; set; }
 
-        /// <summary>
-        /// The Kubernetes Dashboard access URL for this cluster. LKE Enterprise does not have a dashboard URL.
-        /// </summary>
-        [Input("dashboardUrl")]
-        public Input<string>? DashboardUrl { get; set; }
-
         [Input("externalPoolTags")]
         private InputList<string>? _externalPoolTags;
 
@@ -716,7 +740,7 @@ namespace Pulumi.Linode
         private InputList<Inputs.LkeClusterPoolGetArgs>? _pools;
 
         /// <summary>
-        /// Additional nested attributes:
+        /// (Block List) Additional nested attributes:
         /// </summary>
         public InputList<Inputs.LkeClusterPoolGetArgs> Pools
         {
@@ -727,9 +751,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// This Kubernetes cluster's location.
         /// 
-        /// * `Pool` - (Required) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
+        /// * `Pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
         /// 
-        /// * `ControlPlane` (Optional) Defines settings for the Kubernetes Control Plane.
+        /// * `ControlPlane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

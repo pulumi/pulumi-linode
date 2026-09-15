@@ -29,7 +29,7 @@ public final class GetNodebalancerVpcsArgs extends com.pulumi.resources.InvokeAr
     /**
      * The ID of the NodeBalancer to list VPC configurations for.
      * 
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      * 
      */
     @Import(name="nodebalancerId", required=true)
@@ -38,7 +38,7 @@ public final class GetNodebalancerVpcsArgs extends com.pulumi.resources.InvokeAr
     /**
      * @return The ID of the NodeBalancer to list VPC configurations for.
      * 
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      * 
      */
     public Output<Integer> nodebalancerId() {
@@ -118,7 +118,7 @@ public final class GetNodebalancerVpcsArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param nodebalancerId The ID of the NodeBalancer to list VPC configurations for.
          * 
-         * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetNodebalancerVpcsArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param nodebalancerId The ID of the NodeBalancer to list VPC configurations for.
          * 
-         * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+         * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
          * 
          * @return builder
          * 

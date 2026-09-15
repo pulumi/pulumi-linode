@@ -181,7 +181,7 @@ type Image struct {
 	FileHash pulumi.StringPtrOutput `pulumi:"fileHash"`
 	// The path of the image file to be uploaded.
 	FilePath pulumi.StringPtrOutput `pulumi:"filePath"`
-	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
 	ImageSharing ImageImageSharingOutput `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic pulumi.BoolOutput `pulumi:"isPublic"`
@@ -199,7 +199,7 @@ type Image struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions pulumi.StringArrayOutput `pulumi:"replicaRegions"`
-	// A list of image replications region and corresponding status.
+	// (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
 	Replications ImageReplicationArrayOutput `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntOutput `pulumi:"size"`
@@ -273,7 +273,7 @@ type imageState struct {
 	FileHash *string `pulumi:"fileHash"`
 	// The path of the image file to be uploaded.
 	FilePath *string `pulumi:"filePath"`
-	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
 	ImageSharing *ImageImageSharing `pulumi:"imageSharing"`
 	// True if the Image is public.
 	IsPublic *bool `pulumi:"isPublic"`
@@ -291,7 +291,7 @@ type imageState struct {
 	Region *string `pulumi:"region"`
 	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions []string `pulumi:"replicaRegions"`
-	// A list of image replications region and corresponding status.
+	// (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
 	Replications []ImageReplication `pulumi:"replications"`
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size *int `pulumi:"size"`
@@ -333,7 +333,7 @@ type ImageState struct {
 	FileHash pulumi.StringPtrInput
 	// The path of the image file to be uploaded.
 	FilePath pulumi.StringPtrInput
-	// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+	// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
 	ImageSharing ImageImageSharingPtrInput
 	// True if the Image is public.
 	IsPublic pulumi.BoolPtrInput
@@ -351,7 +351,7 @@ type ImageState struct {
 	Region pulumi.StringPtrInput
 	// A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
 	ReplicaRegions pulumi.StringArrayInput
-	// A list of image replications region and corresponding status.
+	// (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
 	Replications ImageReplicationArrayInput
 	// The minimum size this Image needs to deploy. Size is in MB.
 	Size pulumi.IntPtrInput
@@ -578,7 +578,7 @@ func (o ImageOutput) FilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.FilePath }).(pulumi.StringPtrOutput)
 }
 
-// Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+// (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
 func (o ImageOutput) ImageSharing() ImageImageSharingOutput {
 	return o.ApplyT(func(v *Image) ImageImageSharingOutput { return v.ImageSharing }).(ImageImageSharingOutput)
 }
@@ -617,7 +617,7 @@ func (o ImageOutput) ReplicaRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.ReplicaRegions }).(pulumi.StringArrayOutput)
 }
 
-// A list of image replications region and corresponding status.
+// (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
 func (o ImageOutput) Replications() ImageReplicationArrayOutput {
 	return o.ApplyT(func(v *Image) ImageReplicationArrayOutput { return v.Replications }).(ImageReplicationArrayOutput)
 }

@@ -34,12 +34,26 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const vpc_configs = linode.getNodebalancerVpcs({
+ *     nodebalancerId: 12345,
+ *     filters: [{
+ *         name: "ipv6_range",
+ *         values: ["2a01:7e04:e403:3::/64"],
+ *     }],
+ * });
+ * ```
  *
  * ## Filterable Fields
  *
  * * `id`
  *
  * * `ipv4Range`
+ *
+ * * `ipv6Range`
  *
  * * `nodebalancerId`
  *
@@ -65,7 +79,7 @@ export interface GetNodebalancerVpcsArgs {
     /**
      * The ID of the NodeBalancer to list VPC configurations for.
      *
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      */
     nodebalancerId: number;
     /**
@@ -93,6 +107,9 @@ export interface GetNodebalancerVpcsResult {
     readonly nodebalancerId: number;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) A list of VPC configurations.
+     */
     readonly vpcConfigs: outputs.GetNodebalancerVpcsVpcConfig[];
 }
 /**
@@ -123,12 +140,26 @@ export interface GetNodebalancerVpcsResult {
  *     }],
  * });
  * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const vpc_configs = linode.getNodebalancerVpcs({
+ *     nodebalancerId: 12345,
+ *     filters: [{
+ *         name: "ipv6_range",
+ *         values: ["2a01:7e04:e403:3::/64"],
+ *     }],
+ * });
+ * ```
  *
  * ## Filterable Fields
  *
  * * `id`
  *
  * * `ipv4Range`
+ *
+ * * `ipv6Range`
  *
  * * `nodebalancerId`
  *
@@ -154,7 +185,7 @@ export interface GetNodebalancerVpcsOutputArgs {
     /**
      * The ID of the NodeBalancer to list VPC configurations for.
      *
-     * * `filter` - (Optional) A set of filters used to select VPC configurations that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select VPC configurations that meet certain requirements.
      */
     nodebalancerId: pulumi.Input<number>;
     /**

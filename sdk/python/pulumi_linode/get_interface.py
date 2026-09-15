@@ -27,7 +27,7 @@ class GetInterfaceResult:
     """
     A collection of values returned by getInterface.
     """
-    def __init__(__self__, default_route=None, id=None, linode_id=None, public=None, vlan=None, vpc=None):
+    def __init__(__self__, default_route=None, id=None, linode_id=None, public=None, rdma_vpc=None, vlan=None, vpc=None):
         if default_route and not isinstance(default_route, dict):
             raise TypeError("Expected argument 'default_route' to be a dict")
         pulumi.set(__self__, "default_route", default_route)
@@ -40,6 +40,9 @@ class GetInterfaceResult:
         if public and not isinstance(public, dict):
             raise TypeError("Expected argument 'public' to be a dict")
         pulumi.set(__self__, "public", public)
+        if rdma_vpc and not isinstance(rdma_vpc, dict):
+            raise TypeError("Expected argument 'rdma_vpc' to be a dict")
+        pulumi.set(__self__, "rdma_vpc", rdma_vpc)
         if vlan and not isinstance(vlan, dict):
             raise TypeError("Expected argument 'vlan' to be a dict")
         pulumi.set(__self__, "vlan", vlan)
@@ -68,6 +71,11 @@ class GetInterfaceResult:
         return pulumi.get(self, "public")
 
     @_builtins.property
+    @pulumi.getter(name="rdmaVpc")
+    def rdma_vpc(self) -> 'outputs.GetInterfaceRdmaVpcResult':
+        return pulumi.get(self, "rdma_vpc")
+
+    @_builtins.property
     @pulumi.getter
     def vlan(self) -> 'outputs.GetInterfaceVlanResult':
         return pulumi.get(self, "vlan")
@@ -88,6 +96,7 @@ class AwaitableGetInterfaceResult(GetInterfaceResult):
             id=self.id,
             linode_id=self.linode_id,
             public=self.public,
+            rdma_vpc=self.rdma_vpc,
             vlan=self.vlan,
             vpc=self.vpc)
 
@@ -109,6 +118,7 @@ def get_interface(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         linode_id=pulumi.get(__ret__, 'linode_id'),
         public=pulumi.get(__ret__, 'public'),
+        rdma_vpc=pulumi.get(__ret__, 'rdma_vpc'),
         vlan=pulumi.get(__ret__, 'vlan'),
         vpc=pulumi.get(__ret__, 'vpc'))
 def get_interface_output(id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -127,5 +137,6 @@ def get_interface_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         linode_id=pulumi.get(__response__, 'linode_id'),
         public=pulumi.get(__response__, 'public'),
+        rdma_vpc=pulumi.get(__response__, 'rdma_vpc'),
         vlan=pulumi.get(__response__, 'vlan'),
         vpc=pulumi.get(__response__, 'vpc')))

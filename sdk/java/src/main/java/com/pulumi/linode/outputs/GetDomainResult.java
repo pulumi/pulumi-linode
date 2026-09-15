@@ -35,11 +35,6 @@ public final class GetDomainResult {
      */
     private Integer expireSec;
     /**
-     * @return The group this Domain belongs to.
-     * 
-     */
-    private String group;
-    /**
      * @return The unique ID of this Domain.
      * 
      */
@@ -113,13 +108,6 @@ public final class GetDomainResult {
      */
     public Integer expireSec() {
         return this.expireSec;
-    }
-    /**
-     * @return The group this Domain belongs to.
-     * 
-     */
-    public String group() {
-        return this.group;
     }
     /**
      * @return The unique ID of this Domain.
@@ -198,7 +186,6 @@ public final class GetDomainResult {
         private String description;
         private @Nullable String domain;
         private Integer expireSec;
-        private String group;
         private @Nullable Integer id;
         private List<String> masterIps;
         private Integer refreshSec;
@@ -215,7 +202,6 @@ public final class GetDomainResult {
     	      this.description = defaults.description;
     	      this.domain = defaults.domain;
     	      this.expireSec = defaults.expireSec;
-    	      this.group = defaults.group;
     	      this.id = defaults.id;
     	      this.masterIps = defaults.masterIps;
     	      this.refreshSec = defaults.refreshSec;
@@ -258,14 +244,6 @@ public final class GetDomainResult {
               throw new MissingRequiredPropertyException("GetDomainResult", "expireSec");
             }
             this.expireSec = expireSec;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder group(String group) {
-            if (group == null) {
-              throw new MissingRequiredPropertyException("GetDomainResult", "group");
-            }
-            this.group = group;
             return this;
         }
         @CustomType.Setter
@@ -350,7 +328,6 @@ public final class GetDomainResult {
             _resultValue.description = description;
             _resultValue.domain = domain;
             _resultValue.expireSec = expireSec;
-            _resultValue.group = group;
             _resultValue.id = id;
             _resultValue.masterIps = masterIps;
             _resultValue.refreshSec = refreshSec;

@@ -11,13 +11,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLinodeObjectStorageBucketResult {
-    /**
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    private String cluster;
     private String created;
     private String endpointType;
     private String hostname;
@@ -29,15 +22,6 @@ public final class GetLinodeObjectStorageBucketResult {
     private Integer size;
 
     private GetLinodeObjectStorageBucketResult() {}
-    /**
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    public String cluster() {
-        return this.cluster;
-    }
     public String created() {
         return this.created;
     }
@@ -75,7 +59,6 @@ public final class GetLinodeObjectStorageBucketResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String cluster;
         private String created;
         private String endpointType;
         private String hostname;
@@ -88,7 +71,6 @@ public final class GetLinodeObjectStorageBucketResult {
         public Builder() {}
         public Builder(GetLinodeObjectStorageBucketResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.cluster = defaults.cluster;
     	      this.created = defaults.created;
     	      this.endpointType = defaults.endpointType;
     	      this.hostname = defaults.hostname;
@@ -100,14 +82,6 @@ public final class GetLinodeObjectStorageBucketResult {
     	      this.size = defaults.size;
         }
 
-        @CustomType.Setter
-        public Builder cluster(String cluster) {
-            if (cluster == null) {
-              throw new MissingRequiredPropertyException("GetLinodeObjectStorageBucketResult", "cluster");
-            }
-            this.cluster = cluster;
-            return this;
-        }
         @CustomType.Setter
         public Builder created(String created) {
             if (created == null) {
@@ -182,7 +156,6 @@ public final class GetLinodeObjectStorageBucketResult {
         }
         public GetLinodeObjectStorageBucketResult build() {
             final var _resultValue = new GetLinodeObjectStorageBucketResult();
-            _resultValue.cluster = cluster;
             _resultValue.created = created;
             _resultValue.endpointType = endpointType;
             _resultValue.hostname = hostname;

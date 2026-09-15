@@ -52,6 +52,10 @@ export interface GetFirewallResult {
      */
     readonly disabled: boolean;
     /**
+     * The fingerprint of the current Firewall rules.
+     */
+    readonly fingerprint: string;
+    /**
      * The ID of the Firewall Device.
      */
     readonly id: number;
@@ -93,6 +97,10 @@ export interface GetFirewallResult {
      * When this firewall was last updated.
      */
     readonly updated: string;
+    /**
+     * The current version of the Firewall rules.
+     */
+    readonly version: number;
 }
 /**
  * Provides details about a Linode Firewall.

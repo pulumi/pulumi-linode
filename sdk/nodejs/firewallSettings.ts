@@ -57,7 +57,7 @@ export class FirewallSettings extends pulumi.CustomResource {
     }
 
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      */
     declare public readonly defaultFirewallIds: pulumi.Output<outputs.FirewallSettingsDefaultFirewallIds | undefined>;
 
@@ -89,7 +89,7 @@ export class FirewallSettings extends pulumi.CustomResource {
  */
 export interface FirewallSettingsState {
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      */
     defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds | undefined>;
 }
@@ -99,7 +99,7 @@ export interface FirewallSettingsState {
  */
 export interface FirewallSettingsArgs {
     /**
-     * A map of default firewall IDs for various interfaces.
+     * A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
      */
     defaultFirewallIds?: pulumi.Input<inputs.FirewallSettingsDefaultFirewallIds | undefined>;
 }

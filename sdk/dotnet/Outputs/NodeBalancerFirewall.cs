@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// (Required) The Firewall's ID.
+        /// The ID of the related LKE cluster.
         /// </summary>
         public readonly int Id;
         /// <summary>

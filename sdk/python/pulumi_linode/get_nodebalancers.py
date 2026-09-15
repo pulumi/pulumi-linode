@@ -54,13 +54,16 @@ class GetNodebalancersResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The Linode NodeBalancer's unique ID
+        The ID of the related LKE cluster.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def nodebalancers(self) -> Sequence['outputs.GetNodebalancersNodebalancerResult']:
+        """
+        (Nested Attribute List) The returned list of NodeBalancers. Referenced by index (e.g. `nodebalancers[0].id`).
+        """
         return pulumi.get(self, "nodebalancers")
 
     @_builtins.property

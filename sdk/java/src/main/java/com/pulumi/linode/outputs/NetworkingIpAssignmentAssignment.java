@@ -5,9 +5,14 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.NetworkingIpAssignmentAssignmentAssignedEntity;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NetworkingIpAssignmentAssignment {
@@ -17,10 +22,25 @@ public final class NetworkingIpAssignmentAssignment {
      */
     private String address;
     /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    private @Nullable NetworkingIpAssignmentAssignmentAssignedEntity assignedEntity;
+    /**
      * @return The ID of the Linode to which the IP address will be assigned.
      * 
      */
     private Integer linodeId;
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
+    private @Nullable Boolean reserved;
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    private @Nullable List<String> tags;
 
     private NetworkingIpAssignmentAssignment() {}
     /**
@@ -31,11 +51,32 @@ public final class NetworkingIpAssignmentAssignment {
         return this.address;
     }
     /**
+     * @return (Read-Only Object) The entity this IP address has been assigned to. Referenced directly (e.g. `assigned_entity.id`).
+     * 
+     */
+    public Optional<NetworkingIpAssignmentAssignmentAssignedEntity> assignedEntity() {
+        return Optional.ofNullable(this.assignedEntity);
+    }
+    /**
      * @return The ID of the Linode to which the IP address will be assigned.
      * 
      */
     public Integer linodeId() {
         return this.linodeId;
+    }
+    /**
+     * @return Whether this IP address is a reserved IP.
+     * 
+     */
+    public Optional<Boolean> reserved() {
+        return Optional.ofNullable(this.reserved);
+    }
+    /**
+     * @return A set of tags associated with this IP address.
+     * 
+     */
+    public List<String> tags() {
+        return this.tags == null ? List.of() : this.tags;
     }
 
     public static Builder builder() {
@@ -48,12 +89,18 @@ public final class NetworkingIpAssignmentAssignment {
     @CustomType.Builder
     public static final class Builder {
         private String address;
+        private @Nullable NetworkingIpAssignmentAssignmentAssignedEntity assignedEntity;
         private Integer linodeId;
+        private @Nullable Boolean reserved;
+        private @Nullable List<String> tags;
         public Builder() {}
         public Builder(NetworkingIpAssignmentAssignment defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.address = defaults.address;
+    	      this.assignedEntity = defaults.assignedEntity;
     	      this.linodeId = defaults.linodeId;
+    	      this.reserved = defaults.reserved;
+    	      this.tags = defaults.tags;
         }
 
         @CustomType.Setter
@@ -65,6 +112,12 @@ public final class NetworkingIpAssignmentAssignment {
             return this;
         }
         @CustomType.Setter
+        public Builder assignedEntity(@Nullable NetworkingIpAssignmentAssignmentAssignedEntity assignedEntity) {
+
+            this.assignedEntity = assignedEntity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder linodeId(Integer linodeId) {
             if (linodeId == null) {
               throw new MissingRequiredPropertyException("NetworkingIpAssignmentAssignment", "linodeId");
@@ -72,10 +125,28 @@ public final class NetworkingIpAssignmentAssignment {
             this.linodeId = linodeId;
             return this;
         }
+        @CustomType.Setter
+        public Builder reserved(@Nullable Boolean reserved) {
+
+            this.reserved = reserved;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tags(@Nullable List<String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
+        }
         public NetworkingIpAssignmentAssignment build() {
             final var _resultValue = new NetworkingIpAssignmentAssignment();
             _resultValue.address = address;
+            _resultValue.assignedEntity = assignedEntity;
             _resultValue.linodeId = linodeId;
+            _resultValue.reserved = reserved;
+            _resultValue.tags = tags;
             return _resultValue;
         }
     }

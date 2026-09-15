@@ -19,14 +19,14 @@ public final class InterfaceVpcArgs extends com.pulumi.resources.ResourceArgs {
     public static final InterfaceVpcArgs Empty = new InterfaceVpcArgs();
 
     /**
-     * IPv4 configuration for the VPC interface.
+     * IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
      * 
      */
     @Import(name="ipv4")
     private @Nullable Output<InterfaceVpcIpv4Args> ipv4;
 
     /**
-     * @return IPv4 configuration for the VPC interface.
+     * @return IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
      * 
      */
     public Optional<Output<InterfaceVpcIpv4Args>> ipv4() {
@@ -34,14 +34,14 @@ public final class InterfaceVpcArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     * IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<InterfaceVpcIpv6Args> ipv6;
 
     /**
-     * @return IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+     * @return IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
      * 
      */
     public Optional<Output<InterfaceVpcIpv6Args>> ipv6() {
@@ -90,7 +90,7 @@ public final class InterfaceVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4 IPv4 configuration for the VPC interface.
+         * @param ipv4 IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class InterfaceVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv4 IPv4 configuration for the VPC interface.
+         * @param ipv4 IPv4 configuration for the VPC interface. Referenced directly (e.g. `vpc.ipv4.addresses`).
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class InterfaceVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6 IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+         * @param ipv6 IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class InterfaceVpcArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ipv6 IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.**
+         * @param ipv6 IPv6 assigned through `slaac` and `ranges`. If you create a VPC interface in a subnet with IPv6 and don’t specify `slaac` or `ranges`, a SLAAC range is added automatically. **NOTE: IPv6 VPCs may not currently be available to all users.** Referenced directly (e.g. `vpc.ipv6.is_public`).
          * 
          * @return builder
          * 

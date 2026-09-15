@@ -44,7 +44,7 @@ public final class FirewallInbound {
      */
     private @Nullable String ports;
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      */
     private String protocol;
@@ -93,7 +93,7 @@ public final class FirewallInbound {
         return Optional.ofNullable(this.ports);
     }
     /**
-     * @return The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+     * @return The network protocol this rule controls. Accepted values are `ALL`, `TCP`, `UDP`, `ICMP`, `IPENCAP`, or a protocol number from `0` to `255`.
      * 
      */
     public String protocol() {

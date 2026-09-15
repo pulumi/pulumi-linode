@@ -208,24 +208,6 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cacheControl);
     }
     /**
-     * The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    @Export(name="cluster", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> cluster;
-
-    /**
-     * @return The cluster the bucket is in. Required if `region` is not configured. Deprecated in favor of `region`.
-     * 
-     */
-    public Output<Optional<String>> cluster() {
-        return Codegen.optional(this.cluster);
-    }
-    /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      * 
      */
@@ -380,18 +362,18 @@ public class ObjectStorageObject extends com.pulumi.resources.CustomResource {
         return this.metadata;
     }
     /**
-     * The cluster the bucket is in. Required if `cluster` is not configured.
+     * The region the bucket is in.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
-     * @return The cluster the bucket is in. Required if `cluster` is not configured.
+     * @return The region the bucket is in.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The REQUIRED secret key to authenticate with. If it&#39;s not specified with the resource, you must provide its value by

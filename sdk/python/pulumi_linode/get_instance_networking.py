@@ -44,6 +44,9 @@ class GetInstanceNetworkingResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The ID of the entity.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -81,7 +84,7 @@ def get_instance_networking(linode_id: Optional[_builtins.int] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceNetworkingResult:
     """
     Provides details about the networking configuration of an Instance.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
 
     ## Example Usage
 
@@ -109,7 +112,7 @@ def get_instance_networking_output(linode_id: pulumi.Input[Optional[_builtins.in
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceNetworkingResult]:
     """
     Provides details about the networking configuration of an Instance.
-    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-config-interfaces).
+    For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-ips).
 
     ## Example Usage
 

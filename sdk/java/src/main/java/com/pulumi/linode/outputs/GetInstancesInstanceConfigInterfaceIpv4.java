@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstanceConfigInterfaceIpv4 {
@@ -14,7 +16,7 @@ public final class GetInstancesInstanceConfigInterfaceIpv4 {
      * @return The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      * 
      */
-    private String nat11;
+    private @Nullable String nat11;
     /**
      * @return The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      * 
@@ -26,8 +28,8 @@ public final class GetInstancesInstanceConfigInterfaceIpv4 {
      * @return The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      * 
      */
-    public String nat11() {
-        return this.nat11;
+    public Optional<String> nat11() {
+        return Optional.ofNullable(this.nat11);
     }
     /**
      * @return The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
@@ -46,7 +48,7 @@ public final class GetInstancesInstanceConfigInterfaceIpv4 {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String nat11;
+        private @Nullable String nat11;
         private String vpc;
         public Builder() {}
         public Builder(GetInstancesInstanceConfigInterfaceIpv4 defaults) {
@@ -56,10 +58,8 @@ public final class GetInstancesInstanceConfigInterfaceIpv4 {
         }
 
         @CustomType.Setter
-        public Builder nat11(String nat11) {
-            if (nat11 == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterfaceIpv4", "nat11");
-            }
+        public Builder nat11(@Nullable String nat11) {
+
             this.nat11 = nat11;
             return this;
         }

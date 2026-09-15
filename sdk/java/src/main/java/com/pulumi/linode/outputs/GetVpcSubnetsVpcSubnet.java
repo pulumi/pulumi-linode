@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnetDatabase;
 import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnetIpv6;
 import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnetLinode;
+import com.pulumi.linode.outputs.GetVpcSubnetsVpcSubnetNodebalancer;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -21,12 +22,12 @@ public final class GetVpcSubnetsVpcSubnet {
      */
     private String created;
     /**
-     * @return A list of Managed databases assigned to the VPC Subnet.
+     * @return (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      * 
      */
     private List<GetVpcSubnetsVpcSubnetDatabase> databases;
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     private Integer id;
@@ -46,10 +47,15 @@ public final class GetVpcSubnetsVpcSubnet {
      */
     private String label;
     /**
-     * @return A list of Linodes added to this subnet.
+     * @return (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      * 
      */
     private List<GetVpcSubnetsVpcSubnetLinode> linodes;
+    /**
+     * @return (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     * 
+     */
+    private List<GetVpcSubnetsVpcSubnetNodebalancer> nodebalancers;
     /**
      * @return The date and time when the VPC Subnet was last updated.
      * 
@@ -65,14 +71,14 @@ public final class GetVpcSubnetsVpcSubnet {
         return this.created;
     }
     /**
-     * @return A list of Managed databases assigned to the VPC Subnet.
+     * @return (Read-Only Object List) A list of Managed databases assigned to the VPC Subnet. Referenced with an index (e.g. `databases.0.id`).
      * 
      */
     public List<GetVpcSubnetsVpcSubnetDatabase> databases() {
         return this.databases;
     }
     /**
-     * @return ID of a managed database assigned to the VPC Subnet.
+     * @return ID of a NodeBalancer assigned to the VPC Subnet.
      * 
      */
     public Integer id() {
@@ -100,11 +106,18 @@ public final class GetVpcSubnetsVpcSubnet {
         return this.label;
     }
     /**
-     * @return A list of Linodes added to this subnet.
+     * @return (Read-Only Object List) A list of Linodes added to this subnet. Referenced with an index (e.g. `linodes.0.id`).
      * 
      */
     public List<GetVpcSubnetsVpcSubnetLinode> linodes() {
         return this.linodes;
+    }
+    /**
+     * @return (Read-Only Object List) A list of NodeBalancers assigned to the VPC Subnet. Referenced with an index (e.g. `nodebalancers.0.id`).
+     * 
+     */
+    public List<GetVpcSubnetsVpcSubnetNodebalancer> nodebalancers() {
+        return this.nodebalancers;
     }
     /**
      * @return The date and time when the VPC Subnet was last updated.
@@ -130,6 +143,7 @@ public final class GetVpcSubnetsVpcSubnet {
         private List<GetVpcSubnetsVpcSubnetIpv6> ipv6s;
         private String label;
         private List<GetVpcSubnetsVpcSubnetLinode> linodes;
+        private List<GetVpcSubnetsVpcSubnetNodebalancer> nodebalancers;
         private String updated;
         public Builder() {}
         public Builder(GetVpcSubnetsVpcSubnet defaults) {
@@ -141,6 +155,7 @@ public final class GetVpcSubnetsVpcSubnet {
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.linodes = defaults.linodes;
+    	      this.nodebalancers = defaults.nodebalancers;
     	      this.updated = defaults.updated;
         }
 
@@ -210,6 +225,17 @@ public final class GetVpcSubnetsVpcSubnet {
             return linodes(List.of(linodes));
         }
         @CustomType.Setter
+        public Builder nodebalancers(List<GetVpcSubnetsVpcSubnetNodebalancer> nodebalancers) {
+            if (nodebalancers == null) {
+              throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "nodebalancers");
+            }
+            this.nodebalancers = nodebalancers;
+            return this;
+        }
+        public Builder nodebalancers(GetVpcSubnetsVpcSubnetNodebalancer... nodebalancers) {
+            return nodebalancers(List.of(nodebalancers));
+        }
+        @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
               throw new MissingRequiredPropertyException("GetVpcSubnetsVpcSubnet", "updated");
@@ -226,6 +252,7 @@ public final class GetVpcSubnetsVpcSubnet {
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.linodes = linodes;
+            _resultValue.nodebalancers = nodebalancers;
             _resultValue.updated = updated;
             return _resultValue;
         }

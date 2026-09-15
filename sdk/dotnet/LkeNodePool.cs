@@ -175,6 +175,18 @@ namespace Pulumi.Linode
         public Output<int> FirewallId { get; private set; } = null!;
 
         /// <summary>
+        /// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Output("isolationPublicIpv4")]
+        public Output<bool> IsolationPublicIpv4 { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Output("isolationPublicIpv6")]
+        public Output<bool> IsolationPublicIpv6 { get; private set; } = null!;
+
+        /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// </summary>
         [Output("k8sVersion")]
@@ -225,9 +237,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// 
-        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
         /// 
-        /// * `Taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// * `Taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Output("updateStrategy")]
         public Output<string> UpdateStrategy { get; private set; } = null!;
@@ -288,10 +300,28 @@ namespace Pulumi.Linode
         public Input<int> ClusterId { get; set; } = null!;
 
         /// <summary>
+        /// The disk encryption policy for nodes in this pool.
+        /// </summary>
+        [Input("diskEncryption")]
+        public Input<string>? DiskEncryption { get; set; }
+
+        /// <summary>
         /// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv4")]
+        public Input<bool>? IsolationPublicIpv4 { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv6")]
+        public Input<bool>? IsolationPublicIpv6 { get; set; }
 
         /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -356,9 +386,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// 
-        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
         /// 
-        /// * `Taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// * `Taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }
@@ -391,6 +421,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv4")]
+        public Input<bool>? IsolationPublicIpv4 { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv6")]
+        public Input<bool>? IsolationPublicIpv6 { get; set; }
 
         /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -467,9 +509,9 @@ namespace Pulumi.Linode
         /// <summary>
         /// The strategy for updating the node pool k8s version. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// 
-        /// * `Autoscaler` - (Optional) If defined, an autoscaler will be enabled with the given configuration.
+        /// * `Autoscaler` - (Optional, Block List) If defined, an autoscaler will be enabled with the given configuration.
         /// 
-        /// * `Taint` - (Optional) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        /// * `Taint` - (Optional, Block Set) Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools). Set elements can't be referenced by index; use a `For` expression or `tolist(...)` to access them.
         /// </summary>
         [Input("updateStrategy")]
         public Input<string>? UpdateStrategy { get; set; }

@@ -436,9 +436,9 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
     /**
      * The ID of the database that was forked from.
      *
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      */
     declare public readonly forkSource: pulumi.Output<number | undefined>;
     /**
@@ -468,7 +468,7 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly oldestRestoreTime: pulumi.Output<string>;
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     declare public /*out*/ readonly pendingUpdates: pulumi.Output<outputs.DatabasePostgresqlV2PendingUpdate[]>;
     /**
@@ -943,9 +943,9 @@ export interface DatabasePostgresqlV2State {
     /**
      * The ID of the database that was forked from.
      *
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      */
     forkSource?: pulumi.Input<number | undefined>;
     /**
@@ -975,7 +975,7 @@ export interface DatabasePostgresqlV2State {
      */
     oldestRestoreTime?: pulumi.Input<string | undefined>;
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
      */
     pendingUpdates?: pulumi.Input<pulumi.Input<inputs.DatabasePostgresqlV2PendingUpdate>[] | undefined>;
     /**
@@ -1246,9 +1246,9 @@ export interface DatabasePostgresqlV2Args {
     /**
      * The ID of the database that was forked from.
      *
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      *
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      */
     forkSource?: pulumi.Input<number | undefined>;
     /**

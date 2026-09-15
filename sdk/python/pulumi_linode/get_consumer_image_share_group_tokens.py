@@ -68,6 +68,9 @@ class GetConsumerImageShareGroupTokensResult:
     @_builtins.property
     @pulumi.getter
     def tokens(self) -> Optional[Sequence['outputs.GetConsumerImageShareGroupTokensTokenResult']]:
+        """
+        (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+        """
         return pulumi.get(self, "tokens")
 
 
@@ -123,6 +126,9 @@ def get_consumer_image_share_group_tokens(filters: Optional[Sequence[Union['GetC
     * `sharegroup_uuid`
 
     * `sharegroup_label`
+
+
+    :param Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']] tokens: (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -177,6 +183,9 @@ def get_consumer_image_share_group_tokens_output(filters: pulumi.Input[Optional[
     * `sharegroup_uuid`
 
     * `sharegroup_label`
+
+
+    :param Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']] tokens: (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
     """
     __args__ = dict()
     __args__['filters'] = filters

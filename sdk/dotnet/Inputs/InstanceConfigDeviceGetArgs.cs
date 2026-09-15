@@ -13,7 +13,7 @@ namespace Pulumi.Linode.Inputs
     public sealed class InstanceConfigDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Disk ID to map to this disk slot
+        /// The device slot identifier (for example, sda, sdb) to map a disk or volume into
         /// </summary>
         [Input("deviceName", required: true)]
         public Input<string> DeviceName { get; set; } = null!;

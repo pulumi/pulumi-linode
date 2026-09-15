@@ -69,31 +69,6 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-     * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    @Import(name="cluster")
-    private @Nullable Output<String> cluster;
-
-    /**
-     * @return The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-     * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-     * 
-     * @deprecated
-     * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-     * 
-     */
-    @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-    public Optional<Output<String>> cluster() {
-        return Optional.ofNullable(this.cluster);
-    }
-
-    /**
      * If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
      * 
      */
@@ -192,14 +167,14 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * The region of the Linode Object Storage Bucket.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+     * @return The region of the Linode Object Storage Bucket.
      * 
      */
     public Optional<Output<String>> region() {
@@ -243,9 +218,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     /**
      * Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+     * * `lifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+     * * `cert` - (Optional, Block) The bucket&#39;s TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
      * 
      */
     @Import(name="versioning")
@@ -254,9 +229,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     /**
      * @return Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+     * * `lifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
      * 
-     * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+     * * `cert` - (Optional, Block) The bucket&#39;s TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
      * 
      */
     public Optional<Output<Boolean>> versioning() {
@@ -269,7 +244,6 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         this.accessKey = $.accessKey;
         this.acl = $.acl;
         this.cert = $.cert;
-        this.cluster = $.cluster;
         this.corsEnabled = $.corsEnabled;
         this.endpoint = $.endpoint;
         this.endpointType = $.endpointType;
@@ -365,37 +339,6 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          */
         public Builder cert(ObjectStorageBucketCertArgs cert) {
             return cert(Output.of(cert));
-        }
-
-        /**
-         * @param cluster The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-         * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-         * 
-         */
-        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-        public Builder cluster(@Nullable Output<String> cluster) {
-            $.cluster = cluster;
-            return this;
-        }
-
-        /**
-         * @param cluster The cluster of the Linode Object Storage Bucket. This is deprecated in favor of `region` attribute.
-         * For example, `us-mia-1` cluster can be translated into `us-mia` region. Exactly one of `region` and `cluster` is required for creating a bucket.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`.
-         * 
-         */
-        @Deprecated /* The cluster attribute has been deprecated, please consider switching to the region attribute. For example, a cluster value of `us-mia-1` can be translated to a region value of `us-mia`. */
-        public Builder cluster(String cluster) {
-            return cluster(Output.of(cluster));
         }
 
         /**
@@ -543,7 +486,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param region The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+         * @param region The region of the Linode Object Storage Bucket.
          * 
          * @return builder
          * 
@@ -554,7 +497,7 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param region The region of the Linode Object Storage Bucket. Exactly one of `region` and `cluster` is required for creating a bucket.
+         * @param region The region of the Linode Object Storage Bucket.
          * 
          * @return builder
          * 
@@ -612,9 +555,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         /**
          * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
          * 
-         * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+         * * `lifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
          * 
-         * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+         * * `cert` - (Optional, Block) The bucket&#39;s TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
          * 
          * @return builder
          * 
@@ -627,9 +570,9 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
         /**
          * @param versioning Whether to enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket. (Requires `accessKey` and `secretKey`)
          * 
-         * * `lifecycleRule` - (Optional) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
+         * * `lifecycleRule` - (Optional, Block List) Lifecycle rules to be applied to the bucket. (Requires `accessKey` and `secretKey`)
          * 
-         * * `cert` - (Optional) The bucket&#39;s TLS/SSL certificate.
+         * * `cert` - (Optional, Block) The bucket&#39;s TLS/SSL certificate. Referenced with an index (e.g. `cert.0.certificate`).
          * 
          * @return builder
          * 

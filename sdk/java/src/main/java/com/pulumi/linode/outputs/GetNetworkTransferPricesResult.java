@@ -23,6 +23,10 @@ public final class GetNetworkTransferPricesResult {
     private String id;
     private @Nullable String order;
     private @Nullable String orderBy;
+    /**
+     * @return (Nested Attribute List) The Network Transfer Prices returned by this data source.
+     * 
+     */
     private List<GetNetworkTransferPricesType> types;
 
     private GetNetworkTransferPricesResult() {}
@@ -42,6 +46,10 @@ public final class GetNetworkTransferPricesResult {
     public Optional<String> orderBy() {
         return Optional.ofNullable(this.orderBy);
     }
+    /**
+     * @return (Nested Attribute List) The Network Transfer Prices returned by this data source.
+     * 
+     */
     public List<GetNetworkTransferPricesType> types() {
         return this.types;
     }

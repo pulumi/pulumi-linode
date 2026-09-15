@@ -74,8 +74,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `Group`
-        /// 
         /// * `Id`
         /// 
         /// * `Image`
@@ -158,8 +156,6 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
-        /// * `Group`
-        /// 
         /// * `Id`
         /// 
         /// * `Image`
@@ -241,8 +237,6 @@ namespace Pulumi.Linode
         /// ```
         /// 
         /// ## Filterable Fields
-        /// 
-        /// * `Group`
         /// 
         /// * `Id`
         /// 
@@ -330,6 +324,9 @@ namespace Pulumi.Linode
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceResult> Instances;
         public readonly string? Order;
         public readonly string? OrderBy;

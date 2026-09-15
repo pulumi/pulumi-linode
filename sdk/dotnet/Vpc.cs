@@ -61,6 +61,30 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
+    ///     var test = new Linode.Vpc("test", new()
+    ///     {
+    ///         Label = "test-vpc",
+    ///         Region = "us-iad",
+    ///         Ipv4s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcIpv4Args
+    ///             {
+    ///                 Range = "10.0.0.0/8",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## IPv6
     /// 
@@ -73,6 +97,64 @@ namespace Pulumi.Linode
     /// * `AllocationClass` - (Optional) Indicates the labeled IPv6 Inventory that the VPC Prefix should be allocated from.
     /// 
     /// * `AllocatedRange` - (Read-Only) The value of range computed by the API. This is necessary when needing to access the range for an implicit allocation.
+    /// 
+    /// ## IPv4
+    /// 
+    /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+    /// 
+    /// Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
+    /// 
+    /// * `Range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+    /// 
+    /// ## Subnets
+    /// 
+    /// The following attributes are exported under each entry of the `Subnets` field:
+    /// 
+    /// * `Id` - The id of the VPC Subnet.
+    /// 
+    /// * `Label` - The label of the VPC Subnet.
+    /// 
+    /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
+    /// 
+    /// * `Ipv6` - The IPv6 ranges of this subnet.
+    ///   
+    ///   * `Range` - An IPv6 range allocated to this subnet.
+    /// 
+    /// * `Linodes` - A list of Linodes assigned to this subnet.
+    ///   
+    ///   * `Id` - ID of the Linode
+    ///   
+    ///   * `Interfaces` - A list of networking interfaces objects.
+    ///     
+    ///     * `Id` - ID of the interface.
+    ///     
+    ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+    ///     
+    ///     * `Active` - Whether the Interface is actively in use.
+    /// 
+    /// * `Databases` - A list of Managed Databases assigned to this subnet.
+    ///   
+    ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
+    ///   
+    ///   * `Ipv4Range` - IPv4 range assigned to the database.
+    ///   
+    ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+    ///     
+    ///     * `Range` - An IPv6 address range in CIDR notation.
+    /// 
+    /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
+    ///   
+    ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
+    ///   
+    ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
+    ///   
+    ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+    ///     
+    ///     * `Range` - An IPv6 address range in CIDR notation.
+    /// 
+    /// * `Created` - The date and time when the VPC Subnet was created.
+    /// 
+    /// * `Updated` - The date and time when the VPC Subnet was last updated.
     /// </summary>
     [LinodeResourceType("linode:index/vpc:Vpc")]
     public partial class Vpc : global::Pulumi.CustomResource
@@ -85,11 +167,15 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The user-defined description of this VPC.
-        /// 
-        /// * `Ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv4 configuration of this VPC.
+        /// </summary>
+        [Output("ipv4s")]
+        public Output<ImmutableArray<Outputs.VpcIpv4>> Ipv4s { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 configuration of this VPC.
@@ -110,10 +196,26 @@ namespace Pulumi.Linode
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// A list of subnets under this VPC.
+        /// </summary>
+        [Output("subnets")]
+        public Output<ImmutableArray<Outputs.VpcSubnet>> Subnets { get; private set; } = null!;
+
+        /// <summary>
         /// The date and time when the VPC was last updated.
         /// </summary>
         [Output("updated")]
         public Output<string> Updated { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the VPC. Can be either `Regular` or `Rdma`. Defaults to `Regular`. The `Rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+        /// 
+        /// * `Ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+        /// 
+        /// * `Ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+        /// </summary>
+        [Output("vpcType")]
+        public Output<string> VpcType { get; private set; } = null!;
 
 
         /// <summary>
@@ -163,11 +265,21 @@ namespace Pulumi.Linode
     {
         /// <summary>
         /// The user-defined description of this VPC.
-        /// 
-        /// * `Ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv4s")]
+        private InputList<Inputs.VpcIpv4Args>? _ipv4s;
+
+        /// <summary>
+        /// The IPv4 configuration of this VPC.
+        /// </summary>
+        public InputList<Inputs.VpcIpv4Args> Ipv4s
+        {
+            get => _ipv4s ?? (_ipv4s = new InputList<Inputs.VpcIpv4Args>());
+            set => _ipv4s = value;
+        }
 
         [Input("ipv6s")]
         private InputList<Inputs.VpcIpv6Args>? _ipv6s;
@@ -193,6 +305,16 @@ namespace Pulumi.Linode
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        /// <summary>
+        /// The type of the VPC. Can be either `Regular` or `Rdma`. Defaults to `Regular`. The `Rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+        /// 
+        /// * `Ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+        /// 
+        /// * `Ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+        /// </summary>
+        [Input("vpcType")]
+        public Input<string>? VpcType { get; set; }
+
         public VpcArgs()
         {
         }
@@ -209,11 +331,21 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The user-defined description of this VPC.
-        /// 
-        /// * `Ipv6` - (Optional) A list of IPv6 allocations under this VPC.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv4s")]
+        private InputList<Inputs.VpcIpv4GetArgs>? _ipv4s;
+
+        /// <summary>
+        /// The IPv4 configuration of this VPC.
+        /// </summary>
+        public InputList<Inputs.VpcIpv4GetArgs> Ipv4s
+        {
+            get => _ipv4s ?? (_ipv4s = new InputList<Inputs.VpcIpv4GetArgs>());
+            set => _ipv4s = value;
+        }
 
         [Input("ipv6s")]
         private InputList<Inputs.VpcIpv6GetArgs>? _ipv6s;
@@ -239,11 +371,33 @@ namespace Pulumi.Linode
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("subnets")]
+        private InputList<Inputs.VpcSubnetGetArgs>? _subnets;
+
+        /// <summary>
+        /// A list of subnets under this VPC.
+        /// </summary>
+        public InputList<Inputs.VpcSubnetGetArgs> Subnets
+        {
+            get => _subnets ?? (_subnets = new InputList<Inputs.VpcSubnetGetArgs>());
+            set => _subnets = value;
+        }
+
         /// <summary>
         /// The date and time when the VPC was last updated.
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
+
+        /// <summary>
+        /// The type of the VPC. Can be either `Regular` or `Rdma`. Defaults to `Regular`. The `Rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
+        /// 
+        /// * `Ipv6` - (Optional, Nested Attribute List) A list of IPv6 allocations under this VPC.
+        /// 
+        /// * `Ipv4` - (Optional, Nested Attribute List) A list of IPv4 ranges under this VPC.
+        /// </summary>
+        [Input("vpcType")]
+        public Input<string>? VpcType { get; set; }
 
         public VpcState()
         {

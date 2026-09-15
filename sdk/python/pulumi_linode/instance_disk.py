@@ -40,11 +40,11 @@ class InstanceDiskInitArgs:
         :param pulumi.Input[_builtins.int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                ***
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Linode Disk from.
-        :param pulumi.Input[_builtins.str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[_builtins.str] root_pass: The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Disk. Only accepted if `stackscript_id` is given. (Requires `image`)
         :param pulumi.Input[_builtins.int] stackscript_id: A StackScript ID that will cause the referenced StackScript to be run during deployment of this Disk. (Requires `image`)
         """
@@ -110,7 +110,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -122,7 +122,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
@@ -158,7 +158,7 @@ class InstanceDiskInitArgs:
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
@@ -221,15 +221,15 @@ class _InstanceDiskState:
         """
         Input properties used for looking up and filtering InstanceDisk resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.str] created: When this disk was created.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
         :param pulumi.Input[_builtins.str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[_builtins.str] label: The Disk's label for display purposes only.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this Disk under.
-        :param pulumi.Input[_builtins.str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[_builtins.str] root_pass: The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                ***
@@ -273,7 +273,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -285,7 +285,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
@@ -369,7 +369,7 @@ class _InstanceDiskState:
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 
@@ -502,6 +502,21 @@ class InstanceDisk(pulumi.CustomResource):
             linode_id=my_instance.id.apply(lambda x: int(x)),
             size=my_instance.specs[0].disk,
             image="linode/ubuntu22.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id.apply(lambda x: int(x)),
+            size=my_instance.specs[0].disk,
+            image="linode/ubuntu22.04",
             root_pass="myc00lpass!",
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             stackscript_id=12345,
@@ -521,13 +536,13 @@ class InstanceDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[_builtins.str] label: The Disk's label for display purposes only.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this Disk under.
-        :param pulumi.Input[_builtins.str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[_builtins.str] root_pass: The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                ***
@@ -561,6 +576,21 @@ class InstanceDisk(pulumi.CustomResource):
             linode_id=my_instance.id.apply(lambda x: int(x)),
             size=512,
             filesystem="ext4")
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_instance = linode.Instance("my-instance",
+            label="my-instance",
+            type="g6-standard-1",
+            region="us-southeast")
+        boot = linode.InstanceDisk("boot",
+            label="boot",
+            linode_id=my_instance.id.apply(lambda x: int(x)),
+            size=my_instance.specs[0].disk,
+            image="linode/ubuntu22.04",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"])
         ```
         ```python
         import pulumi
@@ -682,15 +712,15 @@ class InstanceDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.str] created: When this disk was created.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for this disk's parent instance. (`enabled`, `disabled`)
         :param pulumi.Input[_builtins.str] filesystem: The filesystem of this disk. (`raw`, `swap`, `ext3`, `ext4`, `initrd`)
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Linode Disk from.
         :param pulumi.Input[_builtins.str] label: The Disk's label for display purposes only.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to create this Disk under.
-        :param pulumi.Input[_builtins.str] root_pass: The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        :param pulumi.Input[_builtins.str] root_pass: The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         :param pulumi.Input[_builtins.int] size: The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
                
                ***
@@ -724,7 +754,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+        A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "authorized_keys")
 
@@ -732,7 +762,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="authorizedUsers")
     def authorized_users(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+        A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "authorized_users")
 
@@ -788,7 +818,7 @@ class InstanceDisk(pulumi.CustomResource):
     @pulumi.getter(name="rootPass")
     def root_pass(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+        The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified. (Requires `image`)
         """
         return pulumi.get(self, "root_pass")
 

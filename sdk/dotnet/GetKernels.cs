@@ -68,8 +68,6 @@ namespace Pulumi.Linode
         /// * `Pvops`
         /// 
         /// * `Version`
-        /// 
-        /// * `Xen`
         /// </summary>
         public static Task<GetKernelsResult> InvokeAsync(GetKernelsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsArgs(), options.WithDefaults());
@@ -131,8 +129,6 @@ namespace Pulumi.Linode
         /// * `Pvops`
         /// 
         /// * `Version`
-        /// 
-        /// * `Xen`
         /// </summary>
         public static Output<GetKernelsResult> Invoke(GetKernelsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsInvokeArgs(), options.WithDefaults());
@@ -194,8 +190,6 @@ namespace Pulumi.Linode
         /// * `Pvops`
         /// 
         /// * `Version`
-        /// 
-        /// * `Xen`
         /// </summary>
         public static Output<GetKernelsResult> Invoke(GetKernelsInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetKernelsResult>("linode:index/getKernels:getKernels", args ?? new GetKernelsInvokeArgs(), options.WithDefaults());
@@ -267,6 +261,9 @@ namespace Pulumi.Linode
         /// The unique ID of this Kernel.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of Kernels. Referenced by index (e.g. `kernels[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKernelsKernelResult> Kernels;
         public readonly string? Order;
         public readonly string? OrderBy;

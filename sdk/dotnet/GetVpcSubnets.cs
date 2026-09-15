@@ -200,7 +200,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPCs.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public int VpcId { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The id of the parent VPC for the list of VPCs.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode VPC subnets that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode VPC subnets that meet certain requirements.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<int> VpcId { get; set; } = null!;
@@ -241,10 +241,13 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetVpcSubnetsFilterResult> Filters;
         /// <summary>
-        /// ID of a managed database assigned to the VPC Subnet.
+        /// ID of a NodeBalancer assigned to the VPC Subnet.
         /// </summary>
         public readonly string Id;
         public readonly int VpcId;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of subnets under a VPC. Referenced by index (e.g. `vpc_subnets[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcSubnetsVpcSubnetResult> VpcSubnets;
 
         [OutputConstructor]

@@ -299,6 +299,9 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly string? Order;
         public readonly string? OrderBy;
+        /// <summary>
+        /// (Nested Attribute List) The Linode Instance types returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTypesTypeResult> Types;
 
         [OutputConstructor]

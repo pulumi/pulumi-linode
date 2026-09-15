@@ -33,6 +33,23 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Linode Instance Without Root Password
+ *
+ * When deploying from an image, you can use `authorizedKeys` or `authorizedUsers` instead of `rootPass`. At least one of the three must be provided.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const web = new linode.Instance("web", {
+ *     label: "simple_instance",
+ *     image: "linode/ubuntu22.04",
+ *     region: "us-central",
+ *     type: "g6-standard-1",
+ *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ * });
+ * ```
+ *
  * ### Linode Instance with Explicit Networking Interfaces
  *
  * You can add a VPC or VLAN interface directly to a Linode instance resource.
@@ -177,15 +194,25 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Configuration options for alert triggers on this Linode.
+     * The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     *
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+     *
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     declare public readonly alerts: pulumi.Output<outputs.InstanceAlerts>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     declare public readonly authorizedKeys: pulumi.Output<string[] | undefined>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     declare public readonly authorizedUsers: pulumi.Output<string[] | undefined>;
     /**
@@ -193,7 +220,7 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly backupId: pulumi.Output<number | undefined>;
     /**
-     * Information about this Linode's backups status.
+     * (Read-Only Object List) Information about this Linode's backups status. Referenced with an index (e.g. `backups.0.enabled`).
      */
     declare public /*out*/ readonly backups: pulumi.Output<outputs.InstanceBackup[]>;
     /**
@@ -204,6 +231,10 @@ export class Instance extends pulumi.CustomResource {
      * The Label of the Instance Config that should be used to boot the Linode instance.
      */
     declare public readonly bootConfigLabel: pulumi.Output<string>;
+    /**
+     * The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance's plan.
+     */
+    declare public readonly bootSize: pulumi.Output<number | undefined>;
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
@@ -220,8 +251,6 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly configs: pulumi.Output<outputs.InstanceConfig[]>;
     /**
      * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
-     *
-     * * **NOTE: Disk encryption may not currently be available to all users.**
      */
     declare public readonly diskEncryption: pulumi.Output<string>;
     /**
@@ -232,12 +261,6 @@ export class Instance extends pulumi.CustomResource {
      * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      */
     declare public readonly firewallId: pulumi.Output<number | undefined>;
-    /**
-     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     *
-     * @deprecated Group label is deprecated. We recommend using tags instead.
-     */
-    declare public readonly group: pulumi.Output<string | undefined>;
     /**
      * Whether this Instance was created with user-data.
      */
@@ -277,9 +300,17 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ipv6: pulumi.Output<string>;
     /**
+     * The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     */
+    declare public readonly kernel: pulumi.Output<string | undefined>;
+    /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     declare public readonly label: pulumi.Output<string>;
+    /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = "linode"` or depends on your account settings.
+     */
+    declare public readonly linodeInterfaces: pulumi.Output<outputs.InstanceLinodeInterface[] | undefined>;
     /**
      * If applicable, the ID of the LKE cluster this instance is a part of.
      */
@@ -293,7 +324,9 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly maintenancePolicy: pulumi.Output<string>;
     /**
-     * Various fields related to the Linode Metadata service.
+     * Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     *
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     declare public readonly metadatas: pulumi.Output<outputs.InstanceMetadata[] | undefined>;
     /**
@@ -304,10 +337,14 @@ export class Instance extends pulumi.CustomResource {
      * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     *
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
      */
     declare public readonly networkHelper: pulumi.Output<boolean | undefined>;
     /**
-     * Information about the Placement Group this Linode is assigned to.
+     * Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     *
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     declare public readonly placementGroup: pulumi.Output<outputs.InstancePlacementGroup | undefined>;
     /**
@@ -328,40 +365,26 @@ export class Instance extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     *
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-     *
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     declare public readonly resizeDisk: pulumi.Output<boolean | undefined>;
     /**
-     * The password that will be initially assigned to the 'root' user account.
+     * The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     declare public readonly rootPass: pulumi.Output<string | undefined>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     *
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     *
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     declare public readonly sharedIpv4s: pulumi.Output<string[]>;
     /**
-     * Information about the resources available to this Linode.
+     * (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
      */
     declare public /*out*/ readonly specs: pulumi.Output<outputs.InstanceSpec[]>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      */
     declare public readonly stackscriptData: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      */
     declare public readonly stackscriptId: pulumi.Output<number | undefined>;
     /**
@@ -407,13 +430,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backups"] = state?.backups;
             resourceInputs["backupsEnabled"] = state?.backupsEnabled;
             resourceInputs["bootConfigLabel"] = state?.bootConfigLabel;
+            resourceInputs["bootSize"] = state?.bootSize;
             resourceInputs["booted"] = state?.booted;
             resourceInputs["capabilities"] = state?.capabilities;
             resourceInputs["configs"] = state?.configs;
             resourceInputs["diskEncryption"] = state?.diskEncryption;
             resourceInputs["disks"] = state?.disks;
             resourceInputs["firewallId"] = state?.firewallId;
-            resourceInputs["group"] = state?.group;
             resourceInputs["hasUserData"] = state?.hasUserData;
             resourceInputs["hostUuid"] = state?.hostUuid;
             resourceInputs["image"] = state?.image;
@@ -422,7 +445,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = state?.ipAddress;
             resourceInputs["ipv4s"] = state?.ipv4s;
             resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["kernel"] = state?.kernel;
             resourceInputs["label"] = state?.label;
+            resourceInputs["linodeInterfaces"] = state?.linodeInterfaces;
             resourceInputs["lkeClusterId"] = state?.lkeClusterId;
             resourceInputs["locks"] = state?.locks;
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
@@ -456,17 +481,19 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupId"] = args?.backupId;
             resourceInputs["backupsEnabled"] = args?.backupsEnabled;
             resourceInputs["bootConfigLabel"] = args?.bootConfigLabel;
+            resourceInputs["bootSize"] = args?.bootSize;
             resourceInputs["booted"] = args?.booted;
             resourceInputs["configs"] = args?.configs;
             resourceInputs["diskEncryption"] = args?.diskEncryption;
             resourceInputs["disks"] = args?.disks;
             resourceInputs["firewallId"] = args?.firewallId;
-            resourceInputs["group"] = args?.group;
             resourceInputs["image"] = args?.image;
             resourceInputs["interfaceGeneration"] = args?.interfaceGeneration;
             resourceInputs["interfaces"] = args?.interfaces;
             resourceInputs["ipv4s"] = args?.ipv4s;
+            resourceInputs["kernel"] = args?.kernel;
             resourceInputs["label"] = args?.label;
+            resourceInputs["linodeInterfaces"] = args?.linodeInterfaces;
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["metadatas"] = args?.metadatas;
             resourceInputs["migrationType"] = args?.migrationType;
@@ -508,15 +535,25 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Configuration options for alert triggers on this Linode.
+     * The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     *
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+     *
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     alerts?: pulumi.Input<inputs.InstanceAlerts | undefined>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -524,7 +561,7 @@ export interface InstanceState {
      */
     backupId?: pulumi.Input<number | undefined>;
     /**
-     * Information about this Linode's backups status.
+     * (Read-Only Object List) Information about this Linode's backups status. Referenced with an index (e.g. `backups.0.enabled`).
      */
     backups?: pulumi.Input<pulumi.Input<inputs.InstanceBackup>[] | undefined>;
     /**
@@ -535,6 +572,10 @@ export interface InstanceState {
      * The Label of the Instance Config that should be used to boot the Linode instance.
      */
     bootConfigLabel?: pulumi.Input<string | undefined>;
+    /**
+     * The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance's plan.
+     */
+    bootSize?: pulumi.Input<number | undefined>;
     /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
@@ -551,8 +592,6 @@ export interface InstanceState {
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[] | undefined>;
     /**
      * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
-     *
-     * * **NOTE: Disk encryption may not currently be available to all users.**
      */
     diskEncryption?: pulumi.Input<string | undefined>;
     /**
@@ -563,12 +602,6 @@ export interface InstanceState {
      * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      */
     firewallId?: pulumi.Input<number | undefined>;
-    /**
-     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     *
-     * @deprecated Group label is deprecated. We recommend using tags instead.
-     */
-    group?: pulumi.Input<string | undefined>;
     /**
      * Whether this Instance was created with user-data.
      */
@@ -608,9 +641,17 @@ export interface InstanceState {
      */
     ipv6?: pulumi.Input<string | undefined>;
     /**
+     * The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     */
+    kernel?: pulumi.Input<string | undefined>;
+    /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string | undefined>;
+    /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = "linode"` or depends on your account settings.
+     */
+    linodeInterfaces?: pulumi.Input<pulumi.Input<inputs.InstanceLinodeInterface>[] | undefined>;
     /**
      * If applicable, the ID of the LKE cluster this instance is a part of.
      */
@@ -624,7 +665,9 @@ export interface InstanceState {
      */
     maintenancePolicy?: pulumi.Input<string | undefined>;
     /**
-     * Various fields related to the Linode Metadata service.
+     * Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     *
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.InstanceMetadata>[] | undefined>;
     /**
@@ -635,10 +678,14 @@ export interface InstanceState {
      * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     *
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
      */
     networkHelper?: pulumi.Input<boolean | undefined>;
     /**
-     * Information about the Placement Group this Linode is assigned to.
+     * Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     *
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     placementGroup?: pulumi.Input<inputs.InstancePlacementGroup | undefined>;
     /**
@@ -659,40 +706,26 @@ export interface InstanceState {
     region?: pulumi.Input<string | undefined>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     *
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-     *
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     resizeDisk?: pulumi.Input<boolean | undefined>;
     /**
-     * The password that will be initially assigned to the 'root' user account.
+     * The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     rootPass?: pulumi.Input<string | undefined>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     *
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     *
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Information about the resources available to this Linode.
+     * (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
      */
     specs?: pulumi.Input<pulumi.Input<inputs.InstanceSpec>[] | undefined>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      */
     stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      */
     stackscriptId?: pulumi.Input<number | undefined>;
     /**
@@ -724,15 +757,25 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Configuration options for alert triggers on this Linode.
+     * The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+     *
+     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
+     *
+     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+     *
+     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     alerts?: pulumi.Input<inputs.InstanceAlerts | undefined>;
     /**
-     * A list of SSH public keys to deploy for the root user on the newly created Linode. Only accepted if 'image' is provided.
+     * A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. Only accepted if 'image' is provided.
+     * A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -748,6 +791,10 @@ export interface InstanceArgs {
      */
     bootConfigLabel?: pulumi.Input<string | undefined>;
     /**
+     * The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined bootSize and swapSize must not exceed the total disk size provided by the instance's plan.
+     */
+    bootSize?: pulumi.Input<number | undefined>;
+    /**
      * If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
      */
     booted?: pulumi.Input<boolean | undefined>;
@@ -759,8 +806,6 @@ export interface InstanceArgs {
     configs?: pulumi.Input<pulumi.Input<inputs.InstanceConfig>[] | undefined>;
     /**
      * The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
-     *
-     * * **NOTE: Disk encryption may not currently be available to all users.**
      */
     diskEncryption?: pulumi.Input<string | undefined>;
     /**
@@ -771,12 +816,6 @@ export interface InstanceArgs {
      * The ID of the Firewall to attach to the instance upon creation. *Changing `firewallId` forces the creation of a new Linode Instance.*
      */
     firewallId?: pulumi.Input<number | undefined>;
-    /**
-     * A deprecated property denoting a group label for this Linode. We recommend using the `tags` attribute instead.
-     *
-     * @deprecated Group label is deprecated. We recommend using tags instead.
-     */
-    group?: pulumi.Input<string | undefined>;
     /**
      * An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
      */
@@ -798,15 +837,25 @@ export interface InstanceArgs {
      */
     ipv4s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
+     */
+    kernel?: pulumi.Input<string | undefined>;
+    /**
      * The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
      */
     label?: pulumi.Input<string | undefined>;
+    /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = "linode"` or depends on your account settings.
+     */
+    linodeInterfaces?: pulumi.Input<pulumi.Input<inputs.InstanceLinodeInterface>[] | undefined>;
     /**
      * The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
      */
     maintenancePolicy?: pulumi.Input<string | undefined>;
     /**
-     * Various fields related to the Linode Metadata service.
+     * Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+     *
+     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
      */
     metadatas?: pulumi.Input<pulumi.Input<inputs.InstanceMetadata>[] | undefined>;
     /**
@@ -817,10 +866,14 @@ export interface InstanceArgs {
      * Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      *
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     *
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
      */
     networkHelper?: pulumi.Input<boolean | undefined>;
     /**
-     * Information about the Placement Group this Linode is assigned to.
+     * Fields related to the Placement Group this Linode is assigned to. Declared as `placementGroup { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+     *
+     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     placementGroup?: pulumi.Input<inputs.InstancePlacementGroup | undefined>;
     /**
@@ -837,36 +890,22 @@ export interface InstanceArgs {
     region: pulumi.Input<string>;
     /**
      * If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
-     *
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
-     *
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
-     *
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
      */
     resizeDisk?: pulumi.Input<boolean | undefined>;
     /**
-     * The password that will be initially assigned to the 'root' user account.
+     * The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified.
      */
     rootPass?: pulumi.Input<string | undefined>;
     /**
      * A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-     *
-     * * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-     *
-     * * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
      */
     sharedIpv4s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      */
     stackscriptData?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      */
     stackscriptId?: pulumi.Input<number | undefined>;
     /**

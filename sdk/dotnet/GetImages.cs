@@ -281,7 +281,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `Created` field are not included in the result.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public bool? Latest { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// If true, only the latest image will be returned. Images without a valid `Created` field are not included in the result.
         /// 
-        /// * `Filter` - (Optional) A set of filters used to select Linode images that meet certain requirements.
+        /// * `Filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
         /// </summary>
         [Input("latest")]
         public Input<bool>? Latest { get; set; }
@@ -349,6 +349,9 @@ namespace Pulumi.Linode
         /// The unique ID of this Image.  The ID of private images begin with `private/` followed by the numeric identifier of the private image, for example `private/12345`.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The returned list of Images. Referenced by index (e.g. `images[0].id`).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly bool? Latest;
         public readonly string? Order;

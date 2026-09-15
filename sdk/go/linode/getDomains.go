@@ -50,8 +50,6 @@ import (
 //
 // ## Filterable Fields
 //
-// * `group`
-//
 // * `tags`
 //
 // * `domain`
@@ -96,6 +94,7 @@ type GetDomainsArgs struct {
 
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
+	// (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
 	Domains []GetDomainsDomain `pulumi:"domains"`
 	Filters []GetDomainsFilter `pulumi:"filters"`
 	// The unique ID of this Domain.
@@ -137,6 +136,7 @@ func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.
 	return o
 }
 
+// (Nested Attribute List) The returned list of Domains. Referenced by index (e.g. `domains[0].id`).
 func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
 	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
 }

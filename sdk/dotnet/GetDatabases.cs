@@ -268,6 +268,9 @@ namespace Pulumi.Linode
     [OutputType]
     public sealed class GetDatabasesResult
     {
+        /// <summary>
+        /// (Nested Attribute List) Managed Databases matching the query.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabasesDatabaseResult> Databases;
         public readonly ImmutableArray<Outputs.GetDatabasesFilterResult> Filters;
         /// <summary>

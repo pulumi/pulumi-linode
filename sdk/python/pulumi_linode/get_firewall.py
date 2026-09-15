@@ -27,7 +27,7 @@ class GetFirewallResult:
     """
     A collection of values returned by getFirewall.
     """
-    def __init__(__self__, created=None, devices=None, disabled=None, id=None, inbound_policy=None, inbounds=None, interfaces=None, label=None, linodes=None, nodebalancers=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None):
+    def __init__(__self__, created=None, devices=None, disabled=None, fingerprint=None, id=None, inbound_policy=None, inbounds=None, interfaces=None, label=None, linodes=None, nodebalancers=None, outbound_policy=None, outbounds=None, status=None, tags=None, updated=None, version=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -37,6 +37,9 @@ class GetFirewallResult:
         if disabled and not isinstance(disabled, bool):
             raise TypeError("Expected argument 'disabled' to be a bool")
         pulumi.set(__self__, "disabled", disabled)
+        if fingerprint and not isinstance(fingerprint, str):
+            raise TypeError("Expected argument 'fingerprint' to be a str")
+        pulumi.set(__self__, "fingerprint", fingerprint)
         if id and not isinstance(id, int):
             raise TypeError("Expected argument 'id' to be a int")
         pulumi.set(__self__, "id", id)
@@ -73,6 +76,9 @@ class GetFirewallResult:
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
+        if version and not isinstance(version, int):
+            raise TypeError("Expected argument 'version' to be a int")
+        pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter
@@ -94,6 +100,14 @@ class GetFirewallResult:
         If true, the firewall is inactive.
         """
         return pulumi.get(self, "disabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> _builtins.str:
+        """
+        The fingerprint of the current Firewall rules.
+        """
+        return pulumi.get(self, "fingerprint")
 
     @_builtins.property
     @pulumi.getter
@@ -185,6 +199,14 @@ class GetFirewallResult:
         """
         return pulumi.get(self, "updated")
 
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.int:
+        """
+        The current version of the Firewall rules.
+        """
+        return pulumi.get(self, "version")
+
 
 class AwaitableGetFirewallResult(GetFirewallResult):
     # pylint: disable=using-constant-test
@@ -195,6 +217,7 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             created=self.created,
             devices=self.devices,
             disabled=self.disabled,
+            fingerprint=self.fingerprint,
             id=self.id,
             inbound_policy=self.inbound_policy,
             inbounds=self.inbounds,
@@ -206,7 +229,8 @@ class AwaitableGetFirewallResult(GetFirewallResult):
             outbounds=self.outbounds,
             status=self.status,
             tags=self.tags,
-            updated=self.updated)
+            updated=self.updated,
+            version=self.version)
 
 
 def get_firewall(id: Optional[_builtins.int] = None,
@@ -236,6 +260,7 @@ def get_firewall(id: Optional[_builtins.int] = None,
         created=pulumi.get(__ret__, 'created'),
         devices=pulumi.get(__ret__, 'devices'),
         disabled=pulumi.get(__ret__, 'disabled'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
         inbound_policy=pulumi.get(__ret__, 'inbound_policy'),
         inbounds=pulumi.get(__ret__, 'inbounds'),
@@ -247,7 +272,8 @@ def get_firewall(id: Optional[_builtins.int] = None,
         outbounds=pulumi.get(__ret__, 'outbounds'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
-        updated=pulumi.get(__ret__, 'updated'))
+        updated=pulumi.get(__ret__, 'updated'),
+        version=pulumi.get(__ret__, 'version'))
 def get_firewall_output(id: pulumi.Input[Optional[_builtins.int]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """
@@ -274,6 +300,7 @@ def get_firewall_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         created=pulumi.get(__response__, 'created'),
         devices=pulumi.get(__response__, 'devices'),
         disabled=pulumi.get(__response__, 'disabled'),
+        fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),
         inbound_policy=pulumi.get(__response__, 'inbound_policy'),
         inbounds=pulumi.get(__response__, 'inbounds'),
@@ -285,4 +312,5 @@ def get_firewall_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         outbounds=pulumi.get(__response__, 'outbounds'),
         status=pulumi.get(__response__, 'status'),
         tags=pulumi.get(__response__, 'tags'),
-        updated=pulumi.get(__response__, 'updated')))
+        updated=pulumi.get(__response__, 'updated'),
+        version=pulumi.get(__response__, 'version')))

@@ -57,6 +57,9 @@ class GetLkeVersionsResult:
     @_builtins.property
     @pulumi.getter
     def versions(self) -> Sequence['outputs.GetLkeVersionsVersionResult']:
+        """
+        (Nested Attribute List) The Linode LKE Versions returned by this data source.
+        """
         return pulumi.get(self, "versions")
 
 

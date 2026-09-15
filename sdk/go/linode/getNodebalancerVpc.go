@@ -64,7 +64,9 @@ type GetNodebalancerVpcArgs struct {
 type GetNodebalancerVpcResult struct {
 	Id int `pulumi:"id"`
 	// A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
-	Ipv4Range      string `pulumi:"ipv4Range"`
+	Ipv4Range string `pulumi:"ipv4Range"`
+	// A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+	Ipv6Range      string `pulumi:"ipv6Range"`
 	NodebalancerId int    `pulumi:"nodebalancerId"`
 	// The ID of this configuration's VPC subnet.
 	SubnetId int `pulumi:"subnetId"`
@@ -111,6 +113,11 @@ func (o GetNodebalancerVpcResultOutput) Id() pulumi.IntOutput {
 // A CIDR range for the VPC's IPv4 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
 func (o GetNodebalancerVpcResultOutput) Ipv4Range() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodebalancerVpcResult) string { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+// A CIDR range for the VPC's IPv6 addresses. The NodeBalancer sources IP addresses from this range when routing traffic to the backend VPC nodes.
+func (o GetNodebalancerVpcResultOutput) Ipv6Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancerVpcResult) string { return v.Ipv6Range }).(pulumi.StringOutput)
 }
 
 func (o GetNodebalancerVpcResultOutput) NodebalancerId() pulumi.IntOutput {

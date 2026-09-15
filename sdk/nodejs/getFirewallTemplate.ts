@@ -51,7 +51,7 @@ export interface GetFirewallTemplateResult {
      */
     readonly inboundPolicy: string;
     /**
-     * A list of firewall rules specifying allowed inbound network traffic.
+     * (Read-Only Object List) A list of firewall rules specifying allowed inbound network traffic. Referenced with an index (e.g. `inbound.0.action`).
      */
     readonly inbounds: outputs.GetFirewallTemplateInbound[];
     /**
@@ -59,7 +59,7 @@ export interface GetFirewallTemplateResult {
      */
     readonly outboundPolicy: string;
     /**
-     * A list of firewall rules specifying allowed outbound network traffic.
+     * (Read-Only Object List) A list of firewall rules specifying allowed outbound network traffic. Referenced with an index (e.g. `outbound.0.action`).
      */
     readonly outbounds: outputs.GetFirewallTemplateOutbound[];
     readonly slug: string;

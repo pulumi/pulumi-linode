@@ -47,9 +47,17 @@ public final class InstanceBackupArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+     * 
+     */
     @Import(name="schedules")
     private @Nullable Output<List<InstanceBackupScheduleArgs>> schedules;
 
+    /**
+     * @return (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+     * 
+     */
     public Optional<Output<List<InstanceBackupScheduleArgs>>> schedules() {
         return Optional.ofNullable(this.schedules);
     }
@@ -122,15 +130,33 @@ public final class InstanceBackupArgs extends com.pulumi.resources.ResourceArgs 
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param schedules (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedules(@Nullable Output<List<InstanceBackupScheduleArgs>> schedules) {
             $.schedules = schedules;
             return this;
         }
 
+        /**
+         * @param schedules (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedules(List<InstanceBackupScheduleArgs> schedules) {
             return schedules(Output.of(schedules));
         }
 
+        /**
+         * @param schedules (Read-Only Object List) The backup schedule. Referenced with an index (e.g. `backups.0.schedule.0.day`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder schedules(InstanceBackupScheduleArgs... schedules) {
             return schedules(List.of(schedules));
         }

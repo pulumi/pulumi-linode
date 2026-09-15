@@ -181,7 +181,7 @@ class Rdns(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo_instance = linode.Instance("foo",
-            image="linode/alpine3.19",
+            image="linode/arch",
             region="ca-east",
             type="g6-dedicated-2")
         foo = linode.Rdns("foo",
@@ -228,7 +228,7 @@ class Rdns(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo_instance = linode.Instance("foo",
-            image="linode/alpine3.19",
+            image="linode/arch",
             region="ca-east",
             type="g6-dedicated-2")
         foo = linode.Rdns("foo",

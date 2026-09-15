@@ -46,6 +46,9 @@ export interface GetVolumeTypesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) Linode Volume types matching the query.
+     */
     readonly types: outputs.GetVolumeTypesType[];
 }
 /**

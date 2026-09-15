@@ -20,7 +20,7 @@ public final class NodeBalancerFirewall {
      */
     private String created;
     /**
-     * @return (Required) The Firewall&#39;s ID.
+     * @return The ID of the related LKE cluster.
      * 
      */
     private Integer id;
@@ -66,7 +66,7 @@ public final class NodeBalancerFirewall {
         return this.created;
     }
     /**
-     * @return (Required) The Firewall&#39;s ID.
+     * @return The ID of the related LKE cluster.
      * 
      */
     public Integer id() {

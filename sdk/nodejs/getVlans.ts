@@ -79,6 +79,9 @@ export interface GetVlansResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The returned list of VLANs. Referenced by index (e.g. `vlans[0].label`).
+     */
     readonly vlans: outputs.GetVlansVlan[];
 }
 /**

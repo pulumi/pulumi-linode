@@ -6,13 +6,69 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdaArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdaaArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdabArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdacArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdadArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdaeArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdafArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdagArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdahArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdaiArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdajArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdakArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdalArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdamArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdanArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdaoArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdapArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdaqArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdarArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdasArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdatArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdauArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdavArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdawArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdaxArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdayArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdazArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdbArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbaArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbbArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbcArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbdArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbeArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbfArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbgArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbhArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbiArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbjArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdbkArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdblArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdcArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSddArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdeArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdfArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdgArgs;
 import com.pulumi.linode.inputs.InstanceConfigDevicesSdhArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdiArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdjArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdkArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdlArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdmArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdnArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdoArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdpArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdqArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdrArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdsArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdtArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSduArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdvArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdwArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdxArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdyArgs;
+import com.pulumi.linode.inputs.InstanceConfigDevicesSdzArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -23,18 +79,408 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
     public static final InstanceConfigDevicesArgs Empty = new InstanceConfigDevicesArgs();
 
     /**
-     * ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+     * ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
      * 
      */
     @Import(name="sda")
     private @Nullable Output<InstanceConfigDevicesSdaArgs> sda;
 
     /**
-     * @return ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+     * @return ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
      * 
      */
     public Optional<Output<InstanceConfigDevicesSdaArgs>> sda() {
         return Optional.ofNullable(this.sda);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdaa")
+    private @Nullable Output<InstanceConfigDevicesSdaaArgs> sdaa;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdaaArgs>> sdaa() {
+        return Optional.ofNullable(this.sdaa);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdab")
+    private @Nullable Output<InstanceConfigDevicesSdabArgs> sdab;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdabArgs>> sdab() {
+        return Optional.ofNullable(this.sdab);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdac")
+    private @Nullable Output<InstanceConfigDevicesSdacArgs> sdac;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdacArgs>> sdac() {
+        return Optional.ofNullable(this.sdac);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdad")
+    private @Nullable Output<InstanceConfigDevicesSdadArgs> sdad;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdadArgs>> sdad() {
+        return Optional.ofNullable(this.sdad);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdae")
+    private @Nullable Output<InstanceConfigDevicesSdaeArgs> sdae;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdaeArgs>> sdae() {
+        return Optional.ofNullable(this.sdae);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdaf")
+    private @Nullable Output<InstanceConfigDevicesSdafArgs> sdaf;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdafArgs>> sdaf() {
+        return Optional.ofNullable(this.sdaf);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdag")
+    private @Nullable Output<InstanceConfigDevicesSdagArgs> sdag;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdagArgs>> sdag() {
+        return Optional.ofNullable(this.sdag);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdah")
+    private @Nullable Output<InstanceConfigDevicesSdahArgs> sdah;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdahArgs>> sdah() {
+        return Optional.ofNullable(this.sdah);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdai")
+    private @Nullable Output<InstanceConfigDevicesSdaiArgs> sdai;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdaiArgs>> sdai() {
+        return Optional.ofNullable(this.sdai);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdaj")
+    private @Nullable Output<InstanceConfigDevicesSdajArgs> sdaj;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdajArgs>> sdaj() {
+        return Optional.ofNullable(this.sdaj);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdak")
+    private @Nullable Output<InstanceConfigDevicesSdakArgs> sdak;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdakArgs>> sdak() {
+        return Optional.ofNullable(this.sdak);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdal")
+    private @Nullable Output<InstanceConfigDevicesSdalArgs> sdal;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdalArgs>> sdal() {
+        return Optional.ofNullable(this.sdal);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdam")
+    private @Nullable Output<InstanceConfigDevicesSdamArgs> sdam;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdamArgs>> sdam() {
+        return Optional.ofNullable(this.sdam);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdan")
+    private @Nullable Output<InstanceConfigDevicesSdanArgs> sdan;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdanArgs>> sdan() {
+        return Optional.ofNullable(this.sdan);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdao")
+    private @Nullable Output<InstanceConfigDevicesSdaoArgs> sdao;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdaoArgs>> sdao() {
+        return Optional.ofNullable(this.sdao);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdap")
+    private @Nullable Output<InstanceConfigDevicesSdapArgs> sdap;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdapArgs>> sdap() {
+        return Optional.ofNullable(this.sdap);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdaq")
+    private @Nullable Output<InstanceConfigDevicesSdaqArgs> sdaq;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdaqArgs>> sdaq() {
+        return Optional.ofNullable(this.sdaq);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdar")
+    private @Nullable Output<InstanceConfigDevicesSdarArgs> sdar;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdarArgs>> sdar() {
+        return Optional.ofNullable(this.sdar);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdas")
+    private @Nullable Output<InstanceConfigDevicesSdasArgs> sdas;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdasArgs>> sdas() {
+        return Optional.ofNullable(this.sdas);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdat")
+    private @Nullable Output<InstanceConfigDevicesSdatArgs> sdat;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdatArgs>> sdat() {
+        return Optional.ofNullable(this.sdat);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdau")
+    private @Nullable Output<InstanceConfigDevicesSdauArgs> sdau;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdauArgs>> sdau() {
+        return Optional.ofNullable(this.sdau);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdav")
+    private @Nullable Output<InstanceConfigDevicesSdavArgs> sdav;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdavArgs>> sdav() {
+        return Optional.ofNullable(this.sdav);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdaw")
+    private @Nullable Output<InstanceConfigDevicesSdawArgs> sdaw;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdawArgs>> sdaw() {
+        return Optional.ofNullable(this.sdaw);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdax")
+    private @Nullable Output<InstanceConfigDevicesSdaxArgs> sdax;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdaxArgs>> sdax() {
+        return Optional.ofNullable(this.sdax);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sday")
+    private @Nullable Output<InstanceConfigDevicesSdayArgs> sday;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdayArgs>> sday() {
+        return Optional.ofNullable(this.sday);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdaz")
+    private @Nullable Output<InstanceConfigDevicesSdazArgs> sdaz;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdazArgs>> sdaz() {
+        return Optional.ofNullable(this.sdaz);
     }
 
     /**
@@ -50,6 +496,186 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
      */
     public Optional<Output<InstanceConfigDevicesSdbArgs>> sdb() {
         return Optional.ofNullable(this.sdb);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdba")
+    private @Nullable Output<InstanceConfigDevicesSdbaArgs> sdba;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbaArgs>> sdba() {
+        return Optional.ofNullable(this.sdba);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbb")
+    private @Nullable Output<InstanceConfigDevicesSdbbArgs> sdbb;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbbArgs>> sdbb() {
+        return Optional.ofNullable(this.sdbb);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbc")
+    private @Nullable Output<InstanceConfigDevicesSdbcArgs> sdbc;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbcArgs>> sdbc() {
+        return Optional.ofNullable(this.sdbc);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbd")
+    private @Nullable Output<InstanceConfigDevicesSdbdArgs> sdbd;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbdArgs>> sdbd() {
+        return Optional.ofNullable(this.sdbd);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbe")
+    private @Nullable Output<InstanceConfigDevicesSdbeArgs> sdbe;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbeArgs>> sdbe() {
+        return Optional.ofNullable(this.sdbe);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbf")
+    private @Nullable Output<InstanceConfigDevicesSdbfArgs> sdbf;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbfArgs>> sdbf() {
+        return Optional.ofNullable(this.sdbf);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbg")
+    private @Nullable Output<InstanceConfigDevicesSdbgArgs> sdbg;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbgArgs>> sdbg() {
+        return Optional.ofNullable(this.sdbg);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbh")
+    private @Nullable Output<InstanceConfigDevicesSdbhArgs> sdbh;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbhArgs>> sdbh() {
+        return Optional.ofNullable(this.sdbh);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbi")
+    private @Nullable Output<InstanceConfigDevicesSdbiArgs> sdbi;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbiArgs>> sdbi() {
+        return Optional.ofNullable(this.sdbi);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbj")
+    private @Nullable Output<InstanceConfigDevicesSdbjArgs> sdbj;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbjArgs>> sdbj() {
+        return Optional.ofNullable(this.sdbj);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbk")
+    private @Nullable Output<InstanceConfigDevicesSdbkArgs> sdbk;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdbkArgs>> sdbk() {
+        return Optional.ofNullable(this.sdbk);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdbl")
+    private @Nullable Output<InstanceConfigDevicesSdblArgs> sdbl;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdblArgs>> sdbl() {
+        return Optional.ofNullable(this.sdbl);
     }
 
     /**
@@ -142,17 +768,343 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.sdh);
     }
 
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdi")
+    private @Nullable Output<InstanceConfigDevicesSdiArgs> sdi;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdiArgs>> sdi() {
+        return Optional.ofNullable(this.sdi);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdj")
+    private @Nullable Output<InstanceConfigDevicesSdjArgs> sdj;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdjArgs>> sdj() {
+        return Optional.ofNullable(this.sdj);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdk")
+    private @Nullable Output<InstanceConfigDevicesSdkArgs> sdk;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdkArgs>> sdk() {
+        return Optional.ofNullable(this.sdk);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdl")
+    private @Nullable Output<InstanceConfigDevicesSdlArgs> sdl;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdlArgs>> sdl() {
+        return Optional.ofNullable(this.sdl);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdm")
+    private @Nullable Output<InstanceConfigDevicesSdmArgs> sdm;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdmArgs>> sdm() {
+        return Optional.ofNullable(this.sdm);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdn")
+    private @Nullable Output<InstanceConfigDevicesSdnArgs> sdn;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdnArgs>> sdn() {
+        return Optional.ofNullable(this.sdn);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdo")
+    private @Nullable Output<InstanceConfigDevicesSdoArgs> sdo;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdoArgs>> sdo() {
+        return Optional.ofNullable(this.sdo);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdp")
+    private @Nullable Output<InstanceConfigDevicesSdpArgs> sdp;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdpArgs>> sdp() {
+        return Optional.ofNullable(this.sdp);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdq")
+    private @Nullable Output<InstanceConfigDevicesSdqArgs> sdq;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdqArgs>> sdq() {
+        return Optional.ofNullable(this.sdq);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdr")
+    private @Nullable Output<InstanceConfigDevicesSdrArgs> sdr;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdrArgs>> sdr() {
+        return Optional.ofNullable(this.sdr);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sds")
+    private @Nullable Output<InstanceConfigDevicesSdsArgs> sds;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdsArgs>> sds() {
+        return Optional.ofNullable(this.sds);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdt")
+    private @Nullable Output<InstanceConfigDevicesSdtArgs> sdt;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdtArgs>> sdt() {
+        return Optional.ofNullable(this.sdt);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdu")
+    private @Nullable Output<InstanceConfigDevicesSduArgs> sdu;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSduArgs>> sdu() {
+        return Optional.ofNullable(this.sdu);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdv")
+    private @Nullable Output<InstanceConfigDevicesSdvArgs> sdv;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdvArgs>> sdv() {
+        return Optional.ofNullable(this.sdv);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdw")
+    private @Nullable Output<InstanceConfigDevicesSdwArgs> sdw;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdwArgs>> sdw() {
+        return Optional.ofNullable(this.sdw);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdx")
+    private @Nullable Output<InstanceConfigDevicesSdxArgs> sdx;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdxArgs>> sdx() {
+        return Optional.ofNullable(this.sdx);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdy")
+    private @Nullable Output<InstanceConfigDevicesSdyArgs> sdy;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdyArgs>> sdy() {
+        return Optional.ofNullable(this.sdy);
+    }
+
+    /**
+     * Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    @Import(name="sdz")
+    private @Nullable Output<InstanceConfigDevicesSdzArgs> sdz;
+
+    /**
+     * @return Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+     * 
+     */
+    public Optional<Output<InstanceConfigDevicesSdzArgs>> sdz() {
+        return Optional.ofNullable(this.sdz);
+    }
+
     private InstanceConfigDevicesArgs() {}
 
     private InstanceConfigDevicesArgs(InstanceConfigDevicesArgs $) {
         this.sda = $.sda;
+        this.sdaa = $.sdaa;
+        this.sdab = $.sdab;
+        this.sdac = $.sdac;
+        this.sdad = $.sdad;
+        this.sdae = $.sdae;
+        this.sdaf = $.sdaf;
+        this.sdag = $.sdag;
+        this.sdah = $.sdah;
+        this.sdai = $.sdai;
+        this.sdaj = $.sdaj;
+        this.sdak = $.sdak;
+        this.sdal = $.sdal;
+        this.sdam = $.sdam;
+        this.sdan = $.sdan;
+        this.sdao = $.sdao;
+        this.sdap = $.sdap;
+        this.sdaq = $.sdaq;
+        this.sdar = $.sdar;
+        this.sdas = $.sdas;
+        this.sdat = $.sdat;
+        this.sdau = $.sdau;
+        this.sdav = $.sdav;
+        this.sdaw = $.sdaw;
+        this.sdax = $.sdax;
+        this.sday = $.sday;
+        this.sdaz = $.sdaz;
         this.sdb = $.sdb;
+        this.sdba = $.sdba;
+        this.sdbb = $.sdbb;
+        this.sdbc = $.sdbc;
+        this.sdbd = $.sdbd;
+        this.sdbe = $.sdbe;
+        this.sdbf = $.sdbf;
+        this.sdbg = $.sdbg;
+        this.sdbh = $.sdbh;
+        this.sdbi = $.sdbi;
+        this.sdbj = $.sdbj;
+        this.sdbk = $.sdbk;
+        this.sdbl = $.sdbl;
         this.sdc = $.sdc;
         this.sdd = $.sdd;
         this.sde = $.sde;
         this.sdf = $.sdf;
         this.sdg = $.sdg;
         this.sdh = $.sdh;
+        this.sdi = $.sdi;
+        this.sdj = $.sdj;
+        this.sdk = $.sdk;
+        this.sdl = $.sdl;
+        this.sdm = $.sdm;
+        this.sdn = $.sdn;
+        this.sdo = $.sdo;
+        this.sdp = $.sdp;
+        this.sdq = $.sdq;
+        this.sdr = $.sdr;
+        this.sds = $.sds;
+        this.sdt = $.sdt;
+        this.sdu = $.sdu;
+        this.sdv = $.sdv;
+        this.sdw = $.sdw;
+        this.sdx = $.sdx;
+        this.sdy = $.sdy;
+        this.sdz = $.sdz;
     }
 
     public static Builder builder() {
@@ -174,7 +1126,7 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sda ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+         * @param sda ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
          * 
          * @return builder
          * 
@@ -185,13 +1137,559 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sda ... `sdh` - (Optional) The SDA-SDH slots, represent the Linux block device nodes for the first 8 disks attached to the Linode.  Each device must be suplied sequentially.  The device can be either a Disk or a Volume identified by `diskId` or `volumeId`. Only one disk identifier is permitted per slot. Devices mapped from `sde` through `sdh` are unavailable in `&#34;fullvirt&#34;` `virtMode`.
+         * @param sda ... `sdbl` - (Optional, Block) Device slots for attaching disks and volumes (named `sda`-`sdz`, `sdaa`-`sdaz`, `sdba`-`sdbl`). The maximum number of available devices is determined by the instance type&#39;s RAM (up to 64 devices). Each slot accepts either a Disk or Volume via `diskId` or `volumeId`. Referenced with an index (e.g. `sda.0.disk_id`).
          * 
          * @return builder
          * 
          */
         public Builder sda(InstanceConfigDevicesSdaArgs sda) {
             return sda(Output.of(sda));
+        }
+
+        /**
+         * @param sdaa Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaa(@Nullable Output<InstanceConfigDevicesSdaaArgs> sdaa) {
+            $.sdaa = sdaa;
+            return this;
+        }
+
+        /**
+         * @param sdaa Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaa(InstanceConfigDevicesSdaaArgs sdaa) {
+            return sdaa(Output.of(sdaa));
+        }
+
+        /**
+         * @param sdab Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdab(@Nullable Output<InstanceConfigDevicesSdabArgs> sdab) {
+            $.sdab = sdab;
+            return this;
+        }
+
+        /**
+         * @param sdab Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdab(InstanceConfigDevicesSdabArgs sdab) {
+            return sdab(Output.of(sdab));
+        }
+
+        /**
+         * @param sdac Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdac(@Nullable Output<InstanceConfigDevicesSdacArgs> sdac) {
+            $.sdac = sdac;
+            return this;
+        }
+
+        /**
+         * @param sdac Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdac(InstanceConfigDevicesSdacArgs sdac) {
+            return sdac(Output.of(sdac));
+        }
+
+        /**
+         * @param sdad Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdad(@Nullable Output<InstanceConfigDevicesSdadArgs> sdad) {
+            $.sdad = sdad;
+            return this;
+        }
+
+        /**
+         * @param sdad Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdad(InstanceConfigDevicesSdadArgs sdad) {
+            return sdad(Output.of(sdad));
+        }
+
+        /**
+         * @param sdae Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdae(@Nullable Output<InstanceConfigDevicesSdaeArgs> sdae) {
+            $.sdae = sdae;
+            return this;
+        }
+
+        /**
+         * @param sdae Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdae(InstanceConfigDevicesSdaeArgs sdae) {
+            return sdae(Output.of(sdae));
+        }
+
+        /**
+         * @param sdaf Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaf(@Nullable Output<InstanceConfigDevicesSdafArgs> sdaf) {
+            $.sdaf = sdaf;
+            return this;
+        }
+
+        /**
+         * @param sdaf Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaf(InstanceConfigDevicesSdafArgs sdaf) {
+            return sdaf(Output.of(sdaf));
+        }
+
+        /**
+         * @param sdag Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdag(@Nullable Output<InstanceConfigDevicesSdagArgs> sdag) {
+            $.sdag = sdag;
+            return this;
+        }
+
+        /**
+         * @param sdag Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdag(InstanceConfigDevicesSdagArgs sdag) {
+            return sdag(Output.of(sdag));
+        }
+
+        /**
+         * @param sdah Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdah(@Nullable Output<InstanceConfigDevicesSdahArgs> sdah) {
+            $.sdah = sdah;
+            return this;
+        }
+
+        /**
+         * @param sdah Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdah(InstanceConfigDevicesSdahArgs sdah) {
+            return sdah(Output.of(sdah));
+        }
+
+        /**
+         * @param sdai Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdai(@Nullable Output<InstanceConfigDevicesSdaiArgs> sdai) {
+            $.sdai = sdai;
+            return this;
+        }
+
+        /**
+         * @param sdai Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdai(InstanceConfigDevicesSdaiArgs sdai) {
+            return sdai(Output.of(sdai));
+        }
+
+        /**
+         * @param sdaj Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaj(@Nullable Output<InstanceConfigDevicesSdajArgs> sdaj) {
+            $.sdaj = sdaj;
+            return this;
+        }
+
+        /**
+         * @param sdaj Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaj(InstanceConfigDevicesSdajArgs sdaj) {
+            return sdaj(Output.of(sdaj));
+        }
+
+        /**
+         * @param sdak Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdak(@Nullable Output<InstanceConfigDevicesSdakArgs> sdak) {
+            $.sdak = sdak;
+            return this;
+        }
+
+        /**
+         * @param sdak Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdak(InstanceConfigDevicesSdakArgs sdak) {
+            return sdak(Output.of(sdak));
+        }
+
+        /**
+         * @param sdal Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdal(@Nullable Output<InstanceConfigDevicesSdalArgs> sdal) {
+            $.sdal = sdal;
+            return this;
+        }
+
+        /**
+         * @param sdal Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdal(InstanceConfigDevicesSdalArgs sdal) {
+            return sdal(Output.of(sdal));
+        }
+
+        /**
+         * @param sdam Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdam(@Nullable Output<InstanceConfigDevicesSdamArgs> sdam) {
+            $.sdam = sdam;
+            return this;
+        }
+
+        /**
+         * @param sdam Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdam(InstanceConfigDevicesSdamArgs sdam) {
+            return sdam(Output.of(sdam));
+        }
+
+        /**
+         * @param sdan Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdan(@Nullable Output<InstanceConfigDevicesSdanArgs> sdan) {
+            $.sdan = sdan;
+            return this;
+        }
+
+        /**
+         * @param sdan Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdan(InstanceConfigDevicesSdanArgs sdan) {
+            return sdan(Output.of(sdan));
+        }
+
+        /**
+         * @param sdao Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdao(@Nullable Output<InstanceConfigDevicesSdaoArgs> sdao) {
+            $.sdao = sdao;
+            return this;
+        }
+
+        /**
+         * @param sdao Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdao(InstanceConfigDevicesSdaoArgs sdao) {
+            return sdao(Output.of(sdao));
+        }
+
+        /**
+         * @param sdap Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdap(@Nullable Output<InstanceConfigDevicesSdapArgs> sdap) {
+            $.sdap = sdap;
+            return this;
+        }
+
+        /**
+         * @param sdap Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdap(InstanceConfigDevicesSdapArgs sdap) {
+            return sdap(Output.of(sdap));
+        }
+
+        /**
+         * @param sdaq Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaq(@Nullable Output<InstanceConfigDevicesSdaqArgs> sdaq) {
+            $.sdaq = sdaq;
+            return this;
+        }
+
+        /**
+         * @param sdaq Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaq(InstanceConfigDevicesSdaqArgs sdaq) {
+            return sdaq(Output.of(sdaq));
+        }
+
+        /**
+         * @param sdar Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdar(@Nullable Output<InstanceConfigDevicesSdarArgs> sdar) {
+            $.sdar = sdar;
+            return this;
+        }
+
+        /**
+         * @param sdar Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdar(InstanceConfigDevicesSdarArgs sdar) {
+            return sdar(Output.of(sdar));
+        }
+
+        /**
+         * @param sdas Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdas(@Nullable Output<InstanceConfigDevicesSdasArgs> sdas) {
+            $.sdas = sdas;
+            return this;
+        }
+
+        /**
+         * @param sdas Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdas(InstanceConfigDevicesSdasArgs sdas) {
+            return sdas(Output.of(sdas));
+        }
+
+        /**
+         * @param sdat Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdat(@Nullable Output<InstanceConfigDevicesSdatArgs> sdat) {
+            $.sdat = sdat;
+            return this;
+        }
+
+        /**
+         * @param sdat Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdat(InstanceConfigDevicesSdatArgs sdat) {
+            return sdat(Output.of(sdat));
+        }
+
+        /**
+         * @param sdau Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdau(@Nullable Output<InstanceConfigDevicesSdauArgs> sdau) {
+            $.sdau = sdau;
+            return this;
+        }
+
+        /**
+         * @param sdau Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdau(InstanceConfigDevicesSdauArgs sdau) {
+            return sdau(Output.of(sdau));
+        }
+
+        /**
+         * @param sdav Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdav(@Nullable Output<InstanceConfigDevicesSdavArgs> sdav) {
+            $.sdav = sdav;
+            return this;
+        }
+
+        /**
+         * @param sdav Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdav(InstanceConfigDevicesSdavArgs sdav) {
+            return sdav(Output.of(sdav));
+        }
+
+        /**
+         * @param sdaw Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaw(@Nullable Output<InstanceConfigDevicesSdawArgs> sdaw) {
+            $.sdaw = sdaw;
+            return this;
+        }
+
+        /**
+         * @param sdaw Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaw(InstanceConfigDevicesSdawArgs sdaw) {
+            return sdaw(Output.of(sdaw));
+        }
+
+        /**
+         * @param sdax Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdax(@Nullable Output<InstanceConfigDevicesSdaxArgs> sdax) {
+            $.sdax = sdax;
+            return this;
+        }
+
+        /**
+         * @param sdax Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdax(InstanceConfigDevicesSdaxArgs sdax) {
+            return sdax(Output.of(sdax));
+        }
+
+        /**
+         * @param sday Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sday(@Nullable Output<InstanceConfigDevicesSdayArgs> sday) {
+            $.sday = sday;
+            return this;
+        }
+
+        /**
+         * @param sday Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sday(InstanceConfigDevicesSdayArgs sday) {
+            return sday(Output.of(sday));
+        }
+
+        /**
+         * @param sdaz Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaz(@Nullable Output<InstanceConfigDevicesSdazArgs> sdaz) {
+            $.sdaz = sdaz;
+            return this;
+        }
+
+        /**
+         * @param sdaz Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdaz(InstanceConfigDevicesSdazArgs sdaz) {
+            return sdaz(Output.of(sdaz));
         }
 
         /**
@@ -213,6 +1711,258 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
          */
         public Builder sdb(InstanceConfigDevicesSdbArgs sdb) {
             return sdb(Output.of(sdb));
+        }
+
+        /**
+         * @param sdba Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdba(@Nullable Output<InstanceConfigDevicesSdbaArgs> sdba) {
+            $.sdba = sdba;
+            return this;
+        }
+
+        /**
+         * @param sdba Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdba(InstanceConfigDevicesSdbaArgs sdba) {
+            return sdba(Output.of(sdba));
+        }
+
+        /**
+         * @param sdbb Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbb(@Nullable Output<InstanceConfigDevicesSdbbArgs> sdbb) {
+            $.sdbb = sdbb;
+            return this;
+        }
+
+        /**
+         * @param sdbb Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbb(InstanceConfigDevicesSdbbArgs sdbb) {
+            return sdbb(Output.of(sdbb));
+        }
+
+        /**
+         * @param sdbc Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbc(@Nullable Output<InstanceConfigDevicesSdbcArgs> sdbc) {
+            $.sdbc = sdbc;
+            return this;
+        }
+
+        /**
+         * @param sdbc Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbc(InstanceConfigDevicesSdbcArgs sdbc) {
+            return sdbc(Output.of(sdbc));
+        }
+
+        /**
+         * @param sdbd Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbd(@Nullable Output<InstanceConfigDevicesSdbdArgs> sdbd) {
+            $.sdbd = sdbd;
+            return this;
+        }
+
+        /**
+         * @param sdbd Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbd(InstanceConfigDevicesSdbdArgs sdbd) {
+            return sdbd(Output.of(sdbd));
+        }
+
+        /**
+         * @param sdbe Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbe(@Nullable Output<InstanceConfigDevicesSdbeArgs> sdbe) {
+            $.sdbe = sdbe;
+            return this;
+        }
+
+        /**
+         * @param sdbe Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbe(InstanceConfigDevicesSdbeArgs sdbe) {
+            return sdbe(Output.of(sdbe));
+        }
+
+        /**
+         * @param sdbf Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbf(@Nullable Output<InstanceConfigDevicesSdbfArgs> sdbf) {
+            $.sdbf = sdbf;
+            return this;
+        }
+
+        /**
+         * @param sdbf Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbf(InstanceConfigDevicesSdbfArgs sdbf) {
+            return sdbf(Output.of(sdbf));
+        }
+
+        /**
+         * @param sdbg Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbg(@Nullable Output<InstanceConfigDevicesSdbgArgs> sdbg) {
+            $.sdbg = sdbg;
+            return this;
+        }
+
+        /**
+         * @param sdbg Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbg(InstanceConfigDevicesSdbgArgs sdbg) {
+            return sdbg(Output.of(sdbg));
+        }
+
+        /**
+         * @param sdbh Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbh(@Nullable Output<InstanceConfigDevicesSdbhArgs> sdbh) {
+            $.sdbh = sdbh;
+            return this;
+        }
+
+        /**
+         * @param sdbh Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbh(InstanceConfigDevicesSdbhArgs sdbh) {
+            return sdbh(Output.of(sdbh));
+        }
+
+        /**
+         * @param sdbi Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbi(@Nullable Output<InstanceConfigDevicesSdbiArgs> sdbi) {
+            $.sdbi = sdbi;
+            return this;
+        }
+
+        /**
+         * @param sdbi Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbi(InstanceConfigDevicesSdbiArgs sdbi) {
+            return sdbi(Output.of(sdbi));
+        }
+
+        /**
+         * @param sdbj Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbj(@Nullable Output<InstanceConfigDevicesSdbjArgs> sdbj) {
+            $.sdbj = sdbj;
+            return this;
+        }
+
+        /**
+         * @param sdbj Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbj(InstanceConfigDevicesSdbjArgs sdbj) {
+            return sdbj(Output.of(sdbj));
+        }
+
+        /**
+         * @param sdbk Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbk(@Nullable Output<InstanceConfigDevicesSdbkArgs> sdbk) {
+            $.sdbk = sdbk;
+            return this;
+        }
+
+        /**
+         * @param sdbk Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbk(InstanceConfigDevicesSdbkArgs sdbk) {
+            return sdbk(Output.of(sdbk));
+        }
+
+        /**
+         * @param sdbl Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbl(@Nullable Output<InstanceConfigDevicesSdblArgs> sdbl) {
+            $.sdbl = sdbl;
+            return this;
+        }
+
+        /**
+         * @param sdbl Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdbl(InstanceConfigDevicesSdblArgs sdbl) {
+            return sdbl(Output.of(sdbl));
         }
 
         /**
@@ -339,6 +2089,384 @@ public final class InstanceConfigDevicesArgs extends com.pulumi.resources.Resour
          */
         public Builder sdh(InstanceConfigDevicesSdhArgs sdh) {
             return sdh(Output.of(sdh));
+        }
+
+        /**
+         * @param sdi Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdi(@Nullable Output<InstanceConfigDevicesSdiArgs> sdi) {
+            $.sdi = sdi;
+            return this;
+        }
+
+        /**
+         * @param sdi Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdi(InstanceConfigDevicesSdiArgs sdi) {
+            return sdi(Output.of(sdi));
+        }
+
+        /**
+         * @param sdj Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdj(@Nullable Output<InstanceConfigDevicesSdjArgs> sdj) {
+            $.sdj = sdj;
+            return this;
+        }
+
+        /**
+         * @param sdj Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdj(InstanceConfigDevicesSdjArgs sdj) {
+            return sdj(Output.of(sdj));
+        }
+
+        /**
+         * @param sdk Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdk(@Nullable Output<InstanceConfigDevicesSdkArgs> sdk) {
+            $.sdk = sdk;
+            return this;
+        }
+
+        /**
+         * @param sdk Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdk(InstanceConfigDevicesSdkArgs sdk) {
+            return sdk(Output.of(sdk));
+        }
+
+        /**
+         * @param sdl Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdl(@Nullable Output<InstanceConfigDevicesSdlArgs> sdl) {
+            $.sdl = sdl;
+            return this;
+        }
+
+        /**
+         * @param sdl Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdl(InstanceConfigDevicesSdlArgs sdl) {
+            return sdl(Output.of(sdl));
+        }
+
+        /**
+         * @param sdm Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdm(@Nullable Output<InstanceConfigDevicesSdmArgs> sdm) {
+            $.sdm = sdm;
+            return this;
+        }
+
+        /**
+         * @param sdm Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdm(InstanceConfigDevicesSdmArgs sdm) {
+            return sdm(Output.of(sdm));
+        }
+
+        /**
+         * @param sdn Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdn(@Nullable Output<InstanceConfigDevicesSdnArgs> sdn) {
+            $.sdn = sdn;
+            return this;
+        }
+
+        /**
+         * @param sdn Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdn(InstanceConfigDevicesSdnArgs sdn) {
+            return sdn(Output.of(sdn));
+        }
+
+        /**
+         * @param sdo Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdo(@Nullable Output<InstanceConfigDevicesSdoArgs> sdo) {
+            $.sdo = sdo;
+            return this;
+        }
+
+        /**
+         * @param sdo Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdo(InstanceConfigDevicesSdoArgs sdo) {
+            return sdo(Output.of(sdo));
+        }
+
+        /**
+         * @param sdp Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdp(@Nullable Output<InstanceConfigDevicesSdpArgs> sdp) {
+            $.sdp = sdp;
+            return this;
+        }
+
+        /**
+         * @param sdp Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdp(InstanceConfigDevicesSdpArgs sdp) {
+            return sdp(Output.of(sdp));
+        }
+
+        /**
+         * @param sdq Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdq(@Nullable Output<InstanceConfigDevicesSdqArgs> sdq) {
+            $.sdq = sdq;
+            return this;
+        }
+
+        /**
+         * @param sdq Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdq(InstanceConfigDevicesSdqArgs sdq) {
+            return sdq(Output.of(sdq));
+        }
+
+        /**
+         * @param sdr Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdr(@Nullable Output<InstanceConfigDevicesSdrArgs> sdr) {
+            $.sdr = sdr;
+            return this;
+        }
+
+        /**
+         * @param sdr Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdr(InstanceConfigDevicesSdrArgs sdr) {
+            return sdr(Output.of(sdr));
+        }
+
+        /**
+         * @param sds Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sds(@Nullable Output<InstanceConfigDevicesSdsArgs> sds) {
+            $.sds = sds;
+            return this;
+        }
+
+        /**
+         * @param sds Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sds(InstanceConfigDevicesSdsArgs sds) {
+            return sds(Output.of(sds));
+        }
+
+        /**
+         * @param sdt Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdt(@Nullable Output<InstanceConfigDevicesSdtArgs> sdt) {
+            $.sdt = sdt;
+            return this;
+        }
+
+        /**
+         * @param sdt Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdt(InstanceConfigDevicesSdtArgs sdt) {
+            return sdt(Output.of(sdt));
+        }
+
+        /**
+         * @param sdu Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdu(@Nullable Output<InstanceConfigDevicesSduArgs> sdu) {
+            $.sdu = sdu;
+            return this;
+        }
+
+        /**
+         * @param sdu Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdu(InstanceConfigDevicesSduArgs sdu) {
+            return sdu(Output.of(sdu));
+        }
+
+        /**
+         * @param sdv Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdv(@Nullable Output<InstanceConfigDevicesSdvArgs> sdv) {
+            $.sdv = sdv;
+            return this;
+        }
+
+        /**
+         * @param sdv Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdv(InstanceConfigDevicesSdvArgs sdv) {
+            return sdv(Output.of(sdv));
+        }
+
+        /**
+         * @param sdw Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdw(@Nullable Output<InstanceConfigDevicesSdwArgs> sdw) {
+            $.sdw = sdw;
+            return this;
+        }
+
+        /**
+         * @param sdw Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdw(InstanceConfigDevicesSdwArgs sdw) {
+            return sdw(Output.of(sdw));
+        }
+
+        /**
+         * @param sdx Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdx(@Nullable Output<InstanceConfigDevicesSdxArgs> sdx) {
+            $.sdx = sdx;
+            return this;
+        }
+
+        /**
+         * @param sdx Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdx(InstanceConfigDevicesSdxArgs sdx) {
+            return sdx(Output.of(sdx));
+        }
+
+        /**
+         * @param sdy Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdy(@Nullable Output<InstanceConfigDevicesSdyArgs> sdy) {
+            $.sdy = sdy;
+            return this;
+        }
+
+        /**
+         * @param sdy Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdy(InstanceConfigDevicesSdyArgs sdy) {
+            return sdy(Output.of(sdy));
+        }
+
+        /**
+         * @param sdz Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdz(@Nullable Output<InstanceConfigDevicesSdzArgs> sdz) {
+            $.sdz = sdz;
+            return this;
+        }
+
+        /**
+         * @param sdz Device can be either a Disk or Volume identified by diskId or volume_id. Only one type per slot allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdz(InstanceConfigDevicesSdzArgs sdz) {
+            return sdz(Output.of(sdz));
         }
 
         public InstanceConfigDevicesArgs build() {

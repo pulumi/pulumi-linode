@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetLkeClusterControlPlane {
     /**
-     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * @return (Nested Attribute List) The ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     private List<GetLkeClusterControlPlaneAcl> acls;
@@ -30,7 +30,7 @@ public final class GetLkeClusterControlPlane {
 
     private GetLkeClusterControlPlane() {}
     /**
-     * @return The ACL configuration for an LKE cluster&#39;s control plane.
+     * @return (Nested Attribute List) The ACL configuration for an LKE cluster&#39;s control plane.
      * 
      */
     public List<GetLkeClusterControlPlaneAcl> acls() {

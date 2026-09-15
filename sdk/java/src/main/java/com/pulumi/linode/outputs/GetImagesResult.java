@@ -22,6 +22,10 @@ public final class GetImagesResult {
      * 
      */
     private String id;
+    /**
+     * @return (Nested Attribute List) The returned list of Images. Referenced by index (e.g. `images[0].id`).
+     * 
+     */
     private List<GetImagesImage> images;
     private @Nullable Boolean latest;
     private @Nullable String order;
@@ -38,6 +42,10 @@ public final class GetImagesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The returned list of Images. Referenced by index (e.g. `images[0].id`).
+     * 
+     */
     public List<GetImagesImage> images() {
         return this.images;
     }

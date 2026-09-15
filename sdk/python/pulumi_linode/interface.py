@@ -25,17 +25,19 @@ class InterfaceArgs:
                  default_route: pulumi.Input[Optional['InterfaceDefaultRouteArgs']] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  public: pulumi.Input[Optional['InterfacePublicArgs']] = None,
+                 rdma_vpc: pulumi.Input[Optional['InterfaceRdmaVpcArgs']] = None,
                  vlan: pulumi.Input[Optional['InterfaceVlanArgs']] = None,
                  vpc: pulumi.Input[Optional['InterfaceVpcArgs']] = None):
         """
         The set of arguments for constructing a Interface resource.
 
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
-        :param pulumi.Input['InterfaceDefaultRouteArgs'] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        :param pulumi.Input['InterfaceDefaultRouteArgs'] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         :param pulumi.Input[_builtins.int] firewall_id: The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
-        :param pulumi.Input['InterfacePublicArgs'] public: Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input['InterfaceVlanArgs'] vlan: Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input['InterfaceVpcArgs'] vpc: Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        :param pulumi.Input['InterfacePublicArgs'] public: Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
+        :param pulumi.Input['InterfaceRdmaVpcArgs'] rdma_vpc: Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        :param pulumi.Input['InterfaceVlanArgs'] vlan: Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        :param pulumi.Input['InterfaceVpcArgs'] vpc: Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         pulumi.set(__self__, "linode_id", linode_id)
         if default_route is not None:
@@ -44,6 +46,8 @@ class InterfaceArgs:
             pulumi.set(__self__, "firewall_id", firewall_id)
         if public is not None:
             pulumi.set(__self__, "public", public)
+        if rdma_vpc is not None:
+            pulumi.set(__self__, "rdma_vpc", rdma_vpc)
         if vlan is not None:
             pulumi.set(__self__, "vlan", vlan)
         if vpc is not None:
@@ -65,7 +69,7 @@ class InterfaceArgs:
     @pulumi.getter(name="defaultRoute")
     def default_route(self) -> pulumi.Input[Optional['InterfaceDefaultRouteArgs']]:
         """
-        Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         """
         return pulumi.get(self, "default_route")
 
@@ -89,7 +93,7 @@ class InterfaceArgs:
     @pulumi.getter
     def public(self) -> pulumi.Input[Optional['InterfacePublicArgs']]:
         """
-        Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
         """
         return pulumi.get(self, "public")
 
@@ -98,10 +102,22 @@ class InterfaceArgs:
         pulumi.set(self, "public", value)
 
     @_builtins.property
+    @pulumi.getter(name="rdmaVpc")
+    def rdma_vpc(self) -> pulumi.Input[Optional['InterfaceRdmaVpcArgs']]:
+        """
+        Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        """
+        return pulumi.get(self, "rdma_vpc")
+
+    @rdma_vpc.setter
+    def rdma_vpc(self, value: pulumi.Input[Optional['InterfaceRdmaVpcArgs']]):
+        pulumi.set(self, "rdma_vpc", value)
+
+    @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Input[Optional['InterfaceVlanArgs']]:
         """
-        Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
         """
         return pulumi.get(self, "vlan")
 
@@ -113,7 +129,7 @@ class InterfaceArgs:
     @pulumi.getter
     def vpc(self) -> pulumi.Input[Optional['InterfaceVpcArgs']]:
         """
-        Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         return pulumi.get(self, "vpc")
 
@@ -129,17 +145,19 @@ class _InterfaceState:
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  public: pulumi.Input[Optional['InterfacePublicArgs']] = None,
+                 rdma_vpc: pulumi.Input[Optional['InterfaceRdmaVpcArgs']] = None,
                  vlan: pulumi.Input[Optional['InterfaceVlanArgs']] = None,
                  vpc: pulumi.Input[Optional['InterfaceVpcArgs']] = None):
         """
         Input properties used for looking up and filtering Interface resources.
 
-        :param pulumi.Input['InterfaceDefaultRouteArgs'] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        :param pulumi.Input['InterfaceDefaultRouteArgs'] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         :param pulumi.Input[_builtins.int] firewall_id: The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
-        :param pulumi.Input['InterfacePublicArgs'] public: Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input['InterfaceVlanArgs'] vlan: Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input['InterfaceVpcArgs'] vpc: Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        :param pulumi.Input['InterfacePublicArgs'] public: Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
+        :param pulumi.Input['InterfaceRdmaVpcArgs'] rdma_vpc: Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        :param pulumi.Input['InterfaceVlanArgs'] vlan: Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        :param pulumi.Input['InterfaceVpcArgs'] vpc: Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         if default_route is not None:
             pulumi.set(__self__, "default_route", default_route)
@@ -149,6 +167,8 @@ class _InterfaceState:
             pulumi.set(__self__, "linode_id", linode_id)
         if public is not None:
             pulumi.set(__self__, "public", public)
+        if rdma_vpc is not None:
+            pulumi.set(__self__, "rdma_vpc", rdma_vpc)
         if vlan is not None:
             pulumi.set(__self__, "vlan", vlan)
         if vpc is not None:
@@ -158,7 +178,7 @@ class _InterfaceState:
     @pulumi.getter(name="defaultRoute")
     def default_route(self) -> pulumi.Input[Optional['InterfaceDefaultRouteArgs']]:
         """
-        Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         """
         return pulumi.get(self, "default_route")
 
@@ -194,7 +214,7 @@ class _InterfaceState:
     @pulumi.getter
     def public(self) -> pulumi.Input[Optional['InterfacePublicArgs']]:
         """
-        Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
         """
         return pulumi.get(self, "public")
 
@@ -203,10 +223,22 @@ class _InterfaceState:
         pulumi.set(self, "public", value)
 
     @_builtins.property
+    @pulumi.getter(name="rdmaVpc")
+    def rdma_vpc(self) -> pulumi.Input[Optional['InterfaceRdmaVpcArgs']]:
+        """
+        Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        """
+        return pulumi.get(self, "rdma_vpc")
+
+    @rdma_vpc.setter
+    def rdma_vpc(self, value: pulumi.Input[Optional['InterfaceRdmaVpcArgs']]):
+        pulumi.set(self, "rdma_vpc", value)
+
+    @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Input[Optional['InterfaceVlanArgs']]:
         """
-        Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
         """
         return pulumi.get(self, "vlan")
 
@@ -218,7 +250,7 @@ class _InterfaceState:
     @pulumi.getter
     def vpc(self) -> pulumi.Input[Optional['InterfaceVpcArgs']]:
         """
-        Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         return pulumi.get(self, "vpc")
 
@@ -237,6 +269,7 @@ class Interface(pulumi.CustomResource):
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
+                 rdma_vpc: pulumi.Input[Optional[Union['InterfaceRdmaVpcArgs', 'InterfaceRdmaVpcArgsDict']]] = None,
                  vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
                  vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None,
                  __props__=None):
@@ -423,12 +456,13 @@ class Interface(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        :param pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         :param pulumi.Input[_builtins.int] firewall_id: The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
-        :param pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']] public: Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']] vlan: Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']] vpc: Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        :param pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']] public: Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
+        :param pulumi.Input[Union['InterfaceRdmaVpcArgs', 'InterfaceRdmaVpcArgsDict']] rdma_vpc: Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        :param pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']] vlan: Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        :param pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']] vpc: Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         ...
     @overload
@@ -636,6 +670,7 @@ class Interface(pulumi.CustomResource):
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
                  public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
+                 rdma_vpc: pulumi.Input[Optional[Union['InterfaceRdmaVpcArgs', 'InterfaceRdmaVpcArgsDict']]] = None,
                  vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
                  vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None,
                  __props__=None):
@@ -653,6 +688,7 @@ class Interface(pulumi.CustomResource):
                 raise TypeError("Missing required property 'linode_id'")
             __props__.__dict__["linode_id"] = linode_id
             __props__.__dict__["public"] = public
+            __props__.__dict__["rdma_vpc"] = rdma_vpc
             __props__.__dict__["vlan"] = vlan
             __props__.__dict__["vpc"] = vpc
         super(Interface, __self__).__init__(
@@ -669,6 +705,7 @@ class Interface(pulumi.CustomResource):
             firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
             public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']]] = None,
+            rdma_vpc: pulumi.Input[Optional[Union['InterfaceRdmaVpcArgs', 'InterfaceRdmaVpcArgsDict']]] = None,
             vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']]] = None,
             vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']]] = None) -> 'Interface':
         """
@@ -678,12 +715,13 @@ class Interface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        :param pulumi.Input[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict']] default_route: Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         :param pulumi.Input[_builtins.int] firewall_id: The ID of an enabled firewall to secure a VPC or public interface. Not allowed for VLAN interfaces.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode to assign this interface to.
-        :param pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']] public: Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']] vlan: Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
-        :param pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']] vpc: Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        :param pulumi.Input[Union['InterfacePublicArgs', 'InterfacePublicArgsDict']] public: Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
+        :param pulumi.Input[Union['InterfaceRdmaVpcArgs', 'InterfaceRdmaVpcArgsDict']] rdma_vpc: Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        :param pulumi.Input[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict']] vlan: Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        :param pulumi.Input[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict']] vpc: Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -693,6 +731,7 @@ class Interface(pulumi.CustomResource):
         __props__.__dict__["firewall_id"] = firewall_id
         __props__.__dict__["linode_id"] = linode_id
         __props__.__dict__["public"] = public
+        __props__.__dict__["rdma_vpc"] = rdma_vpc
         __props__.__dict__["vlan"] = vlan
         __props__.__dict__["vpc"] = vpc
         return Interface(resource_name, opts=opts, __props__=__props__)
@@ -701,7 +740,7 @@ class Interface(pulumi.CustomResource):
     @pulumi.getter(name="defaultRoute")
     def default_route(self) -> pulumi.Output['outputs.InterfaceDefaultRoute']:
         """
-        Indicates if the interface serves as the default route when multiple interfaces are eligible for this role.
+        Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
         """
         return pulumi.get(self, "default_route")
 
@@ -725,15 +764,23 @@ class Interface(pulumi.CustomResource):
     @pulumi.getter
     def public(self) -> pulumi.Output[Optional['outputs.InterfacePublic']]:
         """
-        Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `public.ipv4`).
         """
         return pulumi.get(self, "public")
+
+    @_builtins.property
+    @pulumi.getter(name="rdmaVpc")
+    def rdma_vpc(self) -> pulumi.Output[Optional['outputs.InterfaceRdmaVpc']]:
+        """
+        Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        """
+        return pulumi.get(self, "rdma_vpc")
 
     @_builtins.property
     @pulumi.getter
     def vlan(self) -> pulumi.Output[Optional['outputs.InterfaceVlan']]:
         """
-        Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
         """
         return pulumi.get(self, "vlan")
 
@@ -741,7 +788,7 @@ class Interface(pulumi.CustomResource):
     @pulumi.getter
     def vpc(self) -> pulumi.Output[Optional['outputs.InterfaceVpc']]:
         """
-        Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified.
+        Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         """
         return pulumi.get(self, "vpc")
 

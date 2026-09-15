@@ -27,7 +27,7 @@ public final class GetNodeBalancerFirewallInbound {
      */
     private List<String> ipv6s;
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return The label of the related LKE cluster.
      * 
      */
     private String label;
@@ -65,7 +65,7 @@ public final class GetNodeBalancerFirewallInbound {
         return this.ipv6s;
     }
     /**
-     * @return Used to identify this rule. For display purposes only.
+     * @return The label of the related LKE cluster.
      * 
      */
     public String label() {

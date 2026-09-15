@@ -44,6 +44,23 @@ import * as utilities from "./utilities";
  *     linodeId: my_instance.id.apply(x =>Number(x)),
  *     size: my_instance.specs[0].disk,
  *     image: "linode/ubuntu22.04",
+ *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const my_instance = new linode.Instance("my-instance", {
+ *     label: "my-instance",
+ *     type: "g6-standard-1",
+ *     region: "us-southeast",
+ * });
+ * const boot = new linode.InstanceDisk("boot", {
+ *     label: "boot",
+ *     linodeId: my_instance.id.apply(x =>Number(x)),
+ *     size: my_instance.specs[0].disk,
+ *     image: "linode/ubuntu22.04",
  *     rootPass: "myc00lpass!",
  *     authorizedKeys: ["ssh-rsa AAAA...Gw== user@example.local"],
  *     stackscriptId: 12345,
@@ -90,11 +107,11 @@ export class InstanceDisk extends pulumi.CustomResource {
     }
 
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     declare public readonly authorizedKeys: pulumi.Output<string[] | undefined>;
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     declare public readonly authorizedUsers: pulumi.Output<string[] | undefined>;
     /**
@@ -122,7 +139,7 @@ export class InstanceDisk extends pulumi.CustomResource {
      */
     declare public readonly linodeId: pulumi.Output<number>;
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     declare public readonly rootPass: pulumi.Output<string | undefined>;
     /**
@@ -216,11 +233,11 @@ export class InstanceDisk extends pulumi.CustomResource {
  */
 export interface InstanceDiskState {
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -248,7 +265,7 @@ export interface InstanceDiskState {
      */
     linodeId?: pulumi.Input<number | undefined>;
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     rootPass?: pulumi.Input<string | undefined>;
     /**
@@ -281,11 +298,11 @@ export interface InstanceDiskState {
  */
 export interface InstanceDiskArgs {
     /**
-     * A list of public SSH keys that will be automatically appended to the root user’s ~/.ssh/authorized_keys file when deploying from an Image. (Requires `image`)
+     * A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     authorizedKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. (Requires `image`)
+     * A list of usernames. If the usernames have associated SSH keys, the keys will be appended to the root user's ~/.ssh/authorized_keys file. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     authorizedUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -305,7 +322,7 @@ export interface InstanceDiskArgs {
      */
     linodeId: pulumi.Input<number>;
     /**
-     * The root user’s password on a newly-created Linode Disk when deploying from an Image. (Requires `image`)
+     * The root user's password on a newly-created Linode Disk when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
      */
     rootPass?: pulumi.Input<string | undefined>;
     /**

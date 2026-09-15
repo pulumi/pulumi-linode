@@ -74,13 +74,14 @@ func GetConsumerImageShareGroupImageShares(ctx *pulumi.Context, args *GetConsume
 
 // A collection of arguments for invoking getConsumerImageShareGroupImageShares.
 type GetConsumerImageShareGroupImageSharesArgs struct {
-	Filters     []GetConsumerImageShareGroupImageSharesFilter     `pulumi:"filters"`
+	Filters []GetConsumerImageShareGroupImageSharesFilter `pulumi:"filters"`
+	// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
 	ImageShares []GetConsumerImageShareGroupImageSharesImageShare `pulumi:"imageShares"`
 	Order       *string                                           `pulumi:"order"`
 	OrderBy     *string                                           `pulumi:"orderBy"`
 	// The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
 	//
-	// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
 	TokenUuid string `pulumi:"tokenUuid"`
 }
 
@@ -88,7 +89,8 @@ type GetConsumerImageShareGroupImageSharesArgs struct {
 type GetConsumerImageShareGroupImageSharesResult struct {
 	Filters []GetConsumerImageShareGroupImageSharesFilter `pulumi:"filters"`
 	// The unique ID assigned to this Image Share.
-	Id          string                                            `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
 	ImageShares []GetConsumerImageShareGroupImageSharesImageShare `pulumi:"imageShares"`
 	Order       *string                                           `pulumi:"order"`
 	OrderBy     *string                                           `pulumi:"orderBy"`
@@ -102,13 +104,14 @@ func GetConsumerImageShareGroupImageSharesOutput(ctx *pulumi.Context, args GetCo
 
 // A collection of arguments for invoking getConsumerImageShareGroupImageShares.
 type GetConsumerImageShareGroupImageSharesOutputArgs struct {
-	Filters     GetConsumerImageShareGroupImageSharesFilterArrayInput     `pulumi:"filters"`
+	Filters GetConsumerImageShareGroupImageSharesFilterArrayInput `pulumi:"filters"`
+	// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
 	ImageShares GetConsumerImageShareGroupImageSharesImageShareArrayInput `pulumi:"imageShares"`
 	Order       pulumi.StringPtrInput                                     `pulumi:"order"`
 	OrderBy     pulumi.StringPtrInput                                     `pulumi:"orderBy"`
 	// The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
 	//
-	// * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+	// * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
 	TokenUuid pulumi.StringInput `pulumi:"tokenUuid"`
 }
 
@@ -142,6 +145,7 @@ func (o GetConsumerImageShareGroupImageSharesResultOutput) Id() pulumi.StringOut
 	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Block List) The returned list of image shares. Referenced by index (e.g. `image_shares.0.id`).
 func (o GetConsumerImageShareGroupImageSharesResultOutput) ImageShares() GetConsumerImageShareGroupImageSharesImageShareArrayOutput {
 	return o.ApplyT(func(v GetConsumerImageShareGroupImageSharesResult) []GetConsumerImageShareGroupImageSharesImageShare {
 		return v.ImageShares

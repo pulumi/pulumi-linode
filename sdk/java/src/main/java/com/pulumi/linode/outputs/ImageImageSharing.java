@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ImageImageSharing {
     /**
-     * @return Details about who the image is shared by.
+     * @return (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      * 
      */
     private @Nullable ImageImageSharingSharedBy sharedBy;
     /**
-     * @return Details about who the image is shared with.
+     * @return (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      * 
      */
     private @Nullable ImageImageSharingSharedWith sharedWith;
 
     private ImageImageSharing() {}
     /**
-     * @return Details about who the image is shared by.
+     * @return (Nested Attribute) Details about who the image is shared by. Referenced directly (e.g. `shared_by.sharegroup_id`).
      * 
      */
     public Optional<ImageImageSharingSharedBy> sharedBy() {
         return Optional.ofNullable(this.sharedBy);
     }
     /**
-     * @return Details about who the image is shared with.
+     * @return (Nested Attribute) Details about who the image is shared with. Referenced directly (e.g. `shared_with.sharegroup_count`).
      * 
      */
     public Optional<ImageImageSharingSharedWith> sharedWith() {

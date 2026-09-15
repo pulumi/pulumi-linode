@@ -65,6 +65,9 @@ export interface GetVolumesResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The Volumes returned by this data source.
+     */
     readonly volumes: outputs.GetVolumesVolume[];
 }
 /**

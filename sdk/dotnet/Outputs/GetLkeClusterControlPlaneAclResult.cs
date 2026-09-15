@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetLkeClusterControlPlaneAclResult
     {
         /// <summary>
-        /// A list of ip addresses to allow.
+        /// (Nested Attribute List) A list of ip addresses to allow.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterControlPlaneAclAddressResult> Addresses;
         /// <summary>

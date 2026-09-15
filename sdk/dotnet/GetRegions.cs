@@ -216,6 +216,9 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetRegionsFilterResult> Filters;
         public readonly string Id;
+        /// <summary>
+        /// (Nested Attribute List) The Regions returned by this data source.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
 
         [OutputConstructor]

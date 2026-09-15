@@ -20,6 +20,10 @@ public final class GetInstanceTypeResult {
      * 
      */
     private Integer acceleratedDevices;
+    /**
+     * @return (Read-Only Object List) Add-ons available for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
+     * 
+     */
     private List<GetInstanceTypeAddon> addons;
     /**
      * @return The class of the Linode Type. See all classes [here](https://techdocs.akamai.com/linode-api/reference/get-linode-type).
@@ -51,7 +55,15 @@ public final class GetInstanceTypeResult {
      * 
      */
     private Integer networkOut;
+    /**
+     * @return (Read-Only Object List) Pricing information for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
+     * 
+     */
     private List<GetInstanceTypePrice> prices;
+    /**
+     * @return (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+     * 
+     */
     private List<GetInstanceTypeRegionPrice> regionPrices;
     /**
      * @return The monthly outbound transfer amount, in MB.
@@ -72,6 +84,10 @@ public final class GetInstanceTypeResult {
     public Integer acceleratedDevices() {
         return this.acceleratedDevices;
     }
+    /**
+     * @return (Read-Only Object List) Add-ons available for this Linode Type. Referenced with an index (e.g. `addons.0.backups`).
+     * 
+     */
     public List<GetInstanceTypeAddon> addons() {
         return this.addons;
     }
@@ -117,9 +133,17 @@ public final class GetInstanceTypeResult {
     public Integer networkOut() {
         return this.networkOut;
     }
+    /**
+     * @return (Read-Only Object List) Pricing information for this Linode Type. Referenced with an index (e.g. `price.0.hourly`).
+     * 
+     */
     public List<GetInstanceTypePrice> prices() {
         return this.prices;
     }
+    /**
+     * @return (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+     * 
+     */
     public List<GetInstanceTypeRegionPrice> regionPrices() {
         return this.regionPrices;
     }

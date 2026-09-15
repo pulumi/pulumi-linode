@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 public final class GetMaintenancePoliciesResult {
     private @Nullable List<GetMaintenancePoliciesFilter> filters;
     private String id;
+    /**
+     * @return (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
+     * 
+     */
     private List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies;
 
     private GetMaintenancePoliciesResult() {}
@@ -25,6 +29,10 @@ public final class GetMaintenancePoliciesResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Nested Attribute List) The Linode Maintenance Policies matching the data source filters.
+     * 
+     */
     public List<GetMaintenancePoliciesMaintenancePolicy> maintenancePolicies() {
         return this.maintenancePolicies;
     }

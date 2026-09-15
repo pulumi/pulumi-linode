@@ -39,7 +39,7 @@ public final class GetImageResult {
     private String expiry;
     private String id;
     /**
-     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     private GetImageImageSharing imageSharing;
@@ -59,7 +59,7 @@ public final class GetImageResult {
      */
     private String label;
     /**
-     * @return A list of image replication regions and corresponding status.
+     * @return (Nested Attribute List) A list of image replication regions and corresponding status.
      * 
      */
     private List<GetImageReplication> replications;
@@ -133,7 +133,7 @@ public final class GetImageResult {
         return this.id;
     }
     /**
-     * @return Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**)
+     * @return (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
      * 
      */
     public GetImageImageSharing imageSharing() {
@@ -161,7 +161,7 @@ public final class GetImageResult {
         return this.label;
     }
     /**
-     * @return A list of image replication regions and corresponding status.
+     * @return (Nested Attribute List) A list of image replication regions and corresponding status.
      * 
      */
     public List<GetImageReplication> replications() {

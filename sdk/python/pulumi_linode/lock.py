@@ -26,7 +26,7 @@ class LockArgs:
         The set of arguments for constructing a Lock resource.
 
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         :param pulumi.Input[_builtins.str] lock_type: The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
         """
         pulumi.set(__self__, "entity_id", entity_id)
@@ -49,7 +49,7 @@ class LockArgs:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         """
         return pulumi.get(self, "entity_type")
 
@@ -83,7 +83,7 @@ class _LockState:
 
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
         :param pulumi.Input[_builtins.str] entity_label: The label of the locked entity.
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         :param pulumi.Input[_builtins.str] entity_url: The URL of the locked entity.
         :param pulumi.Input[_builtins.str] lock_type: The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
         """
@@ -126,7 +126,7 @@ class _LockState:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         """
         return pulumi.get(self, "entity_type")
 
@@ -170,13 +170,11 @@ class Lock(pulumi.CustomResource):
                  lock_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        > **Early Access** Locks are in Early Access and may not be available to all users.
-
         > **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
 
         Manages a Linode Lock which prevents accidental deletion and modification of resources. Locks protect against deletion, rebuild operations, and service transfers. The `cannot_delete_with_subresources` lock type also protects subresources such as disks, configs, interfaces, and IP addresses.
 
-        For more information, see the Linode APIv4 docs (TBD).
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-resource-lock).
 
         > **Note** Only one lock can exist per resource at a time. You cannot have both `cannot_delete` and `cannot_delete_with_subresources` locks on the same resource simultaneously.
 
@@ -221,7 +219,7 @@ class Lock(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         :param pulumi.Input[_builtins.str] lock_type: The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
         """
         ...
@@ -231,13 +229,11 @@ class Lock(pulumi.CustomResource):
                  args: LockArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **Early Access** Locks are in Early Access and may not be available to all users.
-
         > **Important** Only unrestricted users can create and delete locks. Restricted users cannot manage locks even if they have read/write permissions for the resource.
 
         Manages a Linode Lock which prevents accidental deletion and modification of resources. Locks protect against deletion, rebuild operations, and service transfers. The `cannot_delete_with_subresources` lock type also protects subresources such as disks, configs, interfaces, and IP addresses.
 
-        For more information, see the Linode APIv4 docs (TBD).
+        For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-resource-lock).
 
         > **Note** Only one lock can exist per resource at a time. You cannot have both `cannot_delete` and `cannot_delete_with_subresources` locks on the same resource simultaneously.
 
@@ -341,7 +337,7 @@ class Lock(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] entity_id: The ID of the entity to lock.
         :param pulumi.Input[_builtins.str] entity_label: The label of the locked entity.
-        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        :param pulumi.Input[_builtins.str] entity_type: The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         :param pulumi.Input[_builtins.str] entity_url: The URL of the locked entity.
         :param pulumi.Input[_builtins.str] lock_type: The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
         """
@@ -376,7 +372,7 @@ class Lock(pulumi.CustomResource):
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+        The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
         """
         return pulumi.get(self, "entity_type")
 

@@ -69,7 +69,7 @@ export interface GetDatabaseEnginesArgs {
     /**
      * If true, only the latest engine version will be returned.
      *
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
      */
     latest?: boolean;
     /**
@@ -86,6 +86,9 @@ export interface GetDatabaseEnginesArgs {
  * A collection of values returned by getDatabaseEngines.
  */
 export interface GetDatabaseEnginesResult {
+    /**
+     * (Nested Attribute List) The returned list of engines. Referenced by index (e.g. `engines[0].id`).
+     */
     readonly engines: outputs.GetDatabaseEnginesEngine[];
     readonly filters?: outputs.GetDatabaseEnginesFilter[];
     /**
@@ -159,7 +162,7 @@ export interface GetDatabaseEnginesOutputArgs {
     /**
      * If true, only the latest engine version will be returned.
      *
-     * * `filter` - (Optional) A set of filters used to select engines that meet certain requirements.
+     * * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
      */
     latest?: pulumi.Input<boolean | undefined>;
     /**

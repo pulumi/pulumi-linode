@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -22,6 +23,11 @@ public final class GetObjectStorageQuotasQuota {
      */
     private String endpointType;
     /**
+     * @return Whether usage data is available for the Object Storage quota.
+     * 
+     */
+    private Boolean hasUsage;
+    /**
      * @return The ID of the Object Storage quota.
      * 
      */
@@ -36,6 +42,11 @@ public final class GetObjectStorageQuotasQuota {
      * 
      */
     private String quotaName;
+    /**
+     * @return The type of the Object Storage quota.
+     * 
+     */
+    private String quotaType;
     /**
      * @return The specific Object Storage resource for the quota.
      * 
@@ -63,6 +74,13 @@ public final class GetObjectStorageQuotasQuota {
         return this.endpointType;
     }
     /**
+     * @return Whether usage data is available for the Object Storage quota.
+     * 
+     */
+    public Boolean hasUsage() {
+        return this.hasUsage;
+    }
+    /**
      * @return The ID of the Object Storage quota.
      * 
      */
@@ -82,6 +100,13 @@ public final class GetObjectStorageQuotasQuota {
      */
     public String quotaName() {
         return this.quotaName;
+    }
+    /**
+     * @return The type of the Object Storage quota.
+     * 
+     */
+    public String quotaType() {
+        return this.quotaType;
     }
     /**
      * @return The specific Object Storage resource for the quota.
@@ -109,9 +134,11 @@ public final class GetObjectStorageQuotasQuota {
     public static final class Builder {
         private String description;
         private String endpointType;
+        private Boolean hasUsage;
         private String quotaId;
         private Integer quotaLimit;
         private String quotaName;
+        private String quotaType;
         private String resourceMetric;
         private String s3Endpoint;
         public Builder() {}
@@ -119,9 +146,11 @@ public final class GetObjectStorageQuotasQuota {
     	      Objects.requireNonNull(defaults);
     	      this.description = defaults.description;
     	      this.endpointType = defaults.endpointType;
+    	      this.hasUsage = defaults.hasUsage;
     	      this.quotaId = defaults.quotaId;
     	      this.quotaLimit = defaults.quotaLimit;
     	      this.quotaName = defaults.quotaName;
+    	      this.quotaType = defaults.quotaType;
     	      this.resourceMetric = defaults.resourceMetric;
     	      this.s3Endpoint = defaults.s3Endpoint;
         }
@@ -140,6 +169,14 @@ public final class GetObjectStorageQuotasQuota {
               throw new MissingRequiredPropertyException("GetObjectStorageQuotasQuota", "endpointType");
             }
             this.endpointType = endpointType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hasUsage(Boolean hasUsage) {
+            if (hasUsage == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageQuotasQuota", "hasUsage");
+            }
+            this.hasUsage = hasUsage;
             return this;
         }
         @CustomType.Setter
@@ -167,6 +204,14 @@ public final class GetObjectStorageQuotasQuota {
             return this;
         }
         @CustomType.Setter
+        public Builder quotaType(String quotaType) {
+            if (quotaType == null) {
+              throw new MissingRequiredPropertyException("GetObjectStorageQuotasQuota", "quotaType");
+            }
+            this.quotaType = quotaType;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourceMetric(String resourceMetric) {
             if (resourceMetric == null) {
               throw new MissingRequiredPropertyException("GetObjectStorageQuotasQuota", "resourceMetric");
@@ -186,9 +231,11 @@ public final class GetObjectStorageQuotasQuota {
             final var _resultValue = new GetObjectStorageQuotasQuota();
             _resultValue.description = description;
             _resultValue.endpointType = endpointType;
+            _resultValue.hasUsage = hasUsage;
             _resultValue.quotaId = quotaId;
             _resultValue.quotaLimit = quotaLimit;
             _resultValue.quotaName = quotaName;
+            _resultValue.quotaType = quotaType;
             _resultValue.resourceMetric = resourceMetric;
             _resultValue.s3Endpoint = s3Endpoint;
             return _resultValue;

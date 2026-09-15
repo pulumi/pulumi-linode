@@ -59,6 +59,10 @@ export interface GetVolumeResult {
      */
     readonly id: number;
     /**
+     * Indicates whether the volume is successfully attached to a Linode and ready for read and write operations.
+     */
+    readonly ioReady: boolean;
+    /**
      * This Volume's label is for display purposes only.
      */
     readonly label: string;

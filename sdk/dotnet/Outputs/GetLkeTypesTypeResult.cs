@@ -22,11 +22,11 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Cost in US dollars, broken down into hourly and monthly charges.
+        /// (Read-Only Object List) Pricing information for this LKE type. Referenced with an index (e.g. `price.0.hourly`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeTypesTypePriceResult> Prices;
         /// <summary>
-        /// A list of region-specific prices for this LKE Type.
+        /// (Read-Only Object List) Region-specific pricing information for this LKE type. Referenced with an index (e.g. `region_prices.0.id`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeTypesTypeRegionPriceResult> RegionPrices;
         /// <summary>

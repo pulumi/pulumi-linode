@@ -5,9 +5,11 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.outputs.GetInstanceNetworkingIpv4VpcIpv6Address;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -18,7 +20,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
      */
     private Boolean active;
     /**
-     * @return The address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     private String address;
@@ -38,10 +40,25 @@ public final class GetInstanceNetworkingIpv4Vpc {
      */
     private String gateway;
     /**
-     * @return The globally general API entity identifier for the Linode interface.
+     * @return The Linode interface ID that this IP address is assigned to.
      * 
      */
     private Integer interfaceId;
+    /**
+     * @return (Read-Only Object List) A list of IPv6 addresses associated with this VPC interface. Referenced with an index (e.g. `ipv4.0.vpc.0.ipv6_addresses.0.slaac_address`).
+     * 
+     */
+    private List<GetInstanceNetworkingIpv4VpcIpv6Address> ipv6Addresses;
+    /**
+     * @return Whether the VPC IPv6 interface has public reachability.
+     * 
+     */
+    private Boolean ipv6IsPublic;
+    /**
+     * @return The /64 prefix, in CIDR notation, assigned to an interface. Only set for VPC interfaces with IPv6 enabled.
+     * 
+     */
+    private String ipv6Range;
     /**
      * @return The Linode instance&#39;s ID.
      * 
@@ -63,7 +80,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
      */
     private String region;
     /**
-     * @return The unique globally general API entity identifier for the VPC subnet.
+     * @return The `id` of the VPC Subnet for this Interface.
      * 
      */
     private Integer subnetId;
@@ -73,7 +90,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
      */
     private String subnetMask;
     /**
-     * @return The unique globally general API entity identifier for the VPC.
+     * @return The `id` of the VPC configured for this Interface.
      * 
      */
     private Integer vpcId;
@@ -87,7 +104,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
         return this.active;
     }
     /**
-     * @return The address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public String address() {
@@ -115,11 +132,32 @@ public final class GetInstanceNetworkingIpv4Vpc {
         return this.gateway;
     }
     /**
-     * @return The globally general API entity identifier for the Linode interface.
+     * @return The Linode interface ID that this IP address is assigned to.
      * 
      */
     public Integer interfaceId() {
         return this.interfaceId;
+    }
+    /**
+     * @return (Read-Only Object List) A list of IPv6 addresses associated with this VPC interface. Referenced with an index (e.g. `ipv4.0.vpc.0.ipv6_addresses.0.slaac_address`).
+     * 
+     */
+    public List<GetInstanceNetworkingIpv4VpcIpv6Address> ipv6Addresses() {
+        return this.ipv6Addresses;
+    }
+    /**
+     * @return Whether the VPC IPv6 interface has public reachability.
+     * 
+     */
+    public Boolean ipv6IsPublic() {
+        return this.ipv6IsPublic;
+    }
+    /**
+     * @return The /64 prefix, in CIDR notation, assigned to an interface. Only set for VPC interfaces with IPv6 enabled.
+     * 
+     */
+    public String ipv6Range() {
+        return this.ipv6Range;
     }
     /**
      * @return The Linode instance&#39;s ID.
@@ -150,7 +188,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
         return this.region;
     }
     /**
-     * @return The unique globally general API entity identifier for the VPC subnet.
+     * @return The `id` of the VPC Subnet for this Interface.
      * 
      */
     public Integer subnetId() {
@@ -164,7 +202,7 @@ public final class GetInstanceNetworkingIpv4Vpc {
         return this.subnetMask;
     }
     /**
-     * @return The unique globally general API entity identifier for the VPC.
+     * @return The `id` of the VPC configured for this Interface.
      * 
      */
     public Integer vpcId() {
@@ -186,6 +224,9 @@ public final class GetInstanceNetworkingIpv4Vpc {
         private Integer configId;
         private String gateway;
         private Integer interfaceId;
+        private List<GetInstanceNetworkingIpv4VpcIpv6Address> ipv6Addresses;
+        private Boolean ipv6IsPublic;
+        private String ipv6Range;
         private Integer linodeId;
         private String nat11;
         private Integer prefix;
@@ -202,6 +243,9 @@ public final class GetInstanceNetworkingIpv4Vpc {
     	      this.configId = defaults.configId;
     	      this.gateway = defaults.gateway;
     	      this.interfaceId = defaults.interfaceId;
+    	      this.ipv6Addresses = defaults.ipv6Addresses;
+    	      this.ipv6IsPublic = defaults.ipv6IsPublic;
+    	      this.ipv6Range = defaults.ipv6Range;
     	      this.linodeId = defaults.linodeId;
     	      this.nat11 = defaults.nat11;
     	      this.prefix = defaults.prefix;
@@ -257,6 +301,33 @@ public final class GetInstanceNetworkingIpv4Vpc {
               throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Vpc", "interfaceId");
             }
             this.interfaceId = interfaceId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Addresses(List<GetInstanceNetworkingIpv4VpcIpv6Address> ipv6Addresses) {
+            if (ipv6Addresses == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Vpc", "ipv6Addresses");
+            }
+            this.ipv6Addresses = ipv6Addresses;
+            return this;
+        }
+        public Builder ipv6Addresses(GetInstanceNetworkingIpv4VpcIpv6Address... ipv6Addresses) {
+            return ipv6Addresses(List.of(ipv6Addresses));
+        }
+        @CustomType.Setter
+        public Builder ipv6IsPublic(Boolean ipv6IsPublic) {
+            if (ipv6IsPublic == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Vpc", "ipv6IsPublic");
+            }
+            this.ipv6IsPublic = ipv6IsPublic;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder ipv6Range(String ipv6Range) {
+            if (ipv6Range == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkingIpv4Vpc", "ipv6Range");
+            }
+            this.ipv6Range = ipv6Range;
             return this;
         }
         @CustomType.Setter
@@ -323,6 +394,9 @@ public final class GetInstanceNetworkingIpv4Vpc {
             _resultValue.configId = configId;
             _resultValue.gateway = gateway;
             _resultValue.interfaceId = interfaceId;
+            _resultValue.ipv6Addresses = ipv6Addresses;
+            _resultValue.ipv6IsPublic = ipv6IsPublic;
+            _resultValue.ipv6Range = ipv6Range;
             _resultValue.linodeId = linodeId;
             _resultValue.nat11 = nat11;
             _resultValue.prefix = prefix;

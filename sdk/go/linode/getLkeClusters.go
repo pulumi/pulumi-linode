@@ -86,7 +86,8 @@ type GetLkeClustersArgs struct {
 type GetLkeClustersResult struct {
 	Filters []GetLkeClustersFilter `pulumi:"filters"`
 	// The LKE Cluster's ID.
-	Id          string                     `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// (Nested Attribute List) The LKE Clusters matching the data source filters.
 	LkeClusters []GetLkeClustersLkeCluster `pulumi:"lkeClusters"`
 	Order       *string                    `pulumi:"order"`
 	OrderBy     *string                    `pulumi:"orderBy"`
@@ -134,6 +135,7 @@ func (o GetLkeClustersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLkeClustersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Nested Attribute List) The LKE Clusters matching the data source filters.
 func (o GetLkeClustersResultOutput) LkeClusters() GetLkeClustersLkeClusterArrayOutput {
 	return o.ApplyT(func(v GetLkeClustersResult) []GetLkeClustersLkeCluster { return v.LkeClusters }).(GetLkeClustersLkeClusterArrayOutput)
 }

@@ -66,7 +66,7 @@ public final class GetStackScriptResult {
      */
     private String updated;
     /**
-     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * @return (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      * 
      */
     private List<GetStackScriptUserDefinedField> userDefinedFields;
@@ -156,7 +156,7 @@ public final class GetStackScriptResult {
         return this.updated;
     }
     /**
-     * @return This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment.
+     * @return (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
      * 
      */
     public List<GetStackScriptUserDefinedField> userDefinedFields() {

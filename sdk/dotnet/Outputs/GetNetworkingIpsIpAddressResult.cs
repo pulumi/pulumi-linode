@@ -18,6 +18,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
+        /// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+        /// </summary>
+        public readonly Outputs.GetNetworkingIpsIpAddressAssignedEntityResult AssignedEntity;
+        /// <summary>
         /// The default gateway for this address.
         /// </summary>
         public readonly string Gateway;
@@ -54,17 +58,23 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string SubnetMask;
         /// <summary>
-        /// The type of address this is (ipv4, ipv6, ipv6/pool, ipv6/range).
+        /// A set of tags associated with this IP address.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// The type of the entity.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
+        /// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
         /// </summary>
         public readonly Outputs.GetNetworkingIpsIpAddressVpcNat11Result VpcNat11;
 
         [OutputConstructor]
         private GetNetworkingIpsIpAddressResult(
             string address,
+
+            Outputs.GetNetworkingIpsIpAddressAssignedEntityResult assignedEntity,
 
             string gateway,
 
@@ -84,11 +94,14 @@ namespace Pulumi.Linode.Outputs
 
             string subnetMask,
 
+            ImmutableArray<string> tags,
+
             string type,
 
             Outputs.GetNetworkingIpsIpAddressVpcNat11Result vpcNat11)
         {
             Address = address;
+            AssignedEntity = assignedEntity;
             Gateway = gateway;
             InterfaceId = interfaceId;
             LinodeId = linodeId;
@@ -98,6 +111,7 @@ namespace Pulumi.Linode.Outputs
             Region = region;
             Reserved = reserved;
             SubnetMask = subnetMask;
+            Tags = tags;
             Type = type;
             VpcNat11 = vpcNat11;
         }

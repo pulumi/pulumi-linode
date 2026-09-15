@@ -71,6 +71,9 @@ class GetInstanceTypesResult:
     @_builtins.property
     @pulumi.getter
     def types(self) -> Sequence['outputs.GetInstanceTypesTypeResult']:
+        """
+        (Nested Attribute List) The Linode Instance types returned by this data source.
+        """
         return pulumi.get(self, "types")
 
 

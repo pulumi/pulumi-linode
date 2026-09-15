@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetObjectStorageEndpointsResult {
+    /**
+     * @return (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
+     * 
+     */
     private List<GetObjectStorageEndpointsEndpoint> endpoints;
     private @Nullable List<GetObjectStorageEndpointsFilter> filters;
     private String id;
@@ -22,6 +26,10 @@ public final class GetObjectStorageEndpointsResult {
     private @Nullable String orderBy;
 
     private GetObjectStorageEndpointsResult() {}
+    /**
+     * @return (Nested Attribute List) The Linode Object Storage endpoints returned by this data source.
+     * 
+     */
     public List<GetObjectStorageEndpointsEndpoint> endpoints() {
         return this.endpoints;
     }

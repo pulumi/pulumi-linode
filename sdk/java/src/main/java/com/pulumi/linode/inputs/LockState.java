@@ -47,14 +47,14 @@ public final class LockState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+     * The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
      * 
      */
     @Import(name="entityType")
     private @Nullable Output<String> entityType;
 
     /**
-     * @return The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+     * @return The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
      * 
      */
     public Optional<Output<String>> entityType() {
@@ -162,7 +162,7 @@ public final class LockState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityType The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+         * @param entityType The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class LockState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entityType The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
+         * @param entityType The type of the entity to lock. Supported values are `linode`, `nodebalancer`, `volume`, `lkecluster`, and `lkenodepool`. Note: Linodes that are part of an LKE cluster cannot be locked.
          * 
          * @return builder
          * 

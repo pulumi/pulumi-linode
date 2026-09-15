@@ -93,7 +93,8 @@ type GetFirewallTemplatesArgs struct {
 
 // A collection of values returned by getFirewallTemplates.
 type GetFirewallTemplatesResult struct {
-	Filters           []GetFirewallTemplatesFilter           `pulumi:"filters"`
+	Filters []GetFirewallTemplatesFilter `pulumi:"filters"`
+	// (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
 	FirewallTemplates []GetFirewallTemplatesFirewallTemplate `pulumi:"firewallTemplates"`
 	Id                string                                 `pulumi:"id"`
 }
@@ -131,6 +132,7 @@ func (o GetFirewallTemplatesResultOutput) Filters() GetFirewallTemplatesFilterAr
 	return o.ApplyT(func(v GetFirewallTemplatesResult) []GetFirewallTemplatesFilter { return v.Filters }).(GetFirewallTemplatesFilterArrayOutput)
 }
 
+// (Nested Attribute List) The returned list of firewall templates. Referenced by index (e.g. `firewall_templates[0].slug`).
 func (o GetFirewallTemplatesResultOutput) FirewallTemplates() GetFirewallTemplatesFirewallTemplateArrayOutput {
 	return o.ApplyT(func(v GetFirewallTemplatesResult) []GetFirewallTemplatesFirewallTemplate { return v.FirewallTemplates }).(GetFirewallTemplatesFirewallTemplateArrayOutput)
 }

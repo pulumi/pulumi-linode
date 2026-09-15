@@ -71,6 +71,9 @@ class GetSshkeysResult:
     @_builtins.property
     @pulumi.getter
     def sshkeys(self) -> Sequence['outputs.GetSshkeysSshkeyResult']:
+        """
+        (Nested Attribute List) The SSH Keys returned by this data source.
+        """
         return pulumi.get(self, "sshkeys")
 
 

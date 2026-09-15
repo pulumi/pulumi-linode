@@ -47,9 +47,67 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
-        /// ### Subnets Reference
+        /// ## IPv4
         /// 
-        /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
+        /// ## Subnets
+        /// 
+        /// The following attributes are exported under each entry of the `Subnets` field:
+        /// 
+        /// * `Id` - The id of the VPC Subnet.
+        /// 
+        /// * `Label` - The label of the VPC Subnet.
+        /// 
+        /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
+        /// 
+        /// * `Ipv6` - The IPv6 ranges of this subnet.
+        /// 
+        ///   * `Range` - An IPv6 range allocated to this subnet.
+        /// 
+        /// * `Linodes` - A list of Linodes assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of the Linode
+        /// 
+        ///   * `Interfaces` - A list of networking interfaces objects.
+        /// 
+        ///     * `Id` - ID of the interface.
+        /// 
+        ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+        /// 
+        ///     * `Active` - Whether the Interface is actively in use.
+        /// 
+        /// * `Databases` - A list of Managed Databases assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
+        /// 
+        ///   * `Ipv4Range` - IPv4 range assigned to the database.
+        /// 
+        ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+        /// 
+        ///     * `Range` - An IPv6 address range in CIDR notation.
+        /// 
+        /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
+        /// 
+        ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
+        /// 
+        ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+        /// 
+        ///     * `Range` - An IPv6 address range in CIDR notation.
+        /// 
+        /// * `Created` - The date and time when the VPC Subnet was created.
+        /// 
+        /// * `Updated` - The date and time when the VPC Subnet was last updated.
+        /// 
+        /// ### Subnets data source
+        /// 
+        /// The `Subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `DependsOn`.
         /// </summary>
         public static Task<GetVpcResult> InvokeAsync(GetVpcArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithDefaults());
@@ -90,9 +148,67 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
-        /// ### Subnets Reference
+        /// ## IPv4
         /// 
-        /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
+        /// ## Subnets
+        /// 
+        /// The following attributes are exported under each entry of the `Subnets` field:
+        /// 
+        /// * `Id` - The id of the VPC Subnet.
+        /// 
+        /// * `Label` - The label of the VPC Subnet.
+        /// 
+        /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
+        /// 
+        /// * `Ipv6` - The IPv6 ranges of this subnet.
+        /// 
+        ///   * `Range` - An IPv6 range allocated to this subnet.
+        /// 
+        /// * `Linodes` - A list of Linodes assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of the Linode
+        /// 
+        ///   * `Interfaces` - A list of networking interfaces objects.
+        /// 
+        ///     * `Id` - ID of the interface.
+        /// 
+        ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+        /// 
+        ///     * `Active` - Whether the Interface is actively in use.
+        /// 
+        /// * `Databases` - A list of Managed Databases assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
+        /// 
+        ///   * `Ipv4Range` - IPv4 range assigned to the database.
+        /// 
+        ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+        /// 
+        ///     * `Range` - An IPv6 address range in CIDR notation.
+        /// 
+        /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
+        /// 
+        ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
+        /// 
+        ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+        /// 
+        ///     * `Range` - An IPv6 address range in CIDR notation.
+        /// 
+        /// * `Created` - The date and time when the VPC Subnet was created.
+        /// 
+        /// * `Updated` - The date and time when the VPC Subnet was last updated.
+        /// 
+        /// ### Subnets data source
+        /// 
+        /// The `Subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `DependsOn`.
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
@@ -133,9 +249,67 @@ namespace Pulumi.Linode
         /// 
         /// * `Range` - The allocated range in CIDR format.
         /// 
-        /// ### Subnets Reference
+        /// ## IPv4
         /// 
-        /// To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+        /// &gt; **Limited Availability** Custom VPC IPv4 Ranges may not currently be available to all users.
+        /// 
+        /// Contains information about a single IPv4 range under this VPC.
+        /// 
+        /// * `Range` - The IPv4 range in CIDR format.
+        /// 
+        /// ## Subnets
+        /// 
+        /// The following attributes are exported under each entry of the `Subnets` field:
+        /// 
+        /// * `Id` - The id of the VPC Subnet.
+        /// 
+        /// * `Label` - The label of the VPC Subnet.
+        /// 
+        /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
+        /// 
+        /// * `Ipv6` - The IPv6 ranges of this subnet.
+        /// 
+        ///   * `Range` - An IPv6 range allocated to this subnet.
+        /// 
+        /// * `Linodes` - A list of Linodes assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of the Linode
+        /// 
+        ///   * `Interfaces` - A list of networking interfaces objects.
+        /// 
+        ///     * `Id` - ID of the interface.
+        /// 
+        ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+        /// 
+        ///     * `Active` - Whether the Interface is actively in use.
+        /// 
+        /// * `Databases` - A list of Managed Databases assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
+        /// 
+        ///   * `Ipv4Range` - IPv4 range assigned to the database.
+        /// 
+        ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+        /// 
+        ///     * `Range` - An IPv6 address range in CIDR notation.
+        /// 
+        /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
+        /// 
+        ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
+        /// 
+        ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
+        /// 
+        ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+        /// 
+        ///     * `Range` - An IPv6 address range in CIDR notation.
+        /// 
+        /// * `Created` - The date and time when the VPC Subnet was created.
+        /// 
+        /// * `Updated` - The date and time when the VPC Subnet was last updated.
+        /// 
+        /// ### Subnets data source
+        /// 
+        /// The `Subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `DependsOn`.
         /// </summary>
         public static Output<GetVpcResult> Invoke(GetVpcInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("linode:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
@@ -184,7 +358,11 @@ namespace Pulumi.Linode
         public readonly string Description;
         public readonly string Id;
         /// <summary>
-        /// A list of IPv6 allocations under this VPC.
+        /// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcIpv4Result> Ipv4s;
+        /// <summary>
+        /// (Nested Attribute List) A list of IPv6 allocations under this VPC.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcIpv6Result> Ipv6s;
         /// <summary>
@@ -195,10 +373,15 @@ namespace Pulumi.Linode
         /// The region where the VPC is deployed.
         /// </summary>
         public readonly string Region;
+        public readonly ImmutableArray<Outputs.GetVpcSubnetResult> Subnets;
         /// <summary>
         /// The date and time when the VPC was last updated.
         /// </summary>
         public readonly string Updated;
+        /// <summary>
+        /// The type of the VPC (`Regular` or `Rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
+        /// </summary>
+        public readonly string VpcType;
 
         [OutputConstructor]
         private GetVpcResult(
@@ -208,21 +391,30 @@ namespace Pulumi.Linode
 
             string id,
 
+            ImmutableArray<Outputs.GetVpcIpv4Result> ipv4s,
+
             ImmutableArray<Outputs.GetVpcIpv6Result> ipv6s,
 
             string label,
 
             string region,
 
-            string updated)
+            ImmutableArray<Outputs.GetVpcSubnetResult> subnets,
+
+            string updated,
+
+            string vpcType)
         {
             Created = created;
             Description = description;
             Id = id;
+            Ipv4s = ipv4s;
             Ipv6s = ipv6s;
             Label = label;
             Region = region;
+            Subnets = subnets;
             Updated = updated;
+            VpcType = vpcType;
         }
     }
 }

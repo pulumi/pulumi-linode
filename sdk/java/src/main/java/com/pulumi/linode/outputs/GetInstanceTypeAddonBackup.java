@@ -12,13 +12,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceTypeAddonBackup {
+    /**
+     * @return (Read-Only Object List) The price to add Backups service. Referenced with an index (e.g. `addons.0.backups.0.price.0.hourly`).
+     * 
+     */
     private List<GetInstanceTypeAddonBackupPrice> prices;
+    /**
+     * @return (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+     * 
+     */
     private List<GetInstanceTypeAddonBackupRegionPrice> regionPrices;
 
     private GetInstanceTypeAddonBackup() {}
+    /**
+     * @return (Read-Only Object List) The price to add Backups service. Referenced with an index (e.g. `addons.0.backups.0.price.0.hourly`).
+     * 
+     */
     public List<GetInstanceTypeAddonBackupPrice> prices() {
         return this.prices;
     }
+    /**
+     * @return (Read-Only Object List) Region-specific pricing information for this Linode Type. Referenced with an index (e.g. `region_prices.0.id`).
+     * 
+     */
     public List<GetInstanceTypeAddonBackupRegionPrice> regionPrices() {
         return this.regionPrices;
     }

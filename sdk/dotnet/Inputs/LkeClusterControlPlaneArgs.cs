@@ -21,7 +21,7 @@ namespace Pulumi.Linode.Inputs
         /// <summary>
         /// Enables audit logs on the cluster's control plane.
         /// 
-        /// * `Acl` - (Optional) Defines the ACL configuration for an LKE cluster's control plane.
+        /// * `Acl` - (Optional, Block) Defines the ACL configuration for an LKE cluster's control plane. Referenced with an index (e.g. `acl.0.enabled`).
         /// </summary>
         [Input("auditLogsEnabled")]
         public Input<bool>? AuditLogsEnabled { get; set; }

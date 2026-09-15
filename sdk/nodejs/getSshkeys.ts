@@ -78,6 +78,9 @@ export interface GetSshkeysResult {
     readonly id: string;
     readonly order?: string;
     readonly orderBy?: string;
+    /**
+     * (Nested Attribute List) The SSH Keys returned by this data source.
+     */
     readonly sshkeys: outputs.GetSshkeysSshkey[];
 }
 /**

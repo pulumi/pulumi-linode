@@ -64,6 +64,9 @@ class GetProducerImageShareGroupImageSharesResult:
     @_builtins.property
     @pulumi.getter(name="imageShares")
     def image_shares(self) -> Optional[Sequence['outputs.GetProducerImageShareGroupImageSharesImageShareResult']]:
+        """
+        (Block List) The Image Shares returned by this data source.
+        """
         return pulumi.get(self, "image_shares")
 
     @_builtins.property
@@ -134,9 +137,10 @@ def get_producer_image_share_group_image_shares(filters: Optional[Sequence[Union
     * `label`
 
 
+    :param Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict']] image_shares: (Block List) The Image Shares returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group to list shared Images from.
            
-           * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -189,9 +193,10 @@ def get_producer_image_share_group_image_shares_output(filters: pulumi.Input[Opt
     * `label`
 
 
+    :param Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict']] image_shares: (Block List) The Image Shares returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group to list shared Images from.
            
-           * `filter` - (Optional) A set of filters used to select Image Share Groups that meet certain requirements.
+           * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
     """
     __args__ = dict()
     __args__['filters'] = filters

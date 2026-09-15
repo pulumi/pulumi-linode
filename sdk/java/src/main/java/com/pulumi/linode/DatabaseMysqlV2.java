@@ -260,7 +260,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
  *             .label("mydatabase")
- *             .engineId("mysql/16")
+ *             .engineId("mysql/8")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
  *             .privateNetwork(DatabaseMysqlV2PrivateNetworkArgs.builder()
@@ -827,9 +827,9 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     @Export(name="forkSource", refs={Integer.class}, tree="[0]")
@@ -838,9 +838,9 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * @return The ID of the database that was forked from.
      * 
-     * * `privateNetwork` - (Optional) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
+     * * `privateNetwork` - (Optional, Nested Attribute) Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live. Referenced directly (e.g. `private_network.vpc_id`).
      * 
-     * * `updates` - (Optional) Configuration settings for automated patch update maintenance for the Managed Database.
+     * * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
      * 
      */
     public Output<Optional<Integer>> forkSource() {
@@ -935,14 +935,14 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
         return this.oldestRestoreTime;
     }
     /**
-     * A set of pending updates.
+     * (Nested Attribute Set) A set of pending updates. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     @Export(name="pendingUpdates", refs={List.class,DatabaseMysqlV2PendingUpdate.class}, tree="[0,1]")
     private Output<List<DatabaseMysqlV2PendingUpdate>> pendingUpdates;
 
     /**
-     * @return A set of pending updates.
+     * @return (Nested Attribute Set) A set of pending updates. Set elements can&#39;t be referenced by index; use a `for` expression or `tolist(...)` to access them.
      * 
      */
     public Output<List<DatabaseMysqlV2PendingUpdate>> pendingUpdates() {

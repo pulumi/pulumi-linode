@@ -44,11 +44,13 @@ class InstanceConfigInitArgs:
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
                
-               * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+               * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
                
-               * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+               * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
                
-               * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+               * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+               
+               * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]] device: Blocks for device disks in a Linode's configuration profile.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]] helpers: Helpers enabled when booting to this Linode Config.
@@ -131,11 +133,13 @@ class InstanceConfigInitArgs:
         """
         Optional field for arbitrary User comments on this Config.
 
-        * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 
-        * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 
-        * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+
+        * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         """
         return pulumi.get(self, "comments")
 
@@ -275,11 +279,13 @@ class _InstanceConfigState:
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
                
-               * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+               * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
                
-               * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+               * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
                
-               * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+               * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+               
+               * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigDeviceArgs']]] device: Blocks for device disks in a Linode's configuration profile.
         :param pulumi.Input['InstanceConfigDevicesArgs'] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceConfigHelperArgs']]] helpers: Helpers enabled when booting to this Linode Config.
@@ -342,11 +348,13 @@ class _InstanceConfigState:
         """
         Optional field for arbitrary User comments on this Config.
 
-        * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 
-        * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 
-        * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+
+        * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         """
         return pulumi.get(self, "comments")
 
@@ -626,11 +634,13 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
                
-               * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+               * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
                
-               * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+               * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
                
-               * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+               * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+               
+               * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]] device: Blocks for device disks in a Linode's configuration profile.
         :param pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]] helpers: Helpers enabled when booting to this Linode Config.
@@ -849,11 +859,13 @@ class InstanceConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] booted: If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
         :param pulumi.Input[_builtins.str] comments: Optional field for arbitrary User comments on this Config.
                
-               * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+               * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
                
-               * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+               * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
                
-               * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+               * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+               
+               * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]] device: Blocks for device disks in a Linode's configuration profile.
         :param pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]] helpers: Helpers enabled when booting to this Linode Config.
@@ -901,11 +913,13 @@ class InstanceConfig(pulumi.CustomResource):
         """
         Optional field for arbitrary User comments on this Config.
 
-        * `devices` - (Optional) A dictionary of device disks to use as a device map in a Linode’s configuration profile.
+        * `devices` - (Optional, Block) A dictionary of device disks to use as a device map in a Linode’s configuration profile. Referenced with an index (e.g. `devices.0.sda`).
 
-        * `helpers` - (Optional) Helpers enabled when booting to this Linode Config.
+        * `device` - (Optional, Block Set) An assignment between a disk and a configuration profile device. This block supersedes the `devices` block. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 
-        * `interface` - (Optional) An array of Network Interfaces to use for this Configuration Profile.
+        * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
+
+        * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
         """
         return pulumi.get(self, "comments")
 

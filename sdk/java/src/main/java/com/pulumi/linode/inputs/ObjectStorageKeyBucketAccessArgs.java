@@ -8,8 +8,6 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 
 public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,29 +30,6 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
     }
 
     /**
-     * The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-     * 
-     * @deprecated
-     * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
-     * 
-     */
-    @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
-    @Import(name="cluster")
-    private @Nullable Output<String> cluster;
-
-    /**
-     * @return The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-     * 
-     * @deprecated
-     * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
-     * 
-     */
-    @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
-    public Optional<Output<String>> cluster() {
-        return Optional.ofNullable(this.cluster);
-    }
-
-    /**
      * This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
      * 
      */
@@ -73,22 +48,21 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
      * The region where the bucket resides.
      * 
      */
-    @Import(name="region")
-    private @Nullable Output<String> region;
+    @Import(name="region", required=true)
+    private Output<String> region;
 
     /**
      * @return The region where the bucket resides.
      * 
      */
-    public Optional<Output<String>> region() {
-        return Optional.ofNullable(this.region);
+    public Output<String> region() {
+        return this.region;
     }
 
     private ObjectStorageKeyBucketAccessArgs() {}
 
     private ObjectStorageKeyBucketAccessArgs(ObjectStorageKeyBucketAccessArgs $) {
         this.bucketName = $.bucketName;
-        this.cluster = $.cluster;
         this.permissions = $.permissions;
         this.region = $.region;
     }
@@ -133,35 +107,6 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cluster The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
-         * 
-         */
-        @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
-        public Builder cluster(@Nullable Output<String> cluster) {
-            $.cluster = cluster;
-            return this;
-        }
-
-        /**
-         * @param cluster The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia`
-         * 
-         */
-        @Deprecated /* The `cluster` attribute in a `bucketAccess` block has been deprecated in favor of `region` attribute. A cluster value can be converted to a region value by removing -x at the end, for example, a cluster value `us-mia-1` can be converted to region value `us-mia` */
-        public Builder cluster(String cluster) {
-            return cluster(Output.of(cluster));
-        }
-
-        /**
          * @param permissions This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`readWrite`, `readOnly`)
          * 
          * @return builder
@@ -188,7 +133,7 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder region(@Nullable Output<String> region) {
+        public Builder region(Output<String> region) {
             $.region = region;
             return this;
         }
@@ -209,6 +154,9 @@ public final class ObjectStorageKeyBucketAccessArgs extends com.pulumi.resources
             }
             if ($.permissions == null) {
                 throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccessArgs", "permissions");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ObjectStorageKeyBucketAccessArgs", "region");
             }
             return $;
         }

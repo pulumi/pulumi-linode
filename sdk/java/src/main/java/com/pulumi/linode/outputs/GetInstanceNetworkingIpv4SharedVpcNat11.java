@@ -12,38 +12,38 @@ import java.util.Objects;
 @CustomType
 public final class GetInstanceNetworkingIpv4SharedVpcNat11 {
     /**
-     * @return The address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     private String address;
     /**
-     * @return The unique globally general API entity identifier for the VPC subnet.
+     * @return The `id` of the VPC Subnet for this Interface.
      * 
      */
     private Integer subnetId;
     /**
-     * @return The unique globally general API entity identifier for the VPC.
+     * @return The `id` of the VPC configured for this Interface.
      * 
      */
     private Integer vpcId;
 
     private GetInstanceNetworkingIpv4SharedVpcNat11() {}
     /**
-     * @return The address.
+     * @return The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
      * 
      */
     public String address() {
         return this.address;
     }
     /**
-     * @return The unique globally general API entity identifier for the VPC subnet.
+     * @return The `id` of the VPC Subnet for this Interface.
      * 
      */
     public Integer subnetId() {
         return this.subnetId;
     }
     /**
-     * @return The unique globally general API entity identifier for the VPC.
+     * @return The `id` of the VPC configured for this Interface.
      * 
      */
     public Integer vpcId() {
