@@ -30,10 +30,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewFirewallSettings(ctx, "example", &linode.FirewallSettingsArgs{
 //				DefaultFirewallIds: &linode.FirewallSettingsDefaultFirewallIdsArgs{
-//					Linode:           pulumi.Int(12345),
-//					Nodebalancer:     pulumi.Int(12345),
-//					Public_interface: 12345,
-//					Vpc_interface:    12345,
+//					Linode:          pulumi.Int(12345),
+//					Nodebalancer:    pulumi.Int(12345),
+//					PublicInterface: pulumi.Int(12345),
+//					VpcInterface:    pulumi.Int(12345),
 //				},
 //			})
 //			if err != nil {

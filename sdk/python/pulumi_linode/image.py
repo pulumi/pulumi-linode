@@ -703,11 +703,49 @@ class Image(pulumi.CustomResource):
                 "image-tag",
                 "test",
             ])
-        bar_based = linode.Instance("barBased",
+        bar_based = linode.Instance("bar_based",
             type=foo.type,
             region="eu-west",
             image=bar.id)
         ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            tags=[
+                "image-tag",
+                "test",
+            ],
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result)
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            tags=[
+                "image-tag",
+                "test",
+            ],
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result,
+            replica_regions=[
+                "us-southeast",
+                "us-east",
+                "eu-west",
+            ])
+        ```
+
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.
@@ -768,11 +806,49 @@ class Image(pulumi.CustomResource):
                 "image-tag",
                 "test",
             ])
-        bar_based = linode.Instance("barBased",
+        bar_based = linode.Instance("bar_based",
             type=foo.type,
             region="eu-west",
             image=bar.id)
         ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            tags=[
+                "image-tag",
+                "test",
+            ],
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result)
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        foobar = linode.Image("foobar",
+            label="foobar-image",
+            description="An image uploaded from Terraform!",
+            region="us-southeast",
+            tags=[
+                "image-tag",
+                "test",
+            ],
+            file_path="path/to/image.img.gz",
+            file_hash=std.filemd5(input="path/to/image.img.gz").result,
+            replica_regions=[
+                "us-southeast",
+                "us-east",
+                "eu-west",
+            ])
+        ```
+
         ## Import
 
         Linodes Images can be imported using the Linode Image `id`, e.g.

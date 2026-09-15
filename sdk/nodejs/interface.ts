@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const _public = new linode.Interface("public", {
- *     linodeId: Number(linode_instance["my-instance"].id),
+ *     linodeId: Number(my_instance.id),
  *     "public": {
  *         ipv4: {
  *             addresses: [{
@@ -51,8 +51,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const ipv6Only = new linode.Interface("ipv6Only", {
- *     linodeId: Number(linode_instance["my-instance"].id),
+ * const ipv6Only = new linode.Interface("ipv6_only", {
+ *     linodeId: Number(my_instance.id),
  *     "public": {
  *         ipv4: {
  *             addresses: [],
@@ -75,9 +75,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: Number(linode_instance["my-instance"].id),
+ *     linodeId: Number(my_instance.id),
  *     vpc: {
- *         subnet_id: 240213,
+ *         subnetId: 240213,
  *         ipv4: {
  *             addresses: [{
  *                 address: "auto",
@@ -99,12 +99,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: Number(linode_instance["my-instance"].id),
+ *     linodeId: Number(my_instance.id),
  *     vpc: {
- *         subnet_id: 12345,
+ *         subnetId: 12345,
  *         ipv6: {
  *             isPublic: true,
- *             slaac: [{
+ *             slaacs: [{
  *                 range: "auto",
  *             }],
  *             ranges: [{
@@ -124,10 +124,10 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vlan = new linode.Interface("vlan", {
- *     linodeId: Number(linode_instance.web.id),
+ *     linodeId: Number(web.id),
  *     vlan: {
- *         vlan_label: "web-vlan",
- *         ipam_address: "192.168.200.5/24",
+ *         vlanLabel: "web-vlan",
+ *         ipamAddress: "192.168.200.5/24",
  *     },
  * });
  * ```
@@ -237,15 +237,19 @@ export class Interface extends pulumi.CustomResource {
      */
     declare public readonly linodeId: pulumi.Output<number>;
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      */
     declare public readonly public: pulumi.Output<outputs.InterfacePublic | undefined>;
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     */
+    declare public readonly rdmaVpc: pulumi.Output<outputs.InterfaceRdmaVpc | undefined>;
+    /**
+     * Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      */
     declare public readonly vlan: pulumi.Output<outputs.InterfaceVlan | undefined>;
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      */
     declare public readonly vpc: pulumi.Output<outputs.InterfaceVpc | undefined>;
 
@@ -266,6 +270,7 @@ export class Interface extends pulumi.CustomResource {
             resourceInputs["firewallId"] = state?.firewallId;
             resourceInputs["linodeId"] = state?.linodeId;
             resourceInputs["public"] = state?.public;
+            resourceInputs["rdmaVpc"] = state?.rdmaVpc;
             resourceInputs["vlan"] = state?.vlan;
             resourceInputs["vpc"] = state?.vpc;
         } else {
@@ -277,6 +282,7 @@ export class Interface extends pulumi.CustomResource {
             resourceInputs["firewallId"] = args?.firewallId;
             resourceInputs["linodeId"] = args?.linodeId;
             resourceInputs["public"] = args?.public;
+            resourceInputs["rdmaVpc"] = args?.rdmaVpc;
             resourceInputs["vlan"] = args?.vlan;
             resourceInputs["vpc"] = args?.vpc;
         }
@@ -302,15 +308,19 @@ export interface InterfaceState {
      */
     linodeId?: pulumi.Input<number | undefined>;
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      */
     public?: pulumi.Input<inputs.InterfacePublic | undefined>;
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     */
+    rdmaVpc?: pulumi.Input<inputs.InterfaceRdmaVpc | undefined>;
+    /**
+     * Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      */
     vlan?: pulumi.Input<inputs.InterfaceVlan | undefined>;
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      */
     vpc?: pulumi.Input<inputs.InterfaceVpc | undefined>;
 }
@@ -332,15 +342,19 @@ export interface InterfaceArgs {
      */
     linodeId: pulumi.Input<number>;
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      */
     public?: pulumi.Input<inputs.InterfacePublic | undefined>;
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     */
+    rdmaVpc?: pulumi.Input<inputs.InterfaceRdmaVpc | undefined>;
+    /**
+     * Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      */
     vlan?: pulumi.Input<inputs.InterfaceVlan | undefined>;
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      */
     vpc?: pulumi.Input<inputs.InterfaceVpc | undefined>;
 }

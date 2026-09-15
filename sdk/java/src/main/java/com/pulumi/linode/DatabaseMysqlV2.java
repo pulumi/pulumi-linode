@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .engineId("mysql/8")
  *             .label("mydatabase")
+ *             .engineId("mysql/8")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
  *             .build());
@@ -87,11 +87,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .allowLists("0.0.0.0/0")
- *             .engineId("mysql/8")
  *             .label("mydatabase")
+ *             .engineId("mysql/8")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .allowLists("0.0.0.0/0")
  *             .build());
  * 
  *     }
@@ -122,17 +122,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .allowLists("10.0.0.3/32")
- *             .clusterSize(3)
- *             .engineId("mysql/8")
  *             .label("mydatabase")
+ *             .engineId("mysql/8")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .allowLists("10.0.0.3/32")
+ *             .clusterSize(3)
  *             .updates(DatabaseMysqlV2UpdatesArgs.builder()
- *                 .day_of_week(3)
  *                 .duration(4)
  *                 .frequency("weekly")
- *                 .hour_of_day(22)
+ *                 .hourOfDay(22)
+ *                 .dayOfWeek(3)
  *                 .build())
  *             .build());
  * 
@@ -163,6 +163,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("mysql/8")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
  *             .engineConfigBinlogRetentionPeriod(3600)
  *             .engineConfigMysqlConnectTimeout(10)
  *             .engineConfigMysqlDefaultTimeZone("+00:00")
@@ -191,10 +195,6 @@ import javax.annotation.Nullable;
  *             .engineConfigMysqlSqlRequirePrimaryKey(false)
  *             .engineConfigMysqlTmpTableSize(16777216)
  *             .engineConfigMysqlWaitTimeout(28800)
- *             .engineId("mysql/8")
- *             .label("mydatabase")
- *             .region("us-mia")
- *             .type("g6-nanode-1")
  *             .build());
  * 
  *     }
@@ -224,11 +224,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .engineId("mysql/8")
- *             .forkSource(12345)
  *             .label("mydatabase")
+ *             .engineId("mysql/8")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .forkSource(12345)
  *             .build());
  * 
  *     }
@@ -259,15 +259,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabaseMysqlV2("foobar", DatabaseMysqlV2Args.builder()
- *             .engineId("mysql/8")
  *             .label("mydatabase")
- *             .privateNetwork(DatabaseMysqlV2PrivateNetworkArgs.builder()
- *                 .public_access(false)
- *                 .subnet_id(456)
- *                 .vpc_id(123)
- *                 .build())
+ *             .engineId("mysql/8")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .privateNetwork(DatabaseMysqlV2PrivateNetworkArgs.builder()
+ *                 .vpcId(123)
+ *                 .subnetId(456)
+ *                 .publicAccess(false)
+ *                 .build())
  *             .build());
  * 
  *     }

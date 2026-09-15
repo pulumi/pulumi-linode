@@ -76,6 +76,118 @@ import (
 //	}
 //
 // ```
+// ```go
+// package main
+//
+// import (
+//
+//	"strconv"
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a VPC and a subnet
+//			foobar, err := linode.NewVpc(ctx, "foobar", &linode.VpcArgs{
+//				Label:       pulumi.String("my-vpc"),
+//				Region:      pulumi.String("us-mia"),
+//				Description: pulumi.String("test description"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			foobarVpcSubnet, err := linode.NewVpcSubnet(ctx, "foobar", &linode.VpcSubnetArgs{
+//				VpcId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				Label: pulumi.String("my-subnet"),
+//				Ipv4:  pulumi.String("10.0.4.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			my_instance, err := linode.NewInstance(ctx, "my-instance", &linode.InstanceArgs{
+//				Label:  pulumi.String("my-instance"),
+//				Type:   pulumi.String("g6-standard-1"),
+//				Region: pulumi.String("us-mia"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a boot disk
+//			boot, err := linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
+//				Label:    pulumi.String("boot"),
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				Size: pulumi.Int(my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (float64, error) {
+//					return float64(pulumi.All(specs[0].Disk, 512).ApplyT(func(_args []interface{}) (float64, error) {
+//						__convert := _args[0].(float64)
+//						__convert1 := _args[1].(float64)
+//						return __convert - __convert1, nil
+//					}).(pulumi.Float64Output)), nil
+//				}).(pulumi.Float64Output)),
+//				Image:    pulumi.String("linode/ubuntu22.04"),
+//				RootPass: pulumi.String("myc00lpass!ciuw23asxbviwuc"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a swap disk
+//			swap, err := linode.NewInstanceDisk(ctx, "swap", &linode.InstanceDiskArgs{
+//				Label:      pulumi.String("swap"),
+//				LinodeId:   my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				Size:       pulumi.Int(512),
+//				Filesystem: pulumi.String("swap"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewInstanceConfig(ctx, "my-config", &linode.InstanceConfigArgs{
+//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				Label:    pulumi.String("my-config"),
+//				Devices: linode.InstanceConfigDevicesArgs{
+//					map[string]interface{}{
+//						"deviceName": "sda",
+//						"diskId":     boot.ID(),
+//					},
+//					map[string]interface{}{
+//						"deviceName": "sdb",
+//						"diskId":     swap.ID(),
+//					},
+//				},
+//				Helpers: linode.InstanceConfigHelperArray{
+//					&linode.InstanceConfigHelperArgs{
+//						UpdatedbDisabled: pulumi.Bool(false),
+//					},
+//				},
+//				Interfaces: linode.InstanceConfigInterfaceArray{
+//					&linode.InstanceConfigInterfaceArgs{
+//						Purpose: pulumi.String("public"),
+//					},
+//					&linode.InstanceConfigInterfaceArgs{
+//						Purpose:     pulumi.String("vlan"),
+//						Label:       pulumi.String("my-vlan"),
+//						IpamAddress: pulumi.String("10.0.0.2/24"),
+//					},
+//					&linode.InstanceConfigInterfaceArgs{
+//						Purpose:  pulumi.String("vpc"),
+//						SubnetId: foobarVpcSubnet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//						Ipv4: &linode.InstanceConfigInterfaceIpv4Args{
+//							Vpc: pulumi.String("10.0.4.250"),
+//						},
+//					},
+//				},
+//				Booted: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Instance Configs can be imported using the `linodeId` followed by the Instance Config `id` separated by a comma, e.g.

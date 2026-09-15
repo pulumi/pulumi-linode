@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewObjectStorageBucket(ctx, "foobar", &linode.ObjectStorageBucketArgs{
-//				Label:  pulumi.String("mybucket"),
 //				Region: pulumi.String("us-mia"),
+//				Label:  pulumi.String("mybucket"),
 //			})
 //			if err != nil {
 //				return err

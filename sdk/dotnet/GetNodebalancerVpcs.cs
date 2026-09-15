@@ -44,6 +44,7 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
+        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -55,7 +56,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -70,6 +70,7 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
+        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -81,7 +82,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -137,6 +137,7 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
+        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -148,7 +149,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -163,6 +163,7 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
+        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -174,7 +175,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -230,6 +230,7 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
+        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -241,7 +242,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });
@@ -256,6 +256,7 @@ namespace Pulumi.Linode
         /// {
         ///     var vpc_configs = Linode.GetNodebalancerVpcs.Invoke(new()
         ///     {
+        ///         NodebalancerId = 12345,
         ///         Filters = new[]
         ///         {
         ///             new Linode.Inputs.GetNodebalancerVpcsFilterInputArgs
@@ -267,7 +268,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         NodebalancerId = 12345,
         ///     });
         /// 
         /// });

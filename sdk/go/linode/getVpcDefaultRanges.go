@@ -59,10 +59,8 @@ type GetVpcDefaultRangesResult struct {
 }
 
 func GetVpcDefaultRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVpcDefaultRangesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetVpcDefaultRangesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("linode:index/getVpcDefaultRanges:getVpcDefaultRanges", nil, GetVpcDefaultRangesResultOutput{}, options).(GetVpcDefaultRangesResultOutput), nil
-	}).(GetVpcDefaultRangesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getVpcDefaultRanges:getVpcDefaultRanges", nil, GetVpcDefaultRangesResultOutput{}, options).(GetVpcDefaultRangesResultOutput)
 }
 
 // A collection of values returned by getVpcDefaultRanges.

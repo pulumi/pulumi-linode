@@ -16,6 +16,44 @@ import (
 //
 // ## Example Usage
 //
+// ### Uploading a file to a bucket
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokePathexpand, err := std.Pathexpand(ctx, &std.PathexpandArgs{
+//				Input: "~/files/log.txt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
+//				Bucket:    pulumi.String("my-bucket"),
+//				Region:    pulumi.String("us-mia"),
+//				Key:       pulumi.String("my-object"),
+//				SecretKey: pulumi.Any(myKey.SecretKey),
+//				AccessKey: pulumi.Any(myKey.AccessKey),
+//				Source:    pulumi.String(invokePathexpand.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ### Uploading plaintext to a bucket
 //
 // ```go
@@ -34,11 +72,47 @@ import (
 //				Bucket:          pulumi.String("my-bucket"),
 //				Region:          pulumi.String("us-mia"),
 //				Key:             pulumi.String("my-object"),
-//				SecretKey:       pulumi.Any(linode_object_storage_key.My_key.Secret_key),
-//				AccessKey:       pulumi.Any(linode_object_storage_key.My_key.Access_key),
+//				SecretKey:       pulumi.Any(myKey.SecretKey),
+//				AccessKey:       pulumi.Any(myKey.AccessKey),
 //				Content:         pulumi.String("This is the content of the Object..."),
 //				ContentType:     pulumi.String("text/plain"),
 //				ContentLanguage: pulumi.String("en"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Creating an object using implicitly created object credentials
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokePathexpand, err := std.Pathexpand(ctx, &std.PathexpandArgs{
+//				Input: "~/files/log.txt",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewObjectStorageObject(ctx, "object", &linode.ObjectStorageObjectArgs{
+//				Bucket: pulumi.String("my-bucket"),
+//				Region: pulumi.String("us-mia"),
+//				Key:    pulumi.String("my-object"),
+//				Source: pulumi.String(invokePathexpand.Result),
 //			})
 //			if err != nil {
 //				return err

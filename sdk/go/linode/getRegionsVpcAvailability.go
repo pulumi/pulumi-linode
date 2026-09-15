@@ -55,10 +55,8 @@ type GetRegionsVpcAvailabilityResult struct {
 }
 
 func GetRegionsVpcAvailabilityOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRegionsVpcAvailabilityResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetRegionsVpcAvailabilityResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability", nil, GetRegionsVpcAvailabilityResultOutput{}, options).(GetRegionsVpcAvailabilityResultOutput), nil
-	}).(GetRegionsVpcAvailabilityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getRegionsVpcAvailability:getRegionsVpcAvailability", nil, GetRegionsVpcAvailabilityResultOutput{}, options).(GetRegionsVpcAvailabilityResultOutput)
 }
 
 // A collection of values returned by getRegionsVpcAvailability.

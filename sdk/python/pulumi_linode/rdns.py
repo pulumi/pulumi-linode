@@ -180,11 +180,11 @@ class Rdns(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_instance = linode.Instance("fooInstance",
+        foo_instance = linode.Instance("foo",
             image="linode/arch",
             region="ca-east",
             type="g6-dedicated-2")
-        foo_rdns = linode.Rdns("fooRdns",
+        foo = linode.Rdns("foo",
             address=foo_instance.ip_address,
             rdns=foo_instance.ip_address.apply(lambda ip_address: f"{ip_address}.nip.io"))
         ```
@@ -227,11 +227,11 @@ class Rdns(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_instance = linode.Instance("fooInstance",
+        foo_instance = linode.Instance("foo",
             image="linode/arch",
             region="ca-east",
             type="g6-dedicated-2")
-        foo_rdns = linode.Rdns("fooRdns",
+        foo = linode.Rdns("foo",
             address=foo_instance.ip_address,
             rdns=foo_instance.ip_address.apply(lambda ip_address: f"{ip_address}.nip.io"))
         ```

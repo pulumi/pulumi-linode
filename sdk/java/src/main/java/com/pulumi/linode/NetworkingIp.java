@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testIp = new NetworkingIp("testIp", NetworkingIpArgs.builder()
+ *             .type("ipv4")
  *             .linodeId(12345)
  *             .public_(true)
- *             .type("ipv4")
  *             .build());
  * 
  *     }

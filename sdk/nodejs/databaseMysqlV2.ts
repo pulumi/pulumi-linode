@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     engineId: "mysql/8",
  *     label: "mydatabase",
+ *     engineId: "mysql/8",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
  * });
@@ -30,11 +30,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     allowLists: ["0.0.0.0/0"],
- *     engineId: "mysql/8",
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -42,17 +42,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     allowLists: ["10.0.0.3/32"],
  *     clusterSize: 3,
- *     engineId: "mysql/8",
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  *     updates: {
- *         day_of_week: 3,
  *         duration: 4,
  *         frequency: "weekly",
- *         hour_of_day: 22,
+ *         hourOfDay: 22,
+ *         dayOfWeek: 3,
  *     },
  * });
  * ```
@@ -61,6 +61,10 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     engineConfigBinlogRetentionPeriod: 3600,
  *     engineConfigMysqlConnectTimeout: 10,
  *     engineConfigMysqlDefaultTimeZone: "+00:00",
@@ -89,10 +93,6 @@ import * as utilities from "./utilities";
  *     engineConfigMysqlSqlRequirePrimaryKey: false,
  *     engineConfigMysqlTmpTableSize: 16777216,
  *     engineConfigMysqlWaitTimeout: 28800,
- *     engineId: "mysql/8",
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -100,11 +100,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
+ *     label: "mydatabase",
  *     engineId: "mysql/8",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     forkSource: 12345,
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -112,15 +112,15 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabaseMysqlV2("foobar", {
- *     engineId: "mysql/8",
  *     label: "mydatabase",
- *     privateNetwork: {
- *         public_access: false,
- *         subnet_id: 456,
- *         vpc_id: 123,
- *     },
+ *     engineId: "mysql/8",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
+ *     privateNetwork: {
+ *         vpcId: 123,
+ *         subnetId: 456,
+ *         publicAccess: false,
+ *     },
  * });
  * ```
  *

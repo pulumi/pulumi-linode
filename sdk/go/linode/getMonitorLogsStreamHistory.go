@@ -66,12 +66,8 @@ type GetMonitorLogsStreamHistoryResult struct {
 }
 
 func GetMonitorLogsStreamHistoryOutput(ctx *pulumi.Context, args GetMonitorLogsStreamHistoryOutputArgs, opts ...pulumi.InvokeOption) GetMonitorLogsStreamHistoryResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMonitorLogsStreamHistoryResultOutput, error) {
-			args := v.(GetMonitorLogsStreamHistoryArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory", args, GetMonitorLogsStreamHistoryResultOutput{}, options).(GetMonitorLogsStreamHistoryResultOutput), nil
-		}).(GetMonitorLogsStreamHistoryResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory", args, GetMonitorLogsStreamHistoryResultOutput{}, options).(GetMonitorLogsStreamHistoryResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorLogsStreamHistory.

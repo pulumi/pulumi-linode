@@ -29,21 +29,21 @@ namespace Pulumi.Linode
     /// {
     ///     var web = new Linode.Instance("web", new()
     ///     {
+    ///         Label = "simple_instance",
+    ///         Image = "linode/ubuntu22.04",
+    ///         Region = "us-central",
+    ///         Type = "g6-standard-1",
     ///         AuthorizedKeys = new[]
     ///         {
     ///             "ssh-rsa AAAA...Gw== user@example.local",
     ///         },
-    ///         Image = "linode/ubuntu22.04",
-    ///         Label = "simple_instance",
-    ///         PrivateIp = true,
-    ///         Region = "us-central",
     ///         RootPass = "this-is-not-a-safe-password",
-    ///         SwapSize = 256,
     ///         Tags = new[]
     ///         {
     ///             "foo",
     ///         },
-    ///         Type = "g6-standard-1",
+    ///         SwapSize = 256,
+    ///         PrivateIp = true,
     ///     });
     /// 
     /// });
@@ -63,14 +63,14 @@ namespace Pulumi.Linode
     /// {
     ///     var web = new Linode.Instance("web", new()
     ///     {
+    ///         Label = "simple_instance",
+    ///         Image = "linode/ubuntu22.04",
+    ///         Region = "us-central",
+    ///         Type = "g6-standard-1",
     ///         AuthorizedKeys = new[]
     ///         {
     ///             "ssh-rsa AAAA...Gw== user@example.local",
     ///         },
-    ///         Image = "linode/ubuntu22.04",
-    ///         Label = "simple_instance",
-    ///         Region = "us-central",
-    ///         Type = "g6-standard-1",
     ///     });
     /// 
     /// });
@@ -90,11 +90,15 @@ namespace Pulumi.Linode
     /// {
     ///     var web = new Linode.Instance("web", new()
     ///     {
+    ///         Label = "simple_instance",
+    ///         Image = "linode/ubuntu22.04",
+    ///         Region = "us-central",
+    ///         Type = "g6-standard-1",
     ///         AuthorizedKeys = new[]
     ///         {
     ///             "ssh-rsa AAAA...Gw== user@example.local",
     ///         },
-    ///         Image = "linode/ubuntu22.04",
+    ///         RootPass = "this-is-not-a-safe-password",
     ///         Interfaces = new[]
     ///         {
     ///             new Linode.Inputs.InstanceInterfaceArgs
@@ -103,24 +107,20 @@ namespace Pulumi.Linode
     ///             },
     ///             new Linode.Inputs.InstanceInterfaceArgs
     ///             {
+    ///                 Purpose = "vpc",
+    ///                 SubnetId = 123,
     ///                 Ipv4 = new Linode.Inputs.InstanceInterfaceIpv4Args
     ///                 {
     ///                     Vpc = "10.0.4.250",
     ///                 },
-    ///                 Purpose = "vpc",
-    ///                 SubnetId = 123,
     ///             },
     ///         },
-    ///         Label = "simple_instance",
-    ///         PrivateIp = true,
-    ///         Region = "us-central",
-    ///         RootPass = "this-is-not-a-safe-password",
-    ///         SwapSize = 256,
     ///         Tags = new[]
     ///         {
     ///             "foo",
     ///         },
-    ///         Type = "g6-standard-1",
+    ///         SwapSize = 256,
+    ///         PrivateIp = true,
     ///     });
     /// 
     /// });
@@ -152,14 +152,14 @@ namespace Pulumi.Linode
     ///         PrivateIp = true,
     ///     });
     /// 
-    ///     var webVolume = new Linode.Volume("webVolume", new()
+    ///     var webVolume = new Linode.Volume("web_volume", new()
     ///     {
     ///         Label = "web_volume",
     ///         Size = 20,
     ///         Region = "us-central",
     ///     });
     /// 
-    ///     var bootDisk = new Linode.InstanceDisk("bootDisk", new()
+    ///     var bootDisk = new Linode.InstanceDisk("boot_disk", new()
     ///     {
     ///         Label = "boot",
     ///         LinodeId = web.Id,
@@ -176,7 +176,7 @@ namespace Pulumi.Linode
     ///         RootPass = "terr4form-test",
     ///     });
     /// 
-    ///     var bootConfig = new Linode.InstanceConfig("bootConfig", new()
+    ///     var bootConfig = new Linode.InstanceConfig("boot_config", new()
     ///     {
     ///         Label = "boot_config",
     ///         LinodeId = web.Id,
@@ -217,12 +217,12 @@ namespace Pulumi.Linode
     ///     var my_instance = new Linode.Instance("my-instance", new()
     ///     {
     ///         Label = "my-instance",
+    ///         Region = "us-mia",
+    ///         Type = "g6-standard-1",
     ///         PlacementGroup = new Linode.Inputs.InstancePlacementGroupArgs
     ///         {
     ///             Id = 12345,
     ///         },
-    ///         Region = "us-mia",
-    ///         Type = "g6-standard-1",
     ///     });
     /// 
     /// });
@@ -401,6 +401,12 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
+        /// An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `Public`, `Vlan`, `Vpc`, and `RdmaVpc` interface types. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` can be specified per interface entry.NOTE: This option may require `InterfaceGeneration = "linode"` or depends on your account settings.
+        /// </summary>
+        [Output("linodeInterfaces")]
+        public Output<ImmutableArray<Outputs.InstanceLinodeInterface>> LinodeInterfaces { get; private set; } = null!;
+
+        /// <summary>
         /// If applicable, the ID of the LKE cluster this instance is a part of.
         /// </summary>
         [Output("lkeClusterId")]
@@ -436,6 +442,8 @@ namespace Pulumi.Linode
         /// Enables the Network Helper feature. The default value is determined by the NetworkHelper setting in the account settings.
         /// 
         /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
+        /// 
+        /// * `LinodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`Public`, `Vlan`, `Vpc`, `RdmaVpc`) to attach to the Linode at creation. Requires `InterfaceGeneration = "linode"`. Conflicts with `Interface`, `Disk`, and `Config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         /// </summary>
         [Output("networkHelper")]
         public Output<bool?> NetworkHelper { get; private set; } = null!;
@@ -497,13 +505,13 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.InstanceSpec>> Specs { get; private set; } = null!;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         /// </summary>
         [Output("stackscriptData")]
         public Output<ImmutableDictionary<string, string>?> StackscriptData { get; private set; } = null!;
 
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         /// </summary>
         [Output("stackscriptId")]
         public Output<int?> StackscriptId { get; private set; } = null!;
@@ -747,6 +755,18 @@ namespace Pulumi.Linode
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        [Input("linodeInterfaces")]
+        private InputList<Inputs.InstanceLinodeInterfaceArgs>? _linodeInterfaces;
+
+        /// <summary>
+        /// An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `Public`, `Vlan`, `Vpc`, and `RdmaVpc` interface types. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` can be specified per interface entry.NOTE: This option may require `InterfaceGeneration = "linode"` or depends on your account settings.
+        /// </summary>
+        public InputList<Inputs.InstanceLinodeInterfaceArgs> LinodeInterfaces
+        {
+            get => _linodeInterfaces ?? (_linodeInterfaces = new InputList<Inputs.InstanceLinodeInterfaceArgs>());
+            set => _linodeInterfaces = value;
+        }
+
         /// <summary>
         /// The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         /// </summary>
@@ -777,6 +797,8 @@ namespace Pulumi.Linode
         /// Enables the Network Helper feature. The default value is determined by the NetworkHelper setting in the account settings.
         /// 
         /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
+        /// 
+        /// * `LinodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`Public`, `Vlan`, `Vpc`, `RdmaVpc`) to attach to the Linode at creation. Requires `InterfaceGeneration = "linode"`. Conflicts with `Interface`, `Disk`, and `Config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         /// </summary>
         [Input("networkHelper")]
         public Input<bool>? NetworkHelper { get; set; }
@@ -845,7 +867,7 @@ namespace Pulumi.Linode
         private InputMap<string>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         /// </summary>
         public InputMap<string> StackscriptData
         {
@@ -858,7 +880,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }
@@ -1107,6 +1129,18 @@ namespace Pulumi.Linode
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        [Input("linodeInterfaces")]
+        private InputList<Inputs.InstanceLinodeInterfaceGetArgs>? _linodeInterfaces;
+
+        /// <summary>
+        /// An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `Public`, `Vlan`, `Vpc`, and `RdmaVpc` interface types. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` can be specified per interface entry.NOTE: This option may require `InterfaceGeneration = "linode"` or depends on your account settings.
+        /// </summary>
+        public InputList<Inputs.InstanceLinodeInterfaceGetArgs> LinodeInterfaces
+        {
+            get => _linodeInterfaces ?? (_linodeInterfaces = new InputList<Inputs.InstanceLinodeInterfaceGetArgs>());
+            set => _linodeInterfaces = value;
+        }
+
         /// <summary>
         /// If applicable, the ID of the LKE cluster this instance is a part of.
         /// </summary>
@@ -1155,6 +1189,8 @@ namespace Pulumi.Linode
         /// Enables the Network Helper feature. The default value is determined by the NetworkHelper setting in the account settings.
         /// 
         /// * `Interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `Config` block.
+        /// 
+        /// * `LinodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`Public`, `Vlan`, `Vpc`, `RdmaVpc`) to attach to the Linode at creation. Requires `InterfaceGeneration = "linode"`. Conflicts with `Interface`, `Disk`, and `Config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         /// </summary>
         [Input("networkHelper")]
         public Input<bool>? NetworkHelper { get; set; }
@@ -1241,7 +1277,7 @@ namespace Pulumi.Linode
         private InputMap<string>? _stackscriptData;
 
         /// <summary>
-        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        /// An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         /// </summary>
         public InputMap<string> StackscriptData
         {
@@ -1254,7 +1290,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        /// The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         /// </summary>
         [Input("stackscriptId")]
         public Input<int>? StackscriptId { get; set; }

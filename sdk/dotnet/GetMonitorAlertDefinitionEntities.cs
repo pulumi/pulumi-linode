@@ -27,8 +27,8 @@ namespace Pulumi.Linode
         /// {
         ///     var test = Linode.GetMonitorAlertDefinitionEntities.Invoke(new()
         ///     {
-        ///         AlertId = 123,
         ///         ServiceType = "dbaas",
+        ///         AlertId = 123,
         ///     });
         /// 
         /// });
@@ -43,6 +43,7 @@ namespace Pulumi.Linode
         /// {
         ///     var test = Linode.GetMonitorAlertDefinitionEntities.Invoke(new()
         ///     {
+        ///         ServiceType = "dbaas",
         ///         AlertId = 123,
         ///         Filters = new[]
         ///         {
@@ -55,7 +56,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         ServiceType = "dbaas",
         ///     });
         /// 
         /// });
@@ -90,8 +90,8 @@ namespace Pulumi.Linode
         /// {
         ///     var test = Linode.GetMonitorAlertDefinitionEntities.Invoke(new()
         ///     {
-        ///         AlertId = 123,
         ///         ServiceType = "dbaas",
+        ///         AlertId = 123,
         ///     });
         /// 
         /// });
@@ -106,6 +106,7 @@ namespace Pulumi.Linode
         /// {
         ///     var test = Linode.GetMonitorAlertDefinitionEntities.Invoke(new()
         ///     {
+        ///         ServiceType = "dbaas",
         ///         AlertId = 123,
         ///         Filters = new[]
         ///         {
@@ -118,7 +119,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         ServiceType = "dbaas",
         ///     });
         /// 
         /// });
@@ -153,8 +153,8 @@ namespace Pulumi.Linode
         /// {
         ///     var test = Linode.GetMonitorAlertDefinitionEntities.Invoke(new()
         ///     {
-        ///         AlertId = 123,
         ///         ServiceType = "dbaas",
+        ///         AlertId = 123,
         ///     });
         /// 
         /// });
@@ -169,6 +169,7 @@ namespace Pulumi.Linode
         /// {
         ///     var test = Linode.GetMonitorAlertDefinitionEntities.Invoke(new()
         ///     {
+        ///         ServiceType = "dbaas",
         ///         AlertId = 123,
         ///         Filters = new[]
         ///         {
@@ -181,7 +182,6 @@ namespace Pulumi.Linode
         ///                 },
         ///             },
         ///         },
-        ///         ServiceType = "dbaas",
         ///     });
         /// 
         /// });

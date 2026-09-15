@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var john = new User("john", UserArgs.builder()
- *             .email("john}{@literal @}{@code acme.io")
  *             .username("john123")
+ *             .email("john}{@literal @}{@code acme.io")
  *             .build());
  * 
  *     }}{@code
@@ -88,17 +88,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var fooser = new User("fooser", UserArgs.builder()
+ *             .username("cooluser123")
  *             .email("cool}{@literal @}{@code acme.io")
+ *             .restricted(true)
  *             .globalGrants(UserGlobalGrantsArgs.builder()
- *                 .addImages(true)
  *                 .addLinodes(true)
+ *                 .addImages(true)
  *                 .build())
  *             .linodeGrants(UserLinodeGrantArgs.builder()
  *                 .id(12345)
  *                 .permissions("read_write")
  *                 .build())
- *             .restricted(true)
- *             .username("cooluser123")
  *             .build());
  * 
  *     }}{@code

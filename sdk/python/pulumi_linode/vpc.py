@@ -138,6 +138,7 @@ class _VpcState:
                  ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input['VpcIpv6Args']]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnets: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetArgs']]]] = None,
                  updated: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -149,6 +150,7 @@ class _VpcState:
         :param pulumi.Input[Sequence[pulumi.Input['VpcIpv6Args']]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input['VpcSubnetArgs']]] subnets: A list of subnets under this VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
                
@@ -168,6 +170,8 @@ class _VpcState:
             pulumi.set(__self__, "label", label)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if subnets is not None:
+            pulumi.set(__self__, "subnets", subnets)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
         if vpc_type is not None:
@@ -247,6 +251,18 @@ class _VpcState:
 
     @_builtins.property
     @pulumi.getter
+    def subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetArgs']]]]:
+        """
+        A list of subnets under this VPC.
+        """
+        return pulumi.get(self, "subnets")
+
+    @subnets.setter
+    def subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VpcSubnetArgs']]]]):
+        pulumi.set(self, "subnets", value)
+
+    @_builtins.property
+    @pulumi.getter
     def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the VPC was last updated.
@@ -300,9 +316,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.Vpc("test",
-            description="My first VPC.",
             label="test-vpc",
-            region="us-iad")
+            region="us-iad",
+            description="My first VPC.")
         ```
 
         Create a VPC with a `/52` IPv6 range prefix:
@@ -313,11 +329,11 @@ class Vpc(pulumi.CustomResource):
 
         # NOTE: IPv6 VPCs may not currently be available to all users.
         test = linode.Vpc("test",
+            label="test-vpc",
+            region="us-iad",
             ipv6s=[{
                 "range": "/52",
-            }],
-            label="test-vpc",
-            region="us-iad")
+            }])
         ```
         ```python
         import pulumi
@@ -325,11 +341,11 @@ class Vpc(pulumi.CustomResource):
 
         # NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
         test = linode.Vpc("test",
+            label="test-vpc",
+            region="us-iad",
             ipv4s=[{
                 "range": "10.0.0.0/8",
-            }],
-            label="test-vpc",
-            region="us-iad")
+            }])
         ```
 
         ## IPv6
@@ -351,6 +367,56 @@ class Vpc(pulumi.CustomResource):
         Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
 
         * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+
+        ## Subnets
+
+        The following attributes are exported under each entry of the `subnets` field:
+
+        * `id` - The id of the VPC Subnet.
+
+        * `label` - The label of the VPC Subnet.
+
+        * `ipv4` - The IPv4 range of this subnet in CIDR format.
+
+        * `ipv6` - The IPv6 ranges of this subnet.
+          
+          * `range` - An IPv6 range allocated to this subnet.
+
+        * `linodes` - A list of Linodes assigned to this subnet.
+          
+          * `id` - ID of the Linode
+          
+          * `interfaces` - A list of networking interfaces objects.
+            
+            * `id` - ID of the interface.
+            
+            * `config_id` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+            
+            * `active` - Whether the Interface is actively in use.
+
+        * `databases` - A list of Managed Databases assigned to this subnet.
+          
+          * `id` - ID of a managed database assigned to the VPC Subnet.
+          
+          * `ipv4_range` - IPv4 range assigned to the database.
+          
+          * `ipv6_ranges` - A list of IPv6 ranges assigned to the database.
+            
+            * `range` - An IPv6 address range in CIDR notation.
+
+        * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+          
+          * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+          
+          * `ipv4_range` - IPv4 range assigned to the NodeBalancer.
+          
+          * `ipv6_ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+            
+            * `range` - An IPv6 address range in CIDR notation.
+
+        * `created` - The date and time when the VPC Subnet was created.
+
+        * `updated` - The date and time when the VPC Subnet was last updated.
 
 
         :param str resource_name: The name of the resource.
@@ -385,9 +451,9 @@ class Vpc(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.Vpc("test",
-            description="My first VPC.",
             label="test-vpc",
-            region="us-iad")
+            region="us-iad",
+            description="My first VPC.")
         ```
 
         Create a VPC with a `/52` IPv6 range prefix:
@@ -398,11 +464,11 @@ class Vpc(pulumi.CustomResource):
 
         # NOTE: IPv6 VPCs may not currently be available to all users.
         test = linode.Vpc("test",
+            label="test-vpc",
+            region="us-iad",
             ipv6s=[{
                 "range": "/52",
-            }],
-            label="test-vpc",
-            region="us-iad")
+            }])
         ```
         ```python
         import pulumi
@@ -410,11 +476,11 @@ class Vpc(pulumi.CustomResource):
 
         # NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
         test = linode.Vpc("test",
+            label="test-vpc",
+            region="us-iad",
             ipv4s=[{
                 "range": "10.0.0.0/8",
-            }],
-            label="test-vpc",
-            region="us-iad")
+            }])
         ```
 
         ## IPv6
@@ -436,6 +502,56 @@ class Vpc(pulumi.CustomResource):
         Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
 
         * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+
+        ## Subnets
+
+        The following attributes are exported under each entry of the `subnets` field:
+
+        * `id` - The id of the VPC Subnet.
+
+        * `label` - The label of the VPC Subnet.
+
+        * `ipv4` - The IPv4 range of this subnet in CIDR format.
+
+        * `ipv6` - The IPv6 ranges of this subnet.
+          
+          * `range` - An IPv6 range allocated to this subnet.
+
+        * `linodes` - A list of Linodes assigned to this subnet.
+          
+          * `id` - ID of the Linode
+          
+          * `interfaces` - A list of networking interfaces objects.
+            
+            * `id` - ID of the interface.
+            
+            * `config_id` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+            
+            * `active` - Whether the Interface is actively in use.
+
+        * `databases` - A list of Managed Databases assigned to this subnet.
+          
+          * `id` - ID of a managed database assigned to the VPC Subnet.
+          
+          * `ipv4_range` - IPv4 range assigned to the database.
+          
+          * `ipv6_ranges` - A list of IPv6 ranges assigned to the database.
+            
+            * `range` - An IPv6 address range in CIDR notation.
+
+        * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+          
+          * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+          
+          * `ipv4_range` - IPv4 range assigned to the NodeBalancer.
+          
+          * `ipv6_ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+            
+            * `range` - An IPv6 address range in CIDR notation.
+
+        * `created` - The date and time when the VPC Subnet was created.
+
+        * `updated` - The date and time when the VPC Subnet was last updated.
 
 
         :param str resource_name: The name of the resource.
@@ -479,6 +595,7 @@ class Vpc(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["vpc_type"] = vpc_type
             __props__.__dict__["created"] = None
+            __props__.__dict__["subnets"] = None
             __props__.__dict__["updated"] = None
         super(Vpc, __self__).__init__(
             'linode:index/vpc:Vpc',
@@ -496,6 +613,7 @@ class Vpc(pulumi.CustomResource):
             ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict']]]]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpc':
         """
@@ -511,6 +629,7 @@ class Vpc(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict']]]] subnets: A list of subnets under this VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
                
@@ -528,6 +647,7 @@ class Vpc(pulumi.CustomResource):
         __props__.__dict__["ipv6s"] = ipv6s
         __props__.__dict__["label"] = label
         __props__.__dict__["region"] = region
+        __props__.__dict__["subnets"] = subnets
         __props__.__dict__["updated"] = updated
         __props__.__dict__["vpc_type"] = vpc_type
         return Vpc(resource_name, opts=opts, __props__=__props__)
@@ -579,6 +699,14 @@ class Vpc(pulumi.CustomResource):
         The region of the VPC.
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def subnets(self) -> pulumi.Output[Sequence['outputs.VpcSubnet']]:
+        """
+        A list of subnets under this VPC.
+        """
+        return pulumi.get(self, "subnets")
 
     @_builtins.property
     @pulumi.getter

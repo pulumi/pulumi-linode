@@ -384,11 +384,11 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_instance = linode.Instance("fooInstance",
+        foo = linode.Instance("foo",
             region="us-east",
             type="g6-nanode-1")
-        foo_instance_config = linode.InstanceConfig("fooInstanceConfig",
-            linode_id=foo_instance.id.apply(lambda x: int(x)),
+        foo_instance_config = linode.InstanceConfig("foo",
+            linode_id=foo.id.apply(lambda x: int(x)),
             label="boot-existing-volume",
             kernel="linode/grub2",
             devices=[{
@@ -466,11 +466,11 @@ class Volume(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_instance = linode.Instance("fooInstance",
+        foo = linode.Instance("foo",
             region="us-east",
             type="g6-nanode-1")
-        foo_instance_config = linode.InstanceConfig("fooInstanceConfig",
-            linode_id=foo_instance.id.apply(lambda x: int(x)),
+        foo_instance_config = linode.InstanceConfig("foo",
+            linode_id=foo.id.apply(lambda x: int(x)),
             label="boot-existing-volume",
             kernel="linode/grub2",
             devices=[{

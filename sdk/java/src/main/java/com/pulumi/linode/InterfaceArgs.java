@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.InterfaceDefaultRouteArgs;
 import com.pulumi.linode.inputs.InterfacePublicArgs;
+import com.pulumi.linode.inputs.InterfaceRdmaVpcArgs;
 import com.pulumi.linode.inputs.InterfaceVlanArgs;
 import com.pulumi.linode.inputs.InterfaceVpcArgs;
 import java.lang.Integer;
@@ -66,14 +67,14 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     @Import(name="public")
     private @Nullable Output<InterfacePublicArgs> public_;
 
     /**
-     * @return Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * @return Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     public Optional<Output<InterfacePublicArgs>> public_() {
@@ -81,14 +82,29 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     * 
+     */
+    @Import(name="rdmaVpc")
+    private @Nullable Output<InterfaceRdmaVpcArgs> rdmaVpc;
+
+    /**
+     * @return Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     * 
+     */
+    public Optional<Output<InterfaceRdmaVpcArgs>> rdmaVpc() {
+        return Optional.ofNullable(this.rdmaVpc);
+    }
+
+    /**
+     * Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     @Import(name="vlan")
     private @Nullable Output<InterfaceVlanArgs> vlan;
 
     /**
-     * @return Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * @return Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     public Optional<Output<InterfaceVlanArgs>> vlan() {
@@ -96,14 +112,14 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     @Import(name="vpc")
     private @Nullable Output<InterfaceVpcArgs> vpc;
 
     /**
-     * @return Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * @return Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     public Optional<Output<InterfaceVpcArgs>> vpc() {
@@ -117,6 +133,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         this.firewallId = $.firewallId;
         this.linodeId = $.linodeId;
         this.public_ = $.public_;
+        this.rdmaVpc = $.rdmaVpc;
         this.vlan = $.vlan;
         this.vpc = $.vpc;
     }
@@ -203,7 +220,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+         * @param public_ Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
          * 
          * @return builder
          * 
@@ -214,7 +231,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param public_ Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+         * @param public_ Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
          * 
          * @return builder
          * 
@@ -224,7 +241,28 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlan Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+         * @param rdmaVpc Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdmaVpc(@Nullable Output<InterfaceRdmaVpcArgs> rdmaVpc) {
+            $.rdmaVpc = rdmaVpc;
+            return this;
+        }
+
+        /**
+         * @param rdmaVpc Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rdmaVpc(InterfaceRdmaVpcArgs rdmaVpc) {
+            return rdmaVpc(Output.of(rdmaVpc));
+        }
+
+        /**
+         * @param vlan Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
          * 
          * @return builder
          * 
@@ -235,7 +273,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vlan Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+         * @param vlan Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
          * 
          * @return builder
          * 
@@ -245,7 +283,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpc Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+         * @param vpc Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
          * 
          * @return builder
          * 
@@ -256,7 +294,7 @@ public final class InterfaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpc Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+         * @param vpc Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
          * 
          * @return builder
          * 

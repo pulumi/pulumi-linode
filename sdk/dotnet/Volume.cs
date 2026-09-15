@@ -57,15 +57,15 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooInstance = new Linode.Instance("fooInstance", new()
+    ///     var foo = new Linode.Instance("foo", new()
     ///     {
     ///         Region = "us-east",
     ///         Type = "g6-nanode-1",
     ///     });
     /// 
-    ///     var fooInstanceConfig = new Linode.InstanceConfig("fooInstanceConfig", new()
+    ///     var fooInstanceConfig = new Linode.InstanceConfig("foo", new()
     ///     {
-    ///         LinodeId = fooInstance.Id,
+    ///         LinodeId = foo.Id,
     ///         Label = "boot-existing-volume",
     ///         Kernel = "linode/grub2",
     ///         Devices = new[]

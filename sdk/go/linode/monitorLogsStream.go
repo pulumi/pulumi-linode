@@ -53,10 +53,10 @@ import (
 //				Label: pulumi.String("my-logs-destination"),
 //				Type:  pulumi.String("akamai_object_storage"),
 //				AkamaiObjectStorageDetails: &linode.MonitorLogsDestinationAkamaiObjectStorageDetailsArgs{
-//					Access_key_id:     key.AccessKey,
-//					Access_key_secret: key.SecretKey,
-//					Bucket_name:       bucket.Label,
-//					Host:              bucket.Hostname,
+//					AccessKeyId:     key.AccessKey,
+//					AccessKeySecret: key.SecretKey,
+//					BucketName:      bucket.Label,
+//					Host:            bucket.Hostname,
 //				},
 //			})
 //			if err != nil {
@@ -89,18 +89,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewMonitorLogsStream(ctx, "lkeExample", &linode.MonitorLogsStreamArgs{
+//			_, err := linode.NewMonitorLogsStream(ctx, "lke_example", &linode.MonitorLogsStreamArgs{
 //				Label: pulumi.String("my-lke-stream"),
 //				Type:  pulumi.String("lke_audit_logs"),
 //				Destinations: pulumi.IntArray{
-//					linode_monitor_logs_destination.Destination.Id,
+//					destination.Id,
 //				},
 //				Details: &linode.MonitorLogsStreamDetailsArgs{
-//					Cluster_ids: []int{
-//						12345,
-//						67890,
+//					ClusterIds: pulumi.IntArray{
+//						pulumi.Int(12345),
+//						pulumi.Int(67890),
 //					},
-//					Is_auto_add_all_clusters_enabled: false,
+//					IsAutoAddAllClustersEnabled: pulumi.Bool(false),
 //				},
 //			})
 //			if err != nil {

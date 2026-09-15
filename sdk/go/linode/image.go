@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "barBased", &linode.InstanceArgs{
+//			_, err = linode.NewInstance(ctx, "bar_based", &linode.InstanceArgs{
 //				Type:   foo.Type,
 //				Region: pulumi.String("eu-west"),
 //				Image:  bar.ID().ToIDOutput().ToStringOutput(),
@@ -69,6 +69,88 @@ import (
 //	}
 //
 // ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilemd5, err := std.Filemd5(ctx, &std.Filemd5Args{
+//				Input: "path/to/image.img.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewImage(ctx, "foobar", &linode.ImageArgs{
+//				Label:       pulumi.String("foobar-image"),
+//				Description: pulumi.String("An image uploaded from Terraform!"),
+//				Region:      pulumi.String("us-southeast"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("image-tag"),
+//					pulumi.String("test"),
+//				},
+//				FilePath: pulumi.String("path/to/image.img.gz"),
+//				FileHash: pulumi.String(invokeFilemd5.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			invokeFilemd5, err := std.Filemd5(ctx, &std.Filemd5Args{
+//				Input: "path/to/image.img.gz",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.NewImage(ctx, "foobar", &linode.ImageArgs{
+//				Label:       pulumi.String("foobar-image"),
+//				Description: pulumi.String("An image uploaded from Terraform!"),
+//				Region:      pulumi.String("us-southeast"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("image-tag"),
+//					pulumi.String("test"),
+//				},
+//				FilePath: pulumi.String("path/to/image.img.gz"),
+//				FileHash: pulumi.String(invokeFilemd5.Result),
+//				ReplicaRegions: pulumi.StringArray{
+//					pulumi.String("us-southeast"),
+//					pulumi.String("us-east"),
+//					pulumi.String("eu-west"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Linodes Images can be imported using the Linode Image `id`, e.g.

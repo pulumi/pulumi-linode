@@ -25,16 +25,26 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.MonitorAlertDefinition("test", new()
     ///     {
+    ///         ServiceType = "dbaas",
+    ///         Description = "An alert definition for ansible test",
+    ///         Label = "test-alert-definition",
+    ///         Severity = 1,
     ///         ChannelIds = new[]
     ///         {
     ///             10000,
     ///         },
-    ///         Description = "An alert definition for ansible test",
     ///         GroupBies = new[]
     ///         {
     ///             "entity_id",
     ///         },
-    ///         Label = "test-alert-definition",
+    ///         WaitFor = true,
+    ///         TriggerConditions = new Linode.Inputs.MonitorAlertDefinitionTriggerConditionsArgs
+    ///         {
+    ///             CriteriaCondition = "ALL",
+    ///             EvaluationPeriodSeconds = 300,
+    ///             PollingIntervalSeconds = 300,
+    ///             TriggerOccurrences = 1,
+    ///         },
     ///         RuleCriteria = new Linode.Inputs.MonitorAlertDefinitionRuleCriteriaArgs
     ///         {
     ///             Rules = new[]
@@ -57,16 +67,6 @@ namespace Pulumi.Linode
     ///                 },
     ///             },
     ///         },
-    ///         ServiceType = "dbaas",
-    ///         Severity = 1,
-    ///         TriggerConditions = new Linode.Inputs.MonitorAlertDefinitionTriggerConditionsArgs
-    ///         {
-    ///             Criteria_condition = "ALL",
-    ///             Evaluation_period_seconds = 300,
-    ///             Polling_interval_seconds = 300,
-    ///             Trigger_occurrences = "1",
-    ///         },
-    ///         WaitFor = true,
     ///     });
     /// 
     /// });

@@ -27,7 +27,7 @@ class GetVpcResult:
     """
     A collection of values returned by getVpc.
     """
-    def __init__(__self__, created=None, description=None, id=None, ipv4s=None, ipv6s=None, label=None, region=None, updated=None, vpc_type=None):
+    def __init__(__self__, created=None, description=None, id=None, ipv4s=None, ipv6s=None, label=None, region=None, subnets=None, updated=None, vpc_type=None):
         if created and not isinstance(created, str):
             raise TypeError("Expected argument 'created' to be a str")
         pulumi.set(__self__, "created", created)
@@ -49,6 +49,9 @@ class GetVpcResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if subnets and not isinstance(subnets, list):
+            raise TypeError("Expected argument 'subnets' to be a list")
+        pulumi.set(__self__, "subnets", subnets)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
@@ -111,6 +114,11 @@ class GetVpcResult:
 
     @_builtins.property
     @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetVpcSubnetResult']:
+        return pulumi.get(self, "subnets")
+
+    @_builtins.property
+    @pulumi.getter
     def updated(self) -> _builtins.str:
         """
         The date and time when the VPC was last updated.
@@ -139,6 +147,7 @@ class AwaitableGetVpcResult(GetVpcResult):
             ipv6s=self.ipv6s,
             label=self.label,
             region=self.region,
+            subnets=self.subnets,
             updated=self.updated,
             vpc_type=self.vpc_type)
 
@@ -177,9 +186,59 @@ def get_vpc(id: Optional[_builtins.str] = None,
 
     * `range` - The IPv4 range in CIDR format.
 
-    ### Subnets Reference
+    ## Subnets
 
-    To list all subnets under a VPC, please refer to the get_vpc_subnets data source.
+    The following attributes are exported under each entry of the `subnets` field:
+
+    * `id` - The id of the VPC Subnet.
+
+    * `label` - The label of the VPC Subnet.
+
+    * `ipv4` - The IPv4 range of this subnet in CIDR format.
+
+    * `ipv6` - The IPv6 ranges of this subnet.
+      
+      * `range` - An IPv6 range allocated to this subnet.
+
+    * `linodes` - A list of Linodes assigned to this subnet.
+      
+      * `id` - ID of the Linode
+      
+      * `interfaces` - A list of networking interfaces objects.
+        
+        * `id` - ID of the interface.
+        
+        * `config_id` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        
+        * `active` - Whether the Interface is actively in use.
+
+    * `databases` - A list of Managed Databases assigned to this subnet.
+      
+      * `id` - ID of a managed database assigned to the VPC Subnet.
+      
+      * `ipv4_range` - IPv4 range assigned to the database.
+      
+      * `ipv6_ranges` - A list of IPv6 ranges assigned to the database.
+        
+        * `range` - An IPv6 address range in CIDR notation.
+
+    * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+      
+      * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+      
+      * `ipv4_range` - IPv4 range assigned to the NodeBalancer.
+      
+      * `ipv6_ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+        
+        * `range` - An IPv6 address range in CIDR notation.
+
+    * `created` - The date and time when the VPC Subnet was created.
+
+    * `updated` - The date and time when the VPC Subnet was last updated.
+
+    ### Subnets data source
+
+    The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the get_vpc_subnets data source with Terraform `depends_on`.
 
 
     :param _builtins.str id: The unique id of this VPC.
@@ -197,6 +256,7 @@ def get_vpc(id: Optional[_builtins.str] = None,
         ipv6s=pulumi.get(__ret__, 'ipv6s'),
         label=pulumi.get(__ret__, 'label'),
         region=pulumi.get(__ret__, 'region'),
+        subnets=pulumi.get(__ret__, 'subnets'),
         updated=pulumi.get(__ret__, 'updated'),
         vpc_type=pulumi.get(__ret__, 'vpc_type'))
 def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -233,9 +293,59 @@ def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
 
     * `range` - The IPv4 range in CIDR format.
 
-    ### Subnets Reference
+    ## Subnets
 
-    To list all subnets under a VPC, please refer to the get_vpc_subnets data source.
+    The following attributes are exported under each entry of the `subnets` field:
+
+    * `id` - The id of the VPC Subnet.
+
+    * `label` - The label of the VPC Subnet.
+
+    * `ipv4` - The IPv4 range of this subnet in CIDR format.
+
+    * `ipv6` - The IPv6 ranges of this subnet.
+      
+      * `range` - An IPv6 range allocated to this subnet.
+
+    * `linodes` - A list of Linodes assigned to this subnet.
+      
+      * `id` - ID of the Linode
+      
+      * `interfaces` - A list of networking interfaces objects.
+        
+        * `id` - ID of the interface.
+        
+        * `config_id` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+        
+        * `active` - Whether the Interface is actively in use.
+
+    * `databases` - A list of Managed Databases assigned to this subnet.
+      
+      * `id` - ID of a managed database assigned to the VPC Subnet.
+      
+      * `ipv4_range` - IPv4 range assigned to the database.
+      
+      * `ipv6_ranges` - A list of IPv6 ranges assigned to the database.
+        
+        * `range` - An IPv6 address range in CIDR notation.
+
+    * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+      
+      * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+      
+      * `ipv4_range` - IPv4 range assigned to the NodeBalancer.
+      
+      * `ipv6_ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+        
+        * `range` - An IPv6 address range in CIDR notation.
+
+    * `created` - The date and time when the VPC Subnet was created.
+
+    * `updated` - The date and time when the VPC Subnet was last updated.
+
+    ### Subnets data source
+
+    The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the get_vpc_subnets data source with Terraform `depends_on`.
 
 
     :param _builtins.str id: The unique id of this VPC.
@@ -252,5 +362,6 @@ def get_vpc_output(id: pulumi.Input[Optional[_builtins.str]] = None,
         ipv6s=pulumi.get(__response__, 'ipv6s'),
         label=pulumi.get(__response__, 'label'),
         region=pulumi.get(__response__, 'region'),
+        subnets=pulumi.get(__response__, 'subnets'),
         updated=pulumi.get(__response__, 'updated'),
         vpc_type=pulumi.get(__response__, 'vpc_type')))

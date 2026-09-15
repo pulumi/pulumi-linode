@@ -28,12 +28,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.ObjectStorageKey("foobar", {
+ *     label: "my-key",
  *     bucketAccesses: [{
  *         bucketName: "my-bucket-name",
- *         permissions: "read_write",
  *         region: "us-mia",
+ *         permissions: "read_write",
  *     }],
- *     label: "my-key",
  * });
  * ```
  *
@@ -44,19 +44,19 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = new linode.ObjectStorageKey("foo", {
+ *     label: "image-access",
  *     bucketAccesses: [
  *         {
  *             bucketName: "foobar1",
- *             permissions: "read_write",
  *             region: "us-mia",
+ *             permissions: "read_write",
  *         },
  *         {
  *             bucketName: "foobar2",
- *             permissions: "read_write",
  *             region: "gb-lon",
+ *             permissions: "read_write",
  *         },
  *     ],
- *     label: "image-access",
  * });
  * ```
  */

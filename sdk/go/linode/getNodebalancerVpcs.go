@@ -54,6 +54,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetNodebalancerVpcs(ctx, &linode.GetNodebalancerVpcsArgs{
+//				NodebalancerId: 12345,
 //				Filters: []linode.GetNodebalancerVpcsFilter{
 //					{
 //						Name: "ipv4_range",
@@ -62,7 +63,6 @@ import (
 //						},
 //					},
 //				},
-//				NodebalancerId: 12345,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -85,6 +85,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetNodebalancerVpcs(ctx, &linode.GetNodebalancerVpcsArgs{
+//				NodebalancerId: 12345,
 //				Filters: []linode.GetNodebalancerVpcsFilter{
 //					{
 //						Name: "ipv6_range",
@@ -93,7 +94,6 @@ import (
 //						},
 //					},
 //				},
-//				NodebalancerId: 12345,
 //			}, nil)
 //			if err != nil {
 //				return err

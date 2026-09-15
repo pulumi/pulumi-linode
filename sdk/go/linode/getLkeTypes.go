@@ -40,7 +40,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("typeId", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getLkeTypes:getLkeTypes.pp:7,11-36)))
+// ctx.Export("typeId", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-37)))
 // return nil
 // })
 // }
@@ -61,7 +61,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("typeId", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getLkeTypes:getLkeTypes.pp:2,11-31)))
+// ctx.Export("typeId", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-32)))
 // return nil
 // })
 // }

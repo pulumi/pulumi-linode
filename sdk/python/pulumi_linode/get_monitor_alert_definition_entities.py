@@ -104,19 +104,19 @@ def get_monitor_alert_definition_entities(alert_id: Optional[_builtins.int] = No
     import pulumi
     import pulumi_linode as linode
 
-    test = linode.get_monitor_alert_definition_entities(alert_id=123,
-        service_type="dbaas")
+    test = linode.get_monitor_alert_definition_entities(service_type="dbaas",
+        alert_id=123)
     ```
     ```python
     import pulumi
     import pulumi_linode as linode
 
-    test = linode.get_monitor_alert_definition_entities(alert_id=123,
+    test = linode.get_monitor_alert_definition_entities(service_type="dbaas",
+        alert_id=123,
         filters=[{
             "name": "type",
             "values": ["dbaas"],
-        }],
-        service_type="dbaas")
+        }])
     ```
 
     ## Filterable Fields
@@ -162,19 +162,19 @@ def get_monitor_alert_definition_entities_output(alert_id: pulumi.Input[Optional
     import pulumi
     import pulumi_linode as linode
 
-    test = linode.get_monitor_alert_definition_entities(alert_id=123,
-        service_type="dbaas")
+    test = linode.get_monitor_alert_definition_entities(service_type="dbaas",
+        alert_id=123)
     ```
     ```python
     import pulumi
     import pulumi_linode as linode
 
-    test = linode.get_monitor_alert_definition_entities(alert_id=123,
+    test = linode.get_monitor_alert_definition_entities(service_type="dbaas",
+        alert_id=123,
         filters=[{
             "name": "type",
             "values": ["dbaas"],
-        }],
-        service_type="dbaas")
+        }])
     ```
 
     ## Filterable Fields

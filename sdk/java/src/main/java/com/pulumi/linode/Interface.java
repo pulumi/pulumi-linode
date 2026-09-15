@@ -12,6 +12,7 @@ import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.InterfaceState;
 import com.pulumi.linode.outputs.InterfaceDefaultRoute;
 import com.pulumi.linode.outputs.InterfacePublic;
+import com.pulumi.linode.outputs.InterfaceRdmaVpc;
 import com.pulumi.linode.outputs.InterfaceVlan;
 import com.pulumi.linode.outputs.InterfaceVpc;
 import java.lang.Integer;
@@ -61,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var public_ = new Interface("public", InterfaceArgs.builder()
- *             .linodeId(linode_instance.my-instance().id())
+ *             .linodeId(my_instance.id())
  *             .public_(InterfacePublicArgs.builder()
  *                 .ipv4(InterfacePublicIpv4Args.builder()
  *                     .addresses(InterfacePublicIpv4AddressArgs.builder()
@@ -113,7 +114,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ipv6Only = new Interface("ipv6Only", InterfaceArgs.builder()
- *             .linodeId(linode_instance.my-instance().id())
+ *             .linodeId(my_instance.id())
  *             .public_(InterfacePublicArgs.builder()
  *                 .ipv4(InterfacePublicIpv4Args.builder()
  *                     .addresses()
@@ -162,9 +163,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vpc = new Interface("vpc", InterfaceArgs.builder()
- *             .linodeId(linode_instance.my-instance().id())
+ *             .linodeId(my_instance.id())
  *             .vpc(InterfaceVpcArgs.builder()
- *                 .subnet_id(240213)
+ *                 .subnetId(240213)
  *                 .ipv4(InterfaceVpcIpv4Args.builder()
  *                     .addresses(InterfaceVpcIpv4AddressArgs.builder()
  *                         .address("auto")
@@ -196,6 +197,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.linode.InterfaceArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcIpv6Args;
+ * import com.pulumi.linode.inputs.InterfaceVpcIpv6SlaacArgs;
  * import com.pulumi.linode.inputs.InterfaceVpcIpv6RangeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -211,12 +213,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vpc = new Interface("vpc", InterfaceArgs.builder()
- *             .linodeId(linode_instance.my-instance().id())
+ *             .linodeId(my_instance.id())
  *             .vpc(InterfaceVpcArgs.builder()
- *                 .subnet_id(12345)
+ *                 .subnetId(12345)
  *                 .ipv6(InterfaceVpcIpv6Args.builder()
  *                     .isPublic(true)
- *                     .slaac(Arrays.asList(Map.of("range", "auto")))
+ *                     .slaacs(InterfaceVpcIpv6SlaacArgs.builder()
+ *                         .range("auto")
+ *                         .build())
  *                     .ranges(InterfaceVpcIpv6RangeArgs.builder()
  *                         .range("auto")
  *                         .build())
@@ -257,10 +261,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vlan = new Interface("vlan", InterfaceArgs.builder()
- *             .linodeId(linode_instance.web().id())
+ *             .linodeId(web.id())
  *             .vlan(InterfaceVlanArgs.builder()
- *                 .vlan_label("web-vlan")
- *                 .ipam_address("192.168.200.5/24")
+ *                 .vlanLabel("web-vlan")
+ *                 .ipamAddress("192.168.200.5/24")
  *                 .build())
  *             .build());
  * 
@@ -416,42 +420,56 @@ public class Interface extends com.pulumi.resources.CustomResource {
         return this.linodeId;
     }
     /**
-     * Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     @Export(name="public", refs={InterfacePublic.class}, tree="[0]")
     private Output</* @Nullable */ InterfacePublic> public_;
 
     /**
-     * @return Nested attributes object for a Linode public interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+     * @return Nested attributes object for a Linode public interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
      * 
      */
     public Output<Optional<InterfacePublic>> public_() {
         return Codegen.optional(this.public_);
     }
     /**
-     * Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     * 
+     */
+    @Export(name="rdmaVpc", refs={InterfaceRdmaVpc.class}, tree="[0]")
+    private Output</* @Nullable */ InterfaceRdmaVpc> rdmaVpc;
+
+    /**
+     * @return Nested attributes object for a Linode RDMA VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+     * 
+     */
+    public Output<Optional<InterfaceRdmaVpc>> rdmaVpc() {
+        return Codegen.optional(this.rdmaVpc);
+    }
+    /**
+     * Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     @Export(name="vlan", refs={InterfaceVlan.class}, tree="[0]")
     private Output</* @Nullable */ InterfaceVlan> vlan;
 
     /**
-     * @return Nested attributes object for a Linode VLAN interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+     * @return Nested attributes object for a Linode VLAN interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
      * 
      */
     public Output<Optional<InterfaceVlan>> vlan() {
         return Codegen.optional(this.vlan);
     }
     /**
-     * Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     @Export(name="vpc", refs={InterfaceVpc.class}, tree="[0]")
     private Output</* @Nullable */ InterfaceVpc> vpc;
 
     /**
-     * @return Nested attributes object for a Linode VPC interface. Exactly one of `public`, `vlan`, or `vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+     * @return Nested attributes object for a Linode VPC interface. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
      * 
      */
     public Output<Optional<InterfaceVpc>> vpc() {

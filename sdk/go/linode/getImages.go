@@ -69,7 +69,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("imageIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getImages:getImages.pp:2,11-33)))
+// ctx.Export("imageIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-34)))
 // return nil
 // })
 // }

@@ -13,6 +13,7 @@ import com.pulumi.linode.inputs.LkeNodePoolState;
 import com.pulumi.linode.outputs.LkeNodePoolAutoscaler;
 import com.pulumi.linode.outputs.LkeNodePoolNode;
 import com.pulumi.linode.outputs.LkeNodePoolTaint;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -56,8 +57,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
  *             .clusterId(150003)
- *             .nodeCount(3)
  *             .type("g6-standard-2")
+ *             .nodeCount(3)
  *             .build());
  * 
  *     }
@@ -88,9 +89,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
  *             .clusterId(150003)
+ *             .type("g6-standard-2")
+ *             .nodeCount(3)
  *             .label("app-pool")
- *             .nodeCount(3)
- *             .type("g6-standard-2")
  *             .build());
  * 
  *     }
@@ -121,9 +122,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
  *             .clusterId(150003)
+ *             .type("g6-standard-2")
  *             .firewallId(12345)
  *             .nodeCount(3)
- *             .type("g6-standard-2")
  *             .build());
  * 
  *     }
@@ -154,12 +155,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_pool = new LkeNodePool("my-pool", LkeNodePoolArgs.builder()
- *             .autoscaler(LkeNodePoolAutoscalerArgs.builder()
- *                 .max(10)
- *                 .min(3)
- *                 .build())
  *             .clusterId(150003)
  *             .type("g6-standard-2")
+ *             .autoscaler(LkeNodePoolAutoscalerArgs.builder()
+ *                 .min(3)
+ *                 .max(10)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -275,6 +276,34 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> firewallId() {
         return this.firewallId;
+    }
+    /**
+     * Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    @Export(name="isolationPublicIpv4", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isolationPublicIpv4;
+
+    /**
+     * @return Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    public Output<Boolean> isolationPublicIpv4() {
+        return this.isolationPublicIpv4;
+    }
+    /**
+     * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    @Export(name="isolationPublicIpv6", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isolationPublicIpv6;
+
+    /**
+     * @return Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    public Output<Boolean> isolationPublicIpv6() {
+        return this.isolationPublicIpv6;
     }
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.

@@ -16,10 +16,10 @@ from . import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['VpcSubnetArgs', 'VpcSubnet']
+__all__ = ['VpcSubnetInitArgs', 'VpcSubnet']
 
 @pulumi.input_type
-class VpcSubnetArgs:
+class VpcSubnetInitArgs:
     def __init__(__self__, *,
                  label: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.int],
@@ -288,22 +288,22 @@ class VpcSubnet(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.VpcSubnet("test",
-            ipv4="10.0.0.0/24",
+            vpc_id=123,
             label="test-subnet",
-            vpc_id=123)
+            ipv4="10.0.0.0/24")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
-        test_vpc = linode.Vpc("testVpc",
+        test_vpc = linode.Vpc("test",
             label="test-vpc",
             region="us-mia",
             ipv6s=[{
                 "range": "/52",
             }])
         # NOTE: IPv6 VPCs may not currently be available to all users.
-        test_vpc_subnet = linode.VpcSubnet("testVpcSubnet",
+        test = linode.VpcSubnet("test",
             vpc_id=test_vpc.id.apply(lambda x: int(x)),
             label="test-subnet",
             ipv4="10.0.0.0/24",
@@ -344,7 +344,7 @@ class VpcSubnet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: VpcSubnetArgs,
+                 args: VpcSubnetInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linode VPC subnet.
@@ -357,22 +357,22 @@ class VpcSubnet(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.VpcSubnet("test",
-            ipv4="10.0.0.0/24",
+            vpc_id=123,
             label="test-subnet",
-            vpc_id=123)
+            ipv4="10.0.0.0/24")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
-        test_vpc = linode.Vpc("testVpc",
+        test_vpc = linode.Vpc("test",
             label="test-vpc",
             region="us-mia",
             ipv6s=[{
                 "range": "/52",
             }])
         # NOTE: IPv6 VPCs may not currently be available to all users.
-        test_vpc_subnet = linode.VpcSubnet("testVpcSubnet",
+        test = linode.VpcSubnet("test",
             vpc_id=test_vpc.id.apply(lambda x: int(x)),
             label="test-subnet",
             ipv4="10.0.0.0/24",
@@ -401,12 +401,12 @@ class VpcSubnet(pulumi.CustomResource):
 
 
         :param str resource_name: The name of the resource.
-        :param VpcSubnetArgs args: The arguments to use to populate this resource's properties.
+        :param VpcSubnetInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(VpcSubnetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(VpcSubnetInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -426,7 +426,7 @@ class VpcSubnet(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = VpcSubnetArgs.__new__(VpcSubnetArgs)
+            __props__ = VpcSubnetInitArgs.__new__(VpcSubnetInitArgs)
 
             __props__.__dict__["ipv4"] = ipv4
             __props__.__dict__["ipv6s"] = ipv6s

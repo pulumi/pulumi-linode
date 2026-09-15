@@ -30,14 +30,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewMonitorAlertDefinition(ctx, "test", &linode.MonitorAlertDefinitionArgs{
+//				ServiceType: pulumi.String("dbaas"),
+//				Description: pulumi.String("An alert definition for ansible test"),
+//				Label:       pulumi.String("test-alert-definition"),
+//				Severity:    pulumi.Int(1),
 //				ChannelIds: pulumi.IntArray{
 //					pulumi.Int(10000),
 //				},
-//				Description: pulumi.String("An alert definition for ansible test"),
 //				GroupBies: pulumi.StringArray{
 //					pulumi.String("entity_id"),
 //				},
-//				Label: pulumi.String("test-alert-definition"),
+//				WaitFor: pulumi.Bool(true),
+//				TriggerConditions: &linode.MonitorAlertDefinitionTriggerConditionsArgs{
+//					CriteriaCondition:       pulumi.String("ALL"),
+//					EvaluationPeriodSeconds: pulumi.Int(300),
+//					PollingIntervalSeconds:  pulumi.Int(300),
+//					TriggerOccurrences:      pulumi.Int(1),
+//				},
 //				RuleCriteria: &linode.MonitorAlertDefinitionRuleCriteriaArgs{
 //					Rules: linode.MonitorAlertDefinitionRuleCriteriaRuleArray{
 //						&linode.MonitorAlertDefinitionRuleCriteriaRuleArgs{
@@ -55,15 +64,6 @@ import (
 //						},
 //					},
 //				},
-//				ServiceType: pulumi.String("dbaas"),
-//				Severity:    pulumi.Int(1),
-//				TriggerConditions: &linode.MonitorAlertDefinitionTriggerConditionsArgs{
-//					Criteria_condition:        "ALL",
-//					Evaluation_period_seconds: 300,
-//					Polling_interval_seconds:  300,
-//					Trigger_occurrences:       "1",
-//				},
-//				WaitFor: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

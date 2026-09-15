@@ -40,6 +40,7 @@ class InstanceArgs:
                  ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  metadatas: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMetadataArgs']]]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -91,6 +92,7 @@ class InstanceArgs:
                * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[_builtins.str] kernel: The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceMetadataArgs']]] metadatas: Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
                
@@ -99,6 +101,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+               
+               * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         :param pulumi.Input['InstancePlacementGroupArgs'] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
@@ -107,8 +111,8 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[_builtins.str] root_pass: The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
@@ -159,6 +163,8 @@ class InstanceArgs:
             pulumi.set(__self__, "kernel", kernel)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if linode_interfaces is not None:
+            pulumi.set(__self__, "linode_interfaces", linode_interfaces)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if metadatas is not None:
@@ -434,6 +440,18 @@ class InstanceArgs:
         pulumi.set(self, "label", value)
 
     @_builtins.property
+    @pulumi.getter(name="linodeInterfaces")
+    def linode_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]]]:
+        """
+        An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
+        """
+        return pulumi.get(self, "linode_interfaces")
+
+    @linode_interfaces.setter
+    def linode_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]]]):
+        pulumi.set(self, "linode_interfaces", value)
+
+    @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -478,6 +496,8 @@ class InstanceArgs:
         Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
 
         * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+
+        * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         """
         return pulumi.get(self, "network_helper")
 
@@ -563,7 +583,7 @@ class InstanceArgs:
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -575,7 +595,7 @@ class InstanceArgs:
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -661,6 +681,7 @@ class _InstanceState:
                  ipv6: pulumi.Input[Optional[_builtins.str]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]]] = None,
                  lke_cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
                  locks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -723,6 +744,7 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[_builtins.str] kernel: The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
@@ -733,6 +755,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+               
+               * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         :param pulumi.Input['InstancePlacementGroupArgs'] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
@@ -744,8 +768,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] root_pass: The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSpecArgs']]] specs: (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         :param pulumi.Input[_builtins.str] status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
         :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -811,6 +835,8 @@ class _InstanceState:
             pulumi.set(__self__, "kernel", kernel)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if linode_interfaces is not None:
+            pulumi.set(__self__, "linode_interfaces", linode_interfaces)
         if lke_cluster_id is not None:
             pulumi.set(__self__, "lke_cluster_id", lke_cluster_id)
         if locks is not None:
@@ -1159,6 +1185,18 @@ class _InstanceState:
         pulumi.set(self, "label", value)
 
     @_builtins.property
+    @pulumi.getter(name="linodeInterfaces")
+    def linode_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]]]:
+        """
+        An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
+        """
+        return pulumi.get(self, "linode_interfaces")
+
+    @linode_interfaces.setter
+    def linode_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceLinodeInterfaceArgs']]]]):
+        pulumi.set(self, "linode_interfaces", value)
+
+    @_builtins.property
     @pulumi.getter(name="lkeClusterId")
     def lke_cluster_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -1227,6 +1265,8 @@ class _InstanceState:
         Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
 
         * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+
+        * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         """
         return pulumi.get(self, "network_helper")
 
@@ -1348,7 +1388,7 @@ class _InstanceState:
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -1360,7 +1400,7 @@ class _InstanceState:
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         """
         return pulumi.get(self, "stackscript_id")
 
@@ -1455,6 +1495,7 @@ class Instance(pulumi.CustomResource):
                  ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1488,15 +1529,15 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            image="linode/ubuntu22.04",
             label="simple_instance",
-            private_ip=True,
+            image="linode/ubuntu22.04",
             region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
         ```
 
         ### Linode Instance Without Root Password
@@ -1508,11 +1549,11 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            image="linode/ubuntu22.04",
             label="simple_instance",
+            image="linode/ubuntu22.04",
             region="us-central",
-            type="g6-standard-1")
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"])
         ```
 
         ### Linode Instance with Explicit Networking Interfaces
@@ -1524,27 +1565,27 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            label="simple_instance",
             image="linode/ubuntu22.04",
+            region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            root_pass="this-is-not-a-safe-password",
             interfaces=[
                 {
                     "purpose": "public",
                 },
                 {
+                    "purpose": "vpc",
+                    "subnet_id": 123,
                     "ipv4": {
                         "vpc": "10.0.4.250",
                     },
-                    "purpose": "vpc",
-                    "subnet_id": 123,
                 },
             ],
-            label="simple_instance",
-            private_ip=True,
-            region="us-central",
-            root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
         ```
 
         ### Linode Instance with Explicit Configs and Disks
@@ -1562,11 +1603,11 @@ class Instance(pulumi.CustomResource):
             region="us-central",
             type="g6-nanode-1",
             private_ip=True)
-        web_volume = linode.Volume("webVolume",
+        web_volume = linode.Volume("web_volume",
             label="web_volume",
             size=20,
             region="us-central")
-        boot_disk = linode.InstanceDisk("bootDisk",
+        boot_disk = linode.InstanceDisk("boot_disk",
             label="boot",
             linode_id=web.id.apply(lambda x: int(x)),
             size=3000,
@@ -1574,7 +1615,7 @@ class Instance(pulumi.CustomResource):
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             authorized_users=[me.username],
             root_pass="terr4form-test")
-        boot_config = linode.InstanceConfig("bootConfig",
+        boot_config = linode.InstanceConfig("boot_config",
             label="boot_config",
             linode_id=web.id.apply(lambda x: int(x)),
             devices=[
@@ -1603,11 +1644,11 @@ class Instance(pulumi.CustomResource):
 
         my_instance = linode.Instance("my-instance",
             label="my-instance",
+            region="us-mia",
+            type="g6-standard-1",
             placement_group={
                 "id": 12345,
-            },
-            region="us-mia",
-            type="g6-standard-1")
+            })
         ```
 
         ## Import
@@ -1658,6 +1699,7 @@ class Instance(pulumi.CustomResource):
                * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[_builtins.str] kernel: The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
                
@@ -1666,6 +1708,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+               
+               * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
@@ -1675,8 +1719,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[_builtins.str] root_pass: The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] type: The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
@@ -1705,15 +1749,15 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            image="linode/ubuntu22.04",
             label="simple_instance",
-            private_ip=True,
+            image="linode/ubuntu22.04",
             region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
         ```
 
         ### Linode Instance Without Root Password
@@ -1725,11 +1769,11 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
-            image="linode/ubuntu22.04",
             label="simple_instance",
+            image="linode/ubuntu22.04",
             region="us-central",
-            type="g6-standard-1")
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"])
         ```
 
         ### Linode Instance with Explicit Networking Interfaces
@@ -1741,27 +1785,27 @@ class Instance(pulumi.CustomResource):
         import pulumi_linode as linode
 
         web = linode.Instance("web",
-            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            label="simple_instance",
             image="linode/ubuntu22.04",
+            region="us-central",
+            type="g6-standard-1",
+            authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
+            root_pass="this-is-not-a-safe-password",
             interfaces=[
                 {
                     "purpose": "public",
                 },
                 {
+                    "purpose": "vpc",
+                    "subnet_id": 123,
                     "ipv4": {
                         "vpc": "10.0.4.250",
                     },
-                    "purpose": "vpc",
-                    "subnet_id": 123,
                 },
             ],
-            label="simple_instance",
-            private_ip=True,
-            region="us-central",
-            root_pass="this-is-not-a-safe-password",
-            swap_size=256,
             tags=["foo"],
-            type="g6-standard-1")
+            swap_size=256,
+            private_ip=True)
         ```
 
         ### Linode Instance with Explicit Configs and Disks
@@ -1779,11 +1823,11 @@ class Instance(pulumi.CustomResource):
             region="us-central",
             type="g6-nanode-1",
             private_ip=True)
-        web_volume = linode.Volume("webVolume",
+        web_volume = linode.Volume("web_volume",
             label="web_volume",
             size=20,
             region="us-central")
-        boot_disk = linode.InstanceDisk("bootDisk",
+        boot_disk = linode.InstanceDisk("boot_disk",
             label="boot",
             linode_id=web.id.apply(lambda x: int(x)),
             size=3000,
@@ -1791,7 +1835,7 @@ class Instance(pulumi.CustomResource):
             authorized_keys=["ssh-rsa AAAA...Gw== user@example.local"],
             authorized_users=[me.username],
             root_pass="terr4form-test")
-        boot_config = linode.InstanceConfig("bootConfig",
+        boot_config = linode.InstanceConfig("boot_config",
             label="boot_config",
             linode_id=web.id.apply(lambda x: int(x)),
             devices=[
@@ -1820,11 +1864,11 @@ class Instance(pulumi.CustomResource):
 
         my_instance = linode.Instance("my-instance",
             label="my-instance",
+            region="us-mia",
+            type="g6-standard-1",
             placement_group={
                 "id": 12345,
-            },
-            region="us-mia",
-            type="g6-standard-1")
+            })
         ```
 
         ## Import
@@ -1875,6 +1919,7 @@ class Instance(pulumi.CustomResource):
                  ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1919,6 +1964,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["ipv4s"] = ipv4s
             __props__.__dict__["kernel"] = kernel
             __props__.__dict__["label"] = label
+            __props__.__dict__["linode_interfaces"] = linode_interfaces
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["migration_type"] = migration_type
@@ -1985,6 +2031,7 @@ class Instance(pulumi.CustomResource):
             ipv6: pulumi.Input[Optional[_builtins.str]] = None,
             kernel: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]]] = None,
             lke_cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
             locks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2051,6 +2098,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[_builtins.str] kernel: The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
@@ -2061,6 +2109,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] network_helper: Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
                
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+               
+               * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
@@ -2072,8 +2122,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] root_pass: The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict']]]] specs: (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
-        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
+        :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         :param pulumi.Input[_builtins.str] status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)
         :param pulumi.Input[_builtins.int] swap_size: When deploying from an Image, this field is optional with a Linode API default of 512mb, otherwise it is ignored. This is used to set the swap disk size for the newly-created Linode.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
@@ -2110,6 +2160,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["ipv6"] = ipv6
         __props__.__dict__["kernel"] = kernel
         __props__.__dict__["label"] = label
+        __props__.__dict__["linode_interfaces"] = linode_interfaces
         __props__.__dict__["lke_cluster_id"] = lke_cluster_id
         __props__.__dict__["locks"] = locks
         __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -2341,6 +2392,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "label")
 
     @_builtins.property
+    @pulumi.getter(name="linodeInterfaces")
+    def linode_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.InstanceLinodeInterface']]]:
+        """
+        An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
+        """
+        return pulumi.get(self, "linode_interfaces")
+
+    @_builtins.property
     @pulumi.getter(name="lkeClusterId")
     def lke_cluster_id(self) -> pulumi.Output[_builtins.int]:
         """
@@ -2389,6 +2448,8 @@ class Instance(pulumi.CustomResource):
         Enables the Network Helper feature. The default value is determined by the network_helper setting in the account settings.
 
         * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+
+        * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
         """
         return pulumi.get(self, "network_helper")
 
@@ -2470,7 +2531,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptData")
     def stackscript_data(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed.
+        An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         """
         return pulumi.get(self, "stackscript_data")
 
@@ -2478,7 +2539,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="stackscriptId")
     def stackscript_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript.
+        The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         """
         return pulumi.get(self, "stackscript_id")
 

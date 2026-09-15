@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  *             .defaultFirewallIds(FirewallSettingsDefaultFirewallIdsArgs.builder()
  *                 .linode(12345)
  *                 .nodebalancer(12345)
- *                 .public_interface(12345)
- *                 .vpc_interface(12345)
+ *                 .publicInterface(12345)
+ *                 .vpcInterface(12345)
  *                 .build())
  *             .build());
  * 

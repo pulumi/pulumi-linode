@@ -2307,8 +2307,8 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            engine_id="postgresql/16",
             label="mydatabase",
+            engine_id="postgresql/16",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -2317,28 +2317,28 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            allow_lists=["0.0.0.0/0"],
-            engine_id="postgresql/16",
             label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabasePostgresqlV2("foobar",
-            allow_lists=["10.0.0.3/32"],
-            cluster_size=3,
             engine_id="postgresql/16",
-            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["10.0.0.3/32"],
+            cluster_size=3,
             updates={
-                "day_of_week": 2,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
+                "day_of_week": 2,
             })
         ```
         ```python
@@ -2346,6 +2346,10 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
             engine_config_pg_autovacuum_analyze_scale_factor=0.1,
             engine_config_pg_autovacuum_analyze_threshold=50,
             engine_config_pg_autovacuum_max_workers=3,
@@ -2381,7 +2385,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=True,
             engine_config_pg_pg_stat_monitor_pgsm_max_buckets=5,
             engine_config_pg_pg_stat_statements_track="all",
-            engine_config_pg_stat_monitor_enable=True,
             engine_config_pg_temp_file_limit=100,
             engine_config_pg_timezone="Europe/Helsinki",
             engine_config_pg_track_activity_query_size=2048,
@@ -2390,39 +2393,36 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_track_io_timing="on",
             engine_config_pg_wal_sender_timeout=60000,
             engine_config_pg_wal_writer_delay=200,
+            engine_config_pg_stat_monitor_enable=True,
             engine_config_pglookout_max_failover_replication_time_lag=10000,
             engine_config_shared_buffers_percentage=float(25),
-            engine_config_work_mem=400,
-            engine_id="postgresql/16",
-            label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
+            engine_config_work_mem=400)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            engine_id="postgresql/16",
-            fork_source=12345,
             label="mydatabase",
+            engine_id="postgresql/16",
             region="us-mia",
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            fork_source=12345)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            engine_id="postgresql/16",
             label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
             private_network={
-                "public_access": False,
-                "subnet_id": 456,
                 "vpc_id": 123,
-            },
-            region="us-mia",
-            type="g6-nanode-1")
+                "subnet_id": 456,
+                "public_access": False,
+            })
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
@@ -2554,8 +2554,8 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            engine_id="postgresql/16",
             label="mydatabase",
+            engine_id="postgresql/16",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -2564,28 +2564,28 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            allow_lists=["0.0.0.0/0"],
-            engine_id="postgresql/16",
             label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabasePostgresqlV2("foobar",
-            allow_lists=["10.0.0.3/32"],
-            cluster_size=3,
             engine_id="postgresql/16",
-            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["10.0.0.3/32"],
+            cluster_size=3,
             updates={
-                "day_of_week": 2,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
+                "day_of_week": 2,
             })
         ```
         ```python
@@ -2593,6 +2593,10 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
+            label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
             engine_config_pg_autovacuum_analyze_scale_factor=0.1,
             engine_config_pg_autovacuum_analyze_threshold=50,
             engine_config_pg_autovacuum_max_workers=3,
@@ -2628,7 +2632,6 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_pg_stat_monitor_pgsm_enable_query_plan=True,
             engine_config_pg_pg_stat_monitor_pgsm_max_buckets=5,
             engine_config_pg_pg_stat_statements_track="all",
-            engine_config_pg_stat_monitor_enable=True,
             engine_config_pg_temp_file_limit=100,
             engine_config_pg_timezone="Europe/Helsinki",
             engine_config_pg_track_activity_query_size=2048,
@@ -2637,39 +2640,36 @@ class DatabasePostgresqlV2(pulumi.CustomResource):
             engine_config_pg_track_io_timing="on",
             engine_config_pg_wal_sender_timeout=60000,
             engine_config_pg_wal_writer_delay=200,
+            engine_config_pg_stat_monitor_enable=True,
             engine_config_pglookout_max_failover_replication_time_lag=10000,
             engine_config_shared_buffers_percentage=float(25),
-            engine_config_work_mem=400,
-            engine_id="postgresql/16",
-            label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
+            engine_config_work_mem=400)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            engine_id="postgresql/16",
-            fork_source=12345,
             label="mydatabase",
+            engine_id="postgresql/16",
             region="us-mia",
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            fork_source=12345)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabasePostgresqlV2("foobar",
-            engine_id="postgresql/16",
             label="mydatabase",
+            engine_id="postgresql/16",
+            region="us-mia",
+            type="g6-nanode-1",
             private_network={
-                "public_access": False,
-                "subnet_id": 456,
                 "vpc_id": 123,
-            },
-            region="us-mia",
-            type="g6-nanode-1")
+                "subnet_id": 456,
+                "public_access": False,
+            })
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.

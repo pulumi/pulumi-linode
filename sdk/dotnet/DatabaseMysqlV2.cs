@@ -27,8 +27,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
-    ///         EngineId = "mysql/8",
     ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
     ///     });
@@ -45,14 +45,14 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "0.0.0.0/0",
     ///         },
-    ///         EngineId = "mysql/8",
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -67,21 +67,21 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "10.0.0.3/32",
     ///         },
     ///         ClusterSize = 3,
-    ///         EngineId = "mysql/8",
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         Updates = new Linode.Inputs.DatabaseMysqlV2UpdatesArgs
     ///         {
-    ///             Day_of_week = 3,
     ///             Duration = 4,
     ///             Frequency = "weekly",
-    ///             Hour_of_day = 22,
+    ///             HourOfDay = 22,
+    ///             DayOfWeek = 3,
     ///         },
     ///     });
     /// 
@@ -97,6 +97,10 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         EngineConfigBinlogRetentionPeriod = 3600,
     ///         EngineConfigMysqlConnectTimeout = 10,
     ///         EngineConfigMysqlDefaultTimeZone = "+00:00",
@@ -125,10 +129,6 @@ namespace Pulumi.Linode
     ///         EngineConfigMysqlSqlRequirePrimaryKey = false,
     ///         EngineConfigMysqlTmpTableSize = 16777216,
     ///         EngineConfigMysqlWaitTimeout = 28800,
-    ///         EngineId = "mysql/8",
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -143,11 +143,11 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
     ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         ForkSource = 12345,
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -162,16 +162,16 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabaseMysqlV2("foobar", new()
     ///     {
-    ///         EngineId = "mysql/8",
     ///         Label = "mydatabase",
+    ///         EngineId = "mysql/8",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         PrivateNetwork = new Linode.Inputs.DatabaseMysqlV2PrivateNetworkArgs
     ///         {
-    ///             Public_access = false,
-    ///             Subnet_id = 456,
-    ///             Vpc_id = 123,
+    ///             VpcId = 123,
+    ///             SubnetId = 456,
+    ///             PublicAccess = false,
     ///         },
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });

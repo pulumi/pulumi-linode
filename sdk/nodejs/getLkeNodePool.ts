@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_node_pool = linode.getLkeNodePool({
- *     clusterId: 321,
  *     id: 123,
+ *     clusterId: 321,
  * });
  * ```
  */
@@ -70,6 +70,14 @@ export interface GetLkeNodePoolResult {
      */
     readonly id: number;
     /**
+     * Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     */
+    readonly isolationPublicIpv4: boolean;
+    /**
+     * Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+     */
+    readonly isolationPublicIpv6: boolean;
+    /**
      * The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
      */
     readonly k8sVersion: string;
@@ -117,8 +125,8 @@ export interface GetLkeNodePoolResult {
  * import * as linode from "@pulumi/linode";
  *
  * const my_node_pool = linode.getLkeNodePool({
- *     clusterId: 321,
  *     id: 123,
+ *     clusterId: 321,
  * });
  * ```
  */

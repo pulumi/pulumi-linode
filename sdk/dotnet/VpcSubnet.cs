@@ -25,9 +25,9 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.VpcSubnet("test", new()
     ///     {
-    ///         Ipv4 = "10.0.0.0/24",
-    ///         Label = "test-subnet",
     ///         VpcId = 123,
+    ///         Label = "test-subnet",
+    ///         Ipv4 = "10.0.0.0/24",
     ///     });
     /// 
     /// });
@@ -40,7 +40,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testVpc = new Linode.Vpc("testVpc", new()
+    ///     var testVpc = new Linode.Vpc("test", new()
     ///     {
     ///         Label = "test-vpc",
     ///         Region = "us-mia",
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
     ///     });
     /// 
     ///     // NOTE: IPv6 VPCs may not currently be available to all users.
-    ///     var testVpcSubnet = new Linode.VpcSubnet("testVpcSubnet", new()
+    ///     var test = new Linode.VpcSubnet("test", new()
     ///     {
     ///         VpcId = testVpc.Id,
     ///         Label = "test-subnet",

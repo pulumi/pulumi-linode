@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				EngineId: pulumi.String("postgresql/16"),
 //				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
 //				Region:   pulumi.String("us-mia"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -58,13 +58,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},
-//				EngineId: pulumi.String("postgresql/16"),
-//				Label:    pulumi.String("mydatabase"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,19 +87,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("10.0.0.3/32"),
 //				},
 //				ClusterSize: pulumi.Int(3),
-//				EngineId:    pulumi.String("postgresql/16"),
-//				Label:       pulumi.String("mydatabase"),
-//				Region:      pulumi.String("us-mia"),
-//				Type:        pulumi.String("g6-nanode-1"),
 //				Updates: &linode.DatabasePostgresqlV2UpdatesArgs{
-//					Day_of_week: 2,
-//					Duration:    pulumi.Int(4),
-//					Frequency:   pulumi.String("weekly"),
-//					Hour_of_day: 22,
+//					Duration:  pulumi.Int(4),
+//					Frequency: pulumi.String("weekly"),
+//					HourOfDay: pulumi.Int(22),
+//					DayOfWeek: pulumi.Int(2),
 //				},
 //			})
 //			if err != nil {
@@ -123,6 +123,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				EngineConfigPgAutovacuumAnalyzeScaleFactor:         pulumi.Float64(0.1),
 //				EngineConfigPgAutovacuumAnalyzeThreshold:           pulumi.Int(50),
 //				EngineConfigPgAutovacuumMaxWorkers:                 pulumi.Int(3),
@@ -158,7 +162,6 @@ import (
 //				EngineConfigPgPgStatMonitorPgsmEnableQueryPlan:     pulumi.Bool(true),
 //				EngineConfigPgPgStatMonitorPgsmMaxBuckets:          pulumi.Int(5),
 //				EngineConfigPgPgStatStatementsTrack:                pulumi.String("all"),
-//				EngineConfigPgStatMonitorEnable:                    pulumi.Bool(true),
 //				EngineConfigPgTempFileLimit:                        pulumi.Int(100),
 //				EngineConfigPgTimezone:                             pulumi.String("Europe/Helsinki"),
 //				EngineConfigPgTrackActivityQuerySize:               pulumi.Int(2048),
@@ -167,13 +170,10 @@ import (
 //				EngineConfigPgTrackIoTiming:                        pulumi.String("on"),
 //				EngineConfigPgWalSenderTimeout:                     pulumi.Int(60000),
 //				EngineConfigPgWalWriterDelay:                       pulumi.Int(200),
+//				EngineConfigPgStatMonitorEnable:                    pulumi.Bool(true),
 //				EngineConfigPglookoutMaxFailoverReplicationTimeLag: pulumi.Int(10000),
 //				EngineConfigSharedBuffersPercentage:                pulumi.Float64(25),
 //				EngineConfigWorkMem:                                pulumi.Int(400),
-//				EngineId:                                           pulumi.String("postgresql/16"),
-//				Label:                                              pulumi.String("mydatabase"),
-//				Region:                                             pulumi.String("us-mia"),
-//				Type:                                               pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -196,11 +196,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				EngineId:   pulumi.String("postgresql/16"),
-//				ForkSource: pulumi.Int(12345),
 //				Label:      pulumi.String("mydatabase"),
+//				EngineId:   pulumi.String("postgresql/16"),
 //				Region:     pulumi.String("us-mia"),
 //				Type:       pulumi.String("g6-nanode-1"),
+//				ForkSource: pulumi.Int(12345),
 //			})
 //			if err != nil {
 //				return err
@@ -223,15 +223,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabasePostgresqlV2(ctx, "foobar", &linode.DatabasePostgresqlV2Args{
-//				EngineId: pulumi.String("postgresql/16"),
 //				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("postgresql/16"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				PrivateNetwork: &linode.DatabasePostgresqlV2PrivateNetworkArgs{
-//					Public_access: false,
-//					Subnet_id:     456,
-//					Vpc_id:        123,
+//					VpcId:        pulumi.Int(123),
+//					SubnetId:     pulumi.Int(456),
+//					PublicAccess: pulumi.Bool(false),
 //				},
-//				Region: pulumi.String("us-mia"),
-//				Type:   pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err

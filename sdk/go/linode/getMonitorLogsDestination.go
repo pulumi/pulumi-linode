@@ -79,12 +79,8 @@ type LookupMonitorLogsDestinationResult struct {
 }
 
 func LookupMonitorLogsDestinationOutput(ctx *pulumi.Context, args LookupMonitorLogsDestinationOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorLogsDestinationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitorLogsDestinationResultOutput, error) {
-			args := v.(LookupMonitorLogsDestinationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMonitorLogsDestination:getMonitorLogsDestination", args, LookupMonitorLogsDestinationResultOutput{}, options).(LookupMonitorLogsDestinationResultOutput), nil
-		}).(LookupMonitorLogsDestinationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMonitorLogsDestination:getMonitorLogsDestination", args, LookupMonitorLogsDestinationResultOutput{}, options).(LookupMonitorLogsDestinationResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorLogsDestination.

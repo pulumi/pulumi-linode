@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()
- *             .ipv4("10.0.0.0/24")
- *             .label("test-subnet")
  *             .vpcId(123)
+ *             .label("test-subnet")
+ *             .ipv4("10.0.0.0/24")
  *             .build());
  * 
  *     }
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // NOTE: IPv6 VPCs may not currently be available to all users.
- *         var testVpcSubnet = new VpcSubnet("testVpcSubnet", VpcSubnetArgs.builder()
+ *         var test = new VpcSubnet("test", VpcSubnetArgs.builder()
  *             .vpcId(testVpc.id())
  *             .label("test-subnet")
  *             .ipv4("10.0.0.0/24")

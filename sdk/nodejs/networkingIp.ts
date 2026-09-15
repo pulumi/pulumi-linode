@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const testIp = new linode.NetworkingIp("testIp", {
+ * const testIp = new linode.NetworkingIp("test_ip", {
+ *     type: "ipv4",
  *     linodeId: 12345,
  *     "public": true,
- *     type: "ipv4",
  * });
  * ```
  *

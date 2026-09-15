@@ -59,9 +59,59 @@ import (
 //
 // * `range` - The IPv4 range in CIDR format.
 //
-// ### Subnets Reference
+// ## Subnets
 //
-// To list all subnets under a VPC, please refer to the getVpcSubnets data source.
+// The following attributes are exported under each entry of the `subnets` field:
+//
+// * `id` - The id of the VPC Subnet.
+//
+// * `label` - The label of the VPC Subnet.
+//
+// * `ipv4` - The IPv4 range of this subnet in CIDR format.
+//
+// * `ipv6` - The IPv6 ranges of this subnet.
+//
+//   - `range` - An IPv6 range allocated to this subnet.
+//
+// * `linodes` - A list of Linodes assigned to this subnet.
+//
+//   - `id` - ID of the Linode
+//
+//   - `interfaces` - A list of networking interfaces objects.
+//
+//   - `id` - ID of the interface.
+//
+//   - `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+//
+//   - `active` - Whether the Interface is actively in use.
+//
+// * `databases` - A list of Managed Databases assigned to this subnet.
+//
+//   - `id` - ID of a managed database assigned to the VPC Subnet.
+//
+//   - `ipv4Range` - IPv4 range assigned to the database.
+//
+//   - `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+//
+//   - `range` - An IPv6 address range in CIDR notation.
+//
+// * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+//
+//   - `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+//
+//   - `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+//
+//   - `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+//
+//   - `range` - An IPv6 address range in CIDR notation.
+//
+// * `created` - The date and time when the VPC Subnet was created.
+//
+// * `updated` - The date and time when the VPC Subnet was last updated.
+//
+// ### Subnets data source
+//
+// The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the getVpcSubnets data source with Terraform `dependsOn`.
 func LookupVpc(ctx *pulumi.Context, args *LookupVpcArgs, opts ...pulumi.InvokeOption) (*LookupVpcResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVpcResult
@@ -92,7 +142,8 @@ type LookupVpcResult struct {
 	// The label of the VPC.
 	Label string `pulumi:"label"`
 	// The region where the VPC is deployed.
-	Region string `pulumi:"region"`
+	Region  string             `pulumi:"region"`
+	Subnets []GetVpcSubnetType `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated string `pulumi:"updated"`
 	// The type of the VPC (`regular` or `rdma`). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
@@ -161,6 +212,10 @@ func (o LookupVpcResultOutput) Label() pulumi.StringOutput {
 // The region where the VPC is deployed.
 func (o LookupVpcResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVpcResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupVpcResultOutput) Subnets() GetVpcSubnetTypeArrayOutput {
+	return o.ApplyT(func(v LookupVpcResult) []GetVpcSubnetType { return v.Subnets }).(GetVpcSubnetTypeArrayOutput)
 }
 
 // The date and time when the VPC was last updated.

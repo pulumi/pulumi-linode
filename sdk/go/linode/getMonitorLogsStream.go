@@ -81,12 +81,8 @@ type LookupMonitorLogsStreamResult struct {
 }
 
 func LookupMonitorLogsStreamOutput(ctx *pulumi.Context, args LookupMonitorLogsStreamOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorLogsStreamResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitorLogsStreamResultOutput, error) {
-			args := v.(LookupMonitorLogsStreamArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMonitorLogsStream:getMonitorLogsStream", args, LookupMonitorLogsStreamResultOutput{}, options).(LookupMonitorLogsStreamResultOutput), nil
-		}).(LookupMonitorLogsStreamResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMonitorLogsStream:getMonitorLogsStream", args, LookupMonitorLogsStreamResultOutput{}, options).(LookupMonitorLogsStreamResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorLogsStream.

@@ -12,6 +12,7 @@ import com.pulumi.linode.VpcArgs;
 import com.pulumi.linode.inputs.VpcState;
 import com.pulumi.linode.outputs.VpcIpv4;
 import com.pulumi.linode.outputs.VpcIpv6;
+import com.pulumi.linode.outputs.VpcSubnet;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -48,9 +49,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new Vpc("test", VpcArgs.builder()
- *             .description("My first VPC.")
  *             .label("test-vpc")
  *             .region("us-iad")
+ *             .description("My first VPC.")
  *             .build());
  * 
  *     }
@@ -85,11 +86,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // NOTE: IPv6 VPCs may not currently be available to all users.
  *         var test = new Vpc("test", VpcArgs.builder()
+ *             .label("test-vpc")
+ *             .region("us-iad")
  *             .ipv6s(VpcIpv6Args.builder()
  *                 .range("/52")
  *                 .build())
- *             .label("test-vpc")
- *             .region("us-iad")
  *             .build());
  * 
  *     }
@@ -121,11 +122,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
  *         var test = new Vpc("test", VpcArgs.builder()
+ *             .label("test-vpc")
+ *             .region("us-iad")
  *             .ipv4s(VpcIpv4Args.builder()
  *                 .range("10.0.0.0/8")
  *                 .build())
- *             .label("test-vpc")
- *             .region("us-iad")
  *             .build());
  * 
  *     }
@@ -152,6 +153,56 @@ import javax.annotation.Nullable;
  * Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
  * 
  * * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+ * 
+ * ## Subnets
+ * 
+ * The following attributes are exported under each entry of the `subnets` field:
+ * 
+ * * `id` - The id of the VPC Subnet.
+ * 
+ * * `label` - The label of the VPC Subnet.
+ * 
+ * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+ * 
+ * * `ipv6` - The IPv6 ranges of this subnet.
+ *   
+ *   * `range` - An IPv6 range allocated to this subnet.
+ * 
+ * * `linodes` - A list of Linodes assigned to this subnet.
+ *   
+ *   * `id` - ID of the Linode
+ *   
+ *   * `interfaces` - A list of networking interfaces objects.
+ *     
+ *     * `id` - ID of the interface.
+ *     
+ *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+ *     
+ *     * `active` - Whether the Interface is actively in use.
+ * 
+ * * `databases` - A list of Managed Databases assigned to this subnet.
+ *   
+ *   * `id` - ID of a managed database assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the database.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ * 
+ * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+ *   
+ *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ * 
+ * * `created` - The date and time when the VPC Subnet was created.
+ * 
+ * * `updated` - The date and time when the VPC Subnet was last updated.
  * 
  */
 @ResourceType(type="linode:index/vpc:Vpc")
@@ -239,6 +290,20 @@ public class Vpc extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * A list of subnets under this VPC.
+     * 
+     */
+    @Export(name="subnets", refs={List.class,VpcSubnet.class}, tree="[0,1]")
+    private Output<List<VpcSubnet>> subnets;
+
+    /**
+     * @return A list of subnets under this VPC.
+     * 
+     */
+    public Output<List<VpcSubnet>> subnets() {
+        return this.subnets;
     }
     /**
      * The date and time when the VPC was last updated.

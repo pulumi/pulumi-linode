@@ -162,6 +162,7 @@ class IamUser(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo = linode.IamUser("foo",
+            username="foo",
             account_accesses=[
                 "account_event_viewer",
                 "account_maintenance_viewer",
@@ -170,10 +171,9 @@ class IamUser(pulumi.CustomResource):
             ],
             entity_accesses=[{
                 "id": 1111111,
-                "roles": ["volume_admin"],
                 "type": "volume",
-            }],
-            username="foo")
+                "roles": ["volume_admin"],
+            }])
         ```
 
 
@@ -204,6 +204,7 @@ class IamUser(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo = linode.IamUser("foo",
+            username="foo",
             account_accesses=[
                 "account_event_viewer",
                 "account_maintenance_viewer",
@@ -212,10 +213,9 @@ class IamUser(pulumi.CustomResource):
             ],
             entity_accesses=[{
                 "id": 1111111,
-                "roles": ["volume_admin"],
                 "type": "volume",
-            }],
-            username="foo")
+                "roles": ["volume_admin"],
+            }])
         ```
 
 

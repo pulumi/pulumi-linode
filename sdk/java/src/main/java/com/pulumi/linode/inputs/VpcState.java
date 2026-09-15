@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.VpcIpv4Args;
 import com.pulumi.linode.inputs.VpcIpv6Args;
+import com.pulumi.linode.inputs.VpcSubnetArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -109,6 +110,21 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of subnets under this VPC.
+     * 
+     */
+    @Import(name="subnets")
+    private @Nullable Output<List<VpcSubnetArgs>> subnets;
+
+    /**
+     * @return A list of subnets under this VPC.
+     * 
+     */
+    public Optional<Output<List<VpcSubnetArgs>>> subnets() {
+        return Optional.ofNullable(this.subnets);
+    }
+
+    /**
      * The date and time when the VPC was last updated.
      * 
      */
@@ -155,6 +171,7 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
         this.ipv6s = $.ipv6s;
         this.label = $.label;
         this.region = $.region;
+        this.subnets = $.subnets;
         this.updated = $.updated;
         this.vpcType = $.vpcType;
     }
@@ -321,6 +338,37 @@ public final class VpcState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param subnets A list of subnets under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnets(@Nullable Output<List<VpcSubnetArgs>> subnets) {
+            $.subnets = subnets;
+            return this;
+        }
+
+        /**
+         * @param subnets A list of subnets under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnets(List<VpcSubnetArgs> subnets) {
+            return subnets(Output.of(subnets));
+        }
+
+        /**
+         * @param subnets A list of subnets under this VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnets(VpcSubnetArgs... subnets) {
+            return subnets(List.of(subnets));
         }
 
         /**

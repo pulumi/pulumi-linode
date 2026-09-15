@@ -30,9 +30,9 @@ import * as utilities from "./utilities";
  *     label: "my-logs-destination",
  *     type: "akamai_object_storage",
  *     akamaiObjectStorageDetails: {
- *         access_key_id: key.accessKey,
- *         access_key_secret: key.secretKey,
- *         bucket_name: bucket.label,
+ *         accessKeyId: key.accessKey,
+ *         accessKeySecret: key.secretKey,
+ *         bucketName: bucket.label,
  *         host: bucket.hostname,
  *     },
  * });
@@ -41,19 +41,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const httpsExample = new linode.MonitorLogsDestination("httpsExample", {
- *     customHttpsDetails: {
- *         authentication: {
- *             password: "mypassword",
- *             type: "basic",
- *             username: "myuser",
- *         },
- *         content_type: "application/json",
- *         data_compression: "gzip",
- *         endpoint_url: "https://logs.example.com/ingest",
- *     },
+ * const httpsExample = new linode.MonitorLogsDestination("https_example", {
  *     label: "my-https-destination",
  *     type: "custom_https",
+ *     customHttpsDetails: {
+ *         endpointUrl: "https://logs.example.com/ingest",
+ *         contentType: "application/json",
+ *         dataCompression: "gzip",
+ *         authentication: {
+ *             type: "basic",
+ *             username: "myuser",
+ *             password: "mypassword",
+ *         },
+ *     },
  * });
  * ```
  *

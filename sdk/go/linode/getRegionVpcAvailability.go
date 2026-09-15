@@ -67,12 +67,8 @@ type GetRegionVpcAvailabilityResult struct {
 }
 
 func GetRegionVpcAvailabilityOutput(ctx *pulumi.Context, args GetRegionVpcAvailabilityOutputArgs, opts ...pulumi.InvokeOption) GetRegionVpcAvailabilityResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegionVpcAvailabilityResultOutput, error) {
-			args := v.(GetRegionVpcAvailabilityArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getRegionVpcAvailability:getRegionVpcAvailability", args, GetRegionVpcAvailabilityResultOutput{}, options).(GetRegionVpcAvailabilityResultOutput), nil
-		}).(GetRegionVpcAvailabilityResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getRegionVpcAvailability:getRegionVpcAvailability", args, GetRegionVpcAvailabilityResultOutput{}, options).(GetRegionVpcAvailabilityResultOutput)
 }
 
 // A collection of arguments for invoking getRegionVpcAvailability.

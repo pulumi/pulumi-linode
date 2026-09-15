@@ -32,6 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewIamUser(ctx, "foo", &linode.IamUserArgs{
+//				Username: pulumi.String("foo"),
 //				AccountAccesses: pulumi.StringArray{
 //					pulumi.String("account_event_viewer"),
 //					pulumi.String("account_maintenance_viewer"),
@@ -40,14 +41,13 @@ import (
 //				},
 //				EntityAccesses: linode.IamUserEntityAccessArray{
 //					&linode.IamUserEntityAccessArgs{
-//						Id: pulumi.Int(1111111),
+//						Id:   pulumi.Int(1111111),
+//						Type: pulumi.String("volume"),
 //						Roles: pulumi.StringArray{
 //							pulumi.String("volume_admin"),
 //						},
-//						Type: pulumi.String("volume"),
 //					},
 //				},
-//				Username: pulumi.String("foo"),
 //			})
 //			if err != nil {
 //				return err

@@ -75,15 +75,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooInstance, err := linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//			foo, err := linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
 //				Region: pulumi.String("us-east"),
 //				Type:   pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstanceConfig(ctx, "fooInstanceConfig", &linode.InstanceConfigArgs{
-//				LinodeId: fooInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//			_, err = linode.NewInstanceConfig(ctx, "foo", &linode.InstanceConfigArgs{
+//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label:    pulumi.String("boot-existing-volume"),
 //				Kernel:   pulumi.String("linode/grub2"),
 //				Devices: linode.InstanceConfigDevicesArgs{

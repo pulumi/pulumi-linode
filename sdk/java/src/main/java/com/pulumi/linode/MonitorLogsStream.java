@@ -67,9 +67,9 @@ import javax.annotation.Nullable;
  *             .label("my-logs-destination")
  *             .type("akamai_object_storage")
  *             .akamaiObjectStorageDetails(MonitorLogsDestinationAkamaiObjectStorageDetailsArgs.builder()
- *                 .access_key_id(key.accessKey())
- *                 .access_key_secret(key.secretKey())
- *                 .bucket_name(bucket.label())
+ *                 .accessKeyId(key.accessKey())
+ *                 .accessKeySecret(key.secretKey())
+ *                 .bucketName(bucket.label())
  *                 .host(bucket.hostname())
  *                 .build())
  *             .build());
@@ -110,12 +110,12 @@ import javax.annotation.Nullable;
  *         var lkeExample = new MonitorLogsStream("lkeExample", MonitorLogsStreamArgs.builder()
  *             .label("my-lke-stream")
  *             .type("lke_audit_logs")
- *             .destinations(linode_monitor_logs_destination.destination().id())
+ *             .destinations(destination.id())
  *             .details(MonitorLogsStreamDetailsArgs.builder()
- *                 .cluster_ids(Arrays.asList(                
+ *                 .clusterIds(                
  *                     12345,
- *                     67890))
- *                 .is_auto_add_all_clusters_enabled(false)
+ *                     67890)
+ *                 .isAutoAddAllClustersEnabled(false)
  *                 .build())
  *             .build());
  * 

@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewNodeBalancer(ctx, "foobar", &linode.NodeBalancerArgs{
-//				ClientConnThrottle:    pulumi.Int(20),
-//				ClientUdpSessThrottle: pulumi.Int(10),
 //				Label:                 pulumi.String("mynodebalancer"),
 //				Region:                pulumi.String("us-east"),
+//				ClientConnThrottle:    pulumi.Int(20),
+//				ClientUdpSessThrottle: pulumi.Int(10),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("foobar"),
 //				},
@@ -68,7 +68,7 @@ import (
 //				Region: pulumi.String("us-mia"),
 //				Vpcs: linode.NodeBalancerVpcArray{
 //					&linode.NodeBalancerVpcArgs{
-//						Subnet_id: linode_vpc_subnet.Test.Id,
+//						SubnetId: pulumi.Any(test.Id),
 //					},
 //				},
 //			})
@@ -95,7 +95,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myReservedIp, err := linode.NewNetworkingIp(ctx, "myReservedIp", &linode.NetworkingIpArgs{
+//			myReservedIp, err := linode.NewNetworkingIp(ctx, "my_reserved_ip", &linode.NetworkingIpArgs{
 //				Region:   pulumi.String("us-east"),
 //				Type:     pulumi.String("ipv4"),
 //				Public:   pulumi.Bool(true),

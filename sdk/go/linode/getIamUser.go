@@ -66,12 +66,8 @@ type LookupIamUserResult struct {
 }
 
 func LookupIamUserOutput(ctx *pulumi.Context, args LookupIamUserOutputArgs, opts ...pulumi.InvokeOption) LookupIamUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIamUserResultOutput, error) {
-			args := v.(LookupIamUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getIamUser:getIamUser", args, LookupIamUserResultOutput{}, options).(LookupIamUserResultOutput), nil
-		}).(LookupIamUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getIamUser:getIamUser", args, LookupIamUserResultOutput{}, options).(LookupIamUserResultOutput)
 }
 
 // A collection of arguments for invoking getIamUser.

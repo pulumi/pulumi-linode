@@ -61,8 +61,8 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("allAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getChildAccounts:getChildAccounts.pp:16,11-36)))
-// ctx.Export("filteredAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getChildAccounts:getChildAccounts.pp:20,11-41)))
+// ctx.Export("allAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:16,11-37)))
+// ctx.Export("filteredAccounts", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:20,11-42)))
 // return nil
 // })
 // }

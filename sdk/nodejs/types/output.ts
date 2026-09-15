@@ -4553,6 +4553,39 @@ export interface GetInterfacePublicIpv6Slaac {
     prefix: number;
 }
 
+export interface GetInterfaceRdmaVpc {
+    /**
+     * The IPv4 configuration for the RDMA VPC interface.
+     */
+    ipv4: outputs.GetInterfaceRdmaVpcIpv4;
+    /**
+     * The ID of the RDMA VPC subnet.
+     */
+    subnetId: number;
+    /**
+     * The ID of the parent RDMA VPC.
+     */
+    vpcId: number;
+}
+
+export interface GetInterfaceRdmaVpcIpv4 {
+    /**
+     * IPv4 addresses for the RDMA VPC interface.
+     */
+    addresses: outputs.GetInterfaceRdmaVpcIpv4Address[];
+}
+
+export interface GetInterfaceRdmaVpcIpv4Address {
+    /**
+     * The IPv4 address on the RDMA VPC interface.
+     */
+    address: string;
+    /**
+     * Whether this is the primary IPv4 address.
+     */
+    primary: boolean;
+}
+
 export interface GetInterfaceVlan {
     /**
      * The IPAM (IP Address Management) address of the VLAN interface.
@@ -8145,6 +8178,45 @@ export interface GetVpcIpv6 {
     range: string;
 }
 
+export interface GetVpcSubnet {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created: string;
+    /**
+     * A list of Managed Databases assigned to this subnet.
+     */
+    databases: outputs.GetVpcSubnetDatabase[];
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    /**
+     * (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    ipv4: string;
+    /**
+     * (Nested Attribute List) A list of IPv6 allocations under this VPC.
+     */
+    ipv6s: outputs.GetVpcSubnetIpv6[];
+    /**
+     * The label of the VPC.
+     */
+    label: string;
+    /**
+     * A list of Linodes assigned to this subnet.
+     */
+    linodes: outputs.GetVpcSubnetLinode[];
+    /**
+     * A list of NodeBalancers assigned to this subnet.
+     */
+    nodebalancers: outputs.GetVpcSubnetNodebalancer[];
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated: string;
+}
+
 export interface GetVpcSubnetDatabase {
     /**
      * The unique id of this VPC subnet.
@@ -8398,6 +8470,10 @@ export interface GetVpcsVpc {
      */
     region: string;
     /**
+     * A list of subnets under this VPC.
+     */
+    subnets: outputs.GetVpcsVpcSubnet[];
+    /**
      * The date and time when the VPC was last updated.
      */
     updated: string;
@@ -8418,6 +8494,95 @@ export interface GetVpcsVpcIpv6 {
     /**
      * The IPv6 range assigned to this VPC.
      */
+    range: string;
+}
+
+export interface GetVpcsVpcSubnet {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created: string;
+    /**
+     * A list of Managed Databases assigned to this subnet.
+     */
+    databases: outputs.GetVpcsVpcSubnetDatabase[];
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    /**
+     * (Nested Attribute List) A list of IPv4 ranges under this VPC.
+     */
+    ipv4: string;
+    /**
+     * (Nested Attribute List) A list of IPv6 allocations under this VPC.
+     */
+    ipv6s: outputs.GetVpcsVpcSubnetIpv6[];
+    /**
+     * The label of the VPC.
+     */
+    label: string;
+    /**
+     * A list of Linodes assigned to this subnet.
+     */
+    linodes: outputs.GetVpcsVpcSubnetLinode[];
+    /**
+     * A list of NodeBalancers assigned to this subnet.
+     */
+    nodebalancers: outputs.GetVpcsVpcSubnetNodebalancer[];
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated: string;
+}
+
+export interface GetVpcsVpcSubnetDatabase {
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    ipv4Range: string;
+    ipv6Ranges: outputs.GetVpcsVpcSubnetDatabaseIpv6Range[];
+}
+
+export interface GetVpcsVpcSubnetDatabaseIpv6Range {
+    range: string;
+}
+
+export interface GetVpcsVpcSubnetIpv6 {
+    /**
+     * An IPv6 range allocated to this subnet.
+     */
+    range: string;
+}
+
+export interface GetVpcsVpcSubnetLinode {
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    interfaces: outputs.GetVpcsVpcSubnetLinodeInterface[];
+}
+
+export interface GetVpcsVpcSubnetLinodeInterface {
+    active: boolean;
+    configId: number;
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+}
+
+export interface GetVpcsVpcSubnetNodebalancer {
+    /**
+     * The unique id of this VPC.
+     */
+    id: number;
+    ipv4Range: string;
+    ipv6Ranges: outputs.GetVpcsVpcSubnetNodebalancerIpv6Range[];
+}
+
+export interface GetVpcsVpcSubnetNodebalancerIpv6Range {
     range: string;
 }
 
@@ -9908,6 +10073,184 @@ export interface InstanceIpVpcNat11 {
     vpcId: number;
 }
 
+export interface InstanceLinodeInterface {
+    /**
+     * Default route configuration for the interface.
+     */
+    defaultRoute?: outputs.InstanceLinodeInterfaceDefaultRoute;
+    /**
+     * The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+     */
+    firewallId?: number;
+    /**
+     * Configuration for a Linode public interface.
+     *
+     * * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+     *
+     * * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+     *
+     * * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+     */
+    public?: outputs.InstanceLinodeInterfacePublic;
+    /**
+     * Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `linode.Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+     */
+    rdmaVpc?: outputs.InstanceLinodeInterfaceRdmaVpc;
+    /**
+     * Configuration for a Linode VLAN interface.
+     */
+    vlan?: outputs.InstanceLinodeInterfaceVlan;
+    /**
+     * Configuration for a Linode VPC interface.
+     */
+    vpc?: outputs.InstanceLinodeInterfaceVpc;
+}
+
+export interface InstanceLinodeInterfaceDefaultRoute {
+    /**
+     * Whether this interface is used for the IPv4 default route.
+     */
+    ipv4?: boolean;
+    /**
+     * Whether this interface is used for the IPv6 default route.
+     */
+    ipv6?: boolean;
+}
+
+export interface InstanceLinodeInterfacePublic {
+    /**
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
+     */
+    ipv4?: outputs.InstanceLinodeInterfacePublicIpv4;
+    /**
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     */
+    ipv6?: outputs.InstanceLinodeInterfacePublicIpv6;
+}
+
+export interface InstanceLinodeInterfacePublicIpv4 {
+    addresses?: outputs.InstanceLinodeInterfacePublicIpv4Address[];
+}
+
+export interface InstanceLinodeInterfacePublicIpv4Address {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address?: string;
+    /**
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     */
+    primary?: boolean;
+}
+
+export interface InstanceLinodeInterfacePublicIpv6 {
+    ranges?: outputs.InstanceLinodeInterfacePublicIpv6Range[];
+}
+
+export interface InstanceLinodeInterfacePublicIpv6Range {
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range: string;
+}
+
+export interface InstanceLinodeInterfaceRdmaVpc {
+    /**
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
+     */
+    ipv4?: outputs.InstanceLinodeInterfaceRdmaVpcIpv4;
+    /**
+     * The ID of the RDMA VPC subnet to attach this interface to.
+     *
+     * * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+     *
+     * * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+     */
+    subnetId: number;
+}
+
+export interface InstanceLinodeInterfaceRdmaVpcIpv4 {
+    /**
+     * The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+     */
+    addresses: outputs.InstanceLinodeInterfaceRdmaVpcIpv4Addresses;
+}
+
+export interface InstanceLinodeInterfaceRdmaVpcIpv4Addresses {
+    /**
+     * The IPv4 address (or 'auto' to allocate one from the subnet).
+     */
+    address?: string;
+    /**
+     * Whether this is the primary IPv4 address for the interface.
+     */
+    primary?: boolean;
+}
+
+export interface InstanceLinodeInterfaceVlan {
+    /**
+     * The VLAN IPAM address in CIDR notation.
+     */
+    ipamAddress?: string;
+    /**
+     * The label of the VLAN to join.
+     */
+    vlanLabel: string;
+}
+
+export interface InstanceLinodeInterfaceVpc {
+    /**
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
+     */
+    ipv4?: outputs.InstanceLinodeInterfaceVpcIpv4;
+    /**
+     * The ID of the VPC subnet.
+     *
+     * * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat11Address`.
+     *
+     * * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+     */
+    subnetId: number;
+}
+
+export interface InstanceLinodeInterfaceVpcIpv4 {
+    addresses?: outputs.InstanceLinodeInterfaceVpcIpv4Address[];
+    ranges?: outputs.InstanceLinodeInterfaceVpcIpv4Range[];
+}
+
+export interface InstanceLinodeInterfaceVpcIpv4Address {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address?: string;
+    nat11Address?: string;
+    /**
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     */
+    primary?: boolean;
+}
+
+export interface InstanceLinodeInterfaceVpcIpv4Range {
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range: string;
+}
+
 export interface InstanceMetadata {
     /**
      * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
@@ -10089,6 +10432,39 @@ export interface InterfacePublicIpv6Slaac {
      * The subnet prefix length.
      */
     prefix: number;
+}
+
+export interface InterfaceRdmaVpc {
+    /**
+     * IPv4 configuration for the RDMA VPC interface.
+     */
+    ipv4: outputs.InterfaceRdmaVpcIpv4;
+    /**
+     * The ID of the RDMA VPC subnet this interface is attached to.
+     */
+    subnetId: number;
+    /**
+     * The ID of the parent RDMA VPC.
+     */
+    vpcId: number;
+}
+
+export interface InterfaceRdmaVpcIpv4 {
+    /**
+     * The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+     */
+    addresses: outputs.InterfaceRdmaVpcIpv4Address[];
+}
+
+export interface InterfaceRdmaVpcIpv4Address {
+    /**
+     * The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+     */
+    address: string;
+    /**
+     * Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+     */
+    primary: boolean;
 }
 
 export interface InterfaceVlan {
@@ -11284,6 +11660,45 @@ export interface VpcIpv6 {
      * The IPv6 range assigned to this VPC.
      */
     range?: string;
+}
+
+export interface VpcSubnet {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created: string;
+    /**
+     * A list of Managed Databases assigned to this subnet.
+     */
+    databases: outputs.VpcSubnetDatabase[];
+    /**
+     * The ID of the VPC.
+     */
+    id: number;
+    /**
+     * The IPv4 range of this subnet in CIDR format.
+     */
+    ipv4: string;
+    /**
+     * The IPv6 ranges of this subnet.
+     */
+    ipv6s: outputs.VpcSubnetIpv6[];
+    /**
+     * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+     */
+    label: string;
+    /**
+     * A list of Linodes assigned to this subnet.
+     */
+    linodes: outputs.VpcSubnetLinode[];
+    /**
+     * A list of NodeBalancers assigned to this subnet.
+     */
+    nodebalancers: outputs.VpcSubnetNodebalancer[];
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated: string;
 }
 
 export interface VpcSubnetDatabase {

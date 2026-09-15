@@ -26,6 +26,8 @@ class LkeNodePoolArgs:
                  autoscaler: pulumi.Input[Optional['LkeNodePoolAutoscalerArgs']] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 isolation_public_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_public_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -40,6 +42,8 @@ class LkeNodePoolArgs:
         :param pulumi.Input[_builtins.str] type: A Linode Type for all nodes in the Node Pool. See all node types [here](https://api.linode.com/v4/linode/types).
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
@@ -60,6 +64,10 @@ class LkeNodePoolArgs:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
+        if isolation_public_ipv4 is not None:
+            pulumi.set(__self__, "isolation_public_ipv4", isolation_public_ipv4)
+        if isolation_public_ipv6 is not None:
+            pulumi.set(__self__, "isolation_public_ipv6", isolation_public_ipv6)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
         if label is not None:
@@ -131,6 +139,30 @@ class LkeNodePoolArgs:
     @firewall_id.setter
     def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv4")
+    def isolation_public_ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        """
+        return pulumi.get(self, "isolation_public_ipv4")
+
+    @isolation_public_ipv4.setter
+    def isolation_public_ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "isolation_public_ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv6")
+    def isolation_public_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        """
+        return pulumi.get(self, "isolation_public_ipv6")
+
+    @isolation_public_ipv6.setter
+    def isolation_public_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "isolation_public_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")
@@ -228,6 +260,8 @@ class _LkeNodePoolState:
                  cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 isolation_public_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_public_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -243,6 +277,8 @@ class _LkeNodePoolState:
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
@@ -265,6 +301,10 @@ class _LkeNodePoolState:
             pulumi.set(__self__, "disk_encryption", disk_encryption)
         if firewall_id is not None:
             pulumi.set(__self__, "firewall_id", firewall_id)
+        if isolation_public_ipv4 is not None:
+            pulumi.set(__self__, "isolation_public_ipv4", isolation_public_ipv4)
+        if isolation_public_ipv6 is not None:
+            pulumi.set(__self__, "isolation_public_ipv6", isolation_public_ipv6)
         if k8s_version is not None:
             pulumi.set(__self__, "k8s_version", k8s_version)
         if label is not None:
@@ -328,6 +368,30 @@ class _LkeNodePoolState:
     @firewall_id.setter
     def firewall_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "firewall_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv4")
+    def isolation_public_ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        """
+        return pulumi.get(self, "isolation_public_ipv4")
+
+    @isolation_public_ipv4.setter
+    def isolation_public_ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "isolation_public_ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv6")
+    def isolation_public_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        """
+        return pulumi.get(self, "isolation_public_ipv6")
+
+    @isolation_public_ipv6.setter
+    def isolation_public_ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "isolation_public_ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")
@@ -452,6 +516,8 @@ class LkeNodePool(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 isolation_public_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_public_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -479,8 +545,8 @@ class LkeNodePool(pulumi.CustomResource):
 
         my_pool = linode.LkeNodePool("my-pool",
             cluster_id=150003,
-            node_count=3,
-            type="g6-standard-2")
+            type="g6-standard-2",
+            node_count=3)
         ```
         ```python
         import pulumi
@@ -488,9 +554,9 @@ class LkeNodePool(pulumi.CustomResource):
 
         my_pool = linode.LkeNodePool("my-pool",
             cluster_id=150003,
-            label="app-pool",
+            type="g6-standard-2",
             node_count=3,
-            type="g6-standard-2")
+            label="app-pool")
         ```
         ```python
         import pulumi
@@ -498,21 +564,21 @@ class LkeNodePool(pulumi.CustomResource):
 
         my_pool = linode.LkeNodePool("my-pool",
             cluster_id=150003,
+            type="g6-standard-2",
             firewall_id=12345,
-            node_count=3,
-            type="g6-standard-2")
+            node_count=3)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_pool = linode.LkeNodePool("my-pool",
-            autoscaler={
-                "max": 10,
-                "min": 3,
-            },
             cluster_id=150003,
-            type="g6-standard-2")
+            type="g6-standard-2",
+            autoscaler={
+                "min": 3,
+                "max": 10,
+            })
         ```
         ```python
         import pulumi
@@ -552,6 +618,8 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
@@ -589,8 +657,8 @@ class LkeNodePool(pulumi.CustomResource):
 
         my_pool = linode.LkeNodePool("my-pool",
             cluster_id=150003,
-            node_count=3,
-            type="g6-standard-2")
+            type="g6-standard-2",
+            node_count=3)
         ```
         ```python
         import pulumi
@@ -598,9 +666,9 @@ class LkeNodePool(pulumi.CustomResource):
 
         my_pool = linode.LkeNodePool("my-pool",
             cluster_id=150003,
-            label="app-pool",
+            type="g6-standard-2",
             node_count=3,
-            type="g6-standard-2")
+            label="app-pool")
         ```
         ```python
         import pulumi
@@ -608,21 +676,21 @@ class LkeNodePool(pulumi.CustomResource):
 
         my_pool = linode.LkeNodePool("my-pool",
             cluster_id=150003,
+            type="g6-standard-2",
             firewall_id=12345,
-            node_count=3,
-            type="g6-standard-2")
+            node_count=3)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_pool = linode.LkeNodePool("my-pool",
-            autoscaler={
-                "max": 10,
-                "min": 3,
-            },
             cluster_id=150003,
-            type="g6-standard-2")
+            type="g6-standard-2",
+            autoscaler={
+                "min": 3,
+                "max": 10,
+            })
         ```
         ```python
         import pulumi
@@ -676,6 +744,8 @@ class LkeNodePool(pulumi.CustomResource):
                  cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 isolation_public_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isolation_public_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -699,6 +769,8 @@ class LkeNodePool(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["firewall_id"] = firewall_id
+            __props__.__dict__["isolation_public_ipv4"] = isolation_public_ipv4
+            __props__.__dict__["isolation_public_ipv6"] = isolation_public_ipv6
             __props__.__dict__["k8s_version"] = k8s_version
             __props__.__dict__["label"] = label
             __props__.__dict__["labels"] = labels
@@ -724,6 +796,8 @@ class LkeNodePool(pulumi.CustomResource):
             cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
             disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
             firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            isolation_public_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+            isolation_public_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
             k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -743,6 +817,8 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] cluster_id: ID of the LKE Cluster where to create the current Node Pool.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for nodes in this pool.
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
@@ -765,6 +841,8 @@ class LkeNodePool(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = cluster_id
         __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["firewall_id"] = firewall_id
+        __props__.__dict__["isolation_public_ipv4"] = isolation_public_ipv4
+        __props__.__dict__["isolation_public_ipv6"] = isolation_public_ipv6
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["label"] = label
         __props__.__dict__["labels"] = labels
@@ -804,6 +882,22 @@ class LkeNodePool(pulumi.CustomResource):
         The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         """
         return pulumi.get(self, "firewall_id")
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv4")
+    def isolation_public_ipv4(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        """
+        return pulumi.get(self, "isolation_public_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="isolationPublicIpv6")
+    def isolation_public_ipv6(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        """
+        return pulumi.get(self, "isolation_public_ipv6")
 
     @_builtins.property
     @pulumi.getter(name="k8sVersion")

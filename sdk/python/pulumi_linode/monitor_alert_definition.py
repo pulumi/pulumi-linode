@@ -617,10 +617,19 @@ class MonitorAlertDefinition(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.MonitorAlertDefinition("test",
-            channel_ids=[10000],
+            service_type="dbaas",
             description="An alert definition for ansible test",
-            group_bies=["entity_id"],
             label="test-alert-definition",
+            severity=1,
+            channel_ids=[10000],
+            group_bies=["entity_id"],
+            wait_for=True,
+            trigger_conditions={
+                "criteria_condition": "ALL",
+                "evaluation_period_seconds": 300,
+                "polling_interval_seconds": 300,
+                "trigger_occurrences": 1,
+            },
             rule_criteria={
                 "rules": [{
                     "aggregate_function": "avg",
@@ -633,16 +642,7 @@ class MonitorAlertDefinition(pulumi.CustomResource):
                     "operator": "gt",
                     "threshold": float(90),
                 }],
-            },
-            service_type="dbaas",
-            severity=1,
-            trigger_conditions={
-                "criteria_condition": "ALL",
-                "evaluation_period_seconds": 300,
-                "polling_interval_seconds": 300,
-                "trigger_occurrences": "1",
-            },
-            wait_for=True)
+            })
         ```
 
         ## Import
@@ -689,10 +689,19 @@ class MonitorAlertDefinition(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test = linode.MonitorAlertDefinition("test",
-            channel_ids=[10000],
+            service_type="dbaas",
             description="An alert definition for ansible test",
-            group_bies=["entity_id"],
             label="test-alert-definition",
+            severity=1,
+            channel_ids=[10000],
+            group_bies=["entity_id"],
+            wait_for=True,
+            trigger_conditions={
+                "criteria_condition": "ALL",
+                "evaluation_period_seconds": 300,
+                "polling_interval_seconds": 300,
+                "trigger_occurrences": 1,
+            },
             rule_criteria={
                 "rules": [{
                     "aggregate_function": "avg",
@@ -705,16 +714,7 @@ class MonitorAlertDefinition(pulumi.CustomResource):
                     "operator": "gt",
                     "threshold": float(90),
                 }],
-            },
-            service_type="dbaas",
-            severity=1,
-            trigger_conditions={
-                "criteria_condition": "ALL",
-                "evaluation_period_seconds": 300,
-                "polling_interval_seconds": 300,
-                "trigger_occurrences": "1",
-            },
-            wait_for=True)
+            })
         ```
 
         ## Import

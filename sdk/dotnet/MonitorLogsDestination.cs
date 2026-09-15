@@ -46,9 +46,9 @@ namespace Pulumi.Linode
     ///         Type = "akamai_object_storage",
     ///         AkamaiObjectStorageDetails = new Linode.Inputs.MonitorLogsDestinationAkamaiObjectStorageDetailsArgs
     ///         {
-    ///             Access_key_id = key.AccessKey,
-    ///             Access_key_secret = key.SecretKey,
-    ///             Bucket_name = bucket.Label,
+    ///             AccessKeyId = key.AccessKey,
+    ///             AccessKeySecret = key.SecretKey,
+    ///             BucketName = bucket.Label,
     ///             Host = bucket.Hostname,
     ///         },
     ///     });
@@ -63,22 +63,22 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var httpsExample = new Linode.MonitorLogsDestination("httpsExample", new()
+    ///     var httpsExample = new Linode.MonitorLogsDestination("https_example", new()
     ///     {
-    ///         CustomHttpsDetails = new Linode.Inputs.MonitorLogsDestinationCustomHttpsDetailsArgs
-    ///         {
-    ///             Authentication = new Linode.Inputs.MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs
-    ///             {
-    ///                 Password = "mypassword",
-    ///                 Type = "basic",
-    ///                 Username = "myuser",
-    ///             },
-    ///             Content_type = "application/json",
-    ///             Data_compression = "gzip",
-    ///             Endpoint_url = "https://logs.example.com/ingest",
-    ///         },
     ///         Label = "my-https-destination",
     ///         Type = "custom_https",
+    ///         CustomHttpsDetails = new Linode.Inputs.MonitorLogsDestinationCustomHttpsDetailsArgs
+    ///         {
+    ///             EndpointUrl = "https://logs.example.com/ingest",
+    ///             ContentType = "application/json",
+    ///             DataCompression = "gzip",
+    ///             Authentication = new Linode.Inputs.MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs
+    ///             {
+    ///                 Type = "basic",
+    ///                 Username = "myuser",
+    ///                 Password = "mypassword",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

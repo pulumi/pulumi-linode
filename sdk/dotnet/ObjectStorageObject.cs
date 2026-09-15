@@ -14,6 +14,33 @@ namespace Pulumi.Linode
     /// 
     /// ## Example Usage
     /// 
+    /// ### Uploading a file to a bucket
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     {
+    ///         Bucket = "my-bucket",
+    ///         Region = "us-mia",
+    ///         Key = "my-object",
+    ///         SecretKey = myKey.SecretKey,
+    ///         AccessKey = myKey.AccessKey,
+    ///         Source = Std.Pathexpand.Invoke(new()
+    ///         {
+    ///             Input = "~/files/log.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ### Uploading plaintext to a bucket
     /// 
     /// ```csharp
@@ -29,11 +56,36 @@ namespace Pulumi.Linode
     ///         Bucket = "my-bucket",
     ///         Region = "us-mia",
     ///         Key = "my-object",
-    ///         SecretKey = linode_object_storage_key.My_key.Secret_key,
-    ///         AccessKey = linode_object_storage_key.My_key.Access_key,
+    ///         SecretKey = myKey.SecretKey,
+    ///         AccessKey = myKey.AccessKey,
     ///         Content = "This is the content of the Object...",
     ///         ContentType = "text/plain",
     ///         ContentLanguage = "en",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Creating an object using implicitly created object credentials
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @object = new Linode.ObjectStorageObject("object", new()
+    ///     {
+    ///         Bucket = "my-bucket",
+    ///         Region = "us-mia",
+    ///         Key = "my-object",
+    ///         Source = Std.Pathexpand.Invoke(new()
+    ///         {
+    ///             Input = "~/files/log.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

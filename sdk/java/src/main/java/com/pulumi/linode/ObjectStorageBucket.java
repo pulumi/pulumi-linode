@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new ObjectStorageBucket("foobar", ObjectStorageBucketArgs.builder()
- *             .label("mybucket")
  *             .region("us-mia")
+ *             .label("mybucket")
  *             .build());
  * 
  *     }

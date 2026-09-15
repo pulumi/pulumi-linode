@@ -58,14 +58,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewObjectStorageKey(ctx, "foobar", &linode.ObjectStorageKeyArgs{
+//				Label: pulumi.String("my-key"),
 //				BucketAccesses: linode.ObjectStorageKeyBucketAccessArray{
 //					&linode.ObjectStorageKeyBucketAccessArgs{
 //						BucketName:  pulumi.String("my-bucket-name"),
-//						Permissions: pulumi.String("read_write"),
 //						Region:      pulumi.String("us-mia"),
+//						Permissions: pulumi.String("read_write"),
 //					},
 //				},
-//				Label: pulumi.String("my-key"),
 //			})
 //			if err != nil {
 //				return err
@@ -91,19 +91,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewObjectStorageKey(ctx, "foo", &linode.ObjectStorageKeyArgs{
+//				Label: pulumi.String("image-access"),
 //				BucketAccesses: linode.ObjectStorageKeyBucketAccessArray{
 //					&linode.ObjectStorageKeyBucketAccessArgs{
 //						BucketName:  pulumi.String("foobar1"),
-//						Permissions: pulumi.String("read_write"),
 //						Region:      pulumi.String("us-mia"),
+//						Permissions: pulumi.String("read_write"),
 //					},
 //					&linode.ObjectStorageKeyBucketAccessArgs{
 //						BucketName:  pulumi.String("foobar2"),
-//						Permissions: pulumi.String("read_write"),
 //						Region:      pulumi.String("gb-lon"),
+//						Permissions: pulumi.String("read_write"),
 //					},
 //				},
-//				Label: pulumi.String("image-access"),
 //			})
 //			if err != nil {
 //				return err

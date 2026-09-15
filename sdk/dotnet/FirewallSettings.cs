@@ -29,8 +29,8 @@ namespace Pulumi.Linode
     ///         {
     ///             Linode = 12345,
     ///             Nodebalancer = 12345,
-    ///             Public_interface = 12345,
-    ///             Vpc_interface = 12345,
+    ///             PublicInterface = 12345,
+    ///             VpcInterface = 12345,
     ///         },
     ///     });
     /// 

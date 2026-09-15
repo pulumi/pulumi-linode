@@ -545,25 +545,25 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         john = linode.User("john",
-            email="john@acme.io",
-            username="john123")
+            username="john123",
+            email="john@acme.io")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         fooser = linode.User("fooser",
+            username="cooluser123",
             email="cool@acme.io",
+            restricted=True,
             global_grants={
-                "add_images": True,
                 "add_linodes": True,
+                "add_images": True,
             },
             linode_grants=[{
                 "id": 12345,
                 "permissions": "read_write",
-            }],
-            restricted=True,
-            username="cooluser123")
+            }])
         ```
 
         ## Global Grants
@@ -636,25 +636,25 @@ class User(pulumi.CustomResource):
         import pulumi_linode as linode
 
         john = linode.User("john",
-            email="john@acme.io",
-            username="john123")
+            username="john123",
+            email="john@acme.io")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         fooser = linode.User("fooser",
+            username="cooluser123",
             email="cool@acme.io",
+            restricted=True,
             global_grants={
-                "add_images": True,
                 "add_linodes": True,
+                "add_images": True,
             },
             linode_grants=[{
                 "id": 12345,
                 "permissions": "read_write",
-            }],
-            restricted=True,
-            username="cooluser123")
+            }])
         ```
 
         ## Global Grants

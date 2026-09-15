@@ -317,19 +317,19 @@ class MonitorLogsDestination(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        https_example = linode.MonitorLogsDestination("httpsExample",
+        https_example = linode.MonitorLogsDestination("https_example",
+            label="my-https-destination",
+            type="custom_https",
             custom_https_details={
-                "authentication": {
-                    "password": "mypassword",
-                    "type": "basic",
-                    "username": "myuser",
-                },
+                "endpoint_url": "https://logs.example.com/ingest",
                 "content_type": "application/json",
                 "data_compression": "gzip",
-                "endpoint_url": "https://logs.example.com/ingest",
-            },
-            label="my-https-destination",
-            type="custom_https")
+                "authentication": {
+                    "type": "basic",
+                    "username": "myuser",
+                    "password": "mypassword",
+                },
+            })
         ```
 
         ## Import
@@ -390,19 +390,19 @@ class MonitorLogsDestination(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        https_example = linode.MonitorLogsDestination("httpsExample",
+        https_example = linode.MonitorLogsDestination("https_example",
+            label="my-https-destination",
+            type="custom_https",
             custom_https_details={
-                "authentication": {
-                    "password": "mypassword",
-                    "type": "basic",
-                    "username": "myuser",
-                },
+                "endpoint_url": "https://logs.example.com/ingest",
                 "content_type": "application/json",
                 "data_compression": "gzip",
-                "endpoint_url": "https://logs.example.com/ingest",
-            },
-            label="my-https-destination",
-            type="custom_https")
+                "authentication": {
+                    "type": "basic",
+                    "username": "myuser",
+                    "password": "mypassword",
+                },
+            })
         ```
 
         ## Import

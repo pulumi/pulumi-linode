@@ -10,6 +10,7 @@ import com.pulumi.linode.inputs.InstanceBackupArgs;
 import com.pulumi.linode.inputs.InstanceConfigArgs;
 import com.pulumi.linode.inputs.InstanceDiskArgs;
 import com.pulumi.linode.inputs.InstanceInterfaceArgs;
+import com.pulumi.linode.inputs.InstanceLinodeInterfaceArgs;
 import com.pulumi.linode.inputs.InstanceMetadataArgs;
 import com.pulumi.linode.inputs.InstancePlacementGroupArgs;
 import com.pulumi.linode.inputs.InstanceSpecArgs;
@@ -436,6 +437,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    @Import(name="linodeInterfaces")
+    private @Nullable Output<List<InstanceLinodeInterfaceArgs>> linodeInterfaces;
+
+    /**
+     * @return An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    public Optional<Output<List<InstanceLinodeInterfaceArgs>>> linodeInterfaces() {
+        return Optional.ofNullable(this.linodeInterfaces);
+    }
+
+    /**
      * If applicable, the ID of the LKE cluster this instance is a part of.
      * 
      */
@@ -519,6 +535,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+     * 
      */
     @Import(name="networkHelper")
     private @Nullable Output<Boolean> networkHelper;
@@ -527,6 +545,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
      * 
      */
     public Optional<Output<Boolean>> networkHelper() {
@@ -673,14 +693,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Import(name="stackscriptData")
     private @Nullable Output<Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Optional<Output<Map<String,String>>> stackscriptData() {
@@ -688,14 +708,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Import(name="stackscriptId")
     private @Nullable Output<Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Optional<Output<Integer>> stackscriptId() {
@@ -808,6 +828,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.ipv6 = $.ipv6;
         this.kernel = $.kernel;
         this.label = $.label;
+        this.linodeInterfaces = $.linodeInterfaces;
         this.lkeClusterId = $.lkeClusterId;
         this.locks = $.locks;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -1491,6 +1512,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param linodeInterfaces An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linodeInterfaces(@Nullable Output<List<InstanceLinodeInterfaceArgs>> linodeInterfaces) {
+            $.linodeInterfaces = linodeInterfaces;
+            return this;
+        }
+
+        /**
+         * @param linodeInterfaces An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linodeInterfaces(List<InstanceLinodeInterfaceArgs> linodeInterfaces) {
+            return linodeInterfaces(Output.of(linodeInterfaces));
+        }
+
+        /**
+         * @param linodeInterfaces An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linodeInterfaces(InstanceLinodeInterfaceArgs... linodeInterfaces) {
+            return linodeInterfaces(List.of(linodeInterfaces));
+        }
+
+        /**
          * @param lkeClusterId If applicable, the ID of the LKE cluster this instance is a part of.
          * 
          * @return builder
@@ -1626,6 +1678,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
          * 
+         * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+         * 
          * @return builder
          * 
          */
@@ -1638,6 +1692,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param networkHelper Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
          * 
          * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+         * 
+         * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
          * 
          * @return builder
          * 
@@ -1860,7 +1916,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 
@@ -1871,7 +1927,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+         * @param stackscriptData An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 
@@ -1881,7 +1937,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 
@@ -1892,7 +1948,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+         * @param stackscriptId The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
          * 
          * @return builder
          * 

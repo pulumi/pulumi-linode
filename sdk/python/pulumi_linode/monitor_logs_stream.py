@@ -329,10 +329,10 @@ class MonitorLogsStream(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        lke_example = linode.MonitorLogsStream("lkeExample",
+        lke_example = linode.MonitorLogsStream("lke_example",
             label="my-lke-stream",
             type="lke_audit_logs",
-            destinations=[linode_monitor_logs_destination["destination"]["id"]],
+            destinations=[destination["id"]],
             details={
                 "cluster_ids": [
                     12345,
@@ -403,10 +403,10 @@ class MonitorLogsStream(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        lke_example = linode.MonitorLogsStream("lkeExample",
+        lke_example = linode.MonitorLogsStream("lke_example",
             label="my-lke-stream",
             type="lke_audit_logs",
-            destinations=[linode_monitor_logs_destination["destination"]["id"]],
+            destinations=[destination["id"]],
             details={
                 "cluster_ids": [
                     12345,

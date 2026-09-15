@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooStackScript = new StackScript("fooStackScript", StackScriptArgs.builder()
+ *         var foo = new StackScript("foo", StackScriptArgs.builder()
  *             .label("foo")
  *             .description("Installs a Package")
  *             .script("""
  * #!/bin/bash
- * # <UDF name="package" label="System Package to Install" example="nginx" default="">
+ * # <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">
  * apt-get -q update && apt-get -q -y install $PACKAGE
  *             """)
  *             .images(            
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .type("g6-nanode-1")
  *             .authorizedKeys("...")
  *             .rootPass("...")
- *             .stackscriptId(fooStackScript.id())
+ *             .stackscriptId(foo.id())
  *             .stackscriptData(Map.of("package", "nginx"))
  *             .build());
  * 

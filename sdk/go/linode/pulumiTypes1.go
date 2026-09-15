@@ -13,6 +13,2650 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMonitorLogsStreamHistoryStream struct {
+	// The date and time when this version was created.
+	Created string `pulumi:"created"`
+	// The user who created this stream version.
+	CreatedBy string `pulumi:"createdBy"`
+	// The destination IDs configured at this version.
+	Destinations []int `pulumi:"destinations"`
+	// Additional configuration details at this version.
+	Details GetMonitorLogsStreamHistoryStreamDetails `pulumi:"details"`
+	// The ID of the logs stream version.
+	Id int `pulumi:"id"`
+	// The label of the logs stream at this version.
+	Label string `pulumi:"label"`
+	// The status of the logs stream at this version.
+	Status string `pulumi:"status"`
+	// The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
+	Type string `pulumi:"type"`
+	// The date and time when this version was last updated.
+	Updated string `pulumi:"updated"`
+	// The user who last updated this stream version.
+	UpdatedBy string `pulumi:"updatedBy"`
+	// The version number of this history entry.
+	Version int `pulumi:"version"`
+}
+
+// GetMonitorLogsStreamHistoryStreamInput is an input type that accepts GetMonitorLogsStreamHistoryStreamArgs and GetMonitorLogsStreamHistoryStreamOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamHistoryStreamInput` via:
+//
+//	GetMonitorLogsStreamHistoryStreamArgs{...}
+type GetMonitorLogsStreamHistoryStreamInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamHistoryStreamOutput() GetMonitorLogsStreamHistoryStreamOutput
+	ToGetMonitorLogsStreamHistoryStreamOutputWithContext(context.Context) GetMonitorLogsStreamHistoryStreamOutput
+}
+
+type GetMonitorLogsStreamHistoryStreamArgs struct {
+	// The date and time when this version was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The user who created this stream version.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The destination IDs configured at this version.
+	Destinations pulumi.IntArrayInput `pulumi:"destinations"`
+	// Additional configuration details at this version.
+	Details GetMonitorLogsStreamHistoryStreamDetailsInput `pulumi:"details"`
+	// The ID of the logs stream version.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label of the logs stream at this version.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The status of the logs stream at this version.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The date and time when this version was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// The user who last updated this stream version.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// The version number of this history entry.
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetMonitorLogsStreamHistoryStreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStream)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamHistoryStreamArgs) ToGetMonitorLogsStreamHistoryStreamOutput() GetMonitorLogsStreamHistoryStreamOutput {
+	return i.ToGetMonitorLogsStreamHistoryStreamOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamHistoryStreamArgs) ToGetMonitorLogsStreamHistoryStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamHistoryStreamOutput)
+}
+
+// GetMonitorLogsStreamHistoryStreamArrayInput is an input type that accepts GetMonitorLogsStreamHistoryStreamArray and GetMonitorLogsStreamHistoryStreamArrayOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamHistoryStreamArrayInput` via:
+//
+//	GetMonitorLogsStreamHistoryStreamArray{ GetMonitorLogsStreamHistoryStreamArgs{...} }
+type GetMonitorLogsStreamHistoryStreamArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamHistoryStreamArrayOutput() GetMonitorLogsStreamHistoryStreamArrayOutput
+	ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(context.Context) GetMonitorLogsStreamHistoryStreamArrayOutput
+}
+
+type GetMonitorLogsStreamHistoryStreamArray []GetMonitorLogsStreamHistoryStreamInput
+
+func (GetMonitorLogsStreamHistoryStreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamHistoryStream)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamHistoryStreamArray) ToGetMonitorLogsStreamHistoryStreamArrayOutput() GetMonitorLogsStreamHistoryStreamArrayOutput {
+	return i.ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamHistoryStreamArray) ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamHistoryStreamArrayOutput)
+}
+
+type GetMonitorLogsStreamHistoryStreamOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamHistoryStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStream)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamHistoryStreamOutput) ToGetMonitorLogsStreamHistoryStreamOutput() GetMonitorLogsStreamHistoryStreamOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamHistoryStreamOutput) ToGetMonitorLogsStreamHistoryStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamOutput {
+	return o
+}
+
+// The date and time when this version was created.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The user who created this stream version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The destination IDs configured at this version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Destinations() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) []int { return v.Destinations }).(pulumi.IntArrayOutput)
+}
+
+// Additional configuration details at this version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Details() GetMonitorLogsStreamHistoryStreamDetailsOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) GetMonitorLogsStreamHistoryStreamDetails { return v.Details }).(GetMonitorLogsStreamHistoryStreamDetailsOutput)
+}
+
+// The ID of the logs stream version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label of the logs stream at this version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The status of the logs stream at this version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The date and time when this version was last updated.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The user who last updated this stream version.
+func (o GetMonitorLogsStreamHistoryStreamOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The version number of this history entry.
+func (o GetMonitorLogsStreamHistoryStreamOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetMonitorLogsStreamHistoryStreamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamHistoryStreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamHistoryStream)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamHistoryStreamArrayOutput) ToGetMonitorLogsStreamHistoryStreamArrayOutput() GetMonitorLogsStreamHistoryStreamArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamHistoryStreamArrayOutput) ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamHistoryStreamArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamHistoryStreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamHistoryStream {
+		return vs[0].([]GetMonitorLogsStreamHistoryStream)[vs[1].(int)]
+	}).(GetMonitorLogsStreamHistoryStreamOutput)
+}
+
+type GetMonitorLogsStreamHistoryStreamDetails struct {
+	// The LKE cluster IDs included in this stream version.
+	ClusterIds []int `pulumi:"clusterIds"`
+	// Whether all clusters were auto-added at this version.
+	IsAutoAddAllClustersEnabled bool `pulumi:"isAutoAddAllClustersEnabled"`
+}
+
+// GetMonitorLogsStreamHistoryStreamDetailsInput is an input type that accepts GetMonitorLogsStreamHistoryStreamDetailsArgs and GetMonitorLogsStreamHistoryStreamDetailsOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamHistoryStreamDetailsInput` via:
+//
+//	GetMonitorLogsStreamHistoryStreamDetailsArgs{...}
+type GetMonitorLogsStreamHistoryStreamDetailsInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamHistoryStreamDetailsOutput() GetMonitorLogsStreamHistoryStreamDetailsOutput
+	ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(context.Context) GetMonitorLogsStreamHistoryStreamDetailsOutput
+}
+
+type GetMonitorLogsStreamHistoryStreamDetailsArgs struct {
+	// The LKE cluster IDs included in this stream version.
+	ClusterIds pulumi.IntArrayInput `pulumi:"clusterIds"`
+	// Whether all clusters were auto-added at this version.
+	IsAutoAddAllClustersEnabled pulumi.BoolInput `pulumi:"isAutoAddAllClustersEnabled"`
+}
+
+func (GetMonitorLogsStreamHistoryStreamDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetails)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamHistoryStreamDetailsArgs) ToGetMonitorLogsStreamHistoryStreamDetailsOutput() GetMonitorLogsStreamHistoryStreamDetailsOutput {
+	return i.ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamHistoryStreamDetailsArgs) ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamHistoryStreamDetailsOutput)
+}
+
+type GetMonitorLogsStreamHistoryStreamDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamHistoryStreamDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetails)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ToGetMonitorLogsStreamHistoryStreamDetailsOutput() GetMonitorLogsStreamHistoryStreamDetailsOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamDetailsOutput {
+	return o
+}
+
+// The LKE cluster IDs included in this stream version.
+func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ClusterIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStreamDetails) []int { return v.ClusterIds }).(pulumi.IntArrayOutput)
+}
+
+// Whether all clusters were auto-added at this version.
+func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) IsAutoAddAllClustersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStreamDetails) bool { return v.IsAutoAddAllClustersEnabled }).(pulumi.BoolOutput)
+}
+
+type GetMonitorLogsStreamsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetMonitorLogsStreamsFilterInput is an input type that accepts GetMonitorLogsStreamsFilterArgs and GetMonitorLogsStreamsFilterOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamsFilterInput` via:
+//
+//	GetMonitorLogsStreamsFilterArgs{...}
+type GetMonitorLogsStreamsFilterInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamsFilterOutput() GetMonitorLogsStreamsFilterOutput
+	ToGetMonitorLogsStreamsFilterOutputWithContext(context.Context) GetMonitorLogsStreamsFilterOutput
+}
+
+type GetMonitorLogsStreamsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMonitorLogsStreamsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamsFilter)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamsFilterArgs) ToGetMonitorLogsStreamsFilterOutput() GetMonitorLogsStreamsFilterOutput {
+	return i.ToGetMonitorLogsStreamsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamsFilterArgs) ToGetMonitorLogsStreamsFilterOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsFilterOutput)
+}
+
+// GetMonitorLogsStreamsFilterArrayInput is an input type that accepts GetMonitorLogsStreamsFilterArray and GetMonitorLogsStreamsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamsFilterArrayInput` via:
+//
+//	GetMonitorLogsStreamsFilterArray{ GetMonitorLogsStreamsFilterArgs{...} }
+type GetMonitorLogsStreamsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamsFilterArrayOutput() GetMonitorLogsStreamsFilterArrayOutput
+	ToGetMonitorLogsStreamsFilterArrayOutputWithContext(context.Context) GetMonitorLogsStreamsFilterArrayOutput
+}
+
+type GetMonitorLogsStreamsFilterArray []GetMonitorLogsStreamsFilterInput
+
+func (GetMonitorLogsStreamsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamsFilter)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamsFilterArray) ToGetMonitorLogsStreamsFilterArrayOutput() GetMonitorLogsStreamsFilterArrayOutput {
+	return i.ToGetMonitorLogsStreamsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamsFilterArray) ToGetMonitorLogsStreamsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsFilterArrayOutput)
+}
+
+type GetMonitorLogsStreamsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamsFilter)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamsFilterOutput) ToGetMonitorLogsStreamsFilterOutput() GetMonitorLogsStreamsFilterOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamsFilterOutput) ToGetMonitorLogsStreamsFilterOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetMonitorLogsStreamsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetMonitorLogsStreamsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetMonitorLogsStreamsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMonitorLogsStreamsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamsFilter)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamsFilterArrayOutput) ToGetMonitorLogsStreamsFilterArrayOutput() GetMonitorLogsStreamsFilterArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamsFilterArrayOutput) ToGetMonitorLogsStreamsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamsFilterArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamsFilter {
+		return vs[0].([]GetMonitorLogsStreamsFilter)[vs[1].(int)]
+	}).(GetMonitorLogsStreamsFilterOutput)
+}
+
+type GetMonitorLogsStreamsStream struct {
+	// When this logs stream was created.
+	Created string `pulumi:"created"`
+	// The user who created this logs stream.
+	CreatedBy string `pulumi:"createdBy"`
+	// The unique ID of this logs stream.
+	Id int `pulumi:"id"`
+	// The label for this logs stream.
+	Label string `pulumi:"label"`
+	// The status of this logs stream.
+	Status string `pulumi:"status"`
+	// The type of this logs stream.
+	Type string `pulumi:"type"`
+	// When this logs stream was last updated.
+	Updated string `pulumi:"updated"`
+	// The user who last updated this logs stream.
+	UpdatedBy string `pulumi:"updatedBy"`
+	// The version of this logs stream.
+	Version int `pulumi:"version"`
+}
+
+// GetMonitorLogsStreamsStreamInput is an input type that accepts GetMonitorLogsStreamsStreamArgs and GetMonitorLogsStreamsStreamOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamsStreamInput` via:
+//
+//	GetMonitorLogsStreamsStreamArgs{...}
+type GetMonitorLogsStreamsStreamInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamsStreamOutput() GetMonitorLogsStreamsStreamOutput
+	ToGetMonitorLogsStreamsStreamOutputWithContext(context.Context) GetMonitorLogsStreamsStreamOutput
+}
+
+type GetMonitorLogsStreamsStreamArgs struct {
+	// When this logs stream was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The user who created this logs stream.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The unique ID of this logs stream.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label for this logs stream.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The status of this logs stream.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of this logs stream.
+	Type pulumi.StringInput `pulumi:"type"`
+	// When this logs stream was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// The user who last updated this logs stream.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// The version of this logs stream.
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetMonitorLogsStreamsStreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamsStream)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamsStreamArgs) ToGetMonitorLogsStreamsStreamOutput() GetMonitorLogsStreamsStreamOutput {
+	return i.ToGetMonitorLogsStreamsStreamOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamsStreamArgs) ToGetMonitorLogsStreamsStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsStreamOutput)
+}
+
+// GetMonitorLogsStreamsStreamArrayInput is an input type that accepts GetMonitorLogsStreamsStreamArray and GetMonitorLogsStreamsStreamArrayOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamsStreamArrayInput` via:
+//
+//	GetMonitorLogsStreamsStreamArray{ GetMonitorLogsStreamsStreamArgs{...} }
+type GetMonitorLogsStreamsStreamArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamsStreamArrayOutput() GetMonitorLogsStreamsStreamArrayOutput
+	ToGetMonitorLogsStreamsStreamArrayOutputWithContext(context.Context) GetMonitorLogsStreamsStreamArrayOutput
+}
+
+type GetMonitorLogsStreamsStreamArray []GetMonitorLogsStreamsStreamInput
+
+func (GetMonitorLogsStreamsStreamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamsStream)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamsStreamArray) ToGetMonitorLogsStreamsStreamArrayOutput() GetMonitorLogsStreamsStreamArrayOutput {
+	return i.ToGetMonitorLogsStreamsStreamArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamsStreamArray) ToGetMonitorLogsStreamsStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsStreamArrayOutput)
+}
+
+type GetMonitorLogsStreamsStreamOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamsStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamsStream)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamsStreamOutput) ToGetMonitorLogsStreamsStreamOutput() GetMonitorLogsStreamsStreamOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamsStreamOutput) ToGetMonitorLogsStreamsStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamOutput {
+	return o
+}
+
+// When this logs stream was created.
+func (o GetMonitorLogsStreamsStreamOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The user who created this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The unique ID of this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label for this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The status of this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// When this logs stream was last updated.
+func (o GetMonitorLogsStreamsStreamOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The user who last updated this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The version of this logs stream.
+func (o GetMonitorLogsStreamsStreamOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamsStream) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetMonitorLogsStreamsStreamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamsStreamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamsStream)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamsStreamArrayOutput) ToGetMonitorLogsStreamsStreamArrayOutput() GetMonitorLogsStreamsStreamArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamsStreamArrayOutput) ToGetMonitorLogsStreamsStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamsStreamArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamsStreamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamsStream {
+		return vs[0].([]GetMonitorLogsStreamsStream)[vs[1].(int)]
+	}).(GetMonitorLogsStreamsStreamOutput)
+}
+
+type GetNbTypesFilter struct {
+	// The type of comparison to use for this filter.
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name string `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values []string `pulumi:"values"`
+}
+
+// GetNbTypesFilterInput is an input type that accepts GetNbTypesFilterArgs and GetNbTypesFilterOutput values.
+// You can construct a concrete instance of `GetNbTypesFilterInput` via:
+//
+//	GetNbTypesFilterArgs{...}
+type GetNbTypesFilterInput interface {
+	pulumi.Input
+
+	ToGetNbTypesFilterOutput() GetNbTypesFilterOutput
+	ToGetNbTypesFilterOutputWithContext(context.Context) GetNbTypesFilterOutput
+}
+
+type GetNbTypesFilterArgs struct {
+	// The type of comparison to use for this filter.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the attribute to filter on.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value(s) to be used in the filter.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNbTypesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesFilter)(nil)).Elem()
+}
+
+func (i GetNbTypesFilterArgs) ToGetNbTypesFilterOutput() GetNbTypesFilterOutput {
+	return i.ToGetNbTypesFilterOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesFilterArgs) ToGetNbTypesFilterOutputWithContext(ctx context.Context) GetNbTypesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesFilterOutput)
+}
+
+// GetNbTypesFilterArrayInput is an input type that accepts GetNbTypesFilterArray and GetNbTypesFilterArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesFilterArrayInput` via:
+//
+//	GetNbTypesFilterArray{ GetNbTypesFilterArgs{...} }
+type GetNbTypesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput
+	ToGetNbTypesFilterArrayOutputWithContext(context.Context) GetNbTypesFilterArrayOutput
+}
+
+type GetNbTypesFilterArray []GetNbTypesFilterInput
+
+func (GetNbTypesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesFilter)(nil)).Elem()
+}
+
+func (i GetNbTypesFilterArray) ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput {
+	return i.ToGetNbTypesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesFilterArray) ToGetNbTypesFilterArrayOutputWithContext(ctx context.Context) GetNbTypesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesFilterArrayOutput)
+}
+
+type GetNbTypesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesFilter)(nil)).Elem()
+}
+
+func (o GetNbTypesFilterOutput) ToGetNbTypesFilterOutput() GetNbTypesFilterOutput {
+	return o
+}
+
+func (o GetNbTypesFilterOutput) ToGetNbTypesFilterOutputWithContext(ctx context.Context) GetNbTypesFilterOutput {
+	return o
+}
+
+// The type of comparison to use for this filter.
+func (o GetNbTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNbTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the attribute to filter on.
+func (o GetNbTypesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The value(s) to be used in the filter.
+func (o GetNbTypesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNbTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNbTypesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesFilter)(nil)).Elem()
+}
+
+func (o GetNbTypesFilterArrayOutput) ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetNbTypesFilterArrayOutput) ToGetNbTypesFilterArrayOutputWithContext(ctx context.Context) GetNbTypesFilterArrayOutput {
+	return o
+}
+
+func (o GetNbTypesFilterArrayOutput) Index(i pulumi.IntInput) GetNbTypesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesFilter {
+		return vs[0].([]GetNbTypesFilter)[vs[1].(int)]
+	}).(GetNbTypesFilterOutput)
+}
+
+type GetNbTypesType struct {
+	// The unique ID assigned to this Node Balancer Type.
+	Id string `pulumi:"id"`
+	// The Node Balancer Type's label.
+	Label string `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices []GetNbTypesTypePrice `pulumi:"prices"`
+	// A list of region-specific prices for this Node Balancer Type.
+	RegionPrices []GetNbTypesTypeRegionPrice `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+}
+
+// GetNbTypesTypeInput is an input type that accepts GetNbTypesTypeArgs and GetNbTypesTypeOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeInput` via:
+//
+//	GetNbTypesTypeArgs{...}
+type GetNbTypesTypeInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeOutput() GetNbTypesTypeOutput
+	ToGetNbTypesTypeOutputWithContext(context.Context) GetNbTypesTypeOutput
+}
+
+type GetNbTypesTypeArgs struct {
+	// The unique ID assigned to this Node Balancer Type.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Node Balancer Type's label.
+	Label pulumi.StringInput `pulumi:"label"`
+	// Cost in US dollars, broken down into hourly and monthly charges.
+	Prices GetNbTypesTypePriceArrayInput `pulumi:"prices"`
+	// A list of region-specific prices for this Node Balancer Type.
+	RegionPrices GetNbTypesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+}
+
+func (GetNbTypesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesType)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeArgs) ToGetNbTypesTypeOutput() GetNbTypesTypeOutput {
+	return i.ToGetNbTypesTypeOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeArgs) ToGetNbTypesTypeOutputWithContext(ctx context.Context) GetNbTypesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeOutput)
+}
+
+// GetNbTypesTypeArrayInput is an input type that accepts GetNbTypesTypeArray and GetNbTypesTypeArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeArrayInput` via:
+//
+//	GetNbTypesTypeArray{ GetNbTypesTypeArgs{...} }
+type GetNbTypesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput
+	ToGetNbTypesTypeArrayOutputWithContext(context.Context) GetNbTypesTypeArrayOutput
+}
+
+type GetNbTypesTypeArray []GetNbTypesTypeInput
+
+func (GetNbTypesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesType)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeArray) ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput {
+	return i.ToGetNbTypesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeArray) ToGetNbTypesTypeArrayOutputWithContext(ctx context.Context) GetNbTypesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeArrayOutput)
+}
+
+type GetNbTypesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesType)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeOutput) ToGetNbTypesTypeOutput() GetNbTypesTypeOutput {
+	return o
+}
+
+func (o GetNbTypesTypeOutput) ToGetNbTypesTypeOutputWithContext(ctx context.Context) GetNbTypesTypeOutput {
+	return o
+}
+
+// The unique ID assigned to this Node Balancer Type.
+func (o GetNbTypesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Node Balancer Type's label.
+func (o GetNbTypesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Cost in US dollars, broken down into hourly and monthly charges.
+func (o GetNbTypesTypeOutput) Prices() GetNbTypesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetNbTypesType) []GetNbTypesTypePrice { return v.Prices }).(GetNbTypesTypePriceArrayOutput)
+}
+
+// A list of region-specific prices for this Node Balancer Type.
+func (o GetNbTypesTypeOutput) RegionPrices() GetNbTypesTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetNbTypesType) []GetNbTypesTypeRegionPrice { return v.RegionPrices }).(GetNbTypesTypeRegionPriceArrayOutput)
+}
+
+// The monthly outbound transfer amount, in MB.
+func (o GetNbTypesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNbTypesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+type GetNbTypesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesType)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeArrayOutput) ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeArrayOutput) ToGetNbTypesTypeArrayOutputWithContext(ctx context.Context) GetNbTypesTypeArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesType {
+		return vs[0].([]GetNbTypesType)[vs[1].(int)]
+	}).(GetNbTypesTypeOutput)
+}
+
+type GetNbTypesTypePrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNbTypesTypePriceInput is an input type that accepts GetNbTypesTypePriceArgs and GetNbTypesTypePriceOutput values.
+// You can construct a concrete instance of `GetNbTypesTypePriceInput` via:
+//
+//	GetNbTypesTypePriceArgs{...}
+type GetNbTypesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput
+	ToGetNbTypesTypePriceOutputWithContext(context.Context) GetNbTypesTypePriceOutput
+}
+
+type GetNbTypesTypePriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNbTypesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypePriceArgs) ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput {
+	return i.ToGetNbTypesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypePriceArgs) ToGetNbTypesTypePriceOutputWithContext(ctx context.Context) GetNbTypesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypePriceOutput)
+}
+
+// GetNbTypesTypePriceArrayInput is an input type that accepts GetNbTypesTypePriceArray and GetNbTypesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesTypePriceArrayInput` via:
+//
+//	GetNbTypesTypePriceArray{ GetNbTypesTypePriceArgs{...} }
+type GetNbTypesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput
+	ToGetNbTypesTypePriceArrayOutputWithContext(context.Context) GetNbTypesTypePriceArrayOutput
+}
+
+type GetNbTypesTypePriceArray []GetNbTypesTypePriceInput
+
+func (GetNbTypesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypePriceArray) ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput {
+	return i.ToGetNbTypesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypePriceArray) ToGetNbTypesTypePriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypePriceArrayOutput)
+}
+
+type GetNbTypesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypePriceOutput) ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceOutput) ToGetNbTypesTypePriceOutputWithContext(ctx context.Context) GetNbTypesTypePriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetNbTypesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNbTypesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypePrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypePriceArrayOutput) ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceArrayOutput) ToGetNbTypesTypePriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesTypePrice {
+		return vs[0].([]GetNbTypesTypePrice)[vs[1].(int)]
+	}).(GetNbTypesTypePriceOutput)
+}
+
+type GetNbTypesTypeRegionPrice struct {
+	Hourly  float64 `pulumi:"hourly"`
+	Id      string  `pulumi:"id"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNbTypesTypeRegionPriceInput is an input type that accepts GetNbTypesTypeRegionPriceArgs and GetNbTypesTypeRegionPriceOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeRegionPriceInput` via:
+//
+//	GetNbTypesTypeRegionPriceArgs{...}
+type GetNbTypesTypeRegionPriceInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput
+	ToGetNbTypesTypeRegionPriceOutputWithContext(context.Context) GetNbTypesTypeRegionPriceOutput
+}
+
+type GetNbTypesTypeRegionPriceArgs struct {
+	Hourly  pulumi.Float64Input `pulumi:"hourly"`
+	Id      pulumi.StringInput  `pulumi:"id"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNbTypesTypeRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeRegionPriceArgs) ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput {
+	return i.ToGetNbTypesTypeRegionPriceOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeRegionPriceArgs) ToGetNbTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeRegionPriceOutput)
+}
+
+// GetNbTypesTypeRegionPriceArrayInput is an input type that accepts GetNbTypesTypeRegionPriceArray and GetNbTypesTypeRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetNbTypesTypeRegionPriceArrayInput` via:
+//
+//	GetNbTypesTypeRegionPriceArray{ GetNbTypesTypeRegionPriceArgs{...} }
+type GetNbTypesTypeRegionPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput
+	ToGetNbTypesTypeRegionPriceArrayOutputWithContext(context.Context) GetNbTypesTypeRegionPriceArrayOutput
+}
+
+type GetNbTypesTypeRegionPriceArray []GetNbTypesTypeRegionPriceInput
+
+func (GetNbTypesTypeRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNbTypesTypeRegionPriceArray) ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput {
+	return i.ToGetNbTypesTypeRegionPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNbTypesTypeRegionPriceArray) ToGetNbTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeRegionPriceArrayOutput)
+}
+
+type GetNbTypesTypeRegionPriceOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) ToGetNbTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNbTypesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNbTypesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNbTypesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNbTypesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNbTypesTypeRegionPriceArrayOutput) ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceArrayOutput) ToGetNbTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNbTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypeRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesTypeRegionPrice {
+		return vs[0].([]GetNbTypesTypeRegionPrice)[vs[1].(int)]
+	}).(GetNbTypesTypeRegionPriceOutput)
+}
+
+type GetNetworkTransferPricesFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetNetworkTransferPricesFilterInput is an input type that accepts GetNetworkTransferPricesFilterArgs and GetNetworkTransferPricesFilterOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesFilterInput` via:
+//
+//	GetNetworkTransferPricesFilterArgs{...}
+type GetNetworkTransferPricesFilterInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput
+	ToGetNetworkTransferPricesFilterOutputWithContext(context.Context) GetNetworkTransferPricesFilterOutput
+}
+
+type GetNetworkTransferPricesFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNetworkTransferPricesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesFilterArgs) ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput {
+	return i.ToGetNetworkTransferPricesFilterOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesFilterArgs) ToGetNetworkTransferPricesFilterOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesFilterOutput)
+}
+
+// GetNetworkTransferPricesFilterArrayInput is an input type that accepts GetNetworkTransferPricesFilterArray and GetNetworkTransferPricesFilterArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesFilterArrayInput` via:
+//
+//	GetNetworkTransferPricesFilterArray{ GetNetworkTransferPricesFilterArgs{...} }
+type GetNetworkTransferPricesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput
+	ToGetNetworkTransferPricesFilterArrayOutputWithContext(context.Context) GetNetworkTransferPricesFilterArrayOutput
+}
+
+type GetNetworkTransferPricesFilterArray []GetNetworkTransferPricesFilterInput
+
+func (GetNetworkTransferPricesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesFilterArray) ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput {
+	return i.ToGetNetworkTransferPricesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesFilterArray) ToGetNetworkTransferPricesFilterArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesFilterArrayOutput)
+}
+
+type GetNetworkTransferPricesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetNetworkTransferPricesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetNetworkTransferPricesFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetNetworkTransferPricesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkTransferPricesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesFilter)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesFilterArrayOutput) ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesFilterArrayOutput) ToGetNetworkTransferPricesFilterArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesFilter {
+		return vs[0].([]GetNetworkTransferPricesFilter)[vs[1].(int)]
+	}).(GetNetworkTransferPricesFilterOutput)
+}
+
+type GetNetworkTransferPricesType struct {
+	// The ID representing the Network Transfer Price.
+	Id string `pulumi:"id"`
+	// The Network Transfer Price label is for display purposes only.
+	Label string `pulumi:"label"`
+	// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
+	Prices []GetNetworkTransferPricesTypePrice `pulumi:"prices"`
+	// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
+	RegionPrices []GetNetworkTransferPricesTypeRegionPrice `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer int `pulumi:"transfer"`
+}
+
+// GetNetworkTransferPricesTypeInput is an input type that accepts GetNetworkTransferPricesTypeArgs and GetNetworkTransferPricesTypeOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeInput` via:
+//
+//	GetNetworkTransferPricesTypeArgs{...}
+type GetNetworkTransferPricesTypeInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput
+	ToGetNetworkTransferPricesTypeOutputWithContext(context.Context) GetNetworkTransferPricesTypeOutput
+}
+
+type GetNetworkTransferPricesTypeArgs struct {
+	// The ID representing the Network Transfer Price.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The Network Transfer Price label is for display purposes only.
+	Label pulumi.StringInput `pulumi:"label"`
+	// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
+	Prices GetNetworkTransferPricesTypePriceArrayInput `pulumi:"prices"`
+	// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
+	RegionPrices GetNetworkTransferPricesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
+	// The monthly outbound transfer amount, in MB.
+	Transfer pulumi.IntInput `pulumi:"transfer"`
+}
+
+func (GetNetworkTransferPricesTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeArgs) ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput {
+	return i.ToGetNetworkTransferPricesTypeOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeArgs) ToGetNetworkTransferPricesTypeOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeOutput)
+}
+
+// GetNetworkTransferPricesTypeArrayInput is an input type that accepts GetNetworkTransferPricesTypeArray and GetNetworkTransferPricesTypeArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeArrayInput` via:
+//
+//	GetNetworkTransferPricesTypeArray{ GetNetworkTransferPricesTypeArgs{...} }
+type GetNetworkTransferPricesTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput
+	ToGetNetworkTransferPricesTypeArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypeArrayOutput
+}
+
+type GetNetworkTransferPricesTypeArray []GetNetworkTransferPricesTypeInput
+
+func (GetNetworkTransferPricesTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeArray) ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput {
+	return i.ToGetNetworkTransferPricesTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeArray) ToGetNetworkTransferPricesTypeArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeArrayOutput)
+}
+
+type GetNetworkTransferPricesTypeOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeOutput {
+	return o
+}
+
+// The ID representing the Network Transfer Price.
+func (o GetNetworkTransferPricesTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The Network Transfer Price label is for display purposes only.
+func (o GetNetworkTransferPricesTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
+func (o GetNetworkTransferPricesTypeOutput) Prices() GetNetworkTransferPricesTypePriceArrayOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) []GetNetworkTransferPricesTypePrice { return v.Prices }).(GetNetworkTransferPricesTypePriceArrayOutput)
+}
+
+// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
+func (o GetNetworkTransferPricesTypeOutput) RegionPrices() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) []GetNetworkTransferPricesTypeRegionPrice { return v.RegionPrices }).(GetNetworkTransferPricesTypeRegionPriceArrayOutput)
+}
+
+// The monthly outbound transfer amount, in MB.
+func (o GetNetworkTransferPricesTypeOutput) Transfer() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesType) int { return v.Transfer }).(pulumi.IntOutput)
+}
+
+type GetNetworkTransferPricesTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesType)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeArrayOutput) ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeArrayOutput) ToGetNetworkTransferPricesTypeArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesType {
+		return vs[0].([]GetNetworkTransferPricesType)[vs[1].(int)]
+	}).(GetNetworkTransferPricesTypeOutput)
+}
+
+type GetNetworkTransferPricesTypePrice struct {
+	// Cost (in US dollars) per hour.
+	Hourly float64 `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNetworkTransferPricesTypePriceInput is an input type that accepts GetNetworkTransferPricesTypePriceArgs and GetNetworkTransferPricesTypePriceOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypePriceInput` via:
+//
+//	GetNetworkTransferPricesTypePriceArgs{...}
+type GetNetworkTransferPricesTypePriceInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput
+	ToGetNetworkTransferPricesTypePriceOutputWithContext(context.Context) GetNetworkTransferPricesTypePriceOutput
+}
+
+type GetNetworkTransferPricesTypePriceArgs struct {
+	// Cost (in US dollars) per hour.
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// Cost (in US dollars) per month.
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNetworkTransferPricesTypePriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypePriceArgs) ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput {
+	return i.ToGetNetworkTransferPricesTypePriceOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypePriceArgs) ToGetNetworkTransferPricesTypePriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypePriceOutput)
+}
+
+// GetNetworkTransferPricesTypePriceArrayInput is an input type that accepts GetNetworkTransferPricesTypePriceArray and GetNetworkTransferPricesTypePriceArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypePriceArrayInput` via:
+//
+//	GetNetworkTransferPricesTypePriceArray{ GetNetworkTransferPricesTypePriceArgs{...} }
+type GetNetworkTransferPricesTypePriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput
+	ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypePriceArrayOutput
+}
+
+type GetNetworkTransferPricesTypePriceArray []GetNetworkTransferPricesTypePriceInput
+
+func (GetNetworkTransferPricesTypePriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypePriceArray) ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput {
+	return i.ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypePriceArray) ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypePriceArrayOutput)
+}
+
+type GetNetworkTransferPricesTypePriceOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypePriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypePriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceOutput {
+	return o
+}
+
+// Cost (in US dollars) per hour.
+func (o GetNetworkTransferPricesTypePriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+// Cost (in US dollars) per month.
+func (o GetNetworkTransferPricesTypePriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNetworkTransferPricesTypePriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypePriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypePrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypePriceArrayOutput) ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceArrayOutput) ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypePriceArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypePriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesTypePrice {
+		return vs[0].([]GetNetworkTransferPricesTypePrice)[vs[1].(int)]
+	}).(GetNetworkTransferPricesTypePriceOutput)
+}
+
+type GetNetworkTransferPricesTypeRegionPrice struct {
+	Hourly float64 `pulumi:"hourly"`
+	// The ID representing the Network Transfer Price.
+	Id      string  `pulumi:"id"`
+	Monthly float64 `pulumi:"monthly"`
+}
+
+// GetNetworkTransferPricesTypeRegionPriceInput is an input type that accepts GetNetworkTransferPricesTypeRegionPriceArgs and GetNetworkTransferPricesTypeRegionPriceOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeRegionPriceInput` via:
+//
+//	GetNetworkTransferPricesTypeRegionPriceArgs{...}
+type GetNetworkTransferPricesTypeRegionPriceInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput
+	ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(context.Context) GetNetworkTransferPricesTypeRegionPriceOutput
+}
+
+type GetNetworkTransferPricesTypeRegionPriceArgs struct {
+	Hourly pulumi.Float64Input `pulumi:"hourly"`
+	// The ID representing the Network Transfer Price.
+	Id      pulumi.StringInput  `pulumi:"id"`
+	Monthly pulumi.Float64Input `pulumi:"monthly"`
+}
+
+func (GetNetworkTransferPricesTypeRegionPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArgs) ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput {
+	return i.ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArgs) ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeRegionPriceOutput)
+}
+
+// GetNetworkTransferPricesTypeRegionPriceArrayInput is an input type that accepts GetNetworkTransferPricesTypeRegionPriceArray and GetNetworkTransferPricesTypeRegionPriceArrayOutput values.
+// You can construct a concrete instance of `GetNetworkTransferPricesTypeRegionPriceArrayInput` via:
+//
+//	GetNetworkTransferPricesTypeRegionPriceArray{ GetNetworkTransferPricesTypeRegionPriceArgs{...} }
+type GetNetworkTransferPricesTypeRegionPriceArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput
+	ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput
+}
+
+type GetNetworkTransferPricesTypeRegionPriceArray []GetNetworkTransferPricesTypeRegionPriceInput
+
+func (GetNetworkTransferPricesTypeRegionPriceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArray) ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return i.ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkTransferPricesTypeRegionPriceArray) ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeRegionPriceArrayOutput)
+}
+
+type GetNetworkTransferPricesTypeRegionPriceOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeRegionPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
+}
+
+// The ID representing the Network Transfer Price.
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
+}
+
+type GetNetworkTransferPricesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkTransferPricesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput {
+	return o
+}
+
+func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypeRegionPriceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesTypeRegionPrice {
+		return vs[0].([]GetNetworkTransferPricesTypeRegionPrice)[vs[1].(int)]
+	}).(GetNetworkTransferPricesTypeRegionPriceOutput)
+}
+
+type GetNetworkingIpAssignedEntity struct {
+	// The ID of the entity.
+	Id int `pulumi:"id"`
+	// The label of the entity.
+	Label string `pulumi:"label"`
+	// The type of the entity.
+	Type string `pulumi:"type"`
+	// The URL of the entity.
+	Url string `pulumi:"url"`
+}
+
+// GetNetworkingIpAssignedEntityInput is an input type that accepts GetNetworkingIpAssignedEntityArgs and GetNetworkingIpAssignedEntityOutput values.
+// You can construct a concrete instance of `GetNetworkingIpAssignedEntityInput` via:
+//
+//	GetNetworkingIpAssignedEntityArgs{...}
+type GetNetworkingIpAssignedEntityInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpAssignedEntityOutput() GetNetworkingIpAssignedEntityOutput
+	ToGetNetworkingIpAssignedEntityOutputWithContext(context.Context) GetNetworkingIpAssignedEntityOutput
+}
+
+type GetNetworkingIpAssignedEntityArgs struct {
+	// The ID of the entity.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label of the entity.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The type of the entity.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL of the entity.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNetworkingIpAssignedEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpAssignedEntity)(nil)).Elem()
+}
+
+func (i GetNetworkingIpAssignedEntityArgs) ToGetNetworkingIpAssignedEntityOutput() GetNetworkingIpAssignedEntityOutput {
+	return i.ToGetNetworkingIpAssignedEntityOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpAssignedEntityArgs) ToGetNetworkingIpAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpAssignedEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpAssignedEntityOutput)
+}
+
+type GetNetworkingIpAssignedEntityOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpAssignedEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpAssignedEntity)(nil)).Elem()
+}
+
+func (o GetNetworkingIpAssignedEntityOutput) ToGetNetworkingIpAssignedEntityOutput() GetNetworkingIpAssignedEntityOutput {
+	return o
+}
+
+func (o GetNetworkingIpAssignedEntityOutput) ToGetNetworkingIpAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpAssignedEntityOutput {
+	return o
+}
+
+// The ID of the entity.
+func (o GetNetworkingIpAssignedEntityOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label of the entity.
+func (o GetNetworkingIpAssignedEntityOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The type of the entity.
+func (o GetNetworkingIpAssignedEntityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL of the entity.
+func (o GetNetworkingIpAssignedEntityOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNetworkingIpVpcNat11 struct {
+	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+	Address string `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId int `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// GetNetworkingIpVpcNat11Input is an input type that accepts GetNetworkingIpVpcNat11Args and GetNetworkingIpVpcNat11Output values.
+// You can construct a concrete instance of `GetNetworkingIpVpcNat11Input` via:
+//
+//	GetNetworkingIpVpcNat11Args{...}
+type GetNetworkingIpVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output
+	ToGetNetworkingIpVpcNat11OutputWithContext(context.Context) GetNetworkingIpVpcNat11Output
+}
+
+type GetNetworkingIpVpcNat11Args struct {
+	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkingIpVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (i GetNetworkingIpVpcNat11Args) ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output {
+	return i.ToGetNetworkingIpVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpVpcNat11Args) ToGetNetworkingIpVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpVpcNat11Output)
+}
+
+type GetNetworkingIpVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpVpcNat11)(nil)).Elem()
+}
+
+func (o GetNetworkingIpVpcNat11Output) ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output {
+	return o
+}
+
+func (o GetNetworkingIpVpcNat11Output) ToGetNetworkingIpVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpVpcNat11Output {
+	return o
+}
+
+// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
+func (o GetNetworkingIpVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The `id` of the VPC Subnet for this Interface.
+func (o GetNetworkingIpVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The `id` of the VPC configured for this Interface.
+func (o GetNetworkingIpVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+type GetNetworkingIpsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetNetworkingIpsFilterInput is an input type that accepts GetNetworkingIpsFilterArgs and GetNetworkingIpsFilterOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsFilterInput` via:
+//
+//	GetNetworkingIpsFilterArgs{...}
+type GetNetworkingIpsFilterInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput
+	ToGetNetworkingIpsFilterOutputWithContext(context.Context) GetNetworkingIpsFilterOutput
+}
+
+type GetNetworkingIpsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetNetworkingIpsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsFilterArgs) ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput {
+	return i.ToGetNetworkingIpsFilterOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsFilterArgs) ToGetNetworkingIpsFilterOutputWithContext(ctx context.Context) GetNetworkingIpsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsFilterOutput)
+}
+
+// GetNetworkingIpsFilterArrayInput is an input type that accepts GetNetworkingIpsFilterArray and GetNetworkingIpsFilterArrayOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsFilterArrayInput` via:
+//
+//	GetNetworkingIpsFilterArray{ GetNetworkingIpsFilterArgs{...} }
+type GetNetworkingIpsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput
+	ToGetNetworkingIpsFilterArrayOutputWithContext(context.Context) GetNetworkingIpsFilterArrayOutput
+}
+
+type GetNetworkingIpsFilterArray []GetNetworkingIpsFilterInput
+
+func (GetNetworkingIpsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsFilterArray) ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput {
+	return i.ToGetNetworkingIpsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsFilterArray) ToGetNetworkingIpsFilterArrayOutputWithContext(ctx context.Context) GetNetworkingIpsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsFilterArrayOutput)
+}
+
+type GetNetworkingIpsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput {
+	return o
+}
+
+func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutputWithContext(ctx context.Context) GetNetworkingIpsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetNetworkingIpsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetNetworkingIpsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetNetworkingIpsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetNetworkingIpsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkingIpsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetNetworkingIpsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsFilter)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsFilterArrayOutput) ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsFilterArrayOutput) ToGetNetworkingIpsFilterArrayOutputWithContext(ctx context.Context) GetNetworkingIpsFilterArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkingIpsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsFilter {
+		return vs[0].([]GetNetworkingIpsFilter)[vs[1].(int)]
+	}).(GetNetworkingIpsFilterOutput)
+}
+
+type GetNetworkingIpsIpAddress struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address string `pulumi:"address"`
+	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+	AssignedEntity GetNetworkingIpsIpAddressAssignedEntity `pulumi:"assignedEntity"`
+	// The default gateway for this address.
+	Gateway string `pulumi:"gateway"`
+	// The ID of the interface this address is assigned to.
+	InterfaceId int `pulumi:"interfaceId"`
+	// The ID of the Linode this address currently belongs to.
+	LinodeId int `pulumi:"linodeId"`
+	// The number of bits set in the subnet mask.
+	Prefix int `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public bool `pulumi:"public"`
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns string `pulumi:"rdns"`
+	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+	Region string `pulumi:"region"`
+	// Whether this IP address is a reserved IP.
+	Reserved bool `pulumi:"reserved"`
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask string `pulumi:"subnetMask"`
+	// A set of tags associated with this IP address.
+	Tags []string `pulumi:"tags"`
+	// The type of the entity.
+	Type string `pulumi:"type"`
+	// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
+	VpcNat11 GetNetworkingIpsIpAddressVpcNat11 `pulumi:"vpcNat11"`
+}
+
+// GetNetworkingIpsIpAddressInput is an input type that accepts GetNetworkingIpsIpAddressArgs and GetNetworkingIpsIpAddressOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressInput` via:
+//
+//	GetNetworkingIpsIpAddressArgs{...}
+type GetNetworkingIpsIpAddressInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput
+	ToGetNetworkingIpsIpAddressOutputWithContext(context.Context) GetNetworkingIpsIpAddressOutput
+}
+
+type GetNetworkingIpsIpAddressArgs struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address pulumi.StringInput `pulumi:"address"`
+	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+	AssignedEntity GetNetworkingIpsIpAddressAssignedEntityInput `pulumi:"assignedEntity"`
+	// The default gateway for this address.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The ID of the interface this address is assigned to.
+	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
+	// The ID of the Linode this address currently belongs to.
+	LinodeId pulumi.IntInput `pulumi:"linodeId"`
+	// The number of bits set in the subnet mask.
+	Prefix pulumi.IntInput `pulumi:"prefix"`
+	// Whether this is a public or private IP address.
+	Public pulumi.BoolInput `pulumi:"public"`
+	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+	Rdns pulumi.StringInput `pulumi:"rdns"`
+	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+	Region pulumi.StringInput `pulumi:"region"`
+	// Whether this IP address is a reserved IP.
+	Reserved pulumi.BoolInput `pulumi:"reserved"`
+	// The mask that separates host bits from network bits for this address.
+	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
+	// A set of tags associated with this IP address.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// The type of the entity.
+	Type pulumi.StringInput `pulumi:"type"`
+	// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
+	VpcNat11 GetNetworkingIpsIpAddressVpcNat11Input `pulumi:"vpcNat11"`
+}
+
+func (GetNetworkingIpsIpAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressArgs) ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput {
+	return i.ToGetNetworkingIpsIpAddressOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressArgs) ToGetNetworkingIpsIpAddressOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressOutput)
+}
+
+// GetNetworkingIpsIpAddressArrayInput is an input type that accepts GetNetworkingIpsIpAddressArray and GetNetworkingIpsIpAddressArrayOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressArrayInput` via:
+//
+//	GetNetworkingIpsIpAddressArray{ GetNetworkingIpsIpAddressArgs{...} }
+type GetNetworkingIpsIpAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput
+	ToGetNetworkingIpsIpAddressArrayOutputWithContext(context.Context) GetNetworkingIpsIpAddressArrayOutput
+}
+
+type GetNetworkingIpsIpAddressArray []GetNetworkingIpsIpAddressInput
+
+func (GetNetworkingIpsIpAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressArray) ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput {
+	return i.ToGetNetworkingIpsIpAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressArray) ToGetNetworkingIpsIpAddressArrayOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressArrayOutput)
+}
+
+type GetNetworkingIpsIpAddressOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressOutput {
+	return o
+}
+
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+func (o GetNetworkingIpsIpAddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
+func (o GetNetworkingIpsIpAddressOutput) AssignedEntity() GetNetworkingIpsIpAddressAssignedEntityOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) GetNetworkingIpsIpAddressAssignedEntity { return v.AssignedEntity }).(GetNetworkingIpsIpAddressAssignedEntityOutput)
+}
+
+// The default gateway for this address.
+func (o GetNetworkingIpsIpAddressOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The ID of the interface this address is assigned to.
+func (o GetNetworkingIpsIpAddressOutput) InterfaceId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.InterfaceId }).(pulumi.IntOutput)
+}
+
+// The ID of the Linode this address currently belongs to.
+func (o GetNetworkingIpsIpAddressOutput) LinodeId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.LinodeId }).(pulumi.IntOutput)
+}
+
+// The number of bits set in the subnet mask.
+func (o GetNetworkingIpsIpAddressOutput) Prefix() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.Prefix }).(pulumi.IntOutput)
+}
+
+// Whether this is a public or private IP address.
+func (o GetNetworkingIpsIpAddressOutput) Public() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Public }).(pulumi.BoolOutput)
+}
+
+// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
+func (o GetNetworkingIpsIpAddressOutput) Rdns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Rdns }).(pulumi.StringOutput)
+}
+
+// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
+func (o GetNetworkingIpsIpAddressOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Whether this IP address is a reserved IP.
+func (o GetNetworkingIpsIpAddressOutput) Reserved() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Reserved }).(pulumi.BoolOutput)
+}
+
+// The mask that separates host bits from network bits for this address.
+func (o GetNetworkingIpsIpAddressOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+// A set of tags associated with this IP address.
+func (o GetNetworkingIpsIpAddressOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// The type of the entity.
+func (o GetNetworkingIpsIpAddressOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
+func (o GetNetworkingIpsIpAddressOutput) VpcNat11() GetNetworkingIpsIpAddressVpcNat11Output {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddress) GetNetworkingIpsIpAddressVpcNat11 { return v.VpcNat11 }).(GetNetworkingIpsIpAddressVpcNat11Output)
+}
+
+type GetNetworkingIpsIpAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkingIpsIpAddress)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressArrayOutput) ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressArrayOutput) ToGetNetworkingIpsIpAddressArrayOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressArrayOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressArrayOutput) Index(i pulumi.IntInput) GetNetworkingIpsIpAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsIpAddress {
+		return vs[0].([]GetNetworkingIpsIpAddress)[vs[1].(int)]
+	}).(GetNetworkingIpsIpAddressOutput)
+}
+
+type GetNetworkingIpsIpAddressAssignedEntity struct {
+	// The ID of the entity.
+	Id int `pulumi:"id"`
+	// The label of the entity.
+	Label string `pulumi:"label"`
+	// The type of the entity.
+	Type string `pulumi:"type"`
+	// The URL of the entity.
+	Url string `pulumi:"url"`
+}
+
+// GetNetworkingIpsIpAddressAssignedEntityInput is an input type that accepts GetNetworkingIpsIpAddressAssignedEntityArgs and GetNetworkingIpsIpAddressAssignedEntityOutput values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressAssignedEntityInput` via:
+//
+//	GetNetworkingIpsIpAddressAssignedEntityArgs{...}
+type GetNetworkingIpsIpAddressAssignedEntityInput interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressAssignedEntityOutput() GetNetworkingIpsIpAddressAssignedEntityOutput
+	ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(context.Context) GetNetworkingIpsIpAddressAssignedEntityOutput
+}
+
+type GetNetworkingIpsIpAddressAssignedEntityArgs struct {
+	// The ID of the entity.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label of the entity.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The type of the entity.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The URL of the entity.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetNetworkingIpsIpAddressAssignedEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddressAssignedEntity)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressAssignedEntityArgs) ToGetNetworkingIpsIpAddressAssignedEntityOutput() GetNetworkingIpsIpAddressAssignedEntityOutput {
+	return i.ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressAssignedEntityArgs) ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressAssignedEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressAssignedEntityOutput)
+}
+
+type GetNetworkingIpsIpAddressAssignedEntityOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressAssignedEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddressAssignedEntity)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressAssignedEntityOutput) ToGetNetworkingIpsIpAddressAssignedEntityOutput() GetNetworkingIpsIpAddressAssignedEntityOutput {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressAssignedEntityOutput) ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressAssignedEntityOutput {
+	return o
+}
+
+// The ID of the entity.
+func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label of the entity.
+func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The type of the entity.
+func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL of the entity.
+func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetNetworkingIpsIpAddressVpcNat11 struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address string `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId int `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// GetNetworkingIpsIpAddressVpcNat11Input is an input type that accepts GetNetworkingIpsIpAddressVpcNat11Args and GetNetworkingIpsIpAddressVpcNat11Output values.
+// You can construct a concrete instance of `GetNetworkingIpsIpAddressVpcNat11Input` via:
+//
+//	GetNetworkingIpsIpAddressVpcNat11Args{...}
+type GetNetworkingIpsIpAddressVpcNat11Input interface {
+	pulumi.Input
+
+	ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output
+	ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(context.Context) GetNetworkingIpsIpAddressVpcNat11Output
+}
+
+type GetNetworkingIpsIpAddressVpcNat11Args struct {
+	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The `id` of the VPC Subnet for this Interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The `id` of the VPC configured for this Interface.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (GetNetworkingIpsIpAddressVpcNat11Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11)(nil)).Elem()
+}
+
+func (i GetNetworkingIpsIpAddressVpcNat11Args) ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output {
+	return i.ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(context.Background())
+}
+
+func (i GetNetworkingIpsIpAddressVpcNat11Args) ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressVpcNat11Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressVpcNat11Output)
+}
+
+type GetNetworkingIpsIpAddressVpcNat11Output struct{ *pulumi.OutputState }
+
+func (GetNetworkingIpsIpAddressVpcNat11Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11)(nil)).Elem()
+}
+
+func (o GetNetworkingIpsIpAddressVpcNat11Output) ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output {
+	return o
+}
+
+func (o GetNetworkingIpsIpAddressVpcNat11Output) ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressVpcNat11Output {
+	return o
+}
+
+// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
+func (o GetNetworkingIpsIpAddressVpcNat11Output) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The `id` of the VPC Subnet for this Interface.
+func (o GetNetworkingIpsIpAddressVpcNat11Output) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The `id` of the VPC configured for this Interface.
+func (o GetNetworkingIpsIpAddressVpcNat11Output) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+type GetNodeBalancerConfigNodeStatus struct {
+	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+	Down int `pulumi:"down"`
+	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+	Up int `pulumi:"up"`
+}
+
+// GetNodeBalancerConfigNodeStatusInput is an input type that accepts GetNodeBalancerConfigNodeStatusArgs and GetNodeBalancerConfigNodeStatusOutput values.
+// You can construct a concrete instance of `GetNodeBalancerConfigNodeStatusInput` via:
+//
+//	GetNodeBalancerConfigNodeStatusArgs{...}
+type GetNodeBalancerConfigNodeStatusInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerConfigNodeStatusOutput() GetNodeBalancerConfigNodeStatusOutput
+	ToGetNodeBalancerConfigNodeStatusOutputWithContext(context.Context) GetNodeBalancerConfigNodeStatusOutput
+}
+
+type GetNodeBalancerConfigNodeStatusArgs struct {
+	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+	Down pulumi.IntInput `pulumi:"down"`
+	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+	Up pulumi.IntInput `pulumi:"up"`
+}
+
+func (GetNodeBalancerConfigNodeStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (i GetNodeBalancerConfigNodeStatusArgs) ToGetNodeBalancerConfigNodeStatusOutput() GetNodeBalancerConfigNodeStatusOutput {
+	return i.ToGetNodeBalancerConfigNodeStatusOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerConfigNodeStatusArgs) ToGetNodeBalancerConfigNodeStatusOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerConfigNodeStatusOutput)
+}
+
+// GetNodeBalancerConfigNodeStatusArrayInput is an input type that accepts GetNodeBalancerConfigNodeStatusArray and GetNodeBalancerConfigNodeStatusArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerConfigNodeStatusArrayInput` via:
+//
+//	GetNodeBalancerConfigNodeStatusArray{ GetNodeBalancerConfigNodeStatusArgs{...} }
+type GetNodeBalancerConfigNodeStatusArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerConfigNodeStatusArrayOutput() GetNodeBalancerConfigNodeStatusArrayOutput
+	ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(context.Context) GetNodeBalancerConfigNodeStatusArrayOutput
+}
+
+type GetNodeBalancerConfigNodeStatusArray []GetNodeBalancerConfigNodeStatusInput
+
+func (GetNodeBalancerConfigNodeStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (i GetNodeBalancerConfigNodeStatusArray) ToGetNodeBalancerConfigNodeStatusArrayOutput() GetNodeBalancerConfigNodeStatusArrayOutput {
+	return i.ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerConfigNodeStatusArray) ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerConfigNodeStatusArrayOutput)
+}
+
+type GetNodeBalancerConfigNodeStatusOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerConfigNodeStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (o GetNodeBalancerConfigNodeStatusOutput) ToGetNodeBalancerConfigNodeStatusOutput() GetNodeBalancerConfigNodeStatusOutput {
+	return o
+}
+
+func (o GetNodeBalancerConfigNodeStatusOutput) ToGetNodeBalancerConfigNodeStatusOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusOutput {
+	return o
+}
+
+// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
+func (o GetNodeBalancerConfigNodeStatusOutput) Down() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodeBalancerConfigNodeStatus) int { return v.Down }).(pulumi.IntOutput)
+}
+
+// The number of backends considered to be 'UP' and healthy, and that are serving requests.
+func (o GetNodeBalancerConfigNodeStatusOutput) Up() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodeBalancerConfigNodeStatus) int { return v.Up }).(pulumi.IntOutput)
+}
+
+type GetNodeBalancerConfigNodeStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerConfigNodeStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerConfigNodeStatus)(nil)).Elem()
+}
+
+func (o GetNodeBalancerConfigNodeStatusArrayOutput) ToGetNodeBalancerConfigNodeStatusArrayOutput() GetNodeBalancerConfigNodeStatusArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerConfigNodeStatusArrayOutput) ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerConfigNodeStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerConfigNodeStatus {
+		return vs[0].([]GetNodeBalancerConfigNodeStatus)[vs[1].(int)]
+	}).(GetNodeBalancerConfigNodeStatusOutput)
+}
+
+type GetNodeBalancerFirewall struct {
+	// When this firewall was created.
+	Created string `pulumi:"created"`
+	// The NodeBalancer's ID.
+	Id int `pulumi:"id"`
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+	InboundPolicy string `pulumi:"inboundPolicy"`
+	// A set of firewall rules that specify what inbound network traffic is allowed.
+	Inbounds []GetNodeBalancerFirewallInbound `pulumi:"inbounds"`
+	// The label of the related LKE cluster.
+	Label string `pulumi:"label"`
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+	OutboundPolicy string `pulumi:"outboundPolicy"`
+	// A set of firewall rules that specify what outbound network traffic is allowed.
+	Outbounds []GetNodeBalancerFirewallOutbound `pulumi:"outbounds"`
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+	Status string `pulumi:"status"`
+	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
+	Tags []string `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetNodeBalancerFirewallInput is an input type that accepts GetNodeBalancerFirewallArgs and GetNodeBalancerFirewallOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallInput` via:
+//
+//	GetNodeBalancerFirewallArgs{...}
+type GetNodeBalancerFirewallInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput
+	ToGetNodeBalancerFirewallOutputWithContext(context.Context) GetNodeBalancerFirewallOutput
+}
+
+type GetNodeBalancerFirewallArgs struct {
+	// When this firewall was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The NodeBalancer's ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+	InboundPolicy pulumi.StringInput `pulumi:"inboundPolicy"`
+	// A set of firewall rules that specify what inbound network traffic is allowed.
+	Inbounds GetNodeBalancerFirewallInboundArrayInput `pulumi:"inbounds"`
+	// The label of the related LKE cluster.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+	OutboundPolicy pulumi.StringInput `pulumi:"outboundPolicy"`
+	// A set of firewall rules that specify what outbound network traffic is allowed.
+	Outbounds GetNodeBalancerFirewallOutboundArrayInput `pulumi:"outbounds"`
+	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+	Status pulumi.StringInput `pulumi:"status"`
+	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// When this firewall was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetNodeBalancerFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallArgs) ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput {
+	return i.ToGetNodeBalancerFirewallOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallArgs) ToGetNodeBalancerFirewallOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutput)
+}
+
+// GetNodeBalancerFirewallArrayInput is an input type that accepts GetNodeBalancerFirewallArray and GetNodeBalancerFirewallArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallArrayInput` via:
+//
+//	GetNodeBalancerFirewallArray{ GetNodeBalancerFirewallArgs{...} }
+type GetNodeBalancerFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput
+	ToGetNodeBalancerFirewallArrayOutputWithContext(context.Context) GetNodeBalancerFirewallArrayOutput
+}
+
+type GetNodeBalancerFirewallArray []GetNodeBalancerFirewallInput
+
+func (GetNodeBalancerFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallArray) ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput {
+	return i.ToGetNodeBalancerFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallArray) ToGetNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallArrayOutput)
+}
+
+type GetNodeBalancerFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallOutput) ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutput) ToGetNodeBalancerFirewallOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutput {
+	return o
+}
+
+// When this firewall was created.
+func (o GetNodeBalancerFirewallOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The NodeBalancer's ID.
+func (o GetNodeBalancerFirewallOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
+func (o GetNodeBalancerFirewallOutput) InboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.InboundPolicy }).(pulumi.StringOutput)
+}
+
+// A set of firewall rules that specify what inbound network traffic is allowed.
+func (o GetNodeBalancerFirewallOutput) Inbounds() GetNodeBalancerFirewallInboundArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) []GetNodeBalancerFirewallInbound { return v.Inbounds }).(GetNodeBalancerFirewallInboundArrayOutput)
+}
+
+// The label of the related LKE cluster.
+func (o GetNodeBalancerFirewallOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
+func (o GetNodeBalancerFirewallOutput) OutboundPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.OutboundPolicy }).(pulumi.StringOutput)
+}
+
+// A set of firewall rules that specify what outbound network traffic is allowed.
+func (o GetNodeBalancerFirewallOutput) Outbounds() GetNodeBalancerFirewallOutboundArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) []GetNodeBalancerFirewallOutbound { return v.Outbounds }).(GetNodeBalancerFirewallOutboundArrayOutput)
+}
+
+// The status of the firewall. (`enabled`, `disabled`, `deleted`)
+func (o GetNodeBalancerFirewallOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
+func (o GetNodeBalancerFirewallOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// When this firewall was last updated.
+func (o GetNodeBalancerFirewallOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetNodeBalancerFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewall)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallArrayOutput) ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallArrayOutput) ToGetNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewall {
+		return vs[0].([]GetNodeBalancerFirewall)[vs[1].(int)]
+	}).(GetNodeBalancerFirewallOutput)
+}
+
+type GetNodeBalancerFirewallInbound struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// The label of the related LKE cluster.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetNodeBalancerFirewallInboundInput is an input type that accepts GetNodeBalancerFirewallInboundArgs and GetNodeBalancerFirewallInboundOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallInboundInput` via:
+//
+//	GetNodeBalancerFirewallInboundArgs{...}
+type GetNodeBalancerFirewallInboundInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput
+	ToGetNodeBalancerFirewallInboundOutputWithContext(context.Context) GetNodeBalancerFirewallInboundOutput
+}
+
+type GetNodeBalancerFirewallInboundArgs struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// The label of the related LKE cluster.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetNodeBalancerFirewallInboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallInboundArgs) ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput {
+	return i.ToGetNodeBalancerFirewallInboundOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallInboundArgs) ToGetNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallInboundOutput)
+}
+
+// GetNodeBalancerFirewallInboundArrayInput is an input type that accepts GetNodeBalancerFirewallInboundArray and GetNodeBalancerFirewallInboundArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallInboundArrayInput` via:
+//
+//	GetNodeBalancerFirewallInboundArray{ GetNodeBalancerFirewallInboundArgs{...} }
+type GetNodeBalancerFirewallInboundArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput
+	ToGetNodeBalancerFirewallInboundArrayOutputWithContext(context.Context) GetNodeBalancerFirewallInboundArrayOutput
+}
+
+type GetNodeBalancerFirewallInboundArray []GetNodeBalancerFirewallInboundInput
+
+func (GetNodeBalancerFirewallInboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallInboundArray) ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput {
+	return i.ToGetNodeBalancerFirewallInboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallInboundArray) ToGetNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallInboundArrayOutput)
+}
+
+type GetNodeBalancerFirewallInboundOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallInboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallInboundOutput) ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallInboundOutput) ToGetNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundOutput {
+	return o
+}
+
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o GetNodeBalancerFirewallInboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// The label of the related LKE cluster.
+func (o GetNodeBalancerFirewallInboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o GetNodeBalancerFirewallInboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+func (o GetNodeBalancerFirewallInboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetNodeBalancerFirewallInboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallInboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallInbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallInboundArrayOutput) ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallInboundArrayOutput) ToGetNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallInboundArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallInboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewallInbound {
+		return vs[0].([]GetNodeBalancerFirewallInbound)[vs[1].(int)]
+	}).(GetNodeBalancerFirewallInboundOutput)
+}
+
+type GetNodeBalancerFirewallOutbound struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action string `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s []string `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s []string `pulumi:"ipv6s"`
+	// The label of the related LKE cluster.
+	Label string `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports string `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol string `pulumi:"protocol"`
+}
+
+// GetNodeBalancerFirewallOutboundInput is an input type that accepts GetNodeBalancerFirewallOutboundArgs and GetNodeBalancerFirewallOutboundOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallOutboundInput` via:
+//
+//	GetNodeBalancerFirewallOutboundArgs{...}
+type GetNodeBalancerFirewallOutboundInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput
+	ToGetNodeBalancerFirewallOutboundOutputWithContext(context.Context) GetNodeBalancerFirewallOutboundOutput
+}
+
+type GetNodeBalancerFirewallOutboundArgs struct {
+	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+	Action pulumi.StringInput `pulumi:"action"`
+	// A list of IPv4 addresses or networks. Must be in IP/mask format.
+	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
+	// A list of IPv6 addresses or networks. Must be in IP/mask format.
+	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
+	// The label of the related LKE cluster.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+	Ports pulumi.StringInput `pulumi:"ports"`
+	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+}
+
+func (GetNodeBalancerFirewallOutboundArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallOutboundArgs) ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput {
+	return i.ToGetNodeBalancerFirewallOutboundOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallOutboundArgs) ToGetNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutboundOutput)
+}
+
+// GetNodeBalancerFirewallOutboundArrayInput is an input type that accepts GetNodeBalancerFirewallOutboundArray and GetNodeBalancerFirewallOutboundArrayOutput values.
+// You can construct a concrete instance of `GetNodeBalancerFirewallOutboundArrayInput` via:
+//
+//	GetNodeBalancerFirewallOutboundArray{ GetNodeBalancerFirewallOutboundArgs{...} }
+type GetNodeBalancerFirewallOutboundArrayInput interface {
+	pulumi.Input
+
+	ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput
+	ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(context.Context) GetNodeBalancerFirewallOutboundArrayOutput
+}
+
+type GetNodeBalancerFirewallOutboundArray []GetNodeBalancerFirewallOutboundInput
+
+func (GetNodeBalancerFirewallOutboundArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (i GetNodeBalancerFirewallOutboundArray) ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput {
+	return i.ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(context.Background())
+}
+
+func (i GetNodeBalancerFirewallOutboundArray) ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutboundArrayOutput)
+}
+
+type GetNodeBalancerFirewallOutboundOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallOutboundOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallOutboundOutput) ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutboundOutput) ToGetNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundOutput {
+	return o
+}
+
+// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
+func (o GetNodeBalancerFirewallOutboundOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// A list of IPv4 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
+}
+
+// A list of IPv6 addresses or networks. Must be in IP/mask format.
+func (o GetNodeBalancerFirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
+}
+
+// The label of the related LKE cluster.
+func (o GetNodeBalancerFirewallOutboundOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
+func (o GetNodeBalancerFirewallOutboundOutput) Ports() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
+}
+
+// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
+func (o GetNodeBalancerFirewallOutboundOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+type GetNodeBalancerFirewallOutboundArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNodeBalancerFirewallOutboundArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNodeBalancerFirewallOutbound)(nil)).Elem()
+}
+
+func (o GetNodeBalancerFirewallOutboundArrayOutput) ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutboundArrayOutput) ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundArrayOutput {
+	return o
+}
+
+func (o GetNodeBalancerFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallOutboundOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewallOutbound {
+		return vs[0].([]GetNodeBalancerFirewallOutbound)[vs[1].(int)]
+	}).(GetNodeBalancerFirewallOutboundOutput)
+}
+
 type GetNodeBalancerLkeCluster struct {
 	// The NodeBalancer's ID.
 	Id int `pulumi:"id"`
@@ -11935,6 +14579,175 @@ func (o GetVpcIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcIpv6Output {
 	}).(GetVpcIpv6Output)
 }
 
+type GetVpcSubnetType struct {
+	// The date and time when the VPC was created.
+	Created string `pulumi:"created"`
+	// A list of Managed Databases assigned to this subnet.
+	Databases []GetVpcSubnetDatabase `pulumi:"databases"`
+	// The unique id of this VPC.
+	Id int `pulumi:"id"`
+	// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+	Ipv4 string `pulumi:"ipv4"`
+	// (Nested Attribute List) A list of IPv6 allocations under this VPC.
+	Ipv6s []GetVpcSubnetIpv6 `pulumi:"ipv6s"`
+	// The label of the VPC.
+	Label string `pulumi:"label"`
+	// A list of Linodes assigned to this subnet.
+	Linodes []GetVpcSubnetLinode `pulumi:"linodes"`
+	// A list of NodeBalancers assigned to this subnet.
+	Nodebalancers []GetVpcSubnetNodebalancer `pulumi:"nodebalancers"`
+	// The date and time when the VPC was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetVpcSubnetTypeInput is an input type that accepts GetVpcSubnetTypeArgs and GetVpcSubnetTypeOutput values.
+// You can construct a concrete instance of `GetVpcSubnetTypeInput` via:
+//
+//	GetVpcSubnetTypeArgs{...}
+type GetVpcSubnetTypeInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetTypeOutput() GetVpcSubnetTypeOutput
+	ToGetVpcSubnetTypeOutputWithContext(context.Context) GetVpcSubnetTypeOutput
+}
+
+type GetVpcSubnetTypeArgs struct {
+	// The date and time when the VPC was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// A list of Managed Databases assigned to this subnet.
+	Databases GetVpcSubnetDatabaseArrayInput `pulumi:"databases"`
+	// The unique id of this VPC.
+	Id pulumi.IntInput `pulumi:"id"`
+	// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+	// (Nested Attribute List) A list of IPv6 allocations under this VPC.
+	Ipv6s GetVpcSubnetIpv6ArrayInput `pulumi:"ipv6s"`
+	// The label of the VPC.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A list of Linodes assigned to this subnet.
+	Linodes GetVpcSubnetLinodeArrayInput `pulumi:"linodes"`
+	// A list of NodeBalancers assigned to this subnet.
+	Nodebalancers GetVpcSubnetNodebalancerArrayInput `pulumi:"nodebalancers"`
+	// The date and time when the VPC was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetVpcSubnetTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetType)(nil)).Elem()
+}
+
+func (i GetVpcSubnetTypeArgs) ToGetVpcSubnetTypeOutput() GetVpcSubnetTypeOutput {
+	return i.ToGetVpcSubnetTypeOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetTypeArgs) ToGetVpcSubnetTypeOutputWithContext(ctx context.Context) GetVpcSubnetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetTypeOutput)
+}
+
+// GetVpcSubnetTypeArrayInput is an input type that accepts GetVpcSubnetTypeArray and GetVpcSubnetTypeArrayOutput values.
+// You can construct a concrete instance of `GetVpcSubnetTypeArrayInput` via:
+//
+//	GetVpcSubnetTypeArray{ GetVpcSubnetTypeArgs{...} }
+type GetVpcSubnetTypeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcSubnetTypeArrayOutput() GetVpcSubnetTypeArrayOutput
+	ToGetVpcSubnetTypeArrayOutputWithContext(context.Context) GetVpcSubnetTypeArrayOutput
+}
+
+type GetVpcSubnetTypeArray []GetVpcSubnetTypeInput
+
+func (GetVpcSubnetTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetType)(nil)).Elem()
+}
+
+func (i GetVpcSubnetTypeArray) ToGetVpcSubnetTypeArrayOutput() GetVpcSubnetTypeArrayOutput {
+	return i.ToGetVpcSubnetTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcSubnetTypeArray) ToGetVpcSubnetTypeArrayOutputWithContext(ctx context.Context) GetVpcSubnetTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcSubnetTypeArrayOutput)
+}
+
+type GetVpcSubnetTypeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcSubnetType)(nil)).Elem()
+}
+
+func (o GetVpcSubnetTypeOutput) ToGetVpcSubnetTypeOutput() GetVpcSubnetTypeOutput {
+	return o
+}
+
+func (o GetVpcSubnetTypeOutput) ToGetVpcSubnetTypeOutputWithContext(ctx context.Context) GetVpcSubnetTypeOutput {
+	return o
+}
+
+// The date and time when the VPC was created.
+func (o GetVpcSubnetTypeOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// A list of Managed Databases assigned to this subnet.
+func (o GetVpcSubnetTypeOutput) Databases() GetVpcSubnetDatabaseArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) []GetVpcSubnetDatabase { return v.Databases }).(GetVpcSubnetDatabaseArrayOutput)
+}
+
+// The unique id of this VPC.
+func (o GetVpcSubnetTypeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+func (o GetVpcSubnetTypeOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+// (Nested Attribute List) A list of IPv6 allocations under this VPC.
+func (o GetVpcSubnetTypeOutput) Ipv6s() GetVpcSubnetIpv6ArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) []GetVpcSubnetIpv6 { return v.Ipv6s }).(GetVpcSubnetIpv6ArrayOutput)
+}
+
+// The label of the VPC.
+func (o GetVpcSubnetTypeOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A list of Linodes assigned to this subnet.
+func (o GetVpcSubnetTypeOutput) Linodes() GetVpcSubnetLinodeArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) []GetVpcSubnetLinode { return v.Linodes }).(GetVpcSubnetLinodeArrayOutput)
+}
+
+// A list of NodeBalancers assigned to this subnet.
+func (o GetVpcSubnetTypeOutput) Nodebalancers() GetVpcSubnetNodebalancerArrayOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) []GetVpcSubnetNodebalancer { return v.Nodebalancers }).(GetVpcSubnetNodebalancerArrayOutput)
+}
+
+// The date and time when the VPC was last updated.
+func (o GetVpcSubnetTypeOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcSubnetType) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetVpcSubnetTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcSubnetTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcSubnetType)(nil)).Elem()
+}
+
+func (o GetVpcSubnetTypeArrayOutput) ToGetVpcSubnetTypeArrayOutput() GetVpcSubnetTypeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetTypeArrayOutput) ToGetVpcSubnetTypeArrayOutputWithContext(ctx context.Context) GetVpcSubnetTypeArrayOutput {
+	return o
+}
+
+func (o GetVpcSubnetTypeArrayOutput) Index(i pulumi.IntInput) GetVpcSubnetTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcSubnetType {
+		return vs[0].([]GetVpcSubnetType)[vs[1].(int)]
+	}).(GetVpcSubnetTypeOutput)
+}
+
 type GetVpcSubnetDatabase struct {
 	// The unique id of this VPC subnet.
 	Id int `pulumi:"id"`
@@ -13835,6 +16648,8 @@ type GetVpcsVpc struct {
 	Label string `pulumi:"label"`
 	// The region where the VPC is deployed.
 	Region string `pulumi:"region"`
+	// A list of subnets under this VPC.
+	Subnets []GetVpcsVpcSubnet `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated string `pulumi:"updated"`
 	// The type of the VPC ('regular' or 'rdma'). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
@@ -13867,6 +16682,8 @@ type GetVpcsVpcArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// The region where the VPC is deployed.
 	Region pulumi.StringInput `pulumi:"region"`
+	// A list of subnets under this VPC.
+	Subnets GetVpcsVpcSubnetArrayInput `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringInput `pulumi:"updated"`
 	// The type of the VPC ('regular' or 'rdma'). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
@@ -13957,6 +16774,11 @@ func (o GetVpcsVpcOutput) Label() pulumi.StringOutput {
 // The region where the VPC is deployed.
 func (o GetVpcsVpcOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcsVpc) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of subnets under this VPC.
+func (o GetVpcsVpcOutput) Subnets() GetVpcsVpcSubnetArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpc) []GetVpcsVpcSubnet { return v.Subnets }).(GetVpcsVpcSubnetArrayOutput)
 }
 
 // The date and time when the VPC was last updated.
@@ -14183,7 +17005,930 @@ func (o GetVpcsVpcIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcIpv6Output
 	}).(GetVpcsVpcIpv6Output)
 }
 
+type GetVpcsVpcSubnet struct {
+	// The date and time when the VPC was created.
+	Created string `pulumi:"created"`
+	// A list of Managed Databases assigned to this subnet.
+	Databases []GetVpcsVpcSubnetDatabase `pulumi:"databases"`
+	// The unique id of this VPC.
+	Id int `pulumi:"id"`
+	// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+	Ipv4 string `pulumi:"ipv4"`
+	// (Nested Attribute List) A list of IPv6 allocations under this VPC.
+	Ipv6s []GetVpcsVpcSubnetIpv6 `pulumi:"ipv6s"`
+	// The label of the VPC.
+	Label string `pulumi:"label"`
+	// A list of Linodes assigned to this subnet.
+	Linodes []GetVpcsVpcSubnetLinode `pulumi:"linodes"`
+	// A list of NodeBalancers assigned to this subnet.
+	Nodebalancers []GetVpcsVpcSubnetNodebalancer `pulumi:"nodebalancers"`
+	// The date and time when the VPC was last updated.
+	Updated string `pulumi:"updated"`
+}
+
+// GetVpcsVpcSubnetInput is an input type that accepts GetVpcsVpcSubnetArgs and GetVpcsVpcSubnetOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetInput` via:
+//
+//	GetVpcsVpcSubnetArgs{...}
+type GetVpcsVpcSubnetInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetOutput() GetVpcsVpcSubnetOutput
+	ToGetVpcsVpcSubnetOutputWithContext(context.Context) GetVpcsVpcSubnetOutput
+}
+
+type GetVpcsVpcSubnetArgs struct {
+	// The date and time when the VPC was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// A list of Managed Databases assigned to this subnet.
+	Databases GetVpcsVpcSubnetDatabaseArrayInput `pulumi:"databases"`
+	// The unique id of this VPC.
+	Id pulumi.IntInput `pulumi:"id"`
+	// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+	// (Nested Attribute List) A list of IPv6 allocations under this VPC.
+	Ipv6s GetVpcsVpcSubnetIpv6ArrayInput `pulumi:"ipv6s"`
+	// The label of the VPC.
+	Label pulumi.StringInput `pulumi:"label"`
+	// A list of Linodes assigned to this subnet.
+	Linodes GetVpcsVpcSubnetLinodeArrayInput `pulumi:"linodes"`
+	// A list of NodeBalancers assigned to this subnet.
+	Nodebalancers GetVpcsVpcSubnetNodebalancerArrayInput `pulumi:"nodebalancers"`
+	// The date and time when the VPC was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+}
+
+func (GetVpcsVpcSubnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnet)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetArgs) ToGetVpcsVpcSubnetOutput() GetVpcsVpcSubnetOutput {
+	return i.ToGetVpcsVpcSubnetOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetArgs) ToGetVpcsVpcSubnetOutputWithContext(ctx context.Context) GetVpcsVpcSubnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetOutput)
+}
+
+// GetVpcsVpcSubnetArrayInput is an input type that accepts GetVpcsVpcSubnetArray and GetVpcsVpcSubnetArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetArrayInput` via:
+//
+//	GetVpcsVpcSubnetArray{ GetVpcsVpcSubnetArgs{...} }
+type GetVpcsVpcSubnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetArrayOutput() GetVpcsVpcSubnetArrayOutput
+	ToGetVpcsVpcSubnetArrayOutputWithContext(context.Context) GetVpcsVpcSubnetArrayOutput
+}
+
+type GetVpcsVpcSubnetArray []GetVpcsVpcSubnetInput
+
+func (GetVpcsVpcSubnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnet)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetArray) ToGetVpcsVpcSubnetArrayOutput() GetVpcsVpcSubnetArrayOutput {
+	return i.ToGetVpcsVpcSubnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetArray) ToGetVpcsVpcSubnetArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetArrayOutput)
+}
+
+type GetVpcsVpcSubnetOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnet)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetOutput) ToGetVpcsVpcSubnetOutput() GetVpcsVpcSubnetOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetOutput) ToGetVpcsVpcSubnetOutputWithContext(ctx context.Context) GetVpcsVpcSubnetOutput {
+	return o
+}
+
+// The date and time when the VPC was created.
+func (o GetVpcsVpcSubnetOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// A list of Managed Databases assigned to this subnet.
+func (o GetVpcsVpcSubnetOutput) Databases() GetVpcsVpcSubnetDatabaseArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) []GetVpcsVpcSubnetDatabase { return v.Databases }).(GetVpcsVpcSubnetDatabaseArrayOutput)
+}
+
+// The unique id of this VPC.
+func (o GetVpcsVpcSubnetOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// (Nested Attribute List) A list of IPv4 ranges under this VPC.
+func (o GetVpcsVpcSubnetOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+// (Nested Attribute List) A list of IPv6 allocations under this VPC.
+func (o GetVpcsVpcSubnetOutput) Ipv6s() GetVpcsVpcSubnetIpv6ArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) []GetVpcsVpcSubnetIpv6 { return v.Ipv6s }).(GetVpcsVpcSubnetIpv6ArrayOutput)
+}
+
+// The label of the VPC.
+func (o GetVpcsVpcSubnetOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// A list of Linodes assigned to this subnet.
+func (o GetVpcsVpcSubnetOutput) Linodes() GetVpcsVpcSubnetLinodeArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) []GetVpcsVpcSubnetLinode { return v.Linodes }).(GetVpcsVpcSubnetLinodeArrayOutput)
+}
+
+// A list of NodeBalancers assigned to this subnet.
+func (o GetVpcsVpcSubnetOutput) Nodebalancers() GetVpcsVpcSubnetNodebalancerArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) []GetVpcsVpcSubnetNodebalancer { return v.Nodebalancers }).(GetVpcsVpcSubnetNodebalancerArrayOutput)
+}
+
+// The date and time when the VPC was last updated.
+func (o GetVpcsVpcSubnetOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnet) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+type GetVpcsVpcSubnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnet)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetArrayOutput) ToGetVpcsVpcSubnetArrayOutput() GetVpcsVpcSubnetArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetArrayOutput) ToGetVpcsVpcSubnetArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnet {
+		return vs[0].([]GetVpcsVpcSubnet)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetOutput)
+}
+
+type GetVpcsVpcSubnetDatabase struct {
+	// The unique id of this VPC.
+	Id         int                                 `pulumi:"id"`
+	Ipv4Range  string                              `pulumi:"ipv4Range"`
+	Ipv6Ranges []GetVpcsVpcSubnetDatabaseIpv6Range `pulumi:"ipv6Ranges"`
+}
+
+// GetVpcsVpcSubnetDatabaseInput is an input type that accepts GetVpcsVpcSubnetDatabaseArgs and GetVpcsVpcSubnetDatabaseOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetDatabaseInput` via:
+//
+//	GetVpcsVpcSubnetDatabaseArgs{...}
+type GetVpcsVpcSubnetDatabaseInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetDatabaseOutput() GetVpcsVpcSubnetDatabaseOutput
+	ToGetVpcsVpcSubnetDatabaseOutputWithContext(context.Context) GetVpcsVpcSubnetDatabaseOutput
+}
+
+type GetVpcsVpcSubnetDatabaseArgs struct {
+	// The unique id of this VPC.
+	Id         pulumi.IntInput                             `pulumi:"id"`
+	Ipv4Range  pulumi.StringInput                          `pulumi:"ipv4Range"`
+	Ipv6Ranges GetVpcsVpcSubnetDatabaseIpv6RangeArrayInput `pulumi:"ipv6Ranges"`
+}
+
+func (GetVpcsVpcSubnetDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetDatabaseArgs) ToGetVpcsVpcSubnetDatabaseOutput() GetVpcsVpcSubnetDatabaseOutput {
+	return i.ToGetVpcsVpcSubnetDatabaseOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetDatabaseArgs) ToGetVpcsVpcSubnetDatabaseOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetDatabaseOutput)
+}
+
+// GetVpcsVpcSubnetDatabaseArrayInput is an input type that accepts GetVpcsVpcSubnetDatabaseArray and GetVpcsVpcSubnetDatabaseArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetDatabaseArrayInput` via:
+//
+//	GetVpcsVpcSubnetDatabaseArray{ GetVpcsVpcSubnetDatabaseArgs{...} }
+type GetVpcsVpcSubnetDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetDatabaseArrayOutput() GetVpcsVpcSubnetDatabaseArrayOutput
+	ToGetVpcsVpcSubnetDatabaseArrayOutputWithContext(context.Context) GetVpcsVpcSubnetDatabaseArrayOutput
+}
+
+type GetVpcsVpcSubnetDatabaseArray []GetVpcsVpcSubnetDatabaseInput
+
+func (GetVpcsVpcSubnetDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetDatabaseArray) ToGetVpcsVpcSubnetDatabaseArrayOutput() GetVpcsVpcSubnetDatabaseArrayOutput {
+	return i.ToGetVpcsVpcSubnetDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetDatabaseArray) ToGetVpcsVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetDatabaseArrayOutput)
+}
+
+type GetVpcsVpcSubnetDatabaseOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetDatabaseOutput) ToGetVpcsVpcSubnetDatabaseOutput() GetVpcsVpcSubnetDatabaseOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseOutput) ToGetVpcsVpcSubnetDatabaseOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseOutput {
+	return o
+}
+
+// The unique id of this VPC.
+func (o GetVpcsVpcSubnetDatabaseOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetDatabase) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetVpcsVpcSubnetDatabaseOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetDatabase) string { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+func (o GetVpcsVpcSubnetDatabaseOutput) Ipv6Ranges() GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetDatabase) []GetVpcsVpcSubnetDatabaseIpv6Range { return v.Ipv6Ranges }).(GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type GetVpcsVpcSubnetDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetDatabase)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetDatabaseArrayOutput) ToGetVpcsVpcSubnetDatabaseArrayOutput() GetVpcsVpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseArrayOutput) ToGetVpcsVpcSubnetDatabaseArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetDatabase {
+		return vs[0].([]GetVpcsVpcSubnetDatabase)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetDatabaseOutput)
+}
+
+type GetVpcsVpcSubnetDatabaseIpv6Range struct {
+	Range string `pulumi:"range"`
+}
+
+// GetVpcsVpcSubnetDatabaseIpv6RangeInput is an input type that accepts GetVpcsVpcSubnetDatabaseIpv6RangeArgs and GetVpcsVpcSubnetDatabaseIpv6RangeOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetDatabaseIpv6RangeInput` via:
+//
+//	GetVpcsVpcSubnetDatabaseIpv6RangeArgs{...}
+type GetVpcsVpcSubnetDatabaseIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetDatabaseIpv6RangeOutput() GetVpcsVpcSubnetDatabaseIpv6RangeOutput
+	ToGetVpcsVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Context) GetVpcsVpcSubnetDatabaseIpv6RangeOutput
+}
+
+type GetVpcsVpcSubnetDatabaseIpv6RangeArgs struct {
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetVpcsVpcSubnetDatabaseIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetDatabaseIpv6RangeArgs) ToGetVpcsVpcSubnetDatabaseIpv6RangeOutput() GetVpcsVpcSubnetDatabaseIpv6RangeOutput {
+	return i.ToGetVpcsVpcSubnetDatabaseIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetDatabaseIpv6RangeArgs) ToGetVpcsVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetDatabaseIpv6RangeOutput)
+}
+
+// GetVpcsVpcSubnetDatabaseIpv6RangeArrayInput is an input type that accepts GetVpcsVpcSubnetDatabaseIpv6RangeArray and GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetDatabaseIpv6RangeArrayInput` via:
+//
+//	GetVpcsVpcSubnetDatabaseIpv6RangeArray{ GetVpcsVpcSubnetDatabaseIpv6RangeArgs{...} }
+type GetVpcsVpcSubnetDatabaseIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput
+	ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Context) GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput
+}
+
+type GetVpcsVpcSubnetDatabaseIpv6RangeArray []GetVpcsVpcSubnetDatabaseIpv6RangeInput
+
+func (GetVpcsVpcSubnetDatabaseIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetDatabaseIpv6RangeArray) ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return i.ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetDatabaseIpv6RangeArray) ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput)
+}
+
+type GetVpcsVpcSubnetDatabaseIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetDatabaseIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetDatabaseIpv6RangeOutput) ToGetVpcsVpcSubnetDatabaseIpv6RangeOutput() GetVpcsVpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseIpv6RangeOutput) ToGetVpcsVpcSubnetDatabaseIpv6RangeOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseIpv6RangeOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetDatabaseIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetDatabaseIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput) ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput() GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput) ToGetVpcsVpcSubnetDatabaseIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetDatabaseIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetDatabaseIpv6Range {
+		return vs[0].([]GetVpcsVpcSubnetDatabaseIpv6Range)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetDatabaseIpv6RangeOutput)
+}
+
+type GetVpcsVpcSubnetIpv6 struct {
+	// An IPv6 range allocated to this subnet.
+	Range string `pulumi:"range"`
+}
+
+// GetVpcsVpcSubnetIpv6Input is an input type that accepts GetVpcsVpcSubnetIpv6Args and GetVpcsVpcSubnetIpv6Output values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetIpv6Input` via:
+//
+//	GetVpcsVpcSubnetIpv6Args{...}
+type GetVpcsVpcSubnetIpv6Input interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetIpv6Output() GetVpcsVpcSubnetIpv6Output
+	ToGetVpcsVpcSubnetIpv6OutputWithContext(context.Context) GetVpcsVpcSubnetIpv6Output
+}
+
+type GetVpcsVpcSubnetIpv6Args struct {
+	// An IPv6 range allocated to this subnet.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetVpcsVpcSubnetIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetIpv6)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetIpv6Args) ToGetVpcsVpcSubnetIpv6Output() GetVpcsVpcSubnetIpv6Output {
+	return i.ToGetVpcsVpcSubnetIpv6OutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetIpv6Args) ToGetVpcsVpcSubnetIpv6OutputWithContext(ctx context.Context) GetVpcsVpcSubnetIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetIpv6Output)
+}
+
+// GetVpcsVpcSubnetIpv6ArrayInput is an input type that accepts GetVpcsVpcSubnetIpv6Array and GetVpcsVpcSubnetIpv6ArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetIpv6ArrayInput` via:
+//
+//	GetVpcsVpcSubnetIpv6Array{ GetVpcsVpcSubnetIpv6Args{...} }
+type GetVpcsVpcSubnetIpv6ArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetIpv6ArrayOutput() GetVpcsVpcSubnetIpv6ArrayOutput
+	ToGetVpcsVpcSubnetIpv6ArrayOutputWithContext(context.Context) GetVpcsVpcSubnetIpv6ArrayOutput
+}
+
+type GetVpcsVpcSubnetIpv6Array []GetVpcsVpcSubnetIpv6Input
+
+func (GetVpcsVpcSubnetIpv6Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetIpv6)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetIpv6Array) ToGetVpcsVpcSubnetIpv6ArrayOutput() GetVpcsVpcSubnetIpv6ArrayOutput {
+	return i.ToGetVpcsVpcSubnetIpv6ArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetIpv6Array) ToGetVpcsVpcSubnetIpv6ArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetIpv6ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetIpv6ArrayOutput)
+}
+
+type GetVpcsVpcSubnetIpv6Output struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetIpv6)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetIpv6Output) ToGetVpcsVpcSubnetIpv6Output() GetVpcsVpcSubnetIpv6Output {
+	return o
+}
+
+func (o GetVpcsVpcSubnetIpv6Output) ToGetVpcsVpcSubnetIpv6OutputWithContext(ctx context.Context) GetVpcsVpcSubnetIpv6Output {
+	return o
+}
+
+// An IPv6 range allocated to this subnet.
+func (o GetVpcsVpcSubnetIpv6Output) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetIpv6) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetVpcsVpcSubnetIpv6ArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetIpv6ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetIpv6)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetIpv6ArrayOutput) ToGetVpcsVpcSubnetIpv6ArrayOutput() GetVpcsVpcSubnetIpv6ArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetIpv6ArrayOutput) ToGetVpcsVpcSubnetIpv6ArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetIpv6ArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetIpv6ArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetIpv6Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetIpv6 {
+		return vs[0].([]GetVpcsVpcSubnetIpv6)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetIpv6Output)
+}
+
+type GetVpcsVpcSubnetLinode struct {
+	// The unique id of this VPC.
+	Id         int                               `pulumi:"id"`
+	Interfaces []GetVpcsVpcSubnetLinodeInterface `pulumi:"interfaces"`
+}
+
+// GetVpcsVpcSubnetLinodeInput is an input type that accepts GetVpcsVpcSubnetLinodeArgs and GetVpcsVpcSubnetLinodeOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetLinodeInput` via:
+//
+//	GetVpcsVpcSubnetLinodeArgs{...}
+type GetVpcsVpcSubnetLinodeInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetLinodeOutput() GetVpcsVpcSubnetLinodeOutput
+	ToGetVpcsVpcSubnetLinodeOutputWithContext(context.Context) GetVpcsVpcSubnetLinodeOutput
+}
+
+type GetVpcsVpcSubnetLinodeArgs struct {
+	// The unique id of this VPC.
+	Id         pulumi.IntInput                           `pulumi:"id"`
+	Interfaces GetVpcsVpcSubnetLinodeInterfaceArrayInput `pulumi:"interfaces"`
+}
+
+func (GetVpcsVpcSubnetLinodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetLinodeArgs) ToGetVpcsVpcSubnetLinodeOutput() GetVpcsVpcSubnetLinodeOutput {
+	return i.ToGetVpcsVpcSubnetLinodeOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetLinodeArgs) ToGetVpcsVpcSubnetLinodeOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetLinodeOutput)
+}
+
+// GetVpcsVpcSubnetLinodeArrayInput is an input type that accepts GetVpcsVpcSubnetLinodeArray and GetVpcsVpcSubnetLinodeArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetLinodeArrayInput` via:
+//
+//	GetVpcsVpcSubnetLinodeArray{ GetVpcsVpcSubnetLinodeArgs{...} }
+type GetVpcsVpcSubnetLinodeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetLinodeArrayOutput() GetVpcsVpcSubnetLinodeArrayOutput
+	ToGetVpcsVpcSubnetLinodeArrayOutputWithContext(context.Context) GetVpcsVpcSubnetLinodeArrayOutput
+}
+
+type GetVpcsVpcSubnetLinodeArray []GetVpcsVpcSubnetLinodeInput
+
+func (GetVpcsVpcSubnetLinodeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetLinodeArray) ToGetVpcsVpcSubnetLinodeArrayOutput() GetVpcsVpcSubnetLinodeArrayOutput {
+	return i.ToGetVpcsVpcSubnetLinodeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetLinodeArray) ToGetVpcsVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetLinodeArrayOutput)
+}
+
+type GetVpcsVpcSubnetLinodeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetLinodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetLinodeOutput) ToGetVpcsVpcSubnetLinodeOutput() GetVpcsVpcSubnetLinodeOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeOutput) ToGetVpcsVpcSubnetLinodeOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeOutput {
+	return o
+}
+
+// The unique id of this VPC.
+func (o GetVpcsVpcSubnetLinodeOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetLinode) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetVpcsVpcSubnetLinodeOutput) Interfaces() GetVpcsVpcSubnetLinodeInterfaceArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetLinode) []GetVpcsVpcSubnetLinodeInterface { return v.Interfaces }).(GetVpcsVpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type GetVpcsVpcSubnetLinodeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetLinodeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetLinode)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetLinodeArrayOutput) ToGetVpcsVpcSubnetLinodeArrayOutput() GetVpcsVpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeArrayOutput) ToGetVpcsVpcSubnetLinodeArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetLinodeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetLinode {
+		return vs[0].([]GetVpcsVpcSubnetLinode)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetLinodeOutput)
+}
+
+type GetVpcsVpcSubnetLinodeInterface struct {
+	Active   bool `pulumi:"active"`
+	ConfigId int  `pulumi:"configId"`
+	// The unique id of this VPC.
+	Id int `pulumi:"id"`
+}
+
+// GetVpcsVpcSubnetLinodeInterfaceInput is an input type that accepts GetVpcsVpcSubnetLinodeInterfaceArgs and GetVpcsVpcSubnetLinodeInterfaceOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetLinodeInterfaceInput` via:
+//
+//	GetVpcsVpcSubnetLinodeInterfaceArgs{...}
+type GetVpcsVpcSubnetLinodeInterfaceInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetLinodeInterfaceOutput() GetVpcsVpcSubnetLinodeInterfaceOutput
+	ToGetVpcsVpcSubnetLinodeInterfaceOutputWithContext(context.Context) GetVpcsVpcSubnetLinodeInterfaceOutput
+}
+
+type GetVpcsVpcSubnetLinodeInterfaceArgs struct {
+	Active   pulumi.BoolInput `pulumi:"active"`
+	ConfigId pulumi.IntInput  `pulumi:"configId"`
+	// The unique id of this VPC.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (GetVpcsVpcSubnetLinodeInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetLinodeInterfaceArgs) ToGetVpcsVpcSubnetLinodeInterfaceOutput() GetVpcsVpcSubnetLinodeInterfaceOutput {
+	return i.ToGetVpcsVpcSubnetLinodeInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetLinodeInterfaceArgs) ToGetVpcsVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetLinodeInterfaceOutput)
+}
+
+// GetVpcsVpcSubnetLinodeInterfaceArrayInput is an input type that accepts GetVpcsVpcSubnetLinodeInterfaceArray and GetVpcsVpcSubnetLinodeInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetLinodeInterfaceArrayInput` via:
+//
+//	GetVpcsVpcSubnetLinodeInterfaceArray{ GetVpcsVpcSubnetLinodeInterfaceArgs{...} }
+type GetVpcsVpcSubnetLinodeInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetLinodeInterfaceArrayOutput() GetVpcsVpcSubnetLinodeInterfaceArrayOutput
+	ToGetVpcsVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Context) GetVpcsVpcSubnetLinodeInterfaceArrayOutput
+}
+
+type GetVpcsVpcSubnetLinodeInterfaceArray []GetVpcsVpcSubnetLinodeInterfaceInput
+
+func (GetVpcsVpcSubnetLinodeInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetLinodeInterfaceArray) ToGetVpcsVpcSubnetLinodeInterfaceArrayOutput() GetVpcsVpcSubnetLinodeInterfaceArrayOutput {
+	return i.ToGetVpcsVpcSubnetLinodeInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetLinodeInterfaceArray) ToGetVpcsVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetLinodeInterfaceArrayOutput)
+}
+
+type GetVpcsVpcSubnetLinodeInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetLinodeInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceOutput) ToGetVpcsVpcSubnetLinodeInterfaceOutput() GetVpcsVpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceOutput) ToGetVpcsVpcSubnetLinodeInterfaceOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeInterfaceOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceOutput) Active() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetLinodeInterface) bool { return v.Active }).(pulumi.BoolOutput)
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceOutput) ConfigId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetLinodeInterface) int { return v.ConfigId }).(pulumi.IntOutput)
+}
+
+// The unique id of this VPC.
+func (o GetVpcsVpcSubnetLinodeInterfaceOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetLinodeInterface) int { return v.Id }).(pulumi.IntOutput)
+}
+
+type GetVpcsVpcSubnetLinodeInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetLinodeInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetLinodeInterface)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceArrayOutput) ToGetVpcsVpcSubnetLinodeInterfaceArrayOutput() GetVpcsVpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceArrayOutput) ToGetVpcsVpcSubnetLinodeInterfaceArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetLinodeInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetLinodeInterface {
+		return vs[0].([]GetVpcsVpcSubnetLinodeInterface)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetLinodeInterfaceOutput)
+}
+
+type GetVpcsVpcSubnetNodebalancer struct {
+	// The unique id of this VPC.
+	Id         int                                     `pulumi:"id"`
+	Ipv4Range  string                                  `pulumi:"ipv4Range"`
+	Ipv6Ranges []GetVpcsVpcSubnetNodebalancerIpv6Range `pulumi:"ipv6Ranges"`
+}
+
+// GetVpcsVpcSubnetNodebalancerInput is an input type that accepts GetVpcsVpcSubnetNodebalancerArgs and GetVpcsVpcSubnetNodebalancerOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetNodebalancerInput` via:
+//
+//	GetVpcsVpcSubnetNodebalancerArgs{...}
+type GetVpcsVpcSubnetNodebalancerInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetNodebalancerOutput() GetVpcsVpcSubnetNodebalancerOutput
+	ToGetVpcsVpcSubnetNodebalancerOutputWithContext(context.Context) GetVpcsVpcSubnetNodebalancerOutput
+}
+
+type GetVpcsVpcSubnetNodebalancerArgs struct {
+	// The unique id of this VPC.
+	Id         pulumi.IntInput                                 `pulumi:"id"`
+	Ipv4Range  pulumi.StringInput                              `pulumi:"ipv4Range"`
+	Ipv6Ranges GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput `pulumi:"ipv6Ranges"`
+}
+
+func (GetVpcsVpcSubnetNodebalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetNodebalancer)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetNodebalancerArgs) ToGetVpcsVpcSubnetNodebalancerOutput() GetVpcsVpcSubnetNodebalancerOutput {
+	return i.ToGetVpcsVpcSubnetNodebalancerOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetNodebalancerArgs) ToGetVpcsVpcSubnetNodebalancerOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetNodebalancerOutput)
+}
+
+// GetVpcsVpcSubnetNodebalancerArrayInput is an input type that accepts GetVpcsVpcSubnetNodebalancerArray and GetVpcsVpcSubnetNodebalancerArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetNodebalancerArrayInput` via:
+//
+//	GetVpcsVpcSubnetNodebalancerArray{ GetVpcsVpcSubnetNodebalancerArgs{...} }
+type GetVpcsVpcSubnetNodebalancerArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetNodebalancerArrayOutput() GetVpcsVpcSubnetNodebalancerArrayOutput
+	ToGetVpcsVpcSubnetNodebalancerArrayOutputWithContext(context.Context) GetVpcsVpcSubnetNodebalancerArrayOutput
+}
+
+type GetVpcsVpcSubnetNodebalancerArray []GetVpcsVpcSubnetNodebalancerInput
+
+func (GetVpcsVpcSubnetNodebalancerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetNodebalancer)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetNodebalancerArray) ToGetVpcsVpcSubnetNodebalancerArrayOutput() GetVpcsVpcSubnetNodebalancerArrayOutput {
+	return i.ToGetVpcsVpcSubnetNodebalancerArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetNodebalancerArray) ToGetVpcsVpcSubnetNodebalancerArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetNodebalancerArrayOutput)
+}
+
+type GetVpcsVpcSubnetNodebalancerOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetNodebalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetNodebalancer)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetNodebalancerOutput) ToGetVpcsVpcSubnetNodebalancerOutput() GetVpcsVpcSubnetNodebalancerOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerOutput) ToGetVpcsVpcSubnetNodebalancerOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerOutput {
+	return o
+}
+
+// The unique id of this VPC.
+func (o GetVpcsVpcSubnetNodebalancerOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetNodebalancer) int { return v.Id }).(pulumi.IntOutput)
+}
+
+func (o GetVpcsVpcSubnetNodebalancerOutput) Ipv4Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetNodebalancer) string { return v.Ipv4Range }).(pulumi.StringOutput)
+}
+
+func (o GetVpcsVpcSubnetNodebalancerOutput) Ipv6Ranges() GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetNodebalancer) []GetVpcsVpcSubnetNodebalancerIpv6Range { return v.Ipv6Ranges }).(GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput)
+}
+
+type GetVpcsVpcSubnetNodebalancerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetNodebalancerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetNodebalancer)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetNodebalancerArrayOutput) ToGetVpcsVpcSubnetNodebalancerArrayOutput() GetVpcsVpcSubnetNodebalancerArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerArrayOutput) ToGetVpcsVpcSubnetNodebalancerArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetNodebalancerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetNodebalancer {
+		return vs[0].([]GetVpcsVpcSubnetNodebalancer)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetNodebalancerOutput)
+}
+
+type GetVpcsVpcSubnetNodebalancerIpv6Range struct {
+	Range string `pulumi:"range"`
+}
+
+// GetVpcsVpcSubnetNodebalancerIpv6RangeInput is an input type that accepts GetVpcsVpcSubnetNodebalancerIpv6RangeArgs and GetVpcsVpcSubnetNodebalancerIpv6RangeOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetNodebalancerIpv6RangeInput` via:
+//
+//	GetVpcsVpcSubnetNodebalancerIpv6RangeArgs{...}
+type GetVpcsVpcSubnetNodebalancerIpv6RangeInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutput() GetVpcsVpcSubnetNodebalancerIpv6RangeOutput
+	ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutputWithContext(context.Context) GetVpcsVpcSubnetNodebalancerIpv6RangeOutput
+}
+
+type GetVpcsVpcSubnetNodebalancerIpv6RangeArgs struct {
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (GetVpcsVpcSubnetNodebalancerIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetNodebalancerIpv6RangeArgs) ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutput() GetVpcsVpcSubnetNodebalancerIpv6RangeOutput {
+	return i.ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetNodebalancerIpv6RangeArgs) ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetNodebalancerIpv6RangeOutput)
+}
+
+// GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput is an input type that accepts GetVpcsVpcSubnetNodebalancerIpv6RangeArray and GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput` via:
+//
+//	GetVpcsVpcSubnetNodebalancerIpv6RangeArray{ GetVpcsVpcSubnetNodebalancerIpv6RangeArgs{...} }
+type GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput() GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput
+	ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutputWithContext(context.Context) GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput
+}
+
+type GetVpcsVpcSubnetNodebalancerIpv6RangeArray []GetVpcsVpcSubnetNodebalancerIpv6RangeInput
+
+func (GetVpcsVpcSubnetNodebalancerIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetNodebalancerIpv6Range)(nil)).Elem()
+}
+
+func (i GetVpcsVpcSubnetNodebalancerIpv6RangeArray) ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput() GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput {
+	return i.ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcsVpcSubnetNodebalancerIpv6RangeArray) ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput)
+}
+
+type GetVpcsVpcSubnetNodebalancerIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetNodebalancerIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetNodebalancerIpv6RangeOutput) ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutput() GetVpcsVpcSubnetNodebalancerIpv6RangeOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerIpv6RangeOutput) ToGetVpcsVpcSubnetNodebalancerIpv6RangeOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerIpv6RangeOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcsVpcSubnetNodebalancerIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcsVpcSubnetNodebalancerIpv6Range)(nil)).Elem()
+}
+
+func (o GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput() GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) ToGetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutputWithContext(ctx context.Context) GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput {
+	return o
+}
+
+func (o GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) Index(i pulumi.IntInput) GetVpcsVpcSubnetNodebalancerIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcsVpcSubnetNodebalancerIpv6Range {
+		return vs[0].([]GetVpcsVpcSubnetNodebalancerIpv6Range)[vs[1].(int)]
+	}).(GetVpcsVpcSubnetNodebalancerIpv6RangeOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsFilterInput)(nil)).Elem(), GetMonitorLogsStreamsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsFilterArrayInput)(nil)).Elem(), GetMonitorLogsStreamsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsStreamInput)(nil)).Elem(), GetMonitorLogsStreamsStreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamsStreamArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterInput)(nil)).Elem(), GetNbTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterArrayInput)(nil)).Elem(), GetNbTypesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeInput)(nil)).Elem(), GetNbTypesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeArrayInput)(nil)).Elem(), GetNbTypesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypePriceInput)(nil)).Elem(), GetNbTypesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypePriceArrayInput)(nil)).Elem(), GetNbTypesTypePriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeRegionPriceInput)(nil)).Elem(), GetNbTypesTypeRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetNbTypesTypeRegionPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesFilterInput)(nil)).Elem(), GetNetworkTransferPricesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesFilterArrayInput)(nil)).Elem(), GetNetworkTransferPricesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeInput)(nil)).Elem(), GetNetworkTransferPricesTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpAssignedEntityInput)(nil)).Elem(), GetNetworkingIpAssignedEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpVpcNat11Input)(nil)).Elem(), GetNetworkingIpVpcNat11Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterInput)(nil)).Elem(), GetNetworkingIpsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterArrayInput)(nil)).Elem(), GetNetworkingIpsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressInput)(nil)).Elem(), GetNetworkingIpsIpAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressArrayInput)(nil)).Elem(), GetNetworkingIpsIpAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressAssignedEntityInput)(nil)).Elem(), GetNetworkingIpsIpAddressAssignedEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11Input)(nil)).Elem(), GetNetworkingIpsIpAddressVpcNat11Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInput)(nil)).Elem(), GetNodeBalancerFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallArrayInput)(nil)).Elem(), GetNodeBalancerFirewallArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInboundInput)(nil)).Elem(), GetNodeBalancerFirewallInboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInboundArrayInput)(nil)).Elem(), GetNodeBalancerFirewallInboundArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallOutboundInput)(nil)).Elem(), GetNodeBalancerFirewallOutboundArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallOutboundArrayInput)(nil)).Elem(), GetNodeBalancerFirewallOutboundArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerLkeClusterInput)(nil)).Elem(), GetNodeBalancerLkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerLkeClusterArrayInput)(nil)).Elem(), GetNodeBalancerLkeClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerTransferInput)(nil)).Elem(), GetNodeBalancerTransferArgs{})
@@ -14369,6 +18114,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpv4ArrayInput)(nil)).Elem(), GetVpcIpv4Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpv6Input)(nil)).Elem(), GetVpcIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcIpv6ArrayInput)(nil)).Elem(), GetVpcIpv6Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetTypeInput)(nil)).Elem(), GetVpcSubnetTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetTypeArrayInput)(nil)).Elem(), GetVpcSubnetTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseInput)(nil)).Elem(), GetVpcSubnetDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseArrayInput)(nil)).Elem(), GetVpcSubnetDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcSubnetDatabaseIpv6RangeInput)(nil)).Elem(), GetVpcSubnetDatabaseIpv6RangeArgs{})
@@ -14409,6 +18156,61 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcIpv4ArrayInput)(nil)).Elem(), GetVpcsVpcIpv4Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcIpv6Input)(nil)).Elem(), GetVpcsVpcIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcIpv6ArrayInput)(nil)).Elem(), GetVpcsVpcIpv6Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetInput)(nil)).Elem(), GetVpcsVpcSubnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetArrayInput)(nil)).Elem(), GetVpcsVpcSubnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetDatabaseInput)(nil)).Elem(), GetVpcsVpcSubnetDatabaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetDatabaseArrayInput)(nil)).Elem(), GetVpcsVpcSubnetDatabaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetDatabaseIpv6RangeInput)(nil)).Elem(), GetVpcsVpcSubnetDatabaseIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetDatabaseIpv6RangeArrayInput)(nil)).Elem(), GetVpcsVpcSubnetDatabaseIpv6RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetIpv6Input)(nil)).Elem(), GetVpcsVpcSubnetIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetIpv6ArrayInput)(nil)).Elem(), GetVpcsVpcSubnetIpv6Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetLinodeInput)(nil)).Elem(), GetVpcsVpcSubnetLinodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetLinodeArrayInput)(nil)).Elem(), GetVpcsVpcSubnetLinodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetLinodeInterfaceInput)(nil)).Elem(), GetVpcsVpcSubnetLinodeInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetLinodeInterfaceArrayInput)(nil)).Elem(), GetVpcsVpcSubnetLinodeInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArray{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamDetailsOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamsFilterOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamsStreamOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamsStreamArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesFilterOutput{})
+	pulumi.RegisterOutputType(GetNbTypesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetNbTypesTypeRegionPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesFilterOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceOutput{})
+	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpAssignedEntityOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpVpcNat11Output{})
+	pulumi.RegisterOutputType(GetNetworkingIpsFilterOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressAssignedEntityOutput{})
+	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressVpcNat11Output{})
+	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallInboundOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallInboundArrayOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutboundOutput{})
+	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutboundArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerLkeClusterOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerLkeClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetNodeBalancerTransferOutput{})
@@ -14594,6 +18396,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVpcIpv4ArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcIpv6Output{})
 	pulumi.RegisterOutputType(GetVpcIpv6ArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetTypeOutput{})
+	pulumi.RegisterOutputType(GetVpcSubnetTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetDatabaseOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcSubnetDatabaseIpv6RangeOutput{})
@@ -14634,4 +18438,20 @@ func init() {
 	pulumi.RegisterOutputType(GetVpcsVpcIpv4ArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcsVpcIpv6Output{})
 	pulumi.RegisterOutputType(GetVpcsVpcIpv6ArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetDatabaseOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetDatabaseIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetDatabaseIpv6RangeArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetIpv6Output{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetIpv6ArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetLinodeOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetLinodeArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetLinodeInterfaceOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetLinodeInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetNodebalancerOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetNodebalancerArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetNodebalancerIpv6RangeOutput{})
+	pulumi.RegisterOutputType(GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput{})
 }

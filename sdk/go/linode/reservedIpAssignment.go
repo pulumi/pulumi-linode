@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewReservedIpAssignment(ctx, "example", &linode.ReservedIpAssignmentArgs{
-//				LinodeId: pulumi.Any(linode_instance.Example.Id),
-//				Address:  pulumi.Any(linode_networking_ip.Reserved.Address),
+//				LinodeId: pulumi.Any(exampleLinodeInstance.Id),
+//				Address:  pulumi.Any(reserved.Address),
 //				Public:   pulumi.Bool(true),
 //			})
 //			if err != nil {

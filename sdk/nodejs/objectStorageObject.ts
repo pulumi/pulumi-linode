@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * ### Uploading a file to a bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * import * as std from "@pulumi/std";
+ *
+ * const object = new linode.ObjectStorageObject("object", {
+ *     bucket: "my-bucket",
+ *     region: "us-mia",
+ *     key: "my-object",
+ *     secretKey: myKey.secretKey,
+ *     accessKey: myKey.accessKey,
+ *     source: std.pathexpand({
+ *         input: "~/files/log.txt",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ *
  * ### Uploading plaintext to a bucket
  *
  * ```typescript
@@ -19,11 +38,28 @@ import * as utilities from "./utilities";
  *     bucket: "my-bucket",
  *     region: "us-mia",
  *     key: "my-object",
- *     secretKey: linode_object_storage_key.my_key.secret_key,
- *     accessKey: linode_object_storage_key.my_key.access_key,
+ *     secretKey: myKey.secretKey,
+ *     accessKey: myKey.accessKey,
  *     content: "This is the content of the Object...",
  *     contentType: "text/plain",
  *     contentLanguage: "en",
+ * });
+ * ```
+ *
+ * ### Creating an object using implicitly created object credentials
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ * import * as std from "@pulumi/std";
+ *
+ * const object = new linode.ObjectStorageObject("object", {
+ *     bucket: "my-bucket",
+ *     region: "us-mia",
+ *     key: "my-object",
+ *     source: std.pathexpand({
+ *         input: "~/files/log.txt",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  */

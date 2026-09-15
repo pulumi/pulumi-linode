@@ -46,9 +46,9 @@ namespace Pulumi.Linode
     ///         Type = "akamai_object_storage",
     ///         AkamaiObjectStorageDetails = new Linode.Inputs.MonitorLogsDestinationAkamaiObjectStorageDetailsArgs
     ///         {
-    ///             Access_key_id = key.AccessKey,
-    ///             Access_key_secret = key.SecretKey,
-    ///             Bucket_name = bucket.Label,
+    ///             AccessKeyId = key.AccessKey,
+    ///             AccessKeySecret = key.SecretKey,
+    ///             BucketName = bucket.Label,
     ///             Host = bucket.Hostname,
     ///         },
     ///     });
@@ -73,22 +73,22 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var lkeExample = new Linode.MonitorLogsStream("lkeExample", new()
+    ///     var lkeExample = new Linode.MonitorLogsStream("lke_example", new()
     ///     {
     ///         Label = "my-lke-stream",
     ///         Type = "lke_audit_logs",
     ///         Destinations = new[]
     ///         {
-    ///             linode_monitor_logs_destination.Destination.Id,
+    ///             destination.Id,
     ///         },
     ///         Details = new Linode.Inputs.MonitorLogsStreamDetailsArgs
     ///         {
-    ///             Cluster_ids = new[]
+    ///             ClusterIds = new[]
     ///             {
     ///                 12345,
     ///                 67890,
     ///             },
-    ///             Is_auto_add_all_clusters_enabled = false,
+    ///             IsAutoAddAllClustersEnabled = false,
     ///         },
     ///     });
     /// 

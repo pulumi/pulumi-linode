@@ -32,7 +32,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabaseEngines:getDatabaseEngines.pp:2,11-27)))
+// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-28)))
 // return nil
 // })
 // }
@@ -61,7 +61,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabaseEngines:getDatabaseEngines.pp:7,11-29)))
+// ctx.Export("engineIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-30)))
 // return nil
 // })
 // }
@@ -92,7 +92,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewDatabaseMysqlV2(ctx, "myDb", &linode.DatabaseMysqlV2Args{
+//			_, err = linode.NewDatabaseMysqlV2(ctx, "my_db", &linode.DatabaseMysqlV2Args{
 //				Label:    pulumi.String("mydb"),
 //				EngineId: pulumi.String(mysql.Engines[0].Id),
 //				Region:   pulumi.String("us-southeast"),

@@ -30,17 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("1.32"),
 //				Label:      pulumi.String("my-cluster"),
-//				Pools: linode.LkeClusterPoolArray{
-//					&linode.LkeClusterPoolArgs{
-//						Count: pulumi.Int(3),
-//						Type:  pulumi.String("g6-standard-2"),
-//					},
-//				},
-//				Region: pulumi.String("us-central"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -64,22 +64,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "test", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("v1.31.8+lke5"),
 //				Label:      pulumi.String("lke-e-cluster"),
-//				Pools: linode.LkeClusterPoolArray{
-//					&linode.LkeClusterPoolArgs{
-//						Count: pulumi.Int(3),
-//						Tags: pulumi.StringArray{
-//							pulumi.String("test"),
-//						},
-//						Type: pulumi.String("g7-premium-2"),
-//					},
-//				},
-//				Region: pulumi.String("us-lax"),
+//				Region:     pulumi.String("us-lax"),
+//				K8sVersion: pulumi.String("v1.31.8+lke5"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("test"),
 //				},
 //				Tier: pulumi.String("enterprise"),
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g7-premium-2"),
+//						Count: pulumi.Int(3),
+//						Tags: pulumi.StringArray{
+//							pulumi.String("test"),
+//						},
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -102,20 +102,20 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("1.32"),
 //				Label:      pulumi.String("my-cluster"),
-//				Pools: linode.LkeClusterPoolArray{
-//					&linode.LkeClusterPoolArgs{
-//						Autoscaler: &linode.LkeClusterPoolAutoscalerArgs{
-//							Max: pulumi.Int(10),
-//							Min: pulumi.Int(3),
-//						},
-//						Type: pulumi.String("g6-standard-2"),
-//					},
-//				},
-//				Region: pulumi.String("us-central"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type: pulumi.String("g6-standard-2"),
+//						Autoscaler: &linode.LkeClusterPoolAutoscalerArgs{
+//							Min: pulumi.Int(3),
+//							Max: pulumi.Int(10),
+//						},
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -139,33 +139,33 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "test", &linode.LkeClusterArgs{
+//				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
 //				ControlPlane: &linode.LkeClusterControlPlaneArgs{
+//					HighAvailability: pulumi.Bool(true),
 //					Acl: &linode.LkeClusterControlPlaneAclArgs{
+//						Enabled: pulumi.Bool(true),
 //						Addresses: linode.LkeClusterControlPlaneAclAddressArray{
 //							&linode.LkeClusterControlPlaneAclAddressArgs{
-//								Ipv4: []string{
-//									"0.0.0.0/0",
+//								Ipv4s: pulumi.StringArray{
+//									pulumi.String("0.0.0.0/0"),
 //								},
-//								Ipv6: []string{
-//									"2001:db8::/32",
+//								Ipv6s: pulumi.StringArray{
+//									pulumi.String("2001:db8::/32"),
 //								},
 //							},
 //						},
-//						Enabled: pulumi.Bool(true),
 //					},
-//					HighAvailability: pulumi.Bool(true),
 //				},
-//				K8sVersion: pulumi.String("1.32"),
-//				Label:      pulumi.String("my-cluster"),
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Count: pulumi.Int(1),
 //						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(1),
 //					},
-//				},
-//				Region: pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -189,23 +189,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("1.32"),
 //				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(2),
 //						Label: pulumi.String("db-pool"),
-//						Type:  pulumi.String("g6-standard-2"),
 //					},
 //					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-1"),
 //						Count: pulumi.Int(3),
 //						Label: pulumi.String("app-pool"),
-//						Type:  pulumi.String("g6-standard-1"),
 //					},
-//				},
-//				Region: pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -229,19 +229,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("1.32"),
 //				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Count:      pulumi.Int(2),
-//						FirewallId: pulumi.Int(12345),
-//						Label:      pulumi.String("db-pool"),
 //						Type:       pulumi.String("g6-standard-2"),
+//						Count:      pulumi.Int(2),
+//						Label:      pulumi.String("db-pool"),
+//						FirewallId: pulumi.Int(12345),
 //					},
-//				},
-//				Region: pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -265,29 +265,29 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("1.32"),
 //				Label:      pulumi.String("my-cluster"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("prod"),
+//				},
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-2"),
 //						Count: pulumi.Int(2),
 //						Labels: pulumi.StringMap{
-//							"environment": pulumi.String("production"),
 //							"role":        pulumi.String("database"),
+//							"environment": pulumi.String("production"),
 //						},
-//						Type: pulumi.String("g6-standard-2"),
 //					},
 //					&linode.LkeClusterPoolArgs{
+//						Type:  pulumi.String("g6-standard-1"),
 //						Count: pulumi.Int(3),
 //						Labels: pulumi.StringMap{
-//							"environment": pulumi.String("production"),
 //							"role":        pulumi.String("application"),
+//							"environment": pulumi.String("production"),
 //						},
-//						Type: pulumi.String("g6-standard-1"),
 //					},
-//				},
-//				Region: pulumi.String("us-central"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("prod"),
 //				},
 //			})
 //			if err != nil {
@@ -311,23 +311,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
-//				K8sVersion: pulumi.String("1.32"),
 //				Label:      pulumi.String("my-cluster"),
-//				Pools: linode.LkeClusterPoolArray{
-//					&linode.LkeClusterPoolArgs{
-//						Count:          pulumi.Int(2),
-//						DiskEncryption: pulumi.String("enabled"),
-//						Type:           pulumi.String("g6-standard-2"),
-//					},
-//					&linode.LkeClusterPoolArgs{
-//						Count:          pulumi.Int(1),
-//						DiskEncryption: pulumi.String("disabled"),
-//						Type:           pulumi.String("g6-standard-1"),
-//					},
-//				},
-//				Region: pulumi.String("us-central"),
+//				K8sVersion: pulumi.String("1.32"),
+//				Region:     pulumi.String("us-central"),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("prod"),
+//				},
+//				Pools: linode.LkeClusterPoolArray{
+//					&linode.LkeClusterPoolArgs{
+//						Type:           pulumi.String("g6-standard-2"),
+//						Count:          pulumi.Int(2),
+//						DiskEncryption: pulumi.String("enabled"),
+//					},
+//					&linode.LkeClusterPoolArgs{
+//						Type:           pulumi.String("g6-standard-1"),
+//						Count:          pulumi.Int(1),
+//						DiskEncryption: pulumi.String("disabled"),
+//					},
 //				},
 //			})
 //			if err != nil {
@@ -360,12 +360,12 @@ import (
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Count: pulumi.Int(2),
 //						Type:  pulumi.String("g6-standard-1"),
+//						Count: pulumi.Int(2),
 //					},
 //					&linode.LkeClusterPoolArgs{
-//						Count: pulumi.Int(3),
 //						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
 //					},
 //				},
 //			})
@@ -392,8 +392,8 @@ import (
 //			_, err := linode.NewLkeCluster(ctx, "my-cluster", &linode.LkeClusterArgs{
 //				Pools: linode.LkeClusterPoolArray{
 //					&linode.LkeClusterPoolArgs{
-//						Count: pulumi.Int(3),
 //						Type:  pulumi.String("g6-standard-2"),
+//						Count: pulumi.Int(3),
 //					},
 //				},
 //			})

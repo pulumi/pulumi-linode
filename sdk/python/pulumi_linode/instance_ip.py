@@ -300,13 +300,13 @@ class InstanceIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_instance = linode.Instance("fooInstance",
+        foo = linode.Instance("foo",
             image="linode/arch",
             label="foobar-test",
             type="g6-nanode-1",
             region="us-east")
-        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
-            linode_id=foo_instance.id.apply(lambda x: int(x)),
+        foo_instance_ip = linode.InstanceIp("foo",
+            linode_id=foo.id.apply(lambda x: int(x)),
             public=True)
         ```
 
@@ -338,13 +338,13 @@ class InstanceIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_instance = linode.Instance("fooInstance",
+        foo = linode.Instance("foo",
             image="linode/arch",
             label="foobar-test",
             type="g6-nanode-1",
             region="us-east")
-        foo_instance_ip = linode.InstanceIp("fooInstanceIp",
-            linode_id=foo_instance.id.apply(lambda x: int(x)),
+        foo_instance_ip = linode.InstanceIp("foo",
+            linode_id=foo.id.apply(lambda x: int(x)),
             public=True)
         ```
 

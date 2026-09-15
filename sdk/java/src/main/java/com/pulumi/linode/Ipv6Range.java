@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobarInstance = new Instance("foobarInstance", InstanceArgs.builder()
+ *         var foobar = new Instance("foobar", InstanceArgs.builder()
  *             .label("my-linode")
  *             .image("linode/arch")
  *             .type("g6-nanode-1")
@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var foobarIpv6Range = new Ipv6Range("foobarIpv6Range", Ipv6RangeArgs.builder()
- *             .linodeId(foobarInstance.id())
+ *             .linodeId(foobar.id())
  *             .prefixLength(64)
  *             .build());
  * 

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
+ *         var foo = new Instance("foo", InstanceArgs.builder()
  *             .image("linode/arch")
  *             .label("foobar-test")
  *             .type("g6-nanode-1")
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var fooInstanceIp = new InstanceIp("fooInstanceIp", InstanceIpArgs.builder()
- *             .linodeId(fooInstance.id())
+ *             .linodeId(foo.id())
  *             .public_(true)
  *             .build());
  * 

@@ -24,8 +24,8 @@ import * as utilities from "./utilities";
  *
  * const my_pool = new linode.LkeNodePool("my-pool", {
  *     clusterId: 150003,
- *     nodeCount: 3,
  *     type: "g6-standard-2",
+ *     nodeCount: 3,
  * });
  * ```
  * ```typescript
@@ -34,9 +34,9 @@ import * as utilities from "./utilities";
  *
  * const my_pool = new linode.LkeNodePool("my-pool", {
  *     clusterId: 150003,
+ *     type: "g6-standard-2",
+ *     nodeCount: 3,
  *     label: "app-pool",
- *     nodeCount: 3,
- *     type: "g6-standard-2",
  * });
  * ```
  * ```typescript
@@ -45,9 +45,9 @@ import * as utilities from "./utilities";
  *
  * const my_pool = new linode.LkeNodePool("my-pool", {
  *     clusterId: 150003,
+ *     type: "g6-standard-2",
  *     firewallId: 12345,
  *     nodeCount: 3,
- *     type: "g6-standard-2",
  * });
  * ```
  * ```typescript
@@ -55,12 +55,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_pool = new linode.LkeNodePool("my-pool", {
- *     autoscaler: {
- *         max: 10,
- *         min: 3,
- *     },
  *     clusterId: 150003,
  *     type: "g6-standard-2",
+ *     autoscaler: {
+ *         min: 3,
+ *         max: 10,
+ *     },
  * });
  * ```
  * ```typescript
@@ -139,6 +139,14 @@ export class LkeNodePool extends pulumi.CustomResource {
      */
     declare public readonly firewallId: pulumi.Output<number>;
     /**
+     * Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     */
+    declare public readonly isolationPublicIpv4: pulumi.Output<boolean>;
+    /**
+     * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     */
+    declare public readonly isolationPublicIpv6: pulumi.Output<boolean>;
+    /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
     declare public readonly k8sVersion: pulumi.Output<string>;
@@ -196,6 +204,8 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = state?.clusterId;
             resourceInputs["diskEncryption"] = state?.diskEncryption;
             resourceInputs["firewallId"] = state?.firewallId;
+            resourceInputs["isolationPublicIpv4"] = state?.isolationPublicIpv4;
+            resourceInputs["isolationPublicIpv6"] = state?.isolationPublicIpv6;
             resourceInputs["k8sVersion"] = state?.k8sVersion;
             resourceInputs["label"] = state?.label;
             resourceInputs["labels"] = state?.labels;
@@ -217,6 +227,8 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args?.clusterId;
             resourceInputs["diskEncryption"] = args?.diskEncryption;
             resourceInputs["firewallId"] = args?.firewallId;
+            resourceInputs["isolationPublicIpv4"] = args?.isolationPublicIpv4;
+            resourceInputs["isolationPublicIpv6"] = args?.isolationPublicIpv6;
             resourceInputs["k8sVersion"] = args?.k8sVersion;
             resourceInputs["label"] = args?.label;
             resourceInputs["labels"] = args?.labels;
@@ -249,6 +261,14 @@ export interface LkeNodePoolState {
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      */
     firewallId?: pulumi.Input<number | undefined>;
+    /**
+     * Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     */
+    isolationPublicIpv4?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     */
+    isolationPublicIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */
@@ -308,6 +328,14 @@ export interface LkeNodePoolArgs {
      * The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
      */
     firewallId?: pulumi.Input<number | undefined>;
+    /**
+     * Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     */
+    isolationPublicIpv4?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     */
+    isolationPublicIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
      */

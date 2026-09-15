@@ -19,11 +19,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooStackScript = new linode.StackScript("fooStackScript", {
+ * const foo = new linode.StackScript("foo", {
  *     label: "foo",
  *     description: "Installs a Package",
  *     script: `#!/bin/bash
- * # <UDF name="package" label="System Package to Install" example="nginx" default="">
+ * # <UDF name=\\"package\\" label=\\"System Package to Install\\" example=\\"nginx\\" default=\\"\\">
  * apt-get -q update && apt-get -q -y install PACKAGE
  * `,
  *     images: [
@@ -32,14 +32,14 @@ import * as utilities from "./utilities";
  *     ],
  *     revNote: "initial version",
  * });
- * const fooInstance = new linode.Instance("fooInstance", {
+ * const fooInstance = new linode.Instance("foo", {
  *     image: "linode/ubuntu22.04",
  *     label: "foo",
  *     region: "us-east",
  *     type: "g6-nanode-1",
  *     authorizedKeys: ["..."],
  *     rootPass: "...",
- *     stackscriptId: fooStackScript.id.apply(x =>Number(x)),
+ *     stackscriptId: foo.id.apply(x =>Number(x)),
  *     stackscriptData: {
  *         "package": "nginx",
  *     },

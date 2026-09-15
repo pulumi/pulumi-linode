@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *             .type("g6-dedicated-2")
  *             .build());
  * 
- *         var fooRdns = new Rdns("fooRdns", RdnsArgs.builder()
+ *         var foo = new Rdns("foo", RdnsArgs.builder()
  *             .address(fooInstance.ipAddress())
  *             .rdns(fooInstance.ipAddress().applyValue(_ipAddress -> String.format("%s.nip.io", _ipAddress)))
  *             .build());

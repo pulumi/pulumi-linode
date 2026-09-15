@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new NodeBalancer("foobar", NodeBalancerArgs.builder()
- *             .clientConnThrottle(20)
- *             .clientUdpSessThrottle(10)
  *             .label("mynodebalancer")
  *             .region("us-east")
+ *             .clientConnThrottle(20)
+ *             .clientUdpSessThrottle(10)
  *             .tags("foobar")
  *             .build());
  * 
@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .label("mynodebalancer")
  *             .region("us-mia")
  *             .vpcs(NodeBalancerVpcArgs.builder()
- *                 .subnet_id(linode_vpc_subnet.test().id())
+ *                 .subnetId(test.id())
  *                 .build())
  *             .build());
  * 

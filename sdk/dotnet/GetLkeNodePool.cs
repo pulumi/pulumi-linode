@@ -27,8 +27,8 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
-        ///         ClusterId = 321,
         ///         Id = 123,
+        ///         ClusterId = 321,
         ///     });
         /// 
         /// });
@@ -53,8 +53,8 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
-        ///         ClusterId = 321,
         ///         Id = 123,
+        ///         ClusterId = 321,
         ///     });
         /// 
         /// });
@@ -79,8 +79,8 @@ namespace Pulumi.Linode
         /// {
         ///     var my_node_pool = Linode.GetLkeNodePool.Invoke(new()
         ///     {
-        ///         ClusterId = 321,
         ///         Id = 123,
+        ///         ClusterId = 321,
         ///     });
         /// 
         /// });
@@ -157,6 +157,14 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly int Id;
         /// <summary>
+        /// Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+        /// </summary>
+        public readonly bool IsolationPublicIpv4;
+        /// <summary>
+        /// Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+        /// </summary>
+        public readonly bool IsolationPublicIpv6;
+        /// <summary>
         /// The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
         /// </summary>
         public readonly string K8sVersion;
@@ -207,6 +215,10 @@ namespace Pulumi.Linode
 
             int id,
 
+            bool isolationPublicIpv4,
+
+            bool isolationPublicIpv6,
+
             string k8sVersion,
 
             string label,
@@ -231,6 +243,8 @@ namespace Pulumi.Linode
             Disks = disks;
             FirewallId = firewallId;
             Id = id;
+            IsolationPublicIpv4 = isolationPublicIpv4;
+            IsolationPublicIpv6 = isolationPublicIpv6;
             K8sVersion = k8sVersion;
             Label = label;
             Labels = labels;

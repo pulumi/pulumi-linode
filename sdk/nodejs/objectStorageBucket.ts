@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.ObjectStorageBucket("foobar", {
- *     label: "mybucket",
  *     region: "us-mia",
+ *     label: "mybucket",
  * });
  * ```
  * ```typescript

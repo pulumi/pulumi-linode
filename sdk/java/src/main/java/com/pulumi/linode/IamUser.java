@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new IamUser("foo", IamUserArgs.builder()
+ *             .username("foo")
  *             .accountAccesses(            
  *                 "account_event_viewer",
  *                 "account_maintenance_viewer",
@@ -54,10 +55,9 @@ import javax.annotation.Nullable;
  *                 "account_oauth_client_admin")
  *             .entityAccesses(IamUserEntityAccessArgs.builder()
  *                 .id(1111111)
- *                 .roles("volume_admin")
  *                 .type("volume")
+ *                 .roles("volume_admin")
  *                 .build())
- *             .username("foo")
  *             .build());
  * 
  *     }

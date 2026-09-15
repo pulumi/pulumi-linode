@@ -69,7 +69,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("firewallIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getFirewalls:getFirewalls.pp:2,11-29)))
+// ctx.Export("firewallIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-30)))
 // return nil
 // })
 // }

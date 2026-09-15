@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;
 import com.pulumi.linode.inputs.LkeNodePoolTaintArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -71,6 +72,36 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> firewallId() {
         return Optional.ofNullable(this.firewallId);
+    }
+
+    /**
+     * Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    @Import(name="isolationPublicIpv4")
+    private @Nullable Output<Boolean> isolationPublicIpv4;
+
+    /**
+     * @return Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    public Optional<Output<Boolean>> isolationPublicIpv4() {
+        return Optional.ofNullable(this.isolationPublicIpv4);
+    }
+
+    /**
+     * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    @Import(name="isolationPublicIpv6")
+    private @Nullable Output<Boolean> isolationPublicIpv6;
+
+    /**
+     * @return Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     */
+    public Optional<Output<Boolean>> isolationPublicIpv6() {
+        return Optional.ofNullable(this.isolationPublicIpv6);
     }
 
     /**
@@ -208,6 +239,8 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterId = $.clusterId;
         this.diskEncryption = $.diskEncryption;
         this.firewallId = $.firewallId;
+        this.isolationPublicIpv4 = $.isolationPublicIpv4;
+        this.isolationPublicIpv6 = $.isolationPublicIpv6;
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.labels = $.labels;
@@ -306,6 +339,48 @@ public final class LkeNodePoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder firewallId(Integer firewallId) {
             return firewallId(Output.of(firewallId));
+        }
+
+        /**
+         * @param isolationPublicIpv4 Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv4(@Nullable Output<Boolean> isolationPublicIpv4) {
+            $.isolationPublicIpv4 = isolationPublicIpv4;
+            return this;
+        }
+
+        /**
+         * @param isolationPublicIpv4 Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv4(Boolean isolationPublicIpv4) {
+            return isolationPublicIpv4(Output.of(isolationPublicIpv4));
+        }
+
+        /**
+         * @param isolationPublicIpv6 Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv6(@Nullable Output<Boolean> isolationPublicIpv6) {
+            $.isolationPublicIpv6 = isolationPublicIpv6;
+            return this;
+        }
+
+        /**
+         * @param isolationPublicIpv6 Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isolationPublicIpv6(Boolean isolationPublicIpv6) {
+            return isolationPublicIpv6(Output.of(isolationPublicIpv6));
         }
 
         /**

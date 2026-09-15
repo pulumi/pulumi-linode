@@ -30,9 +30,9 @@ import * as utilities from "./utilities";
  *     label: "my-logs-destination",
  *     type: "akamai_object_storage",
  *     akamaiObjectStorageDetails: {
- *         access_key_id: key.accessKey,
- *         access_key_secret: key.secretKey,
- *         bucket_name: bucket.label,
+ *         accessKeyId: key.accessKey,
+ *         accessKeySecret: key.secretKey,
+ *         bucketName: bucket.label,
  *         host: bucket.hostname,
  *     },
  * });
@@ -46,16 +46,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const lkeExample = new linode.MonitorLogsStream("lkeExample", {
+ * const lkeExample = new linode.MonitorLogsStream("lke_example", {
  *     label: "my-lke-stream",
  *     type: "lke_audit_logs",
- *     destinations: [linode_monitor_logs_destination.destination.id],
+ *     destinations: [destination.id],
  *     details: {
- *         cluster_ids: [
+ *         clusterIds: [
  *             12345,
  *             67890,
  *         ],
- *         is_auto_add_all_clusters_enabled: false,
+ *         isAutoAddAllClustersEnabled: false,
  *     },
  * });
  * ```

@@ -36,10 +36,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.linode.MonitorAlertDefinition;
  * import com.pulumi.linode.MonitorAlertDefinitionArgs;
+ * import com.pulumi.linode.inputs.MonitorAlertDefinitionTriggerConditionsArgs;
  * import com.pulumi.linode.inputs.MonitorAlertDefinitionRuleCriteriaArgs;
  * import com.pulumi.linode.inputs.MonitorAlertDefinitionRuleCriteriaRuleArgs;
  * import com.pulumi.linode.inputs.MonitorAlertDefinitionRuleCriteriaRuleDimensionFilterArgs;
- * import com.pulumi.linode.inputs.MonitorAlertDefinitionTriggerConditionsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -54,10 +54,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new MonitorAlertDefinition("test", MonitorAlertDefinitionArgs.builder()
- *             .channelIds(10000)
+ *             .serviceType("dbaas")
  *             .description("An alert definition for ansible test")
- *             .groupBies("entity_id")
  *             .label("test-alert-definition")
+ *             .severity(1)
+ *             .channelIds(10000)
+ *             .groupBies("entity_id")
+ *             .waitFor(true)
+ *             .triggerConditions(MonitorAlertDefinitionTriggerConditionsArgs.builder()
+ *                 .criteriaCondition("ALL")
+ *                 .evaluationPeriodSeconds(300)
+ *                 .pollingIntervalSeconds(300)
+ *                 .triggerOccurrences(1)
+ *                 .build())
  *             .ruleCriteria(MonitorAlertDefinitionRuleCriteriaArgs.builder()
  *                 .rules(MonitorAlertDefinitionRuleCriteriaRuleArgs.builder()
  *                     .aggregateFunction("avg")
@@ -71,15 +80,6 @@ import javax.annotation.Nullable;
  *                     .threshold(90.0)
  *                     .build())
  *                 .build())
- *             .serviceType("dbaas")
- *             .severity(1)
- *             .triggerConditions(MonitorAlertDefinitionTriggerConditionsArgs.builder()
- *                 .criteria_condition("ALL")
- *                 .evaluation_period_seconds(300)
- *                 .polling_interval_seconds(300)
- *                 .trigger_occurrences("1")
- *                 .build())
- *             .waitFor(true)
  *             .build());
  * 
  *     }

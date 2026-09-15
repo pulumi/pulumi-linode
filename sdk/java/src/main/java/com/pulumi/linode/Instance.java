@@ -15,6 +15,7 @@ import com.pulumi.linode.outputs.InstanceBackup;
 import com.pulumi.linode.outputs.InstanceConfig;
 import com.pulumi.linode.outputs.InstanceDisk;
 import com.pulumi.linode.outputs.InstanceInterface;
+import com.pulumi.linode.outputs.InstanceLinodeInterface;
 import com.pulumi.linode.outputs.InstanceMetadata;
 import com.pulumi.linode.outputs.InstancePlacementGroup;
 import com.pulumi.linode.outputs.InstanceSpec;
@@ -59,15 +60,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var web = new Instance("web", InstanceArgs.builder()
- *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
- *             .image("linode/ubuntu22.04")
  *             .label("simple_instance")
- *             .privateIp(true)
+ *             .image("linode/ubuntu22.04")
  *             .region("us-central")
- *             .rootPass("this-is-not-a-safe-password")
- *             .swapSize(256)
- *             .tags("foo")
  *             .type("g6-standard-1")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
+ *             .rootPass("this-is-not-a-safe-password")
+ *             .tags("foo")
+ *             .swapSize(256)
+ *             .privateIp(true)
  *             .build());
  * 
  *     }}{@code
@@ -102,11 +103,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var web = new Instance("web", InstanceArgs.builder()
- *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
- *             .image("linode/ubuntu22.04")
  *             .label("simple_instance")
+ *             .image("linode/ubuntu22.04")
  *             .region("us-central")
  *             .type("g6-standard-1")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
  *             .build());
  * 
  *     }}{@code
@@ -143,26 +144,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var web = new Instance("web", InstanceArgs.builder()
- *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
+ *             .label("simple_instance")
  *             .image("linode/ubuntu22.04")
+ *             .region("us-central")
+ *             .type("g6-standard-1")
+ *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
+ *             .rootPass("this-is-not-a-safe-password")
  *             .interfaces(            
  *                 InstanceInterfaceArgs.builder()
  *                     .purpose("public")
  *                     .build(),
  *                 InstanceInterfaceArgs.builder()
+ *                     .purpose("vpc")
+ *                     .subnetId(123)
  *                     .ipv4(InstanceInterfaceIpv4Args.builder()
  *                         .vpc("10.0.4.250")
  *                         .build())
- *                     .purpose("vpc")
- *                     .subnetId(123)
  *                     .build())
- *             .label("simple_instance")
- *             .privateIp(true)
- *             .region("us-central")
- *             .rootPass("this-is-not-a-safe-password")
- *             .swapSize(256)
  *             .tags("foo")
- *             .type("g6-standard-1")
+ *             .swapSize(256)
+ *             .privateIp(true)
  *             .build());
  * 
  *     }}{@code
@@ -281,11 +282,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_instance = new Instance("my-instance", InstanceArgs.builder()
  *             .label("my-instance")
+ *             .region("us-mia")
+ *             .type("g6-standard-1")
  *             .placementGroup(InstancePlacementGroupArgs.builder()
  *                 .id(12345)
  *                 .build())
- *             .region("us-mia")
- *             .type("g6-standard-1")
  *             .build());
  * 
  *     }
@@ -681,6 +682,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
+     * An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    @Export(name="linodeInterfaces", refs={List.class,InstanceLinodeInterface.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<InstanceLinodeInterface>> linodeInterfaces;
+
+    /**
+     * @return An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdmaVpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdmaVpc` can be specified per interface entry.NOTE: This option may require `interfaceGeneration = &#34;linode&#34;` or depends on your account settings.
+     * 
+     */
+    public Output<Optional<List<InstanceLinodeInterface>>> linodeInterfaces() {
+        return Codegen.optional(this.linodeInterfaces);
+    }
+    /**
      * If applicable, the ID of the LKE cluster this instance is a part of.
      * 
      */
@@ -759,6 +774,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
      * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
+     * 
      */
     @Export(name="networkHelper", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> networkHelper;
@@ -767,6 +784,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Enables the Network Helper feature. The default value is determined by the networkHelper setting in the account settings.
      * 
      * * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
+     * 
+     * * `linodeInterfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdmaVpc`) to attach to the Linode at creation. Requires `interfaceGeneration = &#34;linode&#34;`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
      * 
      */
     public Output<Optional<Boolean>> networkHelper() {
@@ -903,28 +922,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.specs;
     }
     /**
-     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Export(name="stackscriptData", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> stackscriptData;
 
     /**
-     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed.
+     * @return An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if &#39;stackscript_id&#39; is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Output<Optional<Map<String,String>>> stackscriptData() {
         return Codegen.optional(this.stackscriptData);
     }
     /**
-     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     @Export(name="stackscriptId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> stackscriptId;
 
     /**
-     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript.
+     * @return The StackScript to deploy to the newly created Linode. If provided, &#39;image&#39; must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
      * 
      */
     public Output<Optional<Integer>> stackscriptId() {

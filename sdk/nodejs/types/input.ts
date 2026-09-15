@@ -4146,6 +4146,184 @@ export interface InstanceIpVpcNat11 {
     vpcId: pulumi.Input<number>;
 }
 
+export interface InstanceLinodeInterface {
+    /**
+     * Default route configuration for the interface.
+     */
+    defaultRoute?: pulumi.Input<inputs.InstanceLinodeInterfaceDefaultRoute | undefined>;
+    /**
+     * The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+     */
+    firewallId?: pulumi.Input<number | undefined>;
+    /**
+     * Configuration for a Linode public interface.
+     *
+     * * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+     *
+     * * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+     *
+     * * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+     */
+    public?: pulumi.Input<inputs.InstanceLinodeInterfacePublic | undefined>;
+    /**
+     * Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `linode.Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+     */
+    rdmaVpc?: pulumi.Input<inputs.InstanceLinodeInterfaceRdmaVpc | undefined>;
+    /**
+     * Configuration for a Linode VLAN interface.
+     */
+    vlan?: pulumi.Input<inputs.InstanceLinodeInterfaceVlan | undefined>;
+    /**
+     * Configuration for a Linode VPC interface.
+     */
+    vpc?: pulumi.Input<inputs.InstanceLinodeInterfaceVpc | undefined>;
+}
+
+export interface InstanceLinodeInterfaceDefaultRoute {
+    /**
+     * Whether this interface is used for the IPv4 default route.
+     */
+    ipv4?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether this interface is used for the IPv6 default route.
+     */
+    ipv6?: pulumi.Input<boolean | undefined>;
+}
+
+export interface InstanceLinodeInterfacePublic {
+    /**
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
+     */
+    ipv4?: pulumi.Input<inputs.InstanceLinodeInterfacePublicIpv4 | undefined>;
+    /**
+     * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+     */
+    ipv6?: pulumi.Input<inputs.InstanceLinodeInterfacePublicIpv6 | undefined>;
+}
+
+export interface InstanceLinodeInterfacePublicIpv4 {
+    addresses?: pulumi.Input<pulumi.Input<inputs.InstanceLinodeInterfacePublicIpv4Address>[] | undefined>;
+}
+
+export interface InstanceLinodeInterfacePublicIpv4Address {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     */
+    primary?: pulumi.Input<boolean | undefined>;
+}
+
+export interface InstanceLinodeInterfacePublicIpv6 {
+    ranges?: pulumi.Input<pulumi.Input<inputs.InstanceLinodeInterfacePublicIpv6Range>[] | undefined>;
+}
+
+export interface InstanceLinodeInterfacePublicIpv6Range {
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range: pulumi.Input<string>;
+}
+
+export interface InstanceLinodeInterfaceRdmaVpc {
+    /**
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
+     */
+    ipv4?: pulumi.Input<inputs.InstanceLinodeInterfaceRdmaVpcIpv4 | undefined>;
+    /**
+     * The ID of the RDMA VPC subnet to attach this interface to.
+     *
+     * * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+     *
+     * * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+     */
+    subnetId: pulumi.Input<number>;
+}
+
+export interface InstanceLinodeInterfaceRdmaVpcIpv4 {
+    /**
+     * The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+     */
+    addresses: pulumi.Input<inputs.InstanceLinodeInterfaceRdmaVpcIpv4Addresses>;
+}
+
+export interface InstanceLinodeInterfaceRdmaVpcIpv4Addresses {
+    /**
+     * The IPv4 address (or 'auto' to allocate one from the subnet).
+     */
+    address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this is the primary IPv4 address for the interface.
+     */
+    primary?: pulumi.Input<boolean | undefined>;
+}
+
+export interface InstanceLinodeInterfaceVlan {
+    /**
+     * The VLAN IPAM address in CIDR notation.
+     */
+    ipamAddress?: pulumi.Input<string | undefined>;
+    /**
+     * The label of the VLAN to join.
+     */
+    vlanLabel: pulumi.Input<string>;
+}
+
+export interface InstanceLinodeInterfaceVpc {
+    /**
+     * A set of reserved IPv4 addresses to assign to this Linode on creation.
+     *
+     * * **NOTE: IP reservation is not currently available to all users.**
+     */
+    ipv4?: pulumi.Input<inputs.InstanceLinodeInterfaceVpcIpv4 | undefined>;
+    /**
+     * The ID of the VPC subnet.
+     *
+     * * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat11Address`.
+     *
+     * * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+     */
+    subnetId: pulumi.Input<number>;
+}
+
+export interface InstanceLinodeInterfaceVpcIpv4 {
+    addresses?: pulumi.Input<pulumi.Input<inputs.InstanceLinodeInterfaceVpcIpv4Address>[] | undefined>;
+    ranges?: pulumi.Input<pulumi.Input<inputs.InstanceLinodeInterfaceVpcIpv4Range>[] | undefined>;
+}
+
+export interface InstanceLinodeInterfaceVpcIpv4Address {
+    /**
+     * The SLAAC address chosen for this interface.
+     */
+    address?: pulumi.Input<string | undefined>;
+    nat11Address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+     *
+     * * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+     *
+     * * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+     */
+    primary?: pulumi.Input<boolean | undefined>;
+}
+
+export interface InstanceLinodeInterfaceVpcIpv4Range {
+    /**
+     * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+     */
+    range: pulumi.Input<string>;
+}
+
 export interface InstanceMetadata {
     /**
      * The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
@@ -4327,6 +4505,39 @@ export interface InterfacePublicIpv6Slaac {
      * The subnet prefix length.
      */
     prefix?: pulumi.Input<number | undefined>;
+}
+
+export interface InterfaceRdmaVpc {
+    /**
+     * IPv4 configuration for the RDMA VPC interface.
+     */
+    ipv4?: pulumi.Input<inputs.InterfaceRdmaVpcIpv4 | undefined>;
+    /**
+     * The ID of the RDMA VPC subnet this interface is attached to.
+     */
+    subnetId: pulumi.Input<number>;
+    /**
+     * The ID of the parent RDMA VPC.
+     */
+    vpcId?: pulumi.Input<number | undefined>;
+}
+
+export interface InterfaceRdmaVpcIpv4 {
+    /**
+     * The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+     */
+    addresses?: pulumi.Input<pulumi.Input<inputs.InterfaceRdmaVpcIpv4Address>[] | undefined>;
+}
+
+export interface InterfaceRdmaVpcIpv4Address {
+    /**
+     * The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+     */
+    address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+     */
+    primary?: pulumi.Input<boolean | undefined>;
 }
 
 export interface InterfaceVlan {
@@ -5522,6 +5733,45 @@ export interface VpcIpv6 {
      * The IPv6 range assigned to this VPC.
      */
     range?: pulumi.Input<string | undefined>;
+}
+
+export interface VpcSubnet {
+    /**
+     * The date and time when the VPC was created.
+     */
+    created?: pulumi.Input<string | undefined>;
+    /**
+     * A list of Managed Databases assigned to this subnet.
+     */
+    databases?: pulumi.Input<pulumi.Input<inputs.VpcSubnetDatabase>[] | undefined>;
+    /**
+     * The ID of the VPC.
+     */
+    id?: pulumi.Input<number | undefined>;
+    /**
+     * The IPv4 range of this subnet in CIDR format.
+     */
+    ipv4?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 ranges of this subnet.
+     */
+    ipv6s?: pulumi.Input<pulumi.Input<inputs.VpcSubnetIpv6>[] | undefined>;
+    /**
+     * The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+     */
+    label?: pulumi.Input<string | undefined>;
+    /**
+     * A list of Linodes assigned to this subnet.
+     */
+    linodes?: pulumi.Input<pulumi.Input<inputs.VpcSubnetLinode>[] | undefined>;
+    /**
+     * A list of NodeBalancers assigned to this subnet.
+     */
+    nodebalancers?: pulumi.Input<pulumi.Input<inputs.VpcSubnetNodebalancer>[] | undefined>;
+    /**
+     * The date and time when the VPC was last updated.
+     */
+    updated?: pulumi.Input<string | undefined>;
 }
 
 export interface VpcSubnetDatabase {

@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresqlV2("foobar", {
- *     engineId: "postgresql/16",
  *     label: "mydatabase",
+ *     engineId: "postgresql/16",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
  * });
@@ -30,11 +30,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     allowLists: ["0.0.0.0/0"],
- *     engineId: "postgresql/16",
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -42,17 +42,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     allowLists: ["10.0.0.3/32"],
  *     clusterSize: 3,
- *     engineId: "postgresql/16",
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  *     updates: {
- *         day_of_week: 2,
  *         duration: 4,
  *         frequency: "weekly",
- *         hour_of_day: 22,
+ *         hourOfDay: 22,
+ *         dayOfWeek: 2,
  *     },
  * });
  * ```
@@ -61,6 +61,10 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
+ *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     engineConfigPgAutovacuumAnalyzeScaleFactor: 0.1,
  *     engineConfigPgAutovacuumAnalyzeThreshold: 50,
  *     engineConfigPgAutovacuumMaxWorkers: 3,
@@ -96,7 +100,6 @@ import * as utilities from "./utilities";
  *     engineConfigPgPgStatMonitorPgsmEnableQueryPlan: true,
  *     engineConfigPgPgStatMonitorPgsmMaxBuckets: 5,
  *     engineConfigPgPgStatStatementsTrack: "all",
- *     engineConfigPgStatMonitorEnable: true,
  *     engineConfigPgTempFileLimit: 100,
  *     engineConfigPgTimezone: "Europe/Helsinki",
  *     engineConfigPgTrackActivityQuerySize: 2048,
@@ -105,13 +108,10 @@ import * as utilities from "./utilities";
  *     engineConfigPgTrackIoTiming: "on",
  *     engineConfigPgWalSenderTimeout: 60000,
  *     engineConfigPgWalWriterDelay: 200,
+ *     engineConfigPgStatMonitorEnable: true,
  *     engineConfigPglookoutMaxFailoverReplicationTimeLag: 10000,
  *     engineConfigSharedBuffersPercentage: 25,
  *     engineConfigWorkMem: 400,
- *     engineId: "postgresql/16",
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -119,11 +119,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresqlV2("foobar", {
+ *     label: "mydatabase",
  *     engineId: "postgresql/16",
+ *     region: "us-mia",
+ *     type: "g6-nanode-1",
  *     forkSource: 12345,
- *     label: "mydatabase",
- *     region: "us-mia",
- *     type: "g6-nanode-1",
  * });
  * ```
  * ```typescript
@@ -131,15 +131,15 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.DatabasePostgresqlV2("foobar", {
- *     engineId: "postgresql/16",
  *     label: "mydatabase",
- *     privateNetwork: {
- *         public_access: false,
- *         subnet_id: 456,
- *         vpc_id: 123,
- *     },
+ *     engineId: "postgresql/16",
  *     region: "us-mia",
  *     type: "g6-nanode-1",
+ *     privateNetwork: {
+ *         vpcId: 123,
+ *         subnetId: 456,
+ *         publicAccess: false,
+ *     },
  * });
  * ```
  *

@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test_empty = new linode.ProducerImageShareGroup("test-empty", {
- *     description: "My description.",
  *     label: "my-image-share-group",
+ *     description: "My description.",
  * });
  * ```
  * ```typescript
@@ -26,13 +26,13 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test_images = new linode.ProducerImageShareGroup("test-images", {
+ *     label: "my-image-share-group",
  *     description: "My description.",
  *     images: [{
- *         description: "My image description.",
  *         id: "private/12345",
  *         label: "my-image",
+ *         description: "My image description.",
  *     }],
- *     label: "my-image-share-group",
  * });
  * ```
  */

@@ -58,6 +58,7 @@ namespace Pulumi.Linode
         public readonly string Id;
         public readonly int LinodeId;
         public readonly Outputs.GetInterfacePublicResult Public;
+        public readonly Outputs.GetInterfaceRdmaVpcResult RdmaVpc;
         public readonly Outputs.GetInterfaceVlanResult Vlan;
         public readonly Outputs.GetInterfaceVpcResult Vpc;
 
@@ -71,6 +72,8 @@ namespace Pulumi.Linode
 
             Outputs.GetInterfacePublicResult @public,
 
+            Outputs.GetInterfaceRdmaVpcResult rdmaVpc,
+
             Outputs.GetInterfaceVlanResult vlan,
 
             Outputs.GetInterfaceVpcResult vpc)
@@ -79,6 +82,7 @@ namespace Pulumi.Linode
             Id = id;
             LinodeId = linodeId;
             Public = @public;
+            RdmaVpc = rdmaVpc;
             Vlan = vlan;
             Vpc = vpc;
         }

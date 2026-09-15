@@ -702,6 +702,22 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Uploading a file to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        object = linode.ObjectStorageObject("object",
+            bucket="my-bucket",
+            region="us-mia",
+            key="my-object",
+            secret_key=my_key["secretKey"],
+            access_key=my_key["accessKey"],
+            source=std.pathexpand(input="~/files/log.txt").result)
+        ```
+
         ### Uploading plaintext to a bucket
 
         ```python
@@ -712,11 +728,25 @@ class ObjectStorageObject(pulumi.CustomResource):
             bucket="my-bucket",
             region="us-mia",
             key="my-object",
-            secret_key=linode_object_storage_key["my_key"]["secret_key"],
-            access_key=linode_object_storage_key["my_key"]["access_key"],
+            secret_key=my_key["secretKey"],
+            access_key=my_key["accessKey"],
             content="This is the content of the Object...",
             content_type="text/plain",
             content_language="en")
+        ```
+
+        ### Creating an object using implicitly created object credentials
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        object = linode.ObjectStorageObject("object",
+            bucket="my-bucket",
+            region="us-mia",
+            key="my-object",
+            source=std.pathexpand(input="~/files/log.txt").result)
         ```
 
 
@@ -757,6 +787,22 @@ class ObjectStorageObject(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Uploading a file to a bucket
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        object = linode.ObjectStorageObject("object",
+            bucket="my-bucket",
+            region="us-mia",
+            key="my-object",
+            secret_key=my_key["secretKey"],
+            access_key=my_key["accessKey"],
+            source=std.pathexpand(input="~/files/log.txt").result)
+        ```
+
         ### Uploading plaintext to a bucket
 
         ```python
@@ -767,11 +813,25 @@ class ObjectStorageObject(pulumi.CustomResource):
             bucket="my-bucket",
             region="us-mia",
             key="my-object",
-            secret_key=linode_object_storage_key["my_key"]["secret_key"],
-            access_key=linode_object_storage_key["my_key"]["access_key"],
+            secret_key=my_key["secretKey"],
+            access_key=my_key["accessKey"],
             content="This is the content of the Object...",
             content_type="text/plain",
             content_language="en")
+        ```
+
+        ### Creating an object using implicitly created object credentials
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+        import pulumi_std as std
+
+        object = linode.ObjectStorageObject("object",
+            bucket="my-bucket",
+            region="us-mia",
+            key="my-object",
+            source=std.pathexpand(input="~/files/log.txt").result)
         ```
 
 

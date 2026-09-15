@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const example = new linode.ReservedIpAssignment("example", {
- *     linodeId: Number(linode_instance.example.id),
- *     address: linode_networking_ip.reserved.address,
+ *     linodeId: Number(exampleLinodeInstance.id),
+ *     address: reserved.address,
  *     "public": true,
  * });
  * ```

@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = linode.getMonitorAlertDefinitionEntities({
- *     alertId: 123,
  *     serviceType: "dbaas",
+ *     alertId: 123,
  * });
  * ```
  * ```typescript
@@ -26,12 +26,12 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = linode.getMonitorAlertDefinitionEntities({
+ *     serviceType: "dbaas",
  *     alertId: 123,
  *     filters: [{
  *         name: "type",
  *         values: ["dbaas"],
  *     }],
- *     serviceType: "dbaas",
  * });
  * ```
  *
@@ -98,8 +98,8 @@ export interface GetMonitorAlertDefinitionEntitiesResult {
  * import * as linode from "@pulumi/linode";
  *
  * const test = linode.getMonitorAlertDefinitionEntities({
- *     alertId: 123,
  *     serviceType: "dbaas",
+ *     alertId: 123,
  * });
  * ```
  * ```typescript
@@ -107,12 +107,12 @@ export interface GetMonitorAlertDefinitionEntitiesResult {
  * import * as linode from "@pulumi/linode";
  *
  * const test = linode.getMonitorAlertDefinitionEntities({
+ *     serviceType: "dbaas",
  *     alertId: 123,
  *     filters: [{
  *         name: "type",
  *         values: ["dbaas"],
  *     }],
- *     serviceType: "dbaas",
  * });
  * ```
  *

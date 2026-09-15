@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				EngineId: pulumi.String("mysql/8"),
 //				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8"),
 //				Region:   pulumi.String("us-mia"),
 //				Type:     pulumi.String("g6-nanode-1"),
 //			})
@@ -58,13 +58,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("0.0.0.0/0"),
 //				},
-//				EngineId: pulumi.String("mysql/8"),
-//				Label:    pulumi.String("mydatabase"),
-//				Region:   pulumi.String("us-mia"),
-//				Type:     pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -87,19 +87,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
+//				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				AllowLists: pulumi.StringArray{
 //					pulumi.String("10.0.0.3/32"),
 //				},
 //				ClusterSize: pulumi.Int(3),
-//				EngineId:    pulumi.String("mysql/8"),
-//				Label:       pulumi.String("mydatabase"),
-//				Region:      pulumi.String("us-mia"),
-//				Type:        pulumi.String("g6-nanode-1"),
 //				Updates: &linode.DatabaseMysqlV2UpdatesArgs{
-//					Day_of_week: 3,
-//					Duration:    pulumi.Int(4),
-//					Frequency:   pulumi.String("weekly"),
-//					Hour_of_day: 22,
+//					Duration:  pulumi.Int(4),
+//					Frequency: pulumi.String("weekly"),
+//					HourOfDay: pulumi.Int(22),
+//					DayOfWeek: pulumi.Int(3),
 //				},
 //			})
 //			if err != nil {
@@ -123,10 +123,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				EngineConfigBinlogRetentionPeriod:             pulumi.Int(3600),
-//				EngineConfigMysqlConnectTimeout:               pulumi.Int(10),
-//				EngineConfigMysqlDefaultTimeZone:              pulumi.String("+00:00"),
-//				EngineConfigMysqlGroupConcatMaxLen:            pulumi.Float64(4096),
+//				Label:                              pulumi.String("mydatabase"),
+//				EngineId:                           pulumi.String("mysql/8"),
+//				Region:                             pulumi.String("us-mia"),
+//				Type:                               pulumi.String("g6-nanode-1"),
+//				EngineConfigBinlogRetentionPeriod:  pulumi.Int(3600),
+//				EngineConfigMysqlConnectTimeout:    pulumi.Int(10),
+//				EngineConfigMysqlDefaultTimeZone:   pulumi.String("+00:00"),
+//				EngineConfigMysqlGroupConcatMaxLen: pulumi.Float64(4096),
 //				EngineConfigMysqlInformationSchemaStatsExpiry: pulumi.Int(3600),
 //				EngineConfigMysqlInnodbChangeBufferMaxSize:    pulumi.Int(25),
 //				EngineConfigMysqlInnodbFlushNeighbors:         pulumi.Int(0),
@@ -151,10 +155,6 @@ import (
 //				EngineConfigMysqlSqlRequirePrimaryKey:         pulumi.Bool(false),
 //				EngineConfigMysqlTmpTableSize:                 pulumi.Int(16777216),
 //				EngineConfigMysqlWaitTimeout:                  pulumi.Int(28800),
-//				EngineId:                                      pulumi.String("mysql/8"),
-//				Label:                                         pulumi.String("mydatabase"),
-//				Region:                                        pulumi.String("us-mia"),
-//				Type:                                          pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err
@@ -177,11 +177,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				EngineId:   pulumi.String("mysql/8"),
-//				ForkSource: pulumi.Int(12345),
 //				Label:      pulumi.String("mydatabase"),
+//				EngineId:   pulumi.String("mysql/8"),
 //				Region:     pulumi.String("us-mia"),
 //				Type:       pulumi.String("g6-nanode-1"),
+//				ForkSource: pulumi.Int(12345),
 //			})
 //			if err != nil {
 //				return err
@@ -204,15 +204,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewDatabaseMysqlV2(ctx, "foobar", &linode.DatabaseMysqlV2Args{
-//				EngineId: pulumi.String("mysql/8"),
 //				Label:    pulumi.String("mydatabase"),
+//				EngineId: pulumi.String("mysql/8"),
+//				Region:   pulumi.String("us-mia"),
+//				Type:     pulumi.String("g6-nanode-1"),
 //				PrivateNetwork: &linode.DatabaseMysqlV2PrivateNetworkArgs{
-//					Public_access: false,
-//					Subnet_id:     456,
-//					Vpc_id:        123,
+//					VpcId:        pulumi.Int(123),
+//					SubnetId:     pulumi.Int(456),
+//					PublicAccess: pulumi.Bool(false),
 //				},
-//				Region: pulumi.String("us-mia"),
-//				Type:   pulumi.String("g6-nanode-1"),
 //			})
 //			if err != nil {
 //				return err

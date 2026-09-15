@@ -27,9 +27,9 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.Vpc("test", new()
     ///     {
-    ///         Description = "My first VPC.",
     ///         Label = "test-vpc",
     ///         Region = "us-iad",
+    ///         Description = "My first VPC.",
     ///     });
     /// 
     /// });
@@ -48,6 +48,8 @@ namespace Pulumi.Linode
     ///     // NOTE: IPv6 VPCs may not currently be available to all users.
     ///     var test = new Linode.Vpc("test", new()
     ///     {
+    ///         Label = "test-vpc",
+    ///         Region = "us-iad",
     ///         Ipv6s = new[]
     ///         {
     ///             new Linode.Inputs.VpcIpv6Args
@@ -55,8 +57,6 @@ namespace Pulumi.Linode
     ///                 Range = "/52",
     ///             },
     ///         },
-    ///         Label = "test-vpc",
-    ///         Region = "us-iad",
     ///     });
     /// 
     /// });
@@ -72,6 +72,8 @@ namespace Pulumi.Linode
     ///     // NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
     ///     var test = new Linode.Vpc("test", new()
     ///     {
+    ///         Label = "test-vpc",
+    ///         Region = "us-iad",
     ///         Ipv4s = new[]
     ///         {
     ///             new Linode.Inputs.VpcIpv4Args
@@ -79,8 +81,6 @@ namespace Pulumi.Linode
     ///                 Range = "10.0.0.0/8",
     ///             },
     ///         },
-    ///         Label = "test-vpc",
-    ///         Region = "us-iad",
     ///     });
     /// 
     /// });
@@ -105,6 +105,56 @@ namespace Pulumi.Linode
     /// Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
     /// 
     /// * `Range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+    /// 
+    /// ## Subnets
+    /// 
+    /// The following attributes are exported under each entry of the `Subnets` field:
+    /// 
+    /// * `Id` - The id of the VPC Subnet.
+    /// 
+    /// * `Label` - The label of the VPC Subnet.
+    /// 
+    /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
+    /// 
+    /// * `Ipv6` - The IPv6 ranges of this subnet.
+    ///   
+    ///   * `Range` - An IPv6 range allocated to this subnet.
+    /// 
+    /// * `Linodes` - A list of Linodes assigned to this subnet.
+    ///   
+    ///   * `Id` - ID of the Linode
+    ///   
+    ///   * `Interfaces` - A list of networking interfaces objects.
+    ///     
+    ///     * `Id` - ID of the interface.
+    ///     
+    ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
+    ///     
+    ///     * `Active` - Whether the Interface is actively in use.
+    /// 
+    /// * `Databases` - A list of Managed Databases assigned to this subnet.
+    ///   
+    ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
+    ///   
+    ///   * `Ipv4Range` - IPv4 range assigned to the database.
+    ///   
+    ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+    ///     
+    ///     * `Range` - An IPv6 address range in CIDR notation.
+    /// 
+    /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
+    ///   
+    ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
+    ///   
+    ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
+    ///   
+    ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+    ///     
+    ///     * `Range` - An IPv6 address range in CIDR notation.
+    /// 
+    /// * `Created` - The date and time when the VPC Subnet was created.
+    /// 
+    /// * `Updated` - The date and time when the VPC Subnet was last updated.
     /// </summary>
     [LinodeResourceType("linode:index/vpc:Vpc")]
     public partial class Vpc : global::Pulumi.CustomResource
@@ -144,6 +194,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of subnets under this VPC.
+        /// </summary>
+        [Output("subnets")]
+        public Output<ImmutableArray<Outputs.VpcSubnet>> Subnets { get; private set; } = null!;
 
         /// <summary>
         /// The date and time when the VPC was last updated.
@@ -314,6 +370,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("subnets")]
+        private InputList<Inputs.VpcSubnetGetArgs>? _subnets;
+
+        /// <summary>
+        /// A list of subnets under this VPC.
+        /// </summary>
+        public InputList<Inputs.VpcSubnetGetArgs> Subnets
+        {
+            get => _subnets ?? (_subnets = new InputList<Inputs.VpcSubnetGetArgs>());
+            set => _subnets = value;
+        }
 
         /// <summary>
         /// The date and time when the VPC was last updated.

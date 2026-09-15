@@ -483,8 +483,8 @@ class ObjectStorageBucket(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.ObjectStorageBucket("foobar",
-            label="mybucket",
-            region="us-mia")
+            region="us-mia",
+            label="mybucket")
         ```
         ```python
         import pulumi
@@ -556,8 +556,8 @@ class ObjectStorageBucket(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.ObjectStorageBucket("foobar",
-            label="mybucket",
-            region="us-mia")
+            region="us-mia",
+            label="mybucket")
         ```
         ```python
         import pulumi

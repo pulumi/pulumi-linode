@@ -370,11 +370,11 @@ class StackScript(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_stack_script = linode.StackScript("fooStackScript",
+        foo = linode.StackScript("foo",
             label="foo",
             description="Installs a Package",
             script=\"\"\"#!/bin/bash
-        # <UDF name="package" label="System Package to Install" example="nginx" default="">
+        # <UDF name=\\"package\\" label=\\"System Package to Install\\" example=\\"nginx\\" default=\\"\\">
         apt-get -q update && apt-get -q -y install $PACKAGE
         \"\"\",
             images=[
@@ -382,14 +382,14 @@ class StackScript(pulumi.CustomResource):
                 "linode/ubuntu20.04",
             ],
             rev_note="initial version")
-        foo_instance = linode.Instance("fooInstance",
+        foo_instance = linode.Instance("foo",
             image="linode/ubuntu22.04",
             label="foo",
             region="us-east",
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo_stack_script.id.apply(lambda x: int(x)),
+            stackscript_id=foo.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })
@@ -434,11 +434,11 @@ class StackScript(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        foo_stack_script = linode.StackScript("fooStackScript",
+        foo = linode.StackScript("foo",
             label="foo",
             description="Installs a Package",
             script=\"\"\"#!/bin/bash
-        # <UDF name="package" label="System Package to Install" example="nginx" default="">
+        # <UDF name=\\"package\\" label=\\"System Package to Install\\" example=\\"nginx\\" default=\\"\\">
         apt-get -q update && apt-get -q -y install $PACKAGE
         \"\"\",
             images=[
@@ -446,14 +446,14 @@ class StackScript(pulumi.CustomResource):
                 "linode/ubuntu20.04",
             ],
             rev_note="initial version")
-        foo_instance = linode.Instance("fooInstance",
+        foo_instance = linode.Instance("foo",
             image="linode/ubuntu22.04",
             label="foo",
             region="us-east",
             type="g6-nanode-1",
             authorized_keys=["..."],
             root_pass="...",
-            stackscript_id=foo_stack_script.id.apply(lambda x: int(x)),
+            stackscript_id=foo.id.apply(lambda x: int(x)),
             stackscript_data={
                 "package": "nginx",
             })

@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetVpcIpv4;
 import com.pulumi.linode.outputs.GetVpcIpv6;
+import com.pulumi.linode.outputs.GetVpcSubnet;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -44,6 +45,7 @@ public final class GetVpcResult {
      * 
      */
     private String region;
+    private List<GetVpcSubnet> subnets;
     /**
      * @return The date and time when the VPC was last updated.
      * 
@@ -101,6 +103,9 @@ public final class GetVpcResult {
     public String region() {
         return this.region;
     }
+    public List<GetVpcSubnet> subnets() {
+        return this.subnets;
+    }
     /**
      * @return The date and time when the VPC was last updated.
      * 
@@ -132,6 +137,7 @@ public final class GetVpcResult {
         private List<GetVpcIpv6> ipv6s;
         private String label;
         private String region;
+        private List<GetVpcSubnet> subnets;
         private String updated;
         private String vpcType;
         public Builder() {}
@@ -144,6 +150,7 @@ public final class GetVpcResult {
     	      this.ipv6s = defaults.ipv6s;
     	      this.label = defaults.label;
     	      this.region = defaults.region;
+    	      this.subnets = defaults.subnets;
     	      this.updated = defaults.updated;
     	      this.vpcType = defaults.vpcType;
         }
@@ -211,6 +218,17 @@ public final class GetVpcResult {
             return this;
         }
         @CustomType.Setter
+        public Builder subnets(List<GetVpcSubnet> subnets) {
+            if (subnets == null) {
+              throw new MissingRequiredPropertyException("GetVpcResult", "subnets");
+            }
+            this.subnets = subnets;
+            return this;
+        }
+        public Builder subnets(GetVpcSubnet... subnets) {
+            return subnets(List.of(subnets));
+        }
+        @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
               throw new MissingRequiredPropertyException("GetVpcResult", "updated");
@@ -235,6 +253,7 @@ public final class GetVpcResult {
             _resultValue.ipv6s = ipv6s;
             _resultValue.label = label;
             _resultValue.region = region;
+            _resultValue.subnets = subnets;
             _resultValue.updated = updated;
             _resultValue.vpcType = vpcType;
             return _resultValue;

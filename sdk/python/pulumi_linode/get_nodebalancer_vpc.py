@@ -118,8 +118,8 @@ def get_nodebalancer_vpc(id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_linode as linode
 
-    vpc_config = linode.get_nodebalancer_vpc(id=456,
-        nodebalancer_id=123)
+    vpc_config = linode.get_nodebalancer_vpc(nodebalancer_id=123,
+        id=456)
     ```
 
 
@@ -154,8 +154,8 @@ def get_nodebalancer_vpc_output(id: pulumi.Input[Optional[_builtins.int]] = None
     import pulumi
     import pulumi_linode as linode
 
-    vpc_config = linode.get_nodebalancer_vpc(id=456,
-        nodebalancer_id=123)
+    vpc_config = linode.get_nodebalancer_vpc(nodebalancer_id=123,
+        id=456)
     ```
 
 

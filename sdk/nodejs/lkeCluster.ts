@@ -17,14 +17,14 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
- *     pools: [{
- *         count: 3,
- *         type: "g6-standard-2",
- *     }],
+ *     k8sVersion: "1.32",
  *     region: "us-central",
  *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 3,
+ *     }],
  * });
  * ```
  * ```typescript
@@ -32,16 +32,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.LkeCluster("test", {
- *     k8sVersion: "v1.31.8+lke5",
  *     label: "lke-e-cluster",
- *     pools: [{
- *         count: 3,
- *         tags: ["test"],
- *         type: "g7-premium-2",
- *     }],
  *     region: "us-lax",
+ *     k8sVersion: "v1.31.8+lke5",
  *     tags: ["test"],
  *     tier: "enterprise",
+ *     pools: [{
+ *         type: "g7-premium-2",
+ *         count: 3,
+ *         tags: ["test"],
+ *     }],
  * });
  * ```
  * ```typescript
@@ -49,17 +49,17 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
- *     pools: [{
- *         autoscaler: {
- *             max: 10,
- *             min: 3,
- *         },
- *         type: "g6-standard-2",
- *     }],
+ *     k8sVersion: "1.32",
  *     region: "us-central",
  *     tags: ["prod"],
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         autoscaler: {
+ *             min: 3,
+ *             max: 10,
+ *         },
+ *     }],
  * });
  * ```
  * ```typescript
@@ -67,24 +67,24 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.LkeCluster("test", {
- *     controlPlane: {
- *         acl: {
- *             addresses: [{
- *                 ipv4: ["0.0.0.0/0"],
- *                 ipv6: ["2001:db8::/32"],
- *             }],
- *             enabled: true,
- *         },
- *         highAvailability: true,
- *     },
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
- *     pools: [{
- *         count: 1,
- *         type: "g6-standard-2",
- *     }],
+ *     k8sVersion: "1.32",
  *     region: "us-central",
  *     tags: ["prod"],
+ *     controlPlane: {
+ *         highAvailability: true,
+ *         acl: {
+ *             enabled: true,
+ *             addresses: [{
+ *                 ipv4s: ["0.0.0.0/0"],
+ *                 ipv6s: ["2001:db8::/32"],
+ *             }],
+ *         },
+ *     },
+ *     pools: [{
+ *         type: "g6-standard-2",
+ *         count: 1,
+ *     }],
  * });
  * ```
  * ```typescript
@@ -92,22 +92,22 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
  *     pools: [
  *         {
+ *             type: "g6-standard-2",
  *             count: 2,
  *             label: "db-pool",
- *             type: "g6-standard-2",
  *         },
  *         {
+ *             type: "g6-standard-1",
  *             count: 3,
  *             label: "app-pool",
- *             type: "g6-standard-1",
  *         },
  *     ],
- *     region: "us-central",
- *     tags: ["prod"],
  * });
  * ```
  * ```typescript
@@ -115,16 +115,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
  *     pools: [{
- *         count: 2,
- *         firewallId: 12345,
- *         label: "db-pool",
  *         type: "g6-standard-2",
+ *         count: 2,
+ *         label: "db-pool",
+ *         firewallId: 12345,
  *     }],
- *     region: "us-central",
- *     tags: ["prod"],
  * });
  * ```
  * ```typescript
@@ -132,28 +132,28 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
+ *     k8sVersion: "1.32",
+ *     region: "us-central",
+ *     tags: ["prod"],
  *     pools: [
  *         {
+ *             type: "g6-standard-2",
  *             count: 2,
  *             labels: {
- *                 environment: "production",
  *                 role: "database",
+ *                 environment: "production",
  *             },
- *             type: "g6-standard-2",
  *         },
  *         {
+ *             type: "g6-standard-1",
  *             count: 3,
  *             labels: {
- *                 environment: "production",
  *                 role: "application",
+ *                 environment: "production",
  *             },
- *             type: "g6-standard-1",
  *         },
  *     ],
- *     region: "us-central",
- *     tags: ["prod"],
  * });
  * ```
  * ```typescript
@@ -161,22 +161,22 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
- *     k8sVersion: "1.32",
  *     label: "my-cluster",
- *     pools: [
- *         {
- *             count: 2,
- *             diskEncryption: "enabled",
- *             type: "g6-standard-2",
- *         },
- *         {
- *             count: 1,
- *             diskEncryption: "disabled",
- *             type: "g6-standard-1",
- *         },
- *     ],
+ *     k8sVersion: "1.32",
  *     region: "us-central",
  *     tags: ["prod"],
+ *     pools: [
+ *         {
+ *             type: "g6-standard-2",
+ *             count: 2,
+ *             diskEncryption: "enabled",
+ *         },
+ *         {
+ *             type: "g6-standard-1",
+ *             count: 1,
+ *             diskEncryption: "disabled",
+ *         },
+ *     ],
  * });
  * ```
  *
@@ -192,12 +192,12 @@ import * as utilities from "./utilities";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {pools: [
  *     {
- *         count: 2,
  *         type: "g6-standard-1",
+ *         count: 2,
  *     },
  *     {
- *         count: 3,
  *         type: "g6-standard-2",
+ *         count: 3,
  *     },
  * ]});
  * ```
@@ -206,8 +206,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const my_cluster = new linode.LkeCluster("my-cluster", {pools: [{
- *     count: 3,
  *     type: "g6-standard-2",
+ *     count: 3,
  * }]});
  * ```
  * ## Externally Managed Node Pools

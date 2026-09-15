@@ -38,12 +38,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const fooInstance = new linode.Instance("fooInstance", {
+ * const foo = new linode.Instance("foo", {
  *     region: "us-east",
  *     type: "g6-nanode-1",
  * });
- * const fooInstanceConfig = new linode.InstanceConfig("fooInstanceConfig", {
- *     linodeId: fooInstance.id.apply(x =>Number(x)),
+ * const fooInstanceConfig = new linode.InstanceConfig("foo", {
+ *     linodeId: foo.id.apply(x =>Number(x)),
  *     label: "boot-existing-volume",
  *     kernel: "linode/grub2",
  *     devices: [{

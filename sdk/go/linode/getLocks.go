@@ -65,7 +65,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("allLockIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getLocks:getLocks.pp:2,11-25)))
+// ctx.Export("allLockIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-26)))
 // return nil
 // })
 // }

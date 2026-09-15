@@ -17,16 +17,16 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.VpcSubnet("test", {
- *     ipv4: "10.0.0.0/24",
- *     label: "test-subnet",
  *     vpcId: 123,
+ *     label: "test-subnet",
+ *     ipv4: "10.0.0.0/24",
  * });
  * ```
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const testVpc = new linode.Vpc("testVpc", {
+ * const testVpc = new linode.Vpc("test", {
  *     label: "test-vpc",
  *     region: "us-mia",
  *     ipv6s: [{
@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // NOTE: IPv6 VPCs may not currently be available to all users.
- * const testVpcSubnet = new linode.VpcSubnet("testVpcSubnet", {
+ * const test = new linode.VpcSubnet("test", {
  *     vpcId: testVpc.id.apply(x =>Number(x)),
  *     label: "test-subnet",
  *     ipv4: "10.0.0.0/24",

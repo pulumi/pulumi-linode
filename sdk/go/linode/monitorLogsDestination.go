@@ -51,10 +51,10 @@ import (
 //				Label: pulumi.String("my-logs-destination"),
 //				Type:  pulumi.String("akamai_object_storage"),
 //				AkamaiObjectStorageDetails: &linode.MonitorLogsDestinationAkamaiObjectStorageDetailsArgs{
-//					Access_key_id:     key.AccessKey,
-//					Access_key_secret: key.SecretKey,
-//					Bucket_name:       bucket.Label,
-//					Host:              bucket.Hostname,
+//					AccessKeyId:     key.AccessKey,
+//					AccessKeySecret: key.SecretKey,
+//					BucketName:      bucket.Label,
+//					Host:            bucket.Hostname,
 //				},
 //			})
 //			if err != nil {
@@ -77,19 +77,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewMonitorLogsDestination(ctx, "httpsExample", &linode.MonitorLogsDestinationArgs{
-//				CustomHttpsDetails: &linode.MonitorLogsDestinationCustomHttpsDetailsArgs{
-//					Authentication: &linode.MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs{
-//						Password: pulumi.String("mypassword"),
-//						Type:     pulumi.String("basic"),
-//						Username: pulumi.String("myuser"),
-//					},
-//					Content_type:     "application/json",
-//					Data_compression: "gzip",
-//					Endpoint_url:     "https://logs.example.com/ingest",
-//				},
+//			_, err := linode.NewMonitorLogsDestination(ctx, "https_example", &linode.MonitorLogsDestinationArgs{
 //				Label: pulumi.String("my-https-destination"),
 //				Type:  pulumi.String("custom_https"),
+//				CustomHttpsDetails: &linode.MonitorLogsDestinationCustomHttpsDetailsArgs{
+//					EndpointUrl:     pulumi.String("https://logs.example.com/ingest"),
+//					ContentType:     pulumi.String("application/json"),
+//					DataCompression: pulumi.String("gzip"),
+//					Authentication: &linode.MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs{
+//						Type:     pulumi.String("basic"),
+//						Username: pulumi.String("myuser"),
+//						Password: pulumi.String("mypassword"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

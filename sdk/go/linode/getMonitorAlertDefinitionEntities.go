@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetMonitorAlertDefinitionEntities(ctx, &linode.LookupMonitorAlertDefinitionEntitiesArgs{
-//				AlertId:     123,
 //				ServiceType: "dbaas",
+//				AlertId:     123,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,7 +53,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetMonitorAlertDefinitionEntities(ctx, &linode.LookupMonitorAlertDefinitionEntitiesArgs{
-//				AlertId: 123,
+//				ServiceType: "dbaas",
+//				AlertId:     123,
 //				Filters: []linode.GetMonitorAlertDefinitionEntitiesFilter{
 //					{
 //						Name: "type",
@@ -62,7 +63,6 @@ import (
 //						},
 //					},
 //				},
-//				ServiceType: "dbaas",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -115,12 +115,8 @@ type LookupMonitorAlertDefinitionEntitiesResult struct {
 }
 
 func LookupMonitorAlertDefinitionEntitiesOutput(ctx *pulumi.Context, args LookupMonitorAlertDefinitionEntitiesOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorAlertDefinitionEntitiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitorAlertDefinitionEntitiesResultOutput, error) {
-			args := v.(LookupMonitorAlertDefinitionEntitiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities", args, LookupMonitorAlertDefinitionEntitiesResultOutput{}, options).(LookupMonitorAlertDefinitionEntitiesResultOutput), nil
-		}).(LookupMonitorAlertDefinitionEntitiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMonitorAlertDefinitionEntities:getMonitorAlertDefinitionEntities", args, LookupMonitorAlertDefinitionEntitiesResultOutput{}, options).(LookupMonitorAlertDefinitionEntitiesResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorAlertDefinitionEntities.

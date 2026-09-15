@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
- *             .engineId("postgresql/16")
  *             .label("mydatabase")
+ *             .engineId("postgresql/16")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
  *             .build());
@@ -87,11 +87,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
- *             .allowLists("0.0.0.0/0")
- *             .engineId("postgresql/16")
  *             .label("mydatabase")
+ *             .engineId("postgresql/16")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .allowLists("0.0.0.0/0")
  *             .build());
  * 
  *     }
@@ -122,17 +122,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
- *             .allowLists("10.0.0.3/32")
- *             .clusterSize(3)
- *             .engineId("postgresql/16")
  *             .label("mydatabase")
+ *             .engineId("postgresql/16")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .allowLists("10.0.0.3/32")
+ *             .clusterSize(3)
  *             .updates(DatabasePostgresqlV2UpdatesArgs.builder()
- *                 .day_of_week(2)
  *                 .duration(4)
  *                 .frequency("weekly")
- *                 .hour_of_day(22)
+ *                 .hourOfDay(22)
+ *                 .dayOfWeek(2)
  *                 .build())
  *             .build());
  * 
@@ -163,6 +163,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
+ *             .label("mydatabase")
+ *             .engineId("postgresql/16")
+ *             .region("us-mia")
+ *             .type("g6-nanode-1")
  *             .engineConfigPgAutovacuumAnalyzeScaleFactor(0.1)
  *             .engineConfigPgAutovacuumAnalyzeThreshold(50)
  *             .engineConfigPgAutovacuumMaxWorkers(3)
@@ -198,7 +202,6 @@ import javax.annotation.Nullable;
  *             .engineConfigPgPgStatMonitorPgsmEnableQueryPlan(true)
  *             .engineConfigPgPgStatMonitorPgsmMaxBuckets(5)
  *             .engineConfigPgPgStatStatementsTrack("all")
- *             .engineConfigPgStatMonitorEnable(true)
  *             .engineConfigPgTempFileLimit(100)
  *             .engineConfigPgTimezone("Europe/Helsinki")
  *             .engineConfigPgTrackActivityQuerySize(2048)
@@ -207,13 +210,10 @@ import javax.annotation.Nullable;
  *             .engineConfigPgTrackIoTiming("on")
  *             .engineConfigPgWalSenderTimeout(60000)
  *             .engineConfigPgWalWriterDelay(200)
+ *             .engineConfigPgStatMonitorEnable(true)
  *             .engineConfigPglookoutMaxFailoverReplicationTimeLag(10000)
  *             .engineConfigSharedBuffersPercentage(25.0)
  *             .engineConfigWorkMem(400)
- *             .engineId("postgresql/16")
- *             .label("mydatabase")
- *             .region("us-mia")
- *             .type("g6-nanode-1")
  *             .build());
  * 
  *     }
@@ -243,11 +243,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
- *             .engineId("postgresql/16")
- *             .forkSource(12345)
  *             .label("mydatabase")
+ *             .engineId("postgresql/16")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .forkSource(12345)
  *             .build());
  * 
  *     }
@@ -278,15 +278,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new DatabasePostgresqlV2("foobar", DatabasePostgresqlV2Args.builder()
- *             .engineId("postgresql/16")
  *             .label("mydatabase")
- *             .privateNetwork(DatabasePostgresqlV2PrivateNetworkArgs.builder()
- *                 .public_access(false)
- *                 .subnet_id(456)
- *                 .vpc_id(123)
- *                 .build())
+ *             .engineId("postgresql/16")
  *             .region("us-mia")
  *             .type("g6-nanode-1")
+ *             .privateNetwork(DatabasePostgresqlV2PrivateNetworkArgs.builder()
+ *                 .vpcId(123)
+ *                 .subnetId(456)
+ *                 .publicAccess(false)
+ *                 .build())
  *             .build());
  * 
  *     }

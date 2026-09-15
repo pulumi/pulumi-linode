@@ -272,21 +272,21 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test_empty = linode.ProducerImageShareGroup("test-empty",
-            description="My description.",
-            label="my-image-share-group")
+            label="my-image-share-group",
+            description="My description.")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test_images = linode.ProducerImageShareGroup("test-images",
+            label="my-image-share-group",
             description="My description.",
             images=[{
-                "description": "My image description.",
                 "id": "private/12345",
                 "label": "my-image",
-            }],
-            label="my-image-share-group")
+                "description": "My image description.",
+            }])
         ```
 
 
@@ -315,21 +315,21 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         import pulumi_linode as linode
 
         test_empty = linode.ProducerImageShareGroup("test-empty",
-            description="My description.",
-            label="my-image-share-group")
+            label="my-image-share-group",
+            description="My description.")
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test_images = linode.ProducerImageShareGroup("test-images",
+            label="my-image-share-group",
             description="My description.",
             images=[{
-                "description": "My image description.",
                 "id": "private/12345",
                 "label": "my-image",
-            }],
-            label="my-image-share-group")
+                "description": "My image description.",
+            }])
         ```
 
 

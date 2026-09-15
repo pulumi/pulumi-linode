@@ -27,11 +27,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_configs = linode.getNodebalancerVpcs({
+ *     nodebalancerId: 12345,
  *     filters: [{
  *         name: "ipv4_range",
  *         values: ["10.0.0.4/30"],
  *     }],
- *     nodebalancerId: 12345,
  * });
  * ```
  * ```typescript
@@ -39,11 +39,11 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_configs = linode.getNodebalancerVpcs({
+ *     nodebalancerId: 12345,
  *     filters: [{
  *         name: "ipv6_range",
  *         values: ["2a01:7e04:e403:3::/64"],
  *     }],
- *     nodebalancerId: 12345,
  * });
  * ```
  *
@@ -133,11 +133,11 @@ export interface GetNodebalancerVpcsResult {
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_configs = linode.getNodebalancerVpcs({
+ *     nodebalancerId: 12345,
  *     filters: [{
  *         name: "ipv4_range",
  *         values: ["10.0.0.4/30"],
  *     }],
- *     nodebalancerId: 12345,
  * });
  * ```
  * ```typescript
@@ -145,11 +145,11 @@ export interface GetNodebalancerVpcsResult {
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_configs = linode.getNodebalancerVpcs({
+ *     nodebalancerId: 12345,
  *     filters: [{
  *         name: "ipv6_range",
  *         values: ["2a01:7e04:e403:3::/64"],
  *     }],
- *     nodebalancerId: 12345,
  * });
  * ```
  *

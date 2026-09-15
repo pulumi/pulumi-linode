@@ -49,14 +49,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .count(3)
- *                 .type("g6-standard-2")
- *                 .build())
+ *             .k8sVersion("1.32")
  *             .region("us-central")
  *             .tags("prod")
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g6-standard-2")
+ *                 .count(3)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -87,16 +87,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new LkeCluster("test", LkeClusterArgs.builder()
- *             .k8sVersion("v1.31.8+lke5")
  *             .label("lke-e-cluster")
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .count(3)
- *                 .tags("test")
- *                 .type("g7-premium-2")
- *                 .build())
  *             .region("us-lax")
+ *             .k8sVersion("v1.31.8+lke5")
  *             .tags("test")
  *             .tier("enterprise")
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g7-premium-2")
+ *                 .count(3)
+ *                 .tags("test")
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -128,17 +128,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .autoscaler(LkeClusterPoolAutoscalerArgs.builder()
- *                     .max(10)
- *                     .min(3)
- *                     .build())
- *                 .type("g6-standard-2")
- *                 .build())
+ *             .k8sVersion("1.32")
  *             .region("us-central")
  *             .tags("prod")
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g6-standard-2")
+ *                 .autoscaler(LkeClusterPoolAutoscalerArgs.builder()
+ *                     .min(3)
+ *                     .max(10)
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -172,24 +172,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new LkeCluster("test", LkeClusterArgs.builder()
- *             .controlPlane(LkeClusterControlPlaneArgs.builder()
- *                 .acl(LkeClusterControlPlaneAclArgs.builder()
- *                     .addresses(LkeClusterControlPlaneAclAddressArgs.builder()
- *                         .ipv4(Arrays.asList("0.0.0.0/0"))
- *                         .ipv6(Arrays.asList("2001:db8::/32"))
- *                         .build())
- *                     .enabled(true)
- *                     .build())
- *                 .highAvailability(true)
- *                 .build())
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
- *             .pools(LkeClusterPoolArgs.builder()
- *                 .count(1)
- *                 .type("g6-standard-2")
- *                 .build())
+ *             .k8sVersion("1.32")
  *             .region("us-central")
  *             .tags("prod")
+ *             .controlPlane(LkeClusterControlPlaneArgs.builder()
+ *                 .highAvailability(true)
+ *                 .acl(LkeClusterControlPlaneAclArgs.builder()
+ *                     .enabled(true)
+ *                     .addresses(LkeClusterControlPlaneAclAddressArgs.builder()
+ *                         .ipv4s("0.0.0.0/0")
+ *                         .ipv6s("2001:db8::/32")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g6-standard-2")
+ *                 .count(1)
+ *                 .build())
  *             .build());
  * 
  *     }
@@ -220,21 +220,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
+ *             .k8sVersion("1.32")
+ *             .region("us-central")
+ *             .tags("prod")
  *             .pools(            
  *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-2")
  *                     .count(2)
  *                     .label("db-pool")
- *                     .type("g6-standard-2")
  *                     .build(),
  *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-1")
  *                     .count(3)
  *                     .label("app-pool")
- *                     .type("g6-standard-1")
  *                     .build())
- *             .region("us-central")
- *             .tags("prod")
  *             .build());
  * 
  *     }
@@ -265,16 +265,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
+ *             .k8sVersion("1.32")
+ *             .region("us-central")
+ *             .tags("prod")
  *             .pools(LkeClusterPoolArgs.builder()
- *                 .count(2)
- *                 .firewallId(12345)
- *                 .label("db-pool")
  *                 .type("g6-standard-2")
+ *                 .count(2)
+ *                 .label("db-pool")
+ *                 .firewallId(12345)
  *                 .build())
- *             .region("us-central")
- *             .tags("prod")
  *             .build());
  * 
  *     }
@@ -305,27 +305,27 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
+ *             .k8sVersion("1.32")
+ *             .region("us-central")
+ *             .tags("prod")
  *             .pools(            
  *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-2")
  *                     .count(2)
  *                     .labels(Map.ofEntries(
- *                         Map.entry("environment", "production"),
- *                         Map.entry("role", "database")
+ *                         Map.entry("role", "database"),
+ *                         Map.entry("environment", "production")
  *                     ))
- *                     .type("g6-standard-2")
  *                     .build(),
  *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-1")
  *                     .count(3)
  *                     .labels(Map.ofEntries(
- *                         Map.entry("environment", "production"),
- *                         Map.entry("role", "application")
+ *                         Map.entry("role", "application"),
+ *                         Map.entry("environment", "production")
  *                     ))
- *                     .type("g6-standard-1")
  *                     .build())
- *             .region("us-central")
- *             .tags("prod")
  *             .build());
  * 
  *     }
@@ -356,21 +356,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
- *             .k8sVersion("1.32")
  *             .label("my-cluster")
- *             .pools(            
- *                 LkeClusterPoolArgs.builder()
- *                     .count(2)
- *                     .diskEncryption("enabled")
- *                     .type("g6-standard-2")
- *                     .build(),
- *                 LkeClusterPoolArgs.builder()
- *                     .count(1)
- *                     .diskEncryption("disabled")
- *                     .type("g6-standard-1")
- *                     .build())
+ *             .k8sVersion("1.32")
  *             .region("us-central")
  *             .tags("prod")
+ *             .pools(            
+ *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-2")
+ *                     .count(2)
+ *                     .diskEncryption("enabled")
+ *                     .build(),
+ *                 LkeClusterPoolArgs.builder()
+ *                     .type("g6-standard-1")
+ *                     .count(1)
+ *                     .diskEncryption("disabled")
+ *                     .build())
  *             .build());
  * 
  *     }
@@ -410,12 +410,12 @@ import javax.annotation.Nullable;
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
  *             .pools(            
  *                 LkeClusterPoolArgs.builder()
- *                     .count(2)
  *                     .type("g6-standard-1")
+ *                     .count(2)
  *                     .build(),
  *                 LkeClusterPoolArgs.builder()
- *                     .count(3)
  *                     .type("g6-standard-2")
+ *                     .count(3)
  *                     .build())
  *             .build());
  * 
@@ -448,8 +448,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
  *             .pools(LkeClusterPoolArgs.builder()
- *                 .count(3)
  *                 .type("g6-standard-2")
+ *                 .count(3)
  *                 .build())
  *             .build());
  * 

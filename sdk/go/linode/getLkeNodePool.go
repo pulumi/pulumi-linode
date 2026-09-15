@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetLkeNodePool(ctx, &linode.LookupLkeNodePoolArgs{
-//				ClusterId: 321,
 //				Id:        123,
+//				ClusterId: 321,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -71,6 +71,10 @@ type LookupLkeNodePoolResult struct {
 	FirewallId int `pulumi:"firewallId"`
 	// The Node's ID.
 	Id int `pulumi:"id"`
+	// Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+	IsolationPublicIpv4 bool `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+	IsolationPublicIpv6 bool `pulumi:"isolationPublicIpv6"`
 	// The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.
 	K8sVersion string `pulumi:"k8sVersion"`
 	// The optional label defined for this node pool.
@@ -150,6 +154,16 @@ func (o LookupLkeNodePoolResultOutput) FirewallId() pulumi.IntOutput {
 // The Node's ID.
 func (o LookupLkeNodePoolResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLkeNodePoolResult) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// Whether nodes in this pool have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+func (o LookupLkeNodePoolResultOutput) IsolationPublicIpv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLkeNodePoolResult) bool { return v.IsolationPublicIpv4 }).(pulumi.BoolOutput)
+}
+
+// Whether nodes in this pool have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers.
+func (o LookupLkeNodePoolResultOutput) IsolationPublicIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLkeNodePoolResult) bool { return v.IsolationPublicIpv6 }).(pulumi.BoolOutput)
 }
 
 // The Kubernetes version used for the worker nodes within this node pool. This field is available as part of the beta API and can only be used by accounts with access to LKE Enterprise.

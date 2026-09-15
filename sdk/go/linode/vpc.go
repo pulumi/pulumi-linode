@@ -32,9 +32,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
-//				Description: pulumi.String("My first VPC."),
 //				Label:       pulumi.String("test-vpc"),
 //				Region:      pulumi.String("us-iad"),
+//				Description: pulumi.String("My first VPC."),
 //			})
 //			if err != nil {
 //				return err
@@ -61,13 +61,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// NOTE: IPv6 VPCs may not currently be available to all users.
 //			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
+//				Label:  pulumi.String("test-vpc"),
+//				Region: pulumi.String("us-iad"),
 //				Ipv6s: linode.VpcIpv6Array{
 //					&linode.VpcIpv6Args{
 //						Range: pulumi.String("/52"),
 //					},
 //				},
-//				Label:  pulumi.String("test-vpc"),
-//				Region: pulumi.String("us-iad"),
 //			})
 //			if err != nil {
 //				return err
@@ -91,13 +91,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
 //			_, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
+//				Label:  pulumi.String("test-vpc"),
+//				Region: pulumi.String("us-iad"),
 //				Ipv4s: linode.VpcIpv4Array{
 //					&linode.VpcIpv4Args{
 //						Range: pulumi.String("10.0.0.0/8"),
 //					},
 //				},
-//				Label:  pulumi.String("test-vpc"),
-//				Region: pulumi.String("us-iad"),
 //			})
 //			if err != nil {
 //				return err
@@ -127,6 +127,56 @@ import (
 // Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
 //
 // * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+//
+// ## Subnets
+//
+// The following attributes are exported under each entry of the `subnets` field:
+//
+// * `id` - The id of the VPC Subnet.
+//
+// * `label` - The label of the VPC Subnet.
+//
+// * `ipv4` - The IPv4 range of this subnet in CIDR format.
+//
+// * `ipv6` - The IPv6 ranges of this subnet.
+//
+//   - `range` - An IPv6 range allocated to this subnet.
+//
+// * `linodes` - A list of Linodes assigned to this subnet.
+//
+//   - `id` - ID of the Linode
+//
+//   - `interfaces` - A list of networking interfaces objects.
+//
+//   - `id` - ID of the interface.
+//
+//   - `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+//
+//   - `active` - Whether the Interface is actively in use.
+//
+// * `databases` - A list of Managed Databases assigned to this subnet.
+//
+//   - `id` - ID of a managed database assigned to the VPC Subnet.
+//
+//   - `ipv4Range` - IPv4 range assigned to the database.
+//
+//   - `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+//
+//   - `range` - An IPv6 address range in CIDR notation.
+//
+// * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+//
+//   - `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+//
+//   - `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+//
+//   - `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+//
+//   - `range` - An IPv6 address range in CIDR notation.
+//
+// * `created` - The date and time when the VPC Subnet was created.
+//
+// * `updated` - The date and time when the VPC Subnet was last updated.
 type Vpc struct {
 	pulumi.CustomResourceState
 
@@ -142,6 +192,8 @@ type Vpc struct {
 	Label pulumi.StringOutput `pulumi:"label"`
 	// The region of the VPC.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// A list of subnets under this VPC.
+	Subnets VpcSubnetTypeArrayOutput `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
@@ -200,6 +252,8 @@ type vpcState struct {
 	Label *string `pulumi:"label"`
 	// The region of the VPC.
 	Region *string `pulumi:"region"`
+	// A list of subnets under this VPC.
+	Subnets []VpcSubnetType `pulumi:"subnets"`
 	// The date and time when the VPC was last updated.
 	Updated *string `pulumi:"updated"`
 	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
@@ -223,6 +277,8 @@ type VpcState struct {
 	Label pulumi.StringPtrInput
 	// The region of the VPC.
 	Region pulumi.StringPtrInput
+	// A list of subnets under this VPC.
+	Subnets VpcSubnetTypeArrayInput
 	// The date and time when the VPC was last updated.
 	Updated pulumi.StringPtrInput
 	// The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
@@ -391,6 +447,11 @@ func (o VpcOutput) Label() pulumi.StringOutput {
 // The region of the VPC.
 func (o VpcOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Vpc) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A list of subnets under this VPC.
+func (o VpcOutput) Subnets() VpcSubnetTypeArrayOutput {
+	return o.ApplyT(func(v *Vpc) VpcSubnetTypeArrayOutput { return v.Subnets }).(VpcSubnetTypeArrayOutput)
 }
 
 // The date and time when the VPC was last updated.

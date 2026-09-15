@@ -27,8 +27,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         EngineId = "postgresql/16",
     ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
     ///         Region = "us-mia",
     ///         Type = "g6-nanode-1",
     ///     });
@@ -45,14 +45,14 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "0.0.0.0/0",
     ///         },
-    ///         EngineId = "postgresql/16",
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -67,21 +67,21 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         AllowLists = new[]
     ///         {
     ///             "10.0.0.3/32",
     ///         },
     ///         ClusterSize = 3,
-    ///         EngineId = "postgresql/16",
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///         Updates = new Linode.Inputs.DatabasePostgresqlV2UpdatesArgs
     ///         {
-    ///             Day_of_week = 2,
     ///             Duration = 4,
     ///             Frequency = "weekly",
-    ///             Hour_of_day = 22,
+    ///             HourOfDay = 22,
+    ///             DayOfWeek = 2,
     ///         },
     ///     });
     /// 
@@ -97,6 +97,10 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         EngineConfigPgAutovacuumAnalyzeScaleFactor = 0.1,
     ///         EngineConfigPgAutovacuumAnalyzeThreshold = 50,
     ///         EngineConfigPgAutovacuumMaxWorkers = 3,
@@ -132,7 +136,6 @@ namespace Pulumi.Linode
     ///         EngineConfigPgPgStatMonitorPgsmEnableQueryPlan = true,
     ///         EngineConfigPgPgStatMonitorPgsmMaxBuckets = 5,
     ///         EngineConfigPgPgStatStatementsTrack = "all",
-    ///         EngineConfigPgStatMonitorEnable = true,
     ///         EngineConfigPgTempFileLimit = 100,
     ///         EngineConfigPgTimezone = "Europe/Helsinki",
     ///         EngineConfigPgTrackActivityQuerySize = 2048,
@@ -141,13 +144,10 @@ namespace Pulumi.Linode
     ///         EngineConfigPgTrackIoTiming = "on",
     ///         EngineConfigPgWalSenderTimeout = 60000,
     ///         EngineConfigPgWalWriterDelay = 200,
+    ///         EngineConfigPgStatMonitorEnable = true,
     ///         EngineConfigPglookoutMaxFailoverReplicationTimeLag = 10000,
     ///         EngineConfigSharedBuffersPercentage = 25,
     ///         EngineConfigWorkMem = 400,
-    ///         EngineId = "postgresql/16",
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -162,11 +162,11 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
+    ///         Label = "mydatabase",
     ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         ForkSource = 12345,
-    ///         Label = "mydatabase",
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });
@@ -181,16 +181,16 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.DatabasePostgresqlV2("foobar", new()
     ///     {
-    ///         EngineId = "postgresql/16",
     ///         Label = "mydatabase",
+    ///         EngineId = "postgresql/16",
+    ///         Region = "us-mia",
+    ///         Type = "g6-nanode-1",
     ///         PrivateNetwork = new Linode.Inputs.DatabasePostgresqlV2PrivateNetworkArgs
     ///         {
-    ///             Public_access = false,
-    ///             Subnet_id = 456,
-    ///             Vpc_id = 123,
+    ///             VpcId = 123,
+    ///             SubnetId = 456,
+    ///             PublicAccess = false,
     ///         },
-    ///         Region = "us-mia",
-    ///         Type = "g6-nanode-1",
     ///     });
     /// 
     /// });

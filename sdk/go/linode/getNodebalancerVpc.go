@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetNodebalancerVpc(ctx, &linode.GetNodebalancerVpcArgs{
-//				Id:             456,
 //				NodebalancerId: 123,
+//				Id:             456,
 //			}, nil)
 //			if err != nil {
 //				return err

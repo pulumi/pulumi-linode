@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.DatabaseMysqlV2("myDb", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -175,7 +175,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.DatabaseMysqlV2("myDb", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),
@@ -264,7 +264,7 @@ namespace Pulumi.Linode
         ///         },
         ///     });
         /// 
-        ///     var myDb = new Linode.DatabaseMysqlV2("myDb", new()
+        ///     var myDb = new Linode.DatabaseMysqlV2("my_db", new()
         ///     {
         ///         Label = "mydb",
         ///         EngineId = mysql.Apply(getDatabaseEnginesResult =&gt; getDatabaseEnginesResult.Engines[0]?.Id),

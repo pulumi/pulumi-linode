@@ -95,13 +95,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
+ *         var foo = new Instance("foo", InstanceArgs.builder()
  *             .region("us-east")
  *             .type("g6-nanode-1")
  *             .build());
  * 
  *         var fooInstanceConfig = new InstanceConfig("fooInstanceConfig", InstanceConfigArgs.builder()
- *             .linodeId(fooInstance.id())
+ *             .linodeId(foo.id())
  *             .label("boot-existing-volume")
  *             .kernel("linode/grub2")
  *             .devices(com.pulumi.linode.inputs.InstanceConfigDevicesArgs.builder()

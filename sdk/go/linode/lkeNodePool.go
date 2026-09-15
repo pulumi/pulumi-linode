@@ -39,8 +39,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
 //				ClusterId: pulumi.Int(150003),
-//				NodeCount: pulumi.Int(3),
 //				Type:      pulumi.String("g6-standard-2"),
+//				NodeCount: pulumi.Int(3),
 //			})
 //			if err != nil {
 //				return err
@@ -64,9 +64,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
 //				ClusterId: pulumi.Int(150003),
-//				Label:     pulumi.String("app-pool"),
-//				NodeCount: pulumi.Int(3),
 //				Type:      pulumi.String("g6-standard-2"),
+//				NodeCount: pulumi.Int(3),
+//				Label:     pulumi.String("app-pool"),
 //			})
 //			if err != nil {
 //				return err
@@ -90,9 +90,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
 //				ClusterId:  pulumi.Int(150003),
+//				Type:       pulumi.String("g6-standard-2"),
 //				FirewallId: pulumi.Int(12345),
 //				NodeCount:  pulumi.Int(3),
-//				Type:       pulumi.String("g6-standard-2"),
 //			})
 //			if err != nil {
 //				return err
@@ -115,12 +115,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
-//				Autoscaler: &linode.LkeNodePoolAutoscalerArgs{
-//					Max: pulumi.Int(10),
-//					Min: pulumi.Int(3),
-//				},
 //				ClusterId: pulumi.Int(150003),
 //				Type:      pulumi.String("g6-standard-2"),
+//				Autoscaler: &linode.LkeNodePoolAutoscalerArgs{
+//					Min: pulumi.Int(3),
+//					Max: pulumi.Int(10),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -199,6 +199,10 @@ type LkeNodePool struct {
 	DiskEncryption pulumi.StringOutput `pulumi:"diskEncryption"`
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId pulumi.IntOutput `pulumi:"firewallId"`
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 pulumi.BoolOutput `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 pulumi.BoolOutput `pulumi:"isolationPublicIpv6"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringOutput `pulumi:"k8sVersion"`
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -266,6 +270,10 @@ type lkeNodePoolState struct {
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId *int `pulumi:"firewallId"`
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 *bool `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 *bool `pulumi:"isolationPublicIpv6"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -298,6 +306,10 @@ type LkeNodePoolState struct {
 	DiskEncryption pulumi.StringPtrInput
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId pulumi.IntPtrInput
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 pulumi.BoolPtrInput
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 pulumi.BoolPtrInput
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -334,6 +346,10 @@ type lkeNodePoolArgs struct {
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId *int `pulumi:"firewallId"`
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 *bool `pulumi:"isolationPublicIpv4"`
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 *bool `pulumi:"isolationPublicIpv6"`
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion *string `pulumi:"k8sVersion"`
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -365,6 +381,10 @@ type LkeNodePoolArgs struct {
 	DiskEncryption pulumi.StringPtrInput
 	// The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 	FirewallId pulumi.IntPtrInput
+	// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv4 pulumi.BoolPtrInput
+	// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+	IsolationPublicIpv6 pulumi.BoolPtrInput
 	// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
 	K8sVersion pulumi.StringPtrInput
 	// A label for the Node Pool. If not provided, it defaults to empty string.
@@ -491,6 +511,16 @@ func (o LkeNodePoolOutput) DiskEncryption() pulumi.StringOutput {
 // The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
 func (o LkeNodePoolOutput) FirewallId() pulumi.IntOutput {
 	return o.ApplyT(func(v *LkeNodePool) pulumi.IntOutput { return v.FirewallId }).(pulumi.IntOutput)
+}
+
+// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+func (o LkeNodePoolOutput) IsolationPublicIpv4() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LkeNodePool) pulumi.BoolOutput { return v.IsolationPublicIpv4 }).(pulumi.BoolOutput)
+}
+
+// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+func (o LkeNodePoolOutput) IsolationPublicIpv6() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LkeNodePool) pulumi.BoolOutput { return v.IsolationPublicIpv6 }).(pulumi.BoolOutput)
 }
 
 // The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.

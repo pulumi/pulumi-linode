@@ -119,6 +119,21 @@ __all__ = [
     'InstanceInterfaceIpv6Range',
     'InstanceInterfaceIpv6Slaac',
     'InstanceIpVpcNat11',
+    'InstanceLinodeInterface',
+    'InstanceLinodeInterfaceDefaultRoute',
+    'InstanceLinodeInterfacePublic',
+    'InstanceLinodeInterfacePublicIpv4',
+    'InstanceLinodeInterfacePublicIpv4Address',
+    'InstanceLinodeInterfacePublicIpv6',
+    'InstanceLinodeInterfacePublicIpv6Range',
+    'InstanceLinodeInterfaceRdmaVpc',
+    'InstanceLinodeInterfaceRdmaVpcIpv4',
+    'InstanceLinodeInterfaceRdmaVpcIpv4Addresses',
+    'InstanceLinodeInterfaceVlan',
+    'InstanceLinodeInterfaceVpc',
+    'InstanceLinodeInterfaceVpcIpv4',
+    'InstanceLinodeInterfaceVpcIpv4Address',
+    'InstanceLinodeInterfaceVpcIpv4Range',
     'InstanceMetadata',
     'InstancePlacementGroup',
     'InstanceSpec',
@@ -133,6 +148,9 @@ __all__ = [
     'InterfacePublicIpv6Range',
     'InterfacePublicIpv6Shared',
     'InterfacePublicIpv6Slaac',
+    'InterfaceRdmaVpc',
+    'InterfaceRdmaVpcIpv4',
+    'InterfaceRdmaVpcIpv4Address',
     'InterfaceVlan',
     'InterfaceVpc',
     'InterfaceVpcIpv4',
@@ -205,6 +223,7 @@ __all__ = [
     'VolumeTimeouts',
     'VpcIpv4',
     'VpcIpv6',
+    'VpcSubnet',
     'VpcSubnetDatabase',
     'VpcSubnetDatabaseIpv6Range',
     'VpcSubnetIpv6',
@@ -433,6 +452,9 @@ __all__ = [
     'GetInterfacePublicIpv6RangeResult',
     'GetInterfacePublicIpv6SharedResult',
     'GetInterfacePublicIpv6SlaacResult',
+    'GetInterfaceRdmaVpcResult',
+    'GetInterfaceRdmaVpcIpv4Result',
+    'GetInterfaceRdmaVpcIpv4AddressResult',
     'GetInterfaceVlanResult',
     'GetInterfaceVpcResult',
     'GetInterfaceVpcIpv4Result',
@@ -613,6 +635,7 @@ __all__ = [
     'GetVpcIpsVpcIpIpv6AddressResult',
     'GetVpcIpv4Result',
     'GetVpcIpv6Result',
+    'GetVpcSubnetResult',
     'GetVpcSubnetDatabaseResult',
     'GetVpcSubnetDatabaseIpv6RangeResult',
     'GetVpcSubnetIpv6Result',
@@ -633,6 +656,14 @@ __all__ = [
     'GetVpcsVpcResult',
     'GetVpcsVpcIpv4Result',
     'GetVpcsVpcIpv6Result',
+    'GetVpcsVpcSubnetResult',
+    'GetVpcsVpcSubnetDatabaseResult',
+    'GetVpcsVpcSubnetDatabaseIpv6RangeResult',
+    'GetVpcsVpcSubnetIpv6Result',
+    'GetVpcsVpcSubnetLinodeResult',
+    'GetVpcsVpcSubnetLinodeInterfaceResult',
+    'GetVpcsVpcSubnetNodebalancerResult',
+    'GetVpcsVpcSubnetNodebalancerIpv6RangeResult',
 ]
 
 @pulumi.output_type
@@ -7268,6 +7299,586 @@ class InstanceIpVpcNat11(dict):
 
 
 @pulumi.output_type
+class InstanceLinodeInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRoute":
+            suggest = "default_route"
+        elif key == "firewallId":
+            suggest = "firewall_id"
+        elif key == "rdmaVpc":
+            suggest = "rdma_vpc"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceLinodeInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceLinodeInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceLinodeInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_route: Optional['outputs.InstanceLinodeInterfaceDefaultRoute'] = None,
+                 firewall_id: Optional[_builtins.int] = None,
+                 public: Optional['outputs.InstanceLinodeInterfacePublic'] = None,
+                 rdma_vpc: Optional['outputs.InstanceLinodeInterfaceRdmaVpc'] = None,
+                 vlan: Optional['outputs.InstanceLinodeInterfaceVlan'] = None,
+                 vpc: Optional['outputs.InstanceLinodeInterfaceVpc'] = None):
+        """
+        :param 'InstanceLinodeInterfaceDefaultRouteArgs' default_route: Default route configuration for the interface.
+        :param _builtins.int firewall_id: The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+        :param 'InstanceLinodeInterfacePublicArgs' public: Configuration for a Linode public interface.
+               
+               * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+               
+               * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+               
+               * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+        :param 'InstanceLinodeInterfaceRdmaVpcArgs' rdma_vpc: Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+        :param 'InstanceLinodeInterfaceVlanArgs' vlan: Configuration for a Linode VLAN interface.
+        :param 'InstanceLinodeInterfaceVpcArgs' vpc: Configuration for a Linode VPC interface.
+        """
+        if default_route is not None:
+            pulumi.set(__self__, "default_route", default_route)
+        if firewall_id is not None:
+            pulumi.set(__self__, "firewall_id", firewall_id)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
+        if rdma_vpc is not None:
+            pulumi.set(__self__, "rdma_vpc", rdma_vpc)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
+        if vpc is not None:
+            pulumi.set(__self__, "vpc", vpc)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultRoute")
+    def default_route(self) -> Optional['outputs.InstanceLinodeInterfaceDefaultRoute']:
+        """
+        Default route configuration for the interface.
+        """
+        return pulumi.get(self, "default_route")
+
+    @_builtins.property
+    @pulumi.getter(name="firewallId")
+    def firewall_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+        """
+        return pulumi.get(self, "firewall_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def public(self) -> Optional['outputs.InstanceLinodeInterfacePublic']:
+        """
+        Configuration for a Linode public interface.
+
+        * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+
+        * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+
+        * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+        """
+        return pulumi.get(self, "public")
+
+    @_builtins.property
+    @pulumi.getter(name="rdmaVpc")
+    def rdma_vpc(self) -> Optional['outputs.InstanceLinodeInterfaceRdmaVpc']:
+        """
+        Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+        """
+        return pulumi.get(self, "rdma_vpc")
+
+    @_builtins.property
+    @pulumi.getter
+    def vlan(self) -> Optional['outputs.InstanceLinodeInterfaceVlan']:
+        """
+        Configuration for a Linode VLAN interface.
+        """
+        return pulumi.get(self, "vlan")
+
+    @_builtins.property
+    @pulumi.getter
+    def vpc(self) -> Optional['outputs.InstanceLinodeInterfaceVpc']:
+        """
+        Configuration for a Linode VPC interface.
+        """
+        return pulumi.get(self, "vpc")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceDefaultRoute(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional[_builtins.bool] = None,
+                 ipv6: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool ipv4: Whether this interface is used for the IPv4 default route.
+        :param _builtins.bool ipv6: Whether this interface is used for the IPv6 default route.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[_builtins.bool]:
+        """
+        Whether this interface is used for the IPv4 default route.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[_builtins.bool]:
+        """
+        Whether this interface is used for the IPv6 default route.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfacePublic(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional['outputs.InstanceLinodeInterfacePublicIpv4'] = None,
+                 ipv6: Optional['outputs.InstanceLinodeInterfacePublicIpv6'] = None):
+        """
+        :param 'InstanceLinodeInterfacePublicIpv4Args' ipv4: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
+        :param 'InstanceLinodeInterfacePublicIpv6Args' ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InstanceLinodeInterfacePublicIpv4']:
+        """
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional['outputs.InstanceLinodeInterfacePublicIpv6']:
+        """
+        This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+        """
+        return pulumi.get(self, "ipv6")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfacePublicIpv4(dict):
+    def __init__(__self__, *,
+                 addresses: Optional[Sequence['outputs.InstanceLinodeInterfacePublicIpv4Address']] = None):
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence['outputs.InstanceLinodeInterfacePublicIpv4Address']]:
+        return pulumi.get(self, "addresses")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfacePublicIpv4Address(dict):
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str address: The SLAAC address chosen for this interface.
+        :param _builtins.bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+               
+               * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+               
+               * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The SLAAC address chosen for this interface.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        """
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+
+        * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfacePublicIpv6(dict):
+    def __init__(__self__, *,
+                 ranges: Optional[Sequence['outputs.InstanceLinodeInterfacePublicIpv6Range']] = None):
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[Sequence['outputs.InstanceLinodeInterfacePublicIpv6Range']]:
+        return pulumi.get(self, "ranges")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfacePublicIpv6Range(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceRdmaVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceLinodeInterfaceRdmaVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceLinodeInterfaceRdmaVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceLinodeInterfaceRdmaVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 ipv4: Optional['outputs.InstanceLinodeInterfaceRdmaVpcIpv4'] = None):
+        """
+        :param _builtins.int subnet_id: The ID of the RDMA VPC subnet to attach this interface to.
+               
+               * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+               
+               * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+        :param 'InstanceLinodeInterfaceRdmaVpcIpv4Args' ipv4: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the RDMA VPC subnet to attach this interface to.
+
+        * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+
+        * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InstanceLinodeInterfaceRdmaVpcIpv4']:
+        """
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
+        """
+        return pulumi.get(self, "ipv4")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceRdmaVpcIpv4(dict):
+    def __init__(__self__, *,
+                 addresses: 'outputs.InstanceLinodeInterfaceRdmaVpcIpv4Addresses'):
+        """
+        :param 'InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs' addresses: The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> 'outputs.InstanceLinodeInterfaceRdmaVpcIpv4Addresses':
+        """
+        The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+        """
+        return pulumi.get(self, "addresses")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceRdmaVpcIpv4Addresses(dict):
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str address: The IPv4 address (or 'auto' to allocate one from the subnet).
+        :param _builtins.bool primary: Whether this is the primary IPv4 address for the interface.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 address (or 'auto' to allocate one from the subnet).
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is the primary IPv4 address for the interface.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceVlan(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vlanLabel":
+            suggest = "vlan_label"
+        elif key == "ipamAddress":
+            suggest = "ipam_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceLinodeInterfaceVlan. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceLinodeInterfaceVlan.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceLinodeInterfaceVlan.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 vlan_label: _builtins.str,
+                 ipam_address: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str vlan_label: The label of the VLAN to join.
+        :param _builtins.str ipam_address: The VLAN IPAM address in CIDR notation.
+        """
+        pulumi.set(__self__, "vlan_label", vlan_label)
+        if ipam_address is not None:
+            pulumi.set(__self__, "ipam_address", ipam_address)
+
+    @_builtins.property
+    @pulumi.getter(name="vlanLabel")
+    def vlan_label(self) -> _builtins.str:
+        """
+        The label of the VLAN to join.
+        """
+        return pulumi.get(self, "vlan_label")
+
+    @_builtins.property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> Optional[_builtins.str]:
+        """
+        The VLAN IPAM address in CIDR notation.
+        """
+        return pulumi.get(self, "ipam_address")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceLinodeInterfaceVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceLinodeInterfaceVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceLinodeInterfaceVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 ipv4: Optional['outputs.InstanceLinodeInterfaceVpcIpv4'] = None):
+        """
+        :param _builtins.int subnet_id: The ID of the VPC subnet.
+               
+               * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat_1_1_address`.
+               
+               * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+        :param 'InstanceLinodeInterfaceVpcIpv4Args' ipv4: A set of reserved IPv4 addresses to assign to this Linode on creation.
+               
+               * **NOTE: IP reservation is not currently available to all users.**
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the VPC subnet.
+
+        * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat_1_1_address`.
+
+        * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InstanceLinodeInterfaceVpcIpv4']:
+        """
+        A set of reserved IPv4 addresses to assign to this Linode on creation.
+
+        * **NOTE: IP reservation is not currently available to all users.**
+        """
+        return pulumi.get(self, "ipv4")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceVpcIpv4(dict):
+    def __init__(__self__, *,
+                 addresses: Optional[Sequence['outputs.InstanceLinodeInterfaceVpcIpv4Address']] = None,
+                 ranges: Optional[Sequence['outputs.InstanceLinodeInterfaceVpcIpv4Range']] = None):
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if ranges is not None:
+            pulumi.set(__self__, "ranges", ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence['outputs.InstanceLinodeInterfaceVpcIpv4Address']]:
+        return pulumi.get(self, "addresses")
+
+    @_builtins.property
+    @pulumi.getter
+    def ranges(self) -> Optional[Sequence['outputs.InstanceLinodeInterfaceVpcIpv4Range']]:
+        return pulumi.get(self, "ranges")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceVpcIpv4Address(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nat11Address":
+            suggest = "nat11_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceLinodeInterfaceVpcIpv4Address. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceLinodeInterfaceVpcIpv4Address.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceLinodeInterfaceVpcIpv4Address.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 nat11_address: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str address: The SLAAC address chosen for this interface.
+        :param _builtins.bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+               
+               * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+               
+               * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if nat11_address is not None:
+            pulumi.set(__self__, "nat11_address", nat11_address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The SLAAC address chosen for this interface.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter(name="nat11Address")
+    def nat11_address(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "nat11_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        """
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+
+        * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+
+        * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
+class InstanceLinodeInterfaceVpcIpv4Range(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
 class InstanceMetadata(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7929,6 +8540,117 @@ class InterfacePublicIpv6Slaac(dict):
         The subnet prefix length.
         """
         return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class InterfaceRdmaVpc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterfaceRdmaVpc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterfaceRdmaVpc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterfaceRdmaVpc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 ipv4: Optional['outputs.InterfaceRdmaVpcIpv4'] = None,
+                 vpc_id: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int subnet_id: The ID of the RDMA VPC subnet this interface is attached to.
+        :param 'InterfaceRdmaVpcIpv4Args' ipv4: IPv4 configuration for the RDMA VPC interface.
+        :param _builtins.int vpc_id: The ID of the parent RDMA VPC.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the RDMA VPC subnet this interface is attached to.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional['outputs.InterfaceRdmaVpcIpv4']:
+        """
+        IPv4 configuration for the RDMA VPC interface.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the parent RDMA VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class InterfaceRdmaVpcIpv4(dict):
+    def __init__(__self__, *,
+                 addresses: Optional[Sequence['outputs.InterfaceRdmaVpcIpv4Address']] = None):
+        """
+        :param Sequence['InterfaceRdmaVpcIpv4AddressArgs'] addresses: The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+        """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Optional[Sequence['outputs.InterfaceRdmaVpcIpv4Address']]:
+        """
+        The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+        """
+        return pulumi.get(self, "addresses")
+
+
+@pulumi.output_type
+class InterfaceRdmaVpcIpv4Address(dict):
+    def __init__(__self__, *,
+                 address: Optional[_builtins.str] = None,
+                 primary: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str address: The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+        :param _builtins.bool primary: Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if primary is not None:
+            pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> Optional[_builtins.bool]:
+        """
+        Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+        """
+        return pulumi.get(self, "primary")
 
 
 @pulumi.output_type
@@ -11925,6 +12647,121 @@ class VpcIpv6(dict):
         The IPv6 range assigned to this VPC.
         """
         return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class VpcSubnet(dict):
+    def __init__(__self__, *,
+                 created: Optional[_builtins.str] = None,
+                 databases: Optional[Sequence['outputs.VpcSubnetDatabase']] = None,
+                 id: Optional[_builtins.int] = None,
+                 ipv4: Optional[_builtins.str] = None,
+                 ipv6s: Optional[Sequence['outputs.VpcSubnetIpv6']] = None,
+                 label: Optional[_builtins.str] = None,
+                 linodes: Optional[Sequence['outputs.VpcSubnetLinode']] = None,
+                 nodebalancers: Optional[Sequence['outputs.VpcSubnetNodebalancer']] = None,
+                 updated: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created: The date and time when the VPC was created.
+        :param Sequence['VpcSubnetDatabaseArgs'] databases: A list of Managed Databases assigned to this subnet.
+        :param _builtins.int id: The ID of the VPC.
+        :param _builtins.str ipv4: The IPv4 range of this subnet in CIDR format.
+        :param Sequence['VpcSubnetIpv6Args'] ipv6s: The IPv6 ranges of this subnet.
+        :param _builtins.str label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+        :param Sequence['VpcSubnetLinodeArgs'] linodes: A list of Linodes assigned to this subnet.
+        :param Sequence['VpcSubnetNodebalancerArgs'] nodebalancers: A list of NodeBalancers assigned to this subnet.
+        :param _builtins.str updated: The date and time when the VPC was last updated.
+        """
+        if created is not None:
+            pulumi.set(__self__, "created", created)
+        if databases is not None:
+            pulumi.set(__self__, "databases", databases)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if linodes is not None:
+            pulumi.set(__self__, "linodes", linodes)
+        if nodebalancers is not None:
+            pulumi.set(__self__, "nodebalancers", nodebalancers)
+        if updated is not None:
+            pulumi.set(__self__, "updated", updated)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> Optional[_builtins.str]:
+        """
+        The date and time when the VPC was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def databases(self) -> Optional[Sequence['outputs.VpcSubnetDatabase']]:
+        """
+        A list of Managed Databases assigned to this subnet.
+        """
+        return pulumi.get(self, "databases")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.int]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 range of this subnet in CIDR format.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[Sequence['outputs.VpcSubnetIpv6']]:
+        """
+        The IPv6 ranges of this subnet.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> Optional[_builtins.str]:
+        """
+        The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def linodes(self) -> Optional[Sequence['outputs.VpcSubnetLinode']]:
+        """
+        A list of Linodes assigned to this subnet.
+        """
+        return pulumi.get(self, "linodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancers(self) -> Optional[Sequence['outputs.VpcSubnetNodebalancer']]:
+        """
+        A list of NodeBalancers assigned to this subnet.
+        """
+        return pulumi.get(self, "nodebalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> Optional[_builtins.str]:
+        """
+        The date and time when the VPC was last updated.
+        """
+        return pulumi.get(self, "updated")
 
 
 @pulumi.output_type
@@ -25009,6 +25846,93 @@ class GetInterfacePublicIpv6SlaacResult(dict):
 
 
 @pulumi.output_type
+class GetInterfaceRdmaVpcResult(dict):
+    def __init__(__self__, *,
+                 ipv4: 'outputs.GetInterfaceRdmaVpcIpv4Result',
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int):
+        """
+        :param 'GetInterfaceRdmaVpcIpv4Args' ipv4: The IPv4 configuration for the RDMA VPC interface.
+        :param _builtins.int subnet_id: The ID of the RDMA VPC subnet.
+        :param _builtins.int vpc_id: The ID of the parent RDMA VPC.
+        """
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> 'outputs.GetInterfaceRdmaVpcIpv4Result':
+        """
+        The IPv4 configuration for the RDMA VPC interface.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The ID of the RDMA VPC subnet.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        The ID of the parent RDMA VPC.
+        """
+        return pulumi.get(self, "vpc_id")
+
+
+@pulumi.output_type
+class GetInterfaceRdmaVpcIpv4Result(dict):
+    def __init__(__self__, *,
+                 addresses: Sequence['outputs.GetInterfaceRdmaVpcIpv4AddressResult']):
+        """
+        :param Sequence['GetInterfaceRdmaVpcIpv4AddressArgs'] addresses: IPv4 addresses for the RDMA VPC interface.
+        """
+        pulumi.set(__self__, "addresses", addresses)
+
+    @_builtins.property
+    @pulumi.getter
+    def addresses(self) -> Sequence['outputs.GetInterfaceRdmaVpcIpv4AddressResult']:
+        """
+        IPv4 addresses for the RDMA VPC interface.
+        """
+        return pulumi.get(self, "addresses")
+
+
+@pulumi.output_type
+class GetInterfaceRdmaVpcIpv4AddressResult(dict):
+    def __init__(__self__, *,
+                 address: _builtins.str,
+                 primary: _builtins.bool):
+        """
+        :param _builtins.str address: The IPv4 address on the RDMA VPC interface.
+        :param _builtins.bool primary: Whether this is the primary IPv4 address.
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "primary", primary)
+
+    @_builtins.property
+    @pulumi.getter
+    def address(self) -> _builtins.str:
+        """
+        The IPv4 address on the RDMA VPC interface.
+        """
+        return pulumi.get(self, "address")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        """
+        Whether this is the primary IPv4 address.
+        """
+        return pulumi.get(self, "primary")
+
+
+@pulumi.output_type
 class GetInterfaceVlanResult(dict):
     def __init__(__self__, *,
                  ipam_address: _builtins.str,
@@ -34749,6 +35673,112 @@ class GetVpcIpv6Result(dict):
 
 
 @pulumi.output_type
+class GetVpcSubnetResult(dict):
+    def __init__(__self__, *,
+                 created: _builtins.str,
+                 databases: Sequence['outputs.GetVpcSubnetDatabaseResult'],
+                 id: _builtins.int,
+                 ipv4: _builtins.str,
+                 ipv6s: Sequence['outputs.GetVpcSubnetIpv6Result'],
+                 label: _builtins.str,
+                 linodes: Sequence['outputs.GetVpcSubnetLinodeResult'],
+                 nodebalancers: Sequence['outputs.GetVpcSubnetNodebalancerResult'],
+                 updated: _builtins.str):
+        """
+        :param _builtins.str created: The date and time when the VPC was created.
+        :param Sequence['GetVpcSubnetDatabaseArgs'] databases: A list of Managed Databases assigned to this subnet.
+        :param _builtins.int id: The unique id of this VPC.
+        :param _builtins.str ipv4: (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        :param Sequence['GetVpcSubnetIpv6Args'] ipv6s: (Nested Attribute List) A list of IPv6 allocations under this VPC.
+        :param _builtins.str label: The label of the VPC.
+        :param Sequence['GetVpcSubnetLinodeArgs'] linodes: A list of Linodes assigned to this subnet.
+        :param Sequence['GetVpcSubnetNodebalancerArgs'] nodebalancers: A list of NodeBalancers assigned to this subnet.
+        :param _builtins.str updated: The date and time when the VPC was last updated.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "databases", databases)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "nodebalancers", nodebalancers)
+        pulumi.set(__self__, "updated", updated)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        The date and time when the VPC was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def databases(self) -> Sequence['outputs.GetVpcSubnetDatabaseResult']:
+        """
+        A list of Managed Databases assigned to this subnet.
+        """
+        return pulumi.get(self, "databases")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> _builtins.str:
+        """
+        (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetVpcSubnetIpv6Result']:
+        """
+        (Nested Attribute List) A list of IPv6 allocations under this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the VPC.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def linodes(self) -> Sequence['outputs.GetVpcSubnetLinodeResult']:
+        """
+        A list of Linodes assigned to this subnet.
+        """
+        return pulumi.get(self, "linodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancers(self) -> Sequence['outputs.GetVpcSubnetNodebalancerResult']:
+        """
+        A list of NodeBalancers assigned to this subnet.
+        """
+        return pulumi.get(self, "nodebalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.str:
+        """
+        The date and time when the VPC was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
 class GetVpcSubnetDatabaseResult(dict):
     def __init__(__self__, *,
                  id: _builtins.int,
@@ -35352,6 +36382,7 @@ class GetVpcsVpcResult(dict):
                  ipv6s: Sequence['outputs.GetVpcsVpcIpv6Result'],
                  label: _builtins.str,
                  region: _builtins.str,
+                 subnets: Sequence['outputs.GetVpcsVpcSubnetResult'],
                  updated: _builtins.str,
                  vpc_type: _builtins.str):
         """
@@ -35362,6 +36393,7 @@ class GetVpcsVpcResult(dict):
         :param Sequence['GetVpcsVpcIpv6Args'] ipv6s: (Nested Attribute List) A list of IPv6 allocations under this VPC.
         :param _builtins.str label: The label of the VPC.
         :param _builtins.str region: The region where the VPC is deployed.
+        :param Sequence['GetVpcsVpcSubnetArgs'] subnets: A list of subnets under this VPC.
         :param _builtins.str updated: The date and time when the VPC was last updated.
         :param _builtins.str vpc_type: The type of the VPC ('regular' or 'rdma'). Omitted if the requesting account does not have access to the GPUDirect RDMA functionality.
         """
@@ -35372,6 +36404,7 @@ class GetVpcsVpcResult(dict):
         pulumi.set(__self__, "ipv6s", ipv6s)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "subnets", subnets)
         pulumi.set(__self__, "updated", updated)
         pulumi.set(__self__, "vpc_type", vpc_type)
 
@@ -35433,6 +36466,14 @@ class GetVpcsVpcResult(dict):
 
     @_builtins.property
     @pulumi.getter
+    def subnets(self) -> Sequence['outputs.GetVpcsVpcSubnetResult']:
+        """
+        A list of subnets under this VPC.
+        """
+        return pulumi.get(self, "subnets")
+
+    @_builtins.property
+    @pulumi.getter
     def updated(self) -> _builtins.str:
         """
         The date and time when the VPC was last updated.
@@ -35481,6 +36522,275 @@ class GetVpcsVpcIpv6Result(dict):
         """
         The IPv6 range assigned to this VPC.
         """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetResult(dict):
+    def __init__(__self__, *,
+                 created: _builtins.str,
+                 databases: Sequence['outputs.GetVpcsVpcSubnetDatabaseResult'],
+                 id: _builtins.int,
+                 ipv4: _builtins.str,
+                 ipv6s: Sequence['outputs.GetVpcsVpcSubnetIpv6Result'],
+                 label: _builtins.str,
+                 linodes: Sequence['outputs.GetVpcsVpcSubnetLinodeResult'],
+                 nodebalancers: Sequence['outputs.GetVpcsVpcSubnetNodebalancerResult'],
+                 updated: _builtins.str):
+        """
+        :param _builtins.str created: The date and time when the VPC was created.
+        :param Sequence['GetVpcsVpcSubnetDatabaseArgs'] databases: A list of Managed Databases assigned to this subnet.
+        :param _builtins.int id: The unique id of this VPC.
+        :param _builtins.str ipv4: (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        :param Sequence['GetVpcsVpcSubnetIpv6Args'] ipv6s: (Nested Attribute List) A list of IPv6 allocations under this VPC.
+        :param _builtins.str label: The label of the VPC.
+        :param Sequence['GetVpcsVpcSubnetLinodeArgs'] linodes: A list of Linodes assigned to this subnet.
+        :param Sequence['GetVpcsVpcSubnetNodebalancerArgs'] nodebalancers: A list of NodeBalancers assigned to this subnet.
+        :param _builtins.str updated: The date and time when the VPC was last updated.
+        """
+        pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "databases", databases)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4", ipv4)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "linodes", linodes)
+        pulumi.set(__self__, "nodebalancers", nodebalancers)
+        pulumi.set(__self__, "updated", updated)
+
+    @_builtins.property
+    @pulumi.getter
+    def created(self) -> _builtins.str:
+        """
+        The date and time when the VPC was created.
+        """
+        return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def databases(self) -> Sequence['outputs.GetVpcsVpcSubnetDatabaseResult']:
+        """
+        A list of Managed Databases assigned to this subnet.
+        """
+        return pulumi.get(self, "databases")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> _builtins.str:
+        """
+        (Nested Attribute List) A list of IPv4 ranges under this VPC.
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetVpcsVpcSubnetIpv6Result']:
+        """
+        (Nested Attribute List) A list of IPv6 allocations under this VPC.
+        """
+        return pulumi.get(self, "ipv6s")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the VPC.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def linodes(self) -> Sequence['outputs.GetVpcsVpcSubnetLinodeResult']:
+        """
+        A list of Linodes assigned to this subnet.
+        """
+        return pulumi.get(self, "linodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodebalancers(self) -> Sequence['outputs.GetVpcsVpcSubnetNodebalancerResult']:
+        """
+        A list of NodeBalancers assigned to this subnet.
+        """
+        return pulumi.get(self, "nodebalancers")
+
+    @_builtins.property
+    @pulumi.getter
+    def updated(self) -> _builtins.str:
+        """
+        The date and time when the VPC was last updated.
+        """
+        return pulumi.get(self, "updated")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetDatabaseResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 ipv4_range: _builtins.str,
+                 ipv6_ranges: Sequence['outputs.GetVpcsVpcSubnetDatabaseIpv6RangeResult']):
+        """
+        :param _builtins.int id: The unique id of this VPC.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> Sequence['outputs.GetVpcsVpcSubnetDatabaseIpv6RangeResult']:
+        return pulumi.get(self, "ipv6_ranges")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetDatabaseIpv6RangeResult(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetIpv6Result(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        """
+        :param _builtins.str range: An IPv6 range allocated to this subnet.
+        """
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
+        """
+        An IPv6 range allocated to this subnet.
+        """
+        return pulumi.get(self, "range")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetLinodeResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 interfaces: Sequence['outputs.GetVpcsVpcSubnetLinodeInterfaceResult']):
+        """
+        :param _builtins.int id: The unique id of this VPC.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interfaces", interfaces)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.GetVpcsVpcSubnetLinodeInterfaceResult']:
+        return pulumi.get(self, "interfaces")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetLinodeInterfaceResult(dict):
+    def __init__(__self__, *,
+                 active: _builtins.bool,
+                 config_id: _builtins.int,
+                 id: _builtins.int):
+        """
+        :param _builtins.int id: The unique id of this VPC.
+        """
+        pulumi.set(__self__, "active", active)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> _builtins.bool:
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> _builtins.int:
+        return pulumi.get(self, "config_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetNodebalancerResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.int,
+                 ipv4_range: _builtins.str,
+                 ipv6_ranges: Sequence['outputs.GetVpcsVpcSubnetNodebalancerIpv6RangeResult']):
+        """
+        :param _builtins.int id: The unique id of this VPC.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipv4_range", ipv4_range)
+        pulumi.set(__self__, "ipv6_ranges", ipv6_ranges)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique id of this VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv4Range")
+    def ipv4_range(self) -> _builtins.str:
+        return pulumi.get(self, "ipv4_range")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6Ranges")
+    def ipv6_ranges(self) -> Sequence['outputs.GetVpcsVpcSubnetNodebalancerIpv6RangeResult']:
+        return pulumi.get(self, "ipv6_ranges")
+
+
+@pulumi.output_type
+class GetVpcsVpcSubnetNodebalancerIpv6RangeResult(dict):
+    def __init__(__self__, *,
+                 range: _builtins.str):
+        pulumi.set(__self__, "range", range)
+
+    @_builtins.property
+    @pulumi.getter
+    def range(self) -> _builtins.str:
         return pulumi.get(self, "range")
 
 

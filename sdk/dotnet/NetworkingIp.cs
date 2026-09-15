@@ -24,11 +24,11 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testIp = new Linode.NetworkingIp("testIp", new()
+    ///     var testIp = new Linode.NetworkingIp("test_ip", new()
     ///     {
+    ///         Type = "ipv4",
     ///         LinodeId = 12345,
     ///         Public = true,
-    ///         Type = "ipv4",
     ///     });
     /// 
     /// });

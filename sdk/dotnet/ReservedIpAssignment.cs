@@ -26,8 +26,8 @@ namespace Pulumi.Linode
     /// {
     ///     var example = new Linode.ReservedIpAssignment("example", new()
     ///     {
-    ///         LinodeId = linode_instance.Example.Id,
-    ///         Address = linode_networking_ip.Reserved.Address,
+    ///         LinodeId = exampleLinodeInstance.Id,
+    ///         Address = reserved.Address,
     ///         Public = true,
     ///     });
     /// 

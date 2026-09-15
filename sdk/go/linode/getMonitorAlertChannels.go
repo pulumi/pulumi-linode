@@ -104,12 +104,8 @@ type GetMonitorAlertChannelsResult struct {
 }
 
 func GetMonitorAlertChannelsOutput(ctx *pulumi.Context, args GetMonitorAlertChannelsOutputArgs, opts ...pulumi.InvokeOption) GetMonitorAlertChannelsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMonitorAlertChannelsResultOutput, error) {
-			args := v.(GetMonitorAlertChannelsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMonitorAlertChannels:getMonitorAlertChannels", args, GetMonitorAlertChannelsResultOutput{}, options).(GetMonitorAlertChannelsResultOutput), nil
-		}).(GetMonitorAlertChannelsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMonitorAlertChannels:getMonitorAlertChannels", args, GetMonitorAlertChannelsResultOutput{}, options).(GetMonitorAlertChannelsResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorAlertChannels.

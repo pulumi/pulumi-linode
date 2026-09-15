@@ -25,8 +25,8 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.ObjectStorageBucket("foobar", new()
     ///     {
-    ///         Label = "mybucket",
     ///         Region = "us-mia",
+    ///         Label = "mybucket",
     ///     });
     /// 
     /// });

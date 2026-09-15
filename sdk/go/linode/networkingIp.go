@@ -29,10 +29,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := linode.NewNetworkingIp(ctx, "testIp", &linode.NetworkingIpArgs{
+//			_, err := linode.NewNetworkingIp(ctx, "test_ip", &linode.NetworkingIpArgs{
+//				Type:     pulumi.String("ipv4"),
 //				LinodeId: pulumi.Int(12345),
 //				Public:   pulumi.Bool(true),
-//				Type:     pulumi.String("ipv4"),
 //			})
 //			if err != nil {
 //				return err

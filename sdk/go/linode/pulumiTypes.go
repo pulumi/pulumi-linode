@@ -17241,6 +17241,2149 @@ func (o InstanceIpVpcNat11ArrayOutput) Index(i pulumi.IntInput) InstanceIpVpcNat
 	}).(InstanceIpVpcNat11Output)
 }
 
+type InstanceLinodeInterface struct {
+	// Default route configuration for the interface.
+	DefaultRoute *InstanceLinodeInterfaceDefaultRoute `pulumi:"defaultRoute"`
+	// The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+	FirewallId *int `pulumi:"firewallId"`
+	// Configuration for a Linode public interface.
+	//
+	// * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+	//
+	// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+	//
+	// * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+	Public *InstanceLinodeInterfacePublic `pulumi:"public"`
+	// Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+	RdmaVpc *InstanceLinodeInterfaceRdmaVpc `pulumi:"rdmaVpc"`
+	// Configuration for a Linode VLAN interface.
+	Vlan *InstanceLinodeInterfaceVlan `pulumi:"vlan"`
+	// Configuration for a Linode VPC interface.
+	Vpc *InstanceLinodeInterfaceVpc `pulumi:"vpc"`
+}
+
+// InstanceLinodeInterfaceInput is an input type that accepts InstanceLinodeInterfaceArgs and InstanceLinodeInterfaceOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceInput` via:
+//
+//	InstanceLinodeInterfaceArgs{...}
+type InstanceLinodeInterfaceInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceOutput() InstanceLinodeInterfaceOutput
+	ToInstanceLinodeInterfaceOutputWithContext(context.Context) InstanceLinodeInterfaceOutput
+}
+
+type InstanceLinodeInterfaceArgs struct {
+	// Default route configuration for the interface.
+	DefaultRoute InstanceLinodeInterfaceDefaultRoutePtrInput `pulumi:"defaultRoute"`
+	// The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+	FirewallId pulumi.IntPtrInput `pulumi:"firewallId"`
+	// Configuration for a Linode public interface.
+	//
+	// * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+	//
+	// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+	//
+	// * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+	Public InstanceLinodeInterfacePublicPtrInput `pulumi:"public"`
+	// Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+	RdmaVpc InstanceLinodeInterfaceRdmaVpcPtrInput `pulumi:"rdmaVpc"`
+	// Configuration for a Linode VLAN interface.
+	Vlan InstanceLinodeInterfaceVlanPtrInput `pulumi:"vlan"`
+	// Configuration for a Linode VPC interface.
+	Vpc InstanceLinodeInterfaceVpcPtrInput `pulumi:"vpc"`
+}
+
+func (InstanceLinodeInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterface)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceArgs) ToInstanceLinodeInterfaceOutput() InstanceLinodeInterfaceOutput {
+	return i.ToInstanceLinodeInterfaceOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceArgs) ToInstanceLinodeInterfaceOutputWithContext(ctx context.Context) InstanceLinodeInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceOutput)
+}
+
+// InstanceLinodeInterfaceArrayInput is an input type that accepts InstanceLinodeInterfaceArray and InstanceLinodeInterfaceArrayOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceArrayInput` via:
+//
+//	InstanceLinodeInterfaceArray{ InstanceLinodeInterfaceArgs{...} }
+type InstanceLinodeInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceArrayOutput() InstanceLinodeInterfaceArrayOutput
+	ToInstanceLinodeInterfaceArrayOutputWithContext(context.Context) InstanceLinodeInterfaceArrayOutput
+}
+
+type InstanceLinodeInterfaceArray []InstanceLinodeInterfaceInput
+
+func (InstanceLinodeInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterface)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceArray) ToInstanceLinodeInterfaceArrayOutput() InstanceLinodeInterfaceArrayOutput {
+	return i.ToInstanceLinodeInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceArray) ToInstanceLinodeInterfaceArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceArrayOutput)
+}
+
+type InstanceLinodeInterfaceOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterface)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceOutput) ToInstanceLinodeInterfaceOutput() InstanceLinodeInterfaceOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceOutput) ToInstanceLinodeInterfaceOutputWithContext(ctx context.Context) InstanceLinodeInterfaceOutput {
+	return o
+}
+
+// Default route configuration for the interface.
+func (o InstanceLinodeInterfaceOutput) DefaultRoute() InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterface) *InstanceLinodeInterfaceDefaultRoute { return v.DefaultRoute }).(InstanceLinodeInterfaceDefaultRoutePtrOutput)
+}
+
+// The ID of an enabled firewall to attach to this interface. Not allowed for VLAN interfaces.
+func (o InstanceLinodeInterfaceOutput) FirewallId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterface) *int { return v.FirewallId }).(pulumi.IntPtrOutput)
+}
+
+// Configuration for a Linode public interface.
+//
+// * `ipv4.addresses[].address` - (Optional) The IPv4 address (or `auto` for automatic assignment).
+//
+// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address.
+//
+// * `ipv6.ranges[].range` - (Required when set) The IPv6 range in CIDR notation.
+func (o InstanceLinodeInterfaceOutput) Public() InstanceLinodeInterfacePublicPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterface) *InstanceLinodeInterfacePublic { return v.Public }).(InstanceLinodeInterfacePublicPtrOutput)
+}
+
+// Configuration for a GPUDirect RDMA VPC interface. **NOTE:** RDMA VPC interfaces can only be created as part of an instance creation request. They cannot be added, removed, or recreated later via the standalone `Interface` resource. RDMA VPC interfaces may not currently be available to all users.
+func (o InstanceLinodeInterfaceOutput) RdmaVpc() InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterface) *InstanceLinodeInterfaceRdmaVpc { return v.RdmaVpc }).(InstanceLinodeInterfaceRdmaVpcPtrOutput)
+}
+
+// Configuration for a Linode VLAN interface.
+func (o InstanceLinodeInterfaceOutput) Vlan() InstanceLinodeInterfaceVlanPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterface) *InstanceLinodeInterfaceVlan { return v.Vlan }).(InstanceLinodeInterfaceVlanPtrOutput)
+}
+
+// Configuration for a Linode VPC interface.
+func (o InstanceLinodeInterfaceOutput) Vpc() InstanceLinodeInterfaceVpcPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterface) *InstanceLinodeInterfaceVpc { return v.Vpc }).(InstanceLinodeInterfaceVpcPtrOutput)
+}
+
+type InstanceLinodeInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterface)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceArrayOutput) ToInstanceLinodeInterfaceArrayOutput() InstanceLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceArrayOutput) ToInstanceLinodeInterfaceArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfaceArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceArrayOutput) Index(i pulumi.IntInput) InstanceLinodeInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLinodeInterface {
+		return vs[0].([]InstanceLinodeInterface)[vs[1].(int)]
+	}).(InstanceLinodeInterfaceOutput)
+}
+
+type InstanceLinodeInterfaceDefaultRoute struct {
+	// Whether this interface is used for the IPv4 default route.
+	Ipv4 *bool `pulumi:"ipv4"`
+	// Whether this interface is used for the IPv6 default route.
+	Ipv6 *bool `pulumi:"ipv6"`
+}
+
+// InstanceLinodeInterfaceDefaultRouteInput is an input type that accepts InstanceLinodeInterfaceDefaultRouteArgs and InstanceLinodeInterfaceDefaultRouteOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceDefaultRouteInput` via:
+//
+//	InstanceLinodeInterfaceDefaultRouteArgs{...}
+type InstanceLinodeInterfaceDefaultRouteInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceDefaultRouteOutput() InstanceLinodeInterfaceDefaultRouteOutput
+	ToInstanceLinodeInterfaceDefaultRouteOutputWithContext(context.Context) InstanceLinodeInterfaceDefaultRouteOutput
+}
+
+type InstanceLinodeInterfaceDefaultRouteArgs struct {
+	// Whether this interface is used for the IPv4 default route.
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// Whether this interface is used for the IPv6 default route.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+}
+
+func (InstanceLinodeInterfaceDefaultRouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceDefaultRouteArgs) ToInstanceLinodeInterfaceDefaultRouteOutput() InstanceLinodeInterfaceDefaultRouteOutput {
+	return i.ToInstanceLinodeInterfaceDefaultRouteOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceDefaultRouteArgs) ToInstanceLinodeInterfaceDefaultRouteOutputWithContext(ctx context.Context) InstanceLinodeInterfaceDefaultRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceDefaultRouteOutput)
+}
+
+func (i InstanceLinodeInterfaceDefaultRouteArgs) ToInstanceLinodeInterfaceDefaultRoutePtrOutput() InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return i.ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceDefaultRouteArgs) ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceDefaultRouteOutput).ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceDefaultRoutePtrInput is an input type that accepts InstanceLinodeInterfaceDefaultRouteArgs, InstanceLinodeInterfaceDefaultRoutePtr and InstanceLinodeInterfaceDefaultRoutePtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceDefaultRoutePtrInput` via:
+//
+//	        InstanceLinodeInterfaceDefaultRouteArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceDefaultRoutePtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceDefaultRoutePtrOutput() InstanceLinodeInterfaceDefaultRoutePtrOutput
+	ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(context.Context) InstanceLinodeInterfaceDefaultRoutePtrOutput
+}
+
+type instanceLinodeInterfaceDefaultRoutePtrType InstanceLinodeInterfaceDefaultRouteArgs
+
+func InstanceLinodeInterfaceDefaultRoutePtr(v *InstanceLinodeInterfaceDefaultRouteArgs) InstanceLinodeInterfaceDefaultRoutePtrInput {
+	return (*instanceLinodeInterfaceDefaultRoutePtrType)(v)
+}
+
+func (*instanceLinodeInterfaceDefaultRoutePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceDefaultRoutePtrType) ToInstanceLinodeInterfaceDefaultRoutePtrOutput() InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return i.ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceDefaultRoutePtrType) ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceDefaultRoutePtrOutput)
+}
+
+type InstanceLinodeInterfaceDefaultRouteOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceDefaultRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceDefaultRouteOutput) ToInstanceLinodeInterfaceDefaultRouteOutput() InstanceLinodeInterfaceDefaultRouteOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceDefaultRouteOutput) ToInstanceLinodeInterfaceDefaultRouteOutputWithContext(ctx context.Context) InstanceLinodeInterfaceDefaultRouteOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceDefaultRouteOutput) ToInstanceLinodeInterfaceDefaultRoutePtrOutput() InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return o.ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceDefaultRouteOutput) ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceDefaultRoute) *InstanceLinodeInterfaceDefaultRoute {
+		return &v
+	}).(InstanceLinodeInterfaceDefaultRoutePtrOutput)
+}
+
+// Whether this interface is used for the IPv4 default route.
+func (o InstanceLinodeInterfaceDefaultRouteOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceDefaultRoute) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this interface is used for the IPv6 default route.
+func (o InstanceLinodeInterfaceDefaultRouteOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceDefaultRoute) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceLinodeInterfaceDefaultRoutePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceDefaultRoutePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceDefaultRoute)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceDefaultRoutePtrOutput) ToInstanceLinodeInterfaceDefaultRoutePtrOutput() InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceDefaultRoutePtrOutput) ToInstanceLinodeInterfaceDefaultRoutePtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceDefaultRoutePtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceDefaultRoutePtrOutput) Elem() InstanceLinodeInterfaceDefaultRouteOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceDefaultRoute) InstanceLinodeInterfaceDefaultRoute {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceDefaultRoute
+		return ret
+	}).(InstanceLinodeInterfaceDefaultRouteOutput)
+}
+
+// Whether this interface is used for the IPv4 default route.
+func (o InstanceLinodeInterfaceDefaultRoutePtrOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceDefaultRoute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether this interface is used for the IPv6 default route.
+func (o InstanceLinodeInterfaceDefaultRoutePtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceDefaultRoute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceLinodeInterfacePublic struct {
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
+	Ipv4 *InstanceLinodeInterfacePublicIpv4 `pulumi:"ipv4"`
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+	Ipv6 *InstanceLinodeInterfacePublicIpv6 `pulumi:"ipv6"`
+}
+
+// InstanceLinodeInterfacePublicInput is an input type that accepts InstanceLinodeInterfacePublicArgs and InstanceLinodeInterfacePublicOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicInput` via:
+//
+//	InstanceLinodeInterfacePublicArgs{...}
+type InstanceLinodeInterfacePublicInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicOutput() InstanceLinodeInterfacePublicOutput
+	ToInstanceLinodeInterfacePublicOutputWithContext(context.Context) InstanceLinodeInterfacePublicOutput
+}
+
+type InstanceLinodeInterfacePublicArgs struct {
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
+	Ipv4 InstanceLinodeInterfacePublicIpv4PtrInput `pulumi:"ipv4"`
+	// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+	Ipv6 InstanceLinodeInterfacePublicIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (InstanceLinodeInterfacePublicArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublic)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicArgs) ToInstanceLinodeInterfacePublicOutput() InstanceLinodeInterfacePublicOutput {
+	return i.ToInstanceLinodeInterfacePublicOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicArgs) ToInstanceLinodeInterfacePublicOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicOutput)
+}
+
+func (i InstanceLinodeInterfacePublicArgs) ToInstanceLinodeInterfacePublicPtrOutput() InstanceLinodeInterfacePublicPtrOutput {
+	return i.ToInstanceLinodeInterfacePublicPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicArgs) ToInstanceLinodeInterfacePublicPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicOutput).ToInstanceLinodeInterfacePublicPtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfacePublicPtrInput is an input type that accepts InstanceLinodeInterfacePublicArgs, InstanceLinodeInterfacePublicPtr and InstanceLinodeInterfacePublicPtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicPtrInput` via:
+//
+//	        InstanceLinodeInterfacePublicArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfacePublicPtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicPtrOutput() InstanceLinodeInterfacePublicPtrOutput
+	ToInstanceLinodeInterfacePublicPtrOutputWithContext(context.Context) InstanceLinodeInterfacePublicPtrOutput
+}
+
+type instanceLinodeInterfacePublicPtrType InstanceLinodeInterfacePublicArgs
+
+func InstanceLinodeInterfacePublicPtr(v *InstanceLinodeInterfacePublicArgs) InstanceLinodeInterfacePublicPtrInput {
+	return (*instanceLinodeInterfacePublicPtrType)(v)
+}
+
+func (*instanceLinodeInterfacePublicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfacePublic)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfacePublicPtrType) ToInstanceLinodeInterfacePublicPtrOutput() InstanceLinodeInterfacePublicPtrOutput {
+	return i.ToInstanceLinodeInterfacePublicPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfacePublicPtrType) ToInstanceLinodeInterfacePublicPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicPtrOutput)
+}
+
+type InstanceLinodeInterfacePublicOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublic)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicOutput) ToInstanceLinodeInterfacePublicOutput() InstanceLinodeInterfacePublicOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicOutput) ToInstanceLinodeInterfacePublicOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicOutput) ToInstanceLinodeInterfacePublicPtrOutput() InstanceLinodeInterfacePublicPtrOutput {
+	return o.ToInstanceLinodeInterfacePublicPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfacePublicOutput) ToInstanceLinodeInterfacePublicPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfacePublic) *InstanceLinodeInterfacePublic {
+		return &v
+	}).(InstanceLinodeInterfacePublicPtrOutput)
+}
+
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
+func (o InstanceLinodeInterfacePublicOutput) Ipv4() InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublic) *InstanceLinodeInterfacePublicIpv4 { return v.Ipv4 }).(InstanceLinodeInterfacePublicIpv4PtrOutput)
+}
+
+// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+func (o InstanceLinodeInterfacePublicOutput) Ipv6() InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublic) *InstanceLinodeInterfacePublicIpv6 { return v.Ipv6 }).(InstanceLinodeInterfacePublicIpv6PtrOutput)
+}
+
+type InstanceLinodeInterfacePublicPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfacePublic)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicPtrOutput) ToInstanceLinodeInterfacePublicPtrOutput() InstanceLinodeInterfacePublicPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicPtrOutput) ToInstanceLinodeInterfacePublicPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicPtrOutput) Elem() InstanceLinodeInterfacePublicOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublic) InstanceLinodeInterfacePublic {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfacePublic
+		return ret
+	}).(InstanceLinodeInterfacePublicOutput)
+}
+
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
+func (o InstanceLinodeInterfacePublicPtrOutput) Ipv4() InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublic) *InstanceLinodeInterfacePublicIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InstanceLinodeInterfacePublicIpv4PtrOutput)
+}
+
+// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
+func (o InstanceLinodeInterfacePublicPtrOutput) Ipv6() InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublic) *InstanceLinodeInterfacePublicIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(InstanceLinodeInterfacePublicIpv6PtrOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv4 struct {
+	Addresses []InstanceLinodeInterfacePublicIpv4Address `pulumi:"addresses"`
+}
+
+// InstanceLinodeInterfacePublicIpv4Input is an input type that accepts InstanceLinodeInterfacePublicIpv4Args and InstanceLinodeInterfacePublicIpv4Output values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv4Input` via:
+//
+//	InstanceLinodeInterfacePublicIpv4Args{...}
+type InstanceLinodeInterfacePublicIpv4Input interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv4Output() InstanceLinodeInterfacePublicIpv4Output
+	ToInstanceLinodeInterfacePublicIpv4OutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv4Output
+}
+
+type InstanceLinodeInterfacePublicIpv4Args struct {
+	Addresses InstanceLinodeInterfacePublicIpv4AddressArrayInput `pulumi:"addresses"`
+}
+
+func (InstanceLinodeInterfacePublicIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicIpv4Args) ToInstanceLinodeInterfacePublicIpv4Output() InstanceLinodeInterfacePublicIpv4Output {
+	return i.ToInstanceLinodeInterfacePublicIpv4OutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv4Args) ToInstanceLinodeInterfacePublicIpv4OutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv4Output)
+}
+
+func (i InstanceLinodeInterfacePublicIpv4Args) ToInstanceLinodeInterfacePublicIpv4PtrOutput() InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv4Args) ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv4Output).ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfacePublicIpv4PtrInput is an input type that accepts InstanceLinodeInterfacePublicIpv4Args, InstanceLinodeInterfacePublicIpv4Ptr and InstanceLinodeInterfacePublicIpv4PtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv4PtrInput` via:
+//
+//	        InstanceLinodeInterfacePublicIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfacePublicIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv4PtrOutput() InstanceLinodeInterfacePublicIpv4PtrOutput
+	ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv4PtrOutput
+}
+
+type instanceLinodeInterfacePublicIpv4PtrType InstanceLinodeInterfacePublicIpv4Args
+
+func InstanceLinodeInterfacePublicIpv4Ptr(v *InstanceLinodeInterfacePublicIpv4Args) InstanceLinodeInterfacePublicIpv4PtrInput {
+	return (*instanceLinodeInterfacePublicIpv4PtrType)(v)
+}
+
+func (*instanceLinodeInterfacePublicIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfacePublicIpv4)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfacePublicIpv4PtrType) ToInstanceLinodeInterfacePublicIpv4PtrOutput() InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfacePublicIpv4PtrType) ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv4PtrOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv4Output struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv4Output) ToInstanceLinodeInterfacePublicIpv4Output() InstanceLinodeInterfacePublicIpv4Output {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4Output) ToInstanceLinodeInterfacePublicIpv4OutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4Output {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4Output) ToInstanceLinodeInterfacePublicIpv4PtrOutput() InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return o.ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfacePublicIpv4Output) ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfacePublicIpv4) *InstanceLinodeInterfacePublicIpv4 {
+		return &v
+	}).(InstanceLinodeInterfacePublicIpv4PtrOutput)
+}
+
+func (o InstanceLinodeInterfacePublicIpv4Output) Addresses() InstanceLinodeInterfacePublicIpv4AddressArrayOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublicIpv4) []InstanceLinodeInterfacePublicIpv4Address {
+		return v.Addresses
+	}).(InstanceLinodeInterfacePublicIpv4AddressArrayOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfacePublicIpv4)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv4PtrOutput) ToInstanceLinodeInterfacePublicIpv4PtrOutput() InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4PtrOutput) ToInstanceLinodeInterfacePublicIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4PtrOutput) Elem() InstanceLinodeInterfacePublicIpv4Output {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublicIpv4) InstanceLinodeInterfacePublicIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfacePublicIpv4
+		return ret
+	}).(InstanceLinodeInterfacePublicIpv4Output)
+}
+
+func (o InstanceLinodeInterfacePublicIpv4PtrOutput) Addresses() InstanceLinodeInterfacePublicIpv4AddressArrayOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublicIpv4) []InstanceLinodeInterfacePublicIpv4Address {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(InstanceLinodeInterfacePublicIpv4AddressArrayOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv4Address struct {
+	// The SLAAC address chosen for this interface.
+	Address *string `pulumi:"address"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InstanceLinodeInterfacePublicIpv4AddressInput is an input type that accepts InstanceLinodeInterfacePublicIpv4AddressArgs and InstanceLinodeInterfacePublicIpv4AddressOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv4AddressInput` via:
+//
+//	InstanceLinodeInterfacePublicIpv4AddressArgs{...}
+type InstanceLinodeInterfacePublicIpv4AddressInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv4AddressOutput() InstanceLinodeInterfacePublicIpv4AddressOutput
+	ToInstanceLinodeInterfacePublicIpv4AddressOutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv4AddressOutput
+}
+
+type InstanceLinodeInterfacePublicIpv4AddressArgs struct {
+	// The SLAAC address chosen for this interface.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InstanceLinodeInterfacePublicIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicIpv4AddressArgs) ToInstanceLinodeInterfacePublicIpv4AddressOutput() InstanceLinodeInterfacePublicIpv4AddressOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv4AddressArgs) ToInstanceLinodeInterfacePublicIpv4AddressOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv4AddressOutput)
+}
+
+// InstanceLinodeInterfacePublicIpv4AddressArrayInput is an input type that accepts InstanceLinodeInterfacePublicIpv4AddressArray and InstanceLinodeInterfacePublicIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv4AddressArrayInput` via:
+//
+//	InstanceLinodeInterfacePublicIpv4AddressArray{ InstanceLinodeInterfacePublicIpv4AddressArgs{...} }
+type InstanceLinodeInterfacePublicIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv4AddressArrayOutput() InstanceLinodeInterfacePublicIpv4AddressArrayOutput
+	ToInstanceLinodeInterfacePublicIpv4AddressArrayOutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv4AddressArrayOutput
+}
+
+type InstanceLinodeInterfacePublicIpv4AddressArray []InstanceLinodeInterfacePublicIpv4AddressInput
+
+func (InstanceLinodeInterfacePublicIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicIpv4AddressArray) ToInstanceLinodeInterfacePublicIpv4AddressArrayOutput() InstanceLinodeInterfacePublicIpv4AddressArrayOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv4AddressArray) ToInstanceLinodeInterfacePublicIpv4AddressArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv4AddressArrayOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv4AddressOutput) ToInstanceLinodeInterfacePublicIpv4AddressOutput() InstanceLinodeInterfacePublicIpv4AddressOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4AddressOutput) ToInstanceLinodeInterfacePublicIpv4AddressOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4AddressOutput {
+	return o
+}
+
+// The SLAAC address chosen for this interface.
+func (o InstanceLinodeInterfacePublicIpv4AddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublicIpv4Address) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+//
+// * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+func (o InstanceLinodeInterfacePublicIpv4AddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublicIpv4Address) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfacePublicIpv4Address)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv4AddressArrayOutput) ToInstanceLinodeInterfacePublicIpv4AddressArrayOutput() InstanceLinodeInterfacePublicIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4AddressArrayOutput) ToInstanceLinodeInterfacePublicIpv4AddressArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv4AddressArrayOutput) Index(i pulumi.IntInput) InstanceLinodeInterfacePublicIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLinodeInterfacePublicIpv4Address {
+		return vs[0].([]InstanceLinodeInterfacePublicIpv4Address)[vs[1].(int)]
+	}).(InstanceLinodeInterfacePublicIpv4AddressOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv6 struct {
+	Ranges []InstanceLinodeInterfacePublicIpv6Range `pulumi:"ranges"`
+}
+
+// InstanceLinodeInterfacePublicIpv6Input is an input type that accepts InstanceLinodeInterfacePublicIpv6Args and InstanceLinodeInterfacePublicIpv6Output values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv6Input` via:
+//
+//	InstanceLinodeInterfacePublicIpv6Args{...}
+type InstanceLinodeInterfacePublicIpv6Input interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv6Output() InstanceLinodeInterfacePublicIpv6Output
+	ToInstanceLinodeInterfacePublicIpv6OutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv6Output
+}
+
+type InstanceLinodeInterfacePublicIpv6Args struct {
+	Ranges InstanceLinodeInterfacePublicIpv6RangeArrayInput `pulumi:"ranges"`
+}
+
+func (InstanceLinodeInterfacePublicIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicIpv6Args) ToInstanceLinodeInterfacePublicIpv6Output() InstanceLinodeInterfacePublicIpv6Output {
+	return i.ToInstanceLinodeInterfacePublicIpv6OutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv6Args) ToInstanceLinodeInterfacePublicIpv6OutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv6Output)
+}
+
+func (i InstanceLinodeInterfacePublicIpv6Args) ToInstanceLinodeInterfacePublicIpv6PtrOutput() InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv6Args) ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv6Output).ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfacePublicIpv6PtrInput is an input type that accepts InstanceLinodeInterfacePublicIpv6Args, InstanceLinodeInterfacePublicIpv6Ptr and InstanceLinodeInterfacePublicIpv6PtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv6PtrInput` via:
+//
+//	        InstanceLinodeInterfacePublicIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfacePublicIpv6PtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv6PtrOutput() InstanceLinodeInterfacePublicIpv6PtrOutput
+	ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv6PtrOutput
+}
+
+type instanceLinodeInterfacePublicIpv6PtrType InstanceLinodeInterfacePublicIpv6Args
+
+func InstanceLinodeInterfacePublicIpv6Ptr(v *InstanceLinodeInterfacePublicIpv6Args) InstanceLinodeInterfacePublicIpv6PtrInput {
+	return (*instanceLinodeInterfacePublicIpv6PtrType)(v)
+}
+
+func (*instanceLinodeInterfacePublicIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfacePublicIpv6)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfacePublicIpv6PtrType) ToInstanceLinodeInterfacePublicIpv6PtrOutput() InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfacePublicIpv6PtrType) ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv6PtrOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv6Output struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv6Output) ToInstanceLinodeInterfacePublicIpv6Output() InstanceLinodeInterfacePublicIpv6Output {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6Output) ToInstanceLinodeInterfacePublicIpv6OutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6Output {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6Output) ToInstanceLinodeInterfacePublicIpv6PtrOutput() InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return o.ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfacePublicIpv6Output) ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfacePublicIpv6) *InstanceLinodeInterfacePublicIpv6 {
+		return &v
+	}).(InstanceLinodeInterfacePublicIpv6PtrOutput)
+}
+
+func (o InstanceLinodeInterfacePublicIpv6Output) Ranges() InstanceLinodeInterfacePublicIpv6RangeArrayOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublicIpv6) []InstanceLinodeInterfacePublicIpv6Range { return v.Ranges }).(InstanceLinodeInterfacePublicIpv6RangeArrayOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfacePublicIpv6)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv6PtrOutput) ToInstanceLinodeInterfacePublicIpv6PtrOutput() InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6PtrOutput) ToInstanceLinodeInterfacePublicIpv6PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6PtrOutput) Elem() InstanceLinodeInterfacePublicIpv6Output {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublicIpv6) InstanceLinodeInterfacePublicIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfacePublicIpv6
+		return ret
+	}).(InstanceLinodeInterfacePublicIpv6Output)
+}
+
+func (o InstanceLinodeInterfacePublicIpv6PtrOutput) Ranges() InstanceLinodeInterfacePublicIpv6RangeArrayOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfacePublicIpv6) []InstanceLinodeInterfacePublicIpv6Range {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(InstanceLinodeInterfacePublicIpv6RangeArrayOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv6Range struct {
+	// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+	Range string `pulumi:"range"`
+}
+
+// InstanceLinodeInterfacePublicIpv6RangeInput is an input type that accepts InstanceLinodeInterfacePublicIpv6RangeArgs and InstanceLinodeInterfacePublicIpv6RangeOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv6RangeInput` via:
+//
+//	InstanceLinodeInterfacePublicIpv6RangeArgs{...}
+type InstanceLinodeInterfacePublicIpv6RangeInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv6RangeOutput() InstanceLinodeInterfacePublicIpv6RangeOutput
+	ToInstanceLinodeInterfacePublicIpv6RangeOutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv6RangeOutput
+}
+
+type InstanceLinodeInterfacePublicIpv6RangeArgs struct {
+	// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (InstanceLinodeInterfacePublicIpv6RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicIpv6RangeArgs) ToInstanceLinodeInterfacePublicIpv6RangeOutput() InstanceLinodeInterfacePublicIpv6RangeOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv6RangeOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv6RangeArgs) ToInstanceLinodeInterfacePublicIpv6RangeOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv6RangeOutput)
+}
+
+// InstanceLinodeInterfacePublicIpv6RangeArrayInput is an input type that accepts InstanceLinodeInterfacePublicIpv6RangeArray and InstanceLinodeInterfacePublicIpv6RangeArrayOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfacePublicIpv6RangeArrayInput` via:
+//
+//	InstanceLinodeInterfacePublicIpv6RangeArray{ InstanceLinodeInterfacePublicIpv6RangeArgs{...} }
+type InstanceLinodeInterfacePublicIpv6RangeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfacePublicIpv6RangeArrayOutput() InstanceLinodeInterfacePublicIpv6RangeArrayOutput
+	ToInstanceLinodeInterfacePublicIpv6RangeArrayOutputWithContext(context.Context) InstanceLinodeInterfacePublicIpv6RangeArrayOutput
+}
+
+type InstanceLinodeInterfacePublicIpv6RangeArray []InstanceLinodeInterfacePublicIpv6RangeInput
+
+func (InstanceLinodeInterfacePublicIpv6RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfacePublicIpv6RangeArray) ToInstanceLinodeInterfacePublicIpv6RangeArrayOutput() InstanceLinodeInterfacePublicIpv6RangeArrayOutput {
+	return i.ToInstanceLinodeInterfacePublicIpv6RangeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfacePublicIpv6RangeArray) ToInstanceLinodeInterfacePublicIpv6RangeArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfacePublicIpv6RangeArrayOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv6RangeOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv6RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv6RangeOutput) ToInstanceLinodeInterfacePublicIpv6RangeOutput() InstanceLinodeInterfacePublicIpv6RangeOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6RangeOutput) ToInstanceLinodeInterfacePublicIpv6RangeOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6RangeOutput {
+	return o
+}
+
+// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+func (o InstanceLinodeInterfacePublicIpv6RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfacePublicIpv6Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type InstanceLinodeInterfacePublicIpv6RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfacePublicIpv6RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfacePublicIpv6Range)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfacePublicIpv6RangeArrayOutput) ToInstanceLinodeInterfacePublicIpv6RangeArrayOutput() InstanceLinodeInterfacePublicIpv6RangeArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6RangeArrayOutput) ToInstanceLinodeInterfacePublicIpv6RangeArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfacePublicIpv6RangeArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfacePublicIpv6RangeArrayOutput) Index(i pulumi.IntInput) InstanceLinodeInterfacePublicIpv6RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLinodeInterfacePublicIpv6Range {
+		return vs[0].([]InstanceLinodeInterfacePublicIpv6Range)[vs[1].(int)]
+	}).(InstanceLinodeInterfacePublicIpv6RangeOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpc struct {
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
+	Ipv4 *InstanceLinodeInterfaceRdmaVpcIpv4 `pulumi:"ipv4"`
+	// The ID of the RDMA VPC subnet to attach this interface to.
+	//
+	// * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+	//
+	// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+	SubnetId int `pulumi:"subnetId"`
+}
+
+// InstanceLinodeInterfaceRdmaVpcInput is an input type that accepts InstanceLinodeInterfaceRdmaVpcArgs and InstanceLinodeInterfaceRdmaVpcOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceRdmaVpcInput` via:
+//
+//	InstanceLinodeInterfaceRdmaVpcArgs{...}
+type InstanceLinodeInterfaceRdmaVpcInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceRdmaVpcOutput() InstanceLinodeInterfaceRdmaVpcOutput
+	ToInstanceLinodeInterfaceRdmaVpcOutputWithContext(context.Context) InstanceLinodeInterfaceRdmaVpcOutput
+}
+
+type InstanceLinodeInterfaceRdmaVpcArgs struct {
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
+	Ipv4 InstanceLinodeInterfaceRdmaVpcIpv4PtrInput `pulumi:"ipv4"`
+	// The ID of the RDMA VPC subnet to attach this interface to.
+	//
+	// * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+	//
+	// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+}
+
+func (InstanceLinodeInterfaceRdmaVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcArgs) ToInstanceLinodeInterfaceRdmaVpcOutput() InstanceLinodeInterfaceRdmaVpcOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcArgs) ToInstanceLinodeInterfaceRdmaVpcOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcOutput)
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcArgs) ToInstanceLinodeInterfaceRdmaVpcPtrOutput() InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcArgs) ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcOutput).ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceRdmaVpcPtrInput is an input type that accepts InstanceLinodeInterfaceRdmaVpcArgs, InstanceLinodeInterfaceRdmaVpcPtr and InstanceLinodeInterfaceRdmaVpcPtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceRdmaVpcPtrInput` via:
+//
+//	        InstanceLinodeInterfaceRdmaVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceRdmaVpcPtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceRdmaVpcPtrOutput() InstanceLinodeInterfaceRdmaVpcPtrOutput
+	ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(context.Context) InstanceLinodeInterfaceRdmaVpcPtrOutput
+}
+
+type instanceLinodeInterfaceRdmaVpcPtrType InstanceLinodeInterfaceRdmaVpcArgs
+
+func InstanceLinodeInterfaceRdmaVpcPtr(v *InstanceLinodeInterfaceRdmaVpcArgs) InstanceLinodeInterfaceRdmaVpcPtrInput {
+	return (*instanceLinodeInterfaceRdmaVpcPtrType)(v)
+}
+
+func (*instanceLinodeInterfaceRdmaVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceRdmaVpcPtrType) ToInstanceLinodeInterfaceRdmaVpcPtrOutput() InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceRdmaVpcPtrType) ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcPtrOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceRdmaVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcOutput) ToInstanceLinodeInterfaceRdmaVpcOutput() InstanceLinodeInterfaceRdmaVpcOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcOutput) ToInstanceLinodeInterfaceRdmaVpcOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcOutput) ToInstanceLinodeInterfaceRdmaVpcPtrOutput() InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return o.ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcOutput) ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceRdmaVpc) *InstanceLinodeInterfaceRdmaVpc {
+		return &v
+	}).(InstanceLinodeInterfaceRdmaVpcPtrOutput)
+}
+
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
+func (o InstanceLinodeInterfaceRdmaVpcOutput) Ipv4() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceRdmaVpc) *InstanceLinodeInterfaceRdmaVpcIpv4 { return v.Ipv4 }).(InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput)
+}
+
+// The ID of the RDMA VPC subnet to attach this interface to.
+//
+// * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+//
+// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+func (o InstanceLinodeInterfaceRdmaVpcOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceRdmaVpc) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceRdmaVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcPtrOutput) ToInstanceLinodeInterfaceRdmaVpcPtrOutput() InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcPtrOutput) ToInstanceLinodeInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcPtrOutput) Elem() InstanceLinodeInterfaceRdmaVpcOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpc) InstanceLinodeInterfaceRdmaVpc {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceRdmaVpc
+		return ret
+	}).(InstanceLinodeInterfaceRdmaVpcOutput)
+}
+
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
+func (o InstanceLinodeInterfaceRdmaVpcPtrOutput) Ipv4() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpc) *InstanceLinodeInterfaceRdmaVpcIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput)
+}
+
+// The ID of the RDMA VPC subnet to attach this interface to.
+//
+// * `ipv4.addresses[].address` - (Optional) The IPv4 address for the RDMA VPC interface, or `auto` (the default) to allocate one automatically from the subnet.
+//
+// * `ipv4.addresses[].primary` - (Optional) Whether this is the primary IPv4 address for the interface. Defaults to `true`. Exactly one address must be primary.
+func (o InstanceLinodeInterfaceRdmaVpcPtrOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpc) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4 struct {
+	// The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+	Addresses InstanceLinodeInterfaceRdmaVpcIpv4Addresses `pulumi:"addresses"`
+}
+
+// InstanceLinodeInterfaceRdmaVpcIpv4Input is an input type that accepts InstanceLinodeInterfaceRdmaVpcIpv4Args and InstanceLinodeInterfaceRdmaVpcIpv4Output values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceRdmaVpcIpv4Input` via:
+//
+//	InstanceLinodeInterfaceRdmaVpcIpv4Args{...}
+type InstanceLinodeInterfaceRdmaVpcIpv4Input interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceRdmaVpcIpv4Output() InstanceLinodeInterfaceRdmaVpcIpv4Output
+	ToInstanceLinodeInterfaceRdmaVpcIpv4OutputWithContext(context.Context) InstanceLinodeInterfaceRdmaVpcIpv4Output
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4Args struct {
+	// The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+	Addresses InstanceLinodeInterfaceRdmaVpcIpv4AddressesInput `pulumi:"addresses"`
+}
+
+func (InstanceLinodeInterfaceRdmaVpcIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4Args) ToInstanceLinodeInterfaceRdmaVpcIpv4Output() InstanceLinodeInterfaceRdmaVpcIpv4Output {
+	return i.ToInstanceLinodeInterfaceRdmaVpcIpv4OutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4Args) ToInstanceLinodeInterfaceRdmaVpcIpv4OutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcIpv4Output)
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4Args) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4Args) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcIpv4Output).ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceRdmaVpcIpv4PtrInput is an input type that accepts InstanceLinodeInterfaceRdmaVpcIpv4Args, InstanceLinodeInterfaceRdmaVpcIpv4Ptr and InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceRdmaVpcIpv4PtrInput` via:
+//
+//	        InstanceLinodeInterfaceRdmaVpcIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceRdmaVpcIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput
+	ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Context) InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput
+}
+
+type instanceLinodeInterfaceRdmaVpcIpv4PtrType InstanceLinodeInterfaceRdmaVpcIpv4Args
+
+func InstanceLinodeInterfaceRdmaVpcIpv4Ptr(v *InstanceLinodeInterfaceRdmaVpcIpv4Args) InstanceLinodeInterfaceRdmaVpcIpv4PtrInput {
+	return (*instanceLinodeInterfaceRdmaVpcIpv4PtrType)(v)
+}
+
+func (*instanceLinodeInterfaceRdmaVpcIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceRdmaVpcIpv4PtrType) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceRdmaVpcIpv4PtrType) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4Output struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceRdmaVpcIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4Output) ToInstanceLinodeInterfaceRdmaVpcIpv4Output() InstanceLinodeInterfaceRdmaVpcIpv4Output {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4Output) ToInstanceLinodeInterfaceRdmaVpcIpv4OutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4Output {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4Output) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return o.ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4Output) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceRdmaVpcIpv4) *InstanceLinodeInterfaceRdmaVpcIpv4 {
+		return &v
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput)
+}
+
+// The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+func (o InstanceLinodeInterfaceRdmaVpcIpv4Output) Addresses() InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceRdmaVpcIpv4) InstanceLinodeInterfaceRdmaVpcIpv4Addresses {
+		return v.Addresses
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput) Elem() InstanceLinodeInterfaceRdmaVpcIpv4Output {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpcIpv4) InstanceLinodeInterfaceRdmaVpcIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceRdmaVpcIpv4
+		return ret
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4Output)
+}
+
+// The list of IPv4 addresses for this RDMA VPC interface. Must contain exactly one element.
+func (o InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput) Addresses() InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpcIpv4) *InstanceLinodeInterfaceRdmaVpcIpv4Addresses {
+		if v == nil {
+			return nil
+		}
+		return &v.Addresses
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4Addresses struct {
+	// The IPv4 address (or 'auto' to allocate one from the subnet).
+	Address *string `pulumi:"address"`
+	// Whether this is the primary IPv4 address for the interface.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InstanceLinodeInterfaceRdmaVpcIpv4AddressesInput is an input type that accepts InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs and InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceRdmaVpcIpv4AddressesInput` via:
+//
+//	InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs{...}
+type InstanceLinodeInterfaceRdmaVpcIpv4AddressesInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput
+	ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutputWithContext(context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs struct {
+	// The IPv4 address (or 'auto' to allocate one from the subnet).
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Whether this is the primary IPv4 address for the interface.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4Addresses)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput)
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput).ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrInput is an input type that accepts InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs, InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtr and InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrInput` via:
+//
+//	        InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput
+	ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput
+}
+
+type instanceLinodeInterfaceRdmaVpcIpv4AddressesPtrType InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs
+
+func InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtr(v *InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs) InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrInput {
+	return (*instanceLinodeInterfaceRdmaVpcIpv4AddressesPtrType)(v)
+}
+
+func (*instanceLinodeInterfaceRdmaVpcIpv4AddressesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceRdmaVpcIpv4Addresses)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceRdmaVpcIpv4AddressesPtrType) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return i.ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceRdmaVpcIpv4AddressesPtrType) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4Addresses)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return o.ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceRdmaVpcIpv4Addresses) *InstanceLinodeInterfaceRdmaVpcIpv4Addresses {
+		return &v
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput)
+}
+
+// The IPv4 address (or 'auto' to allocate one from the subnet).
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceRdmaVpcIpv4Addresses) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether this is the primary IPv4 address for the interface.
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceRdmaVpcIpv4Addresses) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceRdmaVpcIpv4Addresses)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput() InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput) ToInstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput) Elem() InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpcIpv4Addresses) InstanceLinodeInterfaceRdmaVpcIpv4Addresses {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceRdmaVpcIpv4Addresses
+		return ret
+	}).(InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput)
+}
+
+// The IPv4 address (or 'auto' to allocate one from the subnet).
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpcIpv4Addresses) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether this is the primary IPv4 address for the interface.
+func (o InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceRdmaVpcIpv4Addresses) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+type InstanceLinodeInterfaceVlan struct {
+	// The VLAN IPAM address in CIDR notation.
+	IpamAddress *string `pulumi:"ipamAddress"`
+	// The label of the VLAN to join.
+	VlanLabel string `pulumi:"vlanLabel"`
+}
+
+// InstanceLinodeInterfaceVlanInput is an input type that accepts InstanceLinodeInterfaceVlanArgs and InstanceLinodeInterfaceVlanOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVlanInput` via:
+//
+//	InstanceLinodeInterfaceVlanArgs{...}
+type InstanceLinodeInterfaceVlanInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVlanOutput() InstanceLinodeInterfaceVlanOutput
+	ToInstanceLinodeInterfaceVlanOutputWithContext(context.Context) InstanceLinodeInterfaceVlanOutput
+}
+
+type InstanceLinodeInterfaceVlanArgs struct {
+	// The VLAN IPAM address in CIDR notation.
+	IpamAddress pulumi.StringPtrInput `pulumi:"ipamAddress"`
+	// The label of the VLAN to join.
+	VlanLabel pulumi.StringInput `pulumi:"vlanLabel"`
+}
+
+func (InstanceLinodeInterfaceVlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVlan)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVlanArgs) ToInstanceLinodeInterfaceVlanOutput() InstanceLinodeInterfaceVlanOutput {
+	return i.ToInstanceLinodeInterfaceVlanOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVlanArgs) ToInstanceLinodeInterfaceVlanOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVlanOutput)
+}
+
+func (i InstanceLinodeInterfaceVlanArgs) ToInstanceLinodeInterfaceVlanPtrOutput() InstanceLinodeInterfaceVlanPtrOutput {
+	return i.ToInstanceLinodeInterfaceVlanPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVlanArgs) ToInstanceLinodeInterfaceVlanPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVlanOutput).ToInstanceLinodeInterfaceVlanPtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceVlanPtrInput is an input type that accepts InstanceLinodeInterfaceVlanArgs, InstanceLinodeInterfaceVlanPtr and InstanceLinodeInterfaceVlanPtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVlanPtrInput` via:
+//
+//	        InstanceLinodeInterfaceVlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceVlanPtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVlanPtrOutput() InstanceLinodeInterfaceVlanPtrOutput
+	ToInstanceLinodeInterfaceVlanPtrOutputWithContext(context.Context) InstanceLinodeInterfaceVlanPtrOutput
+}
+
+type instanceLinodeInterfaceVlanPtrType InstanceLinodeInterfaceVlanArgs
+
+func InstanceLinodeInterfaceVlanPtr(v *InstanceLinodeInterfaceVlanArgs) InstanceLinodeInterfaceVlanPtrInput {
+	return (*instanceLinodeInterfaceVlanPtrType)(v)
+}
+
+func (*instanceLinodeInterfaceVlanPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceVlan)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceVlanPtrType) ToInstanceLinodeInterfaceVlanPtrOutput() InstanceLinodeInterfaceVlanPtrOutput {
+	return i.ToInstanceLinodeInterfaceVlanPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceVlanPtrType) ToInstanceLinodeInterfaceVlanPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVlanPtrOutput)
+}
+
+type InstanceLinodeInterfaceVlanOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVlan)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVlanOutput) ToInstanceLinodeInterfaceVlanOutput() InstanceLinodeInterfaceVlanOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVlanOutput) ToInstanceLinodeInterfaceVlanOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVlanOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVlanOutput) ToInstanceLinodeInterfaceVlanPtrOutput() InstanceLinodeInterfaceVlanPtrOutput {
+	return o.ToInstanceLinodeInterfaceVlanPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceVlanOutput) ToInstanceLinodeInterfaceVlanPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceVlan) *InstanceLinodeInterfaceVlan {
+		return &v
+	}).(InstanceLinodeInterfaceVlanPtrOutput)
+}
+
+// The VLAN IPAM address in CIDR notation.
+func (o InstanceLinodeInterfaceVlanOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVlan) *string { return v.IpamAddress }).(pulumi.StringPtrOutput)
+}
+
+// The label of the VLAN to join.
+func (o InstanceLinodeInterfaceVlanOutput) VlanLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVlan) string { return v.VlanLabel }).(pulumi.StringOutput)
+}
+
+type InstanceLinodeInterfaceVlanPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceVlan)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVlanPtrOutput) ToInstanceLinodeInterfaceVlanPtrOutput() InstanceLinodeInterfaceVlanPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVlanPtrOutput) ToInstanceLinodeInterfaceVlanPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVlanPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVlanPtrOutput) Elem() InstanceLinodeInterfaceVlanOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVlan) InstanceLinodeInterfaceVlan {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceVlan
+		return ret
+	}).(InstanceLinodeInterfaceVlanOutput)
+}
+
+// The VLAN IPAM address in CIDR notation.
+func (o InstanceLinodeInterfaceVlanPtrOutput) IpamAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVlan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpamAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The label of the VLAN to join.
+func (o InstanceLinodeInterfaceVlanPtrOutput) VlanLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVlan) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VlanLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceLinodeInterfaceVpc struct {
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
+	Ipv4 *InstanceLinodeInterfaceVpcIpv4 `pulumi:"ipv4"`
+	// The ID of the VPC subnet.
+	//
+	// * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat11Address`.
+	//
+	// * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+	SubnetId int `pulumi:"subnetId"`
+}
+
+// InstanceLinodeInterfaceVpcInput is an input type that accepts InstanceLinodeInterfaceVpcArgs and InstanceLinodeInterfaceVpcOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcInput` via:
+//
+//	InstanceLinodeInterfaceVpcArgs{...}
+type InstanceLinodeInterfaceVpcInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcOutput() InstanceLinodeInterfaceVpcOutput
+	ToInstanceLinodeInterfaceVpcOutputWithContext(context.Context) InstanceLinodeInterfaceVpcOutput
+}
+
+type InstanceLinodeInterfaceVpcArgs struct {
+	// A set of reserved IPv4 addresses to assign to this Linode on creation.
+	//
+	// * **NOTE: IP reservation is not currently available to all users.**
+	Ipv4 InstanceLinodeInterfaceVpcIpv4PtrInput `pulumi:"ipv4"`
+	// The ID of the VPC subnet.
+	//
+	// * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat11Address`.
+	//
+	// * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+}
+
+func (InstanceLinodeInterfaceVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpc)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVpcArgs) ToInstanceLinodeInterfaceVpcOutput() InstanceLinodeInterfaceVpcOutput {
+	return i.ToInstanceLinodeInterfaceVpcOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcArgs) ToInstanceLinodeInterfaceVpcOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcOutput)
+}
+
+func (i InstanceLinodeInterfaceVpcArgs) ToInstanceLinodeInterfaceVpcPtrOutput() InstanceLinodeInterfaceVpcPtrOutput {
+	return i.ToInstanceLinodeInterfaceVpcPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcArgs) ToInstanceLinodeInterfaceVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcOutput).ToInstanceLinodeInterfaceVpcPtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceVpcPtrInput is an input type that accepts InstanceLinodeInterfaceVpcArgs, InstanceLinodeInterfaceVpcPtr and InstanceLinodeInterfaceVpcPtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcPtrInput` via:
+//
+//	        InstanceLinodeInterfaceVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceVpcPtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcPtrOutput() InstanceLinodeInterfaceVpcPtrOutput
+	ToInstanceLinodeInterfaceVpcPtrOutputWithContext(context.Context) InstanceLinodeInterfaceVpcPtrOutput
+}
+
+type instanceLinodeInterfaceVpcPtrType InstanceLinodeInterfaceVpcArgs
+
+func InstanceLinodeInterfaceVpcPtr(v *InstanceLinodeInterfaceVpcArgs) InstanceLinodeInterfaceVpcPtrInput {
+	return (*instanceLinodeInterfaceVpcPtrType)(v)
+}
+
+func (*instanceLinodeInterfaceVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceVpc)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceVpcPtrType) ToInstanceLinodeInterfaceVpcPtrOutput() InstanceLinodeInterfaceVpcPtrOutput {
+	return i.ToInstanceLinodeInterfaceVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceVpcPtrType) ToInstanceLinodeInterfaceVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcPtrOutput)
+}
+
+type InstanceLinodeInterfaceVpcOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpc)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcOutput) ToInstanceLinodeInterfaceVpcOutput() InstanceLinodeInterfaceVpcOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcOutput) ToInstanceLinodeInterfaceVpcOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcOutput) ToInstanceLinodeInterfaceVpcPtrOutput() InstanceLinodeInterfaceVpcPtrOutput {
+	return o.ToInstanceLinodeInterfaceVpcPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceVpcOutput) ToInstanceLinodeInterfaceVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceVpc) *InstanceLinodeInterfaceVpc {
+		return &v
+	}).(InstanceLinodeInterfaceVpcPtrOutput)
+}
+
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
+func (o InstanceLinodeInterfaceVpcOutput) Ipv4() InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpc) *InstanceLinodeInterfaceVpcIpv4 { return v.Ipv4 }).(InstanceLinodeInterfaceVpcIpv4PtrOutput)
+}
+
+// The ID of the VPC subnet.
+//
+// * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat11Address`.
+//
+// * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+func (o InstanceLinodeInterfaceVpcOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpc) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+type InstanceLinodeInterfaceVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceVpc)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcPtrOutput) ToInstanceLinodeInterfaceVpcPtrOutput() InstanceLinodeInterfaceVpcPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcPtrOutput) ToInstanceLinodeInterfaceVpcPtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcPtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcPtrOutput) Elem() InstanceLinodeInterfaceVpcOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVpc) InstanceLinodeInterfaceVpc {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceVpc
+		return ret
+	}).(InstanceLinodeInterfaceVpcOutput)
+}
+
+// A set of reserved IPv4 addresses to assign to this Linode on creation.
+//
+// * **NOTE: IP reservation is not currently available to all users.**
+func (o InstanceLinodeInterfaceVpcPtrOutput) Ipv4() InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVpc) *InstanceLinodeInterfaceVpcIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InstanceLinodeInterfaceVpcIpv4PtrOutput)
+}
+
+// The ID of the VPC subnet.
+//
+// * `ipv4.addresses[]` - (Optional) The list of IPv4 addresses to assign in the VPC subnet. Each address supports `address`, `primary`, and `nat11Address`.
+//
+// * `ipv4.ranges[]` - (Optional) IPv4 CIDR ranges routed to the interface.
+func (o InstanceLinodeInterfaceVpcPtrOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVpc) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4 struct {
+	Addresses []InstanceLinodeInterfaceVpcIpv4Address `pulumi:"addresses"`
+	Ranges    []InstanceLinodeInterfaceVpcIpv4Range   `pulumi:"ranges"`
+}
+
+// InstanceLinodeInterfaceVpcIpv4Input is an input type that accepts InstanceLinodeInterfaceVpcIpv4Args and InstanceLinodeInterfaceVpcIpv4Output values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcIpv4Input` via:
+//
+//	InstanceLinodeInterfaceVpcIpv4Args{...}
+type InstanceLinodeInterfaceVpcIpv4Input interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcIpv4Output() InstanceLinodeInterfaceVpcIpv4Output
+	ToInstanceLinodeInterfaceVpcIpv4OutputWithContext(context.Context) InstanceLinodeInterfaceVpcIpv4Output
+}
+
+type InstanceLinodeInterfaceVpcIpv4Args struct {
+	Addresses InstanceLinodeInterfaceVpcIpv4AddressArrayInput `pulumi:"addresses"`
+	Ranges    InstanceLinodeInterfaceVpcIpv4RangeArrayInput   `pulumi:"ranges"`
+}
+
+func (InstanceLinodeInterfaceVpcIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4Args) ToInstanceLinodeInterfaceVpcIpv4Output() InstanceLinodeInterfaceVpcIpv4Output {
+	return i.ToInstanceLinodeInterfaceVpcIpv4OutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4Args) ToInstanceLinodeInterfaceVpcIpv4OutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4Output)
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4Args) ToInstanceLinodeInterfaceVpcIpv4PtrOutput() InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return i.ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4Args) ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4Output).ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(ctx)
+}
+
+// InstanceLinodeInterfaceVpcIpv4PtrInput is an input type that accepts InstanceLinodeInterfaceVpcIpv4Args, InstanceLinodeInterfaceVpcIpv4Ptr and InstanceLinodeInterfaceVpcIpv4PtrOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcIpv4PtrInput` via:
+//
+//	        InstanceLinodeInterfaceVpcIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InstanceLinodeInterfaceVpcIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcIpv4PtrOutput() InstanceLinodeInterfaceVpcIpv4PtrOutput
+	ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(context.Context) InstanceLinodeInterfaceVpcIpv4PtrOutput
+}
+
+type instanceLinodeInterfaceVpcIpv4PtrType InstanceLinodeInterfaceVpcIpv4Args
+
+func InstanceLinodeInterfaceVpcIpv4Ptr(v *InstanceLinodeInterfaceVpcIpv4Args) InstanceLinodeInterfaceVpcIpv4PtrInput {
+	return (*instanceLinodeInterfaceVpcIpv4PtrType)(v)
+}
+
+func (*instanceLinodeInterfaceVpcIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (i *instanceLinodeInterfaceVpcIpv4PtrType) ToInstanceLinodeInterfaceVpcIpv4PtrOutput() InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return i.ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *instanceLinodeInterfaceVpcIpv4PtrType) ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4PtrOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4Output struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4Output) ToInstanceLinodeInterfaceVpcIpv4Output() InstanceLinodeInterfaceVpcIpv4Output {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4Output) ToInstanceLinodeInterfaceVpcIpv4OutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4Output {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4Output) ToInstanceLinodeInterfaceVpcIpv4PtrOutput() InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return o.ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4Output) ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceLinodeInterfaceVpcIpv4) *InstanceLinodeInterfaceVpcIpv4 {
+		return &v
+	}).(InstanceLinodeInterfaceVpcIpv4PtrOutput)
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4Output) Addresses() InstanceLinodeInterfaceVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpcIpv4) []InstanceLinodeInterfaceVpcIpv4Address { return v.Addresses }).(InstanceLinodeInterfaceVpcIpv4AddressArrayOutput)
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4Output) Ranges() InstanceLinodeInterfaceVpcIpv4RangeArrayOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpcIpv4) []InstanceLinodeInterfaceVpcIpv4Range { return v.Ranges }).(InstanceLinodeInterfaceVpcIpv4RangeArrayOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceLinodeInterfaceVpcIpv4)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4PtrOutput) ToInstanceLinodeInterfaceVpcIpv4PtrOutput() InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4PtrOutput) ToInstanceLinodeInterfaceVpcIpv4PtrOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4PtrOutput) Elem() InstanceLinodeInterfaceVpcIpv4Output {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVpcIpv4) InstanceLinodeInterfaceVpcIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceLinodeInterfaceVpcIpv4
+		return ret
+	}).(InstanceLinodeInterfaceVpcIpv4Output)
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4PtrOutput) Addresses() InstanceLinodeInterfaceVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVpcIpv4) []InstanceLinodeInterfaceVpcIpv4Address {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(InstanceLinodeInterfaceVpcIpv4AddressArrayOutput)
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4PtrOutput) Ranges() InstanceLinodeInterfaceVpcIpv4RangeArrayOutput {
+	return o.ApplyT(func(v *InstanceLinodeInterfaceVpcIpv4) []InstanceLinodeInterfaceVpcIpv4Range {
+		if v == nil {
+			return nil
+		}
+		return v.Ranges
+	}).(InstanceLinodeInterfaceVpcIpv4RangeArrayOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4Address struct {
+	// The SLAAC address chosen for this interface.
+	Address      *string `pulumi:"address"`
+	Nat11Address *string `pulumi:"nat11Address"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InstanceLinodeInterfaceVpcIpv4AddressInput is an input type that accepts InstanceLinodeInterfaceVpcIpv4AddressArgs and InstanceLinodeInterfaceVpcIpv4AddressOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcIpv4AddressInput` via:
+//
+//	InstanceLinodeInterfaceVpcIpv4AddressArgs{...}
+type InstanceLinodeInterfaceVpcIpv4AddressInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcIpv4AddressOutput() InstanceLinodeInterfaceVpcIpv4AddressOutput
+	ToInstanceLinodeInterfaceVpcIpv4AddressOutputWithContext(context.Context) InstanceLinodeInterfaceVpcIpv4AddressOutput
+}
+
+type InstanceLinodeInterfaceVpcIpv4AddressArgs struct {
+	// The SLAAC address chosen for this interface.
+	Address      pulumi.StringPtrInput `pulumi:"address"`
+	Nat11Address pulumi.StringPtrInput `pulumi:"nat11Address"`
+	// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+	//
+	// * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+	//
+	// * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InstanceLinodeInterfaceVpcIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4AddressArgs) ToInstanceLinodeInterfaceVpcIpv4AddressOutput() InstanceLinodeInterfaceVpcIpv4AddressOutput {
+	return i.ToInstanceLinodeInterfaceVpcIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4AddressArgs) ToInstanceLinodeInterfaceVpcIpv4AddressOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4AddressOutput)
+}
+
+// InstanceLinodeInterfaceVpcIpv4AddressArrayInput is an input type that accepts InstanceLinodeInterfaceVpcIpv4AddressArray and InstanceLinodeInterfaceVpcIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcIpv4AddressArrayInput` via:
+//
+//	InstanceLinodeInterfaceVpcIpv4AddressArray{ InstanceLinodeInterfaceVpcIpv4AddressArgs{...} }
+type InstanceLinodeInterfaceVpcIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutput() InstanceLinodeInterfaceVpcIpv4AddressArrayOutput
+	ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutputWithContext(context.Context) InstanceLinodeInterfaceVpcIpv4AddressArrayOutput
+}
+
+type InstanceLinodeInterfaceVpcIpv4AddressArray []InstanceLinodeInterfaceVpcIpv4AddressInput
+
+func (InstanceLinodeInterfaceVpcIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4AddressArray) ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutput() InstanceLinodeInterfaceVpcIpv4AddressArrayOutput {
+	return i.ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4AddressArray) ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4AddressArrayOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4AddressOutput) ToInstanceLinodeInterfaceVpcIpv4AddressOutput() InstanceLinodeInterfaceVpcIpv4AddressOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4AddressOutput) ToInstanceLinodeInterfaceVpcIpv4AddressOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4AddressOutput {
+	return o
+}
+
+// The SLAAC address chosen for this interface.
+func (o InstanceLinodeInterfaceVpcIpv4AddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpcIpv4Address) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4AddressOutput) Nat11Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpcIpv4Address) *string { return v.Nat11Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+//
+// * `ipv4` - (Optional, Block) The IPv4 configuration of the VPC interface. Referenced with an index (e.g. `ipv4.0.vpc`). This field is currently only allowed for interfaces with the `vpc` purpose.
+//
+// * `ipv6` - (Optional, Block) The IPv6 configuration of the VPC interface. Referenced with an index (e.g. `ipv6.0.is_public`). This field is currently only allowed for interfaces with the `vpc` purpose. NOTE: IPv6 VPCs may not yet be available to all users.
+func (o InstanceLinodeInterfaceVpcIpv4AddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpcIpv4Address) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfaceVpcIpv4Address)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4AddressArrayOutput) ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutput() InstanceLinodeInterfaceVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4AddressArrayOutput) ToInstanceLinodeInterfaceVpcIpv4AddressArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4AddressArrayOutput) Index(i pulumi.IntInput) InstanceLinodeInterfaceVpcIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLinodeInterfaceVpcIpv4Address {
+		return vs[0].([]InstanceLinodeInterfaceVpcIpv4Address)[vs[1].(int)]
+	}).(InstanceLinodeInterfaceVpcIpv4AddressOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4Range struct {
+	// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+	Range string `pulumi:"range"`
+}
+
+// InstanceLinodeInterfaceVpcIpv4RangeInput is an input type that accepts InstanceLinodeInterfaceVpcIpv4RangeArgs and InstanceLinodeInterfaceVpcIpv4RangeOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcIpv4RangeInput` via:
+//
+//	InstanceLinodeInterfaceVpcIpv4RangeArgs{...}
+type InstanceLinodeInterfaceVpcIpv4RangeInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcIpv4RangeOutput() InstanceLinodeInterfaceVpcIpv4RangeOutput
+	ToInstanceLinodeInterfaceVpcIpv4RangeOutputWithContext(context.Context) InstanceLinodeInterfaceVpcIpv4RangeOutput
+}
+
+type InstanceLinodeInterfaceVpcIpv4RangeArgs struct {
+	// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+	Range pulumi.StringInput `pulumi:"range"`
+}
+
+func (InstanceLinodeInterfaceVpcIpv4RangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4RangeArgs) ToInstanceLinodeInterfaceVpcIpv4RangeOutput() InstanceLinodeInterfaceVpcIpv4RangeOutput {
+	return i.ToInstanceLinodeInterfaceVpcIpv4RangeOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4RangeArgs) ToInstanceLinodeInterfaceVpcIpv4RangeOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4RangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4RangeOutput)
+}
+
+// InstanceLinodeInterfaceVpcIpv4RangeArrayInput is an input type that accepts InstanceLinodeInterfaceVpcIpv4RangeArray and InstanceLinodeInterfaceVpcIpv4RangeArrayOutput values.
+// You can construct a concrete instance of `InstanceLinodeInterfaceVpcIpv4RangeArrayInput` via:
+//
+//	InstanceLinodeInterfaceVpcIpv4RangeArray{ InstanceLinodeInterfaceVpcIpv4RangeArgs{...} }
+type InstanceLinodeInterfaceVpcIpv4RangeArrayInput interface {
+	pulumi.Input
+
+	ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutput() InstanceLinodeInterfaceVpcIpv4RangeArrayOutput
+	ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutputWithContext(context.Context) InstanceLinodeInterfaceVpcIpv4RangeArrayOutput
+}
+
+type InstanceLinodeInterfaceVpcIpv4RangeArray []InstanceLinodeInterfaceVpcIpv4RangeInput
+
+func (InstanceLinodeInterfaceVpcIpv4RangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4RangeArray) ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutput() InstanceLinodeInterfaceVpcIpv4RangeArrayOutput {
+	return i.ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceLinodeInterfaceVpcIpv4RangeArray) ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4RangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceLinodeInterfaceVpcIpv4RangeArrayOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4RangeOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcIpv4RangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4RangeOutput) ToInstanceLinodeInterfaceVpcIpv4RangeOutput() InstanceLinodeInterfaceVpcIpv4RangeOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4RangeOutput) ToInstanceLinodeInterfaceVpcIpv4RangeOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4RangeOutput {
+	return o
+}
+
+// A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
+func (o InstanceLinodeInterfaceVpcIpv4RangeOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceLinodeInterfaceVpcIpv4Range) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type InstanceLinodeInterfaceVpcIpv4RangeArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceLinodeInterfaceVpcIpv4RangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceLinodeInterfaceVpcIpv4Range)(nil)).Elem()
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4RangeArrayOutput) ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutput() InstanceLinodeInterfaceVpcIpv4RangeArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4RangeArrayOutput) ToInstanceLinodeInterfaceVpcIpv4RangeArrayOutputWithContext(ctx context.Context) InstanceLinodeInterfaceVpcIpv4RangeArrayOutput {
+	return o
+}
+
+func (o InstanceLinodeInterfaceVpcIpv4RangeArrayOutput) Index(i pulumi.IntInput) InstanceLinodeInterfaceVpcIpv4RangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceLinodeInterfaceVpcIpv4Range {
+		return vs[0].([]InstanceLinodeInterfaceVpcIpv4Range)[vs[1].(int)]
+	}).(InstanceLinodeInterfaceVpcIpv4RangeOutput)
+}
+
 type InstanceMetadata struct {
 	// The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
 	UserData *string `pulumi:"userData"`
@@ -19101,6 +21244,424 @@ func (o InterfacePublicIpv6SlaacArrayOutput) Index(i pulumi.IntInput) InterfaceP
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfacePublicIpv6Slaac {
 		return vs[0].([]InterfacePublicIpv6Slaac)[vs[1].(int)]
 	}).(InterfacePublicIpv6SlaacOutput)
+}
+
+type InterfaceRdmaVpc struct {
+	// IPv4 configuration for the RDMA VPC interface.
+	Ipv4 *InterfaceRdmaVpcIpv4 `pulumi:"ipv4"`
+	// The ID of the RDMA VPC subnet this interface is attached to.
+	SubnetId int `pulumi:"subnetId"`
+	// The ID of the parent RDMA VPC.
+	VpcId *int `pulumi:"vpcId"`
+}
+
+// InterfaceRdmaVpcInput is an input type that accepts InterfaceRdmaVpcArgs and InterfaceRdmaVpcOutput values.
+// You can construct a concrete instance of `InterfaceRdmaVpcInput` via:
+//
+//	InterfaceRdmaVpcArgs{...}
+type InterfaceRdmaVpcInput interface {
+	pulumi.Input
+
+	ToInterfaceRdmaVpcOutput() InterfaceRdmaVpcOutput
+	ToInterfaceRdmaVpcOutputWithContext(context.Context) InterfaceRdmaVpcOutput
+}
+
+type InterfaceRdmaVpcArgs struct {
+	// IPv4 configuration for the RDMA VPC interface.
+	Ipv4 InterfaceRdmaVpcIpv4PtrInput `pulumi:"ipv4"`
+	// The ID of the RDMA VPC subnet this interface is attached to.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The ID of the parent RDMA VPC.
+	VpcId pulumi.IntPtrInput `pulumi:"vpcId"`
+}
+
+func (InterfaceRdmaVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (i InterfaceRdmaVpcArgs) ToInterfaceRdmaVpcOutput() InterfaceRdmaVpcOutput {
+	return i.ToInterfaceRdmaVpcOutputWithContext(context.Background())
+}
+
+func (i InterfaceRdmaVpcArgs) ToInterfaceRdmaVpcOutputWithContext(ctx context.Context) InterfaceRdmaVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcOutput)
+}
+
+func (i InterfaceRdmaVpcArgs) ToInterfaceRdmaVpcPtrOutput() InterfaceRdmaVpcPtrOutput {
+	return i.ToInterfaceRdmaVpcPtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceRdmaVpcArgs) ToInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcOutput).ToInterfaceRdmaVpcPtrOutputWithContext(ctx)
+}
+
+// InterfaceRdmaVpcPtrInput is an input type that accepts InterfaceRdmaVpcArgs, InterfaceRdmaVpcPtr and InterfaceRdmaVpcPtrOutput values.
+// You can construct a concrete instance of `InterfaceRdmaVpcPtrInput` via:
+//
+//	        InterfaceRdmaVpcArgs{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceRdmaVpcPtrInput interface {
+	pulumi.Input
+
+	ToInterfaceRdmaVpcPtrOutput() InterfaceRdmaVpcPtrOutput
+	ToInterfaceRdmaVpcPtrOutputWithContext(context.Context) InterfaceRdmaVpcPtrOutput
+}
+
+type interfaceRdmaVpcPtrType InterfaceRdmaVpcArgs
+
+func InterfaceRdmaVpcPtr(v *InterfaceRdmaVpcArgs) InterfaceRdmaVpcPtrInput {
+	return (*interfaceRdmaVpcPtrType)(v)
+}
+
+func (*interfaceRdmaVpcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (i *interfaceRdmaVpcPtrType) ToInterfaceRdmaVpcPtrOutput() InterfaceRdmaVpcPtrOutput {
+	return i.ToInterfaceRdmaVpcPtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceRdmaVpcPtrType) ToInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcPtrOutput)
+}
+
+type InterfaceRdmaVpcOutput struct{ *pulumi.OutputState }
+
+func (InterfaceRdmaVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (o InterfaceRdmaVpcOutput) ToInterfaceRdmaVpcOutput() InterfaceRdmaVpcOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcOutput) ToInterfaceRdmaVpcOutputWithContext(ctx context.Context) InterfaceRdmaVpcOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcOutput) ToInterfaceRdmaVpcPtrOutput() InterfaceRdmaVpcPtrOutput {
+	return o.ToInterfaceRdmaVpcPtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceRdmaVpcOutput) ToInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceRdmaVpc) *InterfaceRdmaVpc {
+		return &v
+	}).(InterfaceRdmaVpcPtrOutput)
+}
+
+// IPv4 configuration for the RDMA VPC interface.
+func (o InterfaceRdmaVpcOutput) Ipv4() InterfaceRdmaVpcIpv4PtrOutput {
+	return o.ApplyT(func(v InterfaceRdmaVpc) *InterfaceRdmaVpcIpv4 { return v.Ipv4 }).(InterfaceRdmaVpcIpv4PtrOutput)
+}
+
+// The ID of the RDMA VPC subnet this interface is attached to.
+func (o InterfaceRdmaVpcOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v InterfaceRdmaVpc) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The ID of the parent RDMA VPC.
+func (o InterfaceRdmaVpcOutput) VpcId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InterfaceRdmaVpc) *int { return v.VpcId }).(pulumi.IntPtrOutput)
+}
+
+type InterfaceRdmaVpcPtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceRdmaVpcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (o InterfaceRdmaVpcPtrOutput) ToInterfaceRdmaVpcPtrOutput() InterfaceRdmaVpcPtrOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcPtrOutput) ToInterfaceRdmaVpcPtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcPtrOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcPtrOutput) Elem() InterfaceRdmaVpcOutput {
+	return o.ApplyT(func(v *InterfaceRdmaVpc) InterfaceRdmaVpc {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceRdmaVpc
+		return ret
+	}).(InterfaceRdmaVpcOutput)
+}
+
+// IPv4 configuration for the RDMA VPC interface.
+func (o InterfaceRdmaVpcPtrOutput) Ipv4() InterfaceRdmaVpcIpv4PtrOutput {
+	return o.ApplyT(func(v *InterfaceRdmaVpc) *InterfaceRdmaVpcIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(InterfaceRdmaVpcIpv4PtrOutput)
+}
+
+// The ID of the RDMA VPC subnet this interface is attached to.
+func (o InterfaceRdmaVpcPtrOutput) SubnetId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InterfaceRdmaVpc) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubnetId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the parent RDMA VPC.
+func (o InterfaceRdmaVpcPtrOutput) VpcId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InterfaceRdmaVpc) *int {
+		if v == nil {
+			return nil
+		}
+		return v.VpcId
+	}).(pulumi.IntPtrOutput)
+}
+
+type InterfaceRdmaVpcIpv4 struct {
+	// The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+	Addresses []InterfaceRdmaVpcIpv4Address `pulumi:"addresses"`
+}
+
+// InterfaceRdmaVpcIpv4Input is an input type that accepts InterfaceRdmaVpcIpv4Args and InterfaceRdmaVpcIpv4Output values.
+// You can construct a concrete instance of `InterfaceRdmaVpcIpv4Input` via:
+//
+//	InterfaceRdmaVpcIpv4Args{...}
+type InterfaceRdmaVpcIpv4Input interface {
+	pulumi.Input
+
+	ToInterfaceRdmaVpcIpv4Output() InterfaceRdmaVpcIpv4Output
+	ToInterfaceRdmaVpcIpv4OutputWithContext(context.Context) InterfaceRdmaVpcIpv4Output
+}
+
+type InterfaceRdmaVpcIpv4Args struct {
+	// The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+	Addresses InterfaceRdmaVpcIpv4AddressArrayInput `pulumi:"addresses"`
+}
+
+func (InterfaceRdmaVpcIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (i InterfaceRdmaVpcIpv4Args) ToInterfaceRdmaVpcIpv4Output() InterfaceRdmaVpcIpv4Output {
+	return i.ToInterfaceRdmaVpcIpv4OutputWithContext(context.Background())
+}
+
+func (i InterfaceRdmaVpcIpv4Args) ToInterfaceRdmaVpcIpv4OutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcIpv4Output)
+}
+
+func (i InterfaceRdmaVpcIpv4Args) ToInterfaceRdmaVpcIpv4PtrOutput() InterfaceRdmaVpcIpv4PtrOutput {
+	return i.ToInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i InterfaceRdmaVpcIpv4Args) ToInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcIpv4Output).ToInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx)
+}
+
+// InterfaceRdmaVpcIpv4PtrInput is an input type that accepts InterfaceRdmaVpcIpv4Args, InterfaceRdmaVpcIpv4Ptr and InterfaceRdmaVpcIpv4PtrOutput values.
+// You can construct a concrete instance of `InterfaceRdmaVpcIpv4PtrInput` via:
+//
+//	        InterfaceRdmaVpcIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type InterfaceRdmaVpcIpv4PtrInput interface {
+	pulumi.Input
+
+	ToInterfaceRdmaVpcIpv4PtrOutput() InterfaceRdmaVpcIpv4PtrOutput
+	ToInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Context) InterfaceRdmaVpcIpv4PtrOutput
+}
+
+type interfaceRdmaVpcIpv4PtrType InterfaceRdmaVpcIpv4Args
+
+func InterfaceRdmaVpcIpv4Ptr(v *InterfaceRdmaVpcIpv4Args) InterfaceRdmaVpcIpv4PtrInput {
+	return (*interfaceRdmaVpcIpv4PtrType)(v)
+}
+
+func (*interfaceRdmaVpcIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (i *interfaceRdmaVpcIpv4PtrType) ToInterfaceRdmaVpcIpv4PtrOutput() InterfaceRdmaVpcIpv4PtrOutput {
+	return i.ToInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *interfaceRdmaVpcIpv4PtrType) ToInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcIpv4PtrOutput)
+}
+
+type InterfaceRdmaVpcIpv4Output struct{ *pulumi.OutputState }
+
+func (InterfaceRdmaVpcIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (o InterfaceRdmaVpcIpv4Output) ToInterfaceRdmaVpcIpv4Output() InterfaceRdmaVpcIpv4Output {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4Output) ToInterfaceRdmaVpcIpv4OutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4Output {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4Output) ToInterfaceRdmaVpcIpv4PtrOutput() InterfaceRdmaVpcIpv4PtrOutput {
+	return o.ToInterfaceRdmaVpcIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o InterfaceRdmaVpcIpv4Output) ToInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InterfaceRdmaVpcIpv4) *InterfaceRdmaVpcIpv4 {
+		return &v
+	}).(InterfaceRdmaVpcIpv4PtrOutput)
+}
+
+// The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+func (o InterfaceRdmaVpcIpv4Output) Addresses() InterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v InterfaceRdmaVpcIpv4) []InterfaceRdmaVpcIpv4Address { return v.Addresses }).(InterfaceRdmaVpcIpv4AddressArrayOutput)
+}
+
+type InterfaceRdmaVpcIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (InterfaceRdmaVpcIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (o InterfaceRdmaVpcIpv4PtrOutput) ToInterfaceRdmaVpcIpv4PtrOutput() InterfaceRdmaVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4PtrOutput) ToInterfaceRdmaVpcIpv4PtrOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4PtrOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4PtrOutput) Elem() InterfaceRdmaVpcIpv4Output {
+	return o.ApplyT(func(v *InterfaceRdmaVpcIpv4) InterfaceRdmaVpcIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret InterfaceRdmaVpcIpv4
+		return ret
+	}).(InterfaceRdmaVpcIpv4Output)
+}
+
+// The list of IPv4 addresses for the RDMA VPC interface. Must contain exactly one element.
+func (o InterfaceRdmaVpcIpv4PtrOutput) Addresses() InterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v *InterfaceRdmaVpcIpv4) []InterfaceRdmaVpcIpv4Address {
+		if v == nil {
+			return nil
+		}
+		return v.Addresses
+	}).(InterfaceRdmaVpcIpv4AddressArrayOutput)
+}
+
+type InterfaceRdmaVpcIpv4Address struct {
+	// The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+	Address *string `pulumi:"address"`
+	// Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+	Primary *bool `pulumi:"primary"`
+}
+
+// InterfaceRdmaVpcIpv4AddressInput is an input type that accepts InterfaceRdmaVpcIpv4AddressArgs and InterfaceRdmaVpcIpv4AddressOutput values.
+// You can construct a concrete instance of `InterfaceRdmaVpcIpv4AddressInput` via:
+//
+//	InterfaceRdmaVpcIpv4AddressArgs{...}
+type InterfaceRdmaVpcIpv4AddressInput interface {
+	pulumi.Input
+
+	ToInterfaceRdmaVpcIpv4AddressOutput() InterfaceRdmaVpcIpv4AddressOutput
+	ToInterfaceRdmaVpcIpv4AddressOutputWithContext(context.Context) InterfaceRdmaVpcIpv4AddressOutput
+}
+
+type InterfaceRdmaVpcIpv4AddressArgs struct {
+	// The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (InterfaceRdmaVpcIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (i InterfaceRdmaVpcIpv4AddressArgs) ToInterfaceRdmaVpcIpv4AddressOutput() InterfaceRdmaVpcIpv4AddressOutput {
+	return i.ToInterfaceRdmaVpcIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i InterfaceRdmaVpcIpv4AddressArgs) ToInterfaceRdmaVpcIpv4AddressOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcIpv4AddressOutput)
+}
+
+// InterfaceRdmaVpcIpv4AddressArrayInput is an input type that accepts InterfaceRdmaVpcIpv4AddressArray and InterfaceRdmaVpcIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `InterfaceRdmaVpcIpv4AddressArrayInput` via:
+//
+//	InterfaceRdmaVpcIpv4AddressArray{ InterfaceRdmaVpcIpv4AddressArgs{...} }
+type InterfaceRdmaVpcIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToInterfaceRdmaVpcIpv4AddressArrayOutput() InterfaceRdmaVpcIpv4AddressArrayOutput
+	ToInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(context.Context) InterfaceRdmaVpcIpv4AddressArrayOutput
+}
+
+type InterfaceRdmaVpcIpv4AddressArray []InterfaceRdmaVpcIpv4AddressInput
+
+func (InterfaceRdmaVpcIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (i InterfaceRdmaVpcIpv4AddressArray) ToInterfaceRdmaVpcIpv4AddressArrayOutput() InterfaceRdmaVpcIpv4AddressArrayOutput {
+	return i.ToInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i InterfaceRdmaVpcIpv4AddressArray) ToInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterfaceRdmaVpcIpv4AddressArrayOutput)
+}
+
+type InterfaceRdmaVpcIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (InterfaceRdmaVpcIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (o InterfaceRdmaVpcIpv4AddressOutput) ToInterfaceRdmaVpcIpv4AddressOutput() InterfaceRdmaVpcIpv4AddressOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4AddressOutput) ToInterfaceRdmaVpcIpv4AddressOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4AddressOutput {
+	return o
+}
+
+// The IPv4 address. Defaults to `auto` for automatic assignment from the subnet.
+func (o InterfaceRdmaVpcIpv4AddressOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InterfaceRdmaVpcIpv4Address) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Whether this is the primary IPv4 address for the interface. Exactly one address must be primary.
+func (o InterfaceRdmaVpcIpv4AddressOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InterfaceRdmaVpcIpv4Address) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type InterfaceRdmaVpcIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (InterfaceRdmaVpcIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (o InterfaceRdmaVpcIpv4AddressArrayOutput) ToInterfaceRdmaVpcIpv4AddressArrayOutput() InterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4AddressArrayOutput) ToInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(ctx context.Context) InterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o InterfaceRdmaVpcIpv4AddressArrayOutput) Index(i pulumi.IntInput) InterfaceRdmaVpcIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InterfaceRdmaVpcIpv4Address {
+		return vs[0].([]InterfaceRdmaVpcIpv4Address)[vs[1].(int)]
+	}).(InterfaceRdmaVpcIpv4AddressOutput)
 }
 
 type InterfaceVlan struct {
@@ -29388,6 +31949,175 @@ func (o VpcIpv6ArrayOutput) Index(i pulumi.IntInput) VpcIpv6Output {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcIpv6 {
 		return vs[0].([]VpcIpv6)[vs[1].(int)]
 	}).(VpcIpv6Output)
+}
+
+type VpcSubnetType struct {
+	// The date and time when the VPC was created.
+	Created *string `pulumi:"created"`
+	// A list of Managed Databases assigned to this subnet.
+	Databases []VpcSubnetDatabase `pulumi:"databases"`
+	// The ID of the VPC.
+	Id *int `pulumi:"id"`
+	// The IPv4 range of this subnet in CIDR format.
+	Ipv4 *string `pulumi:"ipv4"`
+	// The IPv6 ranges of this subnet.
+	Ipv6s []VpcSubnetIpv6 `pulumi:"ipv6s"`
+	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+	Label *string `pulumi:"label"`
+	// A list of Linodes assigned to this subnet.
+	Linodes []VpcSubnetLinode `pulumi:"linodes"`
+	// A list of NodeBalancers assigned to this subnet.
+	Nodebalancers []VpcSubnetNodebalancer `pulumi:"nodebalancers"`
+	// The date and time when the VPC was last updated.
+	Updated *string `pulumi:"updated"`
+}
+
+// VpcSubnetTypeInput is an input type that accepts VpcSubnetTypeArgs and VpcSubnetTypeOutput values.
+// You can construct a concrete instance of `VpcSubnetTypeInput` via:
+//
+//	VpcSubnetTypeArgs{...}
+type VpcSubnetTypeInput interface {
+	pulumi.Input
+
+	ToVpcSubnetTypeOutput() VpcSubnetTypeOutput
+	ToVpcSubnetTypeOutputWithContext(context.Context) VpcSubnetTypeOutput
+}
+
+type VpcSubnetTypeArgs struct {
+	// The date and time when the VPC was created.
+	Created pulumi.StringPtrInput `pulumi:"created"`
+	// A list of Managed Databases assigned to this subnet.
+	Databases VpcSubnetDatabaseArrayInput `pulumi:"databases"`
+	// The ID of the VPC.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+	// The IPv4 range of this subnet in CIDR format.
+	Ipv4 pulumi.StringPtrInput `pulumi:"ipv4"`
+	// The IPv6 ranges of this subnet.
+	Ipv6s VpcSubnetIpv6ArrayInput `pulumi:"ipv6s"`
+	// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// A list of Linodes assigned to this subnet.
+	Linodes VpcSubnetLinodeArrayInput `pulumi:"linodes"`
+	// A list of NodeBalancers assigned to this subnet.
+	Nodebalancers VpcSubnetNodebalancerArrayInput `pulumi:"nodebalancers"`
+	// The date and time when the VPC was last updated.
+	Updated pulumi.StringPtrInput `pulumi:"updated"`
+}
+
+func (VpcSubnetTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetType)(nil)).Elem()
+}
+
+func (i VpcSubnetTypeArgs) ToVpcSubnetTypeOutput() VpcSubnetTypeOutput {
+	return i.ToVpcSubnetTypeOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetTypeArgs) ToVpcSubnetTypeOutputWithContext(ctx context.Context) VpcSubnetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetTypeOutput)
+}
+
+// VpcSubnetTypeArrayInput is an input type that accepts VpcSubnetTypeArray and VpcSubnetTypeArrayOutput values.
+// You can construct a concrete instance of `VpcSubnetTypeArrayInput` via:
+//
+//	VpcSubnetTypeArray{ VpcSubnetTypeArgs{...} }
+type VpcSubnetTypeArrayInput interface {
+	pulumi.Input
+
+	ToVpcSubnetTypeArrayOutput() VpcSubnetTypeArrayOutput
+	ToVpcSubnetTypeArrayOutputWithContext(context.Context) VpcSubnetTypeArrayOutput
+}
+
+type VpcSubnetTypeArray []VpcSubnetTypeInput
+
+func (VpcSubnetTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetType)(nil)).Elem()
+}
+
+func (i VpcSubnetTypeArray) ToVpcSubnetTypeArrayOutput() VpcSubnetTypeArrayOutput {
+	return i.ToVpcSubnetTypeArrayOutputWithContext(context.Background())
+}
+
+func (i VpcSubnetTypeArray) ToVpcSubnetTypeArrayOutputWithContext(ctx context.Context) VpcSubnetTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcSubnetTypeArrayOutput)
+}
+
+type VpcSubnetTypeOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcSubnetType)(nil)).Elem()
+}
+
+func (o VpcSubnetTypeOutput) ToVpcSubnetTypeOutput() VpcSubnetTypeOutput {
+	return o
+}
+
+func (o VpcSubnetTypeOutput) ToVpcSubnetTypeOutputWithContext(ctx context.Context) VpcSubnetTypeOutput {
+	return o
+}
+
+// The date and time when the VPC was created.
+func (o VpcSubnetTypeOutput) Created() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcSubnetType) *string { return v.Created }).(pulumi.StringPtrOutput)
+}
+
+// A list of Managed Databases assigned to this subnet.
+func (o VpcSubnetTypeOutput) Databases() VpcSubnetDatabaseArrayOutput {
+	return o.ApplyT(func(v VpcSubnetType) []VpcSubnetDatabase { return v.Databases }).(VpcSubnetDatabaseArrayOutput)
+}
+
+// The ID of the VPC.
+func (o VpcSubnetTypeOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpcSubnetType) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+// The IPv4 range of this subnet in CIDR format.
+func (o VpcSubnetTypeOutput) Ipv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcSubnetType) *string { return v.Ipv4 }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 ranges of this subnet.
+func (o VpcSubnetTypeOutput) Ipv6s() VpcSubnetIpv6ArrayOutput {
+	return o.ApplyT(func(v VpcSubnetType) []VpcSubnetIpv6 { return v.Ipv6s }).(VpcSubnetIpv6ArrayOutput)
+}
+
+// The label of the VPC. This field can only contain ASCII letters, digits and dashes.
+func (o VpcSubnetTypeOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcSubnetType) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// A list of Linodes assigned to this subnet.
+func (o VpcSubnetTypeOutput) Linodes() VpcSubnetLinodeArrayOutput {
+	return o.ApplyT(func(v VpcSubnetType) []VpcSubnetLinode { return v.Linodes }).(VpcSubnetLinodeArrayOutput)
+}
+
+// A list of NodeBalancers assigned to this subnet.
+func (o VpcSubnetTypeOutput) Nodebalancers() VpcSubnetNodebalancerArrayOutput {
+	return o.ApplyT(func(v VpcSubnetType) []VpcSubnetNodebalancer { return v.Nodebalancers }).(VpcSubnetNodebalancerArrayOutput)
+}
+
+// The date and time when the VPC was last updated.
+func (o VpcSubnetTypeOutput) Updated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcSubnetType) *string { return v.Updated }).(pulumi.StringPtrOutput)
+}
+
+type VpcSubnetTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcSubnetTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcSubnetType)(nil)).Elem()
+}
+
+func (o VpcSubnetTypeArrayOutput) ToVpcSubnetTypeArrayOutput() VpcSubnetTypeArrayOutput {
+	return o
+}
+
+func (o VpcSubnetTypeArrayOutput) ToVpcSubnetTypeArrayOutputWithContext(ctx context.Context) VpcSubnetTypeArrayOutput {
+	return o
+}
+
+func (o VpcSubnetTypeArrayOutput) Index(i pulumi.IntInput) VpcSubnetTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcSubnetType {
+		return vs[0].([]VpcSubnetType)[vs[1].(int)]
+	}).(VpcSubnetTypeOutput)
 }
 
 type VpcSubnetDatabase struct {
@@ -56132,6 +58862,234 @@ func (o GetInterfacePublicIpv6SlaacArrayOutput) Index(i pulumi.IntInput) GetInte
 	}).(GetInterfacePublicIpv6SlaacOutput)
 }
 
+type GetInterfaceRdmaVpc struct {
+	// The IPv4 configuration for the RDMA VPC interface.
+	Ipv4 GetInterfaceRdmaVpcIpv4 `pulumi:"ipv4"`
+	// The ID of the RDMA VPC subnet.
+	SubnetId int `pulumi:"subnetId"`
+	// The ID of the parent RDMA VPC.
+	VpcId int `pulumi:"vpcId"`
+}
+
+// GetInterfaceRdmaVpcInput is an input type that accepts GetInterfaceRdmaVpcArgs and GetInterfaceRdmaVpcOutput values.
+// You can construct a concrete instance of `GetInterfaceRdmaVpcInput` via:
+//
+//	GetInterfaceRdmaVpcArgs{...}
+type GetInterfaceRdmaVpcInput interface {
+	pulumi.Input
+
+	ToGetInterfaceRdmaVpcOutput() GetInterfaceRdmaVpcOutput
+	ToGetInterfaceRdmaVpcOutputWithContext(context.Context) GetInterfaceRdmaVpcOutput
+}
+
+type GetInterfaceRdmaVpcArgs struct {
+	// The IPv4 configuration for the RDMA VPC interface.
+	Ipv4 GetInterfaceRdmaVpcIpv4Input `pulumi:"ipv4"`
+	// The ID of the RDMA VPC subnet.
+	SubnetId pulumi.IntInput `pulumi:"subnetId"`
+	// The ID of the parent RDMA VPC.
+	VpcId pulumi.IntInput `pulumi:"vpcId"`
+}
+
+func (GetInterfaceRdmaVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (i GetInterfaceRdmaVpcArgs) ToGetInterfaceRdmaVpcOutput() GetInterfaceRdmaVpcOutput {
+	return i.ToGetInterfaceRdmaVpcOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceRdmaVpcArgs) ToGetInterfaceRdmaVpcOutputWithContext(ctx context.Context) GetInterfaceRdmaVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceRdmaVpcOutput)
+}
+
+type GetInterfaceRdmaVpcOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceRdmaVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceRdmaVpc)(nil)).Elem()
+}
+
+func (o GetInterfaceRdmaVpcOutput) ToGetInterfaceRdmaVpcOutput() GetInterfaceRdmaVpcOutput {
+	return o
+}
+
+func (o GetInterfaceRdmaVpcOutput) ToGetInterfaceRdmaVpcOutputWithContext(ctx context.Context) GetInterfaceRdmaVpcOutput {
+	return o
+}
+
+// The IPv4 configuration for the RDMA VPC interface.
+func (o GetInterfaceRdmaVpcOutput) Ipv4() GetInterfaceRdmaVpcIpv4Output {
+	return o.ApplyT(func(v GetInterfaceRdmaVpc) GetInterfaceRdmaVpcIpv4 { return v.Ipv4 }).(GetInterfaceRdmaVpcIpv4Output)
+}
+
+// The ID of the RDMA VPC subnet.
+func (o GetInterfaceRdmaVpcOutput) SubnetId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInterfaceRdmaVpc) int { return v.SubnetId }).(pulumi.IntOutput)
+}
+
+// The ID of the parent RDMA VPC.
+func (o GetInterfaceRdmaVpcOutput) VpcId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInterfaceRdmaVpc) int { return v.VpcId }).(pulumi.IntOutput)
+}
+
+type GetInterfaceRdmaVpcIpv4 struct {
+	// IPv4 addresses for the RDMA VPC interface.
+	Addresses []GetInterfaceRdmaVpcIpv4Address `pulumi:"addresses"`
+}
+
+// GetInterfaceRdmaVpcIpv4Input is an input type that accepts GetInterfaceRdmaVpcIpv4Args and GetInterfaceRdmaVpcIpv4Output values.
+// You can construct a concrete instance of `GetInterfaceRdmaVpcIpv4Input` via:
+//
+//	GetInterfaceRdmaVpcIpv4Args{...}
+type GetInterfaceRdmaVpcIpv4Input interface {
+	pulumi.Input
+
+	ToGetInterfaceRdmaVpcIpv4Output() GetInterfaceRdmaVpcIpv4Output
+	ToGetInterfaceRdmaVpcIpv4OutputWithContext(context.Context) GetInterfaceRdmaVpcIpv4Output
+}
+
+type GetInterfaceRdmaVpcIpv4Args struct {
+	// IPv4 addresses for the RDMA VPC interface.
+	Addresses GetInterfaceRdmaVpcIpv4AddressArrayInput `pulumi:"addresses"`
+}
+
+func (GetInterfaceRdmaVpcIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (i GetInterfaceRdmaVpcIpv4Args) ToGetInterfaceRdmaVpcIpv4Output() GetInterfaceRdmaVpcIpv4Output {
+	return i.ToGetInterfaceRdmaVpcIpv4OutputWithContext(context.Background())
+}
+
+func (i GetInterfaceRdmaVpcIpv4Args) ToGetInterfaceRdmaVpcIpv4OutputWithContext(ctx context.Context) GetInterfaceRdmaVpcIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceRdmaVpcIpv4Output)
+}
+
+type GetInterfaceRdmaVpcIpv4Output struct{ *pulumi.OutputState }
+
+func (GetInterfaceRdmaVpcIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceRdmaVpcIpv4)(nil)).Elem()
+}
+
+func (o GetInterfaceRdmaVpcIpv4Output) ToGetInterfaceRdmaVpcIpv4Output() GetInterfaceRdmaVpcIpv4Output {
+	return o
+}
+
+func (o GetInterfaceRdmaVpcIpv4Output) ToGetInterfaceRdmaVpcIpv4OutputWithContext(ctx context.Context) GetInterfaceRdmaVpcIpv4Output {
+	return o
+}
+
+// IPv4 addresses for the RDMA VPC interface.
+func (o GetInterfaceRdmaVpcIpv4Output) Addresses() GetInterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o.ApplyT(func(v GetInterfaceRdmaVpcIpv4) []GetInterfaceRdmaVpcIpv4Address { return v.Addresses }).(GetInterfaceRdmaVpcIpv4AddressArrayOutput)
+}
+
+type GetInterfaceRdmaVpcIpv4Address struct {
+	// The IPv4 address on the RDMA VPC interface.
+	Address string `pulumi:"address"`
+	// Whether this is the primary IPv4 address.
+	Primary bool `pulumi:"primary"`
+}
+
+// GetInterfaceRdmaVpcIpv4AddressInput is an input type that accepts GetInterfaceRdmaVpcIpv4AddressArgs and GetInterfaceRdmaVpcIpv4AddressOutput values.
+// You can construct a concrete instance of `GetInterfaceRdmaVpcIpv4AddressInput` via:
+//
+//	GetInterfaceRdmaVpcIpv4AddressArgs{...}
+type GetInterfaceRdmaVpcIpv4AddressInput interface {
+	pulumi.Input
+
+	ToGetInterfaceRdmaVpcIpv4AddressOutput() GetInterfaceRdmaVpcIpv4AddressOutput
+	ToGetInterfaceRdmaVpcIpv4AddressOutputWithContext(context.Context) GetInterfaceRdmaVpcIpv4AddressOutput
+}
+
+type GetInterfaceRdmaVpcIpv4AddressArgs struct {
+	// The IPv4 address on the RDMA VPC interface.
+	Address pulumi.StringInput `pulumi:"address"`
+	// Whether this is the primary IPv4 address.
+	Primary pulumi.BoolInput `pulumi:"primary"`
+}
+
+func (GetInterfaceRdmaVpcIpv4AddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (i GetInterfaceRdmaVpcIpv4AddressArgs) ToGetInterfaceRdmaVpcIpv4AddressOutput() GetInterfaceRdmaVpcIpv4AddressOutput {
+	return i.ToGetInterfaceRdmaVpcIpv4AddressOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceRdmaVpcIpv4AddressArgs) ToGetInterfaceRdmaVpcIpv4AddressOutputWithContext(ctx context.Context) GetInterfaceRdmaVpcIpv4AddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceRdmaVpcIpv4AddressOutput)
+}
+
+// GetInterfaceRdmaVpcIpv4AddressArrayInput is an input type that accepts GetInterfaceRdmaVpcIpv4AddressArray and GetInterfaceRdmaVpcIpv4AddressArrayOutput values.
+// You can construct a concrete instance of `GetInterfaceRdmaVpcIpv4AddressArrayInput` via:
+//
+//	GetInterfaceRdmaVpcIpv4AddressArray{ GetInterfaceRdmaVpcIpv4AddressArgs{...} }
+type GetInterfaceRdmaVpcIpv4AddressArrayInput interface {
+	pulumi.Input
+
+	ToGetInterfaceRdmaVpcIpv4AddressArrayOutput() GetInterfaceRdmaVpcIpv4AddressArrayOutput
+	ToGetInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(context.Context) GetInterfaceRdmaVpcIpv4AddressArrayOutput
+}
+
+type GetInterfaceRdmaVpcIpv4AddressArray []GetInterfaceRdmaVpcIpv4AddressInput
+
+func (GetInterfaceRdmaVpcIpv4AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (i GetInterfaceRdmaVpcIpv4AddressArray) ToGetInterfaceRdmaVpcIpv4AddressArrayOutput() GetInterfaceRdmaVpcIpv4AddressArrayOutput {
+	return i.ToGetInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetInterfaceRdmaVpcIpv4AddressArray) ToGetInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(ctx context.Context) GetInterfaceRdmaVpcIpv4AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInterfaceRdmaVpcIpv4AddressArrayOutput)
+}
+
+type GetInterfaceRdmaVpcIpv4AddressOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceRdmaVpcIpv4AddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (o GetInterfaceRdmaVpcIpv4AddressOutput) ToGetInterfaceRdmaVpcIpv4AddressOutput() GetInterfaceRdmaVpcIpv4AddressOutput {
+	return o
+}
+
+func (o GetInterfaceRdmaVpcIpv4AddressOutput) ToGetInterfaceRdmaVpcIpv4AddressOutputWithContext(ctx context.Context) GetInterfaceRdmaVpcIpv4AddressOutput {
+	return o
+}
+
+// The IPv4 address on the RDMA VPC interface.
+func (o GetInterfaceRdmaVpcIpv4AddressOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInterfaceRdmaVpcIpv4Address) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// Whether this is the primary IPv4 address.
+func (o GetInterfaceRdmaVpcIpv4AddressOutput) Primary() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInterfaceRdmaVpcIpv4Address) bool { return v.Primary }).(pulumi.BoolOutput)
+}
+
+type GetInterfaceRdmaVpcIpv4AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInterfaceRdmaVpcIpv4AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInterfaceRdmaVpcIpv4Address)(nil)).Elem()
+}
+
+func (o GetInterfaceRdmaVpcIpv4AddressArrayOutput) ToGetInterfaceRdmaVpcIpv4AddressArrayOutput() GetInterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o GetInterfaceRdmaVpcIpv4AddressArrayOutput) ToGetInterfaceRdmaVpcIpv4AddressArrayOutputWithContext(ctx context.Context) GetInterfaceRdmaVpcIpv4AddressArrayOutput {
+	return o
+}
+
+func (o GetInterfaceRdmaVpcIpv4AddressArrayOutput) Index(i pulumi.IntInput) GetInterfaceRdmaVpcIpv4AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInterfaceRdmaVpcIpv4Address {
+		return vs[0].([]GetInterfaceRdmaVpcIpv4Address)[vs[1].(int)]
+	}).(GetInterfaceRdmaVpcIpv4AddressOutput)
+}
+
 type GetInterfaceVlan struct {
 	// The IPAM (IP Address Management) address of the VLAN interface.
 	IpamAddress string `pulumi:"ipamAddress"`
@@ -63010,2650 +65968,6 @@ func (o GetMonitorLogsStreamDetailsOutput) IsAutoAddAllClustersEnabled() pulumi.
 	return o.ApplyT(func(v GetMonitorLogsStreamDetails) bool { return v.IsAutoAddAllClustersEnabled }).(pulumi.BoolOutput)
 }
 
-type GetMonitorLogsStreamHistoryStream struct {
-	// The date and time when this version was created.
-	Created string `pulumi:"created"`
-	// The user who created this stream version.
-	CreatedBy string `pulumi:"createdBy"`
-	// The destination IDs configured at this version.
-	Destinations []int `pulumi:"destinations"`
-	// Additional configuration details at this version.
-	Details GetMonitorLogsStreamHistoryStreamDetails `pulumi:"details"`
-	// The ID of the logs stream version.
-	Id int `pulumi:"id"`
-	// The label of the logs stream at this version.
-	Label string `pulumi:"label"`
-	// The status of the logs stream at this version.
-	Status string `pulumi:"status"`
-	// The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
-	Type string `pulumi:"type"`
-	// The date and time when this version was last updated.
-	Updated string `pulumi:"updated"`
-	// The user who last updated this stream version.
-	UpdatedBy string `pulumi:"updatedBy"`
-	// The version number of this history entry.
-	Version int `pulumi:"version"`
-}
-
-// GetMonitorLogsStreamHistoryStreamInput is an input type that accepts GetMonitorLogsStreamHistoryStreamArgs and GetMonitorLogsStreamHistoryStreamOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamHistoryStreamInput` via:
-//
-//	GetMonitorLogsStreamHistoryStreamArgs{...}
-type GetMonitorLogsStreamHistoryStreamInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamHistoryStreamOutput() GetMonitorLogsStreamHistoryStreamOutput
-	ToGetMonitorLogsStreamHistoryStreamOutputWithContext(context.Context) GetMonitorLogsStreamHistoryStreamOutput
-}
-
-type GetMonitorLogsStreamHistoryStreamArgs struct {
-	// The date and time when this version was created.
-	Created pulumi.StringInput `pulumi:"created"`
-	// The user who created this stream version.
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// The destination IDs configured at this version.
-	Destinations pulumi.IntArrayInput `pulumi:"destinations"`
-	// Additional configuration details at this version.
-	Details GetMonitorLogsStreamHistoryStreamDetailsInput `pulumi:"details"`
-	// The ID of the logs stream version.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The label of the logs stream at this version.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The status of the logs stream at this version.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The date and time when this version was last updated.
-	Updated pulumi.StringInput `pulumi:"updated"`
-	// The user who last updated this stream version.
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// The version number of this history entry.
-	Version pulumi.IntInput `pulumi:"version"`
-}
-
-func (GetMonitorLogsStreamHistoryStreamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStream)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamHistoryStreamArgs) ToGetMonitorLogsStreamHistoryStreamOutput() GetMonitorLogsStreamHistoryStreamOutput {
-	return i.ToGetMonitorLogsStreamHistoryStreamOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamHistoryStreamArgs) ToGetMonitorLogsStreamHistoryStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamHistoryStreamOutput)
-}
-
-// GetMonitorLogsStreamHistoryStreamArrayInput is an input type that accepts GetMonitorLogsStreamHistoryStreamArray and GetMonitorLogsStreamHistoryStreamArrayOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamHistoryStreamArrayInput` via:
-//
-//	GetMonitorLogsStreamHistoryStreamArray{ GetMonitorLogsStreamHistoryStreamArgs{...} }
-type GetMonitorLogsStreamHistoryStreamArrayInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamHistoryStreamArrayOutput() GetMonitorLogsStreamHistoryStreamArrayOutput
-	ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(context.Context) GetMonitorLogsStreamHistoryStreamArrayOutput
-}
-
-type GetMonitorLogsStreamHistoryStreamArray []GetMonitorLogsStreamHistoryStreamInput
-
-func (GetMonitorLogsStreamHistoryStreamArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsStreamHistoryStream)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamHistoryStreamArray) ToGetMonitorLogsStreamHistoryStreamArrayOutput() GetMonitorLogsStreamHistoryStreamArrayOutput {
-	return i.ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamHistoryStreamArray) ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamHistoryStreamArrayOutput)
-}
-
-type GetMonitorLogsStreamHistoryStreamOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamHistoryStreamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStream)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamHistoryStreamOutput) ToGetMonitorLogsStreamHistoryStreamOutput() GetMonitorLogsStreamHistoryStreamOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamHistoryStreamOutput) ToGetMonitorLogsStreamHistoryStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamOutput {
-	return o
-}
-
-// The date and time when this version was created.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The user who created this stream version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// The destination IDs configured at this version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Destinations() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) []int { return v.Destinations }).(pulumi.IntArrayOutput)
-}
-
-// Additional configuration details at this version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Details() GetMonitorLogsStreamHistoryStreamDetailsOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) GetMonitorLogsStreamHistoryStreamDetails { return v.Details }).(GetMonitorLogsStreamHistoryStreamDetailsOutput)
-}
-
-// The ID of the logs stream version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The label of the logs stream at this version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The status of the logs stream at this version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// The type of the logs stream at this version. One of: `auditLogs`, `lkeAuditLogs`.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The date and time when this version was last updated.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.Updated }).(pulumi.StringOutput)
-}
-
-// The user who last updated this stream version.
-func (o GetMonitorLogsStreamHistoryStreamOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// The version number of this history entry.
-func (o GetMonitorLogsStreamHistoryStreamOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStream) int { return v.Version }).(pulumi.IntOutput)
-}
-
-type GetMonitorLogsStreamHistoryStreamArrayOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamHistoryStreamArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsStreamHistoryStream)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamHistoryStreamArrayOutput) ToGetMonitorLogsStreamHistoryStreamArrayOutput() GetMonitorLogsStreamHistoryStreamArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamHistoryStreamArrayOutput) ToGetMonitorLogsStreamHistoryStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamHistoryStreamArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamHistoryStreamOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamHistoryStream {
-		return vs[0].([]GetMonitorLogsStreamHistoryStream)[vs[1].(int)]
-	}).(GetMonitorLogsStreamHistoryStreamOutput)
-}
-
-type GetMonitorLogsStreamHistoryStreamDetails struct {
-	// The LKE cluster IDs included in this stream version.
-	ClusterIds []int `pulumi:"clusterIds"`
-	// Whether all clusters were auto-added at this version.
-	IsAutoAddAllClustersEnabled bool `pulumi:"isAutoAddAllClustersEnabled"`
-}
-
-// GetMonitorLogsStreamHistoryStreamDetailsInput is an input type that accepts GetMonitorLogsStreamHistoryStreamDetailsArgs and GetMonitorLogsStreamHistoryStreamDetailsOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamHistoryStreamDetailsInput` via:
-//
-//	GetMonitorLogsStreamHistoryStreamDetailsArgs{...}
-type GetMonitorLogsStreamHistoryStreamDetailsInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamHistoryStreamDetailsOutput() GetMonitorLogsStreamHistoryStreamDetailsOutput
-	ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(context.Context) GetMonitorLogsStreamHistoryStreamDetailsOutput
-}
-
-type GetMonitorLogsStreamHistoryStreamDetailsArgs struct {
-	// The LKE cluster IDs included in this stream version.
-	ClusterIds pulumi.IntArrayInput `pulumi:"clusterIds"`
-	// Whether all clusters were auto-added at this version.
-	IsAutoAddAllClustersEnabled pulumi.BoolInput `pulumi:"isAutoAddAllClustersEnabled"`
-}
-
-func (GetMonitorLogsStreamHistoryStreamDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetails)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamHistoryStreamDetailsArgs) ToGetMonitorLogsStreamHistoryStreamDetailsOutput() GetMonitorLogsStreamHistoryStreamDetailsOutput {
-	return i.ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamHistoryStreamDetailsArgs) ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamHistoryStreamDetailsOutput)
-}
-
-type GetMonitorLogsStreamHistoryStreamDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamHistoryStreamDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetails)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ToGetMonitorLogsStreamHistoryStreamDetailsOutput() GetMonitorLogsStreamHistoryStreamDetailsOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ToGetMonitorLogsStreamHistoryStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamHistoryStreamDetailsOutput {
-	return o
-}
-
-// The LKE cluster IDs included in this stream version.
-func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ClusterIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStreamDetails) []int { return v.ClusterIds }).(pulumi.IntArrayOutput)
-}
-
-// Whether all clusters were auto-added at this version.
-func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) IsAutoAddAllClustersEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStreamDetails) bool { return v.IsAutoAddAllClustersEnabled }).(pulumi.BoolOutput)
-}
-
-type GetMonitorLogsStreamsFilter struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name string `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values []string `pulumi:"values"`
-}
-
-// GetMonitorLogsStreamsFilterInput is an input type that accepts GetMonitorLogsStreamsFilterArgs and GetMonitorLogsStreamsFilterOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamsFilterInput` via:
-//
-//	GetMonitorLogsStreamsFilterArgs{...}
-type GetMonitorLogsStreamsFilterInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamsFilterOutput() GetMonitorLogsStreamsFilterOutput
-	ToGetMonitorLogsStreamsFilterOutputWithContext(context.Context) GetMonitorLogsStreamsFilterOutput
-}
-
-type GetMonitorLogsStreamsFilterArgs struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetMonitorLogsStreamsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamsFilter)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamsFilterArgs) ToGetMonitorLogsStreamsFilterOutput() GetMonitorLogsStreamsFilterOutput {
-	return i.ToGetMonitorLogsStreamsFilterOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamsFilterArgs) ToGetMonitorLogsStreamsFilterOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsFilterOutput)
-}
-
-// GetMonitorLogsStreamsFilterArrayInput is an input type that accepts GetMonitorLogsStreamsFilterArray and GetMonitorLogsStreamsFilterArrayOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamsFilterArrayInput` via:
-//
-//	GetMonitorLogsStreamsFilterArray{ GetMonitorLogsStreamsFilterArgs{...} }
-type GetMonitorLogsStreamsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamsFilterArrayOutput() GetMonitorLogsStreamsFilterArrayOutput
-	ToGetMonitorLogsStreamsFilterArrayOutputWithContext(context.Context) GetMonitorLogsStreamsFilterArrayOutput
-}
-
-type GetMonitorLogsStreamsFilterArray []GetMonitorLogsStreamsFilterInput
-
-func (GetMonitorLogsStreamsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsStreamsFilter)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamsFilterArray) ToGetMonitorLogsStreamsFilterArrayOutput() GetMonitorLogsStreamsFilterArrayOutput {
-	return i.ToGetMonitorLogsStreamsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamsFilterArray) ToGetMonitorLogsStreamsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsFilterArrayOutput)
-}
-
-type GetMonitorLogsStreamsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamsFilter)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamsFilterOutput) ToGetMonitorLogsStreamsFilterOutput() GetMonitorLogsStreamsFilterOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamsFilterOutput) ToGetMonitorLogsStreamsFilterOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterOutput {
-	return o
-}
-
-// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-func (o GetMonitorLogsStreamsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-func (o GetMonitorLogsStreamsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A list of values for the filter to allow. These values should all be in string form.
-func (o GetMonitorLogsStreamsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetMonitorLogsStreamsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsStreamsFilter)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamsFilterArrayOutput) ToGetMonitorLogsStreamsFilterArrayOutput() GetMonitorLogsStreamsFilterArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamsFilterArrayOutput) ToGetMonitorLogsStreamsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsFilterArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamsFilterArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamsFilter {
-		return vs[0].([]GetMonitorLogsStreamsFilter)[vs[1].(int)]
-	}).(GetMonitorLogsStreamsFilterOutput)
-}
-
-type GetMonitorLogsStreamsStream struct {
-	// When this logs stream was created.
-	Created string `pulumi:"created"`
-	// The user who created this logs stream.
-	CreatedBy string `pulumi:"createdBy"`
-	// The unique ID of this logs stream.
-	Id int `pulumi:"id"`
-	// The label for this logs stream.
-	Label string `pulumi:"label"`
-	// The status of this logs stream.
-	Status string `pulumi:"status"`
-	// The type of this logs stream.
-	Type string `pulumi:"type"`
-	// When this logs stream was last updated.
-	Updated string `pulumi:"updated"`
-	// The user who last updated this logs stream.
-	UpdatedBy string `pulumi:"updatedBy"`
-	// The version of this logs stream.
-	Version int `pulumi:"version"`
-}
-
-// GetMonitorLogsStreamsStreamInput is an input type that accepts GetMonitorLogsStreamsStreamArgs and GetMonitorLogsStreamsStreamOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamsStreamInput` via:
-//
-//	GetMonitorLogsStreamsStreamArgs{...}
-type GetMonitorLogsStreamsStreamInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamsStreamOutput() GetMonitorLogsStreamsStreamOutput
-	ToGetMonitorLogsStreamsStreamOutputWithContext(context.Context) GetMonitorLogsStreamsStreamOutput
-}
-
-type GetMonitorLogsStreamsStreamArgs struct {
-	// When this logs stream was created.
-	Created pulumi.StringInput `pulumi:"created"`
-	// The user who created this logs stream.
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// The unique ID of this logs stream.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The label for this logs stream.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The status of this logs stream.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The type of this logs stream.
-	Type pulumi.StringInput `pulumi:"type"`
-	// When this logs stream was last updated.
-	Updated pulumi.StringInput `pulumi:"updated"`
-	// The user who last updated this logs stream.
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// The version of this logs stream.
-	Version pulumi.IntInput `pulumi:"version"`
-}
-
-func (GetMonitorLogsStreamsStreamArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamsStream)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamsStreamArgs) ToGetMonitorLogsStreamsStreamOutput() GetMonitorLogsStreamsStreamOutput {
-	return i.ToGetMonitorLogsStreamsStreamOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamsStreamArgs) ToGetMonitorLogsStreamsStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsStreamOutput)
-}
-
-// GetMonitorLogsStreamsStreamArrayInput is an input type that accepts GetMonitorLogsStreamsStreamArray and GetMonitorLogsStreamsStreamArrayOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamsStreamArrayInput` via:
-//
-//	GetMonitorLogsStreamsStreamArray{ GetMonitorLogsStreamsStreamArgs{...} }
-type GetMonitorLogsStreamsStreamArrayInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamsStreamArrayOutput() GetMonitorLogsStreamsStreamArrayOutput
-	ToGetMonitorLogsStreamsStreamArrayOutputWithContext(context.Context) GetMonitorLogsStreamsStreamArrayOutput
-}
-
-type GetMonitorLogsStreamsStreamArray []GetMonitorLogsStreamsStreamInput
-
-func (GetMonitorLogsStreamsStreamArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsStreamsStream)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamsStreamArray) ToGetMonitorLogsStreamsStreamArrayOutput() GetMonitorLogsStreamsStreamArrayOutput {
-	return i.ToGetMonitorLogsStreamsStreamArrayOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamsStreamArray) ToGetMonitorLogsStreamsStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamsStreamArrayOutput)
-}
-
-type GetMonitorLogsStreamsStreamOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamsStreamOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamsStream)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamsStreamOutput) ToGetMonitorLogsStreamsStreamOutput() GetMonitorLogsStreamsStreamOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamsStreamOutput) ToGetMonitorLogsStreamsStreamOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamOutput {
-	return o
-}
-
-// When this logs stream was created.
-func (o GetMonitorLogsStreamsStreamOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The user who created this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// The unique ID of this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The label for this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The status of this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// The type of this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// When this logs stream was last updated.
-func (o GetMonitorLogsStreamsStreamOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.Updated }).(pulumi.StringOutput)
-}
-
-// The user who last updated this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// The version of this logs stream.
-func (o GetMonitorLogsStreamsStreamOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamsStream) int { return v.Version }).(pulumi.IntOutput)
-}
-
-type GetMonitorLogsStreamsStreamArrayOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamsStreamArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsStreamsStream)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamsStreamArrayOutput) ToGetMonitorLogsStreamsStreamArrayOutput() GetMonitorLogsStreamsStreamArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamsStreamArrayOutput) ToGetMonitorLogsStreamsStreamArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamsStreamArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamsStreamArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamsStreamOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamsStream {
-		return vs[0].([]GetMonitorLogsStreamsStream)[vs[1].(int)]
-	}).(GetMonitorLogsStreamsStreamOutput)
-}
-
-type GetNbTypesFilter struct {
-	// The type of comparison to use for this filter.
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
-	Name string `pulumi:"name"`
-	// The value(s) to be used in the filter.
-	Values []string `pulumi:"values"`
-}
-
-// GetNbTypesFilterInput is an input type that accepts GetNbTypesFilterArgs and GetNbTypesFilterOutput values.
-// You can construct a concrete instance of `GetNbTypesFilterInput` via:
-//
-//	GetNbTypesFilterArgs{...}
-type GetNbTypesFilterInput interface {
-	pulumi.Input
-
-	ToGetNbTypesFilterOutput() GetNbTypesFilterOutput
-	ToGetNbTypesFilterOutputWithContext(context.Context) GetNbTypesFilterOutput
-}
-
-type GetNbTypesFilterArgs struct {
-	// The type of comparison to use for this filter.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the attribute to filter on.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The value(s) to be used in the filter.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetNbTypesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesFilter)(nil)).Elem()
-}
-
-func (i GetNbTypesFilterArgs) ToGetNbTypesFilterOutput() GetNbTypesFilterOutput {
-	return i.ToGetNbTypesFilterOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesFilterArgs) ToGetNbTypesFilterOutputWithContext(ctx context.Context) GetNbTypesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesFilterOutput)
-}
-
-// GetNbTypesFilterArrayInput is an input type that accepts GetNbTypesFilterArray and GetNbTypesFilterArrayOutput values.
-// You can construct a concrete instance of `GetNbTypesFilterArrayInput` via:
-//
-//	GetNbTypesFilterArray{ GetNbTypesFilterArgs{...} }
-type GetNbTypesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput
-	ToGetNbTypesFilterArrayOutputWithContext(context.Context) GetNbTypesFilterArrayOutput
-}
-
-type GetNbTypesFilterArray []GetNbTypesFilterInput
-
-func (GetNbTypesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesFilter)(nil)).Elem()
-}
-
-func (i GetNbTypesFilterArray) ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput {
-	return i.ToGetNbTypesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesFilterArray) ToGetNbTypesFilterArrayOutputWithContext(ctx context.Context) GetNbTypesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesFilterArrayOutput)
-}
-
-type GetNbTypesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesFilter)(nil)).Elem()
-}
-
-func (o GetNbTypesFilterOutput) ToGetNbTypesFilterOutput() GetNbTypesFilterOutput {
-	return o
-}
-
-func (o GetNbTypesFilterOutput) ToGetNbTypesFilterOutputWithContext(ctx context.Context) GetNbTypesFilterOutput {
-	return o
-}
-
-// The type of comparison to use for this filter.
-func (o GetNbTypesFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetNbTypesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the attribute to filter on.
-func (o GetNbTypesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNbTypesFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The value(s) to be used in the filter.
-func (o GetNbTypesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNbTypesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetNbTypesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesFilter)(nil)).Elem()
-}
-
-func (o GetNbTypesFilterArrayOutput) ToGetNbTypesFilterArrayOutput() GetNbTypesFilterArrayOutput {
-	return o
-}
-
-func (o GetNbTypesFilterArrayOutput) ToGetNbTypesFilterArrayOutputWithContext(ctx context.Context) GetNbTypesFilterArrayOutput {
-	return o
-}
-
-func (o GetNbTypesFilterArrayOutput) Index(i pulumi.IntInput) GetNbTypesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesFilter {
-		return vs[0].([]GetNbTypesFilter)[vs[1].(int)]
-	}).(GetNbTypesFilterOutput)
-}
-
-type GetNbTypesType struct {
-	// The unique ID assigned to this Node Balancer Type.
-	Id string `pulumi:"id"`
-	// The Node Balancer Type's label.
-	Label string `pulumi:"label"`
-	// Cost in US dollars, broken down into hourly and monthly charges.
-	Prices []GetNbTypesTypePrice `pulumi:"prices"`
-	// A list of region-specific prices for this Node Balancer Type.
-	RegionPrices []GetNbTypesTypeRegionPrice `pulumi:"regionPrices"`
-	// The monthly outbound transfer amount, in MB.
-	Transfer int `pulumi:"transfer"`
-}
-
-// GetNbTypesTypeInput is an input type that accepts GetNbTypesTypeArgs and GetNbTypesTypeOutput values.
-// You can construct a concrete instance of `GetNbTypesTypeInput` via:
-//
-//	GetNbTypesTypeArgs{...}
-type GetNbTypesTypeInput interface {
-	pulumi.Input
-
-	ToGetNbTypesTypeOutput() GetNbTypesTypeOutput
-	ToGetNbTypesTypeOutputWithContext(context.Context) GetNbTypesTypeOutput
-}
-
-type GetNbTypesTypeArgs struct {
-	// The unique ID assigned to this Node Balancer Type.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The Node Balancer Type's label.
-	Label pulumi.StringInput `pulumi:"label"`
-	// Cost in US dollars, broken down into hourly and monthly charges.
-	Prices GetNbTypesTypePriceArrayInput `pulumi:"prices"`
-	// A list of region-specific prices for this Node Balancer Type.
-	RegionPrices GetNbTypesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
-	// The monthly outbound transfer amount, in MB.
-	Transfer pulumi.IntInput `pulumi:"transfer"`
-}
-
-func (GetNbTypesTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesType)(nil)).Elem()
-}
-
-func (i GetNbTypesTypeArgs) ToGetNbTypesTypeOutput() GetNbTypesTypeOutput {
-	return i.ToGetNbTypesTypeOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesTypeArgs) ToGetNbTypesTypeOutputWithContext(ctx context.Context) GetNbTypesTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeOutput)
-}
-
-// GetNbTypesTypeArrayInput is an input type that accepts GetNbTypesTypeArray and GetNbTypesTypeArrayOutput values.
-// You can construct a concrete instance of `GetNbTypesTypeArrayInput` via:
-//
-//	GetNbTypesTypeArray{ GetNbTypesTypeArgs{...} }
-type GetNbTypesTypeArrayInput interface {
-	pulumi.Input
-
-	ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput
-	ToGetNbTypesTypeArrayOutputWithContext(context.Context) GetNbTypesTypeArrayOutput
-}
-
-type GetNbTypesTypeArray []GetNbTypesTypeInput
-
-func (GetNbTypesTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesType)(nil)).Elem()
-}
-
-func (i GetNbTypesTypeArray) ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput {
-	return i.ToGetNbTypesTypeArrayOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesTypeArray) ToGetNbTypesTypeArrayOutputWithContext(ctx context.Context) GetNbTypesTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeArrayOutput)
-}
-
-type GetNbTypesTypeOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesType)(nil)).Elem()
-}
-
-func (o GetNbTypesTypeOutput) ToGetNbTypesTypeOutput() GetNbTypesTypeOutput {
-	return o
-}
-
-func (o GetNbTypesTypeOutput) ToGetNbTypesTypeOutputWithContext(ctx context.Context) GetNbTypesTypeOutput {
-	return o
-}
-
-// The unique ID assigned to this Node Balancer Type.
-func (o GetNbTypesTypeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNbTypesType) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The Node Balancer Type's label.
-func (o GetNbTypesTypeOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNbTypesType) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// Cost in US dollars, broken down into hourly and monthly charges.
-func (o GetNbTypesTypeOutput) Prices() GetNbTypesTypePriceArrayOutput {
-	return o.ApplyT(func(v GetNbTypesType) []GetNbTypesTypePrice { return v.Prices }).(GetNbTypesTypePriceArrayOutput)
-}
-
-// A list of region-specific prices for this Node Balancer Type.
-func (o GetNbTypesTypeOutput) RegionPrices() GetNbTypesTypeRegionPriceArrayOutput {
-	return o.ApplyT(func(v GetNbTypesType) []GetNbTypesTypeRegionPrice { return v.RegionPrices }).(GetNbTypesTypeRegionPriceArrayOutput)
-}
-
-// The monthly outbound transfer amount, in MB.
-func (o GetNbTypesTypeOutput) Transfer() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNbTypesType) int { return v.Transfer }).(pulumi.IntOutput)
-}
-
-type GetNbTypesTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesType)(nil)).Elem()
-}
-
-func (o GetNbTypesTypeArrayOutput) ToGetNbTypesTypeArrayOutput() GetNbTypesTypeArrayOutput {
-	return o
-}
-
-func (o GetNbTypesTypeArrayOutput) ToGetNbTypesTypeArrayOutputWithContext(ctx context.Context) GetNbTypesTypeArrayOutput {
-	return o
-}
-
-func (o GetNbTypesTypeArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesType {
-		return vs[0].([]GetNbTypesType)[vs[1].(int)]
-	}).(GetNbTypesTypeOutput)
-}
-
-type GetNbTypesTypePrice struct {
-	Hourly  float64 `pulumi:"hourly"`
-	Monthly float64 `pulumi:"monthly"`
-}
-
-// GetNbTypesTypePriceInput is an input type that accepts GetNbTypesTypePriceArgs and GetNbTypesTypePriceOutput values.
-// You can construct a concrete instance of `GetNbTypesTypePriceInput` via:
-//
-//	GetNbTypesTypePriceArgs{...}
-type GetNbTypesTypePriceInput interface {
-	pulumi.Input
-
-	ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput
-	ToGetNbTypesTypePriceOutputWithContext(context.Context) GetNbTypesTypePriceOutput
-}
-
-type GetNbTypesTypePriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
-	Monthly pulumi.Float64Input `pulumi:"monthly"`
-}
-
-func (GetNbTypesTypePriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesTypePrice)(nil)).Elem()
-}
-
-func (i GetNbTypesTypePriceArgs) ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput {
-	return i.ToGetNbTypesTypePriceOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesTypePriceArgs) ToGetNbTypesTypePriceOutputWithContext(ctx context.Context) GetNbTypesTypePriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypePriceOutput)
-}
-
-// GetNbTypesTypePriceArrayInput is an input type that accepts GetNbTypesTypePriceArray and GetNbTypesTypePriceArrayOutput values.
-// You can construct a concrete instance of `GetNbTypesTypePriceArrayInput` via:
-//
-//	GetNbTypesTypePriceArray{ GetNbTypesTypePriceArgs{...} }
-type GetNbTypesTypePriceArrayInput interface {
-	pulumi.Input
-
-	ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput
-	ToGetNbTypesTypePriceArrayOutputWithContext(context.Context) GetNbTypesTypePriceArrayOutput
-}
-
-type GetNbTypesTypePriceArray []GetNbTypesTypePriceInput
-
-func (GetNbTypesTypePriceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesTypePrice)(nil)).Elem()
-}
-
-func (i GetNbTypesTypePriceArray) ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput {
-	return i.ToGetNbTypesTypePriceArrayOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesTypePriceArray) ToGetNbTypesTypePriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypePriceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypePriceArrayOutput)
-}
-
-type GetNbTypesTypePriceOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesTypePriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesTypePrice)(nil)).Elem()
-}
-
-func (o GetNbTypesTypePriceOutput) ToGetNbTypesTypePriceOutput() GetNbTypesTypePriceOutput {
-	return o
-}
-
-func (o GetNbTypesTypePriceOutput) ToGetNbTypesTypePriceOutputWithContext(ctx context.Context) GetNbTypesTypePriceOutput {
-	return o
-}
-
-func (o GetNbTypesTypePriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNbTypesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
-}
-
-func (o GetNbTypesTypePriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNbTypesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
-}
-
-type GetNbTypesTypePriceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesTypePriceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesTypePrice)(nil)).Elem()
-}
-
-func (o GetNbTypesTypePriceArrayOutput) ToGetNbTypesTypePriceArrayOutput() GetNbTypesTypePriceArrayOutput {
-	return o
-}
-
-func (o GetNbTypesTypePriceArrayOutput) ToGetNbTypesTypePriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypePriceArrayOutput {
-	return o
-}
-
-func (o GetNbTypesTypePriceArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypePriceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesTypePrice {
-		return vs[0].([]GetNbTypesTypePrice)[vs[1].(int)]
-	}).(GetNbTypesTypePriceOutput)
-}
-
-type GetNbTypesTypeRegionPrice struct {
-	Hourly  float64 `pulumi:"hourly"`
-	Id      string  `pulumi:"id"`
-	Monthly float64 `pulumi:"monthly"`
-}
-
-// GetNbTypesTypeRegionPriceInput is an input type that accepts GetNbTypesTypeRegionPriceArgs and GetNbTypesTypeRegionPriceOutput values.
-// You can construct a concrete instance of `GetNbTypesTypeRegionPriceInput` via:
-//
-//	GetNbTypesTypeRegionPriceArgs{...}
-type GetNbTypesTypeRegionPriceInput interface {
-	pulumi.Input
-
-	ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput
-	ToGetNbTypesTypeRegionPriceOutputWithContext(context.Context) GetNbTypesTypeRegionPriceOutput
-}
-
-type GetNbTypesTypeRegionPriceArgs struct {
-	Hourly  pulumi.Float64Input `pulumi:"hourly"`
-	Id      pulumi.StringInput  `pulumi:"id"`
-	Monthly pulumi.Float64Input `pulumi:"monthly"`
-}
-
-func (GetNbTypesTypeRegionPriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesTypeRegionPrice)(nil)).Elem()
-}
-
-func (i GetNbTypesTypeRegionPriceArgs) ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput {
-	return i.ToGetNbTypesTypeRegionPriceOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesTypeRegionPriceArgs) ToGetNbTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeRegionPriceOutput)
-}
-
-// GetNbTypesTypeRegionPriceArrayInput is an input type that accepts GetNbTypesTypeRegionPriceArray and GetNbTypesTypeRegionPriceArrayOutput values.
-// You can construct a concrete instance of `GetNbTypesTypeRegionPriceArrayInput` via:
-//
-//	GetNbTypesTypeRegionPriceArray{ GetNbTypesTypeRegionPriceArgs{...} }
-type GetNbTypesTypeRegionPriceArrayInput interface {
-	pulumi.Input
-
-	ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput
-	ToGetNbTypesTypeRegionPriceArrayOutputWithContext(context.Context) GetNbTypesTypeRegionPriceArrayOutput
-}
-
-type GetNbTypesTypeRegionPriceArray []GetNbTypesTypeRegionPriceInput
-
-func (GetNbTypesTypeRegionPriceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesTypeRegionPrice)(nil)).Elem()
-}
-
-func (i GetNbTypesTypeRegionPriceArray) ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput {
-	return i.ToGetNbTypesTypeRegionPriceArrayOutputWithContext(context.Background())
-}
-
-func (i GetNbTypesTypeRegionPriceArray) ToGetNbTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNbTypesTypeRegionPriceArrayOutput)
-}
-
-type GetNbTypesTypeRegionPriceOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesTypeRegionPriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNbTypesTypeRegionPrice)(nil)).Elem()
-}
-
-func (o GetNbTypesTypeRegionPriceOutput) ToGetNbTypesTypeRegionPriceOutput() GetNbTypesTypeRegionPriceOutput {
-	return o
-}
-
-func (o GetNbTypesTypeRegionPriceOutput) ToGetNbTypesTypeRegionPriceOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceOutput {
-	return o
-}
-
-func (o GetNbTypesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
-}
-
-func (o GetNbTypesTypeRegionPriceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetNbTypesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNbTypesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
-}
-
-type GetNbTypesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNbTypesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNbTypesTypeRegionPrice)(nil)).Elem()
-}
-
-func (o GetNbTypesTypeRegionPriceArrayOutput) ToGetNbTypesTypeRegionPriceArrayOutput() GetNbTypesTypeRegionPriceArrayOutput {
-	return o
-}
-
-func (o GetNbTypesTypeRegionPriceArrayOutput) ToGetNbTypesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNbTypesTypeRegionPriceArrayOutput {
-	return o
-}
-
-func (o GetNbTypesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNbTypesTypeRegionPriceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNbTypesTypeRegionPrice {
-		return vs[0].([]GetNbTypesTypeRegionPrice)[vs[1].(int)]
-	}).(GetNbTypesTypeRegionPriceOutput)
-}
-
-type GetNetworkTransferPricesFilter struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name string `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values []string `pulumi:"values"`
-}
-
-// GetNetworkTransferPricesFilterInput is an input type that accepts GetNetworkTransferPricesFilterArgs and GetNetworkTransferPricesFilterOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesFilterInput` via:
-//
-//	GetNetworkTransferPricesFilterArgs{...}
-type GetNetworkTransferPricesFilterInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput
-	ToGetNetworkTransferPricesFilterOutputWithContext(context.Context) GetNetworkTransferPricesFilterOutput
-}
-
-type GetNetworkTransferPricesFilterArgs struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetNetworkTransferPricesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesFilter)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesFilterArgs) ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput {
-	return i.ToGetNetworkTransferPricesFilterOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesFilterArgs) ToGetNetworkTransferPricesFilterOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesFilterOutput)
-}
-
-// GetNetworkTransferPricesFilterArrayInput is an input type that accepts GetNetworkTransferPricesFilterArray and GetNetworkTransferPricesFilterArrayOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesFilterArrayInput` via:
-//
-//	GetNetworkTransferPricesFilterArray{ GetNetworkTransferPricesFilterArgs{...} }
-type GetNetworkTransferPricesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput
-	ToGetNetworkTransferPricesFilterArrayOutputWithContext(context.Context) GetNetworkTransferPricesFilterArrayOutput
-}
-
-type GetNetworkTransferPricesFilterArray []GetNetworkTransferPricesFilterInput
-
-func (GetNetworkTransferPricesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesFilter)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesFilterArray) ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput {
-	return i.ToGetNetworkTransferPricesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesFilterArray) ToGetNetworkTransferPricesFilterArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesFilterArrayOutput)
-}
-
-type GetNetworkTransferPricesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesFilter)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOutput() GetNetworkTransferPricesFilterOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesFilterOutput) ToGetNetworkTransferPricesFilterOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterOutput {
-	return o
-}
-
-// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-func (o GetNetworkTransferPricesFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-func (o GetNetworkTransferPricesFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A list of values for the filter to allow. These values should all be in string form.
-func (o GetNetworkTransferPricesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetNetworkTransferPricesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesFilter)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesFilterArrayOutput) ToGetNetworkTransferPricesFilterArrayOutput() GetNetworkTransferPricesFilterArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesFilterArrayOutput) ToGetNetworkTransferPricesFilterArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesFilterArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesFilter {
-		return vs[0].([]GetNetworkTransferPricesFilter)[vs[1].(int)]
-	}).(GetNetworkTransferPricesFilterOutput)
-}
-
-type GetNetworkTransferPricesType struct {
-	// The ID representing the Network Transfer Price.
-	Id string `pulumi:"id"`
-	// The Network Transfer Price label is for display purposes only.
-	Label string `pulumi:"label"`
-	// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
-	Prices []GetNetworkTransferPricesTypePrice `pulumi:"prices"`
-	// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
-	RegionPrices []GetNetworkTransferPricesTypeRegionPrice `pulumi:"regionPrices"`
-	// The monthly outbound transfer amount, in MB.
-	Transfer int `pulumi:"transfer"`
-}
-
-// GetNetworkTransferPricesTypeInput is an input type that accepts GetNetworkTransferPricesTypeArgs and GetNetworkTransferPricesTypeOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesTypeInput` via:
-//
-//	GetNetworkTransferPricesTypeArgs{...}
-type GetNetworkTransferPricesTypeInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput
-	ToGetNetworkTransferPricesTypeOutputWithContext(context.Context) GetNetworkTransferPricesTypeOutput
-}
-
-type GetNetworkTransferPricesTypeArgs struct {
-	// The ID representing the Network Transfer Price.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The Network Transfer Price label is for display purposes only.
-	Label pulumi.StringInput `pulumi:"label"`
-	// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
-	Prices GetNetworkTransferPricesTypePriceArrayInput `pulumi:"prices"`
-	// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
-	RegionPrices GetNetworkTransferPricesTypeRegionPriceArrayInput `pulumi:"regionPrices"`
-	// The monthly outbound transfer amount, in MB.
-	Transfer pulumi.IntInput `pulumi:"transfer"`
-}
-
-func (GetNetworkTransferPricesTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesType)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesTypeArgs) ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput {
-	return i.ToGetNetworkTransferPricesTypeOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesTypeArgs) ToGetNetworkTransferPricesTypeOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeOutput)
-}
-
-// GetNetworkTransferPricesTypeArrayInput is an input type that accepts GetNetworkTransferPricesTypeArray and GetNetworkTransferPricesTypeArrayOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesTypeArrayInput` via:
-//
-//	GetNetworkTransferPricesTypeArray{ GetNetworkTransferPricesTypeArgs{...} }
-type GetNetworkTransferPricesTypeArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput
-	ToGetNetworkTransferPricesTypeArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypeArrayOutput
-}
-
-type GetNetworkTransferPricesTypeArray []GetNetworkTransferPricesTypeInput
-
-func (GetNetworkTransferPricesTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesType)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesTypeArray) ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput {
-	return i.ToGetNetworkTransferPricesTypeArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesTypeArray) ToGetNetworkTransferPricesTypeArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeArrayOutput)
-}
-
-type GetNetworkTransferPricesTypeOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesType)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutput() GetNetworkTransferPricesTypeOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeOutput) ToGetNetworkTransferPricesTypeOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeOutput {
-	return o
-}
-
-// The ID representing the Network Transfer Price.
-func (o GetNetworkTransferPricesTypeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The Network Transfer Price label is for display purposes only.
-func (o GetNetworkTransferPricesTypeOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesType) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// (Read-Only Object List) The base cost for this Network Transfer Price. Referenced with an index (e.g. `price.0.hourly`).
-func (o GetNetworkTransferPricesTypeOutput) Prices() GetNetworkTransferPricesTypePriceArrayOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesType) []GetNetworkTransferPricesTypePrice { return v.Prices }).(GetNetworkTransferPricesTypePriceArrayOutput)
-}
-
-// (Read-Only Object List) Region-specific pricing for this Network Transfer Price. Referenced with an index (e.g. `region_prices.0.id`).
-func (o GetNetworkTransferPricesTypeOutput) RegionPrices() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesType) []GetNetworkTransferPricesTypeRegionPrice { return v.RegionPrices }).(GetNetworkTransferPricesTypeRegionPriceArrayOutput)
-}
-
-// The monthly outbound transfer amount, in MB.
-func (o GetNetworkTransferPricesTypeOutput) Transfer() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesType) int { return v.Transfer }).(pulumi.IntOutput)
-}
-
-type GetNetworkTransferPricesTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesType)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesTypeArrayOutput) ToGetNetworkTransferPricesTypeArrayOutput() GetNetworkTransferPricesTypeArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeArrayOutput) ToGetNetworkTransferPricesTypeArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesType {
-		return vs[0].([]GetNetworkTransferPricesType)[vs[1].(int)]
-	}).(GetNetworkTransferPricesTypeOutput)
-}
-
-type GetNetworkTransferPricesTypePrice struct {
-	// Cost (in US dollars) per hour.
-	Hourly float64 `pulumi:"hourly"`
-	// Cost (in US dollars) per month.
-	Monthly float64 `pulumi:"monthly"`
-}
-
-// GetNetworkTransferPricesTypePriceInput is an input type that accepts GetNetworkTransferPricesTypePriceArgs and GetNetworkTransferPricesTypePriceOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesTypePriceInput` via:
-//
-//	GetNetworkTransferPricesTypePriceArgs{...}
-type GetNetworkTransferPricesTypePriceInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput
-	ToGetNetworkTransferPricesTypePriceOutputWithContext(context.Context) GetNetworkTransferPricesTypePriceOutput
-}
-
-type GetNetworkTransferPricesTypePriceArgs struct {
-	// Cost (in US dollars) per hour.
-	Hourly pulumi.Float64Input `pulumi:"hourly"`
-	// Cost (in US dollars) per month.
-	Monthly pulumi.Float64Input `pulumi:"monthly"`
-}
-
-func (GetNetworkTransferPricesTypePriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesTypePrice)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesTypePriceArgs) ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput {
-	return i.ToGetNetworkTransferPricesTypePriceOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesTypePriceArgs) ToGetNetworkTransferPricesTypePriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypePriceOutput)
-}
-
-// GetNetworkTransferPricesTypePriceArrayInput is an input type that accepts GetNetworkTransferPricesTypePriceArray and GetNetworkTransferPricesTypePriceArrayOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesTypePriceArrayInput` via:
-//
-//	GetNetworkTransferPricesTypePriceArray{ GetNetworkTransferPricesTypePriceArgs{...} }
-type GetNetworkTransferPricesTypePriceArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput
-	ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypePriceArrayOutput
-}
-
-type GetNetworkTransferPricesTypePriceArray []GetNetworkTransferPricesTypePriceInput
-
-func (GetNetworkTransferPricesTypePriceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesTypePrice)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesTypePriceArray) ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput {
-	return i.ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesTypePriceArray) ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypePriceArrayOutput)
-}
-
-type GetNetworkTransferPricesTypePriceOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesTypePriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesTypePrice)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypePriceOutput() GetNetworkTransferPricesTypePriceOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypePriceOutput) ToGetNetworkTransferPricesTypePriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceOutput {
-	return o
-}
-
-// Cost (in US dollars) per hour.
-func (o GetNetworkTransferPricesTypePriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Hourly }).(pulumi.Float64Output)
-}
-
-// Cost (in US dollars) per month.
-func (o GetNetworkTransferPricesTypePriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNetworkTransferPricesTypePrice) float64 { return v.Monthly }).(pulumi.Float64Output)
-}
-
-type GetNetworkTransferPricesTypePriceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesTypePriceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesTypePrice)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesTypePriceArrayOutput) ToGetNetworkTransferPricesTypePriceArrayOutput() GetNetworkTransferPricesTypePriceArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypePriceArrayOutput) ToGetNetworkTransferPricesTypePriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypePriceArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypePriceArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypePriceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesTypePrice {
-		return vs[0].([]GetNetworkTransferPricesTypePrice)[vs[1].(int)]
-	}).(GetNetworkTransferPricesTypePriceOutput)
-}
-
-type GetNetworkTransferPricesTypeRegionPrice struct {
-	Hourly float64 `pulumi:"hourly"`
-	// The ID representing the Network Transfer Price.
-	Id      string  `pulumi:"id"`
-	Monthly float64 `pulumi:"monthly"`
-}
-
-// GetNetworkTransferPricesTypeRegionPriceInput is an input type that accepts GetNetworkTransferPricesTypeRegionPriceArgs and GetNetworkTransferPricesTypeRegionPriceOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesTypeRegionPriceInput` via:
-//
-//	GetNetworkTransferPricesTypeRegionPriceArgs{...}
-type GetNetworkTransferPricesTypeRegionPriceInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput
-	ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(context.Context) GetNetworkTransferPricesTypeRegionPriceOutput
-}
-
-type GetNetworkTransferPricesTypeRegionPriceArgs struct {
-	Hourly pulumi.Float64Input `pulumi:"hourly"`
-	// The ID representing the Network Transfer Price.
-	Id      pulumi.StringInput  `pulumi:"id"`
-	Monthly pulumi.Float64Input `pulumi:"monthly"`
-}
-
-func (GetNetworkTransferPricesTypeRegionPriceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesTypeRegionPriceArgs) ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput {
-	return i.ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesTypeRegionPriceArgs) ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeRegionPriceOutput)
-}
-
-// GetNetworkTransferPricesTypeRegionPriceArrayInput is an input type that accepts GetNetworkTransferPricesTypeRegionPriceArray and GetNetworkTransferPricesTypeRegionPriceArrayOutput values.
-// You can construct a concrete instance of `GetNetworkTransferPricesTypeRegionPriceArrayInput` via:
-//
-//	GetNetworkTransferPricesTypeRegionPriceArray{ GetNetworkTransferPricesTypeRegionPriceArgs{...} }
-type GetNetworkTransferPricesTypeRegionPriceArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput
-	ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput
-}
-
-type GetNetworkTransferPricesTypeRegionPriceArray []GetNetworkTransferPricesTypeRegionPriceInput
-
-func (GetNetworkTransferPricesTypeRegionPriceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
-}
-
-func (i GetNetworkTransferPricesTypeRegionPriceArray) ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
-	return i.ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkTransferPricesTypeRegionPriceArray) ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkTransferPricesTypeRegionPriceArrayOutput)
-}
-
-type GetNetworkTransferPricesTypeRegionPriceOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesTypeRegionPriceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceOutput) ToGetNetworkTransferPricesTypeRegionPriceOutput() GetNetworkTransferPricesTypeRegionPriceOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceOutput) ToGetNetworkTransferPricesTypeRegionPriceOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceOutput) Hourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Hourly }).(pulumi.Float64Output)
-}
-
-// The ID representing the Network Transfer Price.
-func (o GetNetworkTransferPricesTypeRegionPriceOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceOutput) Monthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetNetworkTransferPricesTypeRegionPrice) float64 { return v.Monthly }).(pulumi.Float64Output)
-}
-
-type GetNetworkTransferPricesTypeRegionPriceArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkTransferPricesTypeRegionPriceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkTransferPricesTypeRegionPrice)(nil)).Elem()
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) ToGetNetworkTransferPricesTypeRegionPriceArrayOutput() GetNetworkTransferPricesTypeRegionPriceArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) ToGetNetworkTransferPricesTypeRegionPriceArrayOutputWithContext(ctx context.Context) GetNetworkTransferPricesTypeRegionPriceArrayOutput {
-	return o
-}
-
-func (o GetNetworkTransferPricesTypeRegionPriceArrayOutput) Index(i pulumi.IntInput) GetNetworkTransferPricesTypeRegionPriceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkTransferPricesTypeRegionPrice {
-		return vs[0].([]GetNetworkTransferPricesTypeRegionPrice)[vs[1].(int)]
-	}).(GetNetworkTransferPricesTypeRegionPriceOutput)
-}
-
-type GetNetworkingIpAssignedEntity struct {
-	// The ID of the entity.
-	Id int `pulumi:"id"`
-	// The label of the entity.
-	Label string `pulumi:"label"`
-	// The type of the entity.
-	Type string `pulumi:"type"`
-	// The URL of the entity.
-	Url string `pulumi:"url"`
-}
-
-// GetNetworkingIpAssignedEntityInput is an input type that accepts GetNetworkingIpAssignedEntityArgs and GetNetworkingIpAssignedEntityOutput values.
-// You can construct a concrete instance of `GetNetworkingIpAssignedEntityInput` via:
-//
-//	GetNetworkingIpAssignedEntityArgs{...}
-type GetNetworkingIpAssignedEntityInput interface {
-	pulumi.Input
-
-	ToGetNetworkingIpAssignedEntityOutput() GetNetworkingIpAssignedEntityOutput
-	ToGetNetworkingIpAssignedEntityOutputWithContext(context.Context) GetNetworkingIpAssignedEntityOutput
-}
-
-type GetNetworkingIpAssignedEntityArgs struct {
-	// The ID of the entity.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The label of the entity.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The type of the entity.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The URL of the entity.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GetNetworkingIpAssignedEntityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpAssignedEntity)(nil)).Elem()
-}
-
-func (i GetNetworkingIpAssignedEntityArgs) ToGetNetworkingIpAssignedEntityOutput() GetNetworkingIpAssignedEntityOutput {
-	return i.ToGetNetworkingIpAssignedEntityOutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpAssignedEntityArgs) ToGetNetworkingIpAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpAssignedEntityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpAssignedEntityOutput)
-}
-
-type GetNetworkingIpAssignedEntityOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpAssignedEntityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpAssignedEntity)(nil)).Elem()
-}
-
-func (o GetNetworkingIpAssignedEntityOutput) ToGetNetworkingIpAssignedEntityOutput() GetNetworkingIpAssignedEntityOutput {
-	return o
-}
-
-func (o GetNetworkingIpAssignedEntityOutput) ToGetNetworkingIpAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpAssignedEntityOutput {
-	return o
-}
-
-// The ID of the entity.
-func (o GetNetworkingIpAssignedEntityOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The label of the entity.
-func (o GetNetworkingIpAssignedEntityOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The type of the entity.
-func (o GetNetworkingIpAssignedEntityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The URL of the entity.
-func (o GetNetworkingIpAssignedEntityOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpAssignedEntity) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetNetworkingIpVpcNat11 struct {
-	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
-	Address string `pulumi:"address"`
-	// The `id` of the VPC Subnet for this Interface.
-	SubnetId int `pulumi:"subnetId"`
-	// The `id` of the VPC configured for this Interface.
-	VpcId int `pulumi:"vpcId"`
-}
-
-// GetNetworkingIpVpcNat11Input is an input type that accepts GetNetworkingIpVpcNat11Args and GetNetworkingIpVpcNat11Output values.
-// You can construct a concrete instance of `GetNetworkingIpVpcNat11Input` via:
-//
-//	GetNetworkingIpVpcNat11Args{...}
-type GetNetworkingIpVpcNat11Input interface {
-	pulumi.Input
-
-	ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output
-	ToGetNetworkingIpVpcNat11OutputWithContext(context.Context) GetNetworkingIpVpcNat11Output
-}
-
-type GetNetworkingIpVpcNat11Args struct {
-	// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
-	Address pulumi.StringInput `pulumi:"address"`
-	// The `id` of the VPC Subnet for this Interface.
-	SubnetId pulumi.IntInput `pulumi:"subnetId"`
-	// The `id` of the VPC configured for this Interface.
-	VpcId pulumi.IntInput `pulumi:"vpcId"`
-}
-
-func (GetNetworkingIpVpcNat11Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpVpcNat11)(nil)).Elem()
-}
-
-func (i GetNetworkingIpVpcNat11Args) ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output {
-	return i.ToGetNetworkingIpVpcNat11OutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpVpcNat11Args) ToGetNetworkingIpVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpVpcNat11Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpVpcNat11Output)
-}
-
-type GetNetworkingIpVpcNat11Output struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpVpcNat11Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpVpcNat11)(nil)).Elem()
-}
-
-func (o GetNetworkingIpVpcNat11Output) ToGetNetworkingIpVpcNat11Output() GetNetworkingIpVpcNat11Output {
-	return o
-}
-
-func (o GetNetworkingIpVpcNat11Output) ToGetNetworkingIpVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpVpcNat11Output {
-	return o
-}
-
-// The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
-func (o GetNetworkingIpVpcNat11Output) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpVpcNat11) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// The `id` of the VPC Subnet for this Interface.
-func (o GetNetworkingIpVpcNat11Output) SubnetId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
-}
-
-// The `id` of the VPC configured for this Interface.
-func (o GetNetworkingIpVpcNat11Output) VpcId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
-}
-
-type GetNetworkingIpsFilter struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name string `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values []string `pulumi:"values"`
-}
-
-// GetNetworkingIpsFilterInput is an input type that accepts GetNetworkingIpsFilterArgs and GetNetworkingIpsFilterOutput values.
-// You can construct a concrete instance of `GetNetworkingIpsFilterInput` via:
-//
-//	GetNetworkingIpsFilterArgs{...}
-type GetNetworkingIpsFilterInput interface {
-	pulumi.Input
-
-	ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput
-	ToGetNetworkingIpsFilterOutputWithContext(context.Context) GetNetworkingIpsFilterOutput
-}
-
-type GetNetworkingIpsFilterArgs struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetNetworkingIpsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsFilter)(nil)).Elem()
-}
-
-func (i GetNetworkingIpsFilterArgs) ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput {
-	return i.ToGetNetworkingIpsFilterOutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpsFilterArgs) ToGetNetworkingIpsFilterOutputWithContext(ctx context.Context) GetNetworkingIpsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsFilterOutput)
-}
-
-// GetNetworkingIpsFilterArrayInput is an input type that accepts GetNetworkingIpsFilterArray and GetNetworkingIpsFilterArrayOutput values.
-// You can construct a concrete instance of `GetNetworkingIpsFilterArrayInput` via:
-//
-//	GetNetworkingIpsFilterArray{ GetNetworkingIpsFilterArgs{...} }
-type GetNetworkingIpsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput
-	ToGetNetworkingIpsFilterArrayOutputWithContext(context.Context) GetNetworkingIpsFilterArrayOutput
-}
-
-type GetNetworkingIpsFilterArray []GetNetworkingIpsFilterInput
-
-func (GetNetworkingIpsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkingIpsFilter)(nil)).Elem()
-}
-
-func (i GetNetworkingIpsFilterArray) ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput {
-	return i.ToGetNetworkingIpsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpsFilterArray) ToGetNetworkingIpsFilterArrayOutputWithContext(ctx context.Context) GetNetworkingIpsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsFilterArrayOutput)
-}
-
-type GetNetworkingIpsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsFilter)(nil)).Elem()
-}
-
-func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutput() GetNetworkingIpsFilterOutput {
-	return o
-}
-
-func (o GetNetworkingIpsFilterOutput) ToGetNetworkingIpsFilterOutputWithContext(ctx context.Context) GetNetworkingIpsFilterOutput {
-	return o
-}
-
-// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-func (o GetNetworkingIpsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetNetworkingIpsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-func (o GetNetworkingIpsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A list of values for the filter to allow. These values should all be in string form.
-func (o GetNetworkingIpsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNetworkingIpsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetNetworkingIpsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkingIpsFilter)(nil)).Elem()
-}
-
-func (o GetNetworkingIpsFilterArrayOutput) ToGetNetworkingIpsFilterArrayOutput() GetNetworkingIpsFilterArrayOutput {
-	return o
-}
-
-func (o GetNetworkingIpsFilterArrayOutput) ToGetNetworkingIpsFilterArrayOutputWithContext(ctx context.Context) GetNetworkingIpsFilterArrayOutput {
-	return o
-}
-
-func (o GetNetworkingIpsFilterArrayOutput) Index(i pulumi.IntInput) GetNetworkingIpsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsFilter {
-		return vs[0].([]GetNetworkingIpsFilter)[vs[1].(int)]
-	}).(GetNetworkingIpsFilterOutput)
-}
-
-type GetNetworkingIpsIpAddress struct {
-	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-	Address string `pulumi:"address"`
-	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
-	AssignedEntity GetNetworkingIpsIpAddressAssignedEntity `pulumi:"assignedEntity"`
-	// The default gateway for this address.
-	Gateway string `pulumi:"gateway"`
-	// The ID of the interface this address is assigned to.
-	InterfaceId int `pulumi:"interfaceId"`
-	// The ID of the Linode this address currently belongs to.
-	LinodeId int `pulumi:"linodeId"`
-	// The number of bits set in the subnet mask.
-	Prefix int `pulumi:"prefix"`
-	// Whether this is a public or private IP address.
-	Public bool `pulumi:"public"`
-	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-	Rdns string `pulumi:"rdns"`
-	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-	Region string `pulumi:"region"`
-	// Whether this IP address is a reserved IP.
-	Reserved bool `pulumi:"reserved"`
-	// The mask that separates host bits from network bits for this address.
-	SubnetMask string `pulumi:"subnetMask"`
-	// A set of tags associated with this IP address.
-	Tags []string `pulumi:"tags"`
-	// The type of the entity.
-	Type string `pulumi:"type"`
-	// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
-	VpcNat11 GetNetworkingIpsIpAddressVpcNat11 `pulumi:"vpcNat11"`
-}
-
-// GetNetworkingIpsIpAddressInput is an input type that accepts GetNetworkingIpsIpAddressArgs and GetNetworkingIpsIpAddressOutput values.
-// You can construct a concrete instance of `GetNetworkingIpsIpAddressInput` via:
-//
-//	GetNetworkingIpsIpAddressArgs{...}
-type GetNetworkingIpsIpAddressInput interface {
-	pulumi.Input
-
-	ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput
-	ToGetNetworkingIpsIpAddressOutputWithContext(context.Context) GetNetworkingIpsIpAddressOutput
-}
-
-type GetNetworkingIpsIpAddressArgs struct {
-	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-	Address pulumi.StringInput `pulumi:"address"`
-	// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
-	AssignedEntity GetNetworkingIpsIpAddressAssignedEntityInput `pulumi:"assignedEntity"`
-	// The default gateway for this address.
-	Gateway pulumi.StringInput `pulumi:"gateway"`
-	// The ID of the interface this address is assigned to.
-	InterfaceId pulumi.IntInput `pulumi:"interfaceId"`
-	// The ID of the Linode this address currently belongs to.
-	LinodeId pulumi.IntInput `pulumi:"linodeId"`
-	// The number of bits set in the subnet mask.
-	Prefix pulumi.IntInput `pulumi:"prefix"`
-	// Whether this is a public or private IP address.
-	Public pulumi.BoolInput `pulumi:"public"`
-	// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-	Rdns pulumi.StringInput `pulumi:"rdns"`
-	// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-	Region pulumi.StringInput `pulumi:"region"`
-	// Whether this IP address is a reserved IP.
-	Reserved pulumi.BoolInput `pulumi:"reserved"`
-	// The mask that separates host bits from network bits for this address.
-	SubnetMask pulumi.StringInput `pulumi:"subnetMask"`
-	// A set of tags associated with this IP address.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// The type of the entity.
-	Type pulumi.StringInput `pulumi:"type"`
-	// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
-	VpcNat11 GetNetworkingIpsIpAddressVpcNat11Input `pulumi:"vpcNat11"`
-}
-
-func (GetNetworkingIpsIpAddressArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsIpAddress)(nil)).Elem()
-}
-
-func (i GetNetworkingIpsIpAddressArgs) ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput {
-	return i.ToGetNetworkingIpsIpAddressOutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpsIpAddressArgs) ToGetNetworkingIpsIpAddressOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressOutput)
-}
-
-// GetNetworkingIpsIpAddressArrayInput is an input type that accepts GetNetworkingIpsIpAddressArray and GetNetworkingIpsIpAddressArrayOutput values.
-// You can construct a concrete instance of `GetNetworkingIpsIpAddressArrayInput` via:
-//
-//	GetNetworkingIpsIpAddressArray{ GetNetworkingIpsIpAddressArgs{...} }
-type GetNetworkingIpsIpAddressArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput
-	ToGetNetworkingIpsIpAddressArrayOutputWithContext(context.Context) GetNetworkingIpsIpAddressArrayOutput
-}
-
-type GetNetworkingIpsIpAddressArray []GetNetworkingIpsIpAddressInput
-
-func (GetNetworkingIpsIpAddressArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkingIpsIpAddress)(nil)).Elem()
-}
-
-func (i GetNetworkingIpsIpAddressArray) ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput {
-	return i.ToGetNetworkingIpsIpAddressArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpsIpAddressArray) ToGetNetworkingIpsIpAddressArrayOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressArrayOutput)
-}
-
-type GetNetworkingIpsIpAddressOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpsIpAddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsIpAddress)(nil)).Elem()
-}
-
-func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutput() GetNetworkingIpsIpAddressOutput {
-	return o
-}
-
-func (o GetNetworkingIpsIpAddressOutput) ToGetNetworkingIpsIpAddressOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressOutput {
-	return o
-}
-
-// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-func (o GetNetworkingIpsIpAddressOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// (Read-Only Object) The entity this IP address has been assigned to. This is null if the address is not assigned to an entity. Referenced directly (e.g. `assigned_entity.id`).
-func (o GetNetworkingIpsIpAddressOutput) AssignedEntity() GetNetworkingIpsIpAddressAssignedEntityOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) GetNetworkingIpsIpAddressAssignedEntity { return v.AssignedEntity }).(GetNetworkingIpsIpAddressAssignedEntityOutput)
-}
-
-// The default gateway for this address.
-func (o GetNetworkingIpsIpAddressOutput) Gateway() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Gateway }).(pulumi.StringOutput)
-}
-
-// The ID of the interface this address is assigned to.
-func (o GetNetworkingIpsIpAddressOutput) InterfaceId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.InterfaceId }).(pulumi.IntOutput)
-}
-
-// The ID of the Linode this address currently belongs to.
-func (o GetNetworkingIpsIpAddressOutput) LinodeId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.LinodeId }).(pulumi.IntOutput)
-}
-
-// The number of bits set in the subnet mask.
-func (o GetNetworkingIpsIpAddressOutput) Prefix() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) int { return v.Prefix }).(pulumi.IntOutput)
-}
-
-// Whether this is a public or private IP address.
-func (o GetNetworkingIpsIpAddressOutput) Public() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Public }).(pulumi.BoolOutput)
-}
-
-// The reverse DNS assigned to this address. For public IPv4 addresses, this will be set to a default value provided by Linode if not explicitly set.
-func (o GetNetworkingIpsIpAddressOutput) Rdns() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Rdns }).(pulumi.StringOutput)
-}
-
-// The Region this IP address resides in. See all regions [here](https://api.linode.com/v4/regions).
-func (o GetNetworkingIpsIpAddressOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// Whether this IP address is a reserved IP.
-func (o GetNetworkingIpsIpAddressOutput) Reserved() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) bool { return v.Reserved }).(pulumi.BoolOutput)
-}
-
-// The mask that separates host bits from network bits for this address.
-func (o GetNetworkingIpsIpAddressOutput) SubnetMask() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.SubnetMask }).(pulumi.StringOutput)
-}
-
-// A set of tags associated with this IP address.
-func (o GetNetworkingIpsIpAddressOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-// The type of the entity.
-func (o GetNetworkingIpsIpAddressOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// (Read-Only Object) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced directly (e.g. `vpc_nat_1_1.address`).
-func (o GetNetworkingIpsIpAddressOutput) VpcNat11() GetNetworkingIpsIpAddressVpcNat11Output {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddress) GetNetworkingIpsIpAddressVpcNat11 { return v.VpcNat11 }).(GetNetworkingIpsIpAddressVpcNat11Output)
-}
-
-type GetNetworkingIpsIpAddressArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpsIpAddressArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkingIpsIpAddress)(nil)).Elem()
-}
-
-func (o GetNetworkingIpsIpAddressArrayOutput) ToGetNetworkingIpsIpAddressArrayOutput() GetNetworkingIpsIpAddressArrayOutput {
-	return o
-}
-
-func (o GetNetworkingIpsIpAddressArrayOutput) ToGetNetworkingIpsIpAddressArrayOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressArrayOutput {
-	return o
-}
-
-func (o GetNetworkingIpsIpAddressArrayOutput) Index(i pulumi.IntInput) GetNetworkingIpsIpAddressOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkingIpsIpAddress {
-		return vs[0].([]GetNetworkingIpsIpAddress)[vs[1].(int)]
-	}).(GetNetworkingIpsIpAddressOutput)
-}
-
-type GetNetworkingIpsIpAddressAssignedEntity struct {
-	// The ID of the entity.
-	Id int `pulumi:"id"`
-	// The label of the entity.
-	Label string `pulumi:"label"`
-	// The type of the entity.
-	Type string `pulumi:"type"`
-	// The URL of the entity.
-	Url string `pulumi:"url"`
-}
-
-// GetNetworkingIpsIpAddressAssignedEntityInput is an input type that accepts GetNetworkingIpsIpAddressAssignedEntityArgs and GetNetworkingIpsIpAddressAssignedEntityOutput values.
-// You can construct a concrete instance of `GetNetworkingIpsIpAddressAssignedEntityInput` via:
-//
-//	GetNetworkingIpsIpAddressAssignedEntityArgs{...}
-type GetNetworkingIpsIpAddressAssignedEntityInput interface {
-	pulumi.Input
-
-	ToGetNetworkingIpsIpAddressAssignedEntityOutput() GetNetworkingIpsIpAddressAssignedEntityOutput
-	ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(context.Context) GetNetworkingIpsIpAddressAssignedEntityOutput
-}
-
-type GetNetworkingIpsIpAddressAssignedEntityArgs struct {
-	// The ID of the entity.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The label of the entity.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The type of the entity.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The URL of the entity.
-	Url pulumi.StringInput `pulumi:"url"`
-}
-
-func (GetNetworkingIpsIpAddressAssignedEntityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsIpAddressAssignedEntity)(nil)).Elem()
-}
-
-func (i GetNetworkingIpsIpAddressAssignedEntityArgs) ToGetNetworkingIpsIpAddressAssignedEntityOutput() GetNetworkingIpsIpAddressAssignedEntityOutput {
-	return i.ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpsIpAddressAssignedEntityArgs) ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressAssignedEntityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressAssignedEntityOutput)
-}
-
-type GetNetworkingIpsIpAddressAssignedEntityOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpsIpAddressAssignedEntityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsIpAddressAssignedEntity)(nil)).Elem()
-}
-
-func (o GetNetworkingIpsIpAddressAssignedEntityOutput) ToGetNetworkingIpsIpAddressAssignedEntityOutput() GetNetworkingIpsIpAddressAssignedEntityOutput {
-	return o
-}
-
-func (o GetNetworkingIpsIpAddressAssignedEntityOutput) ToGetNetworkingIpsIpAddressAssignedEntityOutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressAssignedEntityOutput {
-	return o
-}
-
-// The ID of the entity.
-func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The label of the entity.
-func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The type of the entity.
-func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The URL of the entity.
-func (o GetNetworkingIpsIpAddressAssignedEntityOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressAssignedEntity) string { return v.Url }).(pulumi.StringOutput)
-}
-
-type GetNetworkingIpsIpAddressVpcNat11 struct {
-	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-	Address string `pulumi:"address"`
-	// The `id` of the VPC Subnet for this Interface.
-	SubnetId int `pulumi:"subnetId"`
-	// The `id` of the VPC configured for this Interface.
-	VpcId int `pulumi:"vpcId"`
-}
-
-// GetNetworkingIpsIpAddressVpcNat11Input is an input type that accepts GetNetworkingIpsIpAddressVpcNat11Args and GetNetworkingIpsIpAddressVpcNat11Output values.
-// You can construct a concrete instance of `GetNetworkingIpsIpAddressVpcNat11Input` via:
-//
-//	GetNetworkingIpsIpAddressVpcNat11Args{...}
-type GetNetworkingIpsIpAddressVpcNat11Input interface {
-	pulumi.Input
-
-	ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output
-	ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(context.Context) GetNetworkingIpsIpAddressVpcNat11Output
-}
-
-type GetNetworkingIpsIpAddressVpcNat11Args struct {
-	// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-	Address pulumi.StringInput `pulumi:"address"`
-	// The `id` of the VPC Subnet for this Interface.
-	SubnetId pulumi.IntInput `pulumi:"subnetId"`
-	// The `id` of the VPC configured for this Interface.
-	VpcId pulumi.IntInput `pulumi:"vpcId"`
-}
-
-func (GetNetworkingIpsIpAddressVpcNat11Args) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11)(nil)).Elem()
-}
-
-func (i GetNetworkingIpsIpAddressVpcNat11Args) ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output {
-	return i.ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(context.Background())
-}
-
-func (i GetNetworkingIpsIpAddressVpcNat11Args) ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressVpcNat11Output {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkingIpsIpAddressVpcNat11Output)
-}
-
-type GetNetworkingIpsIpAddressVpcNat11Output struct{ *pulumi.OutputState }
-
-func (GetNetworkingIpsIpAddressVpcNat11Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11)(nil)).Elem()
-}
-
-func (o GetNetworkingIpsIpAddressVpcNat11Output) ToGetNetworkingIpsIpAddressVpcNat11Output() GetNetworkingIpsIpAddressVpcNat11Output {
-	return o
-}
-
-func (o GetNetworkingIpsIpAddressVpcNat11Output) ToGetNetworkingIpsIpAddressVpcNat11OutputWithContext(ctx context.Context) GetNetworkingIpsIpAddressVpcNat11Output {
-	return o
-}
-
-// The IPv4 address that is configured as a 1:1 NAT for this VPC interface.
-func (o GetNetworkingIpsIpAddressVpcNat11Output) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// The `id` of the VPC Subnet for this Interface.
-func (o GetNetworkingIpsIpAddressVpcNat11Output) SubnetId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) int { return v.SubnetId }).(pulumi.IntOutput)
-}
-
-// The `id` of the VPC configured for this Interface.
-func (o GetNetworkingIpsIpAddressVpcNat11Output) VpcId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNetworkingIpsIpAddressVpcNat11) int { return v.VpcId }).(pulumi.IntOutput)
-}
-
-type GetNodeBalancerConfigNodeStatus struct {
-	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-	Down int `pulumi:"down"`
-	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
-	Up int `pulumi:"up"`
-}
-
-// GetNodeBalancerConfigNodeStatusInput is an input type that accepts GetNodeBalancerConfigNodeStatusArgs and GetNodeBalancerConfigNodeStatusOutput values.
-// You can construct a concrete instance of `GetNodeBalancerConfigNodeStatusInput` via:
-//
-//	GetNodeBalancerConfigNodeStatusArgs{...}
-type GetNodeBalancerConfigNodeStatusInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerConfigNodeStatusOutput() GetNodeBalancerConfigNodeStatusOutput
-	ToGetNodeBalancerConfigNodeStatusOutputWithContext(context.Context) GetNodeBalancerConfigNodeStatusOutput
-}
-
-type GetNodeBalancerConfigNodeStatusArgs struct {
-	// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-	Down pulumi.IntInput `pulumi:"down"`
-	// The number of backends considered to be 'UP' and healthy, and that are serving requests.
-	Up pulumi.IntInput `pulumi:"up"`
-}
-
-func (GetNodeBalancerConfigNodeStatusArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerConfigNodeStatus)(nil)).Elem()
-}
-
-func (i GetNodeBalancerConfigNodeStatusArgs) ToGetNodeBalancerConfigNodeStatusOutput() GetNodeBalancerConfigNodeStatusOutput {
-	return i.ToGetNodeBalancerConfigNodeStatusOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerConfigNodeStatusArgs) ToGetNodeBalancerConfigNodeStatusOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerConfigNodeStatusOutput)
-}
-
-// GetNodeBalancerConfigNodeStatusArrayInput is an input type that accepts GetNodeBalancerConfigNodeStatusArray and GetNodeBalancerConfigNodeStatusArrayOutput values.
-// You can construct a concrete instance of `GetNodeBalancerConfigNodeStatusArrayInput` via:
-//
-//	GetNodeBalancerConfigNodeStatusArray{ GetNodeBalancerConfigNodeStatusArgs{...} }
-type GetNodeBalancerConfigNodeStatusArrayInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerConfigNodeStatusArrayOutput() GetNodeBalancerConfigNodeStatusArrayOutput
-	ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(context.Context) GetNodeBalancerConfigNodeStatusArrayOutput
-}
-
-type GetNodeBalancerConfigNodeStatusArray []GetNodeBalancerConfigNodeStatusInput
-
-func (GetNodeBalancerConfigNodeStatusArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerConfigNodeStatus)(nil)).Elem()
-}
-
-func (i GetNodeBalancerConfigNodeStatusArray) ToGetNodeBalancerConfigNodeStatusArrayOutput() GetNodeBalancerConfigNodeStatusArrayOutput {
-	return i.ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerConfigNodeStatusArray) ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerConfigNodeStatusArrayOutput)
-}
-
-type GetNodeBalancerConfigNodeStatusOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerConfigNodeStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerConfigNodeStatus)(nil)).Elem()
-}
-
-func (o GetNodeBalancerConfigNodeStatusOutput) ToGetNodeBalancerConfigNodeStatusOutput() GetNodeBalancerConfigNodeStatusOutput {
-	return o
-}
-
-func (o GetNodeBalancerConfigNodeStatusOutput) ToGetNodeBalancerConfigNodeStatusOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusOutput {
-	return o
-}
-
-// The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
-func (o GetNodeBalancerConfigNodeStatusOutput) Down() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNodeBalancerConfigNodeStatus) int { return v.Down }).(pulumi.IntOutput)
-}
-
-// The number of backends considered to be 'UP' and healthy, and that are serving requests.
-func (o GetNodeBalancerConfigNodeStatusOutput) Up() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNodeBalancerConfigNodeStatus) int { return v.Up }).(pulumi.IntOutput)
-}
-
-type GetNodeBalancerConfigNodeStatusArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerConfigNodeStatusArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerConfigNodeStatus)(nil)).Elem()
-}
-
-func (o GetNodeBalancerConfigNodeStatusArrayOutput) ToGetNodeBalancerConfigNodeStatusArrayOutput() GetNodeBalancerConfigNodeStatusArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerConfigNodeStatusArrayOutput) ToGetNodeBalancerConfigNodeStatusArrayOutputWithContext(ctx context.Context) GetNodeBalancerConfigNodeStatusArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerConfigNodeStatusArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerConfigNodeStatusOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerConfigNodeStatus {
-		return vs[0].([]GetNodeBalancerConfigNodeStatus)[vs[1].(int)]
-	}).(GetNodeBalancerConfigNodeStatusOutput)
-}
-
-type GetNodeBalancerFirewall struct {
-	// When this firewall was created.
-	Created string `pulumi:"created"`
-	// The NodeBalancer's ID.
-	Id int `pulumi:"id"`
-	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-	InboundPolicy string `pulumi:"inboundPolicy"`
-	// A set of firewall rules that specify what inbound network traffic is allowed.
-	Inbounds []GetNodeBalancerFirewallInbound `pulumi:"inbounds"`
-	// The label of the related LKE cluster.
-	Label string `pulumi:"label"`
-	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-	OutboundPolicy string `pulumi:"outboundPolicy"`
-	// A set of firewall rules that specify what outbound network traffic is allowed.
-	Outbounds []GetNodeBalancerFirewallOutbound `pulumi:"outbounds"`
-	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
-	Status string `pulumi:"status"`
-	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
-	Tags []string `pulumi:"tags"`
-	// When this firewall was last updated.
-	Updated string `pulumi:"updated"`
-}
-
-// GetNodeBalancerFirewallInput is an input type that accepts GetNodeBalancerFirewallArgs and GetNodeBalancerFirewallOutput values.
-// You can construct a concrete instance of `GetNodeBalancerFirewallInput` via:
-//
-//	GetNodeBalancerFirewallArgs{...}
-type GetNodeBalancerFirewallInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput
-	ToGetNodeBalancerFirewallOutputWithContext(context.Context) GetNodeBalancerFirewallOutput
-}
-
-type GetNodeBalancerFirewallArgs struct {
-	// When this firewall was created.
-	Created pulumi.StringInput `pulumi:"created"`
-	// The NodeBalancer's ID.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-	InboundPolicy pulumi.StringInput `pulumi:"inboundPolicy"`
-	// A set of firewall rules that specify what inbound network traffic is allowed.
-	Inbounds GetNodeBalancerFirewallInboundArrayInput `pulumi:"inbounds"`
-	// The label of the related LKE cluster.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-	OutboundPolicy pulumi.StringInput `pulumi:"outboundPolicy"`
-	// A set of firewall rules that specify what outbound network traffic is allowed.
-	Outbounds GetNodeBalancerFirewallOutboundArrayInput `pulumi:"outbounds"`
-	// The status of the firewall. (`enabled`, `disabled`, `deleted`)
-	Status pulumi.StringInput `pulumi:"status"`
-	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// When this firewall was last updated.
-	Updated pulumi.StringInput `pulumi:"updated"`
-}
-
-func (GetNodeBalancerFirewallArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerFirewall)(nil)).Elem()
-}
-
-func (i GetNodeBalancerFirewallArgs) ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput {
-	return i.ToGetNodeBalancerFirewallOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerFirewallArgs) ToGetNodeBalancerFirewallOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutput)
-}
-
-// GetNodeBalancerFirewallArrayInput is an input type that accepts GetNodeBalancerFirewallArray and GetNodeBalancerFirewallArrayOutput values.
-// You can construct a concrete instance of `GetNodeBalancerFirewallArrayInput` via:
-//
-//	GetNodeBalancerFirewallArray{ GetNodeBalancerFirewallArgs{...} }
-type GetNodeBalancerFirewallArrayInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput
-	ToGetNodeBalancerFirewallArrayOutputWithContext(context.Context) GetNodeBalancerFirewallArrayOutput
-}
-
-type GetNodeBalancerFirewallArray []GetNodeBalancerFirewallInput
-
-func (GetNodeBalancerFirewallArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerFirewall)(nil)).Elem()
-}
-
-func (i GetNodeBalancerFirewallArray) ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput {
-	return i.ToGetNodeBalancerFirewallArrayOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerFirewallArray) ToGetNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallArrayOutput)
-}
-
-type GetNodeBalancerFirewallOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerFirewallOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerFirewall)(nil)).Elem()
-}
-
-func (o GetNodeBalancerFirewallOutput) ToGetNodeBalancerFirewallOutput() GetNodeBalancerFirewallOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallOutput) ToGetNodeBalancerFirewallOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutput {
-	return o
-}
-
-// When this firewall was created.
-func (o GetNodeBalancerFirewallOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The NodeBalancer's ID.
-func (o GetNodeBalancerFirewallOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The default behavior for inbound traffic. (`ACCEPT`, `DROP`)
-func (o GetNodeBalancerFirewallOutput) InboundPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.InboundPolicy }).(pulumi.StringOutput)
-}
-
-// A set of firewall rules that specify what inbound network traffic is allowed.
-func (o GetNodeBalancerFirewallOutput) Inbounds() GetNodeBalancerFirewallInboundArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) []GetNodeBalancerFirewallInbound { return v.Inbounds }).(GetNodeBalancerFirewallInboundArrayOutput)
-}
-
-// The label of the related LKE cluster.
-func (o GetNodeBalancerFirewallOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The default behavior for outbound traffic. (`ACCEPT`, `DROP`)
-func (o GetNodeBalancerFirewallOutput) OutboundPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.OutboundPolicy }).(pulumi.StringOutput)
-}
-
-// A set of firewall rules that specify what outbound network traffic is allowed.
-func (o GetNodeBalancerFirewallOutput) Outbounds() GetNodeBalancerFirewallOutboundArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) []GetNodeBalancerFirewallOutbound { return v.Outbounds }).(GetNodeBalancerFirewallOutboundArrayOutput)
-}
-
-// The status of the firewall. (`enabled`, `disabled`, `deleted`)
-func (o GetNodeBalancerFirewallOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
-func (o GetNodeBalancerFirewallOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-// When this firewall was last updated.
-func (o GetNodeBalancerFirewallOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewall) string { return v.Updated }).(pulumi.StringOutput)
-}
-
-type GetNodeBalancerFirewallArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerFirewallArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerFirewall)(nil)).Elem()
-}
-
-func (o GetNodeBalancerFirewallArrayOutput) ToGetNodeBalancerFirewallArrayOutput() GetNodeBalancerFirewallArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallArrayOutput) ToGetNodeBalancerFirewallArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewall {
-		return vs[0].([]GetNodeBalancerFirewall)[vs[1].(int)]
-	}).(GetNodeBalancerFirewallOutput)
-}
-
-type GetNodeBalancerFirewallInbound struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action string `pulumi:"action"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
-	Ipv4s []string `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks. Must be in IP/mask format.
-	Ipv6s []string `pulumi:"ipv6s"`
-	// The label of the related LKE cluster.
-	Label string `pulumi:"label"`
-	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-	Ports string `pulumi:"ports"`
-	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-	Protocol string `pulumi:"protocol"`
-}
-
-// GetNodeBalancerFirewallInboundInput is an input type that accepts GetNodeBalancerFirewallInboundArgs and GetNodeBalancerFirewallInboundOutput values.
-// You can construct a concrete instance of `GetNodeBalancerFirewallInboundInput` via:
-//
-//	GetNodeBalancerFirewallInboundArgs{...}
-type GetNodeBalancerFirewallInboundInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput
-	ToGetNodeBalancerFirewallInboundOutputWithContext(context.Context) GetNodeBalancerFirewallInboundOutput
-}
-
-type GetNodeBalancerFirewallInboundArgs struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action pulumi.StringInput `pulumi:"action"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
-	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks. Must be in IP/mask format.
-	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
-	// The label of the related LKE cluster.
-	Label pulumi.StringInput `pulumi:"label"`
-	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-	Ports pulumi.StringInput `pulumi:"ports"`
-	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-}
-
-func (GetNodeBalancerFirewallInboundArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerFirewallInbound)(nil)).Elem()
-}
-
-func (i GetNodeBalancerFirewallInboundArgs) ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput {
-	return i.ToGetNodeBalancerFirewallInboundOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerFirewallInboundArgs) ToGetNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallInboundOutput)
-}
-
-// GetNodeBalancerFirewallInboundArrayInput is an input type that accepts GetNodeBalancerFirewallInboundArray and GetNodeBalancerFirewallInboundArrayOutput values.
-// You can construct a concrete instance of `GetNodeBalancerFirewallInboundArrayInput` via:
-//
-//	GetNodeBalancerFirewallInboundArray{ GetNodeBalancerFirewallInboundArgs{...} }
-type GetNodeBalancerFirewallInboundArrayInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput
-	ToGetNodeBalancerFirewallInboundArrayOutputWithContext(context.Context) GetNodeBalancerFirewallInboundArrayOutput
-}
-
-type GetNodeBalancerFirewallInboundArray []GetNodeBalancerFirewallInboundInput
-
-func (GetNodeBalancerFirewallInboundArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerFirewallInbound)(nil)).Elem()
-}
-
-func (i GetNodeBalancerFirewallInboundArray) ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput {
-	return i.ToGetNodeBalancerFirewallInboundArrayOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerFirewallInboundArray) ToGetNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallInboundArrayOutput)
-}
-
-type GetNodeBalancerFirewallInboundOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerFirewallInboundOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerFirewallInbound)(nil)).Elem()
-}
-
-func (o GetNodeBalancerFirewallInboundOutput) ToGetNodeBalancerFirewallInboundOutput() GetNodeBalancerFirewallInboundOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallInboundOutput) ToGetNodeBalancerFirewallInboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundOutput {
-	return o
-}
-
-// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-func (o GetNodeBalancerFirewallInboundOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Action }).(pulumi.StringOutput)
-}
-
-// A list of IPv4 addresses or networks. Must be in IP/mask format.
-func (o GetNodeBalancerFirewallInboundOutput) Ipv4s() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
-}
-
-// A list of IPv6 addresses or networks. Must be in IP/mask format.
-func (o GetNodeBalancerFirewallInboundOutput) Ipv6s() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
-}
-
-// The label of the related LKE cluster.
-func (o GetNodeBalancerFirewallInboundOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-func (o GetNodeBalancerFirewallInboundOutput) Ports() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Ports }).(pulumi.StringOutput)
-}
-
-// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-func (o GetNodeBalancerFirewallInboundOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallInbound) string { return v.Protocol }).(pulumi.StringOutput)
-}
-
-type GetNodeBalancerFirewallInboundArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerFirewallInboundArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerFirewallInbound)(nil)).Elem()
-}
-
-func (o GetNodeBalancerFirewallInboundArrayOutput) ToGetNodeBalancerFirewallInboundArrayOutput() GetNodeBalancerFirewallInboundArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallInboundArrayOutput) ToGetNodeBalancerFirewallInboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallInboundArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallInboundArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallInboundOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewallInbound {
-		return vs[0].([]GetNodeBalancerFirewallInbound)[vs[1].(int)]
-	}).(GetNodeBalancerFirewallInboundOutput)
-}
-
-type GetNodeBalancerFirewallOutbound struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action string `pulumi:"action"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
-	Ipv4s []string `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks. Must be in IP/mask format.
-	Ipv6s []string `pulumi:"ipv6s"`
-	// The label of the related LKE cluster.
-	Label string `pulumi:"label"`
-	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-	Ports string `pulumi:"ports"`
-	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-	Protocol string `pulumi:"protocol"`
-}
-
-// GetNodeBalancerFirewallOutboundInput is an input type that accepts GetNodeBalancerFirewallOutboundArgs and GetNodeBalancerFirewallOutboundOutput values.
-// You can construct a concrete instance of `GetNodeBalancerFirewallOutboundInput` via:
-//
-//	GetNodeBalancerFirewallOutboundArgs{...}
-type GetNodeBalancerFirewallOutboundInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput
-	ToGetNodeBalancerFirewallOutboundOutputWithContext(context.Context) GetNodeBalancerFirewallOutboundOutput
-}
-
-type GetNodeBalancerFirewallOutboundArgs struct {
-	// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-	Action pulumi.StringInput `pulumi:"action"`
-	// A list of IPv4 addresses or networks. Must be in IP/mask format.
-	Ipv4s pulumi.StringArrayInput `pulumi:"ipv4s"`
-	// A list of IPv6 addresses or networks. Must be in IP/mask format.
-	Ipv6s pulumi.StringArrayInput `pulumi:"ipv6s"`
-	// The label of the related LKE cluster.
-	Label pulumi.StringInput `pulumi:"label"`
-	// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-	Ports pulumi.StringInput `pulumi:"ports"`
-	// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-}
-
-func (GetNodeBalancerFirewallOutboundArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerFirewallOutbound)(nil)).Elem()
-}
-
-func (i GetNodeBalancerFirewallOutboundArgs) ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput {
-	return i.ToGetNodeBalancerFirewallOutboundOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerFirewallOutboundArgs) ToGetNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutboundOutput)
-}
-
-// GetNodeBalancerFirewallOutboundArrayInput is an input type that accepts GetNodeBalancerFirewallOutboundArray and GetNodeBalancerFirewallOutboundArrayOutput values.
-// You can construct a concrete instance of `GetNodeBalancerFirewallOutboundArrayInput` via:
-//
-//	GetNodeBalancerFirewallOutboundArray{ GetNodeBalancerFirewallOutboundArgs{...} }
-type GetNodeBalancerFirewallOutboundArrayInput interface {
-	pulumi.Input
-
-	ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput
-	ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(context.Context) GetNodeBalancerFirewallOutboundArrayOutput
-}
-
-type GetNodeBalancerFirewallOutboundArray []GetNodeBalancerFirewallOutboundInput
-
-func (GetNodeBalancerFirewallOutboundArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerFirewallOutbound)(nil)).Elem()
-}
-
-func (i GetNodeBalancerFirewallOutboundArray) ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput {
-	return i.ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(context.Background())
-}
-
-func (i GetNodeBalancerFirewallOutboundArray) ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNodeBalancerFirewallOutboundArrayOutput)
-}
-
-type GetNodeBalancerFirewallOutboundOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerFirewallOutboundOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNodeBalancerFirewallOutbound)(nil)).Elem()
-}
-
-func (o GetNodeBalancerFirewallOutboundOutput) ToGetNodeBalancerFirewallOutboundOutput() GetNodeBalancerFirewallOutboundOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallOutboundOutput) ToGetNodeBalancerFirewallOutboundOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundOutput {
-	return o
-}
-
-// Controls whether traffic is accepted or dropped by this rule. Overrides the Firewall’s inboundPolicy if this is an inbound rule, or the outboundPolicy if this is an outbound rule.
-func (o GetNodeBalancerFirewallOutboundOutput) Action() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Action }).(pulumi.StringOutput)
-}
-
-// A list of IPv4 addresses or networks. Must be in IP/mask format.
-func (o GetNodeBalancerFirewallOutboundOutput) Ipv4s() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) []string { return v.Ipv4s }).(pulumi.StringArrayOutput)
-}
-
-// A list of IPv6 addresses or networks. Must be in IP/mask format.
-func (o GetNodeBalancerFirewallOutboundOutput) Ipv6s() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) []string { return v.Ipv6s }).(pulumi.StringArrayOutput)
-}
-
-// The label of the related LKE cluster.
-func (o GetNodeBalancerFirewallOutboundOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
-func (o GetNodeBalancerFirewallOutboundOutput) Ports() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Ports }).(pulumi.StringOutput)
-}
-
-// The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-func (o GetNodeBalancerFirewallOutboundOutput) Protocol() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNodeBalancerFirewallOutbound) string { return v.Protocol }).(pulumi.StringOutput)
-}
-
-type GetNodeBalancerFirewallOutboundArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNodeBalancerFirewallOutboundArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNodeBalancerFirewallOutbound)(nil)).Elem()
-}
-
-func (o GetNodeBalancerFirewallOutboundArrayOutput) ToGetNodeBalancerFirewallOutboundArrayOutput() GetNodeBalancerFirewallOutboundArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallOutboundArrayOutput) ToGetNodeBalancerFirewallOutboundArrayOutputWithContext(ctx context.Context) GetNodeBalancerFirewallOutboundArrayOutput {
-	return o
-}
-
-func (o GetNodeBalancerFirewallOutboundArrayOutput) Index(i pulumi.IntInput) GetNodeBalancerFirewallOutboundOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNodeBalancerFirewallOutbound {
-		return vs[0].([]GetNodeBalancerFirewallOutbound)[vs[1].(int)]
-	}).(GetNodeBalancerFirewallOutboundOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArray{})
@@ -65861,6 +66175,36 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceInterfaceIpv6SlaacArrayInput)(nil)).Elem(), InstanceInterfaceIpv6SlaacArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpVpcNat11Input)(nil)).Elem(), InstanceIpVpcNat11Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpVpcNat11ArrayInput)(nil)).Elem(), InstanceIpVpcNat11Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceInput)(nil)).Elem(), InstanceLinodeInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceArrayInput)(nil)).Elem(), InstanceLinodeInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceDefaultRouteInput)(nil)).Elem(), InstanceLinodeInterfaceDefaultRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceDefaultRoutePtrInput)(nil)).Elem(), InstanceLinodeInterfaceDefaultRouteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicInput)(nil)).Elem(), InstanceLinodeInterfacePublicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicPtrInput)(nil)).Elem(), InstanceLinodeInterfacePublicArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4Input)(nil)).Elem(), InstanceLinodeInterfacePublicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4PtrInput)(nil)).Elem(), InstanceLinodeInterfacePublicIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4AddressInput)(nil)).Elem(), InstanceLinodeInterfacePublicIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv4AddressArrayInput)(nil)).Elem(), InstanceLinodeInterfacePublicIpv4AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6Input)(nil)).Elem(), InstanceLinodeInterfacePublicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6PtrInput)(nil)).Elem(), InstanceLinodeInterfacePublicIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6RangeInput)(nil)).Elem(), InstanceLinodeInterfacePublicIpv6RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfacePublicIpv6RangeArrayInput)(nil)).Elem(), InstanceLinodeInterfacePublicIpv6RangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcInput)(nil)).Elem(), InstanceLinodeInterfaceRdmaVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcPtrInput)(nil)).Elem(), InstanceLinodeInterfaceRdmaVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4Input)(nil)).Elem(), InstanceLinodeInterfaceRdmaVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4PtrInput)(nil)).Elem(), InstanceLinodeInterfaceRdmaVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4AddressesInput)(nil)).Elem(), InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrInput)(nil)).Elem(), InstanceLinodeInterfaceRdmaVpcIpv4AddressesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVlanInput)(nil)).Elem(), InstanceLinodeInterfaceVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVlanPtrInput)(nil)).Elem(), InstanceLinodeInterfaceVlanArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcInput)(nil)).Elem(), InstanceLinodeInterfaceVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcPtrInput)(nil)).Elem(), InstanceLinodeInterfaceVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4Input)(nil)).Elem(), InstanceLinodeInterfaceVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4PtrInput)(nil)).Elem(), InstanceLinodeInterfaceVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4AddressInput)(nil)).Elem(), InstanceLinodeInterfaceVpcIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4AddressArrayInput)(nil)).Elem(), InstanceLinodeInterfaceVpcIpv4AddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4RangeInput)(nil)).Elem(), InstanceLinodeInterfaceVpcIpv4RangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceLinodeInterfaceVpcIpv4RangeArrayInput)(nil)).Elem(), InstanceLinodeInterfaceVpcIpv4RangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataInput)(nil)).Elem(), InstanceMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMetadataArrayInput)(nil)).Elem(), InstanceMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePlacementGroupInput)(nil)).Elem(), InstancePlacementGroupArgs{})
@@ -65889,6 +66233,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SharedArrayInput)(nil)).Elem(), InterfacePublicIpv6SharedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SlaacInput)(nil)).Elem(), InterfacePublicIpv6SlaacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterfacePublicIpv6SlaacArrayInput)(nil)).Elem(), InterfacePublicIpv6SlaacArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceRdmaVpcInput)(nil)).Elem(), InterfaceRdmaVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceRdmaVpcPtrInput)(nil)).Elem(), InterfaceRdmaVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceRdmaVpcIpv4Input)(nil)).Elem(), InterfaceRdmaVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceRdmaVpcIpv4PtrInput)(nil)).Elem(), InterfaceRdmaVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceRdmaVpcIpv4AddressInput)(nil)).Elem(), InterfaceRdmaVpcIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceRdmaVpcIpv4AddressArrayInput)(nil)).Elem(), InterfaceRdmaVpcIpv4AddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVlanInput)(nil)).Elem(), InterfaceVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVlanPtrInput)(nil)).Elem(), InterfaceVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InterfaceVpcInput)(nil)).Elem(), InterfaceVpcArgs{})
@@ -66033,6 +66383,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcIpv4ArrayInput)(nil)).Elem(), VpcIpv4Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcIpv6Input)(nil)).Elem(), VpcIpv6Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcIpv6ArrayInput)(nil)).Elem(), VpcIpv6Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetTypeInput)(nil)).Elem(), VpcSubnetTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetTypeArrayInput)(nil)).Elem(), VpcSubnetTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseInput)(nil)).Elem(), VpcSubnetDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseArrayInput)(nil)).Elem(), VpcSubnetDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcSubnetDatabaseIpv6RangeInput)(nil)).Elem(), VpcSubnetDatabaseIpv6RangeArgs{})
@@ -66426,6 +66778,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SharedArrayInput)(nil)).Elem(), GetInterfacePublicIpv6SharedArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SlaacInput)(nil)).Elem(), GetInterfacePublicIpv6SlaacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfacePublicIpv6SlaacArrayInput)(nil)).Elem(), GetInterfacePublicIpv6SlaacArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceRdmaVpcInput)(nil)).Elem(), GetInterfaceRdmaVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceRdmaVpcIpv4Input)(nil)).Elem(), GetInterfaceRdmaVpcIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceRdmaVpcIpv4AddressInput)(nil)).Elem(), GetInterfaceRdmaVpcIpv4AddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceRdmaVpcIpv4AddressArrayInput)(nil)).Elem(), GetInterfaceRdmaVpcIpv4AddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVlanInput)(nil)).Elem(), GetInterfaceVlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcInput)(nil)).Elem(), GetInterfaceVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInterfaceVpcIpv4Input)(nil)).Elem(), GetInterfaceVpcIpv4Args{})
@@ -66531,45 +66887,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsFilterInput)(nil)).Elem(), GetMonitorLogsStreamsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsFilterArrayInput)(nil)).Elem(), GetMonitorLogsStreamsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsStreamInput)(nil)).Elem(), GetMonitorLogsStreamsStreamArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamsStreamArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterInput)(nil)).Elem(), GetNbTypesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesFilterArrayInput)(nil)).Elem(), GetNbTypesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeInput)(nil)).Elem(), GetNbTypesTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeArrayInput)(nil)).Elem(), GetNbTypesTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypePriceInput)(nil)).Elem(), GetNbTypesTypePriceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypePriceArrayInput)(nil)).Elem(), GetNbTypesTypePriceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeRegionPriceInput)(nil)).Elem(), GetNbTypesTypeRegionPriceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNbTypesTypeRegionPriceArrayInput)(nil)).Elem(), GetNbTypesTypeRegionPriceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesFilterInput)(nil)).Elem(), GetNetworkTransferPricesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesFilterArrayInput)(nil)).Elem(), GetNetworkTransferPricesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeInput)(nil)).Elem(), GetNetworkTransferPricesTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypePriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypePriceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkTransferPricesTypeRegionPriceArrayInput)(nil)).Elem(), GetNetworkTransferPricesTypeRegionPriceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpAssignedEntityInput)(nil)).Elem(), GetNetworkingIpAssignedEntityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpVpcNat11Input)(nil)).Elem(), GetNetworkingIpVpcNat11Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterInput)(nil)).Elem(), GetNetworkingIpsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsFilterArrayInput)(nil)).Elem(), GetNetworkingIpsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressInput)(nil)).Elem(), GetNetworkingIpsIpAddressArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressArrayInput)(nil)).Elem(), GetNetworkingIpsIpAddressArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressAssignedEntityInput)(nil)).Elem(), GetNetworkingIpsIpAddressAssignedEntityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkingIpsIpAddressVpcNat11Input)(nil)).Elem(), GetNetworkingIpsIpAddressVpcNat11Args{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerConfigNodeStatusArrayInput)(nil)).Elem(), GetNodeBalancerConfigNodeStatusArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInput)(nil)).Elem(), GetNodeBalancerFirewallArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallArrayInput)(nil)).Elem(), GetNodeBalancerFirewallArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInboundInput)(nil)).Elem(), GetNodeBalancerFirewallInboundArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallInboundArrayInput)(nil)).Elem(), GetNodeBalancerFirewallInboundArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallOutboundInput)(nil)).Elem(), GetNodeBalancerFirewallOutboundArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNodeBalancerFirewallOutboundArrayInput)(nil)).Elem(), GetNodeBalancerFirewallOutboundArray{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PrivateNetworkOutput{})
@@ -66776,6 +67093,36 @@ func init() {
 	pulumi.RegisterOutputType(InstanceInterfaceIpv6SlaacArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpVpcNat11Output{})
 	pulumi.RegisterOutputType(InstanceIpVpcNat11ArrayOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceDefaultRouteOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceDefaultRoutePtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicPtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv4Output{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv4AddressOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv4AddressArrayOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv6Output{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv6PtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv6RangeOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfacePublicIpv6RangeArrayOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceRdmaVpcOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceRdmaVpcPtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceRdmaVpcIpv4Output{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceRdmaVpcIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceRdmaVpcIpv4AddressesOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceRdmaVpcIpv4AddressesPtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVlanOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVlanPtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcPtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcIpv4Output{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcIpv4AddressOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcIpv4AddressArrayOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcIpv4RangeOutput{})
+	pulumi.RegisterOutputType(InstanceLinodeInterfaceVpcIpv4RangeArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataOutput{})
 	pulumi.RegisterOutputType(InstanceMetadataArrayOutput{})
 	pulumi.RegisterOutputType(InstancePlacementGroupOutput{})
@@ -66804,6 +67151,12 @@ func init() {
 	pulumi.RegisterOutputType(InterfacePublicIpv6SharedArrayOutput{})
 	pulumi.RegisterOutputType(InterfacePublicIpv6SlaacOutput{})
 	pulumi.RegisterOutputType(InterfacePublicIpv6SlaacArrayOutput{})
+	pulumi.RegisterOutputType(InterfaceRdmaVpcOutput{})
+	pulumi.RegisterOutputType(InterfaceRdmaVpcPtrOutput{})
+	pulumi.RegisterOutputType(InterfaceRdmaVpcIpv4Output{})
+	pulumi.RegisterOutputType(InterfaceRdmaVpcIpv4PtrOutput{})
+	pulumi.RegisterOutputType(InterfaceRdmaVpcIpv4AddressOutput{})
+	pulumi.RegisterOutputType(InterfaceRdmaVpcIpv4AddressArrayOutput{})
 	pulumi.RegisterOutputType(InterfaceVlanOutput{})
 	pulumi.RegisterOutputType(InterfaceVlanPtrOutput{})
 	pulumi.RegisterOutputType(InterfaceVpcOutput{})
@@ -66948,6 +67301,8 @@ func init() {
 	pulumi.RegisterOutputType(VpcIpv4ArrayOutput{})
 	pulumi.RegisterOutputType(VpcIpv6Output{})
 	pulumi.RegisterOutputType(VpcIpv6ArrayOutput{})
+	pulumi.RegisterOutputType(VpcSubnetTypeOutput{})
+	pulumi.RegisterOutputType(VpcSubnetTypeArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetDatabaseOutput{})
 	pulumi.RegisterOutputType(VpcSubnetDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(VpcSubnetDatabaseIpv6RangeOutput{})
@@ -67341,6 +67696,10 @@ func init() {
 	pulumi.RegisterOutputType(GetInterfacePublicIpv6SharedArrayOutput{})
 	pulumi.RegisterOutputType(GetInterfacePublicIpv6SlaacOutput{})
 	pulumi.RegisterOutputType(GetInterfacePublicIpv6SlaacArrayOutput{})
+	pulumi.RegisterOutputType(GetInterfaceRdmaVpcOutput{})
+	pulumi.RegisterOutputType(GetInterfaceRdmaVpcIpv4Output{})
+	pulumi.RegisterOutputType(GetInterfaceRdmaVpcIpv4AddressOutput{})
+	pulumi.RegisterOutputType(GetInterfaceRdmaVpcIpv4AddressArrayOutput{})
 	pulumi.RegisterOutputType(GetInterfaceVlanOutput{})
 	pulumi.RegisterOutputType(GetInterfaceVpcOutput{})
 	pulumi.RegisterOutputType(GetInterfaceVpcIpv4Output{})
@@ -67446,43 +67805,4 @@ func init() {
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamDetailsOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamArrayOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamDetailsOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamsFilterOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamsStreamOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamsStreamArrayOutput{})
-	pulumi.RegisterOutputType(GetNbTypesFilterOutput{})
-	pulumi.RegisterOutputType(GetNbTypesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetNbTypesTypeOutput{})
-	pulumi.RegisterOutputType(GetNbTypesTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetNbTypesTypePriceOutput{})
-	pulumi.RegisterOutputType(GetNbTypesTypePriceArrayOutput{})
-	pulumi.RegisterOutputType(GetNbTypesTypeRegionPriceOutput{})
-	pulumi.RegisterOutputType(GetNbTypesTypeRegionPriceArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesFilterOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesTypePriceArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceOutput{})
-	pulumi.RegisterOutputType(GetNetworkTransferPricesTypeRegionPriceArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpAssignedEntityOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpVpcNat11Output{})
-	pulumi.RegisterOutputType(GetNetworkingIpsFilterOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressArrayOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressAssignedEntityOutput{})
-	pulumi.RegisterOutputType(GetNetworkingIpsIpAddressVpcNat11Output{})
-	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerConfigNodeStatusArrayOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerFirewallArrayOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerFirewallInboundOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerFirewallInboundArrayOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutboundOutput{})
-	pulumi.RegisterOutputType(GetNodeBalancerFirewallOutboundArrayOutput{})
 }

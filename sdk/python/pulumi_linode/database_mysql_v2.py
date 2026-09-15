@@ -1680,8 +1680,8 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            engine_id="mysql/8",
             label="mydatabase",
+            engine_id="mysql/8",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -1690,28 +1690,28 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            allow_lists=["0.0.0.0/0"],
-            engine_id="mysql/8",
             label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysqlV2("foobar",
-            allow_lists=["10.0.0.3/32"],
-            cluster_size=3,
             engine_id="mysql/8",
-            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["10.0.0.3/32"],
+            cluster_size=3,
             updates={
-                "day_of_week": 3,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
+                "day_of_week": 3,
             })
         ```
         ```python
@@ -1719,6 +1719,10 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
             engine_config_binlog_retention_period=3600,
             engine_config_mysql_connect_timeout=10,
             engine_config_mysql_default_time_zone="+00:00",
@@ -1746,37 +1750,33 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             engine_config_mysql_sql_mode="TRADITIONAL,ANSI",
             engine_config_mysql_sql_require_primary_key=False,
             engine_config_mysql_tmp_table_size=16777216,
-            engine_config_mysql_wait_timeout=28800,
-            engine_id="mysql/8",
-            label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
+            engine_config_mysql_wait_timeout=28800)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            engine_id="mysql/8",
-            fork_source=12345,
             label="mydatabase",
+            engine_id="mysql/8",
             region="us-mia",
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            fork_source=12345)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            engine_id="mysql/8",
             label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
             private_network={
-                "public_access": False,
-                "subnet_id": 456,
                 "vpc_id": 123,
-            },
-            region="us-mia",
-            type="g6-nanode-1")
+                "subnet_id": 456,
+                "public_access": False,
+            })
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.
@@ -1889,8 +1889,8 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            engine_id="mysql/8",
             label="mydatabase",
+            engine_id="mysql/8",
             region="us-mia",
             type="g6-nanode-1")
         ```
@@ -1899,28 +1899,28 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            allow_lists=["0.0.0.0/0"],
-            engine_id="mysql/8",
             label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
-        ```
-        ```python
-        import pulumi
-        import pulumi_linode as linode
-
-        foobar = linode.DatabaseMysqlV2("foobar",
-            allow_lists=["10.0.0.3/32"],
-            cluster_size=3,
             engine_id="mysql/8",
-            label="mydatabase",
             region="us-mia",
             type="g6-nanode-1",
+            allow_lists=["0.0.0.0/0"])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
+            allow_lists=["10.0.0.3/32"],
+            cluster_size=3,
             updates={
-                "day_of_week": 3,
                 "duration": 4,
                 "frequency": "weekly",
                 "hour_of_day": 22,
+                "day_of_week": 3,
             })
         ```
         ```python
@@ -1928,6 +1928,10 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
+            label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
             engine_config_binlog_retention_period=3600,
             engine_config_mysql_connect_timeout=10,
             engine_config_mysql_default_time_zone="+00:00",
@@ -1955,37 +1959,33 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             engine_config_mysql_sql_mode="TRADITIONAL,ANSI",
             engine_config_mysql_sql_require_primary_key=False,
             engine_config_mysql_tmp_table_size=16777216,
-            engine_config_mysql_wait_timeout=28800,
-            engine_id="mysql/8",
-            label="mydatabase",
-            region="us-mia",
-            type="g6-nanode-1")
+            engine_config_mysql_wait_timeout=28800)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            engine_id="mysql/8",
-            fork_source=12345,
             label="mydatabase",
+            engine_id="mysql/8",
             region="us-mia",
-            type="g6-nanode-1")
+            type="g6-nanode-1",
+            fork_source=12345)
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         foobar = linode.DatabaseMysqlV2("foobar",
-            engine_id="mysql/8",
             label="mydatabase",
+            engine_id="mysql/8",
+            region="us-mia",
+            type="g6-nanode-1",
             private_network={
-                "public_access": False,
-                "subnet_id": 456,
                 "vpc_id": 123,
-            },
-            region="us-mia",
-            type="g6-nanode-1")
+                "subnet_id": 456,
+                "public_access": False,
+            })
         ```
 
         > **_NOTE:_** The name of the default database in the returned database cluster is `defaultdb`.

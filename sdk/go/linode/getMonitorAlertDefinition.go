@@ -101,12 +101,8 @@ type LookupMonitorAlertDefinitionResult struct {
 }
 
 func LookupMonitorAlertDefinitionOutput(ctx *pulumi.Context, args LookupMonitorAlertDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupMonitorAlertDefinitionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMonitorAlertDefinitionResultOutput, error) {
-			args := v.(LookupMonitorAlertDefinitionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition", args, LookupMonitorAlertDefinitionResultOutput{}, options).(LookupMonitorAlertDefinitionResultOutput), nil
-		}).(LookupMonitorAlertDefinitionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getMonitorAlertDefinition:getMonitorAlertDefinition", args, LookupMonitorAlertDefinitionResultOutput{}, options).(LookupMonitorAlertDefinitionResultOutput)
 }
 
 // A collection of arguments for invoking getMonitorAlertDefinition.

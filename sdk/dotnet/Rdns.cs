@@ -28,14 +28,14 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooInstance = new Linode.Instance("fooInstance", new()
+    ///     var fooInstance = new Linode.Instance("foo", new()
     ///     {
     ///         Image = "linode/arch",
     ///         Region = "ca-east",
     ///         Type = "g6-dedicated-2",
     ///     });
     /// 
-    ///     var fooRdns = new Linode.Rdns("fooRdns", new()
+    ///     var foo = new Linode.Rdns("foo", new()
     ///     {
     ///         Address = fooInstance.IpAddress,
     ///         RdnsName = fooInstance.IpAddress.Apply(ipAddress =&gt; $"{ipAddress}.nip.io"),

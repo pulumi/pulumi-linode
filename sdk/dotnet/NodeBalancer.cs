@@ -27,10 +27,10 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.NodeBalancer("foobar", new()
     ///     {
-    ///         ClientConnThrottle = 20,
-    ///         ClientUdpSessThrottle = 10,
     ///         Label = "mynodebalancer",
     ///         Region = "us-east",
+    ///         ClientConnThrottle = 20,
+    ///         ClientUdpSessThrottle = 10,
     ///         Tags = new[]
     ///         {
     ///             "foobar",
@@ -59,7 +59,7 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.NodeBalancerVpcArgs
     ///             {
-    ///                 Subnet_id = linode_vpc_subnet.Test.Id,
+    ///                 SubnetId = test.Id,
     ///             },
     ///         },
     ///     });
@@ -77,7 +77,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myReservedIp = new Linode.NetworkingIp("myReservedIp", new()
+    ///     var myReservedIp = new Linode.NetworkingIp("my_reserved_ip", new()
     ///     {
     ///         Region = "us-east",
     ///         Type = "ipv4",

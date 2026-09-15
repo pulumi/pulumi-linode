@@ -32,7 +32,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("typeIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getReservedIpTypes:getReservedIpTypes.pp:2,11-25)))
+// ctx.Export("typeIds", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-26)))
 // return nil
 // })
 // }
@@ -103,12 +103,8 @@ type GetReservedIpTypesResult struct {
 }
 
 func GetReservedIpTypesOutput(ctx *pulumi.Context, args GetReservedIpTypesOutputArgs, opts ...pulumi.InvokeOption) GetReservedIpTypesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetReservedIpTypesResultOutput, error) {
-			args := v.(GetReservedIpTypesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getReservedIpTypes:getReservedIpTypes", args, GetReservedIpTypesResultOutput{}, options).(GetReservedIpTypesResultOutput), nil
-		}).(GetReservedIpTypesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getReservedIpTypes:getReservedIpTypes", args, GetReservedIpTypesResultOutput{}, options).(GetReservedIpTypesResultOutput)
 }
 
 // A collection of arguments for invoking getReservedIpTypes.

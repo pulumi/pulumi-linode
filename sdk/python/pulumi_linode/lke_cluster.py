@@ -511,159 +511,159 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
-            pools=[{
-                "count": 3,
-                "type": "g6-standard-2",
-            }],
+            k8s_version="1.32",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 3,
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            k8s_version="v1.31.8+lke5",
             label="lke-e-cluster",
+            region="us-lax",
+            k8s_version="v1.31.8+lke5",
+            tags=["test"],
+            tier="enterprise",
             pools=[{
+                "type": "g7-premium-2",
                 "count": 3,
                 "tags": ["test"],
-                "type": "g7-premium-2",
-            }],
-            region="us-lax",
-            tags=["test"],
-            tier="enterprise")
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
-            pools=[{
-                "autoscaler": {
-                    "max": 10,
-                    "min": 3,
-                },
-                "type": "g6-standard-2",
-            }],
+            k8s_version="1.32",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "autoscaler": {
+                    "min": 3,
+                    "max": 10,
+                },
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            control_plane={
-                "acl": {
-                    "addresses": [{
-                        "ipv4": ["0.0.0.0/0"],
-                        "ipv6": ["2001:db8::/32"],
-                    }],
-                    "enabled": True,
-                },
-                "high_availability": True,
-            },
-            k8s_version="1.32",
             label="my-cluster",
-            pools=[{
-                "count": 1,
-                "type": "g6-standard-2",
-            }],
+            k8s_version="1.32",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            control_plane={
+                "high_availability": True,
+                "acl": {
+                    "enabled": True,
+                    "addresses": [{
+                        "ipv4s": ["0.0.0.0/0"],
+                        "ipv6s": ["2001:db8::/32"],
+                    }],
+                },
+            },
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 1,
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[
                 {
+                    "type": "g6-standard-2",
                     "count": 2,
                     "label": "db-pool",
-                    "type": "g6-standard-2",
                 },
                 {
+                    "type": "g6-standard-1",
                     "count": 3,
                     "label": "app-pool",
-                    "type": "g6-standard-1",
                 },
-            ],
-            region="us-central",
-            tags=["prod"])
+            ])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[{
-                "count": 2,
-                "firewall_id": 12345,
-                "label": "db-pool",
                 "type": "g6-standard-2",
-            }],
-            region="us-central",
-            tags=["prod"])
+                "count": 2,
+                "label": "db-pool",
+                "firewall_id": 12345,
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[
                 {
+                    "type": "g6-standard-2",
                     "count": 2,
                     "labels": {
-                        "environment": "production",
                         "role": "database",
+                        "environment": "production",
                     },
-                    "type": "g6-standard-2",
                 },
                 {
+                    "type": "g6-standard-1",
                     "count": 3,
                     "labels": {
-                        "environment": "production",
                         "role": "application",
+                        "environment": "production",
                     },
-                    "type": "g6-standard-1",
                 },
-            ],
-            region="us-central",
-            tags=["prod"])
+            ])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[
                 {
+                    "type": "g6-standard-2",
                     "count": 2,
                     "disk_encryption": "enabled",
-                    "type": "g6-standard-2",
                 },
                 {
+                    "type": "g6-standard-1",
                     "count": 1,
                     "disk_encryption": "disabled",
-                    "type": "g6-standard-1",
                 },
-            ],
-            region="us-central",
-            tags=["prod"])
+            ])
         ```
 
         ## Nested Node Pool Caveats
@@ -678,12 +678,12 @@ class LkeCluster(pulumi.CustomResource):
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[
             {
-                "count": 2,
                 "type": "g6-standard-1",
+                "count": 2,
             },
             {
-                "count": 3,
                 "type": "g6-standard-2",
+                "count": 3,
             },
         ])
         ```
@@ -692,8 +692,8 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[{
-            "count": 3,
             "type": "g6-standard-2",
+            "count": 3,
         }])
         ```
         ## Externally Managed Node Pools
@@ -769,159 +769,159 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
-            pools=[{
-                "count": 3,
-                "type": "g6-standard-2",
-            }],
+            k8s_version="1.32",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 3,
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            k8s_version="v1.31.8+lke5",
             label="lke-e-cluster",
+            region="us-lax",
+            k8s_version="v1.31.8+lke5",
+            tags=["test"],
+            tier="enterprise",
             pools=[{
+                "type": "g7-premium-2",
                 "count": 3,
                 "tags": ["test"],
-                "type": "g7-premium-2",
-            }],
-            region="us-lax",
-            tags=["test"],
-            tier="enterprise")
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
-            pools=[{
-                "autoscaler": {
-                    "max": 10,
-                    "min": 3,
-                },
-                "type": "g6-standard-2",
-            }],
+            k8s_version="1.32",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            pools=[{
+                "type": "g6-standard-2",
+                "autoscaler": {
+                    "min": 3,
+                    "max": 10,
+                },
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         test = linode.LkeCluster("test",
-            control_plane={
-                "acl": {
-                    "addresses": [{
-                        "ipv4": ["0.0.0.0/0"],
-                        "ipv6": ["2001:db8::/32"],
-                    }],
-                    "enabled": True,
-                },
-                "high_availability": True,
-            },
-            k8s_version="1.32",
             label="my-cluster",
-            pools=[{
-                "count": 1,
-                "type": "g6-standard-2",
-            }],
+            k8s_version="1.32",
             region="us-central",
-            tags=["prod"])
+            tags=["prod"],
+            control_plane={
+                "high_availability": True,
+                "acl": {
+                    "enabled": True,
+                    "addresses": [{
+                        "ipv4s": ["0.0.0.0/0"],
+                        "ipv6s": ["2001:db8::/32"],
+                    }],
+                },
+            },
+            pools=[{
+                "type": "g6-standard-2",
+                "count": 1,
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[
                 {
+                    "type": "g6-standard-2",
                     "count": 2,
                     "label": "db-pool",
-                    "type": "g6-standard-2",
                 },
                 {
+                    "type": "g6-standard-1",
                     "count": 3,
                     "label": "app-pool",
-                    "type": "g6-standard-1",
                 },
-            ],
-            region="us-central",
-            tags=["prod"])
+            ])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[{
-                "count": 2,
-                "firewall_id": 12345,
-                "label": "db-pool",
                 "type": "g6-standard-2",
-            }],
-            region="us-central",
-            tags=["prod"])
+                "count": 2,
+                "label": "db-pool",
+                "firewall_id": 12345,
+            }])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[
                 {
+                    "type": "g6-standard-2",
                     "count": 2,
                     "labels": {
-                        "environment": "production",
                         "role": "database",
+                        "environment": "production",
                     },
-                    "type": "g6-standard-2",
                 },
                 {
+                    "type": "g6-standard-1",
                     "count": 3,
                     "labels": {
-                        "environment": "production",
                         "role": "application",
+                        "environment": "production",
                     },
-                    "type": "g6-standard-1",
                 },
-            ],
-            region="us-central",
-            tags=["prod"])
+            ])
         ```
         ```python
         import pulumi
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster",
-            k8s_version="1.32",
             label="my-cluster",
+            k8s_version="1.32",
+            region="us-central",
+            tags=["prod"],
             pools=[
                 {
+                    "type": "g6-standard-2",
                     "count": 2,
                     "disk_encryption": "enabled",
-                    "type": "g6-standard-2",
                 },
                 {
+                    "type": "g6-standard-1",
                     "count": 1,
                     "disk_encryption": "disabled",
-                    "type": "g6-standard-1",
                 },
-            ],
-            region="us-central",
-            tags=["prod"])
+            ])
         ```
 
         ## Nested Node Pool Caveats
@@ -936,12 +936,12 @@ class LkeCluster(pulumi.CustomResource):
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[
             {
-                "count": 2,
                 "type": "g6-standard-1",
+                "count": 2,
             },
             {
-                "count": 3,
                 "type": "g6-standard-2",
+                "count": 3,
             },
         ])
         ```
@@ -950,8 +950,8 @@ class LkeCluster(pulumi.CustomResource):
         import pulumi_linode as linode
 
         my_cluster = linode.LkeCluster("my-cluster", pools=[{
-            "count": 3,
             "type": "g6-standard-2",
+            "count": 3,
         }])
         ```
         ## Externally Managed Node Pools

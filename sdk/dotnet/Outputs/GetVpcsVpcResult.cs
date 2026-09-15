@@ -42,6 +42,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
+        /// A list of subnets under this VPC.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetVpcsVpcSubnetResult> Subnets;
+        /// <summary>
         /// The date and time when the VPC was last updated.
         /// </summary>
         public readonly string Updated;
@@ -66,6 +70,8 @@ namespace Pulumi.Linode.Outputs
 
             string region,
 
+            ImmutableArray<Outputs.GetVpcsVpcSubnetResult> subnets,
+
             string updated,
 
             string vpcType)
@@ -77,6 +83,7 @@ namespace Pulumi.Linode.Outputs
             Ipv6s = ipv6s;
             Label = label;
             Region = region;
+            Subnets = subnets;
             Updated = updated;
             VpcType = vpcType;
         }

@@ -70,12 +70,8 @@ type GetIamEntitiesResult struct {
 }
 
 func GetIamEntitiesOutput(ctx *pulumi.Context, args GetIamEntitiesOutputArgs, opts ...pulumi.InvokeOption) GetIamEntitiesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIamEntitiesResultOutput, error) {
-			args := v.(GetIamEntitiesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("linode:index/getIamEntities:getIamEntities", args, GetIamEntitiesResultOutput{}, options).(GetIamEntitiesResultOutput), nil
-		}).(GetIamEntitiesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("linode:index/getIamEntities:getIamEntities", args, GetIamEntitiesResultOutput{}, options).(GetIamEntitiesResultOutput)
 }
 
 // A collection of arguments for invoking getIamEntities.

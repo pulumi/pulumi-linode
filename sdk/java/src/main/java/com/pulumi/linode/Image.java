@@ -78,6 +78,93 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Image;
+ * import com.pulumi.linode.ImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filemd5Args;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Image("foobar", ImageArgs.builder()
+ *             .label("foobar-image")
+ *             .description("An image uploaded from Terraform!")
+ *             .region("us-southeast")
+ *             .tags(            
+ *                 "image-tag",
+ *                 "test")
+ *             .filePath("path/to/image.img.gz")
+ *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
+ *                 .input("path/to/image.img.gz")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Image;
+ * import com.pulumi.linode.ImageArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.Filemd5Args;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Image("foobar", ImageArgs.builder()
+ *             .label("foobar-image")
+ *             .description("An image uploaded from Terraform!")
+ *             .region("us-southeast")
+ *             .tags(            
+ *                 "image-tag",
+ *                 "test")
+ *             .filePath("path/to/image.img.gz")
+ *             .fileHash(StdFunctions.filemd5(Filemd5Args.builder()
+ *                 .input("path/to/image.img.gz")
+ *                 .build()).result())
+ *             .replicaRegions(            
+ *                 "us-southeast",
+ *                 "us-east",
+ *                 "eu-west")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Linodes Images can be imported using the Linode Image `id`, e.g.

@@ -19,10 +19,10 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foobar = new linode.NodeBalancer("foobar", {
- *     clientConnThrottle: 20,
- *     clientUdpSessThrottle: 10,
  *     label: "mynodebalancer",
  *     region: "us-east",
+ *     clientConnThrottle: 20,
+ *     clientUdpSessThrottle: 10,
  *     tags: ["foobar"],
  * });
  * ```
@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *     label: "mynodebalancer",
  *     region: "us-mia",
  *     vpcs: [{
- *         subnet_id: linode_vpc_subnet.test.id,
+ *         subnetId: Number(test.id),
  *     }],
  * });
  * ```
@@ -49,7 +49,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
- * const myReservedIp = new linode.NetworkingIp("myReservedIp", {
+ * const myReservedIp = new linode.NetworkingIp("my_reserved_ip", {
  *     region: "us-east",
  *     type: "ipv4",
  *     "public": true,

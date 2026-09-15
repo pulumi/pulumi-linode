@@ -83,12 +83,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new ObjectStorageKey("foobar", ObjectStorageKeyArgs.builder()
+ *             .label("my-key")
  *             .bucketAccesses(ObjectStorageKeyBucketAccessArgs.builder()
  *                 .bucketName("my-bucket-name")
- *                 .permissions("read_write")
  *                 .region("us-mia")
+ *                 .permissions("read_write")
  *                 .build())
- *             .label("my-key")
  *             .build());
  * 
  *     }
@@ -122,18 +122,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new ObjectStorageKey("foo", ObjectStorageKeyArgs.builder()
+ *             .label("image-access")
  *             .bucketAccesses(            
  *                 ObjectStorageKeyBucketAccessArgs.builder()
  *                     .bucketName("foobar1")
- *                     .permissions("read_write")
  *                     .region("us-mia")
+ *                     .permissions("read_write")
  *                     .build(),
  *                 ObjectStorageKeyBucketAccessArgs.builder()
  *                     .bucketName("foobar2")
- *                     .permissions("read_write")
  *                     .region("gb-lon")
+ *                     .permissions("read_write")
  *                     .build())
- *             .label("image-access")
  *             .build());
  * 
  *     }

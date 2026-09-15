@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.Vpc("test", {
- *     description: "My first VPC.",
  *     label: "test-vpc",
  *     region: "us-iad",
+ *     description: "My first VPC.",
  * });
  * ```
  *
@@ -33,11 +33,11 @@ import * as utilities from "./utilities";
  *
  * // NOTE: IPv6 VPCs may not currently be available to all users.
  * const test = new linode.Vpc("test", {
+ *     label: "test-vpc",
+ *     region: "us-iad",
  *     ipv6s: [{
  *         range: "/52",
  *     }],
- *     label: "test-vpc",
- *     region: "us-iad",
  * });
  * ```
  * ```typescript
@@ -46,11 +46,11 @@ import * as utilities from "./utilities";
  *
  * // NOTE: Custom VPC IPv4 Ranges may not currently be available to all users.
  * const test = new linode.Vpc("test", {
+ *     label: "test-vpc",
+ *     region: "us-iad",
  *     ipv4s: [{
  *         range: "10.0.0.0/8",
  *     }],
- *     label: "test-vpc",
- *     region: "us-iad",
  * });
  * ```
  *
@@ -73,6 +73,56 @@ import * as utilities from "./utilities";
  * Configures a single IPv4 range under this VPC. Unlike IPv6, IPv4 ranges can be updated in-place without requiring resource replacement.
  *
  * * `range` - (Required) The IPv4 range in CIDR format to assign to this VPC (e.g. `10.0.0.0/8`).
+ *
+ * ## Subnets
+ *
+ * The following attributes are exported under each entry of the `subnets` field:
+ *
+ * * `id` - The id of the VPC Subnet.
+ *
+ * * `label` - The label of the VPC Subnet.
+ *
+ * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+ *
+ * * `ipv6` - The IPv6 ranges of this subnet.
+ *   
+ *   * `range` - An IPv6 range allocated to this subnet.
+ *
+ * * `linodes` - A list of Linodes assigned to this subnet.
+ *   
+ *   * `id` - ID of the Linode
+ *   
+ *   * `interfaces` - A list of networking interfaces objects.
+ *     
+ *     * `id` - ID of the interface.
+ *     
+ *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+ *     
+ *     * `active` - Whether the Interface is actively in use.
+ *
+ * * `databases` - A list of Managed Databases assigned to this subnet.
+ *   
+ *   * `id` - ID of a managed database assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the database.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ *
+ * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+ *   
+ *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ *
+ * * `created` - The date and time when the VPC Subnet was created.
+ *
+ * * `updated` - The date and time when the VPC Subnet was last updated.
  */
 export class Vpc extends pulumi.CustomResource {
     /**
@@ -127,6 +177,10 @@ export class Vpc extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
+     * A list of subnets under this VPC.
+     */
+    declare public /*out*/ readonly subnets: pulumi.Output<outputs.VpcSubnet[]>;
+    /**
      * The date and time when the VPC was last updated.
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
@@ -158,6 +212,7 @@ export class Vpc extends pulumi.CustomResource {
             resourceInputs["ipv6s"] = state?.ipv6s;
             resourceInputs["label"] = state?.label;
             resourceInputs["region"] = state?.region;
+            resourceInputs["subnets"] = state?.subnets;
             resourceInputs["updated"] = state?.updated;
             resourceInputs["vpcType"] = state?.vpcType;
         } else {
@@ -175,6 +230,7 @@ export class Vpc extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["vpcType"] = args?.vpcType;
             resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["subnets"] = undefined /*out*/;
             resourceInputs["updated"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -210,6 +266,10 @@ export interface VpcState {
      * The region of the VPC.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * A list of subnets under this VPC.
+     */
+    subnets?: pulumi.Input<pulumi.Input<inputs.VpcSubnet>[] | undefined>;
     /**
      * The date and time when the VPC was last updated.
      */

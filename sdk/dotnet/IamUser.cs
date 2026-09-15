@@ -27,6 +27,7 @@ namespace Pulumi.Linode
     /// {
     ///     var foo = new Linode.IamUser("foo", new()
     ///     {
+    ///         Username = "foo",
     ///         AccountAccesses = new[]
     ///         {
     ///             "account_event_viewer",
@@ -39,14 +40,13 @@ namespace Pulumi.Linode
     ///             new Linode.Inputs.IamUserEntityAccessArgs
     ///             {
     ///                 Id = 1111111,
+    ///                 Type = "volume",
     ///                 Roles = new[]
     ///                 {
     ///                     "volume_admin",
     ///                 },
-    ///                 Type = "volume",
     ///             },
     ///         },
-    ///         Username = "foo",
     ///     });
     /// 
     /// });

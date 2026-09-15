@@ -29,7 +29,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("myInstance", new()
+        ///     var myInstance = new Linode.Instance("my_instance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -95,7 +95,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("myInstance", new()
+        ///     var myInstance = new Linode.Instance("my_instance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",
@@ -161,7 +161,7 @@ namespace Pulumi.Linode
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myInstance = new Linode.Instance("myInstance", new()
+        ///     var myInstance = new Linode.Instance("my_instance", new()
         ///     {
         ///         Label = "my_instance",
         ///         Image = "linode/ubuntu22.04",

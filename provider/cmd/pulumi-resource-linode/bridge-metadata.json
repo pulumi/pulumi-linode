@@ -456,6 +456,83 @@
                     "ipv4": {
                         "maxItemsOne": false
                     },
+                    "linode_interfaces": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "default_route": {
+                                    "maxItemsOne": true
+                                },
+                                "public": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "addresses": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ranges": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "rdma_vpc": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "addresses": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "vlan": {
+                                    "maxItemsOne": true
+                                },
+                                "vpc": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "addresses": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "ranges": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "locks": {
                         "maxItemsOne": false
                     },
@@ -774,6 +851,17 @@
                                         "maxItemsOne": false
                                     },
                                     "slaac": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "rdma_vpc": {
+                        "fields": {
+                            "ipv4": {
+                                "fields": {
+                                    "addresses": {
                                         "maxItemsOne": false
                                     }
                                 }
@@ -1241,6 +1329,46 @@
                     },
                     "ipv6": {
                         "maxItemsOne": false
+                    },
+                    "subnets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "databases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                },
+                                "linodes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "interfaces": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "nodebalancers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2500,6 +2628,17 @@
                                         "maxItemsOne": false
                                     },
                                     "slaac": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "rdma_vpc": {
+                        "fields": {
+                            "ipv4": {
+                                "fields": {
+                                    "addresses": {
                                         "maxItemsOne": false
                                     }
                                 }
@@ -3827,6 +3966,46 @@
                     },
                     "ipv6": {
                         "maxItemsOne": false
+                    },
+                    "subnets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "databases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "ipv6": {
+                                    "maxItemsOne": false
+                                },
+                                "linodes": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "interfaces": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "nodebalancers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv6_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -3986,6 +4165,46 @@
                                 },
                                 "ipv6": {
                                     "maxItemsOne": false
+                                },
+                                "subnets": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "databases": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ipv6_ranges": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            },
+                                            "linodes": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "interfaces": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "nodebalancers": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "ipv6_ranges": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

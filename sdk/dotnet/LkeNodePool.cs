@@ -32,8 +32,8 @@ namespace Pulumi.Linode
     ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
     ///     {
     ///         ClusterId = 150003,
-    ///         NodeCount = 3,
     ///         Type = "g6-standard-2",
+    ///         NodeCount = 3,
     ///     });
     /// 
     /// });
@@ -49,9 +49,9 @@ namespace Pulumi.Linode
     ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
     ///     {
     ///         ClusterId = 150003,
+    ///         Type = "g6-standard-2",
+    ///         NodeCount = 3,
     ///         Label = "app-pool",
-    ///         NodeCount = 3,
-    ///         Type = "g6-standard-2",
     ///     });
     /// 
     /// });
@@ -67,9 +67,9 @@ namespace Pulumi.Linode
     ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
     ///     {
     ///         ClusterId = 150003,
+    ///         Type = "g6-standard-2",
     ///         FirewallId = 12345,
     ///         NodeCount = 3,
-    ///         Type = "g6-standard-2",
     ///     });
     /// 
     /// });
@@ -84,13 +84,13 @@ namespace Pulumi.Linode
     /// {
     ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
     ///     {
-    ///         Autoscaler = new Linode.Inputs.LkeNodePoolAutoscalerArgs
-    ///         {
-    ///             Max = 10,
-    ///             Min = 3,
-    ///         },
     ///         ClusterId = 150003,
     ///         Type = "g6-standard-2",
+    ///         Autoscaler = new Linode.Inputs.LkeNodePoolAutoscalerArgs
+    ///         {
+    ///             Min = 3,
+    ///             Max = 10,
+    ///         },
     ///     });
     /// 
     /// });
@@ -173,6 +173,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("firewallId")]
         public Output<int> FirewallId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Output("isolationPublicIpv4")]
+        public Output<bool> IsolationPublicIpv4 { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Output("isolationPublicIpv6")]
+        public Output<bool> IsolationPublicIpv6 { get; private set; } = null!;
 
         /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
@@ -300,6 +312,18 @@ namespace Pulumi.Linode
         public Input<int>? FirewallId { get; set; }
 
         /// <summary>
+        /// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv4")]
+        public Input<bool>? IsolationPublicIpv4 { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv6")]
+        public Input<bool>? IsolationPublicIpv6 { get; set; }
+
+        /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         /// </summary>
         [Input("k8sVersion")]
@@ -397,6 +421,18 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("firewallId")]
         public Input<int>? FirewallId { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv4")]
+        public Input<bool>? IsolationPublicIpv4 { get; set; }
+
+        /// <summary>
+        /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// </summary>
+        [Input("isolationPublicIpv6")]
+        public Input<bool>? IsolationPublicIpv6 { get; set; }
 
         /// <summary>
         /// The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.

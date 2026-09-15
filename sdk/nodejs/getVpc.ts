@@ -40,9 +40,59 @@ import * as utilities from "./utilities";
  *
  * * `range` - The IPv4 range in CIDR format.
  *
- * ### Subnets Reference
+ * ## Subnets
  *
- * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+ * The following attributes are exported under each entry of the `subnets` field:
+ *
+ * * `id` - The id of the VPC Subnet.
+ *
+ * * `label` - The label of the VPC Subnet.
+ *
+ * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+ *
+ * * `ipv6` - The IPv6 ranges of this subnet.
+ *   
+ *   * `range` - An IPv6 range allocated to this subnet.
+ *
+ * * `linodes` - A list of Linodes assigned to this subnet.
+ *   
+ *   * `id` - ID of the Linode
+ *   
+ *   * `interfaces` - A list of networking interfaces objects.
+ *     
+ *     * `id` - ID of the interface.
+ *     
+ *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+ *     
+ *     * `active` - Whether the Interface is actively in use.
+ *
+ * * `databases` - A list of Managed Databases assigned to this subnet.
+ *   
+ *   * `id` - ID of a managed database assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the database.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ *
+ * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+ *   
+ *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ *
+ * * `created` - The date and time when the VPC Subnet was created.
+ *
+ * * `updated` - The date and time when the VPC Subnet was last updated.
+ *
+ * ### Subnets data source
+ *
+ * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
  */
 export function getVpc(args: GetVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -90,6 +140,7 @@ export interface GetVpcResult {
      * The region where the VPC is deployed.
      */
     readonly region: string;
+    readonly subnets: outputs.GetVpcSubnet[];
     /**
      * The date and time when the VPC was last updated.
      */
@@ -133,9 +184,59 @@ export interface GetVpcResult {
  *
  * * `range` - The IPv4 range in CIDR format.
  *
- * ### Subnets Reference
+ * ## Subnets
  *
- * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+ * The following attributes are exported under each entry of the `subnets` field:
+ *
+ * * `id` - The id of the VPC Subnet.
+ *
+ * * `label` - The label of the VPC Subnet.
+ *
+ * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+ *
+ * * `ipv6` - The IPv6 ranges of this subnet.
+ *   
+ *   * `range` - An IPv6 range allocated to this subnet.
+ *
+ * * `linodes` - A list of Linodes assigned to this subnet.
+ *   
+ *   * `id` - ID of the Linode
+ *   
+ *   * `interfaces` - A list of networking interfaces objects.
+ *     
+ *     * `id` - ID of the interface.
+ *     
+ *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+ *     
+ *     * `active` - Whether the Interface is actively in use.
+ *
+ * * `databases` - A list of Managed Databases assigned to this subnet.
+ *   
+ *   * `id` - ID of a managed database assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the database.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ *
+ * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+ *   
+ *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+ *   
+ *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+ *   
+ *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+ *     
+ *     * `range` - An IPv6 address range in CIDR notation.
+ *
+ * * `created` - The date and time when the VPC Subnet was created.
+ *
+ * * `updated` - The date and time when the VPC Subnet was last updated.
+ *
+ * ### Subnets data source
+ *
+ * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
  */
 export function getVpcOutput(args: GetVpcOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

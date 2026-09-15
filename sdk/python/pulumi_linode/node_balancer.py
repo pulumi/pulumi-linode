@@ -448,10 +448,10 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
-            client_udp_sess_throttle=10,
             label="mynodebalancer",
             region="us-east",
+            client_conn_throttle=20,
+            client_udp_sess_throttle=10,
             tags=["foobar"])
         ```
 
@@ -466,7 +466,7 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-mia",
             vpcs=[{
-                "subnet_id": linode_vpc_subnet["test"]["id"],
+                "subnet_id": int(test["id"]),
             }])
         ```
 
@@ -476,7 +476,7 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        my_reserved_ip = linode.NetworkingIp("myReservedIp",
+        my_reserved_ip = linode.NetworkingIp("my_reserved_ip",
             region="us-east",
             type="ipv4",
             public=True,
@@ -530,10 +530,10 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.NodeBalancer("foobar",
-            client_conn_throttle=20,
-            client_udp_sess_throttle=10,
             label="mynodebalancer",
             region="us-east",
+            client_conn_throttle=20,
+            client_udp_sess_throttle=10,
             tags=["foobar"])
         ```
 
@@ -548,7 +548,7 @@ class NodeBalancer(pulumi.CustomResource):
             label="mynodebalancer",
             region="us-mia",
             vpcs=[{
-                "subnet_id": linode_vpc_subnet["test"]["id"],
+                "subnet_id": int(test["id"]),
             }])
         ```
 
@@ -558,7 +558,7 @@ class NodeBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        my_reserved_ip = linode.NetworkingIp("myReservedIp",
+        my_reserved_ip = linode.NetworkingIp("my_reserved_ip",
             region="us-east",
             type="ipv4",
             public=True,

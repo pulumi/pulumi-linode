@@ -245,8 +245,8 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
         import pulumi_linode as linode
 
         example = linode.ConsumerImageShareGroupToken("example",
-            label="example-token",
-            valid_for_sharegroup_uuid="03fbb93e-c27d-4c4a-9180-67f6e0cd74ca")
+            valid_for_sharegroup_uuid="03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
+            label="example-token")
         ```
 
 
@@ -272,8 +272,8 @@ class ConsumerImageShareGroupToken(pulumi.CustomResource):
         import pulumi_linode as linode
 
         example = linode.ConsumerImageShareGroupToken("example",
-            label="example-token",
-            valid_for_sharegroup_uuid="03fbb93e-c27d-4c4a-9180-67f6e0cd74ca")
+            valid_for_sharegroup_uuid="03fbb93e-c27d-4c4a-9180-67f6e0cd74ca",
+            label="example-token")
         ```
 
 

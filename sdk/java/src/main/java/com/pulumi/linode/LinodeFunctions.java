@@ -16142,13 +16142,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .name("www")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -16191,13 +16191,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .name("www")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -16240,13 +16240,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .name("www")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -16289,13 +16289,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .name("www")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -16338,13 +16338,13 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .id(14950401)
+     *             .domainId(3150401)
      *             .build());
      * 
      *         final var myWwwRecord = LinodeFunctions.getDomainRecord(GetDomainRecordArgs.builder()
-     *             .domainId(3150401)
      *             .name("www")
+     *             .domainId(3150401)
      *             .build());
      * 
      *     }
@@ -24546,8 +24546,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .clusterId(321)
      *             .id(123)
+     *             .clusterId(321)
      *             .build());
      * 
      *     }
@@ -24588,8 +24588,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .clusterId(321)
      *             .id(123)
+     *             .clusterId(321)
      *             .build());
      * 
      *     }
@@ -24630,8 +24630,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .clusterId(321)
      *             .id(123)
+     *             .clusterId(321)
      *             .build());
      * 
      *     }
@@ -24672,8 +24672,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .clusterId(321)
      *             .id(123)
+     *             .clusterId(321)
      *             .build());
      * 
      *     }
@@ -24714,8 +24714,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node-pool = LinodeFunctions.getLkeNodePool(GetLkeNodePoolArgs.builder()
-     *             .clusterId(321)
      *             .id(123)
+     *             .clusterId(321)
      *             .build());
      * 
      *     }
@@ -28216,8 +28216,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
-     *             .alertId(123)
      *             .serviceType("dbaas")
+     *             .alertId(123)
      *             .build());
      * 
      *     }
@@ -28248,12 +28248,12 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .serviceType("dbaas")
      *             .alertId(123)
      *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
      *                 .name("type")
      *                 .values("dbaas")
      *                 .build())
-     *             .serviceType("dbaas")
      *             .build());
      * 
      *     }
@@ -28304,8 +28304,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
-     *             .alertId(123)
      *             .serviceType("dbaas")
+     *             .alertId(123)
      *             .build());
      * 
      *     }
@@ -28336,12 +28336,12 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .serviceType("dbaas")
      *             .alertId(123)
      *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
      *                 .name("type")
      *                 .values("dbaas")
      *                 .build())
-     *             .serviceType("dbaas")
      *             .build());
      * 
      *     }
@@ -28392,8 +28392,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
-     *             .alertId(123)
      *             .serviceType("dbaas")
+     *             .alertId(123)
      *             .build());
      * 
      *     }
@@ -28424,12 +28424,12 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .serviceType("dbaas")
      *             .alertId(123)
      *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
      *                 .name("type")
      *                 .values("dbaas")
      *                 .build())
-     *             .serviceType("dbaas")
      *             .build());
      * 
      *     }
@@ -28480,8 +28480,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
-     *             .alertId(123)
      *             .serviceType("dbaas")
+     *             .alertId(123)
      *             .build());
      * 
      *     }
@@ -28512,12 +28512,12 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .serviceType("dbaas")
      *             .alertId(123)
      *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
      *                 .name("type")
      *                 .values("dbaas")
      *                 .build())
-     *             .serviceType("dbaas")
      *             .build());
      * 
      *     }
@@ -28568,8 +28568,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
-     *             .alertId(123)
      *             .serviceType("dbaas")
+     *             .alertId(123)
      *             .build());
      * 
      *     }
@@ -28600,12 +28600,12 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var test = LinodeFunctions.getMonitorAlertDefinitionEntities(GetMonitorAlertDefinitionEntitiesArgs.builder()
+     *             .serviceType("dbaas")
      *             .alertId(123)
      *             .filters(GetMonitorAlertDefinitionEntitiesFilterArgs.builder()
      *                 .name("type")
      *                 .values("dbaas")
      *                 .build())
-     *             .serviceType("dbaas")
      *             .build());
      * 
      *     }
@@ -32338,9 +32338,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -32381,9 +32381,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -32424,9 +32424,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -32467,9 +32467,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -32510,9 +32510,9 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var my-node = LinodeFunctions.getNodeBalancerNode(GetNodeBalancerNodeArgs.builder()
-     *             .configId(789)
      *             .id(123)
      *             .nodebalancerId(456)
+     *             .configId(789)
      *             .build());
      * 
      *     }
@@ -32930,8 +32930,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .id(456)
      *             .nodebalancerId(123)
+     *             .id(456)
      *             .build());
      * 
      *     }
@@ -32974,8 +32974,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .id(456)
      *             .nodebalancerId(123)
+     *             .id(456)
      *             .build());
      * 
      *     }
@@ -33018,8 +33018,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .id(456)
      *             .nodebalancerId(123)
+     *             .id(456)
      *             .build());
      * 
      *     }
@@ -33062,8 +33062,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .id(456)
      *             .nodebalancerId(123)
+     *             .id(456)
      *             .build());
      * 
      *     }
@@ -33106,8 +33106,8 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-config = LinodeFunctions.getNodebalancerVpc(GetNodebalancerVpcArgs.builder()
-     *             .id(456)
      *             .nodebalancerId(123)
+     *             .id(456)
      *             .build());
      * 
      *     }
@@ -33181,11 +33181,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33216,11 +33216,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv6_range")
      *                 .values("2a01:7e04:e403:3::/64")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33308,11 +33308,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33343,11 +33343,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv6_range")
      *                 .values("2a01:7e04:e403:3::/64")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33435,11 +33435,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33470,11 +33470,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv6_range")
      *                 .values("2a01:7e04:e403:3::/64")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33562,11 +33562,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33597,11 +33597,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv6_range")
      *                 .values("2a01:7e04:e403:3::/64")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33689,11 +33689,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv4_range")
      *                 .values("10.0.0.4/30")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -33724,11 +33724,11 @@ public final class LinodeFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var vpc-configs = LinodeFunctions.getNodebalancerVpcs(GetNodebalancerVpcsArgs.builder()
+     *             .nodebalancerId(12345)
      *             .filters(GetNodebalancerVpcsFilterArgs.builder()
      *                 .name("ipv6_range")
      *                 .values("2a01:7e04:e403:3::/64")
      *                 .build())
-     *             .nodebalancerId(12345)
      *             .build());
      * 
      *     }
@@ -43688,9 +43688,59 @@ public final class LinodeFunctions {
      * 
      * * `range` - The IPv4 range in CIDR format.
      * 
-     * ### Subnets Reference
+     * ## Subnets
      * 
-     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * The following attributes are exported under each entry of the `subnets` field:
+     * 
+     * * `id` - The id of the VPC Subnet.
+     * 
+     * * `label` - The label of the VPC Subnet.
+     * 
+     * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+     * 
+     * * `ipv6` - The IPv6 ranges of this subnet.
+     *   
+     *   * `range` - An IPv6 range allocated to this subnet.
+     * 
+     * * `linodes` - A list of Linodes assigned to this subnet.
+     *   
+     *   * `id` - ID of the Linode
+     *   
+     *   * `interfaces` - A list of networking interfaces objects.
+     *     
+     *     * `id` - ID of the interface.
+     *     
+     *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     *     
+     *     * `active` - Whether the Interface is actively in use.
+     * 
+     * * `databases` - A list of Managed Databases assigned to this subnet.
+     *   
+     *   * `id` - ID of a managed database assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the database.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+     *   
+     *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `created` - The date and time when the VPC Subnet was created.
+     * 
+     * * `updated` - The date and time when the VPC Subnet was last updated.
+     * 
+     * ### Subnets data source
+     * 
+     * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args) {
@@ -43752,9 +43802,59 @@ public final class LinodeFunctions {
      * 
      * * `range` - The IPv4 range in CIDR format.
      * 
-     * ### Subnets Reference
+     * ## Subnets
      * 
-     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * The following attributes are exported under each entry of the `subnets` field:
+     * 
+     * * `id` - The id of the VPC Subnet.
+     * 
+     * * `label` - The label of the VPC Subnet.
+     * 
+     * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+     * 
+     * * `ipv6` - The IPv6 ranges of this subnet.
+     *   
+     *   * `range` - An IPv6 range allocated to this subnet.
+     * 
+     * * `linodes` - A list of Linodes assigned to this subnet.
+     *   
+     *   * `id` - ID of the Linode
+     *   
+     *   * `interfaces` - A list of networking interfaces objects.
+     *     
+     *     * `id` - ID of the interface.
+     *     
+     *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     *     
+     *     * `active` - Whether the Interface is actively in use.
+     * 
+     * * `databases` - A list of Managed Databases assigned to this subnet.
+     *   
+     *   * `id` - ID of a managed database assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the database.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+     *   
+     *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `created` - The date and time when the VPC Subnet was created.
+     * 
+     * * `updated` - The date and time when the VPC Subnet was last updated.
+     * 
+     * ### Subnets data source
+     * 
+     * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args) {
@@ -43816,9 +43916,59 @@ public final class LinodeFunctions {
      * 
      * * `range` - The IPv4 range in CIDR format.
      * 
-     * ### Subnets Reference
+     * ## Subnets
      * 
-     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * The following attributes are exported under each entry of the `subnets` field:
+     * 
+     * * `id` - The id of the VPC Subnet.
+     * 
+     * * `label` - The label of the VPC Subnet.
+     * 
+     * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+     * 
+     * * `ipv6` - The IPv6 ranges of this subnet.
+     *   
+     *   * `range` - An IPv6 range allocated to this subnet.
+     * 
+     * * `linodes` - A list of Linodes assigned to this subnet.
+     *   
+     *   * `id` - ID of the Linode
+     *   
+     *   * `interfaces` - A list of networking interfaces objects.
+     *     
+     *     * `id` - ID of the interface.
+     *     
+     *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     *     
+     *     * `active` - Whether the Interface is actively in use.
+     * 
+     * * `databases` - A list of Managed Databases assigned to this subnet.
+     *   
+     *   * `id` - ID of a managed database assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the database.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+     *   
+     *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `created` - The date and time when the VPC Subnet was created.
+     * 
+     * * `updated` - The date and time when the VPC Subnet was last updated.
+     * 
+     * ### Subnets data source
+     * 
+     * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOptions options) {
@@ -43880,9 +44030,59 @@ public final class LinodeFunctions {
      * 
      * * `range` - The IPv4 range in CIDR format.
      * 
-     * ### Subnets Reference
+     * ## Subnets
      * 
-     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * The following attributes are exported under each entry of the `subnets` field:
+     * 
+     * * `id` - The id of the VPC Subnet.
+     * 
+     * * `label` - The label of the VPC Subnet.
+     * 
+     * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+     * 
+     * * `ipv6` - The IPv6 ranges of this subnet.
+     *   
+     *   * `range` - An IPv6 range allocated to this subnet.
+     * 
+     * * `linodes` - A list of Linodes assigned to this subnet.
+     *   
+     *   * `id` - ID of the Linode
+     *   
+     *   * `interfaces` - A list of networking interfaces objects.
+     *     
+     *     * `id` - ID of the interface.
+     *     
+     *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     *     
+     *     * `active` - Whether the Interface is actively in use.
+     * 
+     * * `databases` - A list of Managed Databases assigned to this subnet.
+     *   
+     *   * `id` - ID of a managed database assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the database.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+     *   
+     *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `created` - The date and time when the VPC Subnet was created.
+     * 
+     * * `updated` - The date and time when the VPC Subnet was last updated.
+     * 
+     * ### Subnets data source
+     * 
+     * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
      * 
      */
     public static Output<GetVpcResult> getVpc(GetVpcArgs args, InvokeOutputOptions options) {
@@ -43944,9 +44144,59 @@ public final class LinodeFunctions {
      * 
      * * `range` - The IPv4 range in CIDR format.
      * 
-     * ### Subnets Reference
+     * ## Subnets
      * 
-     * To list all subnets under a VPC, please refer to the linode.getVpcSubnets data source.
+     * The following attributes are exported under each entry of the `subnets` field:
+     * 
+     * * `id` - The id of the VPC Subnet.
+     * 
+     * * `label` - The label of the VPC Subnet.
+     * 
+     * * `ipv4` - The IPv4 range of this subnet in CIDR format.
+     * 
+     * * `ipv6` - The IPv6 ranges of this subnet.
+     *   
+     *   * `range` - An IPv6 range allocated to this subnet.
+     * 
+     * * `linodes` - A list of Linodes assigned to this subnet.
+     *   
+     *   * `id` - ID of the Linode
+     *   
+     *   * `interfaces` - A list of networking interfaces objects.
+     *     
+     *     * `id` - ID of the interface.
+     *     
+     *     * `configId` - ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
+     *     
+     *     * `active` - Whether the Interface is actively in use.
+     * 
+     * * `databases` - A list of Managed Databases assigned to this subnet.
+     *   
+     *   * `id` - ID of a managed database assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the database.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the database.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `nodebalancers` - A list of NodeBalancers assigned to this subnet.
+     *   
+     *   * `id` - ID of a NodeBalancer assigned to the VPC Subnet.
+     *   
+     *   * `ipv4Range` - IPv4 range assigned to the NodeBalancer.
+     *   
+     *   * `ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
+     *     
+     *     * `range` - An IPv6 address range in CIDR notation.
+     * 
+     * * `created` - The date and time when the VPC Subnet was created.
+     * 
+     * * `updated` - The date and time when the VPC Subnet was last updated.
+     * 
+     * ### Subnets data source
+     * 
+     * The `subnets` list in this resource requires an additional refresh after the initial apply before newly created subnets appear because all subnets are created as resources after the vpc resource is created. To list all subnets under a VPC with immediate availability after apply, use the linode.getVpcSubnets data source with Terraform `dependsOn`.
      * 
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {

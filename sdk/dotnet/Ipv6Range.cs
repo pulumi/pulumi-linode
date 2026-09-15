@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobarInstance = new Linode.Instance("foobarInstance", new()
+    ///     var foobar = new Linode.Instance("foobar", new()
     ///     {
     ///         Label = "my-linode",
     ///         Image = "linode/arch",
@@ -33,9 +33,9 @@ namespace Pulumi.Linode
     ///         Region = "us-southeast",
     ///     });
     /// 
-    ///     var foobarIpv6Range = new Linode.Ipv6Range("foobarIpv6Range", new()
+    ///     var foobarIpv6Range = new Linode.Ipv6Range("foobar", new()
     ///     {
-    ///         LinodeId = foobarInstance.Id,
+    ///         LinodeId = foobar.Id,
     ///         PrefixLength = 64,
     ///     });
     /// 

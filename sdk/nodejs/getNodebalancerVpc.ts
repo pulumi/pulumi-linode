@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_config = linode.getNodebalancerVpc({
- *     id: 456,
  *     nodebalancerId: 123,
+ *     id: 456,
  * });
  * ```
  */
@@ -80,8 +80,8 @@ export interface GetNodebalancerVpcResult {
  * import * as linode from "@pulumi/linode";
  *
  * const vpc_config = linode.getNodebalancerVpc({
- *     id: 456,
  *     nodebalancerId: 123,
+ *     id: 456,
  * });
  * ```
  */

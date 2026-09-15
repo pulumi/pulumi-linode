@@ -25,20 +25,20 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         K8sVersion = "1.32",
     ///         Label = "my-cluster",
-    ///         Pools = new[]
-    ///         {
-    ///             new Linode.Inputs.LkeClusterPoolArgs
-    ///             {
-    ///                 Count = 3,
-    ///                 Type = "g6-standard-2",
-    ///             },
-    ///         },
+    ///         K8sVersion = "1.32",
     ///         Region = "us-central",
     ///         Tags = new[]
     ///         {
     ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
+    ///             },
     ///         },
     ///     });
     /// 
@@ -54,26 +54,26 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.LkeCluster("test", new()
     ///     {
-    ///         K8sVersion = "v1.31.8+lke5",
     ///         Label = "lke-e-cluster",
-    ///         Pools = new[]
-    ///         {
-    ///             new Linode.Inputs.LkeClusterPoolArgs
-    ///             {
-    ///                 Count = 3,
-    ///                 Tags = new[]
-    ///                 {
-    ///                     "test",
-    ///                 },
-    ///                 Type = "g7-premium-2",
-    ///             },
-    ///         },
     ///         Region = "us-lax",
+    ///         K8sVersion = "v1.31.8+lke5",
     ///         Tags = new[]
     ///         {
     ///             "test",
     ///         },
     ///         Tier = "enterprise",
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g7-premium-2",
+    ///                 Count = 3,
+    ///                 Tags = new[]
+    ///                 {
+    ///                     "test",
+    ///                 },
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });
@@ -88,24 +88,24 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         K8sVersion = "1.32",
     ///         Label = "my-cluster",
-    ///         Pools = new[]
-    ///         {
-    ///             new Linode.Inputs.LkeClusterPoolArgs
-    ///             {
-    ///                 Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
-    ///                 {
-    ///                     Max = 10,
-    ///                     Min = 3,
-    ///                 },
-    ///                 Type = "g6-standard-2",
-    ///             },
-    ///         },
+    ///         K8sVersion = "1.32",
     ///         Region = "us-central",
     ///         Tags = new[]
     ///         {
     ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Autoscaler = new Linode.Inputs.LkeClusterPoolAutoscalerArgs
+    ///                 {
+    ///                     Min = 3,
+    ///                     Max = 10,
+    ///                 },
+    ///             },
     ///         },
     ///     });
     /// 
@@ -121,42 +121,42 @@ namespace Pulumi.Linode
     /// {
     ///     var test = new Linode.LkeCluster("test", new()
     ///     {
+    ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
     ///         ControlPlane = new Linode.Inputs.LkeClusterControlPlaneArgs
     ///         {
+    ///             HighAvailability = true,
     ///             Acl = new Linode.Inputs.LkeClusterControlPlaneAclArgs
     ///             {
+    ///                 Enabled = true,
     ///                 Addresses = new[]
     ///                 {
     ///                     new Linode.Inputs.LkeClusterControlPlaneAclAddressArgs
     ///                     {
-    ///                         Ipv4 = new[]
+    ///                         Ipv4s = new[]
     ///                         {
     ///                             "0.0.0.0/0",
     ///                         },
-    ///                         Ipv6 = new[]
+    ///                         Ipv6s = new[]
     ///                         {
     ///                             "2001:db8::/32",
     ///                         },
     ///                     },
     ///                 },
-    ///                 Enabled = true,
     ///             },
-    ///             HighAvailability = true,
     ///         },
-    ///         K8sVersion = "1.32",
-    ///         Label = "my-cluster",
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Count = 1,
     ///                 Type = "g6-standard-2",
+    ///                 Count = 1,
     ///             },
-    ///         },
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -172,27 +172,27 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         K8sVersion = "1.32",
     ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
+    ///                 Type = "g6-standard-2",
     ///                 Count = 2,
     ///                 Label = "db-pool",
-    ///                 Type = "g6-standard-2",
     ///             },
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
+    ///                 Type = "g6-standard-1",
     ///                 Count = 3,
     ///                 Label = "app-pool",
-    ///                 Type = "g6-standard-1",
     ///             },
-    ///         },
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -208,22 +208,22 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         K8sVersion = "1.32",
     ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Count = 2,
-    ///                 FirewallId = 12345,
-    ///                 Label = "db-pool",
     ///                 Type = "g6-standard-2",
+    ///                 Count = 2,
+    ///                 Label = "db-pool",
+    ///                 FirewallId = 12345,
     ///             },
-    ///         },
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -239,35 +239,35 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         K8sVersion = "1.32",
     ///         Label = "my-cluster",
+    ///         K8sVersion = "1.32",
+    ///         Region = "us-central",
+    ///         Tags = new[]
+    ///         {
+    ///             "prod",
+    ///         },
     ///         Pools = new[]
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
+    ///                 Type = "g6-standard-2",
     ///                 Count = 2,
     ///                 Labels = 
     ///                 {
-    ///                     { "environment", "production" },
     ///                     { "role", "database" },
+    ///                     { "environment", "production" },
     ///                 },
-    ///                 Type = "g6-standard-2",
     ///             },
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
+    ///                 Type = "g6-standard-1",
     ///                 Count = 3,
     ///                 Labels = 
     ///                 {
-    ///                     { "environment", "production" },
     ///                     { "role", "application" },
+    ///                     { "environment", "production" },
     ///                 },
-    ///                 Type = "g6-standard-1",
     ///             },
-    ///         },
-    ///         Region = "us-central",
-    ///         Tags = new[]
-    ///         {
-    ///             "prod",
     ///         },
     ///     });
     /// 
@@ -283,27 +283,27 @@ namespace Pulumi.Linode
     /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
-    ///         K8sVersion = "1.32",
     ///         Label = "my-cluster",
-    ///         Pools = new[]
-    ///         {
-    ///             new Linode.Inputs.LkeClusterPoolArgs
-    ///             {
-    ///                 Count = 2,
-    ///                 DiskEncryption = "enabled",
-    ///                 Type = "g6-standard-2",
-    ///             },
-    ///             new Linode.Inputs.LkeClusterPoolArgs
-    ///             {
-    ///                 Count = 1,
-    ///                 DiskEncryption = "disabled",
-    ///                 Type = "g6-standard-1",
-    ///             },
-    ///         },
+    ///         K8sVersion = "1.32",
     ///         Region = "us-central",
     ///         Tags = new[]
     ///         {
     ///             "prod",
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-2",
+    ///                 Count = 2,
+    ///                 DiskEncryption = "enabled",
+    ///             },
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g6-standard-1",
+    ///                 Count = 1,
+    ///                 DiskEncryption = "disabled",
+    ///             },
     ///         },
     ///     });
     /// 
@@ -330,13 +330,13 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Count = 2,
     ///                 Type = "g6-standard-1",
+    ///                 Count = 2,
     ///             },
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Count = 3,
     ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
     ///             },
     ///         },
     ///     });
@@ -357,8 +357,8 @@ namespace Pulumi.Linode
     ///         {
     ///             new Linode.Inputs.LkeClusterPoolArgs
     ///             {
-    ///                 Count = 3,
     ///                 Type = "g6-standard-2",
+    ///                 Count = 3,
     ///             },
     ///         },
     ///     });

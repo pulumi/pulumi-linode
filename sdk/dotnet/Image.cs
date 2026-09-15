@@ -45,7 +45,7 @@ namespace Pulumi.Linode
     ///         },
     ///     });
     /// 
-    ///     var barBased = new Linode.Instance("barBased", new()
+    ///     var barBased = new Linode.Instance("bar_based", new()
     ///     {
     ///         Type = foo.Type,
     ///         Region = "eu-west",
@@ -54,6 +54,69 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.Image("foobar", new()
+    ///     {
+    ///         Label = "foobar-image",
+    ///         Description = "An image uploaded from Terraform!",
+    ///         Region = "us-southeast",
+    ///         Tags = new[]
+    ///         {
+    ///             "image-tag",
+    ///             "test",
+    ///         },
+    ///         FilePath = "path/to/image.img.gz",
+    ///         FileHash = Std.Filemd5.Invoke(new()
+    ///         {
+    ///             Input = "path/to/image.img.gz",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new Linode.Image("foobar", new()
+    ///     {
+    ///         Label = "foobar-image",
+    ///         Description = "An image uploaded from Terraform!",
+    ///         Region = "us-southeast",
+    ///         Tags = new[]
+    ///         {
+    ///             "image-tag",
+    ///             "test",
+    ///         },
+    ///         FilePath = "path/to/image.img.gz",
+    ///         FileHash = Std.Filemd5.Invoke(new()
+    ///         {
+    ///             Input = "path/to/image.img.gz",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         ReplicaRegions = new[]
+    ///         {
+    ///             "us-southeast",
+    ///             "us-east",
+    ///             "eu-west",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Linodes Images can be imported using the Linode Image `Id`, e.g.

@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const foo = new linode.IamUser("foo", {
+ *     username: "foo",
  *     accountAccesses: [
  *         "account_event_viewer",
  *         "account_maintenance_viewer",
@@ -27,10 +28,9 @@ import * as utilities from "./utilities";
  *     ],
  *     entityAccesses: [{
  *         id: 1111111,
- *         roles: ["volume_admin"],
  *         type: "volume",
+ *         roles: ["volume_admin"],
  *     }],
- *     username: "foo",
  * });
  * ```
  */

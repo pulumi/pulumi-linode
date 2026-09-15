@@ -347,10 +347,10 @@ class NetworkingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        test_ip = linode.NetworkingIp("testIp",
+        test_ip = linode.NetworkingIp("test_ip",
+            type="ipv4",
             linode_id=12345,
-            public=True,
-            type="ipv4")
+            public=True)
         ```
 
         ## Import
@@ -387,10 +387,10 @@ class NetworkingIp(pulumi.CustomResource):
         import pulumi
         import pulumi_linode as linode
 
-        test_ip = linode.NetworkingIp("testIp",
+        test_ip = linode.NetworkingIp("test_ip",
+            type="ipv4",
             linode_id=12345,
-            public=True,
-            type="ipv4")
+            public=True)
         ```
 
         ## Import

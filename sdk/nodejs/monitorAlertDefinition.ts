@@ -17,10 +17,19 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const test = new linode.MonitorAlertDefinition("test", {
- *     channelIds: [10000],
+ *     serviceType: "dbaas",
  *     description: "An alert definition for ansible test",
- *     groupBies: ["entity_id"],
  *     label: "test-alert-definition",
+ *     severity: 1,
+ *     channelIds: [10000],
+ *     groupBies: ["entity_id"],
+ *     waitFor: true,
+ *     triggerConditions: {
+ *         criteriaCondition: "ALL",
+ *         evaluationPeriodSeconds: 300,
+ *         pollingIntervalSeconds: 300,
+ *         triggerOccurrences: 1,
+ *     },
  *     ruleCriteria: {
  *         rules: [{
  *             aggregateFunction: "avg",
@@ -34,15 +43,6 @@ import * as utilities from "./utilities";
  *             threshold: 90,
  *         }],
  *     },
- *     serviceType: "dbaas",
- *     severity: 1,
- *     triggerConditions: {
- *         criteria_condition: "ALL",
- *         evaluation_period_seconds: 300,
- *         polling_interval_seconds: 300,
- *         trigger_occurrences: "1",
- *     },
- *     waitFor: true,
  * });
  * ```
  *

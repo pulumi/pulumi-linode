@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewProducerImageShareGroup(ctx, "test-empty", &linode.ProducerImageShareGroupArgs{
-//				Description: pulumi.String("My description."),
 //				Label:       pulumi.String("my-image-share-group"),
+//				Description: pulumi.String("My description."),
 //			})
 //			if err != nil {
 //				return err
@@ -54,15 +54,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewProducerImageShareGroup(ctx, "test-images", &linode.ProducerImageShareGroupArgs{
+//				Label:       pulumi.String("my-image-share-group"),
 //				Description: pulumi.String("My description."),
 //				Images: linode.ProducerImageShareGroupImageArray{
 //					&linode.ProducerImageShareGroupImageArgs{
-//						Description: pulumi.String("My image description."),
 //						Id:          pulumi.String("private/12345"),
 //						Label:       pulumi.String("my-image"),
+//						Description: pulumi.String("My image description."),
 //					},
 //				},
-//				Label: pulumi.String("my-image-share-group"),
 //			})
 //			if err != nil {
 //				return err

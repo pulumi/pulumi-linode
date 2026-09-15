@@ -45,16 +45,16 @@ namespace Pulumi.Linode
     /// {
     ///     var foobar = new Linode.ObjectStorageKey("foobar", new()
     ///     {
+    ///         Label = "my-key",
     ///         BucketAccesses = new[]
     ///         {
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "my-bucket-name",
-    ///                 Permissions = "read_write",
     ///                 Region = "us-mia",
+    ///                 Permissions = "read_write",
     ///             },
     ///         },
-    ///         Label = "my-key",
     ///     });
     /// 
     /// });
@@ -72,22 +72,22 @@ namespace Pulumi.Linode
     /// {
     ///     var foo = new Linode.ObjectStorageKey("foo", new()
     ///     {
+    ///         Label = "image-access",
     ///         BucketAccesses = new[]
     ///         {
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "foobar1",
-    ///                 Permissions = "read_write",
     ///                 Region = "us-mia",
+    ///                 Permissions = "read_write",
     ///             },
     ///             new Linode.Inputs.ObjectStorageKeyBucketAccessArgs
     ///             {
     ///                 BucketName = "foobar2",
-    ///                 Permissions = "read_write",
     ///                 Region = "gb-lon",
+    ///                 Permissions = "read_write",
     ///             },
     ///         },
-    ///         Label = "image-access",
     ///     });
     /// 
     /// });

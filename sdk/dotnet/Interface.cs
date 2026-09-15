@@ -34,7 +34,7 @@ namespace Pulumi.Linode
     /// {
     ///     var @public = new Linode.Interface("public", new()
     ///     {
-    ///         LinodeId = linode_instance.My_instance.Id,
+    ///         LinodeId = my_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
     ///         {
     ///             Ipv4 = new Linode.Inputs.InterfacePublicIpv4Args
@@ -76,9 +76,9 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ipv6Only = new Linode.Interface("ipv6Only", new()
+    ///     var ipv6Only = new Linode.Interface("ipv6_only", new()
     ///     {
-    ///         LinodeId = linode_instance.My_instance.Id,
+    ///         LinodeId = my_instance.Id,
     ///         Public = new Linode.Inputs.InterfacePublicArgs
     ///         {
     ///             Ipv4 = new Linode.Inputs.InterfacePublicIpv4Args
@@ -115,10 +115,10 @@ namespace Pulumi.Linode
     /// {
     ///     var vpc = new Linode.Interface("vpc", new()
     ///     {
-    ///         LinodeId = linode_instance.My_instance.Id,
+    ///         LinodeId = my_instance.Id,
     ///         Vpc = new Linode.Inputs.InterfaceVpcArgs
     ///         {
-    ///             Subnet_id = 240213,
+    ///             SubnetId = 240213,
     ///             Ipv4 = new Linode.Inputs.InterfaceVpcIpv4Args
     ///             {
     ///                 Addresses = new[]
@@ -156,18 +156,18 @@ namespace Pulumi.Linode
     /// {
     ///     var vpc = new Linode.Interface("vpc", new()
     ///     {
-    ///         LinodeId = linode_instance.My_instance.Id,
+    ///         LinodeId = my_instance.Id,
     ///         Vpc = new Linode.Inputs.InterfaceVpcArgs
     ///         {
-    ///             Subnet_id = 12345,
+    ///             SubnetId = 12345,
     ///             Ipv6 = new Linode.Inputs.InterfaceVpcIpv6Args
     ///             {
     ///                 IsPublic = true,
-    ///                 Slaac = new[]
+    ///                 Slaacs = new[]
     ///                 {
-    ///                     
+    ///                     new Linode.Inputs.InterfaceVpcIpv6SlaacArgs
     ///                     {
-    ///                         { "range", "auto" },
+    ///                         Range = "auto",
     ///                     },
     ///                 },
     ///                 Ranges = new[]
@@ -198,11 +198,11 @@ namespace Pulumi.Linode
     /// {
     ///     var vlan = new Linode.Interface("vlan", new()
     ///     {
-    ///         LinodeId = linode_instance.Web.Id,
+    ///         LinodeId = web.Id,
     ///         Vlan = new Linode.Inputs.InterfaceVlanArgs
     ///         {
-    ///             Vlan_label = "web-vlan",
-    ///             Ipam_address = "192.168.200.5/24",
+    ///             VlanLabel = "web-vlan",
+    ///             IpamAddress = "192.168.200.5/24",
     ///         },
     ///     });
     /// 
@@ -327,19 +327,25 @@ namespace Pulumi.Linode
         public Output<int> LinodeId { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+        /// Nested attributes object for a Linode public interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
         /// </summary>
         [Output("public")]
         public Output<Outputs.InterfacePublic?> Public { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        /// Nested attributes object for a Linode RDMA VPC interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        /// </summary>
+        [Output("rdmaVpc")]
+        public Output<Outputs.InterfaceRdmaVpc?> RdmaVpc { get; private set; } = null!;
+
+        /// <summary>
+        /// Nested attributes object for a Linode VLAN interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
         /// </summary>
         [Output("vlan")]
         public Output<Outputs.InterfaceVlan?> Vlan { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+        /// Nested attributes object for a Linode VPC interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         /// </summary>
         [Output("vpc")]
         public Output<Outputs.InterfaceVpc?> Vpc { get; private set; } = null!;
@@ -409,19 +415,25 @@ namespace Pulumi.Linode
         public Input<int> LinodeId { get; set; } = null!;
 
         /// <summary>
-        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+        /// Nested attributes object for a Linode public interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
         /// </summary>
         [Input("public")]
         public Input<Inputs.InterfacePublicArgs>? Public { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        /// Nested attributes object for a Linode RDMA VPC interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        /// </summary>
+        [Input("rdmaVpc")]
+        public Input<Inputs.InterfaceRdmaVpcArgs>? RdmaVpc { get; set; }
+
+        /// <summary>
+        /// Nested attributes object for a Linode VLAN interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
         /// </summary>
         [Input("vlan")]
         public Input<Inputs.InterfaceVlanArgs>? Vlan { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+        /// Nested attributes object for a Linode VPC interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.InterfaceVpcArgs>? Vpc { get; set; }
@@ -453,19 +465,25 @@ namespace Pulumi.Linode
         public Input<int>? LinodeId { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode public interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `public.ipv4`).
+        /// Nested attributes object for a Linode public interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `public.ipv4`).
         /// </summary>
         [Input("public")]
         public Input<Inputs.InterfacePublicGetArgs>? Public { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VLAN interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vlan.ipam_address`).
+        /// Nested attributes object for a Linode RDMA VPC interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. **NOTE: RDMA VPC interfaces cannot be created or deleted via this resource; they can only be created as part of a GPUDirect RDMA Linode and may only be updated/read here. RDMA VPC interfaces may not currently be available to all users.** Referenced directly (e.g. `rdma_vpc.subnet_id`).
+        /// </summary>
+        [Input("rdmaVpc")]
+        public Input<Inputs.InterfaceRdmaVpcGetArgs>? RdmaVpc { get; set; }
+
+        /// <summary>
+        /// Nested attributes object for a Linode VLAN interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `vlan.ipam_address`).
         /// </summary>
         [Input("vlan")]
         public Input<Inputs.InterfaceVlanGetArgs>? Vlan { get; set; }
 
         /// <summary>
-        /// Nested attributes object for a Linode VPC interface. Exactly one of `Public`, `Vlan`, or `Vpc` must be specified. Referenced directly (e.g. `vpc.subnet_id`).
+        /// Nested attributes object for a Linode VPC interface. At most one of `Public`, `Vlan`, `Vpc`, or `RdmaVpc` may be specified. Referenced directly (e.g. `vpc.subnet_id`).
         /// </summary>
         [Input("vpc")]
         public Input<Inputs.InterfaceVpcGetArgs>? Vpc { get; set; }

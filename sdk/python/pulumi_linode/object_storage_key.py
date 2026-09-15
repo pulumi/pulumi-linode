@@ -235,12 +235,12 @@ class ObjectStorageKey(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.ObjectStorageKey("foobar",
+            label="my-key",
             bucket_accesses=[{
                 "bucket_name": "my-bucket-name",
-                "permissions": "read_write",
                 "region": "us-mia",
-            }],
-            label="my-key")
+                "permissions": "read_write",
+            }])
         ```
 
         The following example shows how to grant a key the explicit access to multiple buckets.
@@ -250,19 +250,19 @@ class ObjectStorageKey(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo = linode.ObjectStorageKey("foo",
+            label="image-access",
             bucket_accesses=[
                 {
                     "bucket_name": "foobar1",
-                    "permissions": "read_write",
                     "region": "us-mia",
+                    "permissions": "read_write",
                 },
                 {
                     "bucket_name": "foobar2",
-                    "permissions": "read_write",
                     "region": "gb-lon",
+                    "permissions": "read_write",
                 },
-            ],
-            label="image-access")
+            ])
         ```
 
 
@@ -302,12 +302,12 @@ class ObjectStorageKey(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foobar = linode.ObjectStorageKey("foobar",
+            label="my-key",
             bucket_accesses=[{
                 "bucket_name": "my-bucket-name",
-                "permissions": "read_write",
                 "region": "us-mia",
-            }],
-            label="my-key")
+                "permissions": "read_write",
+            }])
         ```
 
         The following example shows how to grant a key the explicit access to multiple buckets.
@@ -317,19 +317,19 @@ class ObjectStorageKey(pulumi.CustomResource):
         import pulumi_linode as linode
 
         foo = linode.ObjectStorageKey("foo",
+            label="image-access",
             bucket_accesses=[
                 {
                     "bucket_name": "foobar1",
-                    "permissions": "read_write",
                     "region": "us-mia",
+                    "permissions": "read_write",
                 },
                 {
                     "bucket_name": "foobar2",
-                    "permissions": "read_write",
                     "region": "gb-lon",
+                    "permissions": "read_write",
                 },
-            ],
-            label="image-access")
+            ])
         ```
 
 

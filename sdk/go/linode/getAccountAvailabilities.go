@@ -42,7 +42,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("regions-without-linodes", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getAccountAvailabilities:getAccountAvailabilities.pp:7,11-58)))
+// ctx.Export("regions-without-linodes", pulumi.StringArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-59)))
 // return nil
 // })
 // }

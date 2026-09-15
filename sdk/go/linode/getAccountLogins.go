@@ -48,7 +48,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("loginIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getAccountLogins:getAccountLogins.pp:11,11-46)))
+// ctx.Export("loginIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:11,11-47)))
 // return nil
 // })
 // }

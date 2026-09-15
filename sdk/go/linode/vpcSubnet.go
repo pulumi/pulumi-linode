@@ -30,9 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.NewVpcSubnet(ctx, "test", &linode.VpcSubnetArgs{
-//				Ipv4:  pulumi.String("10.0.0.0/24"),
-//				Label: pulumi.String("test-subnet"),
 //				VpcId: pulumi.Int(123),
+//				Label: pulumi.String("test-subnet"),
+//				Ipv4:  pulumi.String("10.0.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
@@ -56,7 +56,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testVpc, err := linode.NewVpc(ctx, "testVpc", &linode.VpcArgs{
+//			testVpc, err := linode.NewVpc(ctx, "test", &linode.VpcArgs{
 //				Label:  pulumi.String("test-vpc"),
 //				Region: pulumi.String("us-mia"),
 //				Ipv6s: linode.VpcIpv6Array{
@@ -69,7 +69,7 @@ import (
 //				return err
 //			}
 //			// NOTE: IPv6 VPCs may not currently be available to all users.
-//			_, err = linode.NewVpcSubnet(ctx, "testVpcSubnet", &linode.VpcSubnetArgs{
+//			_, err = linode.NewVpcSubnet(ctx, "test", &linode.VpcSubnetArgs{
 //				VpcId: testVpc.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				Label: pulumi.String("test-subnet"),
 //				Ipv4:  pulumi.String("10.0.0.0/24"),

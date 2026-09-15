@@ -125,21 +125,21 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
     import pulumi
     import pulumi_linode as linode
 
-    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
+    vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345,
+        filters=[{
             "name": "ipv4_range",
             "values": ["10.0.0.4/30"],
-        }],
-        nodebalancer_id=12345)
+        }])
     ```
     ```python
     import pulumi
     import pulumi_linode as linode
 
-    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
+    vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345,
+        filters=[{
             "name": "ipv6_range",
             "values": ["2a01:7e04:e403:3::/64"],
-        }],
-        nodebalancer_id=12345)
+        }])
     ```
 
     ## Filterable Fields
@@ -201,21 +201,21 @@ def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequenc
     import pulumi
     import pulumi_linode as linode
 
-    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
+    vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345,
+        filters=[{
             "name": "ipv4_range",
             "values": ["10.0.0.4/30"],
-        }],
-        nodebalancer_id=12345)
+        }])
     ```
     ```python
     import pulumi
     import pulumi_linode as linode
 
-    vpc_configs = linode.get_nodebalancer_vpcs(filters=[{
+    vpc_configs = linode.get_nodebalancer_vpcs(nodebalancer_id=12345,
+        filters=[{
             "name": "ipv6_range",
             "values": ["2a01:7e04:e403:3::/64"],
-        }],
-        nodebalancer_id=12345)
+        }])
     ```
 
     ## Filterable Fields

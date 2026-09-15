@@ -32,7 +32,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabases:getDatabases.pp:2,11-29)))
+// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-30)))
 // return nil
 // })
 // }
@@ -61,7 +61,7 @@ import (
 // if err != nil {
 // return err
 // }
-// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-functions-%slinode:index-getDatabases:getDatabases.pp:7,11-31)))
+// ctx.Export("databaseIds", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:8,11-32)))
 // return nil
 // })
 // }

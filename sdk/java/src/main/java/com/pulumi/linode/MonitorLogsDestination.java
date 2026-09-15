@@ -66,9 +66,9 @@ import javax.annotation.Nullable;
  *             .label("my-logs-destination")
  *             .type("akamai_object_storage")
  *             .akamaiObjectStorageDetails(MonitorLogsDestinationAkamaiObjectStorageDetailsArgs.builder()
- *                 .access_key_id(key.accessKey())
- *                 .access_key_secret(key.secretKey())
- *                 .bucket_name(bucket.label())
+ *                 .accessKeyId(key.accessKey())
+ *                 .accessKeySecret(key.secretKey())
+ *                 .bucketName(bucket.label())
  *                 .host(bucket.hostname())
  *                 .build())
  *             .build());
@@ -102,18 +102,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var httpsExample = new MonitorLogsDestination("httpsExample", MonitorLogsDestinationArgs.builder()
- *             .customHttpsDetails(MonitorLogsDestinationCustomHttpsDetailsArgs.builder()
- *                 .authentication(MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs.builder()
- *                     .password("mypassword")
- *                     .type("basic")
- *                     .username("myuser")
- *                     .build())
- *                 .content_type("application/json")
- *                 .data_compression("gzip")
- *                 .endpoint_url("https://logs.example.com/ingest")
- *                 .build())
  *             .label("my-https-destination")
  *             .type("custom_https")
+ *             .customHttpsDetails(MonitorLogsDestinationCustomHttpsDetailsArgs.builder()
+ *                 .endpointUrl("https://logs.example.com/ingest")
+ *                 .contentType("application/json")
+ *                 .dataCompression("gzip")
+ *                 .authentication(MonitorLogsDestinationCustomHttpsDetailsAuthenticationArgs.builder()
+ *                     .type("basic")
+ *                     .username("myuser")
+ *                     .password("mypassword")
+ *                     .build())
+ *                 .build())
  *             .build());
  * 
  *     }

@@ -34,10 +34,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooStackScript, err := linode.NewStackScript(ctx, "fooStackScript", &linode.StackScriptArgs{
+//			foo, err := linode.NewStackScript(ctx, "foo", &linode.StackScriptArgs{
 //				Label:       pulumi.String("foo"),
 //				Description: pulumi.String("Installs a Package"),
-//				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
+//				Script:      pulumi.String("#!/bin/bash\n# <UDF name=\\\"package\\\" label=\\\"System Package to Install\\\" example=\\\"nginx\\\" default=\\\"\\\">\napt-get -q update && apt-get -q -y install $PACKAGE\n"),
 //				Images: pulumi.StringArray{
 //					pulumi.String("linode/ubuntu22.04"),
 //					pulumi.String("linode/ubuntu20.04"),
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = linode.NewInstance(ctx, "fooInstance", &linode.InstanceArgs{
+//			_, err = linode.NewInstance(ctx, "foo", &linode.InstanceArgs{
 //				Image:  pulumi.String("linode/ubuntu22.04"),
 //				Label:  pulumi.String("foo"),
 //				Region: pulumi.String("us-east"),
@@ -56,7 +56,7 @@ import (
 //					pulumi.String("..."),
 //				},
 //				RootPass:      pulumi.String("..."),
-//				StackscriptId: fooStackScript.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				StackscriptId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //				StackscriptData: pulumi.StringMap{
 //					"package": pulumi.String("nginx"),
 //				},
