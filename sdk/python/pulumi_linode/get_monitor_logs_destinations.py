@@ -90,7 +90,7 @@ class AwaitableGetMonitorLogsDestinationsResult(GetMonitorLogsDestinationsResult
             order_by=self.order_by)
 
 
-def get_monitor_logs_destinations(filters: Optional[Sequence[Union['GetMonitorLogsDestinationsFilterArgs', 'GetMonitorLogsDestinationsFilterArgsDict']]] = None,
+def get_monitor_logs_destinations(filters: Optional[Sequence[Union['GetMonitorLogsDestinationsFilterArgs', 'GetMonitorLogsDestinationsFilterArgsDict', 'outputs.GetMonitorLogsDestinationsFilterResult']]] = None,
                                   order: Optional[_builtins.str] = None,
                                   order_by: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorLogsDestinationsResult:
@@ -135,7 +135,7 @@ def get_monitor_logs_destinations(filters: Optional[Sequence[Union['GetMonitorLo
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_monitor_logs_destinations_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorLogsDestinationsFilterArgs', 'GetMonitorLogsDestinationsFilterArgsDict']]]]] = None,
+def get_monitor_logs_destinations_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorLogsDestinationsFilterArgs', 'GetMonitorLogsDestinationsFilterArgsDict', 'outputs.GetMonitorLogsDestinationsFilterResult']]]]] = None,
                                          order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorLogsDestinationsResult]:

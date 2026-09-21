@@ -462,11 +462,11 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
-                 cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
+                 cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict', 'outputs.ObjectStorageBucketCert']]] = None,
                  cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleRule']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -523,11 +523,11 @@ class ObjectStorageBucket(pulumi.CustomResource):
                * configured by `obj_access_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
-        :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']] cert: The cert used by this Object Storage Bucket.
+        :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict', 'outputs.ObjectStorageBucketCert']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleRule']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[_builtins.str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be
@@ -607,11 +607,11 @@ class ObjectStorageBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_key: pulumi.Input[Optional[_builtins.str]] = None,
                  acl: pulumi.Input[Optional[_builtins.str]] = None,
-                 cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
+                 cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict', 'outputs.ObjectStorageBucketCert']]] = None,
                  cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleRule']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  secret_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -656,13 +656,13 @@ class ObjectStorageBucket(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_key: pulumi.Input[Optional[_builtins.str]] = None,
             acl: pulumi.Input[Optional[_builtins.str]] = None,
-            cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']]] = None,
+            cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict', 'outputs.ObjectStorageBucketCert']]] = None,
             cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
-            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleRule']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
             secret_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -678,13 +678,13 @@ class ObjectStorageBucket(pulumi.CustomResource):
                * configured by `obj_access_key` in the provider configuration;
                * or, generated implicitly at apply-time if `obj_use_temp_keys` at provider-level is set.
         :param pulumi.Input[_builtins.str] acl: The Access Control Level of the bucket using a canned ACL string. See all ACL strings [in the Linode API v4 documentation](https://techdocs.akamai.com/linode-api/reference/post-object-storage-bucket).
-        :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict']] cert: The cert used by this Object Storage Bucket.
+        :param pulumi.Input[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict', 'outputs.ObjectStorageBucketCert']] cert: The cert used by this Object Storage Bucket.
         :param pulumi.Input[_builtins.bool] cors_enabled: If true, the bucket will have CORS enabled for all origins. Not supported by E2/E3 endpoints.
         :param pulumi.Input[_builtins.str] endpoint: The endpoint for the bucket used for s3 connections.
         :param pulumi.Input[_builtins.str] endpoint_type: The type of `s3_endpoint` available to the user in this region. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
         :param pulumi.Input[_builtins.str] hostname: The hostname where this bucket can be accessed. This hostname can be accessed through a browser if the bucket is made public.
         :param pulumi.Input[_builtins.str] label: The label of the Linode Object Storage Bucket.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleRule']]]] lifecycle_rules: Lifecycle rules to be applied to the bucket.
         :param pulumi.Input[_builtins.str] region: The region of the Linode Object Storage Bucket.
         :param pulumi.Input[_builtins.str] s3_endpoint: The user's s3 endpoint URL, based on the `endpoint_type` and `region`.
         :param pulumi.Input[_builtins.str] secret_key: The secret key to authenticate with. If not specified with the resource, its value can be

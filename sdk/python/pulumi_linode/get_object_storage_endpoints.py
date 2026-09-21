@@ -87,7 +87,7 @@ class AwaitableGetObjectStorageEndpointsResult(GetObjectStorageEndpointsResult):
             order_by=self.order_by)
 
 
-def get_object_storage_endpoints(filters: Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]] = None,
+def get_object_storage_endpoints(filters: Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict', 'outputs.GetObjectStorageEndpointsFilterResult']]] = None,
                                  order: Optional[_builtins.str] = None,
                                  order_by: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageEndpointsResult:
@@ -143,7 +143,7 @@ def get_object_storage_endpoints(filters: Optional[Sequence[Union['GetObjectStor
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_object_storage_endpoints_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict']]]]] = None,
+def get_object_storage_endpoints_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageEndpointsFilterArgs', 'GetObjectStorageEndpointsFilterArgsDict', 'outputs.GetObjectStorageEndpointsFilterResult']]]]] = None,
                                         order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageEndpointsResult]:

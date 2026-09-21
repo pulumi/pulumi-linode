@@ -81,7 +81,7 @@ class AwaitableGetVpcSubnetsResult(GetVpcSubnetsResult):
             vpc_subnets=self.vpc_subnets)
 
 
-def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict']]] = None,
+def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict', 'outputs.GetVpcSubnetsFilterResult']]] = None,
                     vpc_id: Optional[_builtins.int] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcSubnetsResult:
     """
@@ -136,7 +136,7 @@ def get_vpc_subnets(filters: Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 
         id=pulumi.get(__ret__, 'id'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vpc_subnets=pulumi.get(__ret__, 'vpc_subnets'))
-def get_vpc_subnets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict']]]]] = None,
+def get_vpc_subnets_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpcSubnetsFilterArgs', 'GetVpcSubnetsFilterArgsDict', 'outputs.GetVpcSubnetsFilterResult']]]]] = None,
                            vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcSubnetsResult]:
     """

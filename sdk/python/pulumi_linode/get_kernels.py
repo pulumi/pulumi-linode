@@ -90,7 +90,7 @@ class AwaitableGetKernelsResult(GetKernelsResult):
             order_by=self.order_by)
 
 
-def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict']]] = None,
+def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict', 'outputs.GetKernelsFilterResult']]] = None,
                 order: Optional[_builtins.str] = None,
                 order_by: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKernelsResult:
@@ -151,7 +151,7 @@ def get_kernels(filters: Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKer
         kernels=pulumi.get(__ret__, 'kernels'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_kernels_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict']]]]] = None,
+def get_kernels_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetKernelsFilterArgs', 'GetKernelsFilterArgsDict', 'outputs.GetKernelsFilterResult']]]]] = None,
                        order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKernelsResult]:

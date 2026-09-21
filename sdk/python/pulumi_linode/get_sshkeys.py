@@ -90,7 +90,7 @@ class AwaitableGetSshkeysResult(GetSshkeysResult):
             sshkeys=self.sshkeys)
 
 
-def get_sshkeys(filters: Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSshkeysFilterArgsDict']]] = None,
+def get_sshkeys(filters: Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSshkeysFilterArgsDict', 'outputs.GetSshkeysFilterResult']]] = None,
                 order: Optional[_builtins.str] = None,
                 order_by: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshkeysResult:
@@ -145,7 +145,7 @@ def get_sshkeys(filters: Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSsh
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         sshkeys=pulumi.get(__ret__, 'sshkeys'))
-def get_sshkeys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSshkeysFilterArgsDict']]]]] = None,
+def get_sshkeys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSshkeysFilterArgs', 'GetSshkeysFilterArgsDict', 'outputs.GetSshkeysFilterResult']]]]] = None,
                        order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshkeysResult]:

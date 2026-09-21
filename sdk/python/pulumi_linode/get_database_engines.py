@@ -99,7 +99,7 @@ class AwaitableGetDatabaseEnginesResult(GetDatabaseEnginesResult):
             order_by=self.order_by)
 
 
-def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]] = None,
+def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict', 'outputs.GetDatabaseEnginesFilterResult']]] = None,
                          latest: Optional[_builtins.bool] = None,
                          order: Optional[_builtins.str] = None,
                          order_by: Optional[_builtins.str] = None,
@@ -165,7 +165,7 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_database_engines_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict']]]]] = None,
+def get_database_engines_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDatabaseEnginesFilterArgs', 'GetDatabaseEnginesFilterArgsDict', 'outputs.GetDatabaseEnginesFilterResult']]]]] = None,
                                 latest: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

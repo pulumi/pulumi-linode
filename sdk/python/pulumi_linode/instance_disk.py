@@ -465,7 +465,7 @@ class InstanceDisk(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict', 'outputs.InstanceDiskTimeouts']]] = None,
                  __props__=None):
         """
         Provides a Linode Instance Disk resource. This can be used to create, modify, and delete Linode Instance Disks.
@@ -647,7 +647,7 @@ class InstanceDisk(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict', 'outputs.InstanceDiskTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -703,7 +703,7 @@ class InstanceDisk(pulumi.CustomResource):
             stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict', 'outputs.InstanceDiskTimeouts']]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceDisk':
         """
         Get an existing InstanceDisk resource's state with the given name, id, and optional extra

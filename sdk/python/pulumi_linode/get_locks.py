@@ -90,7 +90,7 @@ class AwaitableGetLocksResult(GetLocksResult):
             order_by=self.order_by)
 
 
-def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFilterArgsDict']]] = None,
+def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFilterArgsDict', 'outputs.GetLocksFilterResult']]] = None,
               order: Optional[_builtins.str] = None,
               order_by: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLocksResult:
@@ -143,7 +143,7 @@ def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFi
         locks=pulumi.get(__ret__, 'locks'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_locks_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFilterArgsDict']]]]] = None,
+def get_locks_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFilterArgsDict', 'outputs.GetLocksFilterResult']]]]] = None,
                      order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLocksResult]:

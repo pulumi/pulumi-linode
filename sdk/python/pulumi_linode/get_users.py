@@ -90,7 +90,7 @@ class AwaitableGetUsersResult(GetUsersResult):
             users=self.users)
 
 
-def get_users(filters: Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFilterArgsDict']]] = None,
+def get_users(filters: Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFilterArgsDict', 'outputs.GetUsersFilterResult']]] = None,
               order: Optional[_builtins.str] = None,
               order_by: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
@@ -142,7 +142,7 @@ def get_users(filters: Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFi
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         users=pulumi.get(__ret__, 'users'))
-def get_users_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFilterArgsDict']]]]] = None,
+def get_users_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetUsersFilterArgs', 'GetUsersFilterArgsDict', 'outputs.GetUsersFilterResult']]]]] = None,
                      order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:

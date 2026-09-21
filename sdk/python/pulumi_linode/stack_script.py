@@ -539,7 +539,7 @@ class StackScript(pulumi.CustomResource):
             rev_note: pulumi.Input[Optional[_builtins.str]] = None,
             script: pulumi.Input[Optional[_builtins.str]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
-            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]]] = None,
+            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict', 'outputs.StackScriptUserDefinedField']]]]] = None,
             user_gravatar_id: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'StackScript':
         """
@@ -561,7 +561,7 @@ class StackScript(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] rev_note: This field allows you to add notes for the set of revisions made to this StackScript.
         :param pulumi.Input[_builtins.str] script: The script to execute when provisioning a new Linode with this StackScript.
         :param pulumi.Input[_builtins.str] updated: The date this StackScript was updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict']]]] user_defined_fields: (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict', 'outputs.StackScriptUserDefinedField']]]] user_defined_fields: (Read-Only Object List) This is a list of fields defined with a special syntax inside this StackScript that allow for supplying customized parameters during deployment. Referenced with an index (e.g. `user_defined_fields.0.default`).
         :param pulumi.Input[_builtins.str] user_gravatar_id: The Gravatar ID for the User who created the StackScript.
         :param pulumi.Input[_builtins.str] username: The User who created the StackScript.
         """

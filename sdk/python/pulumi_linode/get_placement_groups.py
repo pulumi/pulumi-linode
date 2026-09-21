@@ -87,7 +87,7 @@ class AwaitableGetPlacementGroupsResult(GetPlacementGroupsResult):
             placement_groups=self.placement_groups)
 
 
-def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict']]] = None,
+def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict', 'outputs.GetPlacementGroupsFilterResult']]] = None,
                          order: Optional[_builtins.str] = None,
                          order_by: Optional[_builtins.str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlacementGroupsResult:
@@ -139,7 +139,7 @@ def get_placement_groups(filters: Optional[Sequence[Union['GetPlacementGroupsFil
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         placement_groups=pulumi.get(__ret__, 'placement_groups'))
-def get_placement_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict']]]]] = None,
+def get_placement_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetPlacementGroupsFilterArgs', 'GetPlacementGroupsFilterArgsDict', 'outputs.GetPlacementGroupsFilterResult']]]]] = None,
                                 order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPlacementGroupsResult]:

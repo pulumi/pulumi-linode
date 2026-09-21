@@ -90,7 +90,7 @@ class AwaitableGetLkeTypesResult(GetLkeTypesResult):
             types=self.types)
 
 
-def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'GetLkeTypesFilterArgsDict']]] = None,
+def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'GetLkeTypesFilterArgsDict', 'outputs.GetLkeTypesFilterResult']]] = None,
                   order: Optional[_builtins.str] = None,
                   order_by: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeTypesResult:
@@ -141,7 +141,7 @@ def get_lke_types(filters: Optional[Sequence[Union['GetLkeTypesFilterArgs', 'Get
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_lke_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLkeTypesFilterArgs', 'GetLkeTypesFilterArgsDict']]]]] = None,
+def get_lke_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLkeTypesFilterArgs', 'GetLkeTypesFilterArgsDict', 'outputs.GetLkeTypesFilterResult']]]]] = None,
                          order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeTypesResult]:

@@ -162,7 +162,7 @@ class Rdns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  rdns: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict', 'outputs.RdnsTimeouts']]] = None,
                  wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -264,7 +264,7 @@ class Rdns(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: pulumi.Input[Optional[_builtins.str]] = None,
                  rdns: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict', 'outputs.RdnsTimeouts']]] = None,
                  wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -295,7 +295,7 @@ class Rdns(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
             rdns: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict', 'outputs.RdnsTimeouts']]] = None,
             wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Rdns':
         """
         Get an existing Rdns resource's state with the given name, id, and optional extra

@@ -90,7 +90,7 @@ class AwaitableGetDatabasesResult(GetDatabasesResult):
             order_by=self.order_by)
 
 
-def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]] = None,
+def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict', 'outputs.GetDatabasesFilterResult']]] = None,
                   order: Optional[_builtins.str] = None,
                   order_by: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasesResult:
@@ -145,7 +145,7 @@ def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'Ge
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_databases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict']]]]] = None,
+def get_databases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDatabasesFilterArgs', 'GetDatabasesFilterArgsDict', 'outputs.GetDatabasesFilterResult']]]]] = None,
                          order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasesResult]:

@@ -84,7 +84,7 @@ class AwaitableGetMonitorAlertDefinitionsResult(GetMonitorAlertDefinitionsResult
             service_type=self.service_type)
 
 
-def get_monitor_alert_definitions(filters: Optional[Sequence[Union['GetMonitorAlertDefinitionsFilterArgs', 'GetMonitorAlertDefinitionsFilterArgsDict']]] = None,
+def get_monitor_alert_definitions(filters: Optional[Sequence[Union['GetMonitorAlertDefinitionsFilterArgs', 'GetMonitorAlertDefinitionsFilterArgsDict', 'outputs.GetMonitorAlertDefinitionsFilterResult']]] = None,
                                   service_type: Optional[_builtins.str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorAlertDefinitionsResult:
     """
@@ -126,7 +126,7 @@ def get_monitor_alert_definitions(filters: Optional[Sequence[Union['GetMonitorAl
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         service_type=pulumi.get(__ret__, 'service_type'))
-def get_monitor_alert_definitions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorAlertDefinitionsFilterArgs', 'GetMonitorAlertDefinitionsFilterArgsDict']]]]] = None,
+def get_monitor_alert_definitions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorAlertDefinitionsFilterArgs', 'GetMonitorAlertDefinitionsFilterArgsDict', 'outputs.GetMonitorAlertDefinitionsFilterResult']]]]] = None,
                                          service_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorAlertDefinitionsResult]:
     """

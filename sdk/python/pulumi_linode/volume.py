@@ -352,7 +352,7 @@ class Volume(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  source_volume_id: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None,
                  __props__=None):
         """
         Provides a Linode Volume resource.  This can be used to create, modify, and delete Linodes Block Storage Volumes.  Block Storage Volumes are removable storage disks that persist outside the life-cycle of Linode Instances. These volumes can be attached to and detached from Linode instances throughout a region.
@@ -522,7 +522,7 @@ class Volume(pulumi.CustomResource):
                  size: pulumi.Input[Optional[_builtins.int]] = None,
                  source_volume_id: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -565,7 +565,7 @@ class Volume(pulumi.CustomResource):
             source_volume_id: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict']]] = None) -> 'Volume':
+            timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None) -> 'Volume':
         """
         Get an existing Volume resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -319,7 +319,7 @@ class PlacementGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             is_compliant: pulumi.Input[Optional[_builtins.bool]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
-            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict']]]]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict', 'outputs.PlacementGroupMember']]]]] = None,
             placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None,
             placement_group_type: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'PlacementGroup':
@@ -332,7 +332,7 @@ class PlacementGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] is_compliant: Whether this Linode is currently compliant with the group's placement group type.
         :param pulumi.Input[_builtins.str] label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict']]]] members: A set of Linodes currently assigned to this Placement Group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict', 'outputs.PlacementGroupMember']]]] members: A set of Linodes currently assigned to this Placement Group.
         :param pulumi.Input[_builtins.str] placement_group_policy: Whether Linodes must be able to become compliant during assignment. (Default `strict`)
         :param pulumi.Input[_builtins.str] placement_group_type: The placement group type to use when placing Linodes in this group.
         :param pulumi.Input[_builtins.str] region: The region of the Placement Group.

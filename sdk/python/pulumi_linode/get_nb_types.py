@@ -84,7 +84,7 @@ class AwaitableGetNbTypesResult(GetNbTypesResult):
             types=self.types)
 
 
-def get_nb_types(filters: Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNbTypesFilterArgsDict']]] = None,
+def get_nb_types(filters: Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNbTypesFilterArgsDict', 'outputs.GetNbTypesFilterResult']]] = None,
                  order: Optional[_builtins.str] = None,
                  order_by: Optional[_builtins.str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNbTypesResult:
@@ -104,7 +104,7 @@ def get_nb_types(filters: Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNb
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_nb_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNbTypesFilterArgsDict']]]]] = None,
+def get_nb_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNbTypesFilterArgs', 'GetNbTypesFilterArgsDict', 'outputs.GetNbTypesFilterResult']]]]] = None,
                         order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNbTypesResult]:

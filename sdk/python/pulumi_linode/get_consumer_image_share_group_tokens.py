@@ -87,10 +87,10 @@ class AwaitableGetConsumerImageShareGroupTokensResult(GetConsumerImageShareGroup
             tokens=self.tokens)
 
 
-def get_consumer_image_share_group_tokens(filters: Optional[Sequence[Union['GetConsumerImageShareGroupTokensFilterArgs', 'GetConsumerImageShareGroupTokensFilterArgsDict']]] = None,
+def get_consumer_image_share_group_tokens(filters: Optional[Sequence[Union['GetConsumerImageShareGroupTokensFilterArgs', 'GetConsumerImageShareGroupTokensFilterArgsDict', 'outputs.GetConsumerImageShareGroupTokensFilterResult']]] = None,
                                           order: Optional[_builtins.str] = None,
                                           order_by: Optional[_builtins.str] = None,
-                                          tokens: Optional[Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']]] = None,
+                                          tokens: Optional[Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict', 'outputs.GetConsumerImageShareGroupTokensTokenResult']]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConsumerImageShareGroupTokensResult:
     """
     Provides information about a list of Image Share Group Tokens that match a set of filters.
@@ -128,7 +128,7 @@ def get_consumer_image_share_group_tokens(filters: Optional[Sequence[Union['GetC
     * `sharegroup_label`
 
 
-    :param Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']] tokens: (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+    :param Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict', 'outputs.GetConsumerImageShareGroupTokensTokenResult']] tokens: (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -144,10 +144,10 @@ def get_consumer_image_share_group_tokens(filters: Optional[Sequence[Union['GetC
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         tokens=pulumi.get(__ret__, 'tokens'))
-def get_consumer_image_share_group_tokens_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupTokensFilterArgs', 'GetConsumerImageShareGroupTokensFilterArgsDict']]]]] = None,
+def get_consumer_image_share_group_tokens_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupTokensFilterArgs', 'GetConsumerImageShareGroupTokensFilterArgsDict', 'outputs.GetConsumerImageShareGroupTokensFilterResult']]]]] = None,
                                                  order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                                 tokens: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']]]]] = None,
+                                                 tokens: pulumi.Input[Optional[Optional[Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict', 'outputs.GetConsumerImageShareGroupTokensTokenResult']]]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerImageShareGroupTokensResult]:
     """
     Provides information about a list of Image Share Group Tokens that match a set of filters.
@@ -185,7 +185,7 @@ def get_consumer_image_share_group_tokens_output(filters: pulumi.Input[Optional[
     * `sharegroup_label`
 
 
-    :param Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict']] tokens: (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
+    :param Sequence[Union['GetConsumerImageShareGroupTokensTokenArgs', 'GetConsumerImageShareGroupTokensTokenArgsDict', 'outputs.GetConsumerImageShareGroupTokensTokenResult']] tokens: (Block List) The returned list of tokens. Referenced by index (e.g. `tokens.0.id`).
     """
     __args__ = dict()
     __args__['filters'] = filters

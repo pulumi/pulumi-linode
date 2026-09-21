@@ -105,7 +105,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]]] = None,
+                 assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict', 'outputs.NetworkingIpAssignmentAssignment']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -140,7 +140,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict', 'outputs.NetworkingIpAssignmentAssignment']]]] assignments: A list of IP/Linode assignments to apply.
         :param pulumi.Input[_builtins.str] region: The region where the IP addresses will be assigned.
         """
         ...
@@ -194,7 +194,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]]] = None,
+                 assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict', 'outputs.NetworkingIpAssignmentAssignment']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -219,7 +219,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]]] = None,
+            assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict', 'outputs.NetworkingIpAssignmentAssignment']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkingIpAssignment':
         """
         Get an existing NetworkingIpAssignment resource's state with the given name, id, and optional extra
@@ -228,7 +228,7 @@ class NetworkingIpAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict']]]] assignments: A list of IP/Linode assignments to apply.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict', 'outputs.NetworkingIpAssignmentAssignment']]]] assignments: A list of IP/Linode assignments to apply.
         :param pulumi.Input[_builtins.str] region: The region where the IP addresses will be assigned.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

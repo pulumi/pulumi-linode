@@ -102,8 +102,8 @@ class AwaitableGetProducerImageShareGroupImageSharesResult(GetProducerImageShare
             sharegroup_id=self.sharegroup_id)
 
 
-def get_producer_image_share_group_image_shares(filters: Optional[Sequence[Union['GetProducerImageShareGroupImageSharesFilterArgs', 'GetProducerImageShareGroupImageSharesFilterArgsDict']]] = None,
-                                                image_shares: Optional[Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict']]] = None,
+def get_producer_image_share_group_image_shares(filters: Optional[Sequence[Union['GetProducerImageShareGroupImageSharesFilterArgs', 'GetProducerImageShareGroupImageSharesFilterArgsDict', 'outputs.GetProducerImageShareGroupImageSharesFilterResult']]] = None,
+                                                image_shares: Optional[Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict', 'outputs.GetProducerImageShareGroupImageSharesImageShareResult']]] = None,
                                                 order: Optional[_builtins.str] = None,
                                                 order_by: Optional[_builtins.str] = None,
                                                 sharegroup_id: Optional[_builtins.int] = None,
@@ -137,7 +137,7 @@ def get_producer_image_share_group_image_shares(filters: Optional[Sequence[Union
     * `label`
 
 
-    :param Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict']] image_shares: (Block List) The Image Shares returned by this data source.
+    :param Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict', 'outputs.GetProducerImageShareGroupImageSharesImageShareResult']] image_shares: (Block List) The Image Shares returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group to list shared Images from.
            
            * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.
@@ -158,8 +158,8 @@ def get_producer_image_share_group_image_shares(filters: Optional[Sequence[Union
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         sharegroup_id=pulumi.get(__ret__, 'sharegroup_id'))
-def get_producer_image_share_group_image_shares_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupImageSharesFilterArgs', 'GetProducerImageShareGroupImageSharesFilterArgsDict']]]]] = None,
-                                                       image_shares: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict']]]]] = None,
+def get_producer_image_share_group_image_shares_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupImageSharesFilterArgs', 'GetProducerImageShareGroupImageSharesFilterArgsDict', 'outputs.GetProducerImageShareGroupImageSharesFilterResult']]]]] = None,
+                                                       image_shares: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict', 'outputs.GetProducerImageShareGroupImageSharesImageShareResult']]]]] = None,
                                                        order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                        order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                        sharegroup_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -193,7 +193,7 @@ def get_producer_image_share_group_image_shares_output(filters: pulumi.Input[Opt
     * `label`
 
 
-    :param Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict']] image_shares: (Block List) The Image Shares returned by this data source.
+    :param Sequence[Union['GetProducerImageShareGroupImageSharesImageShareArgs', 'GetProducerImageShareGroupImageSharesImageShareArgsDict', 'outputs.GetProducerImageShareGroupImageSharesImageShareResult']] image_shares: (Block List) The Image Shares returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group to list shared Images from.
            
            * `filter` - (Optional, Block Set) A set of filters used to select Image Share Groups that meet certain requirements.

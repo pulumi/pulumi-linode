@@ -90,7 +90,7 @@ class AwaitableGetIamEntitiesResult(GetIamEntitiesResult):
             order_by=self.order_by)
 
 
-def get_iam_entities(filters: Optional[Sequence[Union['GetIamEntitiesFilterArgs', 'GetIamEntitiesFilterArgsDict']]] = None,
+def get_iam_entities(filters: Optional[Sequence[Union['GetIamEntitiesFilterArgs', 'GetIamEntitiesFilterArgsDict', 'outputs.GetIamEntitiesFilterResult']]] = None,
                      order: Optional[_builtins.str] = None,
                      order_by: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIamEntitiesResult:
@@ -126,7 +126,7 @@ def get_iam_entities(filters: Optional[Sequence[Union['GetIamEntitiesFilterArgs'
         id=pulumi.get(__ret__, 'id'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_iam_entities_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetIamEntitiesFilterArgs', 'GetIamEntitiesFilterArgsDict']]]]] = None,
+def get_iam_entities_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetIamEntitiesFilterArgs', 'GetIamEntitiesFilterArgsDict', 'outputs.GetIamEntitiesFilterResult']]]]] = None,
                             order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamEntitiesResult]:

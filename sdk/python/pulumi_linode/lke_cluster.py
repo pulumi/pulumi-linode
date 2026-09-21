@@ -488,11 +488,11 @@ class LkeCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict', 'outputs.LkeClusterControlPlane']]] = None,
                  external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
+                 pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -736,11 +736,11 @@ class LkeCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
-        :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']] control_plane: Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict', 'outputs.LkeClusterControlPlane']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]] pools: (Block List) Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
                * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.
@@ -1007,11 +1007,11 @@ class LkeCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-                 control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
+                 control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict', 'outputs.LkeClusterControlPlane']]] = None,
                  external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
+                 pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1062,12 +1062,12 @@ class LkeCluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
-            control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']]] = None,
+            control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict', 'outputs.LkeClusterControlPlane']]] = None,
             external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
             kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
-            pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]]] = None,
+            pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             stack_type: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1084,12 +1084,12 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] api_endpoints: The endpoints for the Kubernetes API server.
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
-        :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict']] control_plane: Defines settings for the Kubernetes Control Plane.
+        :param pulumi.Input[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict', 'outputs.LkeClusterControlPlane']] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict']]]] pools: (Block List) Additional nested attributes:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
                * `pool` - (Required, Block List) The Node Pool specifications for the Kubernetes cluster. At least one Node Pool is required.

@@ -90,7 +90,7 @@ class AwaitableGetLkeClustersResult(GetLkeClustersResult):
             order_by=self.order_by)
 
 
-def get_lke_clusters(filters: Optional[Sequence[Union['GetLkeClustersFilterArgs', 'GetLkeClustersFilterArgsDict']]] = None,
+def get_lke_clusters(filters: Optional[Sequence[Union['GetLkeClustersFilterArgs', 'GetLkeClustersFilterArgsDict', 'outputs.GetLkeClustersFilterResult']]] = None,
                      order: Optional[_builtins.str] = None,
                      order_by: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLkeClustersResult:
@@ -144,7 +144,7 @@ def get_lke_clusters(filters: Optional[Sequence[Union['GetLkeClustersFilterArgs'
         lke_clusters=pulumi.get(__ret__, 'lke_clusters'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_lke_clusters_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLkeClustersFilterArgs', 'GetLkeClustersFilterArgsDict']]]]] = None,
+def get_lke_clusters_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetLkeClustersFilterArgs', 'GetLkeClustersFilterArgsDict', 'outputs.GetLkeClustersFilterResult']]]]] = None,
                             order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLkeClustersResult]:

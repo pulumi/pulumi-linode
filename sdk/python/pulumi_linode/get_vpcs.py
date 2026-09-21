@@ -72,7 +72,7 @@ class AwaitableGetVpcsResult(GetVpcsResult):
             vpcs=self.vpcs)
 
 
-def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]] = None,
+def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict', 'outputs.GetVpcsFilterResult']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcsResult:
     """
     Provides information about a list of Linode VPCs that match a set of filters.
@@ -128,7 +128,7 @@ def get_vpcs(filters: Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilte
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         vpcs=pulumi.get(__ret__, 'vpcs'))
-def get_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict']]]]] = None,
+def get_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpcsFilterArgs', 'GetVpcsFilterArgsDict', 'outputs.GetVpcsFilterResult']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcsResult]:
     """
     Provides information about a list of Linode VPCs that match a set of filters.

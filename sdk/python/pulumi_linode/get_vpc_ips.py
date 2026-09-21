@@ -90,7 +90,7 @@ class AwaitableGetVpcIpsResult(GetVpcIpsResult):
             vpc_ips=self.vpc_ips)
 
 
-def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]] = None,
+def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict', 'outputs.GetVpcIpsFilterResult']]] = None,
                 ipv6: Optional[_builtins.bool] = None,
                 vpc_id: Optional[_builtins.int] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcIpsResult:
@@ -162,7 +162,7 @@ def get_vpc_ips(filters: Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcI
         ipv6=pulumi.get(__ret__, 'ipv6'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vpc_ips=pulumi.get(__ret__, 'vpc_ips'))
-def get_vpc_ips_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict']]]]] = None,
+def get_vpc_ips_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVpcIpsFilterArgs', 'GetVpcIpsFilterArgsDict', 'outputs.GetVpcIpsFilterResult']]]]] = None,
                        ipv6: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                        vpc_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcIpsResult]:

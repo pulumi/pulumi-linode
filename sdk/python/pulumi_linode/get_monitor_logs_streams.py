@@ -90,7 +90,7 @@ class AwaitableGetMonitorLogsStreamsResult(GetMonitorLogsStreamsResult):
             streams=self.streams)
 
 
-def get_monitor_logs_streams(filters: Optional[Sequence[Union['GetMonitorLogsStreamsFilterArgs', 'GetMonitorLogsStreamsFilterArgsDict']]] = None,
+def get_monitor_logs_streams(filters: Optional[Sequence[Union['GetMonitorLogsStreamsFilterArgs', 'GetMonitorLogsStreamsFilterArgsDict', 'outputs.GetMonitorLogsStreamsFilterResult']]] = None,
                              order: Optional[_builtins.str] = None,
                              order_by: Optional[_builtins.str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorLogsStreamsResult:
@@ -141,7 +141,7 @@ def get_monitor_logs_streams(filters: Optional[Sequence[Union['GetMonitorLogsStr
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         streams=pulumi.get(__ret__, 'streams'))
-def get_monitor_logs_streams_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorLogsStreamsFilterArgs', 'GetMonitorLogsStreamsFilterArgsDict']]]]] = None,
+def get_monitor_logs_streams_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorLogsStreamsFilterArgs', 'GetMonitorLogsStreamsFilterArgsDict', 'outputs.GetMonitorLogsStreamsFilterResult']]]]] = None,
                                     order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorLogsStreamsResult]:

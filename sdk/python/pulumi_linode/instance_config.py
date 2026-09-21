@@ -506,10 +506,10 @@ class InstanceConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  booted: pulumi.Input[Optional[_builtins.bool]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
-                 device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
-                 devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
-                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
+                 device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict', 'outputs.InstanceConfigDevice']]]]] = None,
+                 devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict', 'outputs.InstanceConfigDevices']]] = None,
+                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict', 'outputs.InstanceConfigHelper']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict', 'outputs.InstanceConfigInterface']]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -641,10 +641,10 @@ class InstanceConfig(pulumi.CustomResource):
                * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
                
                * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]] device: Blocks for device disks in a Linode's configuration profile.
-        :param pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]] helpers: Helpers enabled when booting to this Linode Config.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]] interfaces: An array of Network Interfaces to add to this Linode's Configuration Profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict', 'outputs.InstanceConfigDevice']]]] device: Blocks for device disks in a Linode's configuration profile.
+        :param pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict', 'outputs.InstanceConfigDevices']] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict', 'outputs.InstanceConfigHelper']]]] helpers: Helpers enabled when booting to this Linode Config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict', 'outputs.InstanceConfigInterface']]]] interfaces: An array of Network Interfaces to add to this Linode's Configuration Profile.
         :param pulumi.Input[_builtins.str] kernel: A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                
@@ -789,10 +789,10 @@ class InstanceConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  booted: pulumi.Input[Optional[_builtins.bool]] = None,
                  comments: pulumi.Input[Optional[_builtins.str]] = None,
-                 device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
-                 devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
-                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
+                 device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict', 'outputs.InstanceConfigDevice']]]]] = None,
+                 devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict', 'outputs.InstanceConfigDevices']]] = None,
+                 helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict', 'outputs.InstanceConfigHelper']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict', 'outputs.InstanceConfigInterface']]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  linode_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -838,10 +838,10 @@ class InstanceConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             booted: pulumi.Input[Optional[_builtins.bool]] = None,
             comments: pulumi.Input[Optional[_builtins.str]] = None,
-            device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]]] = None,
-            devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']]] = None,
-            helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]]] = None,
-            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]]] = None,
+            device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict', 'outputs.InstanceConfigDevice']]]]] = None,
+            devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict', 'outputs.InstanceConfigDevices']]] = None,
+            helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict', 'outputs.InstanceConfigHelper']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict', 'outputs.InstanceConfigInterface']]]]] = None,
             kernel: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -866,10 +866,10 @@ class InstanceConfig(pulumi.CustomResource):
                * `helpers` - (Optional, Block List) Helpers enabled when booting to this Linode Config.
                
                * `interface` - (Optional, Block List) An array of Network Interfaces to use for this Configuration Profile.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict']]]] device: Blocks for device disks in a Linode's configuration profile.
-        :param pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict']] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict']]]] helpers: Helpers enabled when booting to this Linode Config.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict']]]] interfaces: An array of Network Interfaces to add to this Linode's Configuration Profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict', 'outputs.InstanceConfigDevice']]]] device: Blocks for device disks in a Linode's configuration profile.
+        :param pulumi.Input[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict', 'outputs.InstanceConfigDevices']] devices: A dictionary of device disks to use as a device map in a Linode's configuration profile.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict', 'outputs.InstanceConfigHelper']]]] helpers: Helpers enabled when booting to this Linode Config.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict', 'outputs.InstanceConfigInterface']]]] interfaces: An array of Network Interfaces to add to this Linode's Configuration Profile.
         :param pulumi.Input[_builtins.str] kernel: A Kernel ID to boot a Linode with. Default is `linode/latest-64bit`. Examples are `linode/latest-64bit`, `linode/grub2`, `linode/direct-disk`, etc. See all kernels [here](https://api.linode.com/v4/linode/kernels). Note that this is a paginated API endpoint ([docs](https://techdocs.akamai.com/linode-api/reference/get-kernels)).
         :param pulumi.Input[_builtins.str] label: The Config’s label for display purposes only.
                

@@ -473,13 +473,13 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict', 'outputs.FirewallInbound']]]]] = None,
                  interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
+                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict', 'outputs.FirewallOutbound']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
@@ -559,13 +559,13 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
                
                * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict', 'outputs.FirewallInbound']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interfaces: A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict', 'outputs.FirewallOutbound']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         """
         ...
@@ -660,13 +660,13 @@ class Firewall(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+                 inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict', 'outputs.FirewallInbound']]]]] = None,
                  interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
+                 outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict', 'outputs.FirewallOutbound']]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -710,17 +710,17 @@ class Firewall(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
-            devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict']]]]] = None,
+            devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict', 'outputs.FirewallDevice']]]]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]]] = None,
+            inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict', 'outputs.FirewallInbound']]]]] = None,
             interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]]] = None,
+            outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict', 'outputs.FirewallOutbound']]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
@@ -733,7 +733,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: When this firewall was created
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict']]]] devices: The devices associated with this firewall.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict', 'outputs.FirewallDevice']]]] devices: The devices associated with this firewall.
         :param pulumi.Input[_builtins.bool] disabled: If `true`, the Firewall's rules are not enforced (defaults to `false`).
                
                * `inbound` - (Optional, Block List) A firewall rule that specifies what inbound network traffic is allowed.
@@ -741,13 +741,13 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] inbound_policy: The default behavior for inbound traffic. This setting can be overridden by updating the inbound.action property of the Firewall Rule. (`ACCEPT`, `DROP`)
                
                * `outbound` - (Optional, Block List) A firewall rule that specifies what outbound network traffic is allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict', 'outputs.FirewallInbound']]]] inbounds: A firewall rule that specifies what inbound network traffic is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] interfaces: A list of IDs of Linode Interfaces this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] label: This Firewall's unique label.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] linodes: A list of IDs of Linodes this Firewall should govern network traffic for.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] nodebalancers: A list of IDs of NodeBalancers this Firewall should govern network traffic for.
         :param pulumi.Input[_builtins.str] outbound_policy: The default behavior for outbound traffic. This setting can be overridden by updating the outbound.action property for an individual Firewall Rule. (`ACCEPT`, `DROP`)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict', 'outputs.FirewallOutbound']]]] outbounds: A firewall rule that specifies what outbound network traffic is allowed.
         :param pulumi.Input[_builtins.str] status: The status of the Firewall.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] updated: When this firewall was last updated

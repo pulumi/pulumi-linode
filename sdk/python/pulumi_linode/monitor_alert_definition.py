@@ -598,12 +598,12 @@ class MonitorAlertDefinition(pulumi.CustomResource):
                  group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict']]] = None,
+                 rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict', 'outputs.MonitorAlertDefinitionRuleCriteria']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  service_type: pulumi.Input[Optional[_builtins.str]] = None,
                  severity: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict']]] = None,
+                 trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict', 'outputs.MonitorAlertDefinitionTriggerConditions']]] = None,
                  wait_for: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -662,14 +662,14 @@ class MonitorAlertDefinition(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_bies: A set of dimension fields used to group alert events, such as `entity_id`.
         :param pulumi.Input[_builtins.str] label: The label for the alert definition.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The regions the alert definition applies to. Only used for region-scoped alerts.
-        :param pulumi.Input[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict']] rule_criteria: Details for the rules required to trigger the alert.
+        :param pulumi.Input[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict', 'outputs.MonitorAlertDefinitionRuleCriteria']] rule_criteria: Details for the rules required to trigger the alert.
         :param pulumi.Input[_builtins.str] scope: The scope of the alert definition. Allowed values: `account`, `entity`, `region`. Defaults to `entity`.
         :param pulumi.Input[_builtins.str] service_type: The service type (e.g., dbaas).
         :param pulumi.Input[_builtins.int] severity: The severity level of the alert definition.
                * `rule_criteria` - (Required, Nested Attribute) The criteria expression for the alert. Referenced directly (e.g. `rule_criteria.rules`).
                * `trigger_conditions` - (Required, Nested Attribute) The conditions that need to be met to send a notification for the alert. Referenced directly (e.g. `trigger_conditions.criteria_condition`).
         :param pulumi.Input[_builtins.str] status: The status of the alert definition.
-        :param pulumi.Input[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict']] trigger_conditions: The conditions that need to be met to send a notification for the alert.
+        :param pulumi.Input[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict', 'outputs.MonitorAlertDefinitionTriggerConditions']] trigger_conditions: The conditions that need to be met to send a notification for the alert.
         :param pulumi.Input[_builtins.bool] wait_for: Whether to wait for the alert definition to be ready before completing the resource creation.
         """
         ...
@@ -747,12 +747,12 @@ class MonitorAlertDefinition(pulumi.CustomResource):
                  group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict']]] = None,
+                 rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict', 'outputs.MonitorAlertDefinitionRuleCriteria']]] = None,
                  scope: pulumi.Input[Optional[_builtins.str]] = None,
                  service_type: pulumi.Input[Optional[_builtins.str]] = None,
                  severity: pulumi.Input[Optional[_builtins.int]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
-                 trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict']]] = None,
+                 trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict', 'outputs.MonitorAlertDefinitionTriggerConditions']]] = None,
                  wait_for: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -806,23 +806,23 @@ class MonitorAlertDefinition(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorAlertDefinitionAlertChannelArgs', 'MonitorAlertDefinitionAlertChannelArgsDict']]]]] = None,
+            alert_channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorAlertDefinitionAlertChannelArgs', 'MonitorAlertDefinitionAlertChannelArgsDict', 'outputs.MonitorAlertDefinitionAlertChannel']]]]] = None,
             channel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
             class_: pulumi.Input[Optional[_builtins.str]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            entities: pulumi.Input[Optional[Union['MonitorAlertDefinitionEntitiesArgs', 'MonitorAlertDefinitionEntitiesArgsDict']]] = None,
+            entities: pulumi.Input[Optional[Union['MonitorAlertDefinitionEntitiesArgs', 'MonitorAlertDefinitionEntitiesArgsDict', 'outputs.MonitorAlertDefinitionEntities']]] = None,
             entity_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict']]] = None,
+            rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict', 'outputs.MonitorAlertDefinitionRuleCriteria']]] = None,
             scope: pulumi.Input[Optional[_builtins.str]] = None,
             service_type: pulumi.Input[Optional[_builtins.str]] = None,
             severity: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
-            trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict']]] = None,
+            trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict', 'outputs.MonitorAlertDefinitionTriggerConditions']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
             updated_by: pulumi.Input[Optional[_builtins.str]] = None,
@@ -834,7 +834,7 @@ class MonitorAlertDefinition(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorAlertDefinitionAlertChannelArgs', 'MonitorAlertDefinitionAlertChannelArgsDict']]]] alert_channels: The alert channels set up for use with this alert. Run the List alert channels operation to see all of the available channels.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['MonitorAlertDefinitionAlertChannelArgs', 'MonitorAlertDefinitionAlertChannelArgsDict', 'outputs.MonitorAlertDefinitionAlertChannel']]]] alert_channels: The alert channels set up for use with this alert. Run the List alert channels operation to see all of the available channels.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] channel_ids: A list of channel IDs to associate with the alert definition.
         :param pulumi.Input[_builtins.str] class_: "The plan type for the Managed Database cluster, either shared or dedicated. This only applies to a system alert for a service_type of dbaas (Managed Databases). For user alerts for dbaas, this is returned as null.",
                * `entities` - (Nested Attribute) Entity metadata for the alert definition. Referenced directly (e.g. `entities.count`).
@@ -842,19 +842,19 @@ class MonitorAlertDefinition(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: The date and time the alert definition was created.
         :param pulumi.Input[_builtins.str] created_by: For a user alert definition, this is the user on your account that created it. For a system alert definition, this is returned as system.
         :param pulumi.Input[_builtins.str] description: A description for the alert definition.
-        :param pulumi.Input[Union['MonitorAlertDefinitionEntitiesArgs', 'MonitorAlertDefinitionEntitiesArgsDict']] entities: Entity metadata for the alert definition.
+        :param pulumi.Input[Union['MonitorAlertDefinitionEntitiesArgs', 'MonitorAlertDefinitionEntitiesArgsDict', 'outputs.MonitorAlertDefinitionEntities']] entities: Entity metadata for the alert definition.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] entity_ids: A list of entity IDs to associate with the alert definition.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_bies: A set of dimension fields used to group alert events, such as `entity_id`.
         :param pulumi.Input[_builtins.str] label: The label for the alert definition.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The regions the alert definition applies to. Only used for region-scoped alerts.
-        :param pulumi.Input[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict']] rule_criteria: Details for the rules required to trigger the alert.
+        :param pulumi.Input[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict', 'outputs.MonitorAlertDefinitionRuleCriteria']] rule_criteria: Details for the rules required to trigger the alert.
         :param pulumi.Input[_builtins.str] scope: The scope of the alert definition. Allowed values: `account`, `entity`, `region`. Defaults to `entity`.
         :param pulumi.Input[_builtins.str] service_type: The service type (e.g., dbaas).
         :param pulumi.Input[_builtins.int] severity: The severity level of the alert definition.
                * `rule_criteria` - (Required, Nested Attribute) The criteria expression for the alert. Referenced directly (e.g. `rule_criteria.rules`).
                * `trigger_conditions` - (Required, Nested Attribute) The conditions that need to be met to send a notification for the alert. Referenced directly (e.g. `trigger_conditions.criteria_condition`).
         :param pulumi.Input[_builtins.str] status: The status of the alert definition.
-        :param pulumi.Input[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict']] trigger_conditions: The conditions that need to be met to send a notification for the alert.
+        :param pulumi.Input[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict', 'outputs.MonitorAlertDefinitionTriggerConditions']] trigger_conditions: The conditions that need to be met to send a notification for the alert.
         :param pulumi.Input[_builtins.str] type: The type of alert channel.
         :param pulumi.Input[_builtins.str] updated: The date and time the alert definition was last updated.
         :param pulumi.Input[_builtins.str] updated_by: For a user alert definition, this is the user on your account that last updated it. For a system alert definition, this is returned as system. If it hasn't been updated, this value is the same as created_by.
