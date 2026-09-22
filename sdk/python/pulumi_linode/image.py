@@ -675,7 +675,7 @@ class Image(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict', 'outputs.ImageTimeouts']]] = None,
                  wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -883,7 +883,7 @@ class Image(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict', 'outputs.ImageTimeouts']]] = None,
                  wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -942,18 +942,18 @@ class Image(pulumi.CustomResource):
             expiry: pulumi.Input[Optional[_builtins.str]] = None,
             file_hash: pulumi.Input[Optional[_builtins.str]] = None,
             file_path: pulumi.Input[Optional[_builtins.str]] = None,
-            image_sharing: pulumi.Input[Optional[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']]] = None,
+            image_sharing: pulumi.Input[Optional[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict', 'outputs.ImageImageSharing']]] = None,
             is_public: pulumi.Input[Optional[_builtins.bool]] = None,
             is_shared: pulumi.Input[Optional[_builtins.bool]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]]] = None,
+            replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict', 'outputs.ImageReplication']]]]] = None,
             size: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict', 'outputs.ImageTimeouts']]] = None,
             total_size: pulumi.Input[Optional[_builtins.int]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             vendor: pulumi.Input[Optional[_builtins.str]] = None,
@@ -975,7 +975,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiry: Only Images created automatically (from a deleted Linode; type=automatic) will expire.
         :param pulumi.Input[_builtins.str] file_hash: The MD5 hash of the file to be uploaded. This is used to trigger file updates.
         :param pulumi.Input[_builtins.str] file_path: The path of the image file to be uploaded.
-        :param pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict']] image_sharing: (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
+        :param pulumi.Input[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict', 'outputs.ImageImageSharing']] image_sharing: (Nested Attribute) Details about image sharing, including who the image is shared with and by. (**Note: v4beta only and may not currently be available to all users.**) Referenced directly (e.g. `image_sharing.shared_by`).
         :param pulumi.Input[_builtins.bool] is_public: True if the Image is public.
         :param pulumi.Input[_builtins.bool] is_shared: True if the Image is shared. (**Note: v4beta only and may not currently be available to all users.**)
         :param pulumi.Input[_builtins.str] label: A short description of the Image. Labels cannot contain special characters.
@@ -986,7 +986,7 @@ class Image(pulumi.CustomResource):
                > **NOTICE:** Uploading images is currently in beta. Ensure `LINODE_API_VERSION` is set to `v4beta` in order to use this functionality.
         :param pulumi.Input[_builtins.str] region: The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] replica_regions: A list of regions that customer wants to replicate this image in. At least one valid region is required and only core regions allowed. Existing images in the regions not passed will be removed. See Replicate an Image [here](https://techdocs.akamai.com/linode-api/reference/post-replicate-image) for more details.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict']]]] replications: (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict', 'outputs.ImageReplication']]]] replications: (Read-Only Object List) A list of image replications region and corresponding status. Referenced with an index (e.g. `replications.0.region`).
         :param pulumi.Input[_builtins.int] size: The minimum size this Image needs to deploy. Size is in MB.
         :param pulumi.Input[_builtins.str] status: The status of an image replica.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of customized tags.

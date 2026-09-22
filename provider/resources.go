@@ -115,13 +115,13 @@ func Provider() tfbridge.ProviderInfo {
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
 		P:                       p,
-		Name:                    "linode",
+		Name:                    mainPkg,
 		Description:             "A Pulumi package for creating and managing linode cloud resources.",
-		Keywords:                []string{"pulumi", "linode"},
+		Keywords:                []string{"pulumi", mainPkg},
 		License:                 "Apache-2.0",
 		Homepage:                "https://pulumi.io",
 		Repository:              "https://github.com/pulumi/pulumi-linode",
-		GitHubOrg:               "linode",
+		GitHubOrg:               mainPkg,
 		TFProviderModuleVersion: "v4",
 		Version:                 version.Version,
 		MetadataInfo:            tfbridge.NewProviderMetadata(metadata),

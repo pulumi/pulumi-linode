@@ -288,7 +288,7 @@ class MonitorLogsStream(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict', 'outputs.MonitorLogsStreamDetails']]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -354,7 +354,7 @@ class MonitorLogsStream(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] destinations: The list of logs destination IDs attached to this stream.
-        :param pulumi.Input[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict']] details: Additional configuration details. Only applies to lke_audit_logs streams.
+        :param pulumi.Input[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict', 'outputs.MonitorLogsStreamDetails']] details: Additional configuration details. Only applies to lke_audit_logs streams.
         :param pulumi.Input[_builtins.str] label: The label of the logs stream.
         :param pulumi.Input[_builtins.str] status: The status of the logs stream. One of: `active`, `inactive`, `provisioning`, `deactivating`.
                
@@ -441,7 +441,7 @@ class MonitorLogsStream(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict']]] = None,
+                 details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict', 'outputs.MonitorLogsStreamDetails']]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -483,7 +483,7 @@ class MonitorLogsStream(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
             destinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict']]] = None,
+            details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict', 'outputs.MonitorLogsStreamDetails']]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -500,7 +500,7 @@ class MonitorLogsStream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created: The date and time when the logs stream was created.
         :param pulumi.Input[_builtins.str] created_by: The user who created the logs stream.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] destinations: The list of logs destination IDs attached to this stream.
-        :param pulumi.Input[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict']] details: Additional configuration details. Only applies to lke_audit_logs streams.
+        :param pulumi.Input[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict', 'outputs.MonitorLogsStreamDetails']] details: Additional configuration details. Only applies to lke_audit_logs streams.
         :param pulumi.Input[_builtins.str] label: The label of the logs stream.
         :param pulumi.Input[_builtins.str] status: The status of the logs stream. One of: `active`, `inactive`, `provisioning`, `deactivating`.
                

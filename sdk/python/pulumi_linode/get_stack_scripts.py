@@ -99,7 +99,7 @@ class AwaitableGetStackScriptsResult(GetStackScriptsResult):
             stackscripts=self.stackscripts)
 
 
-def get_stack_scripts(filters: Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict']]] = None,
+def get_stack_scripts(filters: Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict', 'outputs.GetStackScriptsFilterResult']]] = None,
                       latest: Optional[_builtins.bool] = None,
                       order: Optional[_builtins.str] = None,
                       order_by: Optional[_builtins.str] = None,
@@ -173,7 +173,7 @@ def get_stack_scripts(filters: Optional[Sequence[Union['GetStackScriptsFilterArg
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         stackscripts=pulumi.get(__ret__, 'stackscripts'))
-def get_stack_scripts_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict']]]]] = None,
+def get_stack_scripts_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetStackScriptsFilterArgs', 'GetStackScriptsFilterArgsDict', 'outputs.GetStackScriptsFilterResult']]]]] = None,
                              latest: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                              order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

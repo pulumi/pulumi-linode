@@ -69,7 +69,7 @@ class AwaitableGetAccountAvailabilitiesResult(GetAccountAvailabilitiesResult):
             id=self.id)
 
 
-def get_account_availabilities(filters: Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict']]] = None,
+def get_account_availabilities(filters: Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict', 'outputs.GetAccountAvailabilitiesFilterResult']]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountAvailabilitiesResult:
     """
     Provides information about services availabilities for the current Linode account.
@@ -107,7 +107,7 @@ def get_account_availabilities(filters: Optional[Sequence[Union['GetAccountAvail
         availabilities=pulumi.get(__ret__, 'availabilities'),
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'))
-def get_account_availabilities_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict']]]]] = None,
+def get_account_availabilities_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetAccountAvailabilitiesFilterArgs', 'GetAccountAvailabilitiesFilterArgsDict', 'outputs.GetAccountAvailabilitiesFilterResult']]]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAvailabilitiesResult]:
     """
     Provides information about services availabilities for the current Linode account.

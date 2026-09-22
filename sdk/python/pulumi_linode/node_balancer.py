@@ -433,7 +433,7 @@ class NodeBalancer(pulumi.CustomResource):
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None,
                  __props__=None):
         """
         Provides a Linode NodeBalancer resource.  This can be used to create, modify, and delete Linodes NodeBalancers in Linode's managed load balancer service.
@@ -509,7 +509,7 @@ class NodeBalancer(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         ...
     @overload
@@ -600,7 +600,7 @@ class NodeBalancer(pulumi.CustomResource):
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -639,17 +639,17 @@ class NodeBalancer(pulumi.CustomResource):
             client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
-            firewalls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]]] = None,
+            firewalls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict', 'outputs.NodeBalancerFirewall']]]]] = None,
             hostname: pulumi.Input[Optional[_builtins.str]] = None,
             ipv4: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
-            lke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict']]]]] = None,
+            lke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict', 'outputs.NodeBalancerLkeCluster']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            transfers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]]] = None,
+            transfers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict', 'outputs.NodeBalancerTransfer']]]]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
-            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]]] = None) -> 'NodeBalancer':
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None) -> 'NodeBalancer':
         """
         Get an existing NodeBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -663,19 +663,19 @@ class NodeBalancer(pulumi.CustomResource):
                * **NOTE: This argument may not be generally available.**
         :param pulumi.Input[_builtins.str] created: When this firewall was created.
         :param pulumi.Input[_builtins.int] firewall_id: ID for the firewall you'd like to use with this NodeBalancer.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict', 'outputs.NodeBalancerFirewall']]]] firewalls: A list of Firewalls assigned to this NodeBalancer.
         :param pulumi.Input[_builtins.str] hostname: This NodeBalancer's hostname, ending with .nodebalancer.linode.com
         :param pulumi.Input[_builtins.str] ipv4: The Public IPv4 address to assign to this NodeBalancer. When provided, the address must be a reserved IPv4 address that is unassigned and owned by the account. *Changing `ipv4` forces the creation of a new Linode NodeBalancer.*
         :param pulumi.Input[_builtins.str] ipv6: A list of IPv6 addresses or networks. Must be in IP/mask format.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict']]]] lke_clusters: The related LKE cluster for this NodeBalancer, if any.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict', 'outputs.NodeBalancerLkeCluster']]]] lke_clusters: The related LKE cluster for this NodeBalancer, if any.
         :param pulumi.Input[_builtins.str] region: The region where this NodeBalancer will be deployed.  Examples are `"us-east"`, `"us-west"`, `"ap-south"`, etc. See all regions [here](https://api.linode.com/v4/regions).  *Changing `region` forces the creation of a new Linode NodeBalancer.*.
                
                ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict', 'outputs.NodeBalancerTransfer']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
         :param pulumi.Input[_builtins.str] updated: When this firewall was last updated.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

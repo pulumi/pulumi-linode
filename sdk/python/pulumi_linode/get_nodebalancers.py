@@ -90,7 +90,7 @@ class AwaitableGetNodebalancersResult(GetNodebalancersResult):
             order_by=self.order_by)
 
 
-def get_nodebalancers(filters: Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict']]] = None,
+def get_nodebalancers(filters: Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict', 'outputs.GetNodebalancersFilterResult']]] = None,
                       order: Optional[_builtins.str] = None,
                       order_by: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodebalancersResult:
@@ -152,7 +152,7 @@ def get_nodebalancers(filters: Optional[Sequence[Union['GetNodebalancersFilterAr
         nodebalancers=pulumi.get(__ret__, 'nodebalancers'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_nodebalancers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict']]]]] = None,
+def get_nodebalancers_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNodebalancersFilterArgs', 'GetNodebalancersFilterArgsDict', 'outputs.GetNodebalancersFilterResult']]]]] = None,
                              order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodebalancersResult]:

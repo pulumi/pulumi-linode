@@ -90,7 +90,7 @@ class AwaitableGetReservedIpTypesResult(GetReservedIpTypesResult):
             types=self.types)
 
 
-def get_reserved_ip_types(filters: Optional[Sequence[Union['GetReservedIpTypesFilterArgs', 'GetReservedIpTypesFilterArgsDict']]] = None,
+def get_reserved_ip_types(filters: Optional[Sequence[Union['GetReservedIpTypesFilterArgs', 'GetReservedIpTypesFilterArgsDict', 'outputs.GetReservedIpTypesFilterResult']]] = None,
                           order: Optional[_builtins.str] = None,
                           order_by: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReservedIpTypesResult:
@@ -139,7 +139,7 @@ def get_reserved_ip_types(filters: Optional[Sequence[Union['GetReservedIpTypesFi
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_reserved_ip_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetReservedIpTypesFilterArgs', 'GetReservedIpTypesFilterArgsDict']]]]] = None,
+def get_reserved_ip_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetReservedIpTypesFilterArgs', 'GetReservedIpTypesFilterArgsDict', 'outputs.GetReservedIpTypesFilterResult']]]]] = None,
                                  order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpTypesResult]:

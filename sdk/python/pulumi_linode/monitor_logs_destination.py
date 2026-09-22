@@ -280,8 +280,8 @@ class MonitorLogsDestination(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict']]] = None,
-                 custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict']]] = None,
+                 akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict', 'outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']]] = None,
+                 custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict', 'outputs.MonitorLogsDestinationCustomHttpsDetails']]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -343,8 +343,8 @@ class MonitorLogsDestination(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict']] akamai_object_storage_details: Details for an akamai_object_storage logs destination.
-        :param pulumi.Input[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict']] custom_https_details: Details for a custom_https logs destination.
+        :param pulumi.Input[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict', 'outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']] akamai_object_storage_details: Details for an akamai_object_storage logs destination.
+        :param pulumi.Input[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict', 'outputs.MonitorLogsDestinationCustomHttpsDetails']] custom_https_details: Details for a custom_https logs destination.
         :param pulumi.Input[_builtins.str] label: The label for this logs destination.
         :param pulumi.Input[_builtins.str] type: The type of this logs destination. One of: `akamai_object_storage`, `custom_https`.
                
@@ -429,8 +429,8 @@ class MonitorLogsDestination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict']]] = None,
-                 custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict']]] = None,
+                 akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict', 'outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']]] = None,
+                 custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict', 'outputs.MonitorLogsDestinationCustomHttpsDetails']]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -466,10 +466,10 @@ class MonitorLogsDestination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict']]] = None,
+            akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict', 'outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             created_by: pulumi.Input[Optional[_builtins.str]] = None,
-            custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict']]] = None,
+            custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict', 'outputs.MonitorLogsDestinationCustomHttpsDetails']]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -483,10 +483,10 @@ class MonitorLogsDestination(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict']] akamai_object_storage_details: Details for an akamai_object_storage logs destination.
+        :param pulumi.Input[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict', 'outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']] akamai_object_storage_details: Details for an akamai_object_storage logs destination.
         :param pulumi.Input[_builtins.str] created: When this logs destination was created.
         :param pulumi.Input[_builtins.str] created_by: The user who created this logs destination.
-        :param pulumi.Input[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict']] custom_https_details: Details for a custom_https logs destination.
+        :param pulumi.Input[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict', 'outputs.MonitorLogsDestinationCustomHttpsDetails']] custom_https_details: Details for a custom_https logs destination.
         :param pulumi.Input[_builtins.str] label: The label for this logs destination.
         :param pulumi.Input[_builtins.str] status: The status of this logs destination.
         :param pulumi.Input[_builtins.str] type: The type of this logs destination. One of: `akamai_object_storage`, `custom_https`.

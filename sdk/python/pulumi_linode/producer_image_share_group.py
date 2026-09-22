@@ -258,7 +258,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict', 'outputs.ProducerImageShareGroupImage']]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -295,7 +295,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the Image Share Group
                
                * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]] images: The images to be shared using this Image Share Group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict', 'outputs.ProducerImageShareGroupImage']]]] images: The images to be shared using this Image Share Group.
         :param pulumi.Input[_builtins.str] label: The label of the Image Share Group.
         """
         ...
@@ -349,7 +349,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict', 'outputs.ProducerImageShareGroupImage']]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -385,7 +385,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
             created: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             expiry: pulumi.Input[Optional[_builtins.str]] = None,
-            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict', 'outputs.ProducerImageShareGroupImage']]]]] = None,
             images_count: pulumi.Input[Optional[_builtins.int]] = None,
             is_suspended: pulumi.Input[Optional[_builtins.bool]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
@@ -404,7 +404,7 @@ class ProducerImageShareGroup(pulumi.CustomResource):
                
                * `images` - (Optional, Nested Attribute List) A list of Images to include in the Image Share Group.
         :param pulumi.Input[_builtins.str] expiry: The date and time the Image Share Group will expire.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict']]]] images: The images to be shared using this Image Share Group.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict', 'outputs.ProducerImageShareGroupImage']]]] images: The images to be shared using this Image Share Group.
         :param pulumi.Input[_builtins.int] images_count: The number of images in the Image Share Group.
         :param pulumi.Input[_builtins.bool] is_suspended: Whether the Image Share Group is suspended.
         :param pulumi.Input[_builtins.str] label: The label of the Image Share Group.

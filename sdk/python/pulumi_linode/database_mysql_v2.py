@@ -1660,12 +1660,12 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                  fork_restore_time: pulumi.Input[Optional[_builtins.str]] = None,
                  fork_source: pulumi.Input[Optional[_builtins.int]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_network: pulumi.Input[Optional[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']]] = None,
+                 private_network: pulumi.Input[Optional[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict', 'outputs.DatabaseMysqlV2PrivateNetwork']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict', 'outputs.DatabaseMysqlV2Timeouts']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 updates: pulumi.Input[Optional[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']]] = None,
+                 updates: pulumi.Input[Optional[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict', 'outputs.DatabaseMysqlV2Updates']]] = None,
                  __props__=None):
         """
         Provides a Linode MySQL Database resource. This can be used to create, modify, and delete Linode MySQL Databases.
@@ -1862,13 +1862,13 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                
                * `updates` - (Optional, Nested Attribute) Configuration settings for automated patch update maintenance for the Managed Database. Referenced directly (e.g. `updates.day_of_week`).
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
-        :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict', 'outputs.DatabaseMysqlV2PrivateNetwork']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.bool] suspended: Whether this Managed Database should be suspended.
         :param pulumi.Input[_builtins.str] type: The Linode Instance type used for the nodes of the Managed Database.
                
                ***
-        :param pulumi.Input[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict', 'outputs.DatabaseMysqlV2Updates']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         """
         ...
     @overload
@@ -2080,12 +2080,12 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                  fork_restore_time: pulumi.Input[Optional[_builtins.str]] = None,
                  fork_source: pulumi.Input[Optional[_builtins.int]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 private_network: pulumi.Input[Optional[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']]] = None,
+                 private_network: pulumi.Input[Optional[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict', 'outputs.DatabaseMysqlV2PrivateNetwork']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  suspended: pulumi.Input[Optional[_builtins.bool]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict', 'outputs.DatabaseMysqlV2Timeouts']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
-                 updates: pulumi.Input[Optional[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']]] = None,
+                 updates: pulumi.Input[Optional[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict', 'outputs.DatabaseMysqlV2Updates']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2216,20 +2216,20 @@ class DatabaseMysqlV2(pulumi.CustomResource):
             label: pulumi.Input[Optional[_builtins.str]] = None,
             members: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             oldest_restore_time: pulumi.Input[Optional[_builtins.str]] = None,
-            pending_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict']]]]] = None,
+            pending_updates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict', 'outputs.DatabaseMysqlV2PendingUpdate']]]]] = None,
             platform: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
-            private_network: pulumi.Input[Optional[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']]] = None,
+            private_network: pulumi.Input[Optional[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict', 'outputs.DatabaseMysqlV2PrivateNetwork']]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             root_password: pulumi.Input[Optional[_builtins.str]] = None,
             root_username: pulumi.Input[Optional[_builtins.str]] = None,
             ssl_connection: pulumi.Input[Optional[_builtins.bool]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             suspended: pulumi.Input[Optional[_builtins.bool]] = None,
-            timeouts: pulumi.Input[Optional[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['DatabaseMysqlV2TimeoutsArgs', 'DatabaseMysqlV2TimeoutsArgsDict', 'outputs.DatabaseMysqlV2Timeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
-            updates: pulumi.Input[Optional[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']]] = None,
+            updates: pulumi.Input[Optional[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict', 'outputs.DatabaseMysqlV2Updates']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseMysqlV2':
         """
         Get an existing DatabaseMysqlV2 resource's state with the given name, id, and optional extra
@@ -2285,10 +2285,10 @@ class DatabaseMysqlV2(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] label: A unique, user-defined string referring to the Managed Database.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] members: A mapping between IP addresses and strings designating them as primary or failover.
         :param pulumi.Input[_builtins.str] oldest_restore_time: The oldest time to which a database can be restored.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict']]]] pending_updates: (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseMysqlV2PendingUpdateArgs', 'DatabaseMysqlV2PendingUpdateArgsDict', 'outputs.DatabaseMysqlV2PendingUpdate']]]] pending_updates: (Nested Attribute Set) A set of pending updates. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
         :param pulumi.Input[_builtins.str] platform: The back-end platform for relational databases used by the service.
         :param pulumi.Input[_builtins.int] port: The access port for this Managed Database.
-        :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
+        :param pulumi.Input[Union['DatabaseMysqlV2PrivateNetworkArgs', 'DatabaseMysqlV2PrivateNetworkArgsDict', 'outputs.DatabaseMysqlV2PrivateNetwork']] private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param pulumi.Input[_builtins.str] region: The region to use for the Managed Database.
         :param pulumi.Input[_builtins.str] root_password: The randomly-generated root password for the Managed Database instance.
         :param pulumi.Input[_builtins.str] root_username: The root username for the Managed Database instance.
@@ -2299,7 +2299,7 @@ class DatabaseMysqlV2(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[_builtins.str] updated: When this Managed Database was last updated.
-        :param pulumi.Input[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
+        :param pulumi.Input[Union['DatabaseMysqlV2UpdatesArgs', 'DatabaseMysqlV2UpdatesArgsDict', 'outputs.DatabaseMysqlV2Updates']] updates: Configuration settings for automated patch update maintenance for the Managed Database.
         :param pulumi.Input[_builtins.str] version: The Managed Database engine version. (e.g. `13.2`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

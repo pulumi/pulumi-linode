@@ -102,7 +102,7 @@ class AwaitableGetNodebalancerVpcsResult(GetNodebalancerVpcsResult):
             vpc_configs=self.vpc_configs)
 
 
-def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsFilterArgs', 'GetNodebalancerVpcsFilterArgsDict']]] = None,
+def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsFilterArgs', 'GetNodebalancerVpcsFilterArgsDict', 'outputs.GetNodebalancerVpcsFilterResult']]] = None,
                           nodebalancer_id: Optional[_builtins.int] = None,
                           order: Optional[_builtins.str] = None,
                           order_by: Optional[_builtins.str] = None,
@@ -178,7 +178,7 @@ def get_nodebalancer_vpcs(filters: Optional[Sequence[Union['GetNodebalancerVpcsF
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         vpc_configs=pulumi.get(__ret__, 'vpc_configs'))
-def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNodebalancerVpcsFilterArgs', 'GetNodebalancerVpcsFilterArgsDict']]]]] = None,
+def get_nodebalancer_vpcs_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNodebalancerVpcsFilterArgs', 'GetNodebalancerVpcsFilterArgsDict', 'outputs.GetNodebalancerVpcsFilterResult']]]]] = None,
                                  nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
                                  order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

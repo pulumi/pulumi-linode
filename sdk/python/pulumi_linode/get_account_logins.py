@@ -72,7 +72,7 @@ class AwaitableGetAccountLoginsResult(GetAccountLoginsResult):
             logins=self.logins)
 
 
-def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]] = None,
+def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict', 'outputs.GetAccountLoginsFilterResult']]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountLoginsResult:
     """
     Provides information about Linode account logins that match a set of filters.
@@ -116,7 +116,7 @@ def get_account_logins(filters: Optional[Sequence[Union['GetAccountLoginsFilterA
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         logins=pulumi.get(__ret__, 'logins'))
-def get_account_logins_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict']]]]] = None,
+def get_account_logins_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetAccountLoginsFilterArgs', 'GetAccountLoginsFilterArgsDict', 'outputs.GetAccountLoginsFilterResult']]]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountLoginsResult]:
     """
     Provides information about Linode account logins that match a set of filters.

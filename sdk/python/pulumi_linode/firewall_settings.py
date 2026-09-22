@@ -74,7 +74,7 @@ class FirewallSettings(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']]] = None,
+                 default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict', 'outputs.FirewallSettingsDefaultFirewallIds']]] = None,
                  __props__=None):
         """
         Manages Linode account-level firewall settings. Resetting default firewall IDs
@@ -101,7 +101,7 @@ class FirewallSettings(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
+        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict', 'outputs.FirewallSettingsDefaultFirewallIds']] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         ...
     @overload
@@ -147,7 +147,7 @@ class FirewallSettings(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']]] = None,
+                 default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict', 'outputs.FirewallSettingsDefaultFirewallIds']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -168,7 +168,7 @@ class FirewallSettings(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']]] = None) -> 'FirewallSettings':
+            default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict', 'outputs.FirewallSettingsDefaultFirewallIds']]] = None) -> 'FirewallSettings':
         """
         Get an existing FirewallSettings resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -176,7 +176,7 @@ class FirewallSettings(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict']] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
+        :param pulumi.Input[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict', 'outputs.FirewallSettingsDefaultFirewallIds']] default_firewall_ids: A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

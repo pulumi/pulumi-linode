@@ -429,7 +429,7 @@ class ReservedIp(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             address: pulumi.Input[Optional[_builtins.str]] = None,
-            assigned_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservedIpAssignedEntityArgs', 'ReservedIpAssignedEntityArgsDict']]]]] = None,
+            assigned_entities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservedIpAssignedEntityArgs', 'ReservedIpAssignedEntityArgsDict', 'outputs.ReservedIpAssignedEntity']]]]] = None,
             gateway: pulumi.Input[Optional[_builtins.str]] = None,
             linode_id: pulumi.Input[Optional[_builtins.int]] = None,
             prefix: pulumi.Input[Optional[_builtins.int]] = None,
@@ -440,7 +440,7 @@ class ReservedIp(pulumi.CustomResource):
             subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservedIpVpcNat11Args', 'ReservedIpVpcNat11ArgsDict']]]]] = None) -> 'ReservedIp':
+            vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReservedIpVpcNat11Args', 'ReservedIpVpcNat11ArgsDict', 'outputs.ReservedIpVpcNat11']]]]] = None) -> 'ReservedIp':
         """
         Get an existing ReservedIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -449,7 +449,7 @@ class ReservedIp(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] address: The reserved IPv4 address.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedIpAssignedEntityArgs', 'ReservedIpAssignedEntityArgsDict']]]] assigned_entities: (Read-Only Object List) The entity this reserved IP address is currently assigned to, if any. Referenced with an index (e.g. `assigned_entity.0.id`). Contains:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedIpAssignedEntityArgs', 'ReservedIpAssignedEntityArgsDict', 'outputs.ReservedIpAssignedEntity']]]] assigned_entities: (Read-Only Object List) The entity this reserved IP address is currently assigned to, if any. Referenced with an index (e.g. `assigned_entity.0.id`). Contains:
         :param pulumi.Input[_builtins.str] gateway: The default gateway for this address.
         :param pulumi.Input[_builtins.int] linode_id: The ID of the Linode this address is currently assigned to, if any.
         :param pulumi.Input[_builtins.int] prefix: The number of bits set in the subnet mask.
@@ -460,7 +460,7 @@ class ReservedIp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A set of tags to assign to this reserved IP address.
         :param pulumi.Input[_builtins.str] type: The type of the assigned entity (e.g. `linode`).
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedIpVpcNat11Args', 'ReservedIpVpcNat11ArgsDict']]]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ReservedIpVpcNat11Args', 'ReservedIpVpcNat11ArgsDict', 'outputs.ReservedIpVpcNat11']]]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

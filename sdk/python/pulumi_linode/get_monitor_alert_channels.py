@@ -72,7 +72,7 @@ class AwaitableGetMonitorAlertChannelsResult(GetMonitorAlertChannelsResult):
             monitor_alert_channels=self.monitor_alert_channels)
 
 
-def get_monitor_alert_channels(filters: Optional[Sequence[Union['GetMonitorAlertChannelsFilterArgs', 'GetMonitorAlertChannelsFilterArgsDict']]] = None,
+def get_monitor_alert_channels(filters: Optional[Sequence[Union['GetMonitorAlertChannelsFilterArgs', 'GetMonitorAlertChannelsFilterArgsDict', 'outputs.GetMonitorAlertChannelsFilterResult']]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMonitorAlertChannelsResult:
     """
     Use this data source to query Linode Monitor Alert notification channels.
@@ -117,7 +117,7 @@ def get_monitor_alert_channels(filters: Optional[Sequence[Union['GetMonitorAlert
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         monitor_alert_channels=pulumi.get(__ret__, 'monitor_alert_channels'))
-def get_monitor_alert_channels_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorAlertChannelsFilterArgs', 'GetMonitorAlertChannelsFilterArgsDict']]]]] = None,
+def get_monitor_alert_channels_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMonitorAlertChannelsFilterArgs', 'GetMonitorAlertChannelsFilterArgsDict', 'outputs.GetMonitorAlertChannelsFilterResult']]]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorAlertChannelsResult]:
     """
     Use this data source to query Linode Monitor Alert notification channels.

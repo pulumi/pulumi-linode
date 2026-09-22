@@ -90,7 +90,7 @@ class AwaitableGetNetworkTransferPricesResult(GetNetworkTransferPricesResult):
             types=self.types)
 
 
-def get_network_transfer_prices(filters: Optional[Sequence[Union['GetNetworkTransferPricesFilterArgs', 'GetNetworkTransferPricesFilterArgsDict']]] = None,
+def get_network_transfer_prices(filters: Optional[Sequence[Union['GetNetworkTransferPricesFilterArgs', 'GetNetworkTransferPricesFilterArgsDict', 'outputs.GetNetworkTransferPricesFilterResult']]] = None,
                                 order: Optional[_builtins.str] = None,
                                 order_by: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkTransferPricesResult:
@@ -115,7 +115,7 @@ def get_network_transfer_prices(filters: Optional[Sequence[Union['GetNetworkTran
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_network_transfer_prices_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetworkTransferPricesFilterArgs', 'GetNetworkTransferPricesFilterArgsDict']]]]] = None,
+def get_network_transfer_prices_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetNetworkTransferPricesFilterArgs', 'GetNetworkTransferPricesFilterArgsDict', 'outputs.GetNetworkTransferPricesFilterResult']]]]] = None,
                                        order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkTransferPricesResult]:

@@ -874,7 +874,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
             check_path: pulumi.Input[Optional[_builtins.str]] = None,
             check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
             cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
-            node_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]]] = None,
+            node_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict', 'outputs.NodeBalancerConfigNodeStatus']]]]] = None,
             nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             protocol: pulumi.Input[Optional[_builtins.str]] = None,
@@ -902,7 +902,7 @@ class NodeBalancerConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] check_path: The URL path to check on each backend. If the backend does not respond to this request it is considered to be down.
         :param pulumi.Input[_builtins.int] check_timeout: How long, in seconds, to wait for a check attempt before considering it failed. (1-30)
         :param pulumi.Input[_builtins.str] cipher_suite: What ciphers to use for SSL connections served by this NodeBalancer. `legacy` is considered insecure and should only be used if necessary.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict']]]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict', 'outputs.NodeBalancerConfigNodeStatus']]]] node_statuses: A structure containing information about the health of the backends for this port. This information is updated periodically as checks are performed against backends.
         :param pulumi.Input[_builtins.int] nodebalancer_id: The ID of the NodeBalancer to access.
                
                ***

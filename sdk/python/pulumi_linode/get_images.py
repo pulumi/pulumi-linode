@@ -99,7 +99,7 @@ class AwaitableGetImagesResult(GetImagesResult):
             order_by=self.order_by)
 
 
-def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]] = None,
+def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']]] = None,
                latest: Optional[_builtins.bool] = None,
                order: Optional[_builtins.str] = None,
                order_by: Optional[_builtins.str] = None,
@@ -178,7 +178,7 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
         latest=pulumi.get(__ret__, 'latest'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict']]]]] = None,
+def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetImagesFilterArgs', 'GetImagesFilterArgsDict', 'outputs.GetImagesFilterResult']]]]] = None,
                       latest: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                       order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,

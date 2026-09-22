@@ -69,7 +69,7 @@ class AwaitableGetRegionsResult(GetRegionsResult):
             regions=self.regions)
 
 
-def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]] = None,
+def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict', 'outputs.GetRegionsFilterResult']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionsResult:
     """
     Provides information about Linode regions that match a set of filters.
@@ -111,7 +111,7 @@ def get_regions(filters: Optional[Sequence[Union['GetRegionsFilterArgs', 'GetReg
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         regions=pulumi.get(__ret__, 'regions'))
-def get_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict']]]]] = None,
+def get_regions_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetRegionsFilterArgs', 'GetRegionsFilterArgsDict', 'outputs.GetRegionsFilterResult']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Provides information about Linode regions that match a set of filters.

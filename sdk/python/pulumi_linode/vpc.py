@@ -297,8 +297,8 @@ class Vpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]]] = None,
-                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
+                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict', 'outputs.VpcIpv4']]]]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict', 'outputs.VpcIpv6']]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -422,8 +422,8 @@ class Vpc(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]] ipv4s: The IPv4 configuration of this VPC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict', 'outputs.VpcIpv4']]]] ipv4s: The IPv4 configuration of this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict', 'outputs.VpcIpv6']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
         :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
@@ -570,8 +570,8 @@ class Vpc(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]]] = None,
-                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
+                 ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict', 'outputs.VpcIpv4']]]]] = None,
+                 ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict', 'outputs.VpcIpv6']]]]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -609,11 +609,11 @@ class Vpc(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]]] = None,
-            ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]]] = None,
+            ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict', 'outputs.VpcIpv4']]]]] = None,
+            ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict', 'outputs.VpcIpv6']]]]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict']]]]] = None,
+            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict', 'outputs.VpcSubnet']]]]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpc':
         """
@@ -625,11 +625,11 @@ class Vpc(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created: The date and time when the VPC was created.
         :param pulumi.Input[_builtins.str] description: The user-defined description of this VPC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict']]]] ipv4s: The IPv4 configuration of this VPC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict']]]] ipv6s: The IPv6 configuration of this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict', 'outputs.VpcIpv4']]]] ipv4s: The IPv4 configuration of this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict', 'outputs.VpcIpv6']]]] ipv6s: The IPv6 configuration of this VPC.
         :param pulumi.Input[_builtins.str] label: The label of the VPC. This field can only contain ASCII letters, digits and dashes.
         :param pulumi.Input[_builtins.str] region: The region of the VPC.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict']]]] subnets: A list of subnets under this VPC.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict', 'outputs.VpcSubnet']]]] subnets: A list of subnets under this VPC.
         :param pulumi.Input[_builtins.str] updated: The date and time when the VPC was last updated.
         :param pulumi.Input[_builtins.str] vpc_type: The type of the VPC. Can be either `regular` or `rdma`. Defaults to `regular`. The `rdma` type creates an RDMA VPC and may not be available to all users. Changing this value forces the creation of a new VPC.
                

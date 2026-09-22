@@ -69,7 +69,7 @@ class AwaitableGetMaintenancePoliciesResult(GetMaintenancePoliciesResult):
             maintenance_policies=self.maintenance_policies)
 
 
-def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePoliciesFilterArgs', 'GetMaintenancePoliciesFilterArgsDict']]] = None,
+def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePoliciesFilterArgs', 'GetMaintenancePoliciesFilterArgsDict', 'outputs.GetMaintenancePoliciesFilterResult']]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMaintenancePoliciesResult:
     """
     Provides details about the Maintenance Policies available to apply to Accounts and Instances.
@@ -94,7 +94,7 @@ def get_maintenance_policies(filters: Optional[Sequence[Union['GetMaintenancePol
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'))
-def get_maintenance_policies_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMaintenancePoliciesFilterArgs', 'GetMaintenancePoliciesFilterArgsDict']]]]] = None,
+def get_maintenance_policies_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetMaintenancePoliciesFilterArgs', 'GetMaintenancePoliciesFilterArgsDict', 'outputs.GetMaintenancePoliciesFilterResult']]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMaintenancePoliciesResult]:
     """
     Provides details about the Maintenance Policies available to apply to Accounts and Instances.

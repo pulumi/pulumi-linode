@@ -90,8 +90,8 @@ class AwaitableGetProducerImageShareGroupsResult(GetProducerImageShareGroupsResu
             order_by=self.order_by)
 
 
-def get_producer_image_share_groups(filters: Optional[Sequence[Union['GetProducerImageShareGroupsFilterArgs', 'GetProducerImageShareGroupsFilterArgsDict']]] = None,
-                                    image_share_groups: Optional[Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']]] = None,
+def get_producer_image_share_groups(filters: Optional[Sequence[Union['GetProducerImageShareGroupsFilterArgs', 'GetProducerImageShareGroupsFilterArgsDict', 'outputs.GetProducerImageShareGroupsFilterResult']]] = None,
+                                    image_share_groups: Optional[Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict', 'outputs.GetProducerImageShareGroupsImageShareGroupResult']]] = None,
                                     order: Optional[_builtins.str] = None,
                                     order_by: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProducerImageShareGroupsResult:
@@ -125,7 +125,7 @@ def get_producer_image_share_groups(filters: Optional[Sequence[Union['GetProduce
     * `is_suspended`
 
 
-    :param Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']] image_share_groups: (Block List) The list of Image Share Groups.
+    :param Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict', 'outputs.GetProducerImageShareGroupsImageShareGroupResult']] image_share_groups: (Block List) The list of Image Share Groups.
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -141,8 +141,8 @@ def get_producer_image_share_groups(filters: Optional[Sequence[Union['GetProduce
         image_share_groups=pulumi.get(__ret__, 'image_share_groups'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_producer_image_share_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupsFilterArgs', 'GetProducerImageShareGroupsFilterArgsDict']]]]] = None,
-                                           image_share_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']]]]] = None,
+def get_producer_image_share_groups_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupsFilterArgs', 'GetProducerImageShareGroupsFilterArgsDict', 'outputs.GetProducerImageShareGroupsFilterResult']]]]] = None,
+                                           image_share_groups: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict', 'outputs.GetProducerImageShareGroupsImageShareGroupResult']]]]] = None,
                                            order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProducerImageShareGroupsResult]:
@@ -176,7 +176,7 @@ def get_producer_image_share_groups_output(filters: pulumi.Input[Optional[Option
     * `is_suspended`
 
 
-    :param Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict']] image_share_groups: (Block List) The list of Image Share Groups.
+    :param Sequence[Union['GetProducerImageShareGroupsImageShareGroupArgs', 'GetProducerImageShareGroupsImageShareGroupArgsDict', 'outputs.GetProducerImageShareGroupsImageShareGroupResult']] image_share_groups: (Block List) The list of Image Share Groups.
     """
     __args__ = dict()
     __args__['filters'] = filters

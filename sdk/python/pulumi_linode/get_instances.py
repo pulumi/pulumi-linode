@@ -90,7 +90,7 @@ class AwaitableGetInstancesResult(GetInstancesResult):
             order_by=self.order_by)
 
 
-def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict']]] = None,
+def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict', 'outputs.GetInstancesFilterResult']]] = None,
                   order: Optional[_builtins.str] = None,
                   order_by: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
@@ -162,7 +162,7 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
         instances=pulumi.get(__ret__, 'instances'),
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'))
-def get_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict']]]]] = None,
+def get_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetInstancesFilterArgs', 'GetInstancesFilterArgsDict', 'outputs.GetInstancesFilterResult']]]]] = None,
                          order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:

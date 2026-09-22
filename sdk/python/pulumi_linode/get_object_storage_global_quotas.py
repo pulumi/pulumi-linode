@@ -69,7 +69,7 @@ class AwaitableGetObjectStorageGlobalQuotasResult(GetObjectStorageGlobalQuotasRe
             quotas=self.quotas)
 
 
-def get_object_storage_global_quotas(filters: Optional[Sequence[Union['GetObjectStorageGlobalQuotasFilterArgs', 'GetObjectStorageGlobalQuotasFilterArgsDict']]] = None,
+def get_object_storage_global_quotas(filters: Optional[Sequence[Union['GetObjectStorageGlobalQuotasFilterArgs', 'GetObjectStorageGlobalQuotasFilterArgsDict', 'outputs.GetObjectStorageGlobalQuotasFilterResult']]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectStorageGlobalQuotasResult:
     """
     Provides details about Object Storage global quotas on your account.
@@ -114,7 +114,7 @@ def get_object_storage_global_quotas(filters: Optional[Sequence[Union['GetObject
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         quotas=pulumi.get(__ret__, 'quotas'))
-def get_object_storage_global_quotas_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageGlobalQuotasFilterArgs', 'GetObjectStorageGlobalQuotasFilterArgsDict']]]]] = None,
+def get_object_storage_global_quotas_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetObjectStorageGlobalQuotasFilterArgs', 'GetObjectStorageGlobalQuotasFilterArgsDict', 'outputs.GetObjectStorageGlobalQuotasFilterResult']]]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectStorageGlobalQuotasResult]:
     """
     Provides details about Object Storage global quotas on your account.

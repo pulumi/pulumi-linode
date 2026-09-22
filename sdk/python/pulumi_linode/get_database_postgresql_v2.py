@@ -944,7 +944,7 @@ class AwaitableGetDatabasePostgresqlV2Result(GetDatabasePostgresqlV2Result):
 
 
 def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
-                               updates: Optional[Union['GetDatabasePostgresqlV2UpdatesArgs', 'GetDatabasePostgresqlV2UpdatesArgsDict']] = None,
+                               updates: Optional[Union['GetDatabasePostgresqlV2UpdatesArgs', 'GetDatabasePostgresqlV2UpdatesArgsDict', 'outputs.GetDatabasePostgresqlV2UpdatesResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatabasePostgresqlV2Result:
     """
     Provides information about a Linode PostgreSQL Database.
@@ -1079,7 +1079,7 @@ def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
         updates=pulumi.get(__ret__, 'updates'),
         version=pulumi.get(__ret__, 'version'))
 def get_database_postgresql_v2_output(id: pulumi.Input[Optional[_builtins.str]] = None,
-                                      updates: pulumi.Input[Optional[Optional[Union['GetDatabasePostgresqlV2UpdatesArgs', 'GetDatabasePostgresqlV2UpdatesArgsDict']]]] = None,
+                                      updates: pulumi.Input[Optional[Optional[Union['GetDatabasePostgresqlV2UpdatesArgs', 'GetDatabasePostgresqlV2UpdatesArgsDict', 'outputs.GetDatabasePostgresqlV2UpdatesResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabasePostgresqlV2Result]:
     """
     Provides information about a Linode PostgreSQL Database.

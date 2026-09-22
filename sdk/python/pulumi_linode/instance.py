@@ -1477,7 +1477,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']]] = None,
+                 alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict', 'outputs.InstanceAlerts']]] = None,
                  authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1485,22 +1485,22 @@ class Instance(pulumi.CustomResource):
                  boot_config_label: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_size: pulumi.Input[Optional[_builtins.int]] = None,
                  booted: pulumi.Input[Optional[_builtins.bool]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict', 'outputs.InstanceConfig']]]]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
-                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict', 'outputs.InstanceDisk']]]]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface_generation: pulumi.Input[Optional[_builtins.str]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict', 'outputs.InstanceInterface']]]]] = None,
                  ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]]] = None,
+                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict', 'outputs.InstanceLinodeInterface']]]]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict', 'outputs.InstanceMetadata']]]]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
                  network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
-                 placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
+                 placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict', 'outputs.InstancePlacementGroup']]] = None,
                  placement_group_externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1668,7 +1668,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']] alerts: The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+        :param pulumi.Input[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict', 'outputs.InstanceAlerts']] alerts: The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
                
                * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
                
@@ -1686,22 +1686,22 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[_builtins.int] boot_size: The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined boot_size and swap_size must not exceed the total disk size provided by the instance's plan.
         :param pulumi.Input[_builtins.bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict', 'outputs.InstanceConfig']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[_builtins.str] image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with private/. See /images for more information on the Images available for you to use.
         :param pulumi.Input[_builtins.str] interface_generation: Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
                
                * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict', 'outputs.InstanceInterface']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
                * **NOTE: IP reservation is not currently available to all users.**
         :param pulumi.Input[_builtins.str] kernel: The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict', 'outputs.InstanceLinodeInterface']]]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict', 'outputs.InstanceMetadata']]]] metadatas: Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
                
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -1710,7 +1710,7 @@ class Instance(pulumi.CustomResource):
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
                
                * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
-        :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+        :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict', 'outputs.InstancePlacementGroup']] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[_builtins.bool] placement_group_externally_managed: If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -1901,7 +1901,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']]] = None,
+                 alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict', 'outputs.InstanceAlerts']]] = None,
                  authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -1909,22 +1909,22 @@ class Instance(pulumi.CustomResource):
                  boot_config_label: pulumi.Input[Optional[_builtins.str]] = None,
                  boot_size: pulumi.Input[Optional[_builtins.int]] = None,
                  booted: pulumi.Input[Optional[_builtins.bool]] = None,
-                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict', 'outputs.InstanceConfig']]]]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
-                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
+                 disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict', 'outputs.InstanceDisk']]]]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
                  image: pulumi.Input[Optional[_builtins.str]] = None,
                  interface_generation: pulumi.Input[Optional[_builtins.str]] = None,
-                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]]] = None,
+                 interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict', 'outputs.InstanceInterface']]]]] = None,
                  ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  kernel: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
-                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]]] = None,
+                 linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict', 'outputs.InstanceLinodeInterface']]]]] = None,
                  maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
-                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
+                 metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict', 'outputs.InstanceMetadata']]]]] = None,
                  migration_type: pulumi.Input[Optional[_builtins.str]] = None,
                  network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
-                 placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
+                 placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict', 'outputs.InstancePlacementGroup']]] = None,
                  placement_group_externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
                  private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2007,38 +2007,38 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']]] = None,
+            alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict', 'outputs.InstanceAlerts']]] = None,
             authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_id: pulumi.Input[Optional[_builtins.int]] = None,
-            backups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict']]]]] = None,
+            backups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict', 'outputs.InstanceBackup']]]]] = None,
             backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             boot_config_label: pulumi.Input[Optional[_builtins.str]] = None,
             boot_size: pulumi.Input[Optional[_builtins.int]] = None,
             booted: pulumi.Input[Optional[_builtins.bool]] = None,
             capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict', 'outputs.InstanceConfig']]]]] = None,
             disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
-            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict']]]]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict', 'outputs.InstanceDisk']]]]] = None,
             firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
             has_user_data: pulumi.Input[Optional[_builtins.bool]] = None,
             host_uuid: pulumi.Input[Optional[_builtins.str]] = None,
             image: pulumi.Input[Optional[_builtins.str]] = None,
             interface_generation: pulumi.Input[Optional[_builtins.str]] = None,
-            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict', 'outputs.InstanceInterface']]]]] = None,
             ip_address: pulumi.Input[Optional[_builtins.str]] = None,
             ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ipv6: pulumi.Input[Optional[_builtins.str]] = None,
             kernel: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
-            linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]]] = None,
+            linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict', 'outputs.InstanceLinodeInterface']]]]] = None,
             lke_cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
             locks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
-            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]]] = None,
+            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict', 'outputs.InstanceMetadata']]]]] = None,
             migration_type: pulumi.Input[Optional[_builtins.str]] = None,
             network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
-            placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']]] = None,
+            placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict', 'outputs.InstancePlacementGroup']]] = None,
             placement_group_externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
             private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2046,7 +2046,7 @@ class Instance(pulumi.CustomResource):
             resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
             root_pass: pulumi.Input[Optional[_builtins.str]] = None,
             shared_ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict']]]]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict', 'outputs.InstanceSpec']]]]] = None,
             stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2061,7 +2061,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict']] alerts: The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
+        :param pulumi.Input[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict', 'outputs.InstanceAlerts']] alerts: The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
                
                * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
                
@@ -2075,13 +2075,13 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_keys: A list of SSH public keys to deploy for the root user on the newly created Linode. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] authorized_users: A list of Linode usernames. If the usernames have associated SSH keys, the keys will be appended to the `root` user's `~/.ssh/authorized_keys` file automatically. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[_builtins.int] backup_id: A Backup ID from another Linode's available backups. Your User must have read_write access to that Linode, the Backup must have a status of successful, and the Linode must be deployed to the same region as the Backup. See /linode/instances/{linodeId}/backups for a Linode's available backups. This field and the image field are mutually exclusive.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict']]]] backups: (Read-Only Object List) Information about this Linode's backups status. Referenced with an index (e.g. `backups.0.enabled`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict', 'outputs.InstanceBackup']]]] backups: (Read-Only Object List) Information about this Linode's backups status. Referenced with an index (e.g. `backups.0.enabled`).
         :param pulumi.Input[_builtins.bool] backups_enabled: If this field is set to true, the created Linode will automatically be enrolled in the Linode Backup service. This will incur an additional charge. The cost for the Backup service is dependent on the Type of Linode deployed.
         :param pulumi.Input[_builtins.str] boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
         :param pulumi.Input[_builtins.int] boot_size: The size of the boot disk in MB for the newly-created Linode. Must be at least 8192 MB. The combined boot_size and swap_size must not exceed the total disk size provided by the instance's plan.
         :param pulumi.Input[_builtins.bool] booted: If true, then the instance is kept or converted into in a running state. If false, the instance will be shutdown. If unspecified, the Linode's power status will not be managed by the Provider.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] capabilities: A list of capabilities of this Linode instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict', 'outputs.InstanceConfig']]]] configs: Configuration profiles define the VM settings and boot behavior of the Linode Instance.
         :param pulumi.Input[_builtins.str] disk_encryption: The disk encryption policy for this instance. (`enabled`, `disabled`; default `enabled` in supported regions)
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the Firewall to attach to the instance upon creation. *Changing `firewall_id` forces the creation of a new Linode Instance.*
         :param pulumi.Input[_builtins.bool] has_user_data: Whether this Instance was created with user-data.
@@ -2090,7 +2090,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] interface_generation: Specifies the interface type for the Linode. If set to `linode`, Linode interfaces must be created using a separate resource before this Linode can be booted. (`linode`, `legacy_config`; default is determined by the account `interfaces_for_new_linodes` setting)
                
                * TODO(Linode Interfaces): Link to a usage example using the `linode_instance_interface` resource
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict', 'outputs.InstanceInterface']]]] interfaces: An array of Network Interfaces for this Linode to be created with. If an explicit config or disk is defined, interfaces must be declared in the config block.
         :param pulumi.Input[_builtins.str] ip_address: A string containing the Linode's public IP address.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4s: A set of reserved IPv4 addresses to assign to this Linode on creation.
                
@@ -2098,11 +2098,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param pulumi.Input[_builtins.str] kernel: The kernel to deploy with when creating a Linode. Example values are `linode/latest-64bit`, `linode/grub2`,  etc. See all kernels [here](https://api.linode.com/v4/linode/kernels).
         :param pulumi.Input[_builtins.str] label: The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict']]]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict', 'outputs.InstanceLinodeInterface']]]] linode_interfaces: An array of new-generation Linode Interfaces to attach to this Linode at creation. Supports `public`, `vlan`, `vpc`, and `rdma_vpc` interface types. At most one of `public`, `vlan`, `vpc`, or `rdma_vpc` can be specified per interface entry.NOTE: This option may require `interface_generation = "linode"` or depends on your account settings.
         :param pulumi.Input[_builtins.int] lke_cluster_id: If applicable, the ID of the LKE cluster this instance is a part of.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] locks: A list of locks applied to this Linode.
         :param pulumi.Input[_builtins.str] maintenance_policy: The maintenance policy of this Linode instance. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to the default maintenance policy of the account.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict']]]] metadatas: Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict', 'outputs.InstanceMetadata']]]] metadatas: Various fields related to the Linode Metadata service. Declared as `metadata { ... }` and referenced with an index (e.g. `metadata.0.user_data`).
                
                * `metadata.0.user_data` - (Optional) The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
         :param pulumi.Input[_builtins.str] migration_type: The type of migration to use when updating the type or region of a Linode. (`cold`, `warm`; default `cold`)
@@ -2111,7 +2111,7 @@ class Instance(pulumi.CustomResource):
                * `interface` - (Optional) A list of network interfaces to be assigned to the Linode on creation. If an explicit config or disk is defined, interfaces must be declared in the `config` block.
                
                * `linode_interfaces` - (Optional) A list of new-generation Linode Interfaces (`public`, `vlan`, `vpc`, `rdma_vpc`) to attach to the Linode at creation. Requires `interface_generation = "linode"`. Conflicts with `interface`, `disk`, and `config`. **NOTE:** RDMA VPC interfaces may not currently be available to all users.
-        :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict']] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
+        :param pulumi.Input[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict', 'outputs.InstancePlacementGroup']] placement_group: Fields related to the Placement Group this Linode is assigned to. Declared as `placement_group { ... }` and referenced with an index (e.g. `placement_group.0.id`).
                
                * `placement_group.0.id` - (Optional) The ID of the Placement Group to assign this Linode to.
         :param pulumi.Input[_builtins.bool] placement_group_externally_managed: If true, changes to the Linode's assigned Placement Group will be ignored. This is necessary when using this resource in conjunction with the PlacementGroupAssignment resource.
@@ -2121,7 +2121,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] resize_disk: If true, changes in Linode type will attempt to upsize or downsize implicitly created disks. This must be false if explicit disks are defined. *This is an irreversible action as Linode disks cannot be automatically downsized.*
         :param pulumi.Input[_builtins.str] root_pass: The password that will be initially assigned to the 'root' user account. When `image` is provided, at least one of `root_pass`, `authorized_keys`, or `authorized_users` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] shared_ipv4s: A set of IPv4 addresses to be shared with the Instance. These IP addresses can be both private and public, but must be in the same region as the instance.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict']]]] specs: (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict', 'outputs.InstanceSpec']]]] specs: (Read-Only Object List) Information about the resources available to this Linode. Referenced with an index (e.g. `specs.0.disk`).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] stackscript_data: An object containing responses to any User Defined Fields present in the StackScript being deployed to this Linode. Only accepted if 'stackscript_id' is given. The required values depend on the StackScript being deployed. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         :param pulumi.Input[_builtins.int] stackscript_id: The StackScript to deploy to the newly created Linode. If provided, 'image' must also be provided, and must be an Image that is compatible with this StackScript. Only valid with the top-level image attribute (implicit disks), not with explicit disks; set this on the disk instead.
         :param pulumi.Input[_builtins.str] status: The status of the instance, indicating the current readiness state. (`running`, `offline`, ...)

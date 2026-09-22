@@ -90,7 +90,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             types=self.types)
 
 
-def get_instance_types(filters: Optional[Sequence[Union['GetInstanceTypesFilterArgs', 'GetInstanceTypesFilterArgsDict']]] = None,
+def get_instance_types(filters: Optional[Sequence[Union['GetInstanceTypesFilterArgs', 'GetInstanceTypesFilterArgsDict', 'outputs.GetInstanceTypesFilterResult']]] = None,
                        order: Optional[_builtins.str] = None,
                        order_by: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTypesResult:
@@ -153,7 +153,7 @@ def get_instance_types(filters: Optional[Sequence[Union['GetInstanceTypesFilterA
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         types=pulumi.get(__ret__, 'types'))
-def get_instance_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceTypesFilterArgs', 'GetInstanceTypesFilterArgsDict']]]]] = None,
+def get_instance_types_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetInstanceTypesFilterArgs', 'GetInstanceTypesFilterArgsDict', 'outputs.GetInstanceTypesFilterResult']]]]] = None,
                               order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:

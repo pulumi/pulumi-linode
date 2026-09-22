@@ -243,17 +243,17 @@ class AwaitableGetUserResult(GetUserResult):
             vpc_grants=self.vpc_grants)
 
 
-def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict']]] = None,
-             domain_grants: Optional[Sequence[Union['GetUserDomainGrantArgs', 'GetUserDomainGrantArgsDict']]] = None,
-             firewall_grants: Optional[Sequence[Union['GetUserFirewallGrantArgs', 'GetUserFirewallGrantArgsDict']]] = None,
-             image_grants: Optional[Sequence[Union['GetUserImageGrantArgs', 'GetUserImageGrantArgsDict']]] = None,
-             linode_grants: Optional[Sequence[Union['GetUserLinodeGrantArgs', 'GetUserLinodeGrantArgsDict']]] = None,
-             longview_grants: Optional[Sequence[Union['GetUserLongviewGrantArgs', 'GetUserLongviewGrantArgsDict']]] = None,
-             nodebalancer_grants: Optional[Sequence[Union['GetUserNodebalancerGrantArgs', 'GetUserNodebalancerGrantArgsDict']]] = None,
-             stackscript_grants: Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict']]] = None,
+def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict', 'outputs.GetUserDatabaseGrantResult']]] = None,
+             domain_grants: Optional[Sequence[Union['GetUserDomainGrantArgs', 'GetUserDomainGrantArgsDict', 'outputs.GetUserDomainGrantResult']]] = None,
+             firewall_grants: Optional[Sequence[Union['GetUserFirewallGrantArgs', 'GetUserFirewallGrantArgsDict', 'outputs.GetUserFirewallGrantResult']]] = None,
+             image_grants: Optional[Sequence[Union['GetUserImageGrantArgs', 'GetUserImageGrantArgsDict', 'outputs.GetUserImageGrantResult']]] = None,
+             linode_grants: Optional[Sequence[Union['GetUserLinodeGrantArgs', 'GetUserLinodeGrantArgsDict', 'outputs.GetUserLinodeGrantResult']]] = None,
+             longview_grants: Optional[Sequence[Union['GetUserLongviewGrantArgs', 'GetUserLongviewGrantArgsDict', 'outputs.GetUserLongviewGrantResult']]] = None,
+             nodebalancer_grants: Optional[Sequence[Union['GetUserNodebalancerGrantArgs', 'GetUserNodebalancerGrantArgsDict', 'outputs.GetUserNodebalancerGrantResult']]] = None,
+             stackscript_grants: Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict', 'outputs.GetUserStackscriptGrantResult']]] = None,
              username: Optional[_builtins.str] = None,
-             volume_grants: Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict']]] = None,
-             vpc_grants: Optional[Sequence[Union['GetUserVpcGrantArgs', 'GetUserVpcGrantArgsDict']]] = None,
+             volume_grants: Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict', 'outputs.GetUserVolumeGrantResult']]] = None,
+             vpc_grants: Optional[Sequence[Union['GetUserVpcGrantArgs', 'GetUserVpcGrantArgsDict', 'outputs.GetUserVpcGrantResult']]] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Provides information about a Linode user
@@ -311,17 +311,17 @@ def get_user(database_grants: Optional[Sequence[Union['GetUserDatabaseGrantArgs'
         verified_phone_number=pulumi.get(__ret__, 'verified_phone_number'),
         volume_grants=pulumi.get(__ret__, 'volume_grants'),
         vpc_grants=pulumi.get(__ret__, 'vpc_grants'))
-def get_user_output(database_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict']]]]] = None,
-                    domain_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserDomainGrantArgs', 'GetUserDomainGrantArgsDict']]]]] = None,
-                    firewall_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserFirewallGrantArgs', 'GetUserFirewallGrantArgsDict']]]]] = None,
-                    image_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserImageGrantArgs', 'GetUserImageGrantArgsDict']]]]] = None,
-                    linode_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserLinodeGrantArgs', 'GetUserLinodeGrantArgsDict']]]]] = None,
-                    longview_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserLongviewGrantArgs', 'GetUserLongviewGrantArgsDict']]]]] = None,
-                    nodebalancer_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserNodebalancerGrantArgs', 'GetUserNodebalancerGrantArgsDict']]]]] = None,
-                    stackscript_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict']]]]] = None,
+def get_user_output(database_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserDatabaseGrantArgs', 'GetUserDatabaseGrantArgsDict', 'outputs.GetUserDatabaseGrantResult']]]]] = None,
+                    domain_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserDomainGrantArgs', 'GetUserDomainGrantArgsDict', 'outputs.GetUserDomainGrantResult']]]]] = None,
+                    firewall_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserFirewallGrantArgs', 'GetUserFirewallGrantArgsDict', 'outputs.GetUserFirewallGrantResult']]]]] = None,
+                    image_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserImageGrantArgs', 'GetUserImageGrantArgsDict', 'outputs.GetUserImageGrantResult']]]]] = None,
+                    linode_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserLinodeGrantArgs', 'GetUserLinodeGrantArgsDict', 'outputs.GetUserLinodeGrantResult']]]]] = None,
+                    longview_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserLongviewGrantArgs', 'GetUserLongviewGrantArgsDict', 'outputs.GetUserLongviewGrantResult']]]]] = None,
+                    nodebalancer_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserNodebalancerGrantArgs', 'GetUserNodebalancerGrantArgsDict', 'outputs.GetUserNodebalancerGrantResult']]]]] = None,
+                    stackscript_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserStackscriptGrantArgs', 'GetUserStackscriptGrantArgsDict', 'outputs.GetUserStackscriptGrantResult']]]]] = None,
                     username: pulumi.Input[Optional[_builtins.str]] = None,
-                    volume_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict']]]]] = None,
-                    vpc_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserVpcGrantArgs', 'GetUserVpcGrantArgsDict']]]]] = None,
+                    volume_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserVolumeGrantArgs', 'GetUserVolumeGrantArgsDict', 'outputs.GetUserVolumeGrantResult']]]]] = None,
+                    vpc_grants: pulumi.Input[Optional[Optional[Sequence[Union['GetUserVpcGrantArgs', 'GetUserVpcGrantArgsDict', 'outputs.GetUserVpcGrantResult']]]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserResult]:
     """
     Provides information about a Linode user

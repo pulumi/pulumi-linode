@@ -146,7 +146,7 @@ class IamUser(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entity_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict']]]]] = None,
+                 entity_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict', 'outputs.IamUserEntityAccess']]]]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -182,7 +182,7 @@ class IamUser(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_accesses: A list of account level roles the user currently has.
                
                * `entity_access` - (Nested Attribute List) A list of specific entities the user has specific roles for.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict']]]] entity_accesses: The user entity level access.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict', 'outputs.IamUserEntityAccess']]]] entity_accesses: The user entity level access.
         :param pulumi.Input[_builtins.str] username: The unique username of this User.
         """
         ...
@@ -235,7 +235,7 @@ class IamUser(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entity_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict']]]]] = None,
+                 entity_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict', 'outputs.IamUserEntityAccess']]]]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -262,7 +262,7 @@ class IamUser(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            entity_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict']]]]] = None,
+            entity_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict', 'outputs.IamUserEntityAccess']]]]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'IamUser':
         """
         Get an existing IamUser resource's state with the given name, id, and optional extra
@@ -274,7 +274,7 @@ class IamUser(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_accesses: A list of account level roles the user currently has.
                
                * `entity_access` - (Nested Attribute List) A list of specific entities the user has specific roles for.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict']]]] entity_accesses: The user entity level access.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['IamUserEntityAccessArgs', 'IamUserEntityAccessArgsDict', 'outputs.IamUserEntityAccess']]]] entity_accesses: The user entity level access.
         :param pulumi.Input[_builtins.str] username: The unique username of this User.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

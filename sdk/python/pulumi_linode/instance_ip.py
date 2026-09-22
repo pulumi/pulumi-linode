@@ -410,7 +410,7 @@ class InstanceIp(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
-            vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict']]]]] = None) -> 'InstanceIp':
+            vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict', 'outputs.InstanceIpVpcNat11']]]]] = None) -> 'InstanceIp':
         """
         Get an existing InstanceIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -428,7 +428,7 @@ class InstanceIp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region this IP resides in.
         :param pulumi.Input[_builtins.str] subnet_mask: The mask that separates host bits from network bits for this address.
         :param pulumi.Input[_builtins.str] type: The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
-        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict']]]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict', 'outputs.InstanceIpVpcNat11']]]] vpc_nat11s: (Read-Only Object List) Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet. Referenced with an index (e.g. `vpc_nat_1_1.0.address`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

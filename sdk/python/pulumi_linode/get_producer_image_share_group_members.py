@@ -96,8 +96,8 @@ class AwaitableGetProducerImageShareGroupMembersResult(GetProducerImageShareGrou
             sharegroup_id=self.sharegroup_id)
 
 
-def get_producer_image_share_group_members(filters: Optional[Sequence[Union['GetProducerImageShareGroupMembersFilterArgs', 'GetProducerImageShareGroupMembersFilterArgsDict']]] = None,
-                                           members: Optional[Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']]] = None,
+def get_producer_image_share_group_members(filters: Optional[Sequence[Union['GetProducerImageShareGroupMembersFilterArgs', 'GetProducerImageShareGroupMembersFilterArgsDict', 'outputs.GetProducerImageShareGroupMembersFilterResult']]] = None,
+                                           members: Optional[Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict', 'outputs.GetProducerImageShareGroupMembersMemberResult']]] = None,
                                            order: Optional[_builtins.str] = None,
                                            order_by: Optional[_builtins.str] = None,
                                            sharegroup_id: Optional[_builtins.int] = None,
@@ -133,7 +133,7 @@ def get_producer_image_share_group_members(filters: Optional[Sequence[Union['Get
     * `status`
 
 
-    :param Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']] members: (Block List) The Image Share Group members returned by this data source.
+    :param Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict', 'outputs.GetProducerImageShareGroupMembersMemberResult']] members: (Block List) The Image Share Group members returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group for which to list members.
     """
     __args__ = dict()
@@ -152,8 +152,8 @@ def get_producer_image_share_group_members(filters: Optional[Sequence[Union['Get
         order=pulumi.get(__ret__, 'order'),
         order_by=pulumi.get(__ret__, 'order_by'),
         sharegroup_id=pulumi.get(__ret__, 'sharegroup_id'))
-def get_producer_image_share_group_members_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupMembersFilterArgs', 'GetProducerImageShareGroupMembersFilterArgsDict']]]]] = None,
-                                                  members: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']]]]] = None,
+def get_producer_image_share_group_members_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupMembersFilterArgs', 'GetProducerImageShareGroupMembersFilterArgsDict', 'outputs.GetProducerImageShareGroupMembersFilterResult']]]]] = None,
+                                                  members: pulumi.Input[Optional[Optional[Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict', 'outputs.GetProducerImageShareGroupMembersMemberResult']]]]] = None,
                                                   order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   sharegroup_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -189,7 +189,7 @@ def get_producer_image_share_group_members_output(filters: pulumi.Input[Optional
     * `status`
 
 
-    :param Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict']] members: (Block List) The Image Share Group members returned by this data source.
+    :param Sequence[Union['GetProducerImageShareGroupMembersMemberArgs', 'GetProducerImageShareGroupMembersMemberArgsDict', 'outputs.GetProducerImageShareGroupMembersMemberResult']] members: (Block List) The Image Share Group members returned by this data source.
     :param _builtins.int sharegroup_id: The ID of the Image Share Group for which to list members.
     """
     __args__ = dict()
