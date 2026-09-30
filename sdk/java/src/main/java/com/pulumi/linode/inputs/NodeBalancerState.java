@@ -22,6 +22,36 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     public static final NodeBalancerState Empty = new NodeBalancerState();
 
     /**
+     * Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = &#34;v4beta&#34;` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     * 
+     */
+    @Import(name="backendConnectivity")
+    private @Nullable Output<String> backendConnectivity;
+
+    /**
+     * @return Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = &#34;v4beta&#34;` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     * 
+     */
+    public Optional<Output<String>> backendConnectivity() {
+        return Optional.ofNullable(this.backendConnectivity);
+    }
+
+    /**
+     * The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     * 
+     */
+    @Import(name="backendIpv6Prefix")
+    private @Nullable Output<String> backendIpv6Prefix;
+
+    /**
+     * @return The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     * 
+     */
+    public Optional<Output<String>> backendIpv6Prefix() {
+        return Optional.ofNullable(this.backendIpv6Prefix);
+    }
+
+    /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      * 
      */
@@ -225,6 +255,21 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
+    /**
      * When this firewall was last updated.
      * 
      */
@@ -257,6 +302,8 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
     private NodeBalancerState() {}
 
     private NodeBalancerState(NodeBalancerState $) {
+        this.backendConnectivity = $.backendConnectivity;
+        this.backendIpv6Prefix = $.backendIpv6Prefix;
         this.clientConnThrottle = $.clientConnThrottle;
         this.clientUdpSessThrottle = $.clientUdpSessThrottle;
         this.created = $.created;
@@ -270,6 +317,7 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.tags = $.tags;
         this.transfers = $.transfers;
+        this.type = $.type;
         this.updated = $.updated;
         this.vpcs = $.vpcs;
     }
@@ -290,6 +338,48 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NodeBalancerState defaults) {
             $ = new NodeBalancerState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param backendConnectivity Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = &#34;v4beta&#34;` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendConnectivity(@Nullable Output<String> backendConnectivity) {
+            $.backendConnectivity = backendConnectivity;
+            return this;
+        }
+
+        /**
+         * @param backendConnectivity Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = &#34;v4beta&#34;` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendConnectivity(String backendConnectivity) {
+            return backendConnectivity(Output.of(backendConnectivity));
+        }
+
+        /**
+         * @param backendIpv6Prefix The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendIpv6Prefix(@Nullable Output<String> backendIpv6Prefix) {
+            $.backendIpv6Prefix = backendIpv6Prefix;
+            return this;
+        }
+
+        /**
+         * @param backendIpv6Prefix The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backendIpv6Prefix(String backendIpv6Prefix) {
+            return backendIpv6Prefix(Output.of(backendIpv6Prefix));
         }
 
         /**
@@ -611,6 +701,27 @@ public final class NodeBalancerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder transfers(NodeBalancerTransferArgs... transfers) {
             return transfers(List.of(transfers));
+        }
+
+        /**
+         * @param type NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         /**

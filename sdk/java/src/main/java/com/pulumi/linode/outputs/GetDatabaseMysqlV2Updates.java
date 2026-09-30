@@ -17,7 +17,7 @@ public final class GetDatabaseMysqlV2Updates {
      */
     private Integer dayOfWeek;
     /**
-     * @return The maximum maintenance window time in hours.
+     * @return The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     private Integer duration;
@@ -41,7 +41,7 @@ public final class GetDatabaseMysqlV2Updates {
         return this.dayOfWeek;
     }
     /**
-     * @return The maximum maintenance window time in hours.
+     * @return The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     public Integer duration() {

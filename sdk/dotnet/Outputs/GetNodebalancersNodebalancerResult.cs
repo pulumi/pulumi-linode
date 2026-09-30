@@ -14,6 +14,14 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetNodebalancersNodebalancerResult
     {
         /// <summary>
+        /// The backend communication mode (`Legacy`, `Ipv6`, `Vpc`, or `Undefined` if not specified).
+        /// </summary>
+        public readonly string BackendConnectivity;
+        /// <summary>
+        /// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        /// </summary>
+        public readonly string BackendIpv6Prefix;
+        /// <summary>
         /// Throttle connections per second (0-20)
         /// </summary>
         public readonly int ClientConnThrottle;
@@ -62,12 +70,20 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetNodebalancersNodebalancerTransferResult> Transfers;
         /// <summary>
+        /// The type of the related LKE cluster.
+        /// </summary>
+        public readonly string Type;
+        /// <summary>
         /// When this Linode NodeBalancer was last updated
         /// </summary>
         public readonly string Updated;
 
         [OutputConstructor]
         private GetNodebalancersNodebalancerResult(
+            string backendConnectivity,
+
+            string backendIpv6Prefix,
+
             int clientConnThrottle,
 
             int clientUdpSessThrottle,
@@ -92,8 +108,12 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<Outputs.GetNodebalancersNodebalancerTransferResult> transfers,
 
+            string type,
+
             string updated)
         {
+            BackendConnectivity = backendConnectivity;
+            BackendIpv6Prefix = backendIpv6Prefix;
             ClientConnThrottle = clientConnThrottle;
             ClientUdpSessThrottle = clientUdpSessThrottle;
             Created = created;
@@ -106,6 +126,7 @@ namespace Pulumi.Linode.Outputs
             Region = region;
             Tags = tags;
             Transfers = transfers;
+            Type = type;
             Updated = updated;
         }
     }

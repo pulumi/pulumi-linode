@@ -21,6 +21,7 @@ __all__ = ['NodeBalancerArgs', 'NodeBalancer']
 @pulumi.input_type
 class NodeBalancerArgs:
     def __init__(__self__, *,
+                 backend_connectivity: pulumi.Input[Optional[_builtins.str]] = None,
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -28,10 +29,12 @@ class NodeBalancerArgs:
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]] = None):
         """
         The set of arguments for constructing a NodeBalancer resource.
 
+        :param pulumi.Input[_builtins.str] backend_connectivity: Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[_builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
                
@@ -43,8 +46,11 @@ class NodeBalancerArgs:
                
                ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[_builtins.str] type: NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
+        if backend_connectivity is not None:
+            pulumi.set(__self__, "backend_connectivity", backend_connectivity)
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
         if client_udp_sess_throttle is not None:
@@ -59,8 +65,22 @@ class NodeBalancerArgs:
             pulumi.set(__self__, "region", region)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if vpcs is not None:
             pulumi.set(__self__, "vpcs", vpcs)
+
+    @_builtins.property
+    @pulumi.getter(name="backendConnectivity")
+    def backend_connectivity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+        """
+        return pulumi.get(self, "backend_connectivity")
+
+    @backend_connectivity.setter
+    def backend_connectivity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_connectivity", value)
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -152,6 +172,18 @@ class NodeBalancerArgs:
 
     @_builtins.property
     @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
     def vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]]:
         """
         A list of VPCs to be assigned to this NodeBalancer.
@@ -166,6 +198,8 @@ class NodeBalancerArgs:
 @pulumi.input_type
 class _NodeBalancerState:
     def __init__(__self__, *,
+                 backend_connectivity: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  created: pulumi.Input[Optional[_builtins.str]] = None,
@@ -179,11 +213,14 @@ class _NodeBalancerState:
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  transfers: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerTransferArgs']]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  updated: pulumi.Input[Optional[_builtins.str]] = None,
                  vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['NodeBalancerVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering NodeBalancer resources.
 
+        :param pulumi.Input[_builtins.str] backend_connectivity: Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+        :param pulumi.Input[_builtins.str] backend_ipv6_prefix: The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[_builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
                
@@ -201,9 +238,14 @@ class _NodeBalancerState:
                ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerTransferArgs']]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param pulumi.Input[_builtins.str] type: NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         :param pulumi.Input[_builtins.str] updated: When this firewall was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['NodeBalancerVpcArgs']]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
+        if backend_connectivity is not None:
+            pulumi.set(__self__, "backend_connectivity", backend_connectivity)
+        if backend_ipv6_prefix is not None:
+            pulumi.set(__self__, "backend_ipv6_prefix", backend_ipv6_prefix)
         if client_conn_throttle is not None:
             pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
         if client_udp_sess_throttle is not None:
@@ -230,10 +272,36 @@ class _NodeBalancerState:
             pulumi.set(__self__, "tags", tags)
         if transfers is not None:
             pulumi.set(__self__, "transfers", transfers)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
         if vpcs is not None:
             pulumi.set(__self__, "vpcs", vpcs)
+
+    @_builtins.property
+    @pulumi.getter(name="backendConnectivity")
+    def backend_connectivity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+        """
+        return pulumi.get(self, "backend_connectivity")
+
+    @backend_connectivity.setter
+    def backend_connectivity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_connectivity", value)
+
+    @_builtins.property
+    @pulumi.getter(name="backendIpv6Prefix")
+    def backend_ipv6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        """
+        return pulumi.get(self, "backend_ipv6_prefix")
+
+    @backend_ipv6_prefix.setter
+    def backend_ipv6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "backend_ipv6_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -397,6 +465,18 @@ class _NodeBalancerState:
 
     @_builtins.property
     @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
     def updated(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When this firewall was last updated.
@@ -426,6 +506,7 @@ class NodeBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_connectivity: pulumi.Input[Optional[_builtins.str]] = None,
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -433,6 +514,7 @@ class NodeBalancer(pulumi.CustomResource):
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None,
                  __props__=None):
         """
@@ -487,6 +569,20 @@ class NodeBalancer(pulumi.CustomResource):
             ipv4=my_reserved_ip.address)
         ```
 
+        The following example requests a premium NodeBalancer that communicates with IPv6 backends.
+        Backend connectivity requires the `v4beta` API version and may not be available to all accounts.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        ipv6 = linode.NodeBalancer("ipv6",
+            label="ipv6-backends",
+            region="us-east",
+            type="premium",
+            backend_connectivity="ipv6")
+        ```
+
         ## Import
 
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -498,6 +594,7 @@ class NodeBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] backend_connectivity: Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[_builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
                
@@ -509,6 +606,7 @@ class NodeBalancer(pulumi.CustomResource):
                
                ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
+        :param pulumi.Input[_builtins.str] type: NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
         ...
@@ -569,6 +667,20 @@ class NodeBalancer(pulumi.CustomResource):
             ipv4=my_reserved_ip.address)
         ```
 
+        The following example requests a premium NodeBalancer that communicates with IPv6 backends.
+        Backend connectivity requires the `v4beta` API version and may not be available to all accounts.
+
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        ipv6 = linode.NodeBalancer("ipv6",
+            label="ipv6-backends",
+            region="us-east",
+            type="premium",
+            backend_connectivity="ipv6")
+        ```
+
         ## Import
 
         Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -593,6 +705,7 @@ class NodeBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backend_connectivity: pulumi.Input[Optional[_builtins.str]] = None,
                  client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
                  firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -600,6 +713,7 @@ class NodeBalancer(pulumi.CustomResource):
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -610,6 +724,7 @@ class NodeBalancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeBalancerArgs.__new__(NodeBalancerArgs)
 
+            __props__.__dict__["backend_connectivity"] = backend_connectivity
             __props__.__dict__["client_conn_throttle"] = client_conn_throttle
             __props__.__dict__["client_udp_sess_throttle"] = client_udp_sess_throttle
             __props__.__dict__["firewall_id"] = firewall_id
@@ -617,7 +732,9 @@ class NodeBalancer(pulumi.CustomResource):
             __props__.__dict__["label"] = label
             __props__.__dict__["region"] = region
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["type"] = type
             __props__.__dict__["vpcs"] = vpcs
+            __props__.__dict__["backend_ipv6_prefix"] = None
             __props__.__dict__["created"] = None
             __props__.__dict__["firewalls"] = None
             __props__.__dict__["hostname"] = None
@@ -635,6 +752,8 @@ class NodeBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            backend_connectivity: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
             client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
             created: pulumi.Input[Optional[_builtins.str]] = None,
@@ -648,6 +767,7 @@ class NodeBalancer(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             transfers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict', 'outputs.NodeBalancerTransfer']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
             updated: pulumi.Input[Optional[_builtins.str]] = None,
             vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None) -> 'NodeBalancer':
         """
@@ -657,6 +777,8 @@ class NodeBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] backend_connectivity: Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+        :param pulumi.Input[_builtins.str] backend_ipv6_prefix: The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
         :param pulumi.Input[_builtins.int] client_conn_throttle: Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         :param pulumi.Input[_builtins.int] client_udp_sess_throttle: Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
                
@@ -674,6 +796,7 @@ class NodeBalancer(pulumi.CustomResource):
                ***
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict', 'outputs.NodeBalancerTransfer']]]] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param pulumi.Input[_builtins.str] type: NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         :param pulumi.Input[_builtins.str] updated: When this firewall was last updated.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]] vpcs: A list of VPCs to be assigned to this NodeBalancer.
         """
@@ -681,6 +804,8 @@ class NodeBalancer(pulumi.CustomResource):
 
         __props__ = _NodeBalancerState.__new__(_NodeBalancerState)
 
+        __props__.__dict__["backend_connectivity"] = backend_connectivity
+        __props__.__dict__["backend_ipv6_prefix"] = backend_ipv6_prefix
         __props__.__dict__["client_conn_throttle"] = client_conn_throttle
         __props__.__dict__["client_udp_sess_throttle"] = client_udp_sess_throttle
         __props__.__dict__["created"] = created
@@ -694,9 +819,26 @@ class NodeBalancer(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["tags"] = tags
         __props__.__dict__["transfers"] = transfers
+        __props__.__dict__["type"] = type
         __props__.__dict__["updated"] = updated
         __props__.__dict__["vpcs"] = vpcs
         return NodeBalancer(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="backendConnectivity")
+    def backend_connectivity(self) -> pulumi.Output[_builtins.str]:
+        """
+        Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `api_version = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+        """
+        return pulumi.get(self, "backend_connectivity")
+
+    @_builtins.property
+    @pulumi.getter(name="backendIpv6Prefix")
+    def backend_ipv6_prefix(self) -> pulumi.Output[_builtins.str]:
+        """
+        The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        """
+        return pulumi.get(self, "backend_ipv6_prefix")
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -805,6 +947,14 @@ class NodeBalancer(pulumi.CustomResource):
         Information about the amount of transfer this NodeBalancer has had so far this month.
         """
         return pulumi.get(self, "transfers")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[_builtins.str]:
+        """
+        NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter

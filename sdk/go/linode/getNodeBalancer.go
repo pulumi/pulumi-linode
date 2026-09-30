@@ -57,6 +57,10 @@ type LookupNodeBalancerArgs struct {
 
 // A collection of values returned by getNodeBalancer.
 type LookupNodeBalancerResult struct {
+	// The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+	BackendConnectivity string `pulumi:"backendConnectivity"`
+	// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+	BackendIpv6Prefix string `pulumi:"backendIpv6Prefix"`
 	// Throttle connections per second (0-20).
 	ClientConnThrottle int `pulumi:"clientConnThrottle"`
 	// Throttle UDP sessions per second (0-20).
@@ -80,6 +84,8 @@ type LookupNodeBalancerResult struct {
 	// The tags applied to the firewall. Tags are case-insensitive and are for organizational purposes only.
 	Tags      []string                  `pulumi:"tags"`
 	Transfers []GetNodeBalancerTransfer `pulumi:"transfers"`
+	// The type of the related LKE cluster.
+	Type string `pulumi:"type"`
 	// When this firewall was last updated.
 	Updated string               `pulumi:"updated"`
 	Vpcs    []GetNodeBalancerVpc `pulumi:"vpcs"`
@@ -113,6 +119,16 @@ func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutput() Looku
 
 func (o LookupNodeBalancerResultOutput) ToLookupNodeBalancerResultOutputWithContext(ctx context.Context) LookupNodeBalancerResultOutput {
 	return o
+}
+
+// The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+func (o LookupNodeBalancerResultOutput) BackendConnectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.BackendConnectivity }).(pulumi.StringOutput)
+}
+
+// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+func (o LookupNodeBalancerResultOutput) BackendIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.BackendIpv6Prefix }).(pulumi.StringOutput)
 }
 
 // Throttle connections per second (0-20).
@@ -175,6 +191,11 @@ func (o LookupNodeBalancerResultOutput) Tags() pulumi.StringArrayOutput {
 
 func (o LookupNodeBalancerResultOutput) Transfers() GetNodeBalancerTransferArrayOutput {
 	return o.ApplyT(func(v LookupNodeBalancerResult) []GetNodeBalancerTransfer { return v.Transfers }).(GetNodeBalancerTransferArrayOutput)
+}
+
+// The type of the related LKE cluster.
+func (o LookupNodeBalancerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeBalancerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // When this firewall was last updated.

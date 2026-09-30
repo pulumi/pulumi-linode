@@ -118,6 +118,36 @@ import (
 //
 // ```
 //
+// The following example requests a premium NodeBalancer that communicates with IPv6 backends.
+// Backend connectivity requires the `v4beta` API version and may not be available to all accounts.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-linode/sdk/v6/go/linode"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := linode.NewNodeBalancer(ctx, "ipv6", &linode.NodeBalancerArgs{
+//				Label:               pulumi.String("ipv6-backends"),
+//				Region:              pulumi.String("us-east"),
+//				Type:                pulumi.String("premium"),
+//				BackendConnectivity: pulumi.String("ipv6"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -128,6 +158,10 @@ import (
 type NodeBalancer struct {
 	pulumi.CustomResourceState
 
+	// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+	BackendConnectivity pulumi.StringOutput `pulumi:"backendConnectivity"`
+	// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+	BackendIpv6Prefix pulumi.StringOutput `pulumi:"backendIpv6Prefix"`
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntOutput `pulumi:"clientConnThrottle"`
 	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
@@ -158,6 +192,8 @@ type NodeBalancer struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers NodeBalancerTransferArrayOutput `pulumi:"transfers"`
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+	Type pulumi.StringOutput `pulumi:"type"`
 	// When this firewall was last updated.
 	Updated pulumi.StringOutput `pulumi:"updated"`
 	// A list of VPCs to be assigned to this NodeBalancer.
@@ -194,6 +230,10 @@ func GetNodeBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeBalancer resources.
 type nodeBalancerState struct {
+	// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+	BackendConnectivity *string `pulumi:"backendConnectivity"`
+	// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+	BackendIpv6Prefix *string `pulumi:"backendIpv6Prefix"`
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
 	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
@@ -224,6 +264,8 @@ type nodeBalancerState struct {
 	Tags []string `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers []NodeBalancerTransfer `pulumi:"transfers"`
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+	Type *string `pulumi:"type"`
 	// When this firewall was last updated.
 	Updated *string `pulumi:"updated"`
 	// A list of VPCs to be assigned to this NodeBalancer.
@@ -231,6 +273,10 @@ type nodeBalancerState struct {
 }
 
 type NodeBalancerState struct {
+	// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+	BackendConnectivity pulumi.StringPtrInput
+	// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+	BackendIpv6Prefix pulumi.StringPtrInput
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
 	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
@@ -261,6 +307,8 @@ type NodeBalancerState struct {
 	Tags pulumi.StringArrayInput
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers NodeBalancerTransferArrayInput
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+	Type pulumi.StringPtrInput
 	// When this firewall was last updated.
 	Updated pulumi.StringPtrInput
 	// A list of VPCs to be assigned to this NodeBalancer.
@@ -272,6 +320,8 @@ func (NodeBalancerState) ElementType() reflect.Type {
 }
 
 type nodeBalancerArgs struct {
+	// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+	BackendConnectivity *string `pulumi:"backendConnectivity"`
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle *int `pulumi:"clientConnThrottle"`
 	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
@@ -290,12 +340,16 @@ type nodeBalancerArgs struct {
 	Region *string `pulumi:"region"`
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags []string `pulumi:"tags"`
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+	Type *string `pulumi:"type"`
 	// A list of VPCs to be assigned to this NodeBalancer.
 	Vpcs []NodeBalancerVpc `pulumi:"vpcs"`
 }
 
 // The set of arguments for constructing a NodeBalancer resource.
 type NodeBalancerArgs struct {
+	// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+	BackendConnectivity pulumi.StringPtrInput
 	// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 	ClientConnThrottle pulumi.IntPtrInput
 	// Throttle UDP sessions per second (0-20). Set to 0 (default) to disable throttling.
@@ -314,6 +368,8 @@ type NodeBalancerArgs struct {
 	Region pulumi.StringPtrInput
 	// A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
 	Tags pulumi.StringArrayInput
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+	Type pulumi.StringPtrInput
 	// A list of VPCs to be assigned to this NodeBalancer.
 	Vpcs NodeBalancerVpcArrayInput
 }
@@ -405,6 +461,16 @@ func (o NodeBalancerOutput) ToNodeBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+func (o NodeBalancerOutput) BackendConnectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.BackendConnectivity }).(pulumi.StringOutput)
+}
+
+// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+func (o NodeBalancerOutput) BackendIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.BackendIpv6Prefix }).(pulumi.StringOutput)
+}
+
 // Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
 func (o NodeBalancerOutput) ClientConnThrottle() pulumi.IntOutput {
 	return o.ApplyT(func(v *NodeBalancer) pulumi.IntOutput { return v.ClientConnThrottle }).(pulumi.IntOutput)
@@ -472,6 +538,11 @@ func (o NodeBalancerOutput) Tags() pulumi.StringArrayOutput {
 // Information about the amount of transfer this NodeBalancer has had so far this month.
 func (o NodeBalancerOutput) Transfers() NodeBalancerTransferArrayOutput {
 	return o.ApplyT(func(v *NodeBalancer) NodeBalancerTransferArrayOutput { return v.Transfers }).(NodeBalancerTransferArrayOutput)
+}
+
+// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+func (o NodeBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodeBalancer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // When this firewall was last updated.

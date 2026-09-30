@@ -4,7 +4,6 @@
 package com.pulumi.linode.inputs;
 
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,14 +15,14 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetSshKeyPlainArgs Empty = new GetSshKeyPlainArgs();
 
     /**
-     * The ID of the SSH Key
+     * The ID of the SSH Key to select. When set, `label` is computed from the API response.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return The ID of the SSH Key
+     * @return The ID of the SSH Key to select. When set, `label` is computed from the API response.
      * 
      */
     public Optional<String> id() {
@@ -31,18 +30,18 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The label of the SSH Key to select.
+     * The label of the SSH Key to select. When set, `id` is computed from the API response.
      * 
      */
-    @Import(name="label", required=true)
-    private String label;
+    @Import(name="label")
+    private @Nullable String label;
 
     /**
-     * @return The label of the SSH Key to select.
+     * @return The label of the SSH Key to select. When set, `id` is computed from the API response.
      * 
      */
-    public String label() {
-        return this.label;
+    public Optional<String> label() {
+        return Optional.ofNullable(this.label);
     }
 
     private GetSshKeyPlainArgs() {}
@@ -71,7 +70,7 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id The ID of the SSH Key
+         * @param id The ID of the SSH Key to select. When set, `label` is computed from the API response.
          * 
          * @return builder
          * 
@@ -82,20 +81,17 @@ public final class GetSshKeyPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param label The label of the SSH Key to select.
+         * @param label The label of the SSH Key to select. When set, `id` is computed from the API response.
          * 
          * @return builder
          * 
          */
-        public Builder label(String label) {
+        public Builder label(@Nullable String label) {
             $.label = label;
             return this;
         }
 
         public GetSshKeyPlainArgs build() {
-            if ($.label == null) {
-                throw new MissingRequiredPropertyException("GetSshKeyPlainArgs", "label");
-            }
             return $;
         }
     }

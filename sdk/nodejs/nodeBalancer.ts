@@ -62,6 +62,21 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * The following example requests a premium NodeBalancer that communicates with IPv6 backends.
+ * Backend connectivity requires the `v4beta` API version and may not be available to all accounts.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const ipv6 = new linode.NodeBalancer("ipv6", {
+ *     label: "ipv6-backends",
+ *     region: "us-east",
+ *     type: "premium",
+ *     backendConnectivity: "ipv6",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -98,6 +113,14 @@ export class NodeBalancer extends pulumi.CustomResource {
         return obj['__pulumiType'] === NodeBalancer.__pulumiType;
     }
 
+    /**
+     * Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     */
+    declare public readonly backendConnectivity: pulumi.Output<string>;
+    /**
+     * The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     */
+    declare public /*out*/ readonly backendIpv6Prefix: pulumi.Output<string>;
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
@@ -155,6 +178,10 @@ export class NodeBalancer extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly transfers: pulumi.Output<outputs.NodeBalancerTransfer[]>;
     /**
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     */
+    declare public readonly type: pulumi.Output<string>;
+    /**
      * When this firewall was last updated.
      */
     declare public /*out*/ readonly updated: pulumi.Output<string>;
@@ -176,6 +203,8 @@ export class NodeBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NodeBalancerState | undefined;
+            resourceInputs["backendConnectivity"] = state?.backendConnectivity;
+            resourceInputs["backendIpv6Prefix"] = state?.backendIpv6Prefix;
             resourceInputs["clientConnThrottle"] = state?.clientConnThrottle;
             resourceInputs["clientUdpSessThrottle"] = state?.clientUdpSessThrottle;
             resourceInputs["created"] = state?.created;
@@ -189,10 +218,12 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["transfers"] = state?.transfers;
+            resourceInputs["type"] = state?.type;
             resourceInputs["updated"] = state?.updated;
             resourceInputs["vpcs"] = state?.vpcs;
         } else {
             const args = argsOrState as NodeBalancerArgs | undefined;
+            resourceInputs["backendConnectivity"] = args?.backendConnectivity;
             resourceInputs["clientConnThrottle"] = args?.clientConnThrottle;
             resourceInputs["clientUdpSessThrottle"] = args?.clientUdpSessThrottle;
             resourceInputs["firewallId"] = args?.firewallId;
@@ -200,7 +231,9 @@ export class NodeBalancer extends pulumi.CustomResource {
             resourceInputs["label"] = args?.label;
             resourceInputs["region"] = args?.region;
             resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
             resourceInputs["vpcs"] = args?.vpcs;
+            resourceInputs["backendIpv6Prefix"] = undefined /*out*/;
             resourceInputs["created"] = undefined /*out*/;
             resourceInputs["firewalls"] = undefined /*out*/;
             resourceInputs["hostname"] = undefined /*out*/;
@@ -218,6 +251,14 @@ export class NodeBalancer extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NodeBalancer resources.
  */
 export interface NodeBalancerState {
+    /**
+     * Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     */
+    backendConnectivity?: pulumi.Input<string | undefined>;
+    /**
+     * The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     */
+    backendIpv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
@@ -275,6 +316,10 @@ export interface NodeBalancerState {
      */
     transfers?: pulumi.Input<pulumi.Input<inputs.NodeBalancerTransfer>[] | undefined>;
     /**
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
      * When this firewall was last updated.
      */
     updated?: pulumi.Input<string | undefined>;
@@ -288,6 +333,10 @@ export interface NodeBalancerState {
  * The set of arguments for constructing a NodeBalancer resource.
  */
 export interface NodeBalancerArgs {
+    /**
+     * Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     */
+    backendConnectivity?: pulumi.Input<string | undefined>;
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      */
@@ -320,6 +369,10 @@ export interface NodeBalancerArgs {
      * A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
      */
     tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     */
+    type?: pulumi.Input<string | undefined>;
     /**
      * A list of VPCs to be assigned to this NodeBalancer.
      */

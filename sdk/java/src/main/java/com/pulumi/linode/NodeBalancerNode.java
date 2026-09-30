@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="linode:index/nodeBalancerNode:NodeBalancerNode")
 public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
     /**
-     * The private IP Address where this backend can be reached. This must be a private IP address.
+     * The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = &#34;ipv6&#34;` on the NodeBalancer.
      * 
      * ***
      * 
@@ -40,7 +40,7 @@ public class NodeBalancerNode extends com.pulumi.resources.CustomResource {
     private Output<String> address;
 
     /**
-     * @return The private IP Address where this backend can be reached. This must be a private IP address.
+     * @return The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = &#34;ipv6&#34;` on the NodeBalancer.
      * 
      * ***
      * 

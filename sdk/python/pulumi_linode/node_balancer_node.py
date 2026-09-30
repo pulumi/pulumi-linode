@@ -29,7 +29,7 @@ class NodeBalancerNodeArgs:
         """
         The set of arguments for constructing a NodeBalancerNode resource.
 
-        :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
+        :param pulumi.Input[_builtins.str] address: The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
                
                ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
@@ -54,7 +54,7 @@ class NodeBalancerNodeArgs:
     @pulumi.getter
     def address(self) -> pulumi.Input[_builtins.str]:
         """
-        The private IP Address where this backend can be reached. This must be a private IP address.
+        The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
 
         ***
         """
@@ -152,7 +152,7 @@ class _NodeBalancerNodeState:
         """
         Input properties used for looking up and filtering NodeBalancerNode resources.
 
-        :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
+        :param pulumi.Input[_builtins.str] address: The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
                
                ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
@@ -187,7 +187,7 @@ class _NodeBalancerNodeState:
     @pulumi.getter
     def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The private IP Address where this backend can be reached. This must be a private IP address.
+        The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
 
         ***
         """
@@ -323,7 +323,7 @@ class NodeBalancerNode(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
+        :param pulumi.Input[_builtins.str] address: The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
                
                ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
@@ -426,7 +426,7 @@ class NodeBalancerNode(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address: The private IP Address where this backend can be reached. This must be a private IP address.
+        :param pulumi.Input[_builtins.str] address: The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
                
                ***
         :param pulumi.Input[_builtins.int] config_id: The ID of the NodeBalancerConfig to access.
@@ -457,7 +457,7 @@ class NodeBalancerNode(pulumi.CustomResource):
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:
         """
-        The private IP Address where this backend can be reached. This must be a private IP address.
+        The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backend_connectivity = "ipv6"` on the NodeBalancer.
 
         ***
         """

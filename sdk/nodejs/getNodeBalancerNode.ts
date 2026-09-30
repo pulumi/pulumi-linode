@@ -53,7 +53,7 @@ export interface GetNodeBalancerNodeArgs {
  */
 export interface GetNodeBalancerNodeResult {
     /**
-     * The private IP Address where this backend can be reached.
+     * The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`).
      */
     readonly address: string;
     readonly configId: number;

@@ -32,14 +32,14 @@ public final class DatabaseMysqlV2UpdatesArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<Integer> duration;
 
     /**
-     * @return The maximum maintenance window time in hours.
+     * @return The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     public Optional<Output<Integer>> duration() {
@@ -125,7 +125,7 @@ public final class DatabaseMysqlV2UpdatesArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param duration The maximum maintenance window time in hours.
+         * @param duration The maximum maintenance window time in hours. Currently can only be 4.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class DatabaseMysqlV2UpdatesArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param duration The maximum maintenance window time in hours.
+         * @param duration The maximum maintenance window time in hours. Currently can only be 4.
          * 
          * @return builder
          * 

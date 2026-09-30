@@ -12,12 +12,12 @@ namespace Pulumi.Linode
     public static class GetSshKey
     {
         /// <summary>
-        /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+        /// The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -32,19 +32,24 @@ namespace Pulumi.Linode
         ///         Label = "foo",
         ///     });
         /// 
+        ///     var bar = Linode.GetSshKey.Invoke(new()
+        ///     {
+        ///         Id = "1234567",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
-        public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs args, InvokeOptions? options = null)
+        public static Task<GetSshKeyResult> InvokeAsync(GetSshKeyArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? new GetSshKeyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+        /// The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -59,19 +64,24 @@ namespace Pulumi.Linode
         ///         Label = "foo",
         ///     });
         /// 
+        ///     var bar = Linode.GetSshKey.Invoke(new()
+        ///     {
+        ///         Id = "1234567",
+        ///     });
+        /// 
         /// });
         /// ```
         /// </summary>
-        public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetSshKeyResult> Invoke(GetSshKeyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeyResult>("linode:index/getSshKey:getSshKey", args ?? new GetSshKeyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+        /// `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
         /// For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
         /// 
         /// ## Example Usage
         /// 
-        /// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+        /// The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -84,6 +94,11 @@ namespace Pulumi.Linode
         ///     var foo = Linode.GetSshKey.Invoke(new()
         ///     {
         ///         Label = "foo",
+        ///     });
+        /// 
+        ///     var bar = Linode.GetSshKey.Invoke(new()
+        ///     {
+        ///         Id = "1234567",
         ///     });
         /// 
         /// });
@@ -97,16 +112,16 @@ namespace Pulumi.Linode
     public sealed class GetSshKeyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the SSH Key
+        /// The ID of the SSH Key to select. When set, `Label` is computed from the API response.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The label of the SSH Key to select.
+        /// The label of the SSH Key to select. When set, `Id` is computed from the API response.
         /// </summary>
-        [Input("label", required: true)]
-        public string Label { get; set; } = null!;
+        [Input("label")]
+        public string? Label { get; set; }
 
         public GetSshKeyArgs()
         {
@@ -117,16 +132,16 @@ namespace Pulumi.Linode
     public sealed class GetSshKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the SSH Key
+        /// The ID of the SSH Key to select. When set, `Label` is computed from the API response.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The label of the SSH Key to select.
+        /// The label of the SSH Key to select. When set, `Id` is computed from the API response.
         /// </summary>
-        [Input("label", required: true)]
-        public Input<string> Label { get; set; } = null!;
+        [Input("label")]
+        public Input<string>? Label { get; set; }
 
         public GetSshKeyInvokeArgs()
         {
@@ -143,9 +158,12 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Created;
         /// <summary>
-        /// The ID of the SSH Key
+        /// The ID of the SSH Key. Computed when `Label` is used as the selector.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
+        /// <summary>
+        /// The label of the SSH Key. Computed when `Id` is used as the selector.
+        /// </summary>
         public readonly string Label;
         /// <summary>
         /// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -156,7 +174,7 @@ namespace Pulumi.Linode
         private GetSshKeyResult(
             string created,
 
-            string? id,
+            string id,
 
             string label,
 

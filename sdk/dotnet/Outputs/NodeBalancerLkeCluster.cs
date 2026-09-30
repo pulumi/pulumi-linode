@@ -22,7 +22,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string? Label;
         /// <summary>
-        /// The type of the related LKE cluster.
+        /// NodeBalancer plan type: `Common` (the API default), `Premium`, or `Enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         /// </summary>
         public readonly string? Type;
         /// <summary>

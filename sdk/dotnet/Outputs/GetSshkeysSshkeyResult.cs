@@ -20,7 +20,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The ID of the SSH Key.
         /// </summary>
-        public readonly string? Id;
+        public readonly string Id;
         /// <summary>
         /// The label of the SSH Key.
         /// </summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Linode.Outputs
         private GetSshkeysSshkeyResult(
             string created,
 
-            string? id,
+            string id,
 
             string label,
 

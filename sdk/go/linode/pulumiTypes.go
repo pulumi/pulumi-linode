@@ -481,7 +481,7 @@ func (o DatabaseMysqlV2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type DatabaseMysqlV2Updates struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek *int `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration *int `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency *string `pulumi:"frequency"`
@@ -503,7 +503,7 @@ type DatabaseMysqlV2UpdatesInput interface {
 type DatabaseMysqlV2UpdatesArgs struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration pulumi.IntPtrInput `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
@@ -593,7 +593,7 @@ func (o DatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseMysqlV2Updates) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o DatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseMysqlV2Updates) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
@@ -642,7 +642,7 @@ func (o DatabaseMysqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o DatabaseMysqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseMysqlV2Updates) *int {
 		if v == nil {
@@ -1140,7 +1140,7 @@ func (o DatabasePostgresqlV2TimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 type DatabasePostgresqlV2Updates struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek *int `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration *int `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency *string `pulumi:"frequency"`
@@ -1162,7 +1162,7 @@ type DatabasePostgresqlV2UpdatesInput interface {
 type DatabasePostgresqlV2UpdatesArgs struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek pulumi.IntPtrInput `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration pulumi.IntPtrInput `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency pulumi.StringPtrInput `pulumi:"frequency"`
@@ -1252,7 +1252,7 @@ func (o DatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabasePostgresqlV2Updates) *int { return v.DayOfWeek }).(pulumi.IntPtrOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o DatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabasePostgresqlV2Updates) *int { return v.Duration }).(pulumi.IntPtrOutput)
 }
@@ -1301,7 +1301,7 @@ func (o DatabasePostgresqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o DatabasePostgresqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabasePostgresqlV2Updates) *int {
 		if v == nil {
@@ -27958,7 +27958,7 @@ type NodeBalancerLkeCluster struct {
 	Id *int `pulumi:"id"`
 	// The label of the Linode NodeBalancer
 	Label *string `pulumi:"label"`
-	// The type of the related LKE cluster.
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
 	Type *string `pulumi:"type"`
 	// The URL where you can access the related LKE cluster.
 	Url *string `pulumi:"url"`
@@ -27980,7 +27980,7 @@ type NodeBalancerLkeClusterArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// The label of the Linode NodeBalancer
 	Label pulumi.StringPtrInput `pulumi:"label"`
-	// The type of the related LKE cluster.
+	// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The URL where you can access the related LKE cluster.
 	Url pulumi.StringPtrInput `pulumi:"url"`
@@ -28047,7 +28047,7 @@ func (o NodeBalancerLkeClusterOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeBalancerLkeCluster) *string { return v.Label }).(pulumi.StringPtrOutput)
 }
 
-// The type of the related LKE cluster.
+// NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
 func (o NodeBalancerLkeClusterOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeBalancerLkeCluster) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -33358,6 +33358,130 @@ func (o GetAccountLoginsLoginArrayOutput) Index(i pulumi.IntInput) GetAccountLog
 	}).(GetAccountLoginsLoginOutput)
 }
 
+type GetAccountTransferRegionTransfer struct {
+	// The amount of your transfer pool that is billable this billing cycle for this Region.
+	Billable int `pulumi:"billable"`
+	// The Region ID for this network utilization data.
+	Id string `pulumi:"id"`
+	// The amount of network usage allowed this billing cycle for this Region.
+	Quota int `pulumi:"quota"`
+	// The amount of network usage you have used this billing cycle for this Region.
+	Used int `pulumi:"used"`
+}
+
+// GetAccountTransferRegionTransferInput is an input type that accepts GetAccountTransferRegionTransferArgs and GetAccountTransferRegionTransferOutput values.
+// You can construct a concrete instance of `GetAccountTransferRegionTransferInput` via:
+//
+//	GetAccountTransferRegionTransferArgs{...}
+type GetAccountTransferRegionTransferInput interface {
+	pulumi.Input
+
+	ToGetAccountTransferRegionTransferOutput() GetAccountTransferRegionTransferOutput
+	ToGetAccountTransferRegionTransferOutputWithContext(context.Context) GetAccountTransferRegionTransferOutput
+}
+
+type GetAccountTransferRegionTransferArgs struct {
+	// The amount of your transfer pool that is billable this billing cycle for this Region.
+	Billable pulumi.IntInput `pulumi:"billable"`
+	// The Region ID for this network utilization data.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The amount of network usage allowed this billing cycle for this Region.
+	Quota pulumi.IntInput `pulumi:"quota"`
+	// The amount of network usage you have used this billing cycle for this Region.
+	Used pulumi.IntInput `pulumi:"used"`
+}
+
+func (GetAccountTransferRegionTransferArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountTransferRegionTransfer)(nil)).Elem()
+}
+
+func (i GetAccountTransferRegionTransferArgs) ToGetAccountTransferRegionTransferOutput() GetAccountTransferRegionTransferOutput {
+	return i.ToGetAccountTransferRegionTransferOutputWithContext(context.Background())
+}
+
+func (i GetAccountTransferRegionTransferArgs) ToGetAccountTransferRegionTransferOutputWithContext(ctx context.Context) GetAccountTransferRegionTransferOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountTransferRegionTransferOutput)
+}
+
+// GetAccountTransferRegionTransferArrayInput is an input type that accepts GetAccountTransferRegionTransferArray and GetAccountTransferRegionTransferArrayOutput values.
+// You can construct a concrete instance of `GetAccountTransferRegionTransferArrayInput` via:
+//
+//	GetAccountTransferRegionTransferArray{ GetAccountTransferRegionTransferArgs{...} }
+type GetAccountTransferRegionTransferArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountTransferRegionTransferArrayOutput() GetAccountTransferRegionTransferArrayOutput
+	ToGetAccountTransferRegionTransferArrayOutputWithContext(context.Context) GetAccountTransferRegionTransferArrayOutput
+}
+
+type GetAccountTransferRegionTransferArray []GetAccountTransferRegionTransferInput
+
+func (GetAccountTransferRegionTransferArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountTransferRegionTransfer)(nil)).Elem()
+}
+
+func (i GetAccountTransferRegionTransferArray) ToGetAccountTransferRegionTransferArrayOutput() GetAccountTransferRegionTransferArrayOutput {
+	return i.ToGetAccountTransferRegionTransferArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountTransferRegionTransferArray) ToGetAccountTransferRegionTransferArrayOutputWithContext(ctx context.Context) GetAccountTransferRegionTransferArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountTransferRegionTransferArrayOutput)
+}
+
+type GetAccountTransferRegionTransferOutput struct{ *pulumi.OutputState }
+
+func (GetAccountTransferRegionTransferOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountTransferRegionTransfer)(nil)).Elem()
+}
+
+func (o GetAccountTransferRegionTransferOutput) ToGetAccountTransferRegionTransferOutput() GetAccountTransferRegionTransferOutput {
+	return o
+}
+
+func (o GetAccountTransferRegionTransferOutput) ToGetAccountTransferRegionTransferOutputWithContext(ctx context.Context) GetAccountTransferRegionTransferOutput {
+	return o
+}
+
+// The amount of your transfer pool that is billable this billing cycle for this Region.
+func (o GetAccountTransferRegionTransferOutput) Billable() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccountTransferRegionTransfer) int { return v.Billable }).(pulumi.IntOutput)
+}
+
+// The Region ID for this network utilization data.
+func (o GetAccountTransferRegionTransferOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountTransferRegionTransfer) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The amount of network usage allowed this billing cycle for this Region.
+func (o GetAccountTransferRegionTransferOutput) Quota() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccountTransferRegionTransfer) int { return v.Quota }).(pulumi.IntOutput)
+}
+
+// The amount of network usage you have used this billing cycle for this Region.
+func (o GetAccountTransferRegionTransferOutput) Used() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAccountTransferRegionTransfer) int { return v.Used }).(pulumi.IntOutput)
+}
+
+type GetAccountTransferRegionTransferArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountTransferRegionTransferArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountTransferRegionTransfer)(nil)).Elem()
+}
+
+func (o GetAccountTransferRegionTransferArrayOutput) ToGetAccountTransferRegionTransferArrayOutput() GetAccountTransferRegionTransferArrayOutput {
+	return o
+}
+
+func (o GetAccountTransferRegionTransferArrayOutput) ToGetAccountTransferRegionTransferArrayOutputWithContext(ctx context.Context) GetAccountTransferRegionTransferArrayOutput {
+	return o
+}
+
+func (o GetAccountTransferRegionTransferArrayOutput) Index(i pulumi.IntInput) GetAccountTransferRegionTransferOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountTransferRegionTransfer {
+		return vs[0].([]GetAccountTransferRegionTransfer)[vs[1].(int)]
+	}).(GetAccountTransferRegionTransferOutput)
+}
+
 type GetChildAccountsChildAccount struct {
 	// When this account was first activated
 	ActiveSince string `pulumi:"activeSince"`
@@ -37469,7 +37593,7 @@ func (o GetDatabaseMysqlV2PrivateNetworkOutput) VpcId() pulumi.IntOutput {
 type GetDatabaseMysqlV2Updates struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek int `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration int `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency string `pulumi:"frequency"`
@@ -37491,7 +37615,7 @@ type GetDatabaseMysqlV2UpdatesInput interface {
 type GetDatabaseMysqlV2UpdatesArgs struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek pulumi.IntInput `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration pulumi.IntInput `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency pulumi.StringInput `pulumi:"frequency"`
@@ -37530,7 +37654,7 @@ func (o GetDatabaseMysqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o GetDatabaseMysqlV2UpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabaseMysqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
 }
@@ -38258,7 +38382,7 @@ func (o GetDatabasePostgresqlV2PrivateNetworkOutput) VpcId() pulumi.IntOutput {
 type GetDatabasePostgresqlV2Updates struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek int `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration int `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency string `pulumi:"frequency"`
@@ -38280,7 +38404,7 @@ type GetDatabasePostgresqlV2UpdatesInput interface {
 type GetDatabasePostgresqlV2UpdatesArgs struct {
 	// The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 	DayOfWeek pulumi.IntInput `pulumi:"dayOfWeek"`
-	// The maximum maintenance window time in hours.
+	// The maximum maintenance window time in hours. Currently can only be 4.
 	Duration pulumi.IntInput `pulumi:"duration"`
 	// How frequently maintenance occurs. Currently can only be weekly.
 	Frequency pulumi.StringInput `pulumi:"frequency"`
@@ -38370,7 +38494,7 @@ func (o GetDatabasePostgresqlV2UpdatesOutput) DayOfWeek() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.DayOfWeek }).(pulumi.IntOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o GetDatabasePostgresqlV2UpdatesOutput) Duration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetDatabasePostgresqlV2Updates) int { return v.Duration }).(pulumi.IntOutput)
 }
@@ -38419,7 +38543,7 @@ func (o GetDatabasePostgresqlV2UpdatesPtrOutput) DayOfWeek() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum maintenance window time in hours.
+// The maximum maintenance window time in hours. Currently can only be 4.
 func (o GetDatabasePostgresqlV2UpdatesPtrOutput) Duration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GetDatabasePostgresqlV2Updates) *int {
 		if v == nil {
@@ -38480,6 +38604,8 @@ type GetDatabasesDatabase struct {
 	Label string `pulumi:"label"`
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime string `pulumi:"oldestRestoreTime"`
+	// The back-end platform for relational databases used by the service.
+	Platform string `pulumi:"platform"`
 	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
 	PrivateNetwork GetDatabasesDatabasePrivateNetwork `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
@@ -38536,6 +38662,8 @@ type GetDatabasesDatabaseArgs struct {
 	Label pulumi.StringInput `pulumi:"label"`
 	// The oldest time to which a database can be restored.
 	OldestRestoreTime pulumi.StringInput `pulumi:"oldestRestoreTime"`
+	// The back-end platform for relational databases used by the service.
+	Platform pulumi.StringInput `pulumi:"platform"`
 	// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
 	PrivateNetwork GetDatabasesDatabasePrivateNetworkInput `pulumi:"privateNetwork"`
 	// The region to use for the Managed Database.
@@ -38671,6 +38799,11 @@ func (o GetDatabasesDatabaseOutput) Label() pulumi.StringOutput {
 // The oldest time to which a database can be restored.
 func (o GetDatabasesDatabaseOutput) OldestRestoreTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.OldestRestoreTime }).(pulumi.StringOutput)
+}
+
+// The back-end platform for relational databases used by the service.
+func (o GetDatabasesDatabaseOutput) Platform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabasesDatabase) string { return v.Platform }).(pulumi.StringOutput)
 }
 
 // Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
@@ -65907,67 +66040,6 @@ func (o GetMonitorLogsDestinationsFilterArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetMonitorLogsDestinationsFilterOutput)
 }
 
-type GetMonitorLogsStreamDetails struct {
-	// The list of LKE cluster IDs included in this stream.
-	ClusterIds []int `pulumi:"clusterIds"`
-	// When true, all LKE clusters are automatically added to this stream.
-	IsAutoAddAllClustersEnabled bool `pulumi:"isAutoAddAllClustersEnabled"`
-}
-
-// GetMonitorLogsStreamDetailsInput is an input type that accepts GetMonitorLogsStreamDetailsArgs and GetMonitorLogsStreamDetailsOutput values.
-// You can construct a concrete instance of `GetMonitorLogsStreamDetailsInput` via:
-//
-//	GetMonitorLogsStreamDetailsArgs{...}
-type GetMonitorLogsStreamDetailsInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsStreamDetailsOutput() GetMonitorLogsStreamDetailsOutput
-	ToGetMonitorLogsStreamDetailsOutputWithContext(context.Context) GetMonitorLogsStreamDetailsOutput
-}
-
-type GetMonitorLogsStreamDetailsArgs struct {
-	// The list of LKE cluster IDs included in this stream.
-	ClusterIds pulumi.IntArrayInput `pulumi:"clusterIds"`
-	// When true, all LKE clusters are automatically added to this stream.
-	IsAutoAddAllClustersEnabled pulumi.BoolInput `pulumi:"isAutoAddAllClustersEnabled"`
-}
-
-func (GetMonitorLogsStreamDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamDetails)(nil)).Elem()
-}
-
-func (i GetMonitorLogsStreamDetailsArgs) ToGetMonitorLogsStreamDetailsOutput() GetMonitorLogsStreamDetailsOutput {
-	return i.ToGetMonitorLogsStreamDetailsOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsStreamDetailsArgs) ToGetMonitorLogsStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamDetailsOutput)
-}
-
-type GetMonitorLogsStreamDetailsOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsStreamDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsStreamDetails)(nil)).Elem()
-}
-
-func (o GetMonitorLogsStreamDetailsOutput) ToGetMonitorLogsStreamDetailsOutput() GetMonitorLogsStreamDetailsOutput {
-	return o
-}
-
-func (o GetMonitorLogsStreamDetailsOutput) ToGetMonitorLogsStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamDetailsOutput {
-	return o
-}
-
-// The list of LKE cluster IDs included in this stream.
-func (o GetMonitorLogsStreamDetailsOutput) ClusterIds() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamDetails) []int { return v.ClusterIds }).(pulumi.IntArrayOutput)
-}
-
-// When true, all LKE clusters are automatically added to this stream.
-func (o GetMonitorLogsStreamDetailsOutput) IsAutoAddAllClustersEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetMonitorLogsStreamDetails) bool { return v.IsAutoAddAllClustersEnabled }).(pulumi.BoolOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArray{})
@@ -66407,6 +66479,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsFilterArrayInput)(nil)).Elem(), GetAccountLoginsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsLoginInput)(nil)).Elem(), GetAccountLoginsLoginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLoginsLoginArrayInput)(nil)).Elem(), GetAccountLoginsLoginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountTransferRegionTransferInput)(nil)).Elem(), GetAccountTransferRegionTransferArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountTransferRegionTransferArrayInput)(nil)).Elem(), GetAccountTransferRegionTransferArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsChildAccountInput)(nil)).Elem(), GetChildAccountsChildAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsChildAccountArrayInput)(nil)).Elem(), GetChildAccountsChildAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetChildAccountsFilterInput)(nil)).Elem(), GetChildAccountsFilterArgs{})
@@ -66886,7 +66960,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamDetailsArgs{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PrivateNetworkOutput{})
@@ -67325,6 +67398,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountLoginsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsLoginOutput{})
 	pulumi.RegisterOutputType(GetAccountLoginsLoginArrayOutput{})
+	pulumi.RegisterOutputType(GetAccountTransferRegionTransferOutput{})
+	pulumi.RegisterOutputType(GetAccountTransferRegionTransferArrayOutput{})
 	pulumi.RegisterOutputType(GetChildAccountsChildAccountOutput{})
 	pulumi.RegisterOutputType(GetChildAccountsChildAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetChildAccountsFilterOutput{})
@@ -67804,5 +67879,4 @@ func init() {
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsStreamDetailsOutput{})
 }

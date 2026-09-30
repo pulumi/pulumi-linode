@@ -47,14 +47,14 @@ public final class NodeBalancerLkeClusterArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The type of the related LKE cluster.
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the related LKE cluster.
+     * @return NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
      * 
      */
     public Optional<Output<String>> type() {
@@ -146,7 +146,7 @@ public final class NodeBalancerLkeClusterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The type of the related LKE cluster.
+         * @param type NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class NodeBalancerLkeClusterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The type of the related LKE cluster.
+         * @param type NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
          * 
          * @return builder
          * 

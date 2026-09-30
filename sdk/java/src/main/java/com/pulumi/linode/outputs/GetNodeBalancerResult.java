@@ -17,6 +17,16 @@ import java.util.Objects;
 @CustomType
 public final class GetNodeBalancerResult {
     /**
+     * @return The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+     * 
+     */
+    private String backendConnectivity;
+    /**
+     * @return The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     * 
+     */
+    private String backendIpv6Prefix;
+    /**
      * @return Throttle connections per second (0-20).
      * 
      */
@@ -70,6 +80,11 @@ public final class GetNodeBalancerResult {
     private List<String> tags;
     private List<GetNodeBalancerTransfer> transfers;
     /**
+     * @return The type of the related LKE cluster.
+     * 
+     */
+    private String type;
+    /**
      * @return When this firewall was last updated.
      * 
      */
@@ -77,6 +92,20 @@ public final class GetNodeBalancerResult {
     private List<GetNodeBalancerVpc> vpcs;
 
     private GetNodeBalancerResult() {}
+    /**
+     * @return The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+     * 
+     */
+    public String backendConnectivity() {
+        return this.backendConnectivity;
+    }
+    /**
+     * @return The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     * 
+     */
+    public String backendIpv6Prefix() {
+        return this.backendIpv6Prefix;
+    }
     /**
      * @return Throttle connections per second (0-20).
      * 
@@ -157,6 +186,13 @@ public final class GetNodeBalancerResult {
         return this.transfers;
     }
     /**
+     * @return The type of the related LKE cluster.
+     * 
+     */
+    public String type() {
+        return this.type;
+    }
+    /**
      * @return When this firewall was last updated.
      * 
      */
@@ -176,6 +212,8 @@ public final class GetNodeBalancerResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String backendConnectivity;
+        private String backendIpv6Prefix;
         private Integer clientConnThrottle;
         private Integer clientUdpSessThrottle;
         private String created;
@@ -189,11 +227,14 @@ public final class GetNodeBalancerResult {
         private String region;
         private List<String> tags;
         private List<GetNodeBalancerTransfer> transfers;
+        private String type;
         private String updated;
         private List<GetNodeBalancerVpc> vpcs;
         public Builder() {}
         public Builder(GetNodeBalancerResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.backendConnectivity = defaults.backendConnectivity;
+    	      this.backendIpv6Prefix = defaults.backendIpv6Prefix;
     	      this.clientConnThrottle = defaults.clientConnThrottle;
     	      this.clientUdpSessThrottle = defaults.clientUdpSessThrottle;
     	      this.created = defaults.created;
@@ -207,10 +248,27 @@ public final class GetNodeBalancerResult {
     	      this.region = defaults.region;
     	      this.tags = defaults.tags;
     	      this.transfers = defaults.transfers;
+    	      this.type = defaults.type;
     	      this.updated = defaults.updated;
     	      this.vpcs = defaults.vpcs;
         }
 
+        @CustomType.Setter
+        public Builder backendConnectivity(String backendConnectivity) {
+            if (backendConnectivity == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "backendConnectivity");
+            }
+            this.backendConnectivity = backendConnectivity;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder backendIpv6Prefix(String backendIpv6Prefix) {
+            if (backendIpv6Prefix == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "backendIpv6Prefix");
+            }
+            this.backendIpv6Prefix = backendIpv6Prefix;
+            return this;
+        }
         @CustomType.Setter
         public Builder clientConnThrottle(Integer clientConnThrottle) {
             if (clientConnThrottle == null) {
@@ -328,6 +386,14 @@ public final class GetNodeBalancerResult {
             return transfers(List.of(transfers));
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetNodeBalancerResult", "type");
+            }
+            this.type = type;
+            return this;
+        }
+        @CustomType.Setter
         public Builder updated(String updated) {
             if (updated == null) {
               throw new MissingRequiredPropertyException("GetNodeBalancerResult", "updated");
@@ -348,6 +414,8 @@ public final class GetNodeBalancerResult {
         }
         public GetNodeBalancerResult build() {
             final var _resultValue = new GetNodeBalancerResult();
+            _resultValue.backendConnectivity = backendConnectivity;
+            _resultValue.backendIpv6Prefix = backendIpv6Prefix;
             _resultValue.clientConnThrottle = clientConnThrottle;
             _resultValue.clientUdpSessThrottle = clientUdpSessThrottle;
             _resultValue.created = created;
@@ -361,6 +429,7 @@ public final class GetNodeBalancerResult {
             _resultValue.region = region;
             _resultValue.tags = tags;
             _resultValue.transfers = transfers;
+            _resultValue.type = type;
             _resultValue.updated = updated;
             _resultValue.vpcs = vpcs;
             return _resultValue;

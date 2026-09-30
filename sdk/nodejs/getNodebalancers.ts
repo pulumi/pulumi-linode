@@ -48,6 +48,10 @@ import * as utilities from "./utilities";
  * * `region`
  *
  * * `clientConnThrottle`
+ *
+ * * `type` (client-side)
+ *
+ * * `backendConnectivity` (client-side)
  */
 export function getNodebalancers(args?: GetNodebalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetNodebalancersResult> {
     args = args || {};
@@ -132,6 +136,10 @@ export interface GetNodebalancersResult {
  * * `region`
  *
  * * `clientConnThrottle`
+ *
+ * * `type` (client-side)
+ *
+ * * `backendConnectivity` (client-side)
  */
 export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodebalancersResult> {
     args = args || {};

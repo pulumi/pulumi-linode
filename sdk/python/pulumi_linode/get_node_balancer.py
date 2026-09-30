@@ -27,7 +27,13 @@ class GetNodeBalancerResult:
     """
     A collection of values returned by getNodeBalancer.
     """
-    def __init__(__self__, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, lke_clusters=None, region=None, tags=None, transfers=None, updated=None, vpcs=None):
+    def __init__(__self__, backend_connectivity=None, backend_ipv6_prefix=None, client_conn_throttle=None, client_udp_sess_throttle=None, created=None, firewalls=None, hostname=None, id=None, ipv4=None, ipv6=None, label=None, lke_clusters=None, region=None, tags=None, transfers=None, type=None, updated=None, vpcs=None):
+        if backend_connectivity and not isinstance(backend_connectivity, str):
+            raise TypeError("Expected argument 'backend_connectivity' to be a str")
+        pulumi.set(__self__, "backend_connectivity", backend_connectivity)
+        if backend_ipv6_prefix and not isinstance(backend_ipv6_prefix, str):
+            raise TypeError("Expected argument 'backend_ipv6_prefix' to be a str")
+        pulumi.set(__self__, "backend_ipv6_prefix", backend_ipv6_prefix)
         if client_conn_throttle and not isinstance(client_conn_throttle, int):
             raise TypeError("Expected argument 'client_conn_throttle' to be a int")
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
@@ -67,12 +73,31 @@ class GetNodeBalancerResult:
         if transfers and not isinstance(transfers, list):
             raise TypeError("Expected argument 'transfers' to be a list")
         pulumi.set(__self__, "transfers", transfers)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if updated and not isinstance(updated, str):
             raise TypeError("Expected argument 'updated' to be a str")
         pulumi.set(__self__, "updated", updated)
         if vpcs and not isinstance(vpcs, list):
             raise TypeError("Expected argument 'vpcs' to be a list")
         pulumi.set(__self__, "vpcs", vpcs)
+
+    @_builtins.property
+    @pulumi.getter(name="backendConnectivity")
+    def backend_connectivity(self) -> _builtins.str:
+        """
+        The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+        """
+        return pulumi.get(self, "backend_connectivity")
+
+    @_builtins.property
+    @pulumi.getter(name="backendIpv6Prefix")
+    def backend_ipv6_prefix(self) -> _builtins.str:
+        """
+        The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        """
+        return pulumi.get(self, "backend_ipv6_prefix")
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -171,6 +196,14 @@ class GetNodeBalancerResult:
 
     @_builtins.property
     @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the related LKE cluster.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
     def updated(self) -> _builtins.str:
         """
         When this firewall was last updated.
@@ -189,6 +222,8 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
         if False:
             yield self
         return GetNodeBalancerResult(
+            backend_connectivity=self.backend_connectivity,
+            backend_ipv6_prefix=self.backend_ipv6_prefix,
             client_conn_throttle=self.client_conn_throttle,
             client_udp_sess_throttle=self.client_udp_sess_throttle,
             created=self.created,
@@ -202,6 +237,7 @@ class AwaitableGetNodeBalancerResult(GetNodeBalancerResult):
             region=self.region,
             tags=self.tags,
             transfers=self.transfers,
+            type=self.type,
             updated=self.updated,
             vpcs=self.vpcs)
 
@@ -230,6 +266,8 @@ def get_node_balancer(id: Optional[_builtins.int] = None,
     __ret__ = pulumi.runtime.invoke('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult).value
 
     return AwaitableGetNodeBalancerResult(
+        backend_connectivity=pulumi.get(__ret__, 'backend_connectivity'),
+        backend_ipv6_prefix=pulumi.get(__ret__, 'backend_ipv6_prefix'),
         client_conn_throttle=pulumi.get(__ret__, 'client_conn_throttle'),
         client_udp_sess_throttle=pulumi.get(__ret__, 'client_udp_sess_throttle'),
         created=pulumi.get(__ret__, 'created'),
@@ -243,6 +281,7 @@ def get_node_balancer(id: Optional[_builtins.int] = None,
         region=pulumi.get(__ret__, 'region'),
         tags=pulumi.get(__ret__, 'tags'),
         transfers=pulumi.get(__ret__, 'transfers'),
+        type=pulumi.get(__ret__, 'type'),
         updated=pulumi.get(__ret__, 'updated'),
         vpcs=pulumi.get(__ret__, 'vpcs'))
 def get_node_balancer_output(id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -268,6 +307,8 @@ def get_node_balancer_output(id: pulumi.Input[Optional[_builtins.int]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('linode:index/getNodeBalancer:getNodeBalancer', __args__, opts=opts, typ=GetNodeBalancerResult)
     return __ret__.apply(lambda __response__: GetNodeBalancerResult(
+        backend_connectivity=pulumi.get(__response__, 'backend_connectivity'),
+        backend_ipv6_prefix=pulumi.get(__response__, 'backend_ipv6_prefix'),
         client_conn_throttle=pulumi.get(__response__, 'client_conn_throttle'),
         client_udp_sess_throttle=pulumi.get(__response__, 'client_udp_sess_throttle'),
         created=pulumi.get(__response__, 'created'),
@@ -281,5 +322,6 @@ def get_node_balancer_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         region=pulumi.get(__response__, 'region'),
         tags=pulumi.get(__response__, 'tags'),
         transfers=pulumi.get(__response__, 'transfers'),
+        type=pulumi.get(__response__, 'type'),
         updated=pulumi.get(__response__, 'updated'),
         vpcs=pulumi.get(__response__, 'vpcs')))

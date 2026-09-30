@@ -25,7 +25,7 @@ namespace Pulumi.Linode.Inputs
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// The type of the related LKE cluster.
+        /// NodeBalancer plan type: `Common` (the API default), `Premium`, or `Enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

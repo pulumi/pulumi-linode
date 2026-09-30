@@ -89,6 +89,11 @@ public final class GetDatabasesDatabase {
      */
     private String oldestRestoreTime;
     /**
+     * @return The back-end platform for relational databases used by the service.
+     * 
+     */
+    private String platform;
+    /**
      * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      */
@@ -223,6 +228,13 @@ public final class GetDatabasesDatabase {
         return this.oldestRestoreTime;
     }
     /**
+     * @return The back-end platform for relational databases used by the service.
+     * 
+     */
+    public String platform() {
+        return this.platform;
+    }
+    /**
      * @return Restricts access to this database using a virtual private cloud (VPC) that you&#39;ve configured in the region where the database will live.
      * 
      */
@@ -288,6 +300,7 @@ public final class GetDatabasesDatabase {
         private String instanceUri;
         private String label;
         private String oldestRestoreTime;
+        private String platform;
         private GetDatabasesDatabasePrivateNetwork privateNetwork;
         private String region;
         private String status;
@@ -311,6 +324,7 @@ public final class GetDatabasesDatabase {
     	      this.instanceUri = defaults.instanceUri;
     	      this.label = defaults.label;
     	      this.oldestRestoreTime = defaults.oldestRestoreTime;
+    	      this.platform = defaults.platform;
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.region = defaults.region;
     	      this.status = defaults.status;
@@ -435,6 +449,14 @@ public final class GetDatabasesDatabase {
             return this;
         }
         @CustomType.Setter
+        public Builder platform(String platform) {
+            if (platform == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "platform");
+            }
+            this.platform = platform;
+            return this;
+        }
+        @CustomType.Setter
         public Builder privateNetwork(GetDatabasesDatabasePrivateNetwork privateNetwork) {
             if (privateNetwork == null) {
               throw new MissingRequiredPropertyException("GetDatabasesDatabase", "privateNetwork");
@@ -498,6 +520,7 @@ public final class GetDatabasesDatabase {
             _resultValue.instanceUri = instanceUri;
             _resultValue.label = label;
             _resultValue.oldestRestoreTime = oldestRestoreTime;
+            _resultValue.platform = platform;
             _resultValue.privateNetwork = privateNetwork;
             _resultValue.region = region;
             _resultValue.status = status;

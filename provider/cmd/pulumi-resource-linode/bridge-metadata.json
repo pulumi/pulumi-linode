@@ -1490,6 +1490,15 @@
                 "current": "linode:index/getAccountSettings:getAccountSettings",
                 "majorVersion": 6
             },
+            "linode_account_transfer": {
+                "current": "linode:index/getAccountTransfer:getAccountTransfer",
+                "majorVersion": 6,
+                "fields": {
+                    "region_transfers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_child_account": {
                 "current": "linode:index/getChildAccount:getChildAccount",
                 "majorVersion": 6,
@@ -4338,6 +4347,7 @@
             "linode:index/getAccountLogin:getAccountLogin": 1,
             "linode:index/getAccountLogins:getAccountLogins": 1,
             "linode:index/getAccountSettings:getAccountSettings": 1,
+            "linode:index/getAccountTransfer:getAccountTransfer": 1,
             "linode:index/getChildAccount:getChildAccount": 1,
             "linode:index/getChildAccounts:getChildAccounts": 1,
             "linode:index/getConsumerImageShareGroup:getConsumerImageShareGroup": 1,

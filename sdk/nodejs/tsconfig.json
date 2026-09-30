@@ -37,6 +37,7 @@
         "getAccountLogin.ts",
         "getAccountLogins.ts",
         "getAccountSettings.ts",
+        "getAccountTransfer.ts",
         "getChildAccount.ts",
         "getChildAccounts.ts",
         "getConsumerImageShareGroup.ts",

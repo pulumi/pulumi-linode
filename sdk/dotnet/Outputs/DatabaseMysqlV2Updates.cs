@@ -18,7 +18,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int? DayOfWeek;
         /// <summary>
-        /// The maximum maintenance window time in hours.
+        /// The maximum maintenance window time in hours. Currently can only be 4.
         /// </summary>
         public readonly int? Duration;
         /// <summary>

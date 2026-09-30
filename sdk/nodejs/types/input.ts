@@ -56,7 +56,7 @@ export interface DatabaseMysqlV2Updates {
      */
     dayOfWeek?: pulumi.Input<number | undefined>;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration?: pulumi.Input<number | undefined>;
     /**
@@ -120,7 +120,7 @@ export interface DatabasePostgresqlV2Updates {
      */
     dayOfWeek?: pulumi.Input<number | undefined>;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration?: pulumi.Input<number | undefined>;
     /**
@@ -693,7 +693,7 @@ export interface GetDatabasePostgresqlV2Updates {
      */
     dayOfWeek?: number;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration?: number;
     /**
@@ -712,7 +712,7 @@ export interface GetDatabasePostgresqlV2UpdatesArgs {
      */
     dayOfWeek?: pulumi.Input<number | undefined>;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration?: pulumi.Input<number | undefined>;
     /**
@@ -5277,7 +5277,7 @@ export interface NodeBalancerLkeCluster {
      */
     label?: pulumi.Input<string | undefined>;
     /**
-     * The type of the related LKE cluster.
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
      */
     type?: pulumi.Input<string | undefined>;
     /**

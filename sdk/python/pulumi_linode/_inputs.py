@@ -801,7 +801,7 @@ class DatabaseMysqlV2UpdatesArgsDict(TypedDict):
     """
     duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The maximum maintenance window time in hours.
+    The maximum maintenance window time in hours. Currently can only be 4.
     """
     frequency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -821,7 +821,7 @@ class DatabaseMysqlV2UpdatesArgs:
                  hour_of_day: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param pulumi.Input[_builtins.int] duration: The maximum maintenance window time in hours.
+        :param pulumi.Input[_builtins.int] duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param pulumi.Input[_builtins.str] frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param pulumi.Input[_builtins.int] hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
         """
@@ -850,7 +850,7 @@ class DatabaseMysqlV2UpdatesArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 
@@ -1095,7 +1095,7 @@ class DatabasePostgresqlV2UpdatesArgsDict(TypedDict):
     """
     duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
-    The maximum maintenance window time in hours.
+    The maximum maintenance window time in hours. Currently can only be 4.
     """
     frequency: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1115,7 +1115,7 @@ class DatabasePostgresqlV2UpdatesArgs:
                  hour_of_day: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param pulumi.Input[_builtins.int] duration: The maximum maintenance window time in hours.
+        :param pulumi.Input[_builtins.int] duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param pulumi.Input[_builtins.str] frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param pulumi.Input[_builtins.int] hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
         """
@@ -1144,7 +1144,7 @@ class DatabasePostgresqlV2UpdatesArgs:
     @pulumi.getter
     def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 
@@ -13586,7 +13586,7 @@ class NodeBalancerLkeClusterArgsDict(TypedDict):
     """
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The type of the related LKE cluster.
+    NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
     """
     url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -13603,7 +13603,7 @@ class NodeBalancerLkeClusterArgs:
         """
         :param pulumi.Input[_builtins.int] id: The ID of the related LKE cluster.
         :param pulumi.Input[_builtins.str] label: The label of the Linode NodeBalancer
-        :param pulumi.Input[_builtins.str] type: The type of the related LKE cluster.
+        :param pulumi.Input[_builtins.str] type: NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         :param pulumi.Input[_builtins.str] url: The URL where you can access the related LKE cluster.
         """
         if id is not None:
@@ -13643,7 +13643,7 @@ class NodeBalancerLkeClusterArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of the related LKE cluster.
+        NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         """
         return pulumi.get(self, "type")
 
@@ -17242,7 +17242,7 @@ class GetDatabasePostgresqlV2UpdatesArgsDict(TypedDict):
     """
     duration: _builtins.int
     """
-    The maximum maintenance window time in hours.
+    The maximum maintenance window time in hours. Currently can only be 4.
     """
     frequency: _builtins.str
     """
@@ -17262,7 +17262,7 @@ class GetDatabasePostgresqlV2UpdatesArgs:
                  hour_of_day: _builtins.int):
         """
         :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.int duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
         """
@@ -17287,7 +17287,7 @@ class GetDatabasePostgresqlV2UpdatesArgs:
     @pulumi.getter
     def duration(self) -> _builtins.int:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 

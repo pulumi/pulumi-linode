@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSshKeyResult {
@@ -18,10 +16,14 @@ public final class GetSshKeyResult {
      */
     private String created;
     /**
-     * @return The ID of the SSH Key
+     * @return The ID of the SSH Key. Computed when `label` is used as the selector.
      * 
      */
-    private @Nullable String id;
+    private String id;
+    /**
+     * @return The label of the SSH Key. Computed when `id` is used as the selector.
+     * 
+     */
     private String label;
     /**
      * @return The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -38,12 +40,16 @@ public final class GetSshKeyResult {
         return this.created;
     }
     /**
-     * @return The ID of the SSH Key
+     * @return The ID of the SSH Key. Computed when `label` is used as the selector.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
+    /**
+     * @return The label of the SSH Key. Computed when `id` is used as the selector.
+     * 
+     */
     public String label() {
         return this.label;
     }
@@ -65,7 +71,7 @@ public final class GetSshKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String created;
-        private @Nullable String id;
+        private String id;
         private String label;
         private String sshKey;
         public Builder() {}
@@ -86,8 +92,10 @@ public final class GetSshKeyResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSshKeyResult", "id");
+            }
             this.id = id;
             return this;
         }

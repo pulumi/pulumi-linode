@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetNodeBalancerNodeResult {
     /**
-     * @return The private IP Address where this backend can be reached.
+     * @return The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`).
      * 
      */
     private String address;
@@ -52,7 +52,7 @@ public final class GetNodeBalancerNodeResult {
 
     private GetNodeBalancerNodeResult() {}
     /**
-     * @return The private IP Address where this backend can be reached.
+     * @return The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`).
      * 
      */
     public String address() {
