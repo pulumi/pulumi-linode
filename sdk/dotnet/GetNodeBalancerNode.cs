@@ -151,7 +151,7 @@ namespace Pulumi.Linode
     public sealed class GetNodeBalancerNodeResult
     {
         /// <summary>
-        /// The private IP Address where this backend can be reached.
+        /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`).
         /// </summary>
         public readonly string Address;
         public readonly int ConfigId;

@@ -235,6 +235,7 @@ __all__ = [
     'GetAccountAvailabilitiesFilterResult',
     'GetAccountLoginsFilterResult',
     'GetAccountLoginsLoginResult',
+    'GetAccountTransferRegionTransferResult',
     'GetChildAccountsChildAccountResult',
     'GetChildAccountsFilterResult',
     'GetConsumerImageShareGroupImageSharesFilterResult',
@@ -859,7 +860,7 @@ class DatabaseMysqlV2Updates(dict):
                  hour_of_day: Optional[_builtins.int] = None):
         """
         :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.int duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
         """
@@ -884,7 +885,7 @@ class DatabaseMysqlV2Updates(dict):
     @pulumi.getter
     def duration(self) -> Optional[_builtins.int]:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 
@@ -1098,7 +1099,7 @@ class DatabasePostgresqlV2Updates(dict):
                  hour_of_day: Optional[_builtins.int] = None):
         """
         :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.int duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
         """
@@ -1123,7 +1124,7 @@ class DatabasePostgresqlV2Updates(dict):
     @pulumi.getter
     def duration(self) -> Optional[_builtins.int]:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 
@@ -11104,7 +11105,7 @@ class NodeBalancerLkeCluster(dict):
         """
         :param _builtins.int id: The ID of the related LKE cluster.
         :param _builtins.str label: The label of the Linode NodeBalancer
-        :param _builtins.str type: The type of the related LKE cluster.
+        :param _builtins.str type: NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         :param _builtins.str url: The URL where you can access the related LKE cluster.
         """
         if id is not None:
@@ -11136,7 +11137,7 @@ class NodeBalancerLkeCluster(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        The type of the related LKE cluster.
+        NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
         """
         return pulumi.get(self, "type")
 
@@ -13245,6 +13246,57 @@ class GetAccountLoginsLoginResult(dict):
         The username of the User that was logged into.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GetAccountTransferRegionTransferResult(dict):
+    def __init__(__self__, *,
+                 billable: _builtins.int,
+                 id: _builtins.str,
+                 quota: _builtins.int,
+                 used: _builtins.int):
+        """
+        :param _builtins.int billable: The amount of your transfer pool that is billable this billing cycle for this Region.
+        :param _builtins.str id: The Region ID for this network utilization data.
+        :param _builtins.int quota: The amount of network usage allowed this billing cycle for this Region.
+        :param _builtins.int used: The amount of network usage you have used this billing cycle for this Region.
+        """
+        pulumi.set(__self__, "billable", billable)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "quota", quota)
+        pulumi.set(__self__, "used", used)
+
+    @_builtins.property
+    @pulumi.getter
+    def billable(self) -> _builtins.int:
+        """
+        The amount of your transfer pool that is billable this billing cycle for this Region.
+        """
+        return pulumi.get(self, "billable")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The Region ID for this network utilization data.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def quota(self) -> _builtins.int:
+        """
+        The amount of network usage allowed this billing cycle for this Region.
+        """
+        return pulumi.get(self, "quota")
+
+    @_builtins.property
+    @pulumi.getter
+    def used(self) -> _builtins.int:
+        """
+        The amount of network usage you have used this billing cycle for this Region.
+        """
+        return pulumi.get(self, "used")
 
 
 @pulumi.output_type
@@ -15570,7 +15622,7 @@ class GetDatabaseMysqlV2UpdatesResult(dict):
                  hour_of_day: _builtins.int):
         """
         :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.int duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param _builtins.int hour_of_day: The hour of the day (0-23) when maintenance occurs.
         """
@@ -15591,7 +15643,7 @@ class GetDatabaseMysqlV2UpdatesResult(dict):
     @pulumi.getter
     def duration(self) -> _builtins.int:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 
@@ -15873,7 +15925,7 @@ class GetDatabasePostgresqlV2UpdatesResult(dict):
                  hour_of_day: _builtins.int):
         """
         :param _builtins.int day_of_week: The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
-        :param _builtins.int duration: The maximum maintenance window time in hours.
+        :param _builtins.int duration: The maximum maintenance window time in hours. Currently can only be 4.
         :param _builtins.str frequency: How frequently maintenance occurs. Currently can only be weekly.
         :param _builtins.int hour_of_day: How frequently maintenance occurs. Currently can only be weekly.
         """
@@ -15894,7 +15946,7 @@ class GetDatabasePostgresqlV2UpdatesResult(dict):
     @pulumi.getter
     def duration(self) -> _builtins.int:
         """
-        The maximum maintenance window time in hours.
+        The maximum maintenance window time in hours. Currently can only be 4.
         """
         return pulumi.get(self, "duration")
 
@@ -15932,6 +15984,7 @@ class GetDatabasesDatabaseResult(dict):
                  instance_uri: _builtins.str,
                  label: _builtins.str,
                  oldest_restore_time: _builtins.str,
+                 platform: _builtins.str,
                  private_network: 'outputs.GetDatabasesDatabasePrivateNetworkResult',
                  region: _builtins.str,
                  status: _builtins.str,
@@ -15953,6 +16006,7 @@ class GetDatabasesDatabaseResult(dict):
         :param _builtins.str instance_uri: The API route for the database instance.
         :param _builtins.str label: A unique, user-defined string referring to the Managed Database.
         :param _builtins.str oldest_restore_time: The oldest time to which a database can be restored.
+        :param _builtins.str platform: The back-end platform for relational databases used by the service.
         :param 'GetDatabasesDatabasePrivateNetworkArgs' private_network: Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         :param _builtins.str region: The region to use for the Managed Database.
         :param _builtins.str status: The operating status of the Managed Database.
@@ -15974,6 +16028,7 @@ class GetDatabasesDatabaseResult(dict):
         pulumi.set(__self__, "instance_uri", instance_uri)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "oldest_restore_time", oldest_restore_time)
+        pulumi.set(__self__, "platform", platform)
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "status", status)
@@ -16093,6 +16148,14 @@ class GetDatabasesDatabaseResult(dict):
         The oldest time to which a database can be restored.
         """
         return pulumi.get(self, "oldest_restore_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def platform(self) -> _builtins.str:
+        """
+        The back-end platform for relational databases used by the service.
+        """
+        return pulumi.get(self, "platform")
 
     @_builtins.property
     @pulumi.getter(name="privateNetwork")
@@ -30981,6 +31044,8 @@ class GetNodebalancersFilterResult(dict):
 @pulumi.output_type
 class GetNodebalancersNodebalancerResult(dict):
     def __init__(__self__, *,
+                 backend_connectivity: _builtins.str,
+                 backend_ipv6_prefix: _builtins.str,
                  client_conn_throttle: _builtins.int,
                  client_udp_sess_throttle: _builtins.int,
                  created: _builtins.str,
@@ -30993,8 +31058,11 @@ class GetNodebalancersNodebalancerResult(dict):
                  region: _builtins.str,
                  tags: Sequence[_builtins.str],
                  transfers: Sequence['outputs.GetNodebalancersNodebalancerTransferResult'],
+                 type: _builtins.str,
                  updated: _builtins.str):
         """
+        :param _builtins.str backend_connectivity: The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+        :param _builtins.str backend_ipv6_prefix: The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
         :param _builtins.int client_conn_throttle: Throttle connections per second (0-20)
         :param _builtins.int client_udp_sess_throttle: Throttle UDP sessions per second (0-20).
         :param _builtins.str created: When this Linode NodeBalancer was created
@@ -31007,8 +31075,11 @@ class GetNodebalancersNodebalancerResult(dict):
         :param _builtins.str region: The Region where this Linode NodeBalancer is located. NodeBalancers only support backends in the same Region.
         :param Sequence[_builtins.str] tags: A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
         :param Sequence['GetNodebalancersNodebalancerTransferArgs'] transfers: Information about the amount of transfer this NodeBalancer has had so far this month.
+        :param _builtins.str type: The type of the related LKE cluster.
         :param _builtins.str updated: When this Linode NodeBalancer was last updated
         """
+        pulumi.set(__self__, "backend_connectivity", backend_connectivity)
+        pulumi.set(__self__, "backend_ipv6_prefix", backend_ipv6_prefix)
         pulumi.set(__self__, "client_conn_throttle", client_conn_throttle)
         pulumi.set(__self__, "client_udp_sess_throttle", client_udp_sess_throttle)
         pulumi.set(__self__, "created", created)
@@ -31021,7 +31092,24 @@ class GetNodebalancersNodebalancerResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "transfers", transfers)
+        pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "updated", updated)
+
+    @_builtins.property
+    @pulumi.getter(name="backendConnectivity")
+    def backend_connectivity(self) -> _builtins.str:
+        """
+        The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+        """
+        return pulumi.get(self, "backend_connectivity")
+
+    @_builtins.property
+    @pulumi.getter(name="backendIpv6Prefix")
+    def backend_ipv6_prefix(self) -> _builtins.str:
+        """
+        The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        """
+        return pulumi.get(self, "backend_ipv6_prefix")
 
     @_builtins.property
     @pulumi.getter(name="clientConnThrottle")
@@ -31118,6 +31206,14 @@ class GetNodebalancersNodebalancerResult(dict):
         Information about the amount of transfer this NodeBalancer has had so far this month.
         """
         return pulumi.get(self, "transfers")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of the related LKE cluster.
+        """
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
@@ -33169,20 +33265,19 @@ class GetSshkeysFilterResult(dict):
 class GetSshkeysSshkeyResult(dict):
     def __init__(__self__, *,
                  created: _builtins.str,
+                 id: _builtins.str,
                  label: _builtins.str,
-                 ssh_key: _builtins.str,
-                 id: Optional[_builtins.str] = None):
+                 ssh_key: _builtins.str):
         """
         :param _builtins.str created: The date this key was added.
+        :param _builtins.str id: The ID of the SSH Key.
         :param _builtins.str label: The label of the SSH Key.
         :param _builtins.str ssh_key: The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-        :param _builtins.str id: The ID of the SSH Key.
         """
         pulumi.set(__self__, "created", created)
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "ssh_key", ssh_key)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
@@ -33191,6 +33286,14 @@ class GetSshkeysSshkeyResult(dict):
         The date this key was added.
         """
         return pulumi.get(self, "created")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the SSH Key.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -33207,14 +33310,6 @@ class GetSshkeysSshkeyResult(dict):
         The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
         """
         return pulumi.get(self, "ssh_key")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        """
-        The ID of the SSH Key.
-        """
-        return pulumi.get(self, "id")
 
 
 @pulumi.output_type

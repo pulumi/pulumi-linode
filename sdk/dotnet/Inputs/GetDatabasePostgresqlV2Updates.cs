@@ -19,7 +19,7 @@ namespace Pulumi.Linode.Inputs
         public int DayOfWeek { get; set; }
 
         /// <summary>
-        /// The maximum maintenance window time in hours.
+        /// The maximum maintenance window time in hours. Currently can only be 4.
         /// </summary>
         [Input("duration", required: true)]
         public int Duration { get; set; }

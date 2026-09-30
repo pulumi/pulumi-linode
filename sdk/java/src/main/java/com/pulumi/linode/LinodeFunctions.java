@@ -211,6 +211,7 @@ import com.pulumi.linode.outputs.GetAccountLoginResult;
 import com.pulumi.linode.outputs.GetAccountLoginsResult;
 import com.pulumi.linode.outputs.GetAccountResult;
 import com.pulumi.linode.outputs.GetAccountSettingsResult;
+import com.pulumi.linode.outputs.GetAccountTransferResult;
 import com.pulumi.linode.outputs.GetChildAccountResult;
 import com.pulumi.linode.outputs.GetChildAccountsResult;
 import com.pulumi.linode.outputs.GetConsumerImageShareGroupImageSharesResult;
@@ -2137,6 +2138,286 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetAccountSettingsResult> getAccountSettingsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getAccountSettings:getAccountSettings", TypeShape.of(GetAccountSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountTransferResult> getAccountTransfer() {
+        return getAccountTransfer(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountTransferResult> getAccountTransferPlain() {
+        return getAccountTransferPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountTransferResult> getAccountTransfer(InvokeArgs args) {
+        return getAccountTransfer(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountTransferResult> getAccountTransferPlain(InvokeArgs args) {
+        return getAccountTransferPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountTransferResult> getAccountTransfer(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountTransfer:getAccountTransfer", TypeShape.of(GetAccountTransferResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAccountTransferResult> getAccountTransfer(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getAccountTransfer:getAccountTransfer", TypeShape.of(GetAccountTransferResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about Linode account network transfer utilization for the current month.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-transfer).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access account network transfer details.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var transfer = LinodeFunctions.getAccountTransfer(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAccountTransferResult> getAccountTransferPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getAccountTransfer:getAccountTransfer", TypeShape.of(GetAccountTransferResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information about a Linode Child Account.
@@ -8859,9 +9140,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -8932,9 +9213,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -9005,9 +9286,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -9078,9 +9359,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -9151,9 +9432,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -14866,9 +15147,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -14939,9 +15220,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -15012,9 +15293,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -15085,9 +15366,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -15158,9 +15439,9 @@ public final class LinodeFunctions {
      * 
      * The following arguments are supported in the `updates` specification block:
      * 
-     * * `dayOfWeek` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+     * * `dayOfWeek` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
      * 
-     * * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+     * * `duration` - The maximum maintenance window time in hours. (`4`)
      * 
      * * `frequency` - The frequency at which maintenance occurs. (`weekly`)
      * 
@@ -33819,6 +34100,10 @@ public final class LinodeFunctions {
      * 
      * * `clientConnThrottle`
      * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
+     * 
      */
     public static Output<GetNodebalancersResult> getNodebalancers() {
         return getNodebalancers(GetNodebalancersArgs.Empty, InvokeOptions.Empty);
@@ -33887,6 +34172,10 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `clientConnThrottle`
+     * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
      * 
      */
     public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain() {
@@ -33957,6 +34246,10 @@ public final class LinodeFunctions {
      * 
      * * `clientConnThrottle`
      * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
+     * 
      */
     public static Output<GetNodebalancersResult> getNodebalancers(GetNodebalancersArgs args) {
         return getNodebalancers(args, InvokeOptions.Empty);
@@ -34025,6 +34318,10 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `clientConnThrottle`
+     * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
      * 
      */
     public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain(GetNodebalancersPlainArgs args) {
@@ -34095,6 +34392,10 @@ public final class LinodeFunctions {
      * 
      * * `clientConnThrottle`
      * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
+     * 
      */
     public static Output<GetNodebalancersResult> getNodebalancers(GetNodebalancersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("linode:index/getNodebalancers:getNodebalancers", TypeShape.of(GetNodebalancersResult.class), args, Utilities.withVersion(options));
@@ -34164,6 +34465,10 @@ public final class LinodeFunctions {
      * 
      * * `clientConnThrottle`
      * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
+     * 
      */
     public static Output<GetNodebalancersResult> getNodebalancers(GetNodebalancersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("linode:index/getNodebalancers:getNodebalancers", TypeShape.of(GetNodebalancersResult.class), args, Utilities.withVersion(options));
@@ -34232,6 +34537,10 @@ public final class LinodeFunctions {
      * * `region`
      * 
      * * `clientConnThrottle`
+     * 
+     * * `type` (client-side)
+     * 
+     * * `backendConnectivity` (client-side)
      * 
      */
     public static CompletableFuture<GetNodebalancersResult> getNodebalancersPlain(GetNodebalancersPlainArgs args, InvokeOptions options) {
@@ -40271,12 +40580,12 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invokeAsync("linode:index/getReservedIpTypes:getReservedIpTypes", TypeShape.of(GetReservedIpTypesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
-     * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
      * 
      * <pre>
      * {@code
@@ -40302,6 +40611,104 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .label("foo")
+     *             .build());
+     * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetSshKeyResult> getSshKey() {
+        return getSshKey(GetSshKeyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .label("foo")
+     *             .build());
+     * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetSshKeyResult> getSshKeyPlain() {
+        return getSshKeyPlain(GetSshKeyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
+     * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import com.pulumi.linode.inputs.GetSshKeyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .label("foo")
+     *             .build());
+     * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
      *             .build());
      * 
      *     }
@@ -40314,12 +40721,12 @@ public final class LinodeFunctions {
         return getSshKey(args, InvokeOptions.Empty);
     }
     /**
-     * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
-     * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
      * 
      * <pre>
      * {@code
@@ -40345,6 +40752,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .label("foo")
+     *             .build());
+     * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
      *             .build());
      * 
      *     }
@@ -40357,12 +40768,12 @@ public final class LinodeFunctions {
         return getSshKeyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
-     * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
      * 
      * <pre>
      * {@code
@@ -40388,6 +40799,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .label("foo")
+     *             .build());
+     * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
      *             .build());
      * 
      *     }
@@ -40400,12 +40815,12 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
-     * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
      * 
      * <pre>
      * {@code
@@ -40433,6 +40848,10 @@ public final class LinodeFunctions {
      *             .label("foo")
      *             .build());
      * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
+     *             .build());
+     * 
      *     }
      * }
      * }
@@ -40443,12 +40862,12 @@ public final class LinodeFunctions {
         return Deployment.getInstance().invoke("linode:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+     * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
      * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
      * 
      * ## Example Usage
      * 
-     * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+     * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
      * 
      * <pre>
      * {@code
@@ -40474,6 +40893,10 @@ public final class LinodeFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
      *             .label("foo")
+     *             .build());
+     * 
+     *         final var bar = LinodeFunctions.getSshKey(GetSshKeyArgs.builder()
+     *             .id("1234567")
      *             .build());
      * 
      *     }

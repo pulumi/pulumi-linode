@@ -63,7 +63,7 @@ type LookupNodeBalancerNodeArgs struct {
 
 // A collection of values returned by getNodeBalancerNode.
 type LookupNodeBalancerNodeResult struct {
-	// The private IP Address where this backend can be reached.
+	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`).
 	Address  string `pulumi:"address"`
 	ConfigId int    `pulumi:"configId"`
 	Id       int    `pulumi:"id"`
@@ -116,7 +116,7 @@ func (o LookupNodeBalancerNodeResultOutput) ToLookupNodeBalancerNodeResultOutput
 	return o
 }
 
-// The private IP Address where this backend can be reached.
+// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`).
 func (o LookupNodeBalancerNodeResultOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeBalancerNodeResult) string { return v.Address }).(pulumi.StringOutput)
 }

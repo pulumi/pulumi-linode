@@ -5,12 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+ * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
  *
  * ## Example Usage
  *
- * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+ * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,9 +19,13 @@ import * as utilities from "./utilities";
  * const foo = linode.getSshKey({
  *     label: "foo",
  * });
+ * const bar = linode.getSshKey({
+ *     id: "1234567",
+ * });
  * ```
  */
-export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
+export function getSshKey(args?: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetSshKeyResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("linode:index/getSshKey:getSshKey", {
         "id": args.id,
@@ -34,13 +38,13 @@ export function getSshKey(args: GetSshKeyArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetSshKeyArgs {
     /**
-     * The ID of the SSH Key
+     * The ID of the SSH Key to select. When set, `label` is computed from the API response.
      */
     id?: string;
     /**
-     * The label of the SSH Key to select.
+     * The label of the SSH Key to select. When set, `id` is computed from the API response.
      */
-    label: string;
+    label?: string;
 }
 
 /**
@@ -52,9 +56,12 @@ export interface GetSshKeyResult {
      */
     readonly created: string;
     /**
-     * The ID of the SSH Key
+     * The ID of the SSH Key. Computed when `label` is used as the selector.
      */
-    readonly id?: string;
+    readonly id: string;
+    /**
+     * The label of the SSH Key. Computed when `id` is used as the selector.
+     */
     readonly label: string;
     /**
      * The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -62,12 +69,12 @@ export interface GetSshKeyResult {
     readonly sshKey: string;
 }
 /**
- * `linode.SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+ * `linode.SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
  * For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
  *
  * ## Example Usage
  *
- * The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+ * The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -76,9 +83,13 @@ export interface GetSshKeyResult {
  * const foo = linode.getSshKey({
  *     label: "foo",
  * });
+ * const bar = linode.getSshKey({
+ *     id: "1234567",
+ * });
  * ```
  */
-export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshKeyResult> {
+export function getSshKeyOutput(args?: GetSshKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSshKeyResult> {
+    args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("linode:index/getSshKey:getSshKey", {
         "id": args.id,
@@ -91,11 +102,11 @@ export function getSshKeyOutput(args: GetSshKeyOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetSshKeyOutputArgs {
     /**
-     * The ID of the SSH Key
+     * The ID of the SSH Key to select. When set, `label` is computed from the API response.
      */
     id?: pulumi.Input<string | undefined>;
     /**
-     * The label of the SSH Key to select.
+     * The label of the SSH Key to select. When set, `id` is computed from the API response.
      */
-    label: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
 }

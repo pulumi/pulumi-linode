@@ -23,7 +23,7 @@ public final class NodeBalancerLkeCluster {
      */
     private @Nullable String label;
     /**
-     * @return The type of the related LKE cluster.
+     * @return NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
      * 
      */
     private @Nullable String type;
@@ -49,7 +49,7 @@ public final class NodeBalancerLkeCluster {
         return Optional.ofNullable(this.label);
     }
     /**
-     * @return The type of the related LKE cluster.
+     * @return NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
      * 
      */
     public Optional<String> type() {

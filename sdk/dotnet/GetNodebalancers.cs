@@ -72,6 +72,10 @@ namespace Pulumi.Linode
         /// * `Region`
         /// 
         /// * `ClientConnThrottle`
+        /// 
+        /// * `Type` (client-side)
+        /// 
+        /// * `BackendConnectivity` (client-side)
         /// </summary>
         public static Task<GetNodebalancersResult> InvokeAsync(GetNodebalancersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersArgs(), options.WithDefaults());
@@ -137,6 +141,10 @@ namespace Pulumi.Linode
         /// * `Region`
         /// 
         /// * `ClientConnThrottle`
+        /// 
+        /// * `Type` (client-side)
+        /// 
+        /// * `BackendConnectivity` (client-side)
         /// </summary>
         public static Output<GetNodebalancersResult> Invoke(GetNodebalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersInvokeArgs(), options.WithDefaults());
@@ -202,6 +210,10 @@ namespace Pulumi.Linode
         /// * `Region`
         /// 
         /// * `ClientConnThrottle`
+        /// 
+        /// * `Type` (client-side)
+        /// 
+        /// * `BackendConnectivity` (client-side)
         /// </summary>
         public static Output<GetNodebalancersResult> Invoke(GetNodebalancersInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodebalancersResult>("linode:index/getNodebalancers:getNodebalancers", args ?? new GetNodebalancersInvokeArgs(), options.WithDefaults());

@@ -30,14 +30,14 @@ public final class GetDatabasePostgresqlV2Updates extends com.pulumi.resources.I
     }
 
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     @Import(name="duration", required=true)
     private Integer duration;
 
     /**
-     * @return The maximum maintenance window time in hours.
+     * @return The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     public Integer duration() {
@@ -113,7 +113,7 @@ public final class GetDatabasePostgresqlV2Updates extends com.pulumi.resources.I
         }
 
         /**
-         * @param duration The maximum maintenance window time in hours.
+         * @param duration The maximum maintenance window time in hours. Currently can only be 4.
          * 
          * @return builder
          * 

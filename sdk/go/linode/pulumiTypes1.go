@@ -13,6 +13,67 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMonitorLogsStreamDetails struct {
+	// The list of LKE cluster IDs included in this stream.
+	ClusterIds []int `pulumi:"clusterIds"`
+	// When true, all LKE clusters are automatically added to this stream.
+	IsAutoAddAllClustersEnabled bool `pulumi:"isAutoAddAllClustersEnabled"`
+}
+
+// GetMonitorLogsStreamDetailsInput is an input type that accepts GetMonitorLogsStreamDetailsArgs and GetMonitorLogsStreamDetailsOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamDetailsInput` via:
+//
+//	GetMonitorLogsStreamDetailsArgs{...}
+type GetMonitorLogsStreamDetailsInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamDetailsOutput() GetMonitorLogsStreamDetailsOutput
+	ToGetMonitorLogsStreamDetailsOutputWithContext(context.Context) GetMonitorLogsStreamDetailsOutput
+}
+
+type GetMonitorLogsStreamDetailsArgs struct {
+	// The list of LKE cluster IDs included in this stream.
+	ClusterIds pulumi.IntArrayInput `pulumi:"clusterIds"`
+	// When true, all LKE clusters are automatically added to this stream.
+	IsAutoAddAllClustersEnabled pulumi.BoolInput `pulumi:"isAutoAddAllClustersEnabled"`
+}
+
+func (GetMonitorLogsStreamDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamDetails)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamDetailsArgs) ToGetMonitorLogsStreamDetailsOutput() GetMonitorLogsStreamDetailsOutput {
+	return i.ToGetMonitorLogsStreamDetailsOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamDetailsArgs) ToGetMonitorLogsStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamDetailsOutput)
+}
+
+type GetMonitorLogsStreamDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamDetails)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamDetailsOutput) ToGetMonitorLogsStreamDetailsOutput() GetMonitorLogsStreamDetailsOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamDetailsOutput) ToGetMonitorLogsStreamDetailsOutputWithContext(ctx context.Context) GetMonitorLogsStreamDetailsOutput {
+	return o
+}
+
+// The list of LKE cluster IDs included in this stream.
+func (o GetMonitorLogsStreamDetailsOutput) ClusterIds() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamDetails) []int { return v.ClusterIds }).(pulumi.IntArrayOutput)
+}
+
+// When true, all LKE clusters are automatically added to this stream.
+func (o GetMonitorLogsStreamDetailsOutput) IsAutoAddAllClustersEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamDetails) bool { return v.IsAutoAddAllClustersEnabled }).(pulumi.BoolOutput)
+}
+
 type GetMonitorLogsStreamHistoryStream struct {
 	// The date and time when this version was created.
 	Created string `pulumi:"created"`
@@ -3887,6 +3948,10 @@ func (o GetNodebalancersFilterArrayOutput) Index(i pulumi.IntInput) GetNodebalan
 }
 
 type GetNodebalancersNodebalancer struct {
+	// The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+	BackendConnectivity string `pulumi:"backendConnectivity"`
+	// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+	BackendIpv6Prefix string `pulumi:"backendIpv6Prefix"`
 	// Throttle connections per second (0-20)
 	ClientConnThrottle int `pulumi:"clientConnThrottle"`
 	// Throttle UDP sessions per second (0-20).
@@ -3911,6 +3976,8 @@ type GetNodebalancersNodebalancer struct {
 	Tags []string `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers []GetNodebalancersNodebalancerTransfer `pulumi:"transfers"`
+	// The type of the related LKE cluster.
+	Type string `pulumi:"type"`
 	// When this Linode NodeBalancer was last updated
 	Updated string `pulumi:"updated"`
 }
@@ -3927,6 +3994,10 @@ type GetNodebalancersNodebalancerInput interface {
 }
 
 type GetNodebalancersNodebalancerArgs struct {
+	// The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+	BackendConnectivity pulumi.StringInput `pulumi:"backendConnectivity"`
+	// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+	BackendIpv6Prefix pulumi.StringInput `pulumi:"backendIpv6Prefix"`
 	// Throttle connections per second (0-20)
 	ClientConnThrottle pulumi.IntInput `pulumi:"clientConnThrottle"`
 	// Throttle UDP sessions per second (0-20).
@@ -3951,6 +4022,8 @@ type GetNodebalancersNodebalancerArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// Information about the amount of transfer this NodeBalancer has had so far this month.
 	Transfers GetNodebalancersNodebalancerTransferArrayInput `pulumi:"transfers"`
+	// The type of the related LKE cluster.
+	Type pulumi.StringInput `pulumi:"type"`
 	// When this Linode NodeBalancer was last updated
 	Updated pulumi.StringInput `pulumi:"updated"`
 }
@@ -4004,6 +4077,16 @@ func (o GetNodebalancersNodebalancerOutput) ToGetNodebalancersNodebalancerOutput
 
 func (o GetNodebalancersNodebalancerOutput) ToGetNodebalancersNodebalancerOutputWithContext(ctx context.Context) GetNodebalancersNodebalancerOutput {
 	return o
+}
+
+// The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+func (o GetNodebalancersNodebalancerOutput) BackendConnectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.BackendConnectivity }).(pulumi.StringOutput)
+}
+
+// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+func (o GetNodebalancersNodebalancerOutput) BackendIpv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.BackendIpv6Prefix }).(pulumi.StringOutput)
 }
 
 // Throttle connections per second (0-20)
@@ -4064,6 +4147,11 @@ func (o GetNodebalancersNodebalancerOutput) Tags() pulumi.StringArrayOutput {
 // Information about the amount of transfer this NodeBalancer has had so far this month.
 func (o GetNodebalancersNodebalancerOutput) Transfers() GetNodebalancersNodebalancerTransferArrayOutput {
 	return o.ApplyT(func(v GetNodebalancersNodebalancer) []GetNodebalancersNodebalancerTransfer { return v.Transfers }).(GetNodebalancersNodebalancerTransferArrayOutput)
+}
+
+// The type of the related LKE cluster.
+func (o GetNodebalancersNodebalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNodebalancersNodebalancer) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // When this Linode NodeBalancer was last updated
@@ -8994,7 +9082,7 @@ type GetSshkeysSshkey struct {
 	// The date this key was added.
 	Created string `pulumi:"created"`
 	// The ID of the SSH Key.
-	Id *string `pulumi:"id"`
+	Id string `pulumi:"id"`
 	// The label of the SSH Key.
 	Label string `pulumi:"label"`
 	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -9016,7 +9104,7 @@ type GetSshkeysSshkeyArgs struct {
 	// The date this key was added.
 	Created pulumi.StringInput `pulumi:"created"`
 	// The ID of the SSH Key.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	Id pulumi.StringInput `pulumi:"id"`
 	// The label of the SSH Key.
 	Label pulumi.StringInput `pulumi:"label"`
 	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
@@ -9080,8 +9168,8 @@ func (o GetSshkeysSshkeyOutput) Created() pulumi.StringOutput {
 }
 
 // The ID of the SSH Key.
-func (o GetSshkeysSshkeyOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSshkeysSshkey) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o GetSshkeysSshkeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshkeysSshkey) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The label of the SSH Key.
@@ -17890,6 +17978,7 @@ func (o GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) Index(i pulumi.IntInpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamDetailsArgs{})
@@ -18172,6 +18261,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArray{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamDetailsOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamDetailsOutput{})

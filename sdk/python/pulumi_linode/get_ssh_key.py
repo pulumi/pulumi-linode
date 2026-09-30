@@ -50,15 +50,18 @@ class GetSshKeyResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
+    def id(self) -> _builtins.str:
         """
-        The ID of the SSH Key
+        The ID of the SSH Key. Computed when `label` is used as the selector.
         """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
     def label(self) -> _builtins.str:
+        """
+        The label of the SSH Key. Computed when `id` is used as the selector.
+        """
         return pulumi.get(self, "label")
 
     @_builtins.property
@@ -86,23 +89,24 @@ def get_ssh_key(id: Optional[_builtins.str] = None,
                 label: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
-    `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+    `SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
 
     ## Example Usage
 
-    The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+    The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
 
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_ssh_key(label="foo")
+    bar = linode.get_ssh_key(id="1234567")
     ```
 
 
-    :param _builtins.str id: The ID of the SSH Key
-    :param _builtins.str label: The label of the SSH Key to select.
+    :param _builtins.str id: The ID of the SSH Key to select. When set, `label` is computed from the API response.
+    :param _builtins.str label: The label of the SSH Key to select. When set, `id` is computed from the API response.
     """
     __args__ = dict()
     __args__['id'] = id
@@ -116,26 +120,27 @@ def get_ssh_key(id: Optional[_builtins.str] = None,
         label=pulumi.get(__ret__, 'label'),
         ssh_key=pulumi.get(__ret__, 'ssh_key'))
 def get_ssh_key_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                       label: pulumi.Input[Optional[_builtins.str]] = None,
+                       label: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeyResult]:
     """
-    `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+    `SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
     For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
 
     ## Example Usage
 
-    The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+    The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
 
     ```python
     import pulumi
     import pulumi_linode as linode
 
     foo = linode.get_ssh_key(label="foo")
+    bar = linode.get_ssh_key(id="1234567")
     ```
 
 
-    :param _builtins.str id: The ID of the SSH Key
-    :param _builtins.str label: The label of the SSH Key to select.
+    :param _builtins.str id: The ID of the SSH Key to select. When set, `label` is computed from the API response.
+    :param _builtins.str label: The label of the SSH Key to select. When set, `id` is computed from the API response.
     """
     __args__ = dict()
     __args__['id'] = id

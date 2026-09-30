@@ -146,6 +146,43 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * The following example requests a premium NodeBalancer that communicates with IPv6 backends.
+ * Backend connectivity requires the `v4beta` API version and may not be available to all accounts.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.NodeBalancer;
+ * import com.pulumi.linode.NodeBalancerArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ipv6 = new NodeBalancer("ipv6", NodeBalancerArgs.builder()
+ *             .label("ipv6-backends")
+ *             .region("us-east")
+ *             .type("premium")
+ *             .backendConnectivity("ipv6")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Linodes NodeBalancers can be imported using the Linode NodeBalancer `id`, e.g.
@@ -157,6 +194,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="linode:index/nodeBalancer:NodeBalancer")
 public class NodeBalancer extends com.pulumi.resources.CustomResource {
+    /**
+     * Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = &#34;v4beta&#34;` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     * 
+     */
+    @Export(name="backendConnectivity", refs={String.class}, tree="[0]")
+    private Output<String> backendConnectivity;
+
+    /**
+     * @return Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = &#34;v4beta&#34;` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
+     * 
+     */
+    public Output<String> backendConnectivity() {
+        return this.backendConnectivity;
+    }
+    /**
+     * The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     * 
+     */
+    @Export(name="backendIpv6Prefix", refs={String.class}, tree="[0]")
+    private Output<String> backendIpv6Prefix;
+
+    /**
+     * @return The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     * 
+     */
+    public Output<String> backendIpv6Prefix() {
+        return this.backendIpv6Prefix;
+    }
     /**
      * Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
      * 
@@ -346,6 +411,20 @@ public class NodeBalancer extends com.pulumi.resources.CustomResource {
      */
     public Output<List<NodeBalancerTransfer>> transfers() {
         return this.transfers;
+    }
+    /**
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     * 
+     */
+    @Export(name="type", refs={String.class}, tree="[0]")
+    private Output<String> type;
+
+    /**
+     * @return NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
     /**
      * When this firewall was last updated.

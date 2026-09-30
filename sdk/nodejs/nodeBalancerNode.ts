@@ -45,7 +45,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
     }
 
     /**
-     * The private IP Address where this backend can be reached. This must be a private IP address.
+     * The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
      *
      * ***
      */
@@ -139,7 +139,7 @@ export class NodeBalancerNode extends pulumi.CustomResource {
  */
 export interface NodeBalancerNodeState {
     /**
-     * The private IP Address where this backend can be reached. This must be a private IP address.
+     * The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
      *
      * ***
      */
@@ -183,7 +183,7 @@ export interface NodeBalancerNodeState {
  */
 export interface NodeBalancerNodeArgs {
     /**
-     * The private IP Address where this backend can be reached. This must be a private IP address.
+     * The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
      *
      * ***
      */

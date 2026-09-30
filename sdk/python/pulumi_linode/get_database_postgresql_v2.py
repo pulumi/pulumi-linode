@@ -973,9 +973,9 @@ def get_database_postgresql_v2(id: Optional[_builtins.str] = None,
 
     The following arguments are supported in the `updates` specification block:
 
-    * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+    * `day_of_week` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 
-    * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+    * `duration` - The maximum maintenance window time in hours. (`4`)
 
     * `frequency` - The frequency at which maintenance occurs. (`weekly`)
 
@@ -1108,9 +1108,9 @@ def get_database_postgresql_v2_output(id: pulumi.Input[Optional[_builtins.str]] 
 
     The following arguments are supported in the `updates` specification block:
 
-    * `day_of_week` - The day to perform maintenance. (`monday`, `tuesday`, ...)
+    * `day_of_week` - The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
 
-    * `duration` - The maximum maintenance window time in hours. (`1`..`3`)
+    * `duration` - The maximum maintenance window time in hours. (`4`)
 
     * `frequency` - The frequency at which maintenance occurs. (`weekly`)
 

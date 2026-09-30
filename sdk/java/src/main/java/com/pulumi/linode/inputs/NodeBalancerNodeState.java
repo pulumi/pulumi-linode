@@ -17,7 +17,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     public static final NodeBalancerNodeState Empty = new NodeBalancerNodeState();
 
     /**
-     * The private IP Address where this backend can be reached. This must be a private IP address.
+     * The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = &#34;ipv6&#34;` on the NodeBalancer.
      * 
      * ***
      * 
@@ -26,7 +26,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> address;
 
     /**
-     * @return The private IP Address where this backend can be reached. This must be a private IP address.
+     * @return The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = &#34;ipv6&#34;` on the NodeBalancer.
      * 
      * ***
      * 
@@ -188,7 +188,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param address The private IP Address where this backend can be reached. This must be a private IP address.
+         * @param address The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = &#34;ipv6&#34;` on the NodeBalancer.
          * 
          * ***
          * 
@@ -201,7 +201,7 @@ public final class NodeBalancerNodeState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param address The private IP Address where this backend can be reached. This must be a private IP address.
+         * @param address The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = &#34;ipv6&#34;` on the NodeBalancer.
          * 
          * ***
          * 

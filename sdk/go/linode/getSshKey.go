@@ -11,12 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// `SshKey` provides access to a specifically labeled SSH Key in the Profile of the User identified by the access token.
+// `SshKey` provides access to a specifically identified SSH Key in the Profile of the User identified by the access token.
 // For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-ssh-key).
 //
 // ## Example Usage
 //
-// The following example shows how the resource might be used to obtain the name of the SSH Key configured on the Linode user profile.
+// The following example shows how one might use this data source to access information about an SSH Key configured on the Linode user profile.
 //
 // ```go
 // package main
@@ -31,7 +31,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := linode.GetSshKey(ctx, &linode.LookupSshKeyArgs{
-//				Label: "foo",
+//				Label: pulumi.StringRef("foo"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = linode.GetSshKey(ctx, &linode.LookupSshKeyArgs{
+//				Id: pulumi.StringRef("1234567"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -53,19 +59,20 @@ func LookupSshKey(ctx *pulumi.Context, args *LookupSshKeyArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSshKey.
 type LookupSshKeyArgs struct {
-	// The ID of the SSH Key
+	// The ID of the SSH Key to select. When set, `label` is computed from the API response.
 	Id *string `pulumi:"id"`
-	// The label of the SSH Key to select.
-	Label string `pulumi:"label"`
+	// The label of the SSH Key to select. When set, `id` is computed from the API response.
+	Label *string `pulumi:"label"`
 }
 
 // A collection of values returned by getSshKey.
 type LookupSshKeyResult struct {
 	// The date this key was added.
 	Created string `pulumi:"created"`
-	// The ID of the SSH Key
-	Id    *string `pulumi:"id"`
-	Label string  `pulumi:"label"`
+	// The ID of the SSH Key. Computed when `label` is used as the selector.
+	Id string `pulumi:"id"`
+	// The label of the SSH Key. Computed when `id` is used as the selector.
+	Label string `pulumi:"label"`
 	// The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
 	SshKey string `pulumi:"sshKey"`
 }
@@ -77,10 +84,10 @@ func LookupSshKeyOutput(ctx *pulumi.Context, args LookupSshKeyOutputArgs, opts .
 
 // A collection of arguments for invoking getSshKey.
 type LookupSshKeyOutputArgs struct {
-	// The ID of the SSH Key
+	// The ID of the SSH Key to select. When set, `label` is computed from the API response.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The label of the SSH Key to select.
-	Label pulumi.StringInput `pulumi:"label"`
+	// The label of the SSH Key to select. When set, `id` is computed from the API response.
+	Label pulumi.StringPtrInput `pulumi:"label"`
 }
 
 func (LookupSshKeyOutputArgs) ElementType() reflect.Type {
@@ -107,11 +114,12 @@ func (o LookupSshKeyResultOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Created }).(pulumi.StringOutput)
 }
 
-// The ID of the SSH Key
-func (o LookupSshKeyResultOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSshKeyResult) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The ID of the SSH Key. Computed when `label` is used as the selector.
+func (o LookupSshKeyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The label of the SSH Key. Computed when `id` is used as the selector.
 func (o LookupSshKeyResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSshKeyResult) string { return v.Label }).(pulumi.StringOutput)
 }

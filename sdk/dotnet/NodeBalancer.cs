@@ -95,6 +95,28 @@ namespace Pulumi.Linode
     /// });
     /// ```
     /// 
+    /// The following example requests a premium NodeBalancer that communicates with IPv6 backends.
+    /// Backend connectivity requires the `V4beta` API version and may not be available to all accounts.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ipv6 = new Linode.NodeBalancer("ipv6", new()
+    ///     {
+    ///         Label = "ipv6-backends",
+    ///         Region = "us-east",
+    ///         Type = "premium",
+    ///         BackendConnectivity = "ipv6",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Linodes NodeBalancers can be imported using the Linode NodeBalancer `Id`, e.g.
@@ -106,6 +128,18 @@ namespace Pulumi.Linode
     [LinodeResourceType("linode:index/nodeBalancer:NodeBalancer")]
     public partial class NodeBalancer : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Backend communication mode: `Legacy` (private IPv4), `Ipv6`, or `Vpc`. Requires `ApiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `Undefined` if no mode, nodes, or VPCs were specified. `Undefined` is read-only and cannot be configured.
+        /// </summary>
+        [Output("backendConnectivity")]
+        public Output<string> BackendConnectivity { get; private set; } = null!;
+
+        /// <summary>
+        /// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        /// </summary>
+        [Output("backendIpv6Prefix")]
+        public Output<string> BackendIpv6Prefix { get; private set; } = null!;
+
         /// <summary>
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         /// </summary>
@@ -189,6 +223,12 @@ namespace Pulumi.Linode
         public Output<ImmutableArray<Outputs.NodeBalancerTransfer>> Transfers { get; private set; } = null!;
 
         /// <summary>
+        /// NodeBalancer plan type: `Common` (the API default), `Premium`, or `Enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
         /// When this firewall was last updated.
         /// </summary>
         [Output("updated")]
@@ -247,6 +287,12 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Backend communication mode: `Legacy` (private IPv4), `Ipv6`, or `Vpc`. Requires `ApiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `Undefined` if no mode, nodes, or VPCs were specified. `Undefined` is read-only and cannot be configured.
+        /// </summary>
+        [Input("backendConnectivity")]
+        public Input<string>? BackendConnectivity { get; set; }
+
+        /// <summary>
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         /// </summary>
         [Input("clientConnThrottle")]
@@ -298,6 +344,12 @@ namespace Pulumi.Linode
             set => _tags = value;
         }
 
+        /// <summary>
+        /// NodeBalancer plan type: `Common` (the API default), `Premium`, or `Enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         [Input("vpcs")]
         private InputList<Inputs.NodeBalancerVpcArgs>? _vpcs;
 
@@ -318,6 +370,18 @@ namespace Pulumi.Linode
 
     public sealed class NodeBalancerState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Backend communication mode: `Legacy` (private IPv4), `Ipv6`, or `Vpc`. Requires `ApiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `Undefined` if no mode, nodes, or VPCs were specified. `Undefined` is read-only and cannot be configured.
+        /// </summary>
+        [Input("backendConnectivity")]
+        public Input<string>? BackendConnectivity { get; set; }
+
+        /// <summary>
+        /// The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+        /// </summary>
+        [Input("backendIpv6Prefix")]
+        public Input<string>? BackendIpv6Prefix { get; set; }
+
         /// <summary>
         /// Throttle connections per second (0-20). Set to 0 (default) to disable throttling.
         /// </summary>
@@ -423,6 +487,12 @@ namespace Pulumi.Linode
             get => _transfers ?? (_transfers = new InputList<Inputs.NodeBalancerTransferGetArgs>());
             set => _transfers = value;
         }
+
+        /// <summary>
+        /// NodeBalancer plan type: `Common` (the API default), `Premium`, or `Enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// When this firewall was last updated.

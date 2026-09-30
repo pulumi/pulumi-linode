@@ -25,7 +25,7 @@ namespace Pulumi.Linode
     public partial class NodeBalancerNode : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The private IP Address where this backend can be reached. This must be a private IP address.
+        /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `BackendConnectivity = "ipv6"` on the NodeBalancer.
         /// 
         /// - - -
         /// </summary>
@@ -127,7 +127,7 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerNodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The private IP Address where this backend can be reached. This must be a private IP address.
+        /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `BackendConnectivity = "ipv6"` on the NodeBalancer.
         /// 
         /// - - -
         /// </summary>
@@ -179,7 +179,7 @@ namespace Pulumi.Linode
     public sealed class NodeBalancerNodeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The private IP Address where this backend can be reached. This must be a private IP address.
+        /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `BackendConnectivity = "ipv6"` on the NodeBalancer.
         /// 
         /// - - -
         /// </summary>

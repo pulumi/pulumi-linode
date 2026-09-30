@@ -70,6 +70,10 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly string OldestRestoreTime;
         /// <summary>
+        /// The back-end platform for relational databases used by the service.
+        /// </summary>
+        public readonly string Platform;
+        /// <summary>
         /// Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
         /// </summary>
         public readonly Outputs.GetDatabasesDatabasePrivateNetworkResult PrivateNetwork;
@@ -124,6 +128,8 @@ namespace Pulumi.Linode.Outputs
 
             string oldestRestoreTime,
 
+            string platform,
+
             Outputs.GetDatabasesDatabasePrivateNetworkResult privateNetwork,
 
             string region,
@@ -150,6 +156,7 @@ namespace Pulumi.Linode.Outputs
             InstanceUri = instanceUri;
             Label = label;
             OldestRestoreTime = oldestRestoreTime;
+            Platform = platform;
             PrivateNetwork = privateNetwork;
             Region = region;
             Status = status;

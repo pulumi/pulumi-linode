@@ -25,7 +25,7 @@ import (
 type NodeBalancerNode struct {
 	pulumi.CustomResourceState
 
-	// The private IP Address where this backend can be reached. This must be a private IP address.
+	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 	//
 	// ***
 	Address pulumi.StringOutput `pulumi:"address"`
@@ -89,7 +89,7 @@ func GetNodeBalancerNode(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodeBalancerNode resources.
 type nodeBalancerNodeState struct {
-	// The private IP Address where this backend can be reached. This must be a private IP address.
+	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 	//
 	// ***
 	Address *string `pulumi:"address"`
@@ -112,7 +112,7 @@ type nodeBalancerNodeState struct {
 }
 
 type NodeBalancerNodeState struct {
-	// The private IP Address where this backend can be reached. This must be a private IP address.
+	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 	//
 	// ***
 	Address pulumi.StringPtrInput
@@ -139,7 +139,7 @@ func (NodeBalancerNodeState) ElementType() reflect.Type {
 }
 
 type nodeBalancerNodeArgs struct {
-	// The private IP Address where this backend can be reached. This must be a private IP address.
+	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 	//
 	// ***
 	Address string `pulumi:"address"`
@@ -159,7 +159,7 @@ type nodeBalancerNodeArgs struct {
 
 // The set of arguments for constructing a NodeBalancerNode resource.
 type NodeBalancerNodeArgs struct {
-	// The private IP Address where this backend can be reached. This must be a private IP address.
+	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 	//
 	// ***
 	Address pulumi.StringInput
@@ -264,7 +264,7 @@ func (o NodeBalancerNodeOutput) ToNodeBalancerNodeOutputWithContext(ctx context.
 	return o
 }
 
-// The private IP Address where this backend can be reached. This must be a private IP address.
+// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 //
 // ***
 func (o NodeBalancerNodeOutput) Address() pulumi.StringOutput {

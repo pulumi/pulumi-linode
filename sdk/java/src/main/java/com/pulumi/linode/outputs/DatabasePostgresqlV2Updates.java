@@ -18,7 +18,7 @@ public final class DatabasePostgresqlV2Updates {
      */
     private @Nullable Integer dayOfWeek;
     /**
-     * @return The maximum maintenance window time in hours.
+     * @return The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     private @Nullable Integer duration;
@@ -42,7 +42,7 @@ public final class DatabasePostgresqlV2Updates {
         return Optional.ofNullable(this.dayOfWeek);
     }
     /**
-     * @return The maximum maintenance window time in hours.
+     * @return The maximum maintenance window time in hours. Currently can only be 4.
      * 
      */
     public Optional<Integer> duration() {

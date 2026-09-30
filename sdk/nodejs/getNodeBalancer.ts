@@ -43,6 +43,14 @@ export interface GetNodeBalancerArgs {
  */
 export interface GetNodeBalancerResult {
     /**
+     * The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+     */
+    readonly backendConnectivity: string;
+    /**
+     * The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     */
+    readonly backendIpv6Prefix: string;
+    /**
      * Throttle connections per second (0-20).
      */
     readonly clientConnThrottle: number;
@@ -85,6 +93,10 @@ export interface GetNodeBalancerResult {
      */
     readonly tags: string[];
     readonly transfers: outputs.GetNodeBalancerTransfer[];
+    /**
+     * The type of the related LKE cluster.
+     */
+    readonly type: string;
     /**
      * When this firewall was last updated.
      */

@@ -22,6 +22,7 @@ from .get_account_availability import *
 from .get_account_login import *
 from .get_account_logins import *
 from .get_account_settings import *
+from .get_account_transfer import *
 from .get_child_account import *
 from .get_child_accounts import *
 from .get_consumer_image_share_group import *

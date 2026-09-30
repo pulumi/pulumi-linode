@@ -56,7 +56,7 @@ export interface DatabaseMysqlV2Updates {
      */
     dayOfWeek: number;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration: number;
     /**
@@ -120,7 +120,7 @@ export interface DatabasePostgresqlV2Updates {
      */
     dayOfWeek: number;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration: number;
     /**
@@ -307,6 +307,25 @@ export interface GetAccountLoginsLogin {
      * The username of the User that was logged into.
      */
     username: string;
+}
+
+export interface GetAccountTransferRegionTransfer {
+    /**
+     * The amount of your transfer pool that is billable this billing cycle for this Region.
+     */
+    billable: number;
+    /**
+     * The Region ID for this network utilization data.
+     */
+    id: string;
+    /**
+     * The amount of network usage allowed this billing cycle for this Region.
+     */
+    quota: number;
+    /**
+     * The amount of network usage you have used this billing cycle for this Region.
+     */
+    used: number;
 }
 
 export interface GetChildAccountsChildAccount {
@@ -900,7 +919,7 @@ export interface GetDatabaseMysqlV2Updates {
      */
     dayOfWeek: number;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration: number;
     /**
@@ -985,7 +1004,7 @@ export interface GetDatabasePostgresqlV2Updates {
      */
     dayOfWeek: number;
     /**
-     * The maximum maintenance window time in hours.
+     * The maximum maintenance window time in hours. Currently can only be 4.
      */
     duration: number;
     /**
@@ -1057,6 +1076,10 @@ export interface GetDatabasesDatabase {
      * The oldest time to which a database can be restored.
      */
     oldestRestoreTime: string;
+    /**
+     * The back-end platform for relational databases used by the service.
+     */
+    platform: string;
     /**
      * Restricts access to this database using a virtual private cloud (VPC) that you've configured in the region where the database will live.
      */
@@ -6449,6 +6472,14 @@ export interface GetNodebalancersFilter {
 
 export interface GetNodebalancersNodebalancer {
     /**
+     * The backend communication mode (`legacy`, `ipv6`, `vpc`, or `undefined` if not specified).
+     */
+    backendConnectivity: string;
+    /**
+     * The /96 IPv6 source range used when this NodeBalancer connects to backends. Null if no backend IPv6 prefix is assigned.
+     */
+    backendIpv6Prefix: string;
+    /**
      * Throttle connections per second (0-20)
      */
     clientConnThrottle: number;
@@ -6496,6 +6527,10 @@ export interface GetNodebalancersNodebalancer {
      * Information about the amount of transfer this NodeBalancer has had so far this month.
      */
     transfers: outputs.GetNodebalancersNodebalancerTransfer[];
+    /**
+     * The type of the related LKE cluster.
+     */
+    type: string;
     /**
      * When this Linode NodeBalancer was last updated
      */
@@ -7263,7 +7298,7 @@ export interface GetSshkeysSshkey {
     /**
      * The ID of the SSH Key.
      */
-    id?: string;
+    id: string;
     /**
      * The label of the SSH Key.
      */
@@ -11204,7 +11239,7 @@ export interface NodeBalancerLkeCluster {
      */
     label: string;
     /**
-     * The type of the related LKE cluster.
+     * NodeBalancer plan type: `common` (the API default), `premium`, or `enterprise`. Availability depends on the account and region. Changing this value replaces the NodeBalancer.
      */
     type: string;
     /**

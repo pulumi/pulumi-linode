@@ -7,8 +7,6 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetSshkeysSshkey {
@@ -21,7 +19,7 @@ public final class GetSshkeysSshkey {
      * @return The ID of the SSH Key.
      * 
      */
-    private @Nullable String id;
+    private String id;
     /**
      * @return The label of the SSH Key.
      * 
@@ -45,8 +43,8 @@ public final class GetSshkeysSshkey {
      * @return The ID of the SSH Key.
      * 
      */
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    public String id() {
+        return this.id;
     }
     /**
      * @return The label of the SSH Key.
@@ -73,7 +71,7 @@ public final class GetSshkeysSshkey {
     @CustomType.Builder
     public static final class Builder {
         private String created;
-        private @Nullable String id;
+        private String id;
         private String label;
         private String sshKey;
         public Builder() {}
@@ -94,8 +92,10 @@ public final class GetSshkeysSshkey {
             return this;
         }
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-
+        public Builder id(String id) {
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSshkeysSshkey", "id");
+            }
             this.id = id;
             return this;
         }

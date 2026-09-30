@@ -85,6 +85,11 @@ export const getAccountSettings: typeof import("./getAccountSettings").getAccoun
 export const getAccountSettingsOutput: typeof import("./getAccountSettings").getAccountSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountSettings","getAccountSettingsOutput"], () => require("./getAccountSettings"));
 
+export { GetAccountTransferResult } from "./getAccountTransfer";
+export const getAccountTransfer: typeof import("./getAccountTransfer").getAccountTransfer = null as any;
+export const getAccountTransferOutput: typeof import("./getAccountTransfer").getAccountTransferOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountTransfer","getAccountTransferOutput"], () => require("./getAccountTransfer"));
+
 export { GetChildAccountArgs, GetChildAccountResult, GetChildAccountOutputArgs } from "./getChildAccount";
 export const getChildAccount: typeof import("./getChildAccount").getChildAccount = null as any;
 export const getChildAccountOutput: typeof import("./getChildAccount").getChildAccountOutput = null as any;

@@ -193,9 +193,9 @@ namespace Pulumi.Linode
     /// 
     /// The following arguments are supported in the `Updates` specification block:
     /// 
-    /// * `DayOfWeek` - (Required) The day to perform maintenance. (`Monday`, `Tuesday`, ...)
+    /// * `DayOfWeek` - (Required) The numeric reference for the day of the week to perform maintenance. 1 is Monday, 2 is Tuesday, through to 7 which is Sunday.
     /// 
-    /// * `Duration` - (Required) The maximum maintenance window time in hours. (`1`..`3`)
+    /// * `Duration` - (Required) The maximum maintenance window time in hours. (`4`)
     /// 
     /// * `Frequency` - (Required) The frequency at which maintenance occurs. (`Weekly`)
     /// 

@@ -71,6 +71,10 @@ import (
 // * `region`
 //
 // * `clientConnThrottle`
+//
+// * `type` (client-side)
+//
+// * `backendConnectivity` (client-side)
 func GetNodebalancers(ctx *pulumi.Context, args *GetNodebalancersArgs, opts ...pulumi.InvokeOption) (*GetNodebalancersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNodebalancersResult
