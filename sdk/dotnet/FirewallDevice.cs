@@ -59,8 +59,8 @@ namespace Pulumi.Linode
     /// 
     ///     var myDevice = new Linode.FirewallDevice("my_device", new()
     ///     {
-    ///         FirewallId = myFirewall.Id,
-    ///         EntityId = myInstance.Id,
+    ///         FirewallId = myFirewall.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         EntityId = myInstance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const example = linode.getMonitorLogsStreamHistory({
  *     streamId: 12345,
  * });
- * export const historyCount = example.then(example => example.streams).length;
+ * export const historyCount = example.then(example => example.streams.length);
  * ```
  */
 export function getMonitorLogsStreamHistory(args: GetMonitorLogsStreamHistoryArgs, opts?: pulumi.InvokeOptions): Promise<GetMonitorLogsStreamHistoryResult> {
@@ -66,7 +66,7 @@ export interface GetMonitorLogsStreamHistoryResult {
  * const example = linode.getMonitorLogsStreamHistory({
  *     streamId: 12345,
  * });
- * export const historyCount = example.then(example => example.streams).length;
+ * export const historyCount = example.then(example => example.streams.length);
  * ```
  */
 export function getMonitorLogsStreamHistoryOutput(args: GetMonitorLogsStreamHistoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitorLogsStreamHistoryResult> {

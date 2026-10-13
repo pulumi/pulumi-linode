@@ -362,7 +362,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
         import pulumi_linode as linode
 
         example = linode.ReservedIpAssignment("example",
-            linode_id=int(example_linode_instance["id"]),
+            linode_id=example_linode_instance["id"],
             address=reserved["address"],
             public=True)
         ```
@@ -394,7 +394,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
         import pulumi_linode as linode
 
         example = linode.ReservedIpAssignment("example",
-            linode_id=int(example_linode_instance["id"]),
+            linode_id=example_linode_instance["id"],
             address=reserved["address"],
             public=True)
         ```

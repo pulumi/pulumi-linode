@@ -41,7 +41,7 @@ namespace Pulumi.Linode
     /// 
     ///     var my_access = new Linode.DatabaseAccessControls("my-access", new()
     ///     {
-    ///         DatabaseId = my_db.Id,
+    ///         DatabaseId = my_db.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         DatabaseType = "mysql",
     ///         AllowLists = new[]
     ///         {

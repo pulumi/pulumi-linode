@@ -110,7 +110,7 @@ import javax.annotation.Nullable;
  *         var lkeExample = new MonitorLogsStream("lkeExample", MonitorLogsStreamArgs.builder()
  *             .label("my-lke-stream")
  *             .type("lke_audit_logs")
- *             .destinations(destination.id())
+ *             .destinations(destination.get("id"))
  *             .details(MonitorLogsStreamDetailsArgs.builder()
  *                 .clusterIds(                
  *                     12345,

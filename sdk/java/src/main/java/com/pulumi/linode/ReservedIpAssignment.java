@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ReservedIpAssignment("example", ReservedIpAssignmentArgs.builder()
- *             .linodeId(exampleLinodeInstance.id())
- *             .address(reserved.address())
+ *             .linodeId(exampleLinodeInstance.get("id"))
+ *             .address(reserved.get("address"))
  *             .public_(true)
  *             .build());
  * 

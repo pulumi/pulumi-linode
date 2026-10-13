@@ -35,7 +35,7 @@ namespace Pulumi.Linode
     /// 
     ///     var foobarIpv6Range = new Linode.Ipv6Range("foobar", new()
     ///     {
-    ///         LinodeId = foobar.Id,
+    ///         LinodeId = foobar.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         PrefixLength = 64,
     ///     });
     /// 

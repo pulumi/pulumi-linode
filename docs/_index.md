@@ -164,7 +164,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     linode = {
       source = "pulumi/linode"
@@ -174,6 +174,9 @@ pulumi {
 
 # Create a Linode
 resource "linode_instance" "foobar" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 

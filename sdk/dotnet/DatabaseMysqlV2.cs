@@ -104,7 +104,7 @@ namespace Pulumi.Linode
     ///         EngineConfigBinlogRetentionPeriod = 3600,
     ///         EngineConfigMysqlConnectTimeout = 10,
     ///         EngineConfigMysqlDefaultTimeZone = "+00:00",
-    ///         EngineConfigMysqlGroupConcatMaxLen = 4096,
+    ///         EngineConfigMysqlGroupConcatMaxLen = 4096.0,
     ///         EngineConfigMysqlInformationSchemaStatsExpiry = 3600,
     ///         EngineConfigMysqlInnodbChangeBufferMaxSize = 25,
     ///         EngineConfigMysqlInnodbFlushNeighbors = 0,

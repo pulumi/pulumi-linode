@@ -41,7 +41,7 @@ namespace Pulumi.Linode
     ///     {
     ///         Label = "foo-volume",
     ///         Region = foobaz.Region,
-    ///         LinodeId = foobaz.Id,
+    ///         LinodeId = foobaz.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });
@@ -65,7 +65,7 @@ namespace Pulumi.Linode
     /// 
     ///     var fooInstanceConfig = new Linode.InstanceConfig("foo", new()
     ///     {
-    ///         LinodeId = foo.Id,
+    ///         LinodeId = foo.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Label = "boot-existing-volume",
     ///         Kernel = "linode/grub2",
     ///         Devices = new[]

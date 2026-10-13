@@ -40,7 +40,7 @@ namespace Pulumi.Linode
     ///     // Allocate an IP under the primary node
     ///     var primary = new Linode.InstanceIp("primary", new()
     ///     {
-    ///         LinodeId = primaryInstance.Id,
+    ///         LinodeId = primaryInstance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     ///     // Create a secondary node
@@ -54,7 +54,7 @@ namespace Pulumi.Linode
     ///     // Share the IP with the secondary node
     ///     var share_primary = new Linode.InstanceSharedIps("share-primary", new()
     ///     {
-    ///         LinodeId = secondary.Id,
+    ///         LinodeId = secondary.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Addresses = new[]
     ///         {
     ///             primary.Address,

@@ -403,7 +403,7 @@ namespace Pulumi.Linode
     /// 
     ///     var my_pool = new Linode.LkeNodePool("my-pool", new()
     ///     {
-    ///         ClusterId = my_cluster.Id,
+    ///         ClusterId = my_cluster.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Type = "g6-standard-2",
     ///         NodeCount = 3,
     ///         Tags = new[]

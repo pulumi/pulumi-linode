@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
  *             .label("boot")
  *             .linodeId(my_instance.id())
- *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
+ *             .size(my_instance.specs().applyValue(_specs -> _specs.get(0).disk()))
  *             .image("linode/ubuntu22.04")
  *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")
  *             .build());
@@ -142,7 +142,7 @@ import javax.annotation.Nullable;
  *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
  *             .label("boot")
  *             .linodeId(my_instance.id())
- *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
+ *             .size(my_instance.specs().applyValue(_specs -> _specs.get(0).disk()))
  *             .image("linode/ubuntu22.04")
  *             .rootPass("myc00lpass!")
  *             .authorizedKeys("ssh-rsa AAAA...Gw== user}{@literal @}{@code example.local")

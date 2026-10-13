@@ -34,7 +34,7 @@ namespace Pulumi.Linode
     /// 
     ///     var foobarDomainRecord = new Linode.DomainRecord("foobar", new()
     ///     {
-    ///         DomainId = foobar.Id,
+    ///         DomainId = foobar.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Name = "www",
     ///         RecordType = "CNAME",
     ///         Target = "foobar.example",

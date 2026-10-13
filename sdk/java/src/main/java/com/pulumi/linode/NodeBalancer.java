@@ -93,7 +93,7 @@ import javax.annotation.Nullable;
  *             .label("mynodebalancer")
  *             .region("us-mia")
  *             .vpcs(NodeBalancerVpcArgs.builder()
- *                 .subnetId(test.id())
+ *                 .subnetId(test.get("id"))
  *                 .build())
  *             .build());
  * 

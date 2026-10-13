@@ -32,7 +32,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["historyCount"] = example.Apply(getMonitorLogsStreamHistoryResult =&gt; getMonitorLogsStreamHistoryResult.Streams).Length(),
+        ///         ["historyCount"] = example.Apply(getMonitorLogsStreamHistoryResult =&gt; getMonitorLogsStreamHistoryResult.Streams).Length,
         ///     };
         /// });
         /// ```
@@ -61,7 +61,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["historyCount"] = example.Apply(getMonitorLogsStreamHistoryResult =&gt; getMonitorLogsStreamHistoryResult.Streams).Length(),
+        ///         ["historyCount"] = example.Apply(getMonitorLogsStreamHistoryResult =&gt; getMonitorLogsStreamHistoryResult.Streams).Length,
         ///     };
         /// });
         /// ```
@@ -90,7 +90,7 @@ namespace Pulumi.Linode
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["historyCount"] = example.Apply(getMonitorLogsStreamHistoryResult =&gt; getMonitorLogsStreamHistoryResult.Streams).Length(),
+        ///         ["historyCount"] = example.Apply(getMonitorLogsStreamHistoryResult =&gt; getMonitorLogsStreamHistoryResult.Streams).Length,
         ///     };
         /// });
         /// ```

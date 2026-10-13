@@ -63,7 +63,7 @@ namespace Pulumi.Linode
     ///                     },
     ///                     Metric = "memory_usage",
     ///                     Operator = "gt",
-    ///                     Threshold = 90,
+    ///                     Threshold = 90.0,
     ///                 },
     ///             },
     ///         },

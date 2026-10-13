@@ -53,7 +53,7 @@ namespace Pulumi.Linode
     ///             "...",
     ///         },
     ///         RootPass = "...",
-    ///         StackscriptId = foo.Id,
+    ///         StackscriptId = foo.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         StackscriptData = 
     ///         {
     ///             { "package", "nginx" },

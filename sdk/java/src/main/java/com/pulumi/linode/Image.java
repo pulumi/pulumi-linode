@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         var bar = new Image("bar", ImageArgs.builder()
  *             .label("foo-sda-image")
  *             .description("Image taken from foo")
- *             .diskId(foo.disks().applyValue(_disks -> _disks[0].id()))
+ *             .diskId(foo.disks().applyValue(_disks -> _disks.get(0).id()))
  *             .linodeId(foo.id())
  *             .tags(            
  *                 "image-tag",

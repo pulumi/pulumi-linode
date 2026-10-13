@@ -37,7 +37,7 @@ namespace Pulumi.Linode
     ///         Label = "foo-sda-image",
     ///         Description = "Image taken from foo",
     ///         DiskId = foo.Disks.Apply(disks =&gt; disks[0].Id),
-    ///         LinodeId = foo.Id,
+    ///         LinodeId = foo.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Tags = new[]
     ///         {
     ///             "image-tag",
