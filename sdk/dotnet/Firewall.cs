@@ -106,7 +106,7 @@ namespace Pulumi.Linode
     ///         OutboundPolicy = "ACCEPT",
     ///         Linodes = new[]
     ///         {
-    ///             myInstance.Id,
+    ///             myInstance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         },
     ///     });
     /// 

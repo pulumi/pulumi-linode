@@ -162,7 +162,7 @@ namespace Pulumi.Linode
     ///     var bootDisk = new Linode.InstanceDisk("boot_disk", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = web.Id,
+    ///         LinodeId = web.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = 3000,
     ///         Image = "linode/ubuntu22.04",
     ///         AuthorizedKeys = new[]
@@ -179,7 +179,7 @@ namespace Pulumi.Linode
     ///     var bootConfig = new Linode.InstanceConfig("boot_config", new()
     ///     {
     ///         Label = "boot_config",
-    ///         LinodeId = web.Id,
+    ///         LinodeId = web.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Devices = new[]
     ///         {
     ///             

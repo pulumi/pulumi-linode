@@ -37,7 +37,7 @@ namespace Pulumi.Linode
     /// 
     ///     var my_lock = new Linode.Lock("my-lock", new()
     ///     {
-    ///         EntityId = my_inst.Id,
+    ///         EntityId = my_inst.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         EntityType = "linode",
     ///         LockType = "cannot_delete",
     ///     });
@@ -61,7 +61,7 @@ namespace Pulumi.Linode
     /// 
     ///     var my_lock = new Linode.Lock("my-lock", new()
     ///     {
-    ///         EntityId = my_inst.Id,
+    ///         EntityId = my_inst.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         EntityType = "linode",
     ///         LockType = "cannot_delete_with_subresources",
     ///     });

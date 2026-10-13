@@ -34,7 +34,7 @@ namespace Pulumi.Linode
     /// 
     ///     var foofig = new Linode.NodeBalancerConfig("foofig", new()
     ///     {
-    ///         NodebalancerId = foobar.Id,
+    ///         NodebalancerId = foobar.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Port = 8088,
     ///         Protocol = "http",
     ///         Check = "http",

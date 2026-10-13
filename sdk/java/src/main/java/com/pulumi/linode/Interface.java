@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var public_ = new Interface("public", InterfaceArgs.builder()
- *             .linodeId(my_instance.id())
+ *             .linodeId(my_instance.get("id"))
  *             .public_(InterfacePublicArgs.builder()
  *                 .ipv4(InterfacePublicIpv4Args.builder()
  *                     .addresses(InterfacePublicIpv4AddressArgs.builder()
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ipv6Only = new Interface("ipv6Only", InterfaceArgs.builder()
- *             .linodeId(my_instance.id())
+ *             .linodeId(my_instance.get("id"))
  *             .public_(InterfacePublicArgs.builder()
  *                 .ipv4(InterfacePublicIpv4Args.builder()
  *                     .addresses()
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vpc = new Interface("vpc", InterfaceArgs.builder()
- *             .linodeId(my_instance.id())
+ *             .linodeId(my_instance.get("id"))
  *             .vpc(InterfaceVpcArgs.builder()
  *                 .subnetId(240213)
  *                 .ipv4(InterfaceVpcIpv4Args.builder()
@@ -213,7 +213,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vpc = new Interface("vpc", InterfaceArgs.builder()
- *             .linodeId(my_instance.id())
+ *             .linodeId(my_instance.get("id"))
  *             .vpc(InterfaceVpcArgs.builder()
  *                 .subnetId(12345)
  *                 .ipv6(InterfaceVpcIpv6Args.builder()
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var vlan = new Interface("vlan", InterfaceArgs.builder()
- *             .linodeId(web.id())
+ *             .linodeId(web.get("id"))
  *             .vlan(InterfaceVlanArgs.builder()
  *                 .vlanLabel("web-vlan")
  *                 .ipamAddress("192.168.200.5/24")
@@ -319,7 +319,7 @@ import javax.annotation.Nullable;
  *         var boot = new InstanceDisk("boot", InstanceDiskArgs.builder()
  *             .label("boot")
  *             .linodeId(my_instance.id())
- *             .size(my_instance.specs().applyValue(_specs -> _specs[0].disk()))
+ *             .size(my_instance.specs().applyValue(_specs -> _specs.get(0).disk()))
  *             .image("linode/debian12")
  *             .rootPass("this-is-NOT-a-safe-password")
  *             .build());

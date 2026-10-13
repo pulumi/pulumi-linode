@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  *             .region("us-mia")
  *             .assignments(            
  *                 NetworkingIpAssignmentAssignmentArgs.builder()
- *                     .address(reservedIp1.address())
- *                     .linodeId(terraform_web1.id())
+ *                     .address(reservedIp1.get("address"))
+ *                     .linodeId(terraform_web1.get("id"))
  *                     .build(),
  *                 NetworkingIpAssignmentAssignmentArgs.builder()
- *                     .address(reservedIp2.address())
- *                     .linodeId(terraform_web2.id())
+ *                     .address(reservedIp2.get("address"))
+ *                     .linodeId(terraform_web2.get("id"))
  *                     .build())
  *             .build());
  * 

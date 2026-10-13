@@ -56,7 +56,7 @@ namespace Pulumi.Linode
     ///     // NOTE: IPv6 VPCs may not currently be available to all users.
     ///     var test = new Linode.VpcSubnet("test", new()
     ///     {
-    ///         VpcId = testVpc.Id,
+    ///         VpcId = testVpc.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Label = "test-subnet",
     ///         Ipv4 = "10.0.0.0/24",
     ///         Ipv6s = new[]

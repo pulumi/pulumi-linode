@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const _public = new linode.Interface("public", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: my_instance.id,
  *     "public": {
  *         ipv4: {
  *             addresses: [{
@@ -52,7 +52,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const ipv6Only = new linode.Interface("ipv6_only", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: my_instance.id,
  *     "public": {
  *         ipv4: {
  *             addresses: [],
@@ -75,7 +75,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: my_instance.id,
  *     vpc: {
  *         subnetId: 240213,
  *         ipv4: {
@@ -99,7 +99,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vpc = new linode.Interface("vpc", {
- *     linodeId: Number(my_instance.id),
+ *     linodeId: my_instance.id,
  *     vpc: {
  *         subnetId: 12345,
  *         ipv6: {
@@ -124,7 +124,7 @@ import * as utilities from "./utilities";
  * import * as linode from "@pulumi/linode";
  *
  * const vlan = new linode.Interface("vlan", {
- *     linodeId: Number(web.id),
+ *     linodeId: web.id,
  *     vlan: {
  *         vlanLabel: "web-vlan",
  *         ipamAddress: "192.168.200.5/24",

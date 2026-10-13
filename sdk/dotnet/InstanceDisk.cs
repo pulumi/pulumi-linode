@@ -35,7 +35,7 @@ namespace Pulumi.Linode
     ///     var boot = new Linode.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = 512,
     ///         Filesystem = "ext4",
     ///     });
@@ -60,7 +60,7 @@ namespace Pulumi.Linode
     ///     var boot = new Linode.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
     ///         Image = "linode/ubuntu22.04",
     ///         AuthorizedKeys = new[]
@@ -89,7 +89,7 @@ namespace Pulumi.Linode
     ///     var boot = new Linode.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
     ///         Image = "linode/ubuntu22.04",
     ///         RootPass = "myc00lpass!",

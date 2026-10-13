@@ -38,7 +38,7 @@ import * as utilities from "./utilities";
  *     label: "mynodebalancer",
  *     region: "us-mia",
  *     vpcs: [{
- *         subnetId: Number(test.id),
+ *         subnetId: test.id,
  *     }],
  * });
  * ```

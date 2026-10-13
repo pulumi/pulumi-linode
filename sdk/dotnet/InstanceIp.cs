@@ -37,7 +37,7 @@ namespace Pulumi.Linode
     /// 
     ///     var fooInstanceIp = new Linode.InstanceIp("foo", new()
     ///     {
-    ///         LinodeId = foo.Id,
+    ///         LinodeId = foo.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Public = true,
     ///     });
     /// 

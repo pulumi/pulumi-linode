@@ -39,7 +39,7 @@ namespace Pulumi.Linode
     ///     var boot = new Linode.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
     ///         Image = "linode/ubuntu22.04",
     ///         RootPass = "myc00lpass!",
@@ -47,7 +47,7 @@ namespace Pulumi.Linode
     /// 
     ///     var my_config = new Linode.InstanceConfig("my-config", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Label = "my-config",
     ///         Devices = new[]
     ///         {
@@ -80,7 +80,7 @@ namespace Pulumi.Linode
     /// 
     ///     var foobarVpcSubnet = new Linode.VpcSubnet("foobar", new()
     ///     {
-    ///         VpcId = foobar.Id,
+    ///         VpcId = foobar.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Label = "my-subnet",
     ///         Ipv4 = "10.0.4.0/24",
     ///     });
@@ -96,8 +96,8 @@ namespace Pulumi.Linode
     ///     var boot = new Linode.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = my_instance.Id,
-    ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk - 512),
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         Size = my_instance.Specs.Apply(specs =&gt; (double)specs[0].Disk - 512.0).Apply(x =&gt; (int)x),
     ///         Image = "linode/ubuntu22.04",
     ///         RootPass = "myc00lpass!ciuw23asxbviwuc",
     ///     });
@@ -106,14 +106,14 @@ namespace Pulumi.Linode
     ///     var swap = new Linode.InstanceDisk("swap", new()
     ///     {
     ///         Label = "swap",
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = 512,
     ///         Filesystem = "swap",
     ///     });
     /// 
     ///     var my_config = new Linode.InstanceConfig("my-config", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Label = "my-config",
     ///         Devices = new[]
     ///         {
@@ -150,7 +150,7 @@ namespace Pulumi.Linode
     ///             new Linode.Inputs.InstanceConfigInterfaceArgs
     ///             {
     ///                 Purpose = "vpc",
-    ///                 SubnetId = foobarVpcSubnet.Id,
+    ///                 SubnetId = foobarVpcSubnet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///                 Ipv4 = new Linode.Inputs.InstanceConfigInterfaceIpv4Args
     ///                 {
     ///                     Vpc = "10.0.4.250",

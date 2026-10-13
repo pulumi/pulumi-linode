@@ -112,7 +112,7 @@ namespace Pulumi.Linode
     ///         EngineConfigPgBgwriterDelay = 1000,
     ///         EngineConfigPgBgwriterFlushAfter = 512,
     ///         EngineConfigPgBgwriterLruMaxpages = 100,
-    ///         EngineConfigPgBgwriterLruMultiplier = 2,
+    ///         EngineConfigPgBgwriterLruMultiplier = 2.0,
     ///         EngineConfigPgDeadlockTimeout = 1000,
     ///         EngineConfigPgDefaultToastCompression = "pglz",
     ///         EngineConfigPgIdleInTransactionSessionTimeout = 60000,
@@ -146,7 +146,7 @@ namespace Pulumi.Linode
     ///         EngineConfigPgWalWriterDelay = 200,
     ///         EngineConfigPgStatMonitorEnable = true,
     ///         EngineConfigPglookoutMaxFailoverReplicationTimeLag = 10000,
-    ///         EngineConfigSharedBuffersPercentage = 25,
+    ///         EngineConfigSharedBuffersPercentage = 25.0,
     ///         EngineConfigWorkMem = 400,
     ///     });
     /// 

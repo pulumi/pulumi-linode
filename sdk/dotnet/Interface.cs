@@ -230,7 +230,7 @@ namespace Pulumi.Linode
     ///     var boot = new Linode.InstanceDisk("boot", new()
     ///     {
     ///         Label = "boot",
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Size = my_instance.Specs.Apply(specs =&gt; specs[0].Disk),
     ///         Image = "linode/debian12",
     ///         RootPass = "this-is-NOT-a-safe-password",
@@ -238,7 +238,7 @@ namespace Pulumi.Linode
     /// 
     ///     var @public = new Linode.Interface("public", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Public = new Linode.Inputs.InterfacePublicArgs
     ///         {
     ///             Ipv4 = new Linode.Inputs.InterfacePublicIpv4Args
@@ -267,7 +267,7 @@ namespace Pulumi.Linode
     /// 
     ///     var my_config = new Linode.InstanceConfig("my-config", new()
     ///     {
-    ///         LinodeId = my_instance.Id,
+    ///         LinodeId = my_instance.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         Label = "my-config",
     ///         Devices = new[]
     ///         {

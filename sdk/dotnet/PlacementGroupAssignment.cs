@@ -58,8 +58,8 @@ namespace Pulumi.Linode
     /// 
     ///     var my_assignment = new Linode.PlacementGroupAssignment("my-assignment", new()
     ///     {
-    ///         PlacementGroupId = my_pg.Id,
-    ///         LinodeId = my_inst.Id,
+    ///         PlacementGroupId = my_pg.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         LinodeId = my_inst.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

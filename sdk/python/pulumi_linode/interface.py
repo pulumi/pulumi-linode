@@ -293,7 +293,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         public = linode.Interface("public",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             public={
                 "ipv4": {
                     "addresses": [{
@@ -318,7 +318,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         ipv6_only = linode.Interface("ipv6_only",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             public={
                 "ipv4": {
                     "addresses": [],
@@ -340,7 +340,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             vpc={
                 "subnet_id": 240213,
                 "ipv4": {
@@ -363,7 +363,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             vpc={
                 "subnet_id": 12345,
                 "ipv6": {
@@ -387,7 +387,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vlan = linode.Interface("vlan",
-            linode_id=int(web["id"]),
+            linode_id=web["id"],
             vlan={
                 "vlan_label": "web-vlan",
                 "ipam_address": "192.168.200.5/24",
@@ -490,7 +490,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         public = linode.Interface("public",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             public={
                 "ipv4": {
                     "addresses": [{
@@ -515,7 +515,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         ipv6_only = linode.Interface("ipv6_only",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             public={
                 "ipv4": {
                     "addresses": [],
@@ -537,7 +537,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             vpc={
                 "subnet_id": 240213,
                 "ipv4": {
@@ -560,7 +560,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vpc = linode.Interface("vpc",
-            linode_id=int(my_instance["id"]),
+            linode_id=my_instance["id"],
             vpc={
                 "subnet_id": 12345,
                 "ipv6": {
@@ -584,7 +584,7 @@ class Interface(pulumi.CustomResource):
         import pulumi_linode as linode
 
         vlan = linode.Interface("vlan",
-            linode_id=int(web["id"]),
+            linode_id=web["id"],
             vlan={
                 "vlan_label": "web-vlan",
                 "ipam_address": "192.168.200.5/24",

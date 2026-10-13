@@ -59,7 +59,7 @@ namespace Pulumi.Linode
     ///         Type = "audit_logs",
     ///         Destinations = new[]
     ///         {
-    ///             destination.Id,
+    ///             destination.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///         },
     ///     });
     /// 
