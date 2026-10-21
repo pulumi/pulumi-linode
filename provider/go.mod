@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-linode/provider/v6
 go 1.26.6
 
 require (
-	github.com/linode/terraform-provider-linode/v4 v4.7.0
+	github.com/linode/terraform-provider-linode/v4 v4.8.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.141.0
 	github.com/pulumi/pulumi/sdk/v3 v3.268.0
 )
@@ -33,25 +33,25 @@ require (
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-radix v1.0.0 // indirect
-	github.com/aws/aws-sdk-go-v2 v1.47.0 // indirect
+	github.com/aws/aws-sdk-go-v2 v1.47.1 // indirect
 	github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream v1.7.20 // indirect
-	github.com/aws/aws-sdk-go-v2/config v1.33.3 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.20.3 // indirect
-	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.19.2 // indirect
-	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.22.38 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/configsources v1.5.3 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.8.3 // indirect
-	github.com/aws/aws-sdk-go-v2/internal/v4a v1.5.3 // indirect
+	github.com/aws/aws-sdk-go-v2/config v1.33.6 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.20.6 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.20.1 // indirect
+	github.com/aws/aws-sdk-go-v2/feature/s3/manager v1.23.11 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/configsources v1.5.4 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/endpoints/v2 v2.8.4 // indirect
+	github.com/aws/aws-sdk-go-v2/internal/v4a v1.5.4 // indirect
 	github.com/aws/aws-sdk-go-v2/service/internal/accept-encoding v1.13.19 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.11.3 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.14.3 // indirect
-	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.20.3 // indirect
-	github.com/aws/aws-sdk-go-v2/service/s3 v1.113.1 // indirect
-	github.com/aws/aws-sdk-go-v2/service/signin v1.9.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sso v1.37.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.42.0 // indirect
-	github.com/aws/aws-sdk-go-v2/service/sts v1.49.0 // indirect
-	github.com/aws/smithy-go v1.28.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/checksum v1.11.5 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/presigned-url v1.14.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/internal/s3shared v1.20.4 // indirect
+	github.com/aws/aws-sdk-go-v2/service/s3 v1.114.0 // indirect
+	github.com/aws/aws-sdk-go-v2/service/signin v1.10.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sso v1.38.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/ssooidc v1.43.1 // indirect
+	github.com/aws/aws-sdk-go-v2/service/sts v1.51.1 // indirect
+	github.com/aws/smithy-go v1.28.2 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/bgentry/go-netrc v0.0.0-20140422174119-9fd32a8b3d3d // indirect
 	github.com/bgentry/speakeasy v0.1.0 // indirect
@@ -154,7 +154,7 @@ require (
 	github.com/kevinburke/ssh_config v1.6.0 // indirect
 	github.com/klauspost/compress v1.18.7 // indirect
 	github.com/linode/linodego/k8s v1.26.1 // indirect
-	github.com/linode/linodego/v2 v2.8.0 // indirect
+	github.com/linode/linodego/v2 v2.9.0 // indirect
 	github.com/lucasb-eyer/go-colorful v1.4.1 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect

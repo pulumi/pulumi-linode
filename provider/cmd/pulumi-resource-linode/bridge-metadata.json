@@ -158,7 +158,17 @@
                 "majorVersion": 6,
                 "fields": {
                     "alerts": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "system_alerts": {
+                                    "maxItemsOne": false
+                                },
+                                "user_alerts": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "authorized_keys": {
                         "maxItemsOne": false
@@ -2339,7 +2349,17 @@
                         "elem": {
                             "fields": {
                                 "alerts": {
-                                    "maxItemsOne": true
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "system_alerts": {
+                                                "maxItemsOne": false
+                                            },
+                                            "user_alerts": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "backups": {
                                     "maxItemsOne": false,
