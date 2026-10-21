@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -31,10 +32,20 @@ public final class GetInstancesInstanceAlerts {
      */
     private Integer networkOut;
     /**
+     * @return A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    private List<Integer> systemAlerts;
+    /**
      * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
      */
     private Integer transferQuota;
+    /**
+     * @return A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    private List<Integer> userAlerts;
 
     private GetInstancesInstanceAlerts() {}
     /**
@@ -66,11 +77,25 @@ public final class GetInstancesInstanceAlerts {
         return this.networkOut;
     }
     /**
+     * @return A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public List<Integer> systemAlerts() {
+        return this.systemAlerts;
+    }
+    /**
      * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
      */
     public Integer transferQuota() {
         return this.transferQuota;
+    }
+    /**
+     * @return A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     */
+    public List<Integer> userAlerts() {
+        return this.userAlerts;
     }
 
     public static Builder builder() {
@@ -86,7 +111,9 @@ public final class GetInstancesInstanceAlerts {
         private Integer io;
         private Integer networkIn;
         private Integer networkOut;
+        private List<Integer> systemAlerts;
         private Integer transferQuota;
+        private List<Integer> userAlerts;
         public Builder() {}
         public Builder(GetInstancesInstanceAlerts defaults) {
     	      Objects.requireNonNull(defaults);
@@ -94,7 +121,9 @@ public final class GetInstancesInstanceAlerts {
     	      this.io = defaults.io;
     	      this.networkIn = defaults.networkIn;
     	      this.networkOut = defaults.networkOut;
+    	      this.systemAlerts = defaults.systemAlerts;
     	      this.transferQuota = defaults.transferQuota;
+    	      this.userAlerts = defaults.userAlerts;
         }
 
         @CustomType.Setter
@@ -130,6 +159,17 @@ public final class GetInstancesInstanceAlerts {
             return this;
         }
         @CustomType.Setter
+        public Builder systemAlerts(List<Integer> systemAlerts) {
+            if (systemAlerts == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "systemAlerts");
+            }
+            this.systemAlerts = systemAlerts;
+            return this;
+        }
+        public Builder systemAlerts(Integer... systemAlerts) {
+            return systemAlerts(List.of(systemAlerts));
+        }
+        @CustomType.Setter
         public Builder transferQuota(Integer transferQuota) {
             if (transferQuota == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "transferQuota");
@@ -137,13 +177,26 @@ public final class GetInstancesInstanceAlerts {
             this.transferQuota = transferQuota;
             return this;
         }
+        @CustomType.Setter
+        public Builder userAlerts(List<Integer> userAlerts) {
+            if (userAlerts == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "userAlerts");
+            }
+            this.userAlerts = userAlerts;
+            return this;
+        }
+        public Builder userAlerts(Integer... userAlerts) {
+            return userAlerts(List.of(userAlerts));
+        }
         public GetInstancesInstanceAlerts build() {
             final var _resultValue = new GetInstancesInstanceAlerts();
             _resultValue.cpu = cpu;
             _resultValue.io = io;
             _resultValue.networkIn = networkIn;
             _resultValue.networkOut = networkOut;
+            _resultValue.systemAlerts = systemAlerts;
             _resultValue.transferQuota = transferQuota;
+            _resultValue.userAlerts = userAlerts;
             return _resultValue;
         }
     }

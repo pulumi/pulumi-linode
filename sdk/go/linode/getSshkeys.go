@@ -77,7 +77,7 @@ func GetSshkeys(ctx *pulumi.Context, args *GetSshkeysArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getSshkeys.
 type GetSshkeysArgs struct {
 	Filters []GetSshkeysFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -102,7 +102,7 @@ func GetSshkeysOutput(ctx *pulumi.Context, args GetSshkeysOutputArgs, opts ...pu
 // A collection of arguments for invoking getSshkeys.
 type GetSshkeysOutputArgs struct {
 	Filters GetSshkeysFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

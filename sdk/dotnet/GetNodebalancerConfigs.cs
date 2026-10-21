@@ -236,7 +236,7 @@ namespace Pulumi.Linode
         public int NodebalancerId { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Linode
         public Input<int> NodebalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

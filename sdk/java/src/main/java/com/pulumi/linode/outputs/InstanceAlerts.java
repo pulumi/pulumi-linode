@@ -5,6 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,20 @@ public final class InstanceAlerts {
      */
     private @Nullable Integer networkOut;
     /**
+     * @return A list of system alerts associated with current instance.
+     * 
+     */
+    private @Nullable List<Integer> systemAlerts;
+    /**
      * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
      */
     private @Nullable Integer transferQuota;
+    /**
+     * @return A list of user alerts associated with current instance.
+     * 
+     */
+    private @Nullable List<Integer> userAlerts;
 
     private InstanceAlerts() {}
     /**
@@ -67,11 +78,25 @@ public final class InstanceAlerts {
         return Optional.ofNullable(this.networkOut);
     }
     /**
+     * @return A list of system alerts associated with current instance.
+     * 
+     */
+    public List<Integer> systemAlerts() {
+        return this.systemAlerts == null ? List.of() : this.systemAlerts;
+    }
+    /**
      * @return The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
      */
     public Optional<Integer> transferQuota() {
         return Optional.ofNullable(this.transferQuota);
+    }
+    /**
+     * @return A list of user alerts associated with current instance.
+     * 
+     */
+    public List<Integer> userAlerts() {
+        return this.userAlerts == null ? List.of() : this.userAlerts;
     }
 
     public static Builder builder() {
@@ -87,7 +112,9 @@ public final class InstanceAlerts {
         private @Nullable Integer io;
         private @Nullable Integer networkIn;
         private @Nullable Integer networkOut;
+        private @Nullable List<Integer> systemAlerts;
         private @Nullable Integer transferQuota;
+        private @Nullable List<Integer> userAlerts;
         public Builder() {}
         public Builder(InstanceAlerts defaults) {
     	      Objects.requireNonNull(defaults);
@@ -95,7 +122,9 @@ public final class InstanceAlerts {
     	      this.io = defaults.io;
     	      this.networkIn = defaults.networkIn;
     	      this.networkOut = defaults.networkOut;
+    	      this.systemAlerts = defaults.systemAlerts;
     	      this.transferQuota = defaults.transferQuota;
+    	      this.userAlerts = defaults.userAlerts;
         }
 
         @CustomType.Setter
@@ -123,10 +152,28 @@ public final class InstanceAlerts {
             return this;
         }
         @CustomType.Setter
+        public Builder systemAlerts(@Nullable List<Integer> systemAlerts) {
+
+            this.systemAlerts = systemAlerts;
+            return this;
+        }
+        public Builder systemAlerts(Integer... systemAlerts) {
+            return systemAlerts(List.of(systemAlerts));
+        }
+        @CustomType.Setter
         public Builder transferQuota(@Nullable Integer transferQuota) {
 
             this.transferQuota = transferQuota;
             return this;
+        }
+        @CustomType.Setter
+        public Builder userAlerts(@Nullable List<Integer> userAlerts) {
+
+            this.userAlerts = userAlerts;
+            return this;
+        }
+        public Builder userAlerts(Integer... userAlerts) {
+            return userAlerts(List.of(userAlerts));
         }
         public InstanceAlerts build() {
             final var _resultValue = new InstanceAlerts();
@@ -134,7 +181,9 @@ public final class InstanceAlerts {
             _resultValue.io = io;
             _resultValue.networkIn = networkIn;
             _resultValue.networkOut = networkOut;
+            _resultValue.systemAlerts = systemAlerts;
             _resultValue.transferQuota = transferQuota;
+            _resultValue.userAlerts = userAlerts;
             return _resultValue;
         }
     }

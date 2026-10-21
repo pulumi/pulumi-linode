@@ -37,7 +37,7 @@ export function getIamEntities(args?: GetIamEntitiesArgs, opts?: pulumi.InvokeOp
 export interface GetIamEntitiesArgs {
     filters?: inputs.GetIamEntitiesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -93,7 +93,7 @@ export function getIamEntitiesOutput(args?: GetIamEntitiesOutputArgs, opts?: pul
 export interface GetIamEntitiesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetIamEntitiesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

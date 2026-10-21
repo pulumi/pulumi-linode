@@ -83,7 +83,7 @@ export interface GetNodebalancerVpcsArgs {
      */
     nodebalancerId: number;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -189,7 +189,7 @@ export interface GetNodebalancerVpcsOutputArgs {
      */
     nodebalancerId: pulumi.Input<number>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

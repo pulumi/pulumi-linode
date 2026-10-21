@@ -26,7 +26,7 @@ export function getNetworkTransferPrices(args?: GetNetworkTransferPricesArgs, op
 export interface GetNetworkTransferPricesArgs {
     filters?: inputs.GetNetworkTransferPricesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -71,7 +71,7 @@ export function getNetworkTransferPricesOutput(args?: GetNetworkTransferPricesOu
 export interface GetNetworkTransferPricesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkTransferPricesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

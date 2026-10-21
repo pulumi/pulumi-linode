@@ -90,7 +90,7 @@ export function getFirewalls(args?: GetFirewallsArgs, opts?: pulumi.InvokeOption
 export interface GetFirewallsArgs {
     filters?: inputs.GetFirewallsFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -199,7 +199,7 @@ export function getFirewallsOutput(args?: GetFirewallsOutputArgs, opts?: pulumi.
 export interface GetFirewallsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetFirewallsFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

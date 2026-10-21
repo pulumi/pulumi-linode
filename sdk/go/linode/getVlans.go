@@ -86,7 +86,7 @@ func GetVlans(ctx *pulumi.Context, args *GetVlansArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getVlans.
 type GetVlansArgs struct {
 	Filters []GetVlansFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -110,7 +110,7 @@ func GetVlansOutput(ctx *pulumi.Context, args GetVlansOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getVlans.
 type GetVlansOutputArgs struct {
 	Filters GetVlansFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

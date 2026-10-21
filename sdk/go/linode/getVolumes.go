@@ -64,7 +64,7 @@ func GetVolumes(ctx *pulumi.Context, args *GetVolumesArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getVolumes.
 type GetVolumesArgs struct {
 	Filters []GetVolumesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -89,7 +89,7 @@ func GetVolumesOutput(ctx *pulumi.Context, args GetVolumesOutputArgs, opts ...pu
 // A collection of arguments for invoking getVolumes.
 type GetVolumesOutputArgs struct {
 	Filters GetVolumesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

@@ -85,7 +85,7 @@ func GetLkeTypes(ctx *pulumi.Context, args *GetLkeTypesArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getLkeTypes.
 type GetLkeTypesArgs struct {
 	Filters []GetLkeTypesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -110,7 +110,7 @@ func GetLkeTypesOutput(ctx *pulumi.Context, args GetLkeTypesOutputArgs, opts ...
 // A collection of arguments for invoking getLkeTypes.
 type GetLkeTypesOutputArgs struct {
 	Filters GetLkeTypesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

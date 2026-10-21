@@ -54,7 +54,7 @@ export function getLkeTypes(args?: GetLkeTypesArgs, opts?: pulumi.InvokeOptions)
 export interface GetLkeTypesArgs {
     filters?: inputs.GetLkeTypesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -127,7 +127,7 @@ export function getLkeTypesOutput(args?: GetLkeTypesOutputArgs, opts?: pulumi.In
 export interface GetLkeTypesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetLkeTypesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

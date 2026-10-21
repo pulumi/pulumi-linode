@@ -58,7 +58,7 @@ export function getSshkeys(args?: GetSshkeysArgs, opts?: pulumi.InvokeOptions): 
 export interface GetSshkeysArgs {
     filters?: inputs.GetSshkeysFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -135,7 +135,7 @@ export function getSshkeysOutput(args?: GetSshkeysOutputArgs, opts?: pulumi.Invo
 export interface GetSshkeysOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetSshkeysFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

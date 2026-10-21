@@ -56,7 +56,7 @@ export function getLocks(args?: GetLocksArgs, opts?: pulumi.InvokeOptions): Prom
 export interface GetLocksArgs {
     filters?: inputs.GetLocksFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -131,7 +131,7 @@ export function getLocksOutput(args?: GetLocksOutputArgs, opts?: pulumi.InvokeOu
 export interface GetLocksOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetLocksFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

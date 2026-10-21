@@ -52,7 +52,7 @@ export function getReservedIpTypes(args?: GetReservedIpTypesArgs, opts?: pulumi.
 export interface GetReservedIpTypesArgs {
     filters?: inputs.GetReservedIpTypesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -123,7 +123,7 @@ export function getReservedIpTypesOutput(args?: GetReservedIpTypesOutputArgs, op
 export interface GetReservedIpTypesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetReservedIpTypesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

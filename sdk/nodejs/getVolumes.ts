@@ -45,7 +45,7 @@ export function getVolumes(args?: GetVolumesArgs, opts?: pulumi.InvokeOptions): 
 export interface GetVolumesArgs {
     filters?: inputs.GetVolumesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -109,7 +109,7 @@ export function getVolumesOutput(args?: GetVolumesOutputArgs, opts?: pulumi.Invo
 export interface GetVolumesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetVolumesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

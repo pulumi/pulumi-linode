@@ -127,7 +127,7 @@ def get_object_storage_endpoints(filters: Optional[Sequence[Union['GetObjectStor
     * `s3_endpoint`
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
@@ -183,7 +183,7 @@ def get_object_storage_endpoints_output(filters: pulumi.Input[Optional[Optional[
     * `s3_endpoint`
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()

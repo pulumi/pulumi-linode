@@ -321,7 +321,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -349,7 +349,7 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

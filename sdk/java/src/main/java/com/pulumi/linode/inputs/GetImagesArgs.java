@@ -45,14 +45,14 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     @Import(name="order")
     private @Nullable Output<String> order;
 
     /**
-     * @return The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * @return The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     public Optional<Output<String>> order() {
@@ -140,7 +140,7 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `desc`)
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class GetImagesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `desc`)
          * 
          * @return builder
          * 

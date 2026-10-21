@@ -83,7 +83,7 @@ export interface GetImagesArgs {
      */
     latest?: boolean;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -186,7 +186,7 @@ export interface GetImagesOutputArgs {
      */
     latest?: pulumi.Input<boolean | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

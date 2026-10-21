@@ -66,7 +66,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
 export interface GetInstanceTypesArgs {
     filters?: inputs.GetInstanceTypesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -151,7 +151,7 @@ export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?:
 export interface GetInstanceTypesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetInstanceTypesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

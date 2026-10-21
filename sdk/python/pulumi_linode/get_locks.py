@@ -127,7 +127,7 @@ def get_locks(filters: Optional[Sequence[Union['GetLocksFilterArgs', 'GetLocksFi
     * `lock_type`
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
@@ -180,7 +180,7 @@ def get_locks_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['Get
     * `lock_type`
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()

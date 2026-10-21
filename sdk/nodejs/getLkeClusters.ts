@@ -57,7 +57,7 @@ export function getLkeClusters(args?: GetLkeClustersArgs, opts?: pulumi.InvokeOp
 export interface GetLkeClustersArgs {
     filters?: inputs.GetLkeClustersFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -133,7 +133,7 @@ export function getLkeClustersOutput(args?: GetLkeClustersOutputArgs, opts?: pul
 export interface GetLkeClustersOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetLkeClustersFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

@@ -85,7 +85,7 @@ func GetReservedIpTypes(ctx *pulumi.Context, args *GetReservedIpTypesArgs, opts 
 // A collection of arguments for invoking getReservedIpTypes.
 type GetReservedIpTypesArgs struct {
 	Filters []GetReservedIpTypesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -110,7 +110,7 @@ func GetReservedIpTypesOutput(ctx *pulumi.Context, args GetReservedIpTypesOutput
 // A collection of arguments for invoking getReservedIpTypes.
 type GetReservedIpTypesOutputArgs struct {
 	Filters GetReservedIpTypesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

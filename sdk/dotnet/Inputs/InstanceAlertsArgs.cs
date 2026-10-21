@@ -36,11 +36,35 @@ namespace Pulumi.Linode.Inputs
         [Input("networkOut")]
         public Input<int>? NetworkOut { get; set; }
 
+        [Input("systemAlerts")]
+        private InputList<int>? _systemAlerts;
+
+        /// <summary>
+        /// A list of system alerts associated with current instance.
+        /// </summary>
+        public InputList<int> SystemAlerts
+        {
+            get => _systemAlerts ?? (_systemAlerts = new InputList<int>());
+            set => _systemAlerts = value;
+        }
+
         /// <summary>
         /// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
         /// </summary>
         [Input("transferQuota")]
         public Input<int>? TransferQuota { get; set; }
+
+        [Input("userAlerts")]
+        private InputList<int>? _userAlerts;
+
+        /// <summary>
+        /// A list of user alerts associated with current instance.
+        /// </summary>
+        public InputList<int> UserAlerts
+        {
+            get => _userAlerts ?? (_userAlerts = new InputList<int>());
+            set => _userAlerts = value;
+        }
 
         public InstanceAlertsArgs()
         {

@@ -110,7 +110,7 @@ def get_iam_entities(filters: Optional[Sequence[Union['GetIamEntitiesFilterArgs'
     *While the filtering system is in place currently this endpoint does not have filter support for any field.*
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
@@ -146,7 +146,7 @@ def get_iam_entities_output(filters: pulumi.Input[Optional[Optional[Sequence[Uni
     *While the filtering system is in place currently this endpoint does not have filter support for any field.*
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()

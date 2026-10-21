@@ -58,7 +58,7 @@ export function getDatabases(args?: GetDatabasesArgs, opts?: pulumi.InvokeOption
 export interface GetDatabasesArgs {
     filters?: inputs.GetDatabasesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -135,7 +135,7 @@ export function getDatabasesOutput(args?: GetDatabasesOutputArgs, opts?: pulumi.
 export interface GetDatabasesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetDatabasesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

@@ -67,7 +67,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
 export interface GetDomainsArgs {
     filters?: inputs.GetDomainsFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -153,7 +153,7 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
 export interface GetDomainsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**
