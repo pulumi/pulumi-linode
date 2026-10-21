@@ -147,7 +147,7 @@ def get_database_engines(filters: Optional[Sequence[Union['GetDatabaseEnginesFil
     :param _builtins.bool latest: If true, only the latest engine version will be returned.
            
            * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
@@ -213,7 +213,7 @@ def get_database_engines_output(filters: pulumi.Input[Optional[Optional[Sequence
     :param _builtins.bool latest: If true, only the latest engine version will be returned.
            
            * `filter` - (Optional, Block Set) A set of filters used to select engines that meet certain requirements.
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()

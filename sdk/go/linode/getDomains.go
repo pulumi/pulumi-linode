@@ -86,7 +86,7 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 // A collection of arguments for invoking getDomains.
 type GetDomainsArgs struct {
 	Filters []GetDomainsFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -111,7 +111,7 @@ func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pu
 // A collection of arguments for invoking getDomains.
 type GetDomainsOutputArgs struct {
 	Filters GetDomainsFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

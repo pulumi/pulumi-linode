@@ -2008,9 +2008,17 @@ class InstanceAlertsArgsDict(TypedDict):
     """
     The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
     """
+    system_alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    A list of system alerts associated with current instance.
+    """
     transfer_quota: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+    """
+    user_alerts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    """
+    A list of user alerts associated with current instance.
     """
 
 @pulumi.input_type
@@ -2020,13 +2028,17 @@ class InstanceAlertsArgs:
                  io: pulumi.Input[Optional[_builtins.int]] = None,
                  network_in: pulumi.Input[Optional[_builtins.int]] = None,
                  network_out: pulumi.Input[Optional[_builtins.int]] = None,
-                 transfer_quota: pulumi.Input[Optional[_builtins.int]] = None):
+                 system_alerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 transfer_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_alerts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         :param pulumi.Input[_builtins.int] cpu: The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
         :param pulumi.Input[_builtins.int] io: The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we'll send you an alert. If set to 0, this alert is disabled.
         :param pulumi.Input[_builtins.int] network_in: The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
         :param pulumi.Input[_builtins.int] network_out: The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] system_alerts: A list of system alerts associated with current instance.
         :param pulumi.Input[_builtins.int] transfer_quota: The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] user_alerts: A list of user alerts associated with current instance.
         """
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
@@ -2036,8 +2048,12 @@ class InstanceAlertsArgs:
             pulumi.set(__self__, "network_in", network_in)
         if network_out is not None:
             pulumi.set(__self__, "network_out", network_out)
+        if system_alerts is not None:
+            pulumi.set(__self__, "system_alerts", system_alerts)
         if transfer_quota is not None:
             pulumi.set(__self__, "transfer_quota", transfer_quota)
+        if user_alerts is not None:
+            pulumi.set(__self__, "user_alerts", user_alerts)
 
     @_builtins.property
     @pulumi.getter
@@ -2088,6 +2104,18 @@ class InstanceAlertsArgs:
         pulumi.set(self, "network_out", value)
 
     @_builtins.property
+    @pulumi.getter(name="systemAlerts")
+    def system_alerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        A list of system alerts associated with current instance.
+        """
+        return pulumi.get(self, "system_alerts")
+
+    @system_alerts.setter
+    def system_alerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "system_alerts", value)
+
+    @_builtins.property
     @pulumi.getter(name="transferQuota")
     def transfer_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
@@ -2098,6 +2126,18 @@ class InstanceAlertsArgs:
     @transfer_quota.setter
     def transfer_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "transfer_quota", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userAlerts")
+    def user_alerts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+        """
+        A list of user alerts associated with current instance.
+        """
+        return pulumi.get(self, "user_alerts")
+
+    @user_alerts.setter
+    def user_alerts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+        pulumi.set(self, "user_alerts", value)
 
 
 class InstanceBackupArgsDict(TypedDict):

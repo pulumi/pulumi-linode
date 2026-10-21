@@ -97,7 +97,7 @@ func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...p
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesArgs struct {
 	Filters []GetInstanceTypesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -122,7 +122,7 @@ func GetInstanceTypesOutput(ctx *pulumi.Context, args GetInstanceTypesOutputArgs
 // A collection of arguments for invoking getInstanceTypes.
 type GetInstanceTypesOutputArgs struct {
 	Filters GetInstanceTypesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

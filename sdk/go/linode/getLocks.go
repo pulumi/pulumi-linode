@@ -89,7 +89,7 @@ func GetLocks(ctx *pulumi.Context, args *GetLocksArgs, opts ...pulumi.InvokeOpti
 // A collection of arguments for invoking getLocks.
 type GetLocksArgs struct {
 	Filters []GetLocksFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -114,7 +114,7 @@ func GetLocksOutput(ctx *pulumi.Context, args GetLocksOutputArgs, opts ...pulumi
 // A collection of arguments for invoking getLocks.
 type GetLocksOutputArgs struct {
 	Filters GetLocksFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

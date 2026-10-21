@@ -30,9 +30,17 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly int NetworkOut;
         /// <summary>
+        /// A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly ImmutableArray<int> SystemAlerts;
+        /// <summary>
         /// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
         /// </summary>
         public readonly int TransferQuota;
+        /// <summary>
+        /// A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+        /// </summary>
+        public readonly ImmutableArray<int> UserAlerts;
 
         [OutputConstructor]
         private GetInstancesInstanceAlertsResult(
@@ -44,13 +52,19 @@ namespace Pulumi.Linode.Outputs
 
             int networkOut,
 
-            int transferQuota)
+            ImmutableArray<int> systemAlerts,
+
+            int transferQuota,
+
+            ImmutableArray<int> userAlerts)
         {
             Cpu = cpu;
             Io = io;
             NetworkIn = networkIn;
             NetworkOut = networkOut;
+            SystemAlerts = systemAlerts;
             TransferQuota = transferQuota;
+            UserAlerts = userAlerts;
         }
     }
 }

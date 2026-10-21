@@ -2751,9 +2751,17 @@ export interface InstanceAlerts {
      */
     networkOut?: pulumi.Input<number | undefined>;
     /**
+     * A list of system alerts associated with current instance.
+     */
+    systemAlerts?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    /**
      * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
      */
     transferQuota?: pulumi.Input<number | undefined>;
+    /**
+     * A list of user alerts associated with current instance.
+     */
+    userAlerts?: pulumi.Input<pulumi.Input<number>[] | undefined>;
 }
 
 export interface InstanceBackup {

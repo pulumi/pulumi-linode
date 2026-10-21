@@ -69,7 +69,7 @@ export function getNodebalancers(args?: GetNodebalancersArgs, opts?: pulumi.Invo
 export interface GetNodebalancersArgs {
     filters?: inputs.GetNodebalancersFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -157,7 +157,7 @@ export function getNodebalancersOutput(args?: GetNodebalancersOutputArgs, opts?:
 export interface GetNodebalancersOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNodebalancersFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

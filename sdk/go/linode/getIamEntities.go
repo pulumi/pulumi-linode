@@ -52,7 +52,7 @@ func GetIamEntities(ctx *pulumi.Context, args *GetIamEntitiesArgs, opts ...pulum
 // A collection of arguments for invoking getIamEntities.
 type GetIamEntitiesArgs struct {
 	Filters []GetIamEntitiesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -77,7 +77,7 @@ func GetIamEntitiesOutput(ctx *pulumi.Context, args GetIamEntitiesOutputArgs, op
 // A collection of arguments for invoking getIamEntities.
 type GetIamEntitiesOutputArgs struct {
 	Filters GetIamEntitiesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

@@ -30,15 +30,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * * `alerts.0.cpu` - (Optional) (Update-Only) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
      * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * * `alerts.0.network_in` - (Optional) (Update-Only) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
      * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * * `alerts.0.network_out` - (Optional) (Update-Only) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
      * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * * `alerts.0.transfer_quota` - (Optional) (Update-Only) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * * `alerts.0.io` - (Optional) (Update-Only) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     * * `alerts.0.system_alerts` - (Optional) A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     * * `alerts.0.user_alerts` - (Optional) A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
      * 
      */
     @Import(name="alerts")
@@ -47,15 +51,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
      * 
-     * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+     * * `alerts.0.cpu` - (Optional) (Update-Only) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
      * 
-     * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * * `alerts.0.network_in` - (Optional) (Update-Only) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
      * 
-     * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+     * * `alerts.0.network_out` - (Optional) (Update-Only) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
      * 
-     * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+     * * `alerts.0.transfer_quota` - (Optional) (Update-Only) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
-     * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * * `alerts.0.io` - (Optional) (Update-Only) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+     * 
+     * * `alerts.0.system_alerts` - (Optional) A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     * 
+     * * `alerts.0.user_alerts` - (Optional) A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
      * 
      */
     public Optional<Output<InstanceAlertsArgs>> alerts() {
@@ -689,15 +697,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param alerts The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
          * 
-         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+         * * `alerts.0.cpu` - (Optional) (Update-Only) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
          * 
-         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * * `alerts.0.network_in` - (Optional) (Update-Only) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
          * 
-         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * * `alerts.0.network_out` - (Optional) (Update-Only) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
          * 
-         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+         * * `alerts.0.transfer_quota` - (Optional) (Update-Only) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
          * 
-         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+         * * `alerts.0.io` - (Optional) (Update-Only) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+         * 
+         * * `alerts.0.system_alerts` - (Optional) A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * * `alerts.0.user_alerts` - (Optional) A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
          * 
          * @return builder
          * 
@@ -710,15 +722,19 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param alerts The alert thresholds for this Linode. Declared as `alerts { ... }` and referenced with an index (e.g. `alerts.0.cpu`).
          * 
-         * * `alerts.0.cpu` - (Optional) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
+         * * `alerts.0.cpu` - (Optional) (Update-Only) The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
          * 
-         * * `alerts.0.network_in` - (Optional) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * * `alerts.0.network_in` - (Optional) (Update-Only) The amount of incoming traffic, in Mbit/s, required to trigger an alert. If the average incoming traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
          * 
-         * * `alerts.0.network_out` - (Optional) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
+         * * `alerts.0.network_out` - (Optional) (Update-Only) The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0 (zero), the alert is disabled.
          * 
-         * * `alerts.0.transfer_quota` - (Optional) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
+         * * `alerts.0.transfer_quota` - (Optional) (Update-Only) The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
          * 
-         * * `alerts.0.io` - (Optional) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+         * * `alerts.0.io` - (Optional) (Update-Only) The amount of disk IO operation per second required to trigger an alert. If the average disk IO over two hours exceeds this value, we&#39;ll send you an alert. If set to 0, this alert is disabled.
+         * 
+         * * `alerts.0.system_alerts` - (Optional) A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+         * 
+         * * `alerts.0.user_alerts` - (Optional) A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
          * 
          * @return builder
          * 

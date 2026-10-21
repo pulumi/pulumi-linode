@@ -26,7 +26,7 @@ func GetVolumeTypes(ctx *pulumi.Context, args *GetVolumeTypesArgs, opts ...pulum
 // A collection of arguments for invoking getVolumeTypes.
 type GetVolumeTypesArgs struct {
 	Filters []GetVolumeTypesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -51,7 +51,7 @@ func GetVolumeTypesOutput(ctx *pulumi.Context, args GetVolumeTypesOutputArgs, op
 // A collection of arguments for invoking getVolumeTypes.
 type GetVolumeTypesOutputArgs struct {
 	Filters GetVolumeTypesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

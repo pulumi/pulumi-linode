@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,21 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * A list of system alerts associated with current instance.
+     * 
+     */
+    @Import(name="systemAlerts")
+    private @Nullable Output<List<Integer>> systemAlerts;
+
+    /**
+     * @return A list of system alerts associated with current instance.
+     * 
+     */
+    public Optional<Output<List<Integer>>> systemAlerts() {
+        return Optional.ofNullable(this.systemAlerts);
+    }
+
+    /**
      * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
      * 
      */
@@ -90,6 +106,21 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.transferQuota);
     }
 
+    /**
+     * A list of user alerts associated with current instance.
+     * 
+     */
+    @Import(name="userAlerts")
+    private @Nullable Output<List<Integer>> userAlerts;
+
+    /**
+     * @return A list of user alerts associated with current instance.
+     * 
+     */
+    public Optional<Output<List<Integer>>> userAlerts() {
+        return Optional.ofNullable(this.userAlerts);
+    }
+
     private InstanceAlertsArgs() {}
 
     private InstanceAlertsArgs(InstanceAlertsArgs $) {
@@ -97,7 +128,9 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
         this.io = $.io;
         this.networkIn = $.networkIn;
         this.networkOut = $.networkOut;
+        this.systemAlerts = $.systemAlerts;
         this.transferQuota = $.transferQuota;
+        this.userAlerts = $.userAlerts;
     }
 
     public static Builder builder() {
@@ -203,6 +236,37 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param systemAlerts A list of system alerts associated with current instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemAlerts(@Nullable Output<List<Integer>> systemAlerts) {
+            $.systemAlerts = systemAlerts;
+            return this;
+        }
+
+        /**
+         * @param systemAlerts A list of system alerts associated with current instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemAlerts(List<Integer> systemAlerts) {
+            return systemAlerts(Output.of(systemAlerts));
+        }
+
+        /**
+         * @param systemAlerts A list of system alerts associated with current instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemAlerts(Integer... systemAlerts) {
+            return systemAlerts(List.of(systemAlerts));
+        }
+
+        /**
          * @param transferQuota The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we&#39;ll alert you. If this is set to 0 (zero), the alert is disabled.
          * 
          * @return builder
@@ -221,6 +285,37 @@ public final class InstanceAlertsArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder transferQuota(Integer transferQuota) {
             return transferQuota(Output.of(transferQuota));
+        }
+
+        /**
+         * @param userAlerts A list of user alerts associated with current instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAlerts(@Nullable Output<List<Integer>> userAlerts) {
+            $.userAlerts = userAlerts;
+            return this;
+        }
+
+        /**
+         * @param userAlerts A list of user alerts associated with current instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAlerts(List<Integer> userAlerts) {
+            return userAlerts(Output.of(userAlerts));
+        }
+
+        /**
+         * @param userAlerts A list of user alerts associated with current instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAlerts(Integer... userAlerts) {
+            return userAlerts(List.of(userAlerts));
         }
 
         public InstanceAlertsArgs build() {

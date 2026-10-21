@@ -299,7 +299,7 @@ namespace Pulumi.Linode
         public bool? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.Linode
         public Input<bool>? Latest { get; set; }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }

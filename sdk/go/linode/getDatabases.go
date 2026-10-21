@@ -89,7 +89,7 @@ func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.In
 // A collection of arguments for invoking getDatabases.
 type GetDatabasesArgs struct {
 	Filters []GetDatabasesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. (`version`)
 	OrderBy *string `pulumi:"orderBy"`
@@ -114,7 +114,7 @@ func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts .
 // A collection of arguments for invoking getDatabases.
 type GetDatabasesOutputArgs struct {
 	Filters GetDatabasesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. (`version`)
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

@@ -62,7 +62,7 @@ export function getVlans(args?: GetVlansArgs, opts?: pulumi.InvokeOptions): Prom
 export interface GetVlansArgs {
     filters?: inputs.GetVlansFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -140,7 +140,7 @@ export function getVlansOutput(args?: GetVlansOutputArgs, opts?: pulumi.InvokeOu
 export interface GetVlansOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetVlansFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

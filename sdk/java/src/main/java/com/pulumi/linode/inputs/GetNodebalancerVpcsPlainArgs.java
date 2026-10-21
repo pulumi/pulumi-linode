@@ -45,14 +45,14 @@ public final class GetNodebalancerVpcsPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     @Import(name="order")
     private @Nullable String order;
 
     /**
-     * @return The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * @return The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     public Optional<String> order() {
@@ -124,7 +124,7 @@ public final class GetNodebalancerVpcsPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `desc`)
          * 
          * @return builder
          * 

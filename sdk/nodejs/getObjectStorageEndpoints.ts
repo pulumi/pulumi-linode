@@ -67,7 +67,7 @@ export function getObjectStorageEndpoints(args?: GetObjectStorageEndpointsArgs, 
 export interface GetObjectStorageEndpointsArgs {
     filters?: inputs.GetObjectStorageEndpointsFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -150,7 +150,7 @@ export function getObjectStorageEndpointsOutput(args?: GetObjectStorageEndpoints
 export interface GetObjectStorageEndpointsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetObjectStorageEndpointsFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

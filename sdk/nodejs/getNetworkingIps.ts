@@ -67,7 +67,7 @@ export function getNetworkingIps(args?: GetNetworkingIpsArgs, opts?: pulumi.Invo
 export interface GetNetworkingIpsArgs {
     filters?: inputs.GetNetworkingIpsFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -153,7 +153,7 @@ export function getNetworkingIpsOutput(args?: GetNetworkingIpsOutputArgs, opts?:
 export interface GetNetworkingIpsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetNetworkingIpsFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

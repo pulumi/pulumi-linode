@@ -88,7 +88,7 @@ func GetNodebalancers(ctx *pulumi.Context, args *GetNodebalancersArgs, opts ...p
 // A collection of arguments for invoking getNodebalancers.
 type GetNodebalancersArgs struct {
 	Filters []GetNodebalancersFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -113,7 +113,7 @@ func GetNodebalancersOutput(ctx *pulumi.Context, args GetNodebalancersOutputArgs
 // A collection of arguments for invoking getNodebalancers.
 type GetNodebalancersOutputArgs struct {
 	Filters GetNodebalancersFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

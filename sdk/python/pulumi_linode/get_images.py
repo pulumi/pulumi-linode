@@ -160,7 +160,7 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
     :param _builtins.bool latest: If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
            
            * `filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
@@ -239,7 +239,7 @@ def get_images_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['Ge
     :param _builtins.bool latest: If true, only the latest image will be returned. Images without a valid `created` field are not included in the result.
            
            * `filter` - (Optional, Block Set) A set of filters used to select Linode images that meet certain requirements.
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()

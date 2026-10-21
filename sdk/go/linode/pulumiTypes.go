@@ -2833,8 +2833,12 @@ type InstanceAlerts struct {
 	NetworkIn *int `pulumi:"networkIn"`
 	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 	NetworkOut *int `pulumi:"networkOut"`
+	// A list of system alerts associated with current instance.
+	SystemAlerts []int `pulumi:"systemAlerts"`
 	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota *int `pulumi:"transferQuota"`
+	// A list of user alerts associated with current instance.
+	UserAlerts []int `pulumi:"userAlerts"`
 }
 
 // InstanceAlertsInput is an input type that accepts InstanceAlertsArgs and InstanceAlertsOutput values.
@@ -2857,8 +2861,12 @@ type InstanceAlertsArgs struct {
 	NetworkIn pulumi.IntPtrInput `pulumi:"networkIn"`
 	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 	NetworkOut pulumi.IntPtrInput `pulumi:"networkOut"`
+	// A list of system alerts associated with current instance.
+	SystemAlerts pulumi.IntArrayInput `pulumi:"systemAlerts"`
 	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota pulumi.IntPtrInput `pulumi:"transferQuota"`
+	// A list of user alerts associated with current instance.
+	UserAlerts pulumi.IntArrayInput `pulumi:"userAlerts"`
 }
 
 func (InstanceAlertsArgs) ElementType() reflect.Type {
@@ -2958,9 +2966,19 @@ func (o InstanceAlertsOutput) NetworkOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.NetworkOut }).(pulumi.IntPtrOutput)
 }
 
+// A list of system alerts associated with current instance.
+func (o InstanceAlertsOutput) SystemAlerts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v InstanceAlerts) []int { return v.SystemAlerts }).(pulumi.IntArrayOutput)
+}
+
 // The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceAlerts) *int { return v.TransferQuota }).(pulumi.IntPtrOutput)
+}
+
+// A list of user alerts associated with current instance.
+func (o InstanceAlertsOutput) UserAlerts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v InstanceAlerts) []int { return v.UserAlerts }).(pulumi.IntArrayOutput)
 }
 
 type InstanceAlertsPtrOutput struct{ *pulumi.OutputState }
@@ -3027,6 +3045,16 @@ func (o InstanceAlertsPtrOutput) NetworkOut() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A list of system alerts associated with current instance.
+func (o InstanceAlertsPtrOutput) SystemAlerts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *InstanceAlerts) []int {
+		if v == nil {
+			return nil
+		}
+		return v.SystemAlerts
+	}).(pulumi.IntArrayOutput)
+}
+
 // The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceAlerts) *int {
@@ -3035,6 +3063,16 @@ func (o InstanceAlertsPtrOutput) TransferQuota() pulumi.IntPtrOutput {
 		}
 		return v.TransferQuota
 	}).(pulumi.IntPtrOutput)
+}
+
+// A list of user alerts associated with current instance.
+func (o InstanceAlertsPtrOutput) UserAlerts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *InstanceAlerts) []int {
+		if v == nil {
+			return nil
+		}
+		return v.UserAlerts
+	}).(pulumi.IntArrayOutput)
 }
 
 type InstanceBackup struct {
@@ -48750,8 +48788,12 @@ type GetInstancesInstanceAlerts struct {
 	NetworkIn int `pulumi:"networkIn"`
 	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 	NetworkOut int `pulumi:"networkOut"`
+	// A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+	SystemAlerts []int `pulumi:"systemAlerts"`
 	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota int `pulumi:"transferQuota"`
+	// A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+	UserAlerts []int `pulumi:"userAlerts"`
 }
 
 // GetInstancesInstanceAlertsInput is an input type that accepts GetInstancesInstanceAlertsArgs and GetInstancesInstanceAlertsOutput values.
@@ -48774,8 +48816,12 @@ type GetInstancesInstanceAlertsArgs struct {
 	NetworkIn pulumi.IntInput `pulumi:"networkIn"`
 	// The amount of outbound traffic, in Mbit/s, required to trigger an alert. If the average outbound traffic over two hours exceeds this value, we'll send you an alert. If this is set to 0 (zero), the alert is disabled.
 	NetworkOut pulumi.IntInput `pulumi:"networkOut"`
+	// A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+	SystemAlerts pulumi.IntArrayInput `pulumi:"systemAlerts"`
 	// The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 	TransferQuota pulumi.IntInput `pulumi:"transferQuota"`
+	// A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+	UserAlerts pulumi.IntArrayInput `pulumi:"userAlerts"`
 }
 
 func (GetInstancesInstanceAlertsArgs) ElementType() reflect.Type {
@@ -48824,9 +48870,19 @@ func (o GetInstancesInstanceAlertsOutput) NetworkOut() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.NetworkOut }).(pulumi.IntOutput)
 }
 
+// A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+func (o GetInstancesInstanceAlertsOutput) SystemAlerts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAlerts) []int { return v.SystemAlerts }).(pulumi.IntArrayOutput)
+}
+
 // The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
 func (o GetInstancesInstanceAlertsOutput) TransferQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstanceAlerts) int { return v.TransferQuota }).(pulumi.IntOutput)
+}
+
+// A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+func (o GetInstancesInstanceAlertsOutput) UserAlerts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstanceAlerts) []int { return v.UserAlerts }).(pulumi.IntArrayOutput)
 }
 
 type GetInstancesInstanceBackup struct {

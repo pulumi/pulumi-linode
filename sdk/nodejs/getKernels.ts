@@ -64,7 +64,7 @@ export function getKernels(args?: GetKernelsArgs, opts?: pulumi.InvokeOptions): 
 export interface GetKernelsArgs {
     filters?: inputs.GetKernelsFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
@@ -147,7 +147,7 @@ export function getKernelsOutput(args?: GetKernelsOutputArgs, opts?: pulumi.Invo
 export interface GetKernelsOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetKernelsFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**

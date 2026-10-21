@@ -76,7 +76,7 @@ func GetLkeClusters(ctx *pulumi.Context, args *GetLkeClustersArgs, opts ...pulum
 // A collection of arguments for invoking getLkeClusters.
 type GetLkeClustersArgs struct {
 	Filters []GetLkeClustersFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -101,7 +101,7 @@ func GetLkeClustersOutput(ctx *pulumi.Context, args GetLkeClustersOutputArgs, op
 // A collection of arguments for invoking getLkeClusters.
 type GetLkeClustersOutputArgs struct {
 	Filters GetLkeClustersFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

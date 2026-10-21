@@ -3004,9 +3004,17 @@ export interface GetInstancesInstanceAlerts {
      */
     networkOut: number;
     /**
+     * A list of system alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    systemAlerts: number[];
+    /**
      * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
      */
     transferQuota: number;
+    /**
+     * A list of user alerts associated with current instance. (**Note: v4beta only and may not currently be available to all users.**)
+     */
+    userAlerts: number[];
 }
 
 export interface GetInstancesInstanceBackup {
@@ -8713,9 +8721,17 @@ export interface InstanceAlerts {
      */
     networkOut: number;
     /**
+     * A list of system alerts associated with current instance.
+     */
+    systemAlerts: number[];
+    /**
      * The percentage of network transfer that may be used before an alert is triggered. When this value is exceeded, we'll alert you. If this is set to 0 (zero), the alert is disabled.
      */
     transferQuota: number;
+    /**
+     * A list of user alerts associated with current instance.
+     */
+    userAlerts: number[];
 }
 
 export interface InstanceBackup {

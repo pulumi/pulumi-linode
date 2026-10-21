@@ -129,7 +129,7 @@ def get_databases(filters: Optional[Sequence[Union['GetDatabasesFilterArgs', 'Ge
     * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()
@@ -184,7 +184,7 @@ def get_databases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union[
     * `public_access` - If true, clients outside the VPC can connect to the database using a public IP address.
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. (`version`)
     """
     __args__ = dict()

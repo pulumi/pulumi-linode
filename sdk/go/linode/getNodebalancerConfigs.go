@@ -93,7 +93,7 @@ type GetNodebalancerConfigsArgs struct {
 	//
 	// * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
 	NodebalancerId int `pulumi:"nodebalancerId"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy *string `pulumi:"orderBy"`
@@ -124,7 +124,7 @@ type GetNodebalancerConfigsOutputArgs struct {
 	//
 	// * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
 	NodebalancerId pulumi.IntInput `pulumi:"nodebalancerId"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
 	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

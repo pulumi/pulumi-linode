@@ -157,7 +157,7 @@ def get_nodebalancer_configs(filters: Optional[Sequence[Union['GetNodebalancerCo
     :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to access.
            
            * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
@@ -230,7 +230,7 @@ def get_nodebalancer_configs_output(filters: pulumi.Input[Optional[Optional[Sequ
     :param _builtins.int nodebalancer_id: The ID of the NodeBalancer to access.
            
            * `filter` - (Optional, Block Set) A set of filters used to select Linode NodeBalancers that meet certain requirements.
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
     :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
     """
     __args__ = dict()
