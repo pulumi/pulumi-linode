@@ -187,7 +187,7 @@ import (
 //			}
 //			bootDisk, err := linode.NewInstanceDisk(ctx, "boot_disk", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: web.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Size:     pulumi.Int(3000),
 //				Image:    pulumi.String("linode/ubuntu22.04"),
 //				AuthorizedKeys: pulumi.StringArray{
@@ -203,7 +203,7 @@ import (
 //			}
 //			_, err = linode.NewInstanceConfig(ctx, "boot_config", &linode.InstanceConfigArgs{
 //				Label:    pulumi.String("boot_config"),
-//				LinodeId: web.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: web.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Devices: linode.InstanceConfigDevicesArgs{
 //					map[string]interface{}{
 //						"deviceName": "sda",

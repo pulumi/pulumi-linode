@@ -50,7 +50,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewDatabaseAccessControls(ctx, "my-access", &linode.DatabaseAccessControlsArgs{
-//				DatabaseId:   my_db.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DatabaseId:   my_db.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				DatabaseType: pulumi.String("mysql"),
 //				AllowLists: pulumi.StringArray{
 //					my_instance.IpAddress,

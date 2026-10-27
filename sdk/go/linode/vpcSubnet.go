@@ -70,7 +70,7 @@ import (
 //			}
 //			// NOTE: IPv6 VPCs may not currently be available to all users.
 //			_, err = linode.NewVpcSubnet(ctx, "test", &linode.VpcSubnetArgs{
-//				VpcId: testVpc.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				VpcId: testVpc.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Label: pulumi.String("test-subnet"),
 //				Ipv4:  pulumi.String("10.0.0.0/24"),
 //				Ipv6s: linode.VpcSubnetIpv6Array{

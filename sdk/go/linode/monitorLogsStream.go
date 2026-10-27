@@ -66,7 +66,7 @@ import (
 //				Label: pulumi.String("my-audit-logs-stream"),
 //				Type:  pulumi.String("audit_logs"),
 //				Destinations: pulumi.IntArray{
-//					destination.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//					destination.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				},
 //			})
 //			if err != nil {

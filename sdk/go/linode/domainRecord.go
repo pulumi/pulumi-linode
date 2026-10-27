@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewDomainRecord(ctx, "foobar", &linode.DomainRecordArgs{
-//				DomainId:   foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				DomainId:   foobar.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Name:       pulumi.String("www"),
 //				RecordType: pulumi.String("CNAME"),
 //				Target:     pulumi.String("foobar.example"),

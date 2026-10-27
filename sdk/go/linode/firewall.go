@@ -99,7 +99,7 @@ import (
 //				},
 //				OutboundPolicy: pulumi.String("ACCEPT"),
 //				Linodes: pulumi.IntArray{
-//					myInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//					myInstance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				},
 //			})
 //			if err != nil {

@@ -75,8 +75,8 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewPlacementGroupAssignment(ctx, "my-assignment", &linode.PlacementGroupAssignmentArgs{
-//				PlacementGroupId: my_pg.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
-//				LinodeId:         my_inst.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				PlacementGroupId: my_pg.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
+//				LinodeId:         my_inst.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

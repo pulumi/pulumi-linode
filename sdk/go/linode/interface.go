@@ -253,7 +253,7 @@ import (
 //			}
 //			boot, err := linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: my_instance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Size: my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
 //					return specs[0].Disk, nil
 //				}).(pulumi.IntPtrOutput),
@@ -264,7 +264,7 @@ import (
 //				return err
 //			}
 //			public, err := linode.NewInterface(ctx, "public", &linode.InterfaceArgs{
-//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: my_instance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Public: &linode.InterfacePublicArgs{
 //					Ipv4: &linode.InterfacePublicIpv4Args{
 //						Addresses: linode.InterfacePublicIpv4AddressArray{
@@ -287,7 +287,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstanceConfig(ctx, "my-config", &linode.InstanceConfigArgs{
-//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: my_instance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Label:    pulumi.String("my-config"),
 //				Devices: linode.InstanceConfigDevicesArgs{
 //					map[string]interface{}{

@@ -47,7 +47,7 @@ import (
 //				DiskId: foo.Disks.ApplyT(func(disks []linode.InstanceDiskType) (*int, error) {
 //					return disks[0].Id, nil
 //				}).(pulumi.IntPtrOutput),
-//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: foo.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Tags: pulumi.StringArray{
 //					pulumi.String("image-tag"),
 //					pulumi.String("test"),
@@ -59,7 +59,7 @@ import (
 //			_, err = linode.NewInstance(ctx, "bar_based", &linode.InstanceArgs{
 //				Type:   foo.Type,
 //				Region: pulumi.String("eu-west"),
-//				Image:  bar.ID().ToIDOutput().ToStringOutput(),
+//				Image:  bar.ID(),
 //			})
 //			if err != nil {
 //				return err

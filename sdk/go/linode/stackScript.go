@@ -56,7 +56,7 @@ import (
 //					pulumi.String("..."),
 //				},
 //				RootPass:      pulumi.String("..."),
-//				StackscriptId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				StackscriptId: foo.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				StackscriptData: pulumi.StringMap{
 //					"package": pulumi.String("nginx"),
 //				},
