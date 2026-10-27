@@ -48,7 +48,7 @@ import (
 //			}
 //			// Allocate an IP under the primary node
 //			primary, err := linode.NewInstanceIp(ctx, "primary", &linode.InstanceIpArgs{
-//				LinodeId: primaryInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: primaryInstance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -64,7 +64,7 @@ import (
 //			}
 //			// Share the IP with the secondary node
 //			_, err = linode.NewInstanceSharedIps(ctx, "share-primary", &linode.InstanceSharedIpsArgs{
-//				LinodeId: secondary.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: secondary.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Addresses: pulumi.StringArray{
 //					primary.Address,
 //				},

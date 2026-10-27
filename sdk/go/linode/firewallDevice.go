@@ -64,8 +64,8 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewFirewallDevice(ctx, "my_device", &linode.FirewallDeviceArgs{
-//				FirewallId: myFirewall.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
-//				EntityId:   myInstance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				FirewallId: myFirewall.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
+//				EntityId:   myInstance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err

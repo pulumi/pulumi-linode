@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstanceIp(ctx, "foo", &linode.InstanceIpArgs{
-//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: foo.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Public:   pulumi.Bool(true),
 //			})
 //			if err != nil {

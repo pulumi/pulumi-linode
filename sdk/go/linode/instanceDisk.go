@@ -43,7 +43,7 @@ import (
 //			}
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:      pulumi.String("boot"),
-//				LinodeId:   my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId:   my_instance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Size:       pulumi.Int(512),
 //				Filesystem: pulumi.String("ext4"),
 //			})
@@ -79,7 +79,7 @@ import (
 //			}
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: my_instance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Size: my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
 //					return specs[0].Disk, nil
 //				}).(pulumi.IntPtrOutput),
@@ -120,7 +120,7 @@ import (
 //			}
 //			_, err = linode.NewInstanceDisk(ctx, "boot", &linode.InstanceDiskArgs{
 //				Label:    pulumi.String("boot"),
-//				LinodeId: my_instance.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: my_instance.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Size: my_instance.Specs.ApplyT(func(specs []linode.InstanceSpec) (*int, error) {
 //					return specs[0].Disk, nil
 //				}).(pulumi.IntPtrOutput),

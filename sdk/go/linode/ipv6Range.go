@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewIpv6Range(ctx, "foobar", &linode.Ipv6RangeArgs{
-//				LinodeId:     foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId:     foobar.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				PrefixLength: pulumi.Int(64),
 //			})
 //			if err != nil {

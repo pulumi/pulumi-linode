@@ -48,7 +48,7 @@ import (
 //			_, err = linode.NewVolume(ctx, "foobar", &linode.VolumeArgs{
 //				Label:    pulumi.String("foo-volume"),
 //				Region:   foobaz.Region,
-//				LinodeId: foobaz.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: foobaz.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewInstanceConfig(ctx, "foo", &linode.InstanceConfigArgs{
-//				LinodeId: foo.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				LinodeId: foo.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Label:    pulumi.String("boot-existing-volume"),
 //				Kernel:   pulumi.String("linode/grub2"),
 //				Devices: linode.InstanceConfigDevicesArgs{

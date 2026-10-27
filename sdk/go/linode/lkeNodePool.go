@@ -166,7 +166,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLkeNodePool(ctx, "my-pool", &linode.LkeNodePoolArgs{
-//				ClusterId: my_cluster.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ClusterId: my_cluster.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Type:      pulumi.String("g6-standard-2"),
 //				NodeCount: pulumi.Int(3),
 //				Tags: pulumi.StringArray{

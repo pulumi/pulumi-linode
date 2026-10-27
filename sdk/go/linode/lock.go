@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLock(ctx, "my-lock", &linode.LockArgs{
-//				EntityId:   my_inst.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				EntityId:   my_inst.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				EntityType: pulumi.String("linode"),
 //				LockType:   pulumi.String("cannot_delete"),
 //			})
@@ -80,7 +80,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewLock(ctx, "my-lock", &linode.LockArgs{
-//				EntityId:   my_inst.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				EntityId:   my_inst.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				EntityType: pulumi.String("linode"),
 //				LockType:   pulumi.String("cannot_delete_with_subresources"),
 //			})

@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			_, err = linode.NewNodeBalancerConfig(ctx, "foofig", &linode.NodeBalancerConfigArgs{
-//				NodebalancerId: foobar.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				NodebalancerId: foobar.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //				Port:           pulumi.Int(8088),
 //				Protocol:       pulumi.String("http"),
 //				Check:          pulumi.String("http"),
