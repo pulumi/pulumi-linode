@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.LkeClusterControlPlaneArgs;
+import com.pulumi.linode.inputs.LkeClusterNetworkingArgs;
 import com.pulumi.linode.inputs.LkeClusterPoolArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -126,6 +127,21 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Block) Additional nested attributes:
+     * 
+     */
+    @Import(name="networking")
+    private @Nullable Output<LkeClusterNetworkingArgs> networking;
+
+    /**
+     * @return (Block) Additional nested attributes:
+     * 
+     */
+    public Optional<Output<LkeClusterNetworkingArgs>> networking() {
+        return Optional.ofNullable(this.networking);
+    }
+
+    /**
      * (Block List) Additional nested attributes:
      * 
      */
@@ -166,12 +182,16 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * The networking stack type of the Kubernetes cluster.
      * 
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
+     * 
      */
     @Import(name="stackType")
     private @Nullable Output<String> stackType;
 
     /**
      * @return The networking stack type of the Kubernetes cluster.
+     * 
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     public Optional<Output<String>> stackType() {
@@ -239,14 +259,14 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC to use for the Kubernetes cluster.
+     * The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC&#39;s IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<Integer> vpcId;
 
     /**
-     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * @return The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC&#39;s IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      * 
      */
     public Optional<Output<Integer>> vpcId() {
@@ -263,6 +283,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         this.k8sVersion = $.k8sVersion;
         this.kubeconfig = $.kubeconfig;
         this.label = $.label;
+        this.networking = $.networking;
         this.pools = $.pools;
         this.region = $.region;
         this.stackType = $.stackType;
@@ -459,6 +480,27 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param networking (Block) Additional nested attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networking(@Nullable Output<LkeClusterNetworkingArgs> networking) {
+            $.networking = networking;
+            return this;
+        }
+
+        /**
+         * @param networking (Block) Additional nested attributes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networking(LkeClusterNetworkingArgs networking) {
+            return networking(Output.of(networking));
+        }
+
+        /**
          * @param pools (Block List) Additional nested attributes:
          * 
          * @return builder
@@ -521,6 +563,8 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stackType The networking stack type of the Kubernetes cluster.
          * 
+         * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
+         * 
          * @return builder
          * 
          */
@@ -531,6 +575,8 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param stackType The networking stack type of the Kubernetes cluster.
+         * 
+         * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
          * 
          * @return builder
          * 
@@ -634,7 +680,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC&#39;s IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
          * 
          * @return builder
          * 
@@ -645,7 +691,7 @@ public final class LkeClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC to use for the Kubernetes cluster.
+         * @param vpcId The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC&#39;s IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
          * 
          * @return builder
          * 

@@ -4733,6 +4733,47 @@ export interface LkeClusterControlPlaneAclAddress {
     ipv6s?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface LkeClusterNetworking {
+    /**
+     * The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routingMode` is `vxlan`.
+     */
+    clusterCidrIpv4?: pulumi.Input<string | undefined>;
+    /**
+     * The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+     */
+    clusterCidrIpv6?: pulumi.Input<string | undefined>;
+    /**
+     * The maximum number of pods per node. Must be between `16` and `110`, and must fit within `nodeCidrMaskSizeIpv4`. Only configurable when `routingMode` is `vxlan`.
+     */
+    maxPods?: pulumi.Input<number | undefined>;
+    /**
+     * The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routingMode` is `vxlan`.
+     */
+    nodeCidrMaskSizeIpv4?: pulumi.Input<number | undefined>;
+    /**
+     * The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+     */
+    nodeCidrMaskSizeIpv6?: pulumi.Input<number | undefined>;
+    /**
+     * The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routingMode` is `vxlan`.
+     *
+     * The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+     */
+    nodebalancerBackendPrefixLength?: pulumi.Input<number | undefined>;
+    /**
+     * The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+     */
+    routingMode?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routingMode` is `vxlan`.
+     */
+    serviceClusterIpRangeIpv4?: pulumi.Input<string | undefined>;
+    /**
+     * The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+     */
+    serviceClusterIpRangeIpv6?: pulumi.Input<string | undefined>;
+}
+
 export interface LkeClusterPool {
     /**
      * When specified, the number of nodes autoscales within the defined minimum and maximum values.

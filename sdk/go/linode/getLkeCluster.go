@@ -73,6 +73,8 @@ type LookupLkeClusterResult struct {
 	Kubeconfig string `pulumi:"kubeconfig"`
 	// The label of the Node Pool.
 	Label string `pulumi:"label"`
+	// (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
+	Networkings []GetLkeClusterNetworking `pulumi:"networkings"`
 	// (Nested Attribute List) Node pools associated with this cluster.
 	Pools []GetLkeClusterPool `pulumi:"pools"`
 	// This Kubernetes cluster's location.
@@ -161,6 +163,11 @@ func (o LookupLkeClusterResultOutput) Kubeconfig() pulumi.StringOutput {
 // The label of the Node Pool.
 func (o LookupLkeClusterResultOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLkeClusterResult) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
+func (o LookupLkeClusterResultOutput) Networkings() GetLkeClusterNetworkingArrayOutput {
+	return o.ApplyT(func(v LookupLkeClusterResult) []GetLkeClusterNetworking { return v.Networkings }).(GetLkeClusterNetworkingArrayOutput)
 }
 
 // (Nested Attribute List) Node pools associated with this cluster.

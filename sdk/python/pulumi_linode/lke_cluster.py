@@ -27,6 +27,7 @@ class LkeClusterArgs:
                  apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  control_plane: pulumi.Input[Optional['LkeClusterControlPlaneArgs']] = None,
                  external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 networking: pulumi.Input[Optional['LkeClusterNetworkingArgs']] = None,
                  pools: pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
                  subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -46,12 +47,15 @@ class LkeClusterArgs:
         :param pulumi.Input[_builtins.bool] apl_enabled: Enables the App Platform Layer
         :param pulumi.Input['LkeClusterControlPlaneArgs'] control_plane: Defines settings for the Kubernetes Control Plane.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
+        :param pulumi.Input['LkeClusterNetworkingArgs'] networking: (Block) Additional nested attributes:
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
+               
+               * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
-        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
+        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         pulumi.set(__self__, "k8s_version", k8s_version)
         pulumi.set(__self__, "label", label)
@@ -62,6 +66,8 @@ class LkeClusterArgs:
             pulumi.set(__self__, "control_plane", control_plane)
         if external_pool_tags is not None:
             pulumi.set(__self__, "external_pool_tags", external_pool_tags)
+        if networking is not None:
+            pulumi.set(__self__, "networking", networking)
         if pools is not None:
             pulumi.set(__self__, "pools", pools)
         if stack_type is not None:
@@ -153,6 +159,18 @@ class LkeClusterArgs:
 
     @_builtins.property
     @pulumi.getter
+    def networking(self) -> pulumi.Input[Optional['LkeClusterNetworkingArgs']]:
+        """
+        (Block) Additional nested attributes:
+        """
+        return pulumi.get(self, "networking")
+
+    @networking.setter
+    def networking(self, value: pulumi.Input[Optional['LkeClusterNetworkingArgs']]):
+        pulumi.set(self, "networking", value)
+
+    @_builtins.property
+    @pulumi.getter
     def pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
         """
         (Block List) Additional nested attributes:
@@ -168,6 +186,8 @@ class LkeClusterArgs:
     def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The networking stack type of the Kubernetes cluster.
+
+        * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "stack_type")
 
@@ -215,7 +235,7 @@ class LkeClusterArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The ID of the VPC to use for the Kubernetes cluster.
+        The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -234,6 +254,7 @@ class _LkeClusterState:
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking: pulumi.Input[Optional['LkeClusterNetworkingArgs']] = None,
                  pools: pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -252,6 +273,7 @@ class _LkeClusterState:
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
+        :param pulumi.Input['LkeClusterNetworkingArgs'] networking: (Block) Additional nested attributes:
         :param pulumi.Input[Sequence[pulumi.Input['LkeClusterPoolArgs']]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
@@ -259,11 +281,13 @@ class _LkeClusterState:
                
                * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
+               
+               * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
-        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
+        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         if api_endpoints is not None:
             pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -279,6 +303,8 @@ class _LkeClusterState:
             pulumi.set(__self__, "kubeconfig", kubeconfig)
         if label is not None:
             pulumi.set(__self__, "label", label)
+        if networking is not None:
+            pulumi.set(__self__, "networking", networking)
         if pools is not None:
             pulumi.set(__self__, "pools", pools)
         if region is not None:
@@ -382,6 +408,18 @@ class _LkeClusterState:
 
     @_builtins.property
     @pulumi.getter
+    def networking(self) -> pulumi.Input[Optional['LkeClusterNetworkingArgs']]:
+        """
+        (Block) Additional nested attributes:
+        """
+        return pulumi.get(self, "networking")
+
+    @networking.setter
+    def networking(self, value: pulumi.Input[Optional['LkeClusterNetworkingArgs']]):
+        pulumi.set(self, "networking", value)
+
+    @_builtins.property
+    @pulumi.getter
     def pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LkeClusterPoolArgs']]]]:
         """
         (Block List) Additional nested attributes:
@@ -413,6 +451,8 @@ class _LkeClusterState:
     def stack_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The networking stack type of the Kubernetes cluster.
+
+        * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "stack_type")
 
@@ -472,7 +512,7 @@ class _LkeClusterState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The ID of the VPC to use for the Kubernetes cluster.
+        The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -492,6 +532,7 @@ class LkeCluster(pulumi.CustomResource):
                  external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking: pulumi.Input[Optional[Union['LkeClusterNetworkingArgs', 'LkeClusterNetworkingArgsDict', 'outputs.LkeClusterNetworking']]] = None,
                  pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -534,6 +575,68 @@ class LkeCluster(pulumi.CustomResource):
                 "type": "g7-premium-2",
                 "count": 3,
                 "tags": ["test"],
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_vpc = linode.Vpc("my-vpc",
+            label="lke-e-vpc",
+            region="us-lax",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        my_subnet = linode.VpcSubnet("my-subnet",
+            vpc_id=my_vpc.id.apply(lambda x: int(x)),
+            label="lke-e-subnet",
+            ipv4="10.0.0.0/20",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="lke-e-vxlan-cluster",
+            region="us-lax",
+            k8s_version="v1.32.9+lke4",
+            tier="enterprise",
+            vpc_id=my_vpc.id.apply(lambda x: int(x)),
+            subnet_id=my_subnet.id.apply(lambda x: int(x)),
+            networking={
+                "routing_mode": "vxlan",
+                "cluster_cidr_ipv4": "100.64.0.0/12",
+                "node_cidr_mask_size_ipv4": 25,
+                "service_cluster_ip_range_ipv4": "100.96.0.0/22",
+                "max_pods": 64,
+                "nodebalancer_backend_prefix_length": 22,
+            },
+            pools=[{
+                "type": "g7-premium-2",
+                "count": 3,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: When subnet_id is omitted, the VPC's IPv4 ranges must include 10.0.0.0/8.
+        my_vpc = linode.Vpc("my-vpc",
+            label="lke-e-vpc",
+            region="us-lax",
+            ipv4s=[{
+                "range": "10.0.0.0/8",
+            }],
+            ipv6s=[{
+                "range": "/52",
+            }])
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="lke-e-vpc-cluster",
+            region="us-lax",
+            k8s_version="v1.32.9+lke4",
+            tier="enterprise",
+            vpc_id=my_vpc.id.apply(lambda x: int(x)),
+            pools=[{
+                "type": "g7-premium-2",
+                "count": 3,
             }])
         ```
         ```python
@@ -740,6 +843,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] external_pool_tags: A set of node pool tags to ignore when planning and applying this cluster. This prevents externally managed node pools from being deleted or unintentionally updated on subsequent applies. See Externally Managed Node Pools for more details.
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
+        :param pulumi.Input[Union['LkeClusterNetworkingArgs', 'LkeClusterNetworkingArgsDict', 'outputs.LkeClusterNetworking']] networking: (Block) Additional nested attributes:
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
@@ -747,10 +851,12 @@ class LkeCluster(pulumi.CustomResource):
                
                * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
+               
+               * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
-        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
+        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         ...
     @overload
@@ -792,6 +898,68 @@ class LkeCluster(pulumi.CustomResource):
                 "type": "g7-premium-2",
                 "count": 3,
                 "tags": ["test"],
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        my_vpc = linode.Vpc("my-vpc",
+            label="lke-e-vpc",
+            region="us-lax",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        my_subnet = linode.VpcSubnet("my-subnet",
+            vpc_id=my_vpc.id.apply(lambda x: int(x)),
+            label="lke-e-subnet",
+            ipv4="10.0.0.0/20",
+            ipv6s=[{
+                "range": "/52",
+            }])
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="lke-e-vxlan-cluster",
+            region="us-lax",
+            k8s_version="v1.32.9+lke4",
+            tier="enterprise",
+            vpc_id=my_vpc.id.apply(lambda x: int(x)),
+            subnet_id=my_subnet.id.apply(lambda x: int(x)),
+            networking={
+                "routing_mode": "vxlan",
+                "cluster_cidr_ipv4": "100.64.0.0/12",
+                "node_cidr_mask_size_ipv4": 25,
+                "service_cluster_ip_range_ipv4": "100.96.0.0/22",
+                "max_pods": 64,
+                "nodebalancer_backend_prefix_length": 22,
+            },
+            pools=[{
+                "type": "g7-premium-2",
+                "count": 3,
+            }])
+        ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        # NOTE: When subnet_id is omitted, the VPC's IPv4 ranges must include 10.0.0.0/8.
+        my_vpc = linode.Vpc("my-vpc",
+            label="lke-e-vpc",
+            region="us-lax",
+            ipv4s=[{
+                "range": "10.0.0.0/8",
+            }],
+            ipv6s=[{
+                "range": "/52",
+            }])
+        my_cluster = linode.LkeCluster("my-cluster",
+            label="lke-e-vpc-cluster",
+            region="us-lax",
+            k8s_version="v1.32.9+lke4",
+            tier="enterprise",
+            vpc_id=my_vpc.id.apply(lambda x: int(x)),
+            pools=[{
+                "type": "g7-premium-2",
+                "count": 3,
             }])
         ```
         ```python
@@ -1011,6 +1179,7 @@ class LkeCluster(pulumi.CustomResource):
                  external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
+                 networking: pulumi.Input[Optional[Union['LkeClusterNetworkingArgs', 'LkeClusterNetworkingArgsDict', 'outputs.LkeClusterNetworking']]] = None,
                  pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  stack_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1036,6 +1205,7 @@ class LkeCluster(pulumi.CustomResource):
             if label is None and not opts.urn:
                 raise TypeError("Missing required property 'label'")
             __props__.__dict__["label"] = label
+            __props__.__dict__["networking"] = networking
             __props__.__dict__["pools"] = pools
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1067,6 +1237,7 @@ class LkeCluster(pulumi.CustomResource):
             k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
             kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
+            networking: pulumi.Input[Optional[Union['LkeClusterNetworkingArgs', 'LkeClusterNetworkingArgsDict', 'outputs.LkeClusterNetworking']]] = None,
             pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             stack_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1089,6 +1260,7 @@ class LkeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] k8s_version: The desired Kubernetes version for this Kubernetes cluster in the format of `major.minor` (e.g. `1.21`), and the latest supported patch version will be deployed.
         :param pulumi.Input[_builtins.str] kubeconfig: The base64 encoded kubeconfig for the Kubernetes cluster.
         :param pulumi.Input[_builtins.str] label: This Kubernetes cluster's unique label.
+        :param pulumi.Input[Union['LkeClusterNetworkingArgs', 'LkeClusterNetworkingArgsDict', 'outputs.LkeClusterNetworking']] networking: (Block) Additional nested attributes:
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]] pools: (Block List) Additional nested attributes:
         :param pulumi.Input[_builtins.str] region: This Kubernetes cluster's location.
                
@@ -1096,11 +1268,13 @@ class LkeCluster(pulumi.CustomResource):
                
                * `control_plane` - (Optional, Block) Defines settings for the Kubernetes Control Plane. Referenced with an index (e.g. `control_plane.0.high_availability`).
         :param pulumi.Input[_builtins.str] stack_type: The networking stack type of the Kubernetes cluster.
+               
+               * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[_builtins.str] status: The status of the node. (`ready`, `not_ready`)
         :param pulumi.Input[_builtins.int] subnet_id: The ID of the VPC subnet to use for the Kubernetes cluster. This subnet must be dual stack (IPv4 and IPv6 should both be enabled). **NOTE: This field may not be available for all users and is only accepted and populated when api_version is set to `v4beta`.**
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Kubernetes cluster. Tags are case-insensitive and are for organizational purposes only.
         :param pulumi.Input[_builtins.str] tier: The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
-        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster.
+        :param pulumi.Input[_builtins.int] vpc_id: The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1113,6 +1287,7 @@ class LkeCluster(pulumi.CustomResource):
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["kubeconfig"] = kubeconfig
         __props__.__dict__["label"] = label
+        __props__.__dict__["networking"] = networking
         __props__.__dict__["pools"] = pools
         __props__.__dict__["region"] = region
         __props__.__dict__["stack_type"] = stack_type
@@ -1181,6 +1356,14 @@ class LkeCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def networking(self) -> pulumi.Output['outputs.LkeClusterNetworking']:
+        """
+        (Block) Additional nested attributes:
+        """
+        return pulumi.get(self, "networking")
+
+    @_builtins.property
+    @pulumi.getter
     def pools(self) -> pulumi.Output[Optional[Sequence['outputs.LkeClusterPool']]]:
         """
         (Block List) Additional nested attributes:
@@ -1204,6 +1387,8 @@ class LkeCluster(pulumi.CustomResource):
     def stack_type(self) -> pulumi.Output[_builtins.str]:
         """
         The networking stack type of the Kubernetes cluster.
+
+        * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when api_version is set to `v4beta`.**
         """
         return pulumi.get(self, "stack_type")
 
@@ -1243,7 +1428,7 @@ class LkeCluster(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[_builtins.int]:
         """
-        The ID of the VPC to use for the Kubernetes cluster.
+        The ID of the VPC to use for the Kubernetes cluster. If `vpc_id` is set without `subnet_id`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnet_id` is set.
         """
         return pulumi.get(self, "vpc_id")
 

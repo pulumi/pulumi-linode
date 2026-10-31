@@ -48,6 +48,73 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as linode from "@pulumi/linode";
  *
+ * const my_vpc = new linode.Vpc("my-vpc", {
+ *     label: "lke-e-vpc",
+ *     region: "us-lax",
+ *     ipv6s: [{
+ *         range: "/52",
+ *     }],
+ * });
+ * const my_subnet = new linode.VpcSubnet("my-subnet", {
+ *     vpcId: my_vpc.id.apply(x =>Number(x)),
+ *     label: "lke-e-subnet",
+ *     ipv4: "10.0.0.0/20",
+ *     ipv6s: [{
+ *         range: "/52",
+ *     }],
+ * });
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "lke-e-vxlan-cluster",
+ *     region: "us-lax",
+ *     k8sVersion: "v1.32.9+lke4",
+ *     tier: "enterprise",
+ *     vpcId: my_vpc.id.apply(x =>Number(x)),
+ *     subnetId: my_subnet.id.apply(x =>Number(x)),
+ *     networking: {
+ *         routingMode: "vxlan",
+ *         clusterCidrIpv4: "100.64.0.0/12",
+ *         nodeCidrMaskSizeIpv4: 25,
+ *         serviceClusterIpRangeIpv4: "100.96.0.0/22",
+ *         maxPods: 64,
+ *         nodebalancerBackendPrefixLength: 22,
+ *     },
+ *     pools: [{
+ *         type: "g7-premium-2",
+ *         count: 3,
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * // NOTE: When subnet_id is omitted, the VPC's IPv4 ranges must include 10.0.0.0/8.
+ * const my_vpc = new linode.Vpc("my-vpc", {
+ *     label: "lke-e-vpc",
+ *     region: "us-lax",
+ *     ipv4s: [{
+ *         range: "10.0.0.0/8",
+ *     }],
+ *     ipv6s: [{
+ *         range: "/52",
+ *     }],
+ * });
+ * const my_cluster = new linode.LkeCluster("my-cluster", {
+ *     label: "lke-e-vpc-cluster",
+ *     region: "us-lax",
+ *     k8sVersion: "v1.32.9+lke4",
+ *     tier: "enterprise",
+ *     vpcId: my_vpc.id.apply(x =>Number(x)),
+ *     pools: [{
+ *         type: "g7-premium-2",
+ *         count: 3,
+ *     }],
+ * });
+ * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
  * const my_cluster = new linode.LkeCluster("my-cluster", {
  *     label: "my-cluster",
  *     k8sVersion: "1.32",
@@ -305,6 +372,10 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public readonly label: pulumi.Output<string>;
     /**
+     * (Block) Additional nested attributes:
+     */
+    declare public readonly networking: pulumi.Output<outputs.LkeClusterNetworking>;
+    /**
      * (Block List) Additional nested attributes:
      */
     declare public readonly pools: pulumi.Output<outputs.LkeClusterPool[] | undefined>;
@@ -318,6 +389,8 @@ export class LkeCluster extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * The networking stack type of the Kubernetes cluster.
+     *
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     declare public readonly stackType: pulumi.Output<string>;
     /**
@@ -337,7 +410,7 @@ export class LkeCluster extends pulumi.CustomResource {
      */
     declare public readonly tier: pulumi.Output<string>;
     /**
-     * The ID of the VPC to use for the Kubernetes cluster.
+     * The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      */
     declare public readonly vpcId: pulumi.Output<number>;
 
@@ -361,6 +434,7 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["k8sVersion"] = state?.k8sVersion;
             resourceInputs["kubeconfig"] = state?.kubeconfig;
             resourceInputs["label"] = state?.label;
+            resourceInputs["networking"] = state?.networking;
             resourceInputs["pools"] = state?.pools;
             resourceInputs["region"] = state?.region;
             resourceInputs["stackType"] = state?.stackType;
@@ -385,6 +459,7 @@ export class LkeCluster extends pulumi.CustomResource {
             resourceInputs["externalPoolTags"] = args?.externalPoolTags;
             resourceInputs["k8sVersion"] = args?.k8sVersion;
             resourceInputs["label"] = args?.label;
+            resourceInputs["networking"] = args?.networking;
             resourceInputs["pools"] = args?.pools;
             resourceInputs["region"] = args?.region;
             resourceInputs["stackType"] = args?.stackType;
@@ -436,6 +511,10 @@ export interface LkeClusterState {
      */
     label?: pulumi.Input<string | undefined>;
     /**
+     * (Block) Additional nested attributes:
+     */
+    networking?: pulumi.Input<inputs.LkeClusterNetworking | undefined>;
+    /**
      * (Block List) Additional nested attributes:
      */
     pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[] | undefined>;
@@ -449,6 +528,8 @@ export interface LkeClusterState {
     region?: pulumi.Input<string | undefined>;
     /**
      * The networking stack type of the Kubernetes cluster.
+     *
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     stackType?: pulumi.Input<string | undefined>;
     /**
@@ -468,7 +549,7 @@ export interface LkeClusterState {
      */
     tier?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the VPC to use for the Kubernetes cluster.
+     * The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      */
     vpcId?: pulumi.Input<number | undefined>;
 }
@@ -498,6 +579,10 @@ export interface LkeClusterArgs {
      */
     label: pulumi.Input<string>;
     /**
+     * (Block) Additional nested attributes:
+     */
+    networking?: pulumi.Input<inputs.LkeClusterNetworking | undefined>;
+    /**
      * (Block List) Additional nested attributes:
      */
     pools?: pulumi.Input<pulumi.Input<inputs.LkeClusterPool>[] | undefined>;
@@ -511,6 +596,8 @@ export interface LkeClusterArgs {
     region: pulumi.Input<string>;
     /**
      * The networking stack type of the Kubernetes cluster.
+     *
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      */
     stackType?: pulumi.Input<string | undefined>;
     /**
@@ -526,7 +613,7 @@ export interface LkeClusterArgs {
      */
     tier?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the VPC to use for the Kubernetes cluster.
+     * The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      */
     vpcId?: pulumi.Input<number | undefined>;
 }

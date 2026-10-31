@@ -13,6 +13,290 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMonitorLogsDestinationsDestination struct {
+	// When this logs destination was created.
+	Created string `pulumi:"created"`
+	// The user who created this logs destination.
+	CreatedBy string `pulumi:"createdBy"`
+	// The unique ID of this logs destination.
+	Id int `pulumi:"id"`
+	// The label for this logs destination.
+	Label string `pulumi:"label"`
+	// The status of this logs destination.
+	Status string `pulumi:"status"`
+	// The type of this logs destination.
+	Type string `pulumi:"type"`
+	// When this logs destination was last updated.
+	Updated string `pulumi:"updated"`
+	// The user who last updated this logs destination.
+	UpdatedBy string `pulumi:"updatedBy"`
+	// The version of this logs destination.
+	Version int `pulumi:"version"`
+}
+
+// GetMonitorLogsDestinationsDestinationInput is an input type that accepts GetMonitorLogsDestinationsDestinationArgs and GetMonitorLogsDestinationsDestinationOutput values.
+// You can construct a concrete instance of `GetMonitorLogsDestinationsDestinationInput` via:
+//
+//	GetMonitorLogsDestinationsDestinationArgs{...}
+type GetMonitorLogsDestinationsDestinationInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsDestinationsDestinationOutput() GetMonitorLogsDestinationsDestinationOutput
+	ToGetMonitorLogsDestinationsDestinationOutputWithContext(context.Context) GetMonitorLogsDestinationsDestinationOutput
+}
+
+type GetMonitorLogsDestinationsDestinationArgs struct {
+	// When this logs destination was created.
+	Created pulumi.StringInput `pulumi:"created"`
+	// The user who created this logs destination.
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// The unique ID of this logs destination.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The label for this logs destination.
+	Label pulumi.StringInput `pulumi:"label"`
+	// The status of this logs destination.
+	Status pulumi.StringInput `pulumi:"status"`
+	// The type of this logs destination.
+	Type pulumi.StringInput `pulumi:"type"`
+	// When this logs destination was last updated.
+	Updated pulumi.StringInput `pulumi:"updated"`
+	// The user who last updated this logs destination.
+	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
+	// The version of this logs destination.
+	Version pulumi.IntInput `pulumi:"version"`
+}
+
+func (GetMonitorLogsDestinationsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsDestinationsDestination)(nil)).Elem()
+}
+
+func (i GetMonitorLogsDestinationsDestinationArgs) ToGetMonitorLogsDestinationsDestinationOutput() GetMonitorLogsDestinationsDestinationOutput {
+	return i.ToGetMonitorLogsDestinationsDestinationOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsDestinationsDestinationArgs) ToGetMonitorLogsDestinationsDestinationOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsDestinationOutput)
+}
+
+// GetMonitorLogsDestinationsDestinationArrayInput is an input type that accepts GetMonitorLogsDestinationsDestinationArray and GetMonitorLogsDestinationsDestinationArrayOutput values.
+// You can construct a concrete instance of `GetMonitorLogsDestinationsDestinationArrayInput` via:
+//
+//	GetMonitorLogsDestinationsDestinationArray{ GetMonitorLogsDestinationsDestinationArgs{...} }
+type GetMonitorLogsDestinationsDestinationArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsDestinationsDestinationArrayOutput() GetMonitorLogsDestinationsDestinationArrayOutput
+	ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(context.Context) GetMonitorLogsDestinationsDestinationArrayOutput
+}
+
+type GetMonitorLogsDestinationsDestinationArray []GetMonitorLogsDestinationsDestinationInput
+
+func (GetMonitorLogsDestinationsDestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsDestinationsDestination)(nil)).Elem()
+}
+
+func (i GetMonitorLogsDestinationsDestinationArray) ToGetMonitorLogsDestinationsDestinationArrayOutput() GetMonitorLogsDestinationsDestinationArrayOutput {
+	return i.ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsDestinationsDestinationArray) ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsDestinationArrayOutput)
+}
+
+type GetMonitorLogsDestinationsDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsDestinationsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsDestinationsDestination)(nil)).Elem()
+}
+
+func (o GetMonitorLogsDestinationsDestinationOutput) ToGetMonitorLogsDestinationsDestinationOutput() GetMonitorLogsDestinationsDestinationOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationsDestinationOutput) ToGetMonitorLogsDestinationsDestinationOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationOutput {
+	return o
+}
+
+// When this logs destination was created.
+func (o GetMonitorLogsDestinationsDestinationOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// The user who created this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// The unique ID of this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The label for this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// The status of this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The type of this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// When this logs destination was last updated.
+func (o GetMonitorLogsDestinationsDestinationOutput) Updated() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Updated }).(pulumi.StringOutput)
+}
+
+// The user who last updated this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) UpdatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.UpdatedBy }).(pulumi.StringOutput)
+}
+
+// The version of this logs destination.
+func (o GetMonitorLogsDestinationsDestinationOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) int { return v.Version }).(pulumi.IntOutput)
+}
+
+type GetMonitorLogsDestinationsDestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsDestinationsDestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsDestinationsDestination)(nil)).Elem()
+}
+
+func (o GetMonitorLogsDestinationsDestinationArrayOutput) ToGetMonitorLogsDestinationsDestinationArrayOutput() GetMonitorLogsDestinationsDestinationArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationsDestinationArrayOutput) ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationsDestinationArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsDestinationsDestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsDestinationsDestination {
+		return vs[0].([]GetMonitorLogsDestinationsDestination)[vs[1].(int)]
+	}).(GetMonitorLogsDestinationsDestinationOutput)
+}
+
+type GetMonitorLogsDestinationsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetMonitorLogsDestinationsFilterInput is an input type that accepts GetMonitorLogsDestinationsFilterArgs and GetMonitorLogsDestinationsFilterOutput values.
+// You can construct a concrete instance of `GetMonitorLogsDestinationsFilterInput` via:
+//
+//	GetMonitorLogsDestinationsFilterArgs{...}
+type GetMonitorLogsDestinationsFilterInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsDestinationsFilterOutput() GetMonitorLogsDestinationsFilterOutput
+	ToGetMonitorLogsDestinationsFilterOutputWithContext(context.Context) GetMonitorLogsDestinationsFilterOutput
+}
+
+type GetMonitorLogsDestinationsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMonitorLogsDestinationsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsDestinationsFilter)(nil)).Elem()
+}
+
+func (i GetMonitorLogsDestinationsFilterArgs) ToGetMonitorLogsDestinationsFilterOutput() GetMonitorLogsDestinationsFilterOutput {
+	return i.ToGetMonitorLogsDestinationsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsDestinationsFilterArgs) ToGetMonitorLogsDestinationsFilterOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsFilterOutput)
+}
+
+// GetMonitorLogsDestinationsFilterArrayInput is an input type that accepts GetMonitorLogsDestinationsFilterArray and GetMonitorLogsDestinationsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMonitorLogsDestinationsFilterArrayInput` via:
+//
+//	GetMonitorLogsDestinationsFilterArray{ GetMonitorLogsDestinationsFilterArgs{...} }
+type GetMonitorLogsDestinationsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsDestinationsFilterArrayOutput() GetMonitorLogsDestinationsFilterArrayOutput
+	ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(context.Context) GetMonitorLogsDestinationsFilterArrayOutput
+}
+
+type GetMonitorLogsDestinationsFilterArray []GetMonitorLogsDestinationsFilterInput
+
+func (GetMonitorLogsDestinationsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsDestinationsFilter)(nil)).Elem()
+}
+
+func (i GetMonitorLogsDestinationsFilterArray) ToGetMonitorLogsDestinationsFilterArrayOutput() GetMonitorLogsDestinationsFilterArrayOutput {
+	return i.ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsDestinationsFilterArray) ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsFilterArrayOutput)
+}
+
+type GetMonitorLogsDestinationsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsDestinationsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsDestinationsFilter)(nil)).Elem()
+}
+
+func (o GetMonitorLogsDestinationsFilterOutput) ToGetMonitorLogsDestinationsFilterOutput() GetMonitorLogsDestinationsFilterOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationsFilterOutput) ToGetMonitorLogsDestinationsFilterOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetMonitorLogsDestinationsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetMonitorLogsDestinationsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetMonitorLogsDestinationsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMonitorLogsDestinationsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsDestinationsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsDestinationsFilter)(nil)).Elem()
+}
+
+func (o GetMonitorLogsDestinationsFilterArrayOutput) ToGetMonitorLogsDestinationsFilterArrayOutput() GetMonitorLogsDestinationsFilterArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationsFilterArrayOutput) ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationsFilterArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsDestinationsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsDestinationsFilter {
+		return vs[0].([]GetMonitorLogsDestinationsFilter)[vs[1].(int)]
+	}).(GetMonitorLogsDestinationsFilterOutput)
+}
+
 type GetMonitorLogsStreamDetails struct {
 	// The list of LKE cluster IDs included in this stream.
 	ClusterIds []int `pulumi:"clusterIds"`
@@ -17978,6 +18262,10 @@ func (o GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) Index(i pulumi.IntInpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArray{})
@@ -18261,6 +18549,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArray{})
+	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamDetailsOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamArrayOutput{})

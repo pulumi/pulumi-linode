@@ -153,6 +153,10 @@ namespace Pulumi.Linode
         /// </summary>
         public readonly string Label;
         /// <summary>
+        /// (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when ApiVersion is set to `V4beta`.**
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetLkeClusterNetworkingResult> Networkings;
+        /// <summary>
         /// (Nested Attribute List) Node pools associated with this cluster.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLkeClusterPoolResult> Pools;
@@ -207,6 +211,8 @@ namespace Pulumi.Linode
 
             string label,
 
+            ImmutableArray<Outputs.GetLkeClusterNetworkingResult> networkings,
+
             ImmutableArray<Outputs.GetLkeClusterPoolResult> pools,
 
             string region,
@@ -233,6 +239,7 @@ namespace Pulumi.Linode
             K8sVersion = k8sVersion;
             Kubeconfig = kubeconfig;
             Label = label;
+            Networkings = networkings;
             Pools = pools;
             Region = region;
             StackType = stackType;

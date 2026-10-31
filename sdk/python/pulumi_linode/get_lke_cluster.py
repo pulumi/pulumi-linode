@@ -27,7 +27,7 @@ class GetLkeClusterResult:
     """
     A collection of values returned by getLkeCluster.
     """
-    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, id=None, k8s_version=None, kubeconfig=None, label=None, pools=None, region=None, stack_type=None, status=None, subnet_id=None, tags=None, tier=None, updated=None, vpc_id=None):
+    def __init__(__self__, api_endpoints=None, apl_enabled=None, control_planes=None, created=None, id=None, k8s_version=None, kubeconfig=None, label=None, networkings=None, pools=None, region=None, stack_type=None, status=None, subnet_id=None, tags=None, tier=None, updated=None, vpc_id=None):
         if api_endpoints and not isinstance(api_endpoints, list):
             raise TypeError("Expected argument 'api_endpoints' to be a list")
         pulumi.set(__self__, "api_endpoints", api_endpoints)
@@ -52,6 +52,9 @@ class GetLkeClusterResult:
         if label and not isinstance(label, str):
             raise TypeError("Expected argument 'label' to be a str")
         pulumi.set(__self__, "label", label)
+        if networkings and not isinstance(networkings, list):
+            raise TypeError("Expected argument 'networkings' to be a list")
+        pulumi.set(__self__, "networkings", networkings)
         if pools and not isinstance(pools, list):
             raise TypeError("Expected argument 'pools' to be a list")
         pulumi.set(__self__, "pools", pools)
@@ -146,6 +149,14 @@ class GetLkeClusterResult:
 
     @_builtins.property
     @pulumi.getter
+    def networkings(self) -> Sequence['outputs.GetLkeClusterNetworkingResult']:
+        """
+        (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when api_version is set to `v4beta`.**
+        """
+        return pulumi.get(self, "networkings")
+
+    @_builtins.property
+    @pulumi.getter
     def pools(self) -> Sequence['outputs.GetLkeClusterPoolResult']:
         """
         (Nested Attribute List) Node pools associated with this cluster.
@@ -231,6 +242,7 @@ class AwaitableGetLkeClusterResult(GetLkeClusterResult):
             k8s_version=self.k8s_version,
             kubeconfig=self.kubeconfig,
             label=self.label,
+            networkings=self.networkings,
             pools=self.pools,
             region=self.region,
             stack_type=self.stack_type,
@@ -274,6 +286,7 @@ def get_lke_cluster(id: Optional[_builtins.int] = None,
         k8s_version=pulumi.get(__ret__, 'k8s_version'),
         kubeconfig=pulumi.get(__ret__, 'kubeconfig'),
         label=pulumi.get(__ret__, 'label'),
+        networkings=pulumi.get(__ret__, 'networkings'),
         pools=pulumi.get(__ret__, 'pools'),
         region=pulumi.get(__ret__, 'region'),
         stack_type=pulumi.get(__ret__, 'stack_type'),
@@ -314,6 +327,7 @@ def get_lke_cluster_output(id: pulumi.Input[Optional[_builtins.int]] = None,
         k8s_version=pulumi.get(__response__, 'k8s_version'),
         kubeconfig=pulumi.get(__response__, 'kubeconfig'),
         label=pulumi.get(__response__, 'label'),
+        networkings=pulumi.get(__response__, 'networkings'),
         pools=pulumi.get(__response__, 'pools'),
         region=pulumi.get(__response__, 'region'),
         stack_type=pulumi.get(__response__, 'stack_type'),

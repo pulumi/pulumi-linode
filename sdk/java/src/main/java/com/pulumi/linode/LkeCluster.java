@@ -11,6 +11,7 @@ import com.pulumi.linode.LkeClusterArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.LkeClusterState;
 import com.pulumi.linode.outputs.LkeClusterControlPlane;
+import com.pulumi.linode.outputs.LkeClusterNetworking;
 import com.pulumi.linode.outputs.LkeClusterPool;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -96,6 +97,133 @@ import javax.annotation.Nullable;
  *                 .type("g7-premium-2")
  *                 .count(3)
  *                 .tags("test")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Vpc;
+ * import com.pulumi.linode.VpcArgs;
+ * import com.pulumi.linode.inputs.VpcIpv6Args;
+ * import com.pulumi.linode.VpcSubnet;
+ * import com.pulumi.linode.VpcSubnetArgs;
+ * import com.pulumi.linode.inputs.VpcSubnetIpv6Args;
+ * import com.pulumi.linode.LkeCluster;
+ * import com.pulumi.linode.LkeClusterArgs;
+ * import com.pulumi.linode.inputs.LkeClusterNetworkingArgs;
+ * import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_vpc = new Vpc("my-vpc", VpcArgs.builder()
+ *             .label("lke-e-vpc")
+ *             .region("us-lax")
+ *             .ipv6s(VpcIpv6Args.builder()
+ *                 .range("/52")
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_subnet = new VpcSubnet("my-subnet", VpcSubnetArgs.builder()
+ *             .vpcId(my_vpc.id())
+ *             .label("lke-e-subnet")
+ *             .ipv4("10.0.0.0/20")
+ *             .ipv6s(VpcSubnetIpv6Args.builder()
+ *                 .range("/52")
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
+ *             .label("lke-e-vxlan-cluster")
+ *             .region("us-lax")
+ *             .k8sVersion("v1.32.9+lke4")
+ *             .tier("enterprise")
+ *             .vpcId(my_vpc.id())
+ *             .subnetId(my_subnet.id())
+ *             .networking(LkeClusterNetworkingArgs.builder()
+ *                 .routingMode("vxlan")
+ *                 .clusterCidrIpv4("100.64.0.0/12")
+ *                 .nodeCidrMaskSizeIpv4(25)
+ *                 .serviceClusterIpRangeIpv4("100.96.0.0/22")
+ *                 .maxPods(64)
+ *                 .nodebalancerBackendPrefixLength(22)
+ *                 .build())
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g7-premium-2")
+ *                 .count(3)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.Vpc;
+ * import com.pulumi.linode.VpcArgs;
+ * import com.pulumi.linode.inputs.VpcIpv4Args;
+ * import com.pulumi.linode.inputs.VpcIpv6Args;
+ * import com.pulumi.linode.LkeCluster;
+ * import com.pulumi.linode.LkeClusterArgs;
+ * import com.pulumi.linode.inputs.LkeClusterPoolArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // NOTE: When subnet_id is omitted, the VPC's IPv4 ranges must include 10.0.0.0/8.
+ *         var my_vpc = new Vpc("my-vpc", VpcArgs.builder()
+ *             .label("lke-e-vpc")
+ *             .region("us-lax")
+ *             .ipv4s(VpcIpv4Args.builder()
+ *                 .range("10.0.0.0/8")
+ *                 .build())
+ *             .ipv6s(VpcIpv6Args.builder()
+ *                 .range("/52")
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_cluster = new LkeCluster("my-cluster", LkeClusterArgs.builder()
+ *             .label("lke-e-vpc-cluster")
+ *             .region("us-lax")
+ *             .k8sVersion("v1.32.9+lke4")
+ *             .tier("enterprise")
+ *             .vpcId(my_vpc.id())
+ *             .pools(LkeClusterPoolArgs.builder()
+ *                 .type("g7-premium-2")
+ *                 .count(3)
  *                 .build())
  *             .build());
  * 
@@ -624,6 +752,20 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.label;
     }
     /**
+     * (Block) Additional nested attributes:
+     * 
+     */
+    @Export(name="networking", refs={LkeClusterNetworking.class}, tree="[0]")
+    private Output<LkeClusterNetworking> networking;
+
+    /**
+     * @return (Block) Additional nested attributes:
+     * 
+     */
+    public Output<LkeClusterNetworking> networking() {
+        return this.networking;
+    }
+    /**
      * (Block List) Additional nested attributes:
      * 
      */
@@ -662,12 +804,16 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
     /**
      * The networking stack type of the Kubernetes cluster.
      * 
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
+     * 
      */
     @Export(name="stackType", refs={String.class}, tree="[0]")
     private Output<String> stackType;
 
     /**
      * @return The networking stack type of the Kubernetes cluster.
+     * 
+     * * `networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when apiVersion is set to `v4beta`.**
      * 
      */
     public Output<String> stackType() {
@@ -730,14 +876,14 @@ public class LkeCluster extends com.pulumi.resources.CustomResource {
         return this.tier;
     }
     /**
-     * The ID of the VPC to use for the Kubernetes cluster.
+     * The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC&#39;s IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      * 
      */
     @Export(name="vpcId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vpcId;
 
     /**
-     * @return The ID of the VPC to use for the Kubernetes cluster.
+     * @return The ID of the VPC to use for the Kubernetes cluster. If `vpcId` is set without `subnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `native` routing mode, or a `/19` when `networking.0.routing_mode` is `vxlan`. In this case the VPC&#39;s IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `subnetId` is set.
      * 
      */
     public Output<Integer> vpcId() {

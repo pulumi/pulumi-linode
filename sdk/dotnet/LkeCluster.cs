@@ -86,6 +86,118 @@ namespace Pulumi.Linode
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var my_vpc = new Linode.Vpc("my-vpc", new()
+    ///     {
+    ///         Label = "lke-e-vpc",
+    ///         Region = "us-lax",
+    ///         Ipv6s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcIpv6Args
+    ///             {
+    ///                 Range = "/52",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_subnet = new Linode.VpcSubnet("my-subnet", new()
+    ///     {
+    ///         VpcId = my_vpc.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         Label = "lke-e-subnet",
+    ///         Ipv4 = "10.0.0.0/20",
+    ///         Ipv6s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcSubnetIpv6Args
+    ///             {
+    ///                 Range = "/52",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "lke-e-vxlan-cluster",
+    ///         Region = "us-lax",
+    ///         K8sVersion = "v1.32.9+lke4",
+    ///         Tier = "enterprise",
+    ///         VpcId = my_vpc.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         SubnetId = my_subnet.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         Networking = new Linode.Inputs.LkeClusterNetworkingArgs
+    ///         {
+    ///             RoutingMode = "vxlan",
+    ///             ClusterCidrIpv4 = "100.64.0.0/12",
+    ///             NodeCidrMaskSizeIpv4 = 25,
+    ///             ServiceClusterIpRangeIpv4 = "100.96.0.0/22",
+    ///             MaxPods = 64,
+    ///             NodebalancerBackendPrefixLength = 22,
+    ///         },
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g7-premium-2",
+    ///                 Count = 3,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // NOTE: When subnet_id is omitted, the VPC's IPv4 ranges must include 10.0.0.0/8.
+    ///     var my_vpc = new Linode.Vpc("my-vpc", new()
+    ///     {
+    ///         Label = "lke-e-vpc",
+    ///         Region = "us-lax",
+    ///         Ipv4s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcIpv4Args
+    ///             {
+    ///                 Range = "10.0.0.0/8",
+    ///             },
+    ///         },
+    ///         Ipv6s = new[]
+    ///         {
+    ///             new Linode.Inputs.VpcIpv6Args
+    ///             {
+    ///                 Range = "/52",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
+    ///     {
+    ///         Label = "lke-e-vpc-cluster",
+    ///         Region = "us-lax",
+    ///         K8sVersion = "v1.32.9+lke4",
+    ///         Tier = "enterprise",
+    ///         VpcId = my_vpc.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         Pools = new[]
+    ///         {
+    ///             new Linode.Inputs.LkeClusterPoolArgs
+    ///             {
+    ///                 Type = "g7-premium-2",
+    ///                 Count = 3,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
     ///     var my_cluster = new Linode.LkeCluster("my-cluster", new()
     ///     {
     ///         Label = "my-cluster",
@@ -469,6 +581,12 @@ namespace Pulumi.Linode
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
+        /// (Block) Additional nested attributes:
+        /// </summary>
+        [Output("networking")]
+        public Output<Outputs.LkeClusterNetworking> Networking { get; private set; } = null!;
+
+        /// <summary>
         /// (Block List) Additional nested attributes:
         /// </summary>
         [Output("pools")]
@@ -486,6 +604,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The networking stack type of the Kubernetes cluster.
+        /// 
+        /// * `Networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Output("stackType")]
         public Output<string> StackType { get; private set; } = null!;
@@ -515,7 +635,7 @@ namespace Pulumi.Linode
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC to use for the Kubernetes cluster.
+        /// The ID of the VPC to use for the Kubernetes cluster. If `VpcId` is set without `SubnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `Native` routing mode, or a `/19` when `networking.0.routing_mode` is `Vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `Ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `SubnetId` is set.
         /// </summary>
         [Output("vpcId")]
         public Output<int> VpcId { get; private set; } = null!;
@@ -606,6 +726,12 @@ namespace Pulumi.Linode
         [Input("label", required: true)]
         public Input<string> Label { get; set; } = null!;
 
+        /// <summary>
+        /// (Block) Additional nested attributes:
+        /// </summary>
+        [Input("networking")]
+        public Input<Inputs.LkeClusterNetworkingArgs>? Networking { get; set; }
+
         [Input("pools")]
         private InputList<Inputs.LkeClusterPoolArgs>? _pools;
 
@@ -630,6 +756,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The networking stack type of the Kubernetes cluster.
+        /// 
+        /// * `Networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
@@ -659,7 +787,7 @@ namespace Pulumi.Linode
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// The ID of the VPC to use for the Kubernetes cluster.
+        /// The ID of the VPC to use for the Kubernetes cluster. If `VpcId` is set without `SubnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `Native` routing mode, or a `/19` when `networking.0.routing_mode` is `Vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `Ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `SubnetId` is set.
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }
@@ -736,6 +864,12 @@ namespace Pulumi.Linode
         [Input("label")]
         public Input<string>? Label { get; set; }
 
+        /// <summary>
+        /// (Block) Additional nested attributes:
+        /// </summary>
+        [Input("networking")]
+        public Input<Inputs.LkeClusterNetworkingGetArgs>? Networking { get; set; }
+
         [Input("pools")]
         private InputList<Inputs.LkeClusterPoolGetArgs>? _pools;
 
@@ -760,6 +894,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// The networking stack type of the Kubernetes cluster.
+        /// 
+        /// * `Networking` - (Optional, Block) The pod network routing mode and network configuration of an LKE Enterprise cluster. Changing any of these values will cause the cluster to be replaced. Referenced with an index (e.g. `networking.0.routing_mode`). **NOTE: This field may not be available to all users and is only accepted and populated when ApiVersion is set to `V4beta`.**
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
@@ -795,7 +931,7 @@ namespace Pulumi.Linode
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// The ID of the VPC to use for the Kubernetes cluster.
+        /// The ID of the VPC to use for the Kubernetes cluster. If `VpcId` is set without `SubnetId`, the API allocates a workload subnet for the cluster from the `10.0.0.0/8` range of the VPC: a `/13` for the default `Native` routing mode, or a `/19` when `networking.0.routing_mode` is `Vxlan`. In this case the VPC's IPv4 ranges must include `10.0.0.0/8`, otherwise the cluster creation is rejected. A VPC created without custom `Ipv4` ranges already includes `10.0.0.0/8`. This requirement does not apply when `SubnetId` is set.
         /// </summary>
         [Input("vpcId")]
         public Input<int>? VpcId { get; set; }

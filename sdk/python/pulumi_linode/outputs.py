@@ -166,6 +166,7 @@ __all__ = [
     'LkeClusterControlPlane',
     'LkeClusterControlPlaneAcl',
     'LkeClusterControlPlaneAclAddress',
+    'LkeClusterNetworking',
     'LkeClusterPool',
     'LkeClusterPoolAutoscaler',
     'LkeClusterPoolNode',
@@ -471,6 +472,7 @@ __all__ = [
     'GetLkeClusterControlPlaneResult',
     'GetLkeClusterControlPlaneAclResult',
     'GetLkeClusterControlPlaneAclAddressResult',
+    'GetLkeClusterNetworkingResult',
     'GetLkeClusterPoolResult',
     'GetLkeClusterPoolAutoscalerResult',
     'GetLkeClusterPoolDiskResult',
@@ -9327,6 +9329,158 @@ class LkeClusterControlPlaneAclAddress(dict):
         A set of individual ipv6 addresses or CIDRs to ALLOW.
         """
         return pulumi.get(self, "ipv6s")
+
+
+@pulumi.output_type
+class LkeClusterNetworking(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterCidrIpv4":
+            suggest = "cluster_cidr_ipv4"
+        elif key == "clusterCidrIpv6":
+            suggest = "cluster_cidr_ipv6"
+        elif key == "maxPods":
+            suggest = "max_pods"
+        elif key == "nodeCidrMaskSizeIpv4":
+            suggest = "node_cidr_mask_size_ipv4"
+        elif key == "nodeCidrMaskSizeIpv6":
+            suggest = "node_cidr_mask_size_ipv6"
+        elif key == "nodebalancerBackendPrefixLength":
+            suggest = "nodebalancer_backend_prefix_length"
+        elif key == "routingMode":
+            suggest = "routing_mode"
+        elif key == "serviceClusterIpRangeIpv4":
+            suggest = "service_cluster_ip_range_ipv4"
+        elif key == "serviceClusterIpRangeIpv6":
+            suggest = "service_cluster_ip_range_ipv6"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LkeClusterNetworking. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LkeClusterNetworking.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LkeClusterNetworking.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_cidr_ipv4: Optional[_builtins.str] = None,
+                 cluster_cidr_ipv6: Optional[_builtins.str] = None,
+                 max_pods: Optional[_builtins.int] = None,
+                 node_cidr_mask_size_ipv4: Optional[_builtins.int] = None,
+                 node_cidr_mask_size_ipv6: Optional[_builtins.int] = None,
+                 nodebalancer_backend_prefix_length: Optional[_builtins.int] = None,
+                 routing_mode: Optional[_builtins.str] = None,
+                 service_cluster_ip_range_ipv4: Optional[_builtins.str] = None,
+                 service_cluster_ip_range_ipv6: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str cluster_cidr_ipv4: The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routing_mode` is `vxlan`.
+        :param _builtins.str cluster_cidr_ipv6: The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+        :param _builtins.int max_pods: The maximum number of pods per node. Must be between `16` and `110`, and must fit within `node_cidr_mask_size_ipv4`. Only configurable when `routing_mode` is `vxlan`.
+        :param _builtins.int node_cidr_mask_size_ipv4: The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routing_mode` is `vxlan`.
+        :param _builtins.int node_cidr_mask_size_ipv6: The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+        :param _builtins.int nodebalancer_backend_prefix_length: The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routing_mode` is `vxlan`.
+               
+               The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+        :param _builtins.str routing_mode: The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+        :param _builtins.str service_cluster_ip_range_ipv4: The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routing_mode` is `vxlan`.
+        :param _builtins.str service_cluster_ip_range_ipv6: The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+        """
+        if cluster_cidr_ipv4 is not None:
+            pulumi.set(__self__, "cluster_cidr_ipv4", cluster_cidr_ipv4)
+        if cluster_cidr_ipv6 is not None:
+            pulumi.set(__self__, "cluster_cidr_ipv6", cluster_cidr_ipv6)
+        if max_pods is not None:
+            pulumi.set(__self__, "max_pods", max_pods)
+        if node_cidr_mask_size_ipv4 is not None:
+            pulumi.set(__self__, "node_cidr_mask_size_ipv4", node_cidr_mask_size_ipv4)
+        if node_cidr_mask_size_ipv6 is not None:
+            pulumi.set(__self__, "node_cidr_mask_size_ipv6", node_cidr_mask_size_ipv6)
+        if nodebalancer_backend_prefix_length is not None:
+            pulumi.set(__self__, "nodebalancer_backend_prefix_length", nodebalancer_backend_prefix_length)
+        if routing_mode is not None:
+            pulumi.set(__self__, "routing_mode", routing_mode)
+        if service_cluster_ip_range_ipv4 is not None:
+            pulumi.set(__self__, "service_cluster_ip_range_ipv4", service_cluster_ip_range_ipv4)
+        if service_cluster_ip_range_ipv6 is not None:
+            pulumi.set(__self__, "service_cluster_ip_range_ipv6", service_cluster_ip_range_ipv6)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterCidrIpv4")
+    def cluster_cidr_ipv4(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routing_mode` is `vxlan`.
+        """
+        return pulumi.get(self, "cluster_cidr_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterCidrIpv6")
+    def cluster_cidr_ipv6(self) -> Optional[_builtins.str]:
+        """
+        The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+        """
+        return pulumi.get(self, "cluster_cidr_ipv6")
+
+    @_builtins.property
+    @pulumi.getter(name="maxPods")
+    def max_pods(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of pods per node. Must be between `16` and `110`, and must fit within `node_cidr_mask_size_ipv4`. Only configurable when `routing_mode` is `vxlan`.
+        """
+        return pulumi.get(self, "max_pods")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCidrMaskSizeIpv4")
+    def node_cidr_mask_size_ipv4(self) -> Optional[_builtins.int]:
+        """
+        The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routing_mode` is `vxlan`.
+        """
+        return pulumi.get(self, "node_cidr_mask_size_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCidrMaskSizeIpv6")
+    def node_cidr_mask_size_ipv6(self) -> Optional[_builtins.int]:
+        """
+        The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+        """
+        return pulumi.get(self, "node_cidr_mask_size_ipv6")
+
+    @_builtins.property
+    @pulumi.getter(name="nodebalancerBackendPrefixLength")
+    def nodebalancer_backend_prefix_length(self) -> Optional[_builtins.int]:
+        """
+        The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routing_mode` is `vxlan`.
+
+        The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+        """
+        return pulumi.get(self, "nodebalancer_backend_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> Optional[_builtins.str]:
+        """
+        The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClusterIpRangeIpv4")
+    def service_cluster_ip_range_ipv4(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routing_mode` is `vxlan`.
+        """
+        return pulumi.get(self, "service_cluster_ip_range_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClusterIpRangeIpv6")
+    def service_cluster_ip_range_ipv6(self) -> Optional[_builtins.str]:
+        """
+        The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+        """
+        return pulumi.get(self, "service_cluster_ip_range_ipv6")
 
 
 @pulumi.output_type
@@ -26612,6 +26766,112 @@ class GetLkeClusterControlPlaneAclAddressResult(dict):
         A set of individual ipv6 addresses or CIDRs to ALLOW.
         """
         return pulumi.get(self, "ipv6s")
+
+
+@pulumi.output_type
+class GetLkeClusterNetworkingResult(dict):
+    def __init__(__self__, *,
+                 cluster_cidr_ipv4: _builtins.str,
+                 cluster_cidr_ipv6: _builtins.str,
+                 max_pods: _builtins.int,
+                 node_cidr_mask_size_ipv4: _builtins.int,
+                 node_cidr_mask_size_ipv6: _builtins.int,
+                 nodebalancer_backend_prefix_length: _builtins.int,
+                 routing_mode: _builtins.str,
+                 service_cluster_ip_range_ipv4: _builtins.str,
+                 service_cluster_ip_range_ipv6: _builtins.str):
+        """
+        :param _builtins.str cluster_cidr_ipv4: The IPv4 pod network CIDR.
+        :param _builtins.str cluster_cidr_ipv6: The system-assigned IPv6 pod network CIDR. This is null for IPv4-only clusters.
+        :param _builtins.int max_pods: The maximum number of pods per node.
+        :param _builtins.int node_cidr_mask_size_ipv4: The IPv4 pod CIDR prefix length assigned to each node.
+        :param _builtins.int node_cidr_mask_size_ipv6: The IPv6 pod CIDR prefix length assigned to each node. This is null for IPv4-only clusters.
+        :param _builtins.int nodebalancer_backend_prefix_length: The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends.
+        :param _builtins.str routing_mode: The pod network routing mode. (`native`, `vxlan`)
+        :param _builtins.str service_cluster_ip_range_ipv4: The IPv4 service CIDR.
+        :param _builtins.str service_cluster_ip_range_ipv6: The system-assigned IPv6 service CIDR. This is null for IPv4-only clusters.
+        """
+        pulumi.set(__self__, "cluster_cidr_ipv4", cluster_cidr_ipv4)
+        pulumi.set(__self__, "cluster_cidr_ipv6", cluster_cidr_ipv6)
+        pulumi.set(__self__, "max_pods", max_pods)
+        pulumi.set(__self__, "node_cidr_mask_size_ipv4", node_cidr_mask_size_ipv4)
+        pulumi.set(__self__, "node_cidr_mask_size_ipv6", node_cidr_mask_size_ipv6)
+        pulumi.set(__self__, "nodebalancer_backend_prefix_length", nodebalancer_backend_prefix_length)
+        pulumi.set(__self__, "routing_mode", routing_mode)
+        pulumi.set(__self__, "service_cluster_ip_range_ipv4", service_cluster_ip_range_ipv4)
+        pulumi.set(__self__, "service_cluster_ip_range_ipv6", service_cluster_ip_range_ipv6)
+
+    @_builtins.property
+    @pulumi.getter(name="clusterCidrIpv4")
+    def cluster_cidr_ipv4(self) -> _builtins.str:
+        """
+        The IPv4 pod network CIDR.
+        """
+        return pulumi.get(self, "cluster_cidr_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterCidrIpv6")
+    def cluster_cidr_ipv6(self) -> _builtins.str:
+        """
+        The system-assigned IPv6 pod network CIDR. This is null for IPv4-only clusters.
+        """
+        return pulumi.get(self, "cluster_cidr_ipv6")
+
+    @_builtins.property
+    @pulumi.getter(name="maxPods")
+    def max_pods(self) -> _builtins.int:
+        """
+        The maximum number of pods per node.
+        """
+        return pulumi.get(self, "max_pods")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCidrMaskSizeIpv4")
+    def node_cidr_mask_size_ipv4(self) -> _builtins.int:
+        """
+        The IPv4 pod CIDR prefix length assigned to each node.
+        """
+        return pulumi.get(self, "node_cidr_mask_size_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeCidrMaskSizeIpv6")
+    def node_cidr_mask_size_ipv6(self) -> _builtins.int:
+        """
+        The IPv6 pod CIDR prefix length assigned to each node. This is null for IPv4-only clusters.
+        """
+        return pulumi.get(self, "node_cidr_mask_size_ipv6")
+
+    @_builtins.property
+    @pulumi.getter(name="nodebalancerBackendPrefixLength")
+    def nodebalancer_backend_prefix_length(self) -> _builtins.int:
+        """
+        The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends.
+        """
+        return pulumi.get(self, "nodebalancer_backend_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMode")
+    def routing_mode(self) -> _builtins.str:
+        """
+        The pod network routing mode. (`native`, `vxlan`)
+        """
+        return pulumi.get(self, "routing_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClusterIpRangeIpv4")
+    def service_cluster_ip_range_ipv4(self) -> _builtins.str:
+        """
+        The IPv4 service CIDR.
+        """
+        return pulumi.get(self, "service_cluster_ip_range_ipv4")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceClusterIpRangeIpv6")
+    def service_cluster_ip_range_ipv6(self) -> _builtins.str:
+        """
+        The system-assigned IPv6 service CIDR. This is null for IPv4-only clusters.
+        """
+        return pulumi.get(self, "service_cluster_ip_range_ipv6")
 
 
 @pulumi.output_type
