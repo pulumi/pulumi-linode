@@ -75,6 +75,10 @@ export interface GetLkeClusterResult {
      */
     readonly label: string;
     /**
+     * (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
+     */
+    readonly networkings: outputs.GetLkeClusterNetworking[];
+    /**
      * (Nested Attribute List) Node pools associated with this cluster.
      */
     readonly pools: outputs.GetLkeClusterPool[];

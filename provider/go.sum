@@ -589,10 +589,10 @@ github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0
 github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+fNqagV/RAw=
 github.com/linode/linodego/k8s v1.26.1 h1:7/Wln3A7DPPEiS2KfaJexSbbFHbFE/xwokUU2R2TTOc=
 github.com/linode/linodego/k8s v1.26.1/go.mod h1:54MTxB+ecs+mHnLOIRT7SbqR7y9mJ1t626CdWaP9qGs=
-github.com/linode/linodego/v2 v2.9.0 h1:5+MeuBPfgtNmeYeA3Ile1FBd4mWOfqdTO8lEv/zpJ/Q=
-github.com/linode/linodego/v2 v2.9.0/go.mod h1:VzN8px4lhrGSiBBuSsar2GOVJY9S7pN1pF6d1Q8zENM=
-github.com/linode/terraform-provider-linode/v4 v4.8.0 h1:VAaTDp8EyZetlSmOjIXXNQIEtTYPWr7952MHFYjcQdg=
-github.com/linode/terraform-provider-linode/v4 v4.8.0/go.mod h1:oaKGK9a+iFJohHv23Yh81EwPlsClBrqgPjNS2fX8kdI=
+github.com/linode/linodego/v2 v2.10.0 h1:a2Lxabyx4zHRUtnEkgIcj9PVg1B4AzQcSyVBwoiPsp0=
+github.com/linode/linodego/v2 v2.10.0/go.mod h1:v7oZlyuyYnRwVQDbMP0nDs3JkrlXRk4FCo6xNTqcA9c=
+github.com/linode/terraform-provider-linode/v4 v4.9.0 h1:Y7/7Mow6yzKDKZ2jKDuHniLxTup3iFZGeF+NyrAG6iE=
+github.com/linode/terraform-provider-linode/v4 v4.9.0/go.mod h1:gMJuwtxxZFWGOchVsBsjMHnX2PmihlrU7p8H5U+IuGM=
 github.com/lucasb-eyer/go-colorful v1.4.1 h1:1EO+WB73+EH8EVbzlrG3KLAfEypQWVHIBqlTf+2hNss=
 github.com/lucasb-eyer/go-colorful v1.4.1/go.mod h1:R4dSotOR9KMtayYi1e77YzuveK+i7ruzyGqttikkLy0=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=

@@ -23714,6 +23714,303 @@ func (o LkeClusterControlPlaneAclAddressArrayOutput) Index(i pulumi.IntInput) Lk
 	}).(LkeClusterControlPlaneAclAddressOutput)
 }
 
+type LkeClusterNetworking struct {
+	// The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routingMode` is `vxlan`.
+	ClusterCidrIpv4 *string `pulumi:"clusterCidrIpv4"`
+	// The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+	ClusterCidrIpv6 *string `pulumi:"clusterCidrIpv6"`
+	// The maximum number of pods per node. Must be between `16` and `110`, and must fit within `nodeCidrMaskSizeIpv4`. Only configurable when `routingMode` is `vxlan`.
+	MaxPods *int `pulumi:"maxPods"`
+	// The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routingMode` is `vxlan`.
+	NodeCidrMaskSizeIpv4 *int `pulumi:"nodeCidrMaskSizeIpv4"`
+	// The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+	NodeCidrMaskSizeIpv6 *int `pulumi:"nodeCidrMaskSizeIpv6"`
+	// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routingMode` is `vxlan`.
+	//
+	// The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+	NodebalancerBackendPrefixLength *int `pulumi:"nodebalancerBackendPrefixLength"`
+	// The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+	RoutingMode *string `pulumi:"routingMode"`
+	// The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routingMode` is `vxlan`.
+	ServiceClusterIpRangeIpv4 *string `pulumi:"serviceClusterIpRangeIpv4"`
+	// The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+	ServiceClusterIpRangeIpv6 *string `pulumi:"serviceClusterIpRangeIpv6"`
+}
+
+// LkeClusterNetworkingInput is an input type that accepts LkeClusterNetworkingArgs and LkeClusterNetworkingOutput values.
+// You can construct a concrete instance of `LkeClusterNetworkingInput` via:
+//
+//	LkeClusterNetworkingArgs{...}
+type LkeClusterNetworkingInput interface {
+	pulumi.Input
+
+	ToLkeClusterNetworkingOutput() LkeClusterNetworkingOutput
+	ToLkeClusterNetworkingOutputWithContext(context.Context) LkeClusterNetworkingOutput
+}
+
+type LkeClusterNetworkingArgs struct {
+	// The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routingMode` is `vxlan`.
+	ClusterCidrIpv4 pulumi.StringPtrInput `pulumi:"clusterCidrIpv4"`
+	// The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+	ClusterCidrIpv6 pulumi.StringPtrInput `pulumi:"clusterCidrIpv6"`
+	// The maximum number of pods per node. Must be between `16` and `110`, and must fit within `nodeCidrMaskSizeIpv4`. Only configurable when `routingMode` is `vxlan`.
+	MaxPods pulumi.IntPtrInput `pulumi:"maxPods"`
+	// The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routingMode` is `vxlan`.
+	NodeCidrMaskSizeIpv4 pulumi.IntPtrInput `pulumi:"nodeCidrMaskSizeIpv4"`
+	// The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+	NodeCidrMaskSizeIpv6 pulumi.IntPtrInput `pulumi:"nodeCidrMaskSizeIpv6"`
+	// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routingMode` is `vxlan`.
+	//
+	// The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+	NodebalancerBackendPrefixLength pulumi.IntPtrInput `pulumi:"nodebalancerBackendPrefixLength"`
+	// The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+	RoutingMode pulumi.StringPtrInput `pulumi:"routingMode"`
+	// The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routingMode` is `vxlan`.
+	ServiceClusterIpRangeIpv4 pulumi.StringPtrInput `pulumi:"serviceClusterIpRangeIpv4"`
+	// The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+	ServiceClusterIpRangeIpv6 pulumi.StringPtrInput `pulumi:"serviceClusterIpRangeIpv6"`
+}
+
+func (LkeClusterNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterNetworking)(nil)).Elem()
+}
+
+func (i LkeClusterNetworkingArgs) ToLkeClusterNetworkingOutput() LkeClusterNetworkingOutput {
+	return i.ToLkeClusterNetworkingOutputWithContext(context.Background())
+}
+
+func (i LkeClusterNetworkingArgs) ToLkeClusterNetworkingOutputWithContext(ctx context.Context) LkeClusterNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterNetworkingOutput)
+}
+
+func (i LkeClusterNetworkingArgs) ToLkeClusterNetworkingPtrOutput() LkeClusterNetworkingPtrOutput {
+	return i.ToLkeClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i LkeClusterNetworkingArgs) ToLkeClusterNetworkingPtrOutputWithContext(ctx context.Context) LkeClusterNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterNetworkingOutput).ToLkeClusterNetworkingPtrOutputWithContext(ctx)
+}
+
+// LkeClusterNetworkingPtrInput is an input type that accepts LkeClusterNetworkingArgs, LkeClusterNetworkingPtr and LkeClusterNetworkingPtrOutput values.
+// You can construct a concrete instance of `LkeClusterNetworkingPtrInput` via:
+//
+//	        LkeClusterNetworkingArgs{...}
+//
+//	or:
+//
+//	        nil
+type LkeClusterNetworkingPtrInput interface {
+	pulumi.Input
+
+	ToLkeClusterNetworkingPtrOutput() LkeClusterNetworkingPtrOutput
+	ToLkeClusterNetworkingPtrOutputWithContext(context.Context) LkeClusterNetworkingPtrOutput
+}
+
+type lkeClusterNetworkingPtrType LkeClusterNetworkingArgs
+
+func LkeClusterNetworkingPtr(v *LkeClusterNetworkingArgs) LkeClusterNetworkingPtrInput {
+	return (*lkeClusterNetworkingPtrType)(v)
+}
+
+func (*lkeClusterNetworkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterNetworking)(nil)).Elem()
+}
+
+func (i *lkeClusterNetworkingPtrType) ToLkeClusterNetworkingPtrOutput() LkeClusterNetworkingPtrOutput {
+	return i.ToLkeClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i *lkeClusterNetworkingPtrType) ToLkeClusterNetworkingPtrOutputWithContext(ctx context.Context) LkeClusterNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LkeClusterNetworkingPtrOutput)
+}
+
+type LkeClusterNetworkingOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LkeClusterNetworking)(nil)).Elem()
+}
+
+func (o LkeClusterNetworkingOutput) ToLkeClusterNetworkingOutput() LkeClusterNetworkingOutput {
+	return o
+}
+
+func (o LkeClusterNetworkingOutput) ToLkeClusterNetworkingOutputWithContext(ctx context.Context) LkeClusterNetworkingOutput {
+	return o
+}
+
+func (o LkeClusterNetworkingOutput) ToLkeClusterNetworkingPtrOutput() LkeClusterNetworkingPtrOutput {
+	return o.ToLkeClusterNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (o LkeClusterNetworkingOutput) ToLkeClusterNetworkingPtrOutputWithContext(ctx context.Context) LkeClusterNetworkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LkeClusterNetworking) *LkeClusterNetworking {
+		return &v
+	}).(LkeClusterNetworkingPtrOutput)
+}
+
+// The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingOutput) ClusterCidrIpv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *string { return v.ClusterCidrIpv4 }).(pulumi.StringPtrOutput)
+}
+
+// The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+func (o LkeClusterNetworkingOutput) ClusterCidrIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *string { return v.ClusterCidrIpv6 }).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of pods per node. Must be between `16` and `110`, and must fit within `nodeCidrMaskSizeIpv4`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingOutput) MaxPods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *int { return v.MaxPods }).(pulumi.IntPtrOutput)
+}
+
+// The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingOutput) NodeCidrMaskSizeIpv4() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *int { return v.NodeCidrMaskSizeIpv4 }).(pulumi.IntPtrOutput)
+}
+
+// The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+func (o LkeClusterNetworkingOutput) NodeCidrMaskSizeIpv6() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *int { return v.NodeCidrMaskSizeIpv6 }).(pulumi.IntPtrOutput)
+}
+
+// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routingMode` is `vxlan`.
+//
+// The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+func (o LkeClusterNetworkingOutput) NodebalancerBackendPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *int { return v.NodebalancerBackendPrefixLength }).(pulumi.IntPtrOutput)
+}
+
+// The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+func (o LkeClusterNetworkingOutput) RoutingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *string { return v.RoutingMode }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingOutput) ServiceClusterIpRangeIpv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *string { return v.ServiceClusterIpRangeIpv4 }).(pulumi.StringPtrOutput)
+}
+
+// The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+func (o LkeClusterNetworkingOutput) ServiceClusterIpRangeIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LkeClusterNetworking) *string { return v.ServiceClusterIpRangeIpv6 }).(pulumi.StringPtrOutput)
+}
+
+type LkeClusterNetworkingPtrOutput struct{ *pulumi.OutputState }
+
+func (LkeClusterNetworkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LkeClusterNetworking)(nil)).Elem()
+}
+
+func (o LkeClusterNetworkingPtrOutput) ToLkeClusterNetworkingPtrOutput() LkeClusterNetworkingPtrOutput {
+	return o
+}
+
+func (o LkeClusterNetworkingPtrOutput) ToLkeClusterNetworkingPtrOutputWithContext(ctx context.Context) LkeClusterNetworkingPtrOutput {
+	return o
+}
+
+func (o LkeClusterNetworkingPtrOutput) Elem() LkeClusterNetworkingOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) LkeClusterNetworking {
+		if v != nil {
+			return *v
+		}
+		var ret LkeClusterNetworking
+		return ret
+	}).(LkeClusterNetworkingOutput)
+}
+
+// The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingPtrOutput) ClusterCidrIpv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCidrIpv4
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+func (o LkeClusterNetworkingPtrOutput) ClusterCidrIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCidrIpv6
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum number of pods per node. Must be between `16` and `110`, and must fit within `nodeCidrMaskSizeIpv4`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingPtrOutput) MaxPods() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPods
+	}).(pulumi.IntPtrOutput)
+}
+
+// The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingPtrOutput) NodeCidrMaskSizeIpv4() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCidrMaskSizeIpv4
+	}).(pulumi.IntPtrOutput)
+}
+
+// The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+func (o LkeClusterNetworkingPtrOutput) NodeCidrMaskSizeIpv6() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodeCidrMaskSizeIpv6
+	}).(pulumi.IntPtrOutput)
+}
+
+// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routingMode` is `vxlan`.
+//
+// The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+func (o LkeClusterNetworkingPtrOutput) NodebalancerBackendPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NodebalancerBackendPrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+func (o LkeClusterNetworkingPtrOutput) RoutingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routingMode` is `vxlan`.
+func (o LkeClusterNetworkingPtrOutput) ServiceClusterIpRangeIpv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceClusterIpRangeIpv4
+	}).(pulumi.StringPtrOutput)
+}
+
+// The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+func (o LkeClusterNetworkingPtrOutput) ServiceClusterIpRangeIpv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LkeClusterNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceClusterIpRangeIpv6
+	}).(pulumi.StringPtrOutput)
+}
+
 type LkeClusterPool struct {
 	// When specified, the number of nodes autoscales within the defined minimum and maximum values.
 	Autoscaler *LkeClusterPoolAutoscaler `pulumi:"autoscaler"`
@@ -60797,6 +61094,175 @@ func (o GetLkeClusterControlPlaneAclAddressArrayOutput) Index(i pulumi.IntInput)
 	}).(GetLkeClusterControlPlaneAclAddressOutput)
 }
 
+type GetLkeClusterNetworking struct {
+	// The IPv4 pod network CIDR.
+	ClusterCidrIpv4 string `pulumi:"clusterCidrIpv4"`
+	// The system-assigned IPv6 pod network CIDR. This is null for IPv4-only clusters.
+	ClusterCidrIpv6 string `pulumi:"clusterCidrIpv6"`
+	// The maximum number of pods per node.
+	MaxPods int `pulumi:"maxPods"`
+	// The IPv4 pod CIDR prefix length assigned to each node.
+	NodeCidrMaskSizeIpv4 int `pulumi:"nodeCidrMaskSizeIpv4"`
+	// The IPv6 pod CIDR prefix length assigned to each node. This is null for IPv4-only clusters.
+	NodeCidrMaskSizeIpv6 int `pulumi:"nodeCidrMaskSizeIpv6"`
+	// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends.
+	NodebalancerBackendPrefixLength int `pulumi:"nodebalancerBackendPrefixLength"`
+	// The pod network routing mode. (`native`, `vxlan`)
+	RoutingMode string `pulumi:"routingMode"`
+	// The IPv4 service CIDR.
+	ServiceClusterIpRangeIpv4 string `pulumi:"serviceClusterIpRangeIpv4"`
+	// The system-assigned IPv6 service CIDR. This is null for IPv4-only clusters.
+	ServiceClusterIpRangeIpv6 string `pulumi:"serviceClusterIpRangeIpv6"`
+}
+
+// GetLkeClusterNetworkingInput is an input type that accepts GetLkeClusterNetworkingArgs and GetLkeClusterNetworkingOutput values.
+// You can construct a concrete instance of `GetLkeClusterNetworkingInput` via:
+//
+//	GetLkeClusterNetworkingArgs{...}
+type GetLkeClusterNetworkingInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterNetworkingOutput() GetLkeClusterNetworkingOutput
+	ToGetLkeClusterNetworkingOutputWithContext(context.Context) GetLkeClusterNetworkingOutput
+}
+
+type GetLkeClusterNetworkingArgs struct {
+	// The IPv4 pod network CIDR.
+	ClusterCidrIpv4 pulumi.StringInput `pulumi:"clusterCidrIpv4"`
+	// The system-assigned IPv6 pod network CIDR. This is null for IPv4-only clusters.
+	ClusterCidrIpv6 pulumi.StringInput `pulumi:"clusterCidrIpv6"`
+	// The maximum number of pods per node.
+	MaxPods pulumi.IntInput `pulumi:"maxPods"`
+	// The IPv4 pod CIDR prefix length assigned to each node.
+	NodeCidrMaskSizeIpv4 pulumi.IntInput `pulumi:"nodeCidrMaskSizeIpv4"`
+	// The IPv6 pod CIDR prefix length assigned to each node. This is null for IPv4-only clusters.
+	NodeCidrMaskSizeIpv6 pulumi.IntInput `pulumi:"nodeCidrMaskSizeIpv6"`
+	// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends.
+	NodebalancerBackendPrefixLength pulumi.IntInput `pulumi:"nodebalancerBackendPrefixLength"`
+	// The pod network routing mode. (`native`, `vxlan`)
+	RoutingMode pulumi.StringInput `pulumi:"routingMode"`
+	// The IPv4 service CIDR.
+	ServiceClusterIpRangeIpv4 pulumi.StringInput `pulumi:"serviceClusterIpRangeIpv4"`
+	// The system-assigned IPv6 service CIDR. This is null for IPv4-only clusters.
+	ServiceClusterIpRangeIpv6 pulumi.StringInput `pulumi:"serviceClusterIpRangeIpv6"`
+}
+
+func (GetLkeClusterNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterNetworking)(nil)).Elem()
+}
+
+func (i GetLkeClusterNetworkingArgs) ToGetLkeClusterNetworkingOutput() GetLkeClusterNetworkingOutput {
+	return i.ToGetLkeClusterNetworkingOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterNetworkingArgs) ToGetLkeClusterNetworkingOutputWithContext(ctx context.Context) GetLkeClusterNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterNetworkingOutput)
+}
+
+// GetLkeClusterNetworkingArrayInput is an input type that accepts GetLkeClusterNetworkingArray and GetLkeClusterNetworkingArrayOutput values.
+// You can construct a concrete instance of `GetLkeClusterNetworkingArrayInput` via:
+//
+//	GetLkeClusterNetworkingArray{ GetLkeClusterNetworkingArgs{...} }
+type GetLkeClusterNetworkingArrayInput interface {
+	pulumi.Input
+
+	ToGetLkeClusterNetworkingArrayOutput() GetLkeClusterNetworkingArrayOutput
+	ToGetLkeClusterNetworkingArrayOutputWithContext(context.Context) GetLkeClusterNetworkingArrayOutput
+}
+
+type GetLkeClusterNetworkingArray []GetLkeClusterNetworkingInput
+
+func (GetLkeClusterNetworkingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterNetworking)(nil)).Elem()
+}
+
+func (i GetLkeClusterNetworkingArray) ToGetLkeClusterNetworkingArrayOutput() GetLkeClusterNetworkingArrayOutput {
+	return i.ToGetLkeClusterNetworkingArrayOutputWithContext(context.Background())
+}
+
+func (i GetLkeClusterNetworkingArray) ToGetLkeClusterNetworkingArrayOutputWithContext(ctx context.Context) GetLkeClusterNetworkingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLkeClusterNetworkingArrayOutput)
+}
+
+type GetLkeClusterNetworkingOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLkeClusterNetworking)(nil)).Elem()
+}
+
+func (o GetLkeClusterNetworkingOutput) ToGetLkeClusterNetworkingOutput() GetLkeClusterNetworkingOutput {
+	return o
+}
+
+func (o GetLkeClusterNetworkingOutput) ToGetLkeClusterNetworkingOutputWithContext(ctx context.Context) GetLkeClusterNetworkingOutput {
+	return o
+}
+
+// The IPv4 pod network CIDR.
+func (o GetLkeClusterNetworkingOutput) ClusterCidrIpv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) string { return v.ClusterCidrIpv4 }).(pulumi.StringOutput)
+}
+
+// The system-assigned IPv6 pod network CIDR. This is null for IPv4-only clusters.
+func (o GetLkeClusterNetworkingOutput) ClusterCidrIpv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) string { return v.ClusterCidrIpv6 }).(pulumi.StringOutput)
+}
+
+// The maximum number of pods per node.
+func (o GetLkeClusterNetworkingOutput) MaxPods() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) int { return v.MaxPods }).(pulumi.IntOutput)
+}
+
+// The IPv4 pod CIDR prefix length assigned to each node.
+func (o GetLkeClusterNetworkingOutput) NodeCidrMaskSizeIpv4() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) int { return v.NodeCidrMaskSizeIpv4 }).(pulumi.IntOutput)
+}
+
+// The IPv6 pod CIDR prefix length assigned to each node. This is null for IPv4-only clusters.
+func (o GetLkeClusterNetworkingOutput) NodeCidrMaskSizeIpv6() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) int { return v.NodeCidrMaskSizeIpv6 }).(pulumi.IntOutput)
+}
+
+// The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends.
+func (o GetLkeClusterNetworkingOutput) NodebalancerBackendPrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) int { return v.NodebalancerBackendPrefixLength }).(pulumi.IntOutput)
+}
+
+// The pod network routing mode. (`native`, `vxlan`)
+func (o GetLkeClusterNetworkingOutput) RoutingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) string { return v.RoutingMode }).(pulumi.StringOutput)
+}
+
+// The IPv4 service CIDR.
+func (o GetLkeClusterNetworkingOutput) ServiceClusterIpRangeIpv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) string { return v.ServiceClusterIpRangeIpv4 }).(pulumi.StringOutput)
+}
+
+// The system-assigned IPv6 service CIDR. This is null for IPv4-only clusters.
+func (o GetLkeClusterNetworkingOutput) ServiceClusterIpRangeIpv6() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLkeClusterNetworking) string { return v.ServiceClusterIpRangeIpv6 }).(pulumi.StringOutput)
+}
+
+type GetLkeClusterNetworkingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLkeClusterNetworkingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLkeClusterNetworking)(nil)).Elem()
+}
+
+func (o GetLkeClusterNetworkingArrayOutput) ToGetLkeClusterNetworkingArrayOutput() GetLkeClusterNetworkingArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterNetworkingArrayOutput) ToGetLkeClusterNetworkingArrayOutputWithContext(ctx context.Context) GetLkeClusterNetworkingArrayOutput {
+	return o
+}
+
+func (o GetLkeClusterNetworkingArrayOutput) Index(i pulumi.IntInput) GetLkeClusterNetworkingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLkeClusterNetworking {
+		return vs[0].([]GetLkeClusterNetworking)[vs[1].(int)]
+	}).(GetLkeClusterNetworkingOutput)
+}
+
 type GetLkeClusterPool struct {
 	// (Nested Attribute List) The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
 	Autoscalers []GetLkeClusterPoolAutoscaler `pulumi:"autoscalers"`
@@ -65812,290 +66278,6 @@ func (o GetMonitorLogsDestinationDetailsOutput) TlsHostname() pulumi.StringOutpu
 	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.TlsHostname }).(pulumi.StringOutput)
 }
 
-type GetMonitorLogsDestinationsDestination struct {
-	// When this logs destination was created.
-	Created string `pulumi:"created"`
-	// The user who created this logs destination.
-	CreatedBy string `pulumi:"createdBy"`
-	// The unique ID of this logs destination.
-	Id int `pulumi:"id"`
-	// The label for this logs destination.
-	Label string `pulumi:"label"`
-	// The status of this logs destination.
-	Status string `pulumi:"status"`
-	// The type of this logs destination.
-	Type string `pulumi:"type"`
-	// When this logs destination was last updated.
-	Updated string `pulumi:"updated"`
-	// The user who last updated this logs destination.
-	UpdatedBy string `pulumi:"updatedBy"`
-	// The version of this logs destination.
-	Version int `pulumi:"version"`
-}
-
-// GetMonitorLogsDestinationsDestinationInput is an input type that accepts GetMonitorLogsDestinationsDestinationArgs and GetMonitorLogsDestinationsDestinationOutput values.
-// You can construct a concrete instance of `GetMonitorLogsDestinationsDestinationInput` via:
-//
-//	GetMonitorLogsDestinationsDestinationArgs{...}
-type GetMonitorLogsDestinationsDestinationInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsDestinationsDestinationOutput() GetMonitorLogsDestinationsDestinationOutput
-	ToGetMonitorLogsDestinationsDestinationOutputWithContext(context.Context) GetMonitorLogsDestinationsDestinationOutput
-}
-
-type GetMonitorLogsDestinationsDestinationArgs struct {
-	// When this logs destination was created.
-	Created pulumi.StringInput `pulumi:"created"`
-	// The user who created this logs destination.
-	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
-	// The unique ID of this logs destination.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The label for this logs destination.
-	Label pulumi.StringInput `pulumi:"label"`
-	// The status of this logs destination.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The type of this logs destination.
-	Type pulumi.StringInput `pulumi:"type"`
-	// When this logs destination was last updated.
-	Updated pulumi.StringInput `pulumi:"updated"`
-	// The user who last updated this logs destination.
-	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
-	// The version of this logs destination.
-	Version pulumi.IntInput `pulumi:"version"`
-}
-
-func (GetMonitorLogsDestinationsDestinationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsDestinationsDestination)(nil)).Elem()
-}
-
-func (i GetMonitorLogsDestinationsDestinationArgs) ToGetMonitorLogsDestinationsDestinationOutput() GetMonitorLogsDestinationsDestinationOutput {
-	return i.ToGetMonitorLogsDestinationsDestinationOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsDestinationsDestinationArgs) ToGetMonitorLogsDestinationsDestinationOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsDestinationOutput)
-}
-
-// GetMonitorLogsDestinationsDestinationArrayInput is an input type that accepts GetMonitorLogsDestinationsDestinationArray and GetMonitorLogsDestinationsDestinationArrayOutput values.
-// You can construct a concrete instance of `GetMonitorLogsDestinationsDestinationArrayInput` via:
-//
-//	GetMonitorLogsDestinationsDestinationArray{ GetMonitorLogsDestinationsDestinationArgs{...} }
-type GetMonitorLogsDestinationsDestinationArrayInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsDestinationsDestinationArrayOutput() GetMonitorLogsDestinationsDestinationArrayOutput
-	ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(context.Context) GetMonitorLogsDestinationsDestinationArrayOutput
-}
-
-type GetMonitorLogsDestinationsDestinationArray []GetMonitorLogsDestinationsDestinationInput
-
-func (GetMonitorLogsDestinationsDestinationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsDestinationsDestination)(nil)).Elem()
-}
-
-func (i GetMonitorLogsDestinationsDestinationArray) ToGetMonitorLogsDestinationsDestinationArrayOutput() GetMonitorLogsDestinationsDestinationArrayOutput {
-	return i.ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsDestinationsDestinationArray) ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsDestinationArrayOutput)
-}
-
-type GetMonitorLogsDestinationsDestinationOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsDestinationsDestinationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsDestinationsDestination)(nil)).Elem()
-}
-
-func (o GetMonitorLogsDestinationsDestinationOutput) ToGetMonitorLogsDestinationsDestinationOutput() GetMonitorLogsDestinationsDestinationOutput {
-	return o
-}
-
-func (o GetMonitorLogsDestinationsDestinationOutput) ToGetMonitorLogsDestinationsDestinationOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationOutput {
-	return o
-}
-
-// When this logs destination was created.
-func (o GetMonitorLogsDestinationsDestinationOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// The user who created this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) CreatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.CreatedBy }).(pulumi.StringOutput)
-}
-
-// The unique ID of this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The label for this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) Label() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Label }).(pulumi.StringOutput)
-}
-
-// The status of this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// The type of this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// When this logs destination was last updated.
-func (o GetMonitorLogsDestinationsDestinationOutput) Updated() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.Updated }).(pulumi.StringOutput)
-}
-
-// The user who last updated this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) UpdatedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) string { return v.UpdatedBy }).(pulumi.StringOutput)
-}
-
-// The version of this logs destination.
-func (o GetMonitorLogsDestinationsDestinationOutput) Version() pulumi.IntOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsDestination) int { return v.Version }).(pulumi.IntOutput)
-}
-
-type GetMonitorLogsDestinationsDestinationArrayOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsDestinationsDestinationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsDestinationsDestination)(nil)).Elem()
-}
-
-func (o GetMonitorLogsDestinationsDestinationArrayOutput) ToGetMonitorLogsDestinationsDestinationArrayOutput() GetMonitorLogsDestinationsDestinationArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsDestinationsDestinationArrayOutput) ToGetMonitorLogsDestinationsDestinationArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsDestinationArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsDestinationsDestinationArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsDestinationsDestinationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsDestinationsDestination {
-		return vs[0].([]GetMonitorLogsDestinationsDestination)[vs[1].(int)]
-	}).(GetMonitorLogsDestinationsDestinationOutput)
-}
-
-type GetMonitorLogsDestinationsFilter struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy *string `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name string `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values []string `pulumi:"values"`
-}
-
-// GetMonitorLogsDestinationsFilterInput is an input type that accepts GetMonitorLogsDestinationsFilterArgs and GetMonitorLogsDestinationsFilterOutput values.
-// You can construct a concrete instance of `GetMonitorLogsDestinationsFilterInput` via:
-//
-//	GetMonitorLogsDestinationsFilterArgs{...}
-type GetMonitorLogsDestinationsFilterInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsDestinationsFilterOutput() GetMonitorLogsDestinationsFilterOutput
-	ToGetMonitorLogsDestinationsFilterOutputWithContext(context.Context) GetMonitorLogsDestinationsFilterOutput
-}
-
-type GetMonitorLogsDestinationsFilterArgs struct {
-	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A list of values for the filter to allow. These values should all be in string form.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetMonitorLogsDestinationsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsDestinationsFilter)(nil)).Elem()
-}
-
-func (i GetMonitorLogsDestinationsFilterArgs) ToGetMonitorLogsDestinationsFilterOutput() GetMonitorLogsDestinationsFilterOutput {
-	return i.ToGetMonitorLogsDestinationsFilterOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsDestinationsFilterArgs) ToGetMonitorLogsDestinationsFilterOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsFilterOutput)
-}
-
-// GetMonitorLogsDestinationsFilterArrayInput is an input type that accepts GetMonitorLogsDestinationsFilterArray and GetMonitorLogsDestinationsFilterArrayOutput values.
-// You can construct a concrete instance of `GetMonitorLogsDestinationsFilterArrayInput` via:
-//
-//	GetMonitorLogsDestinationsFilterArray{ GetMonitorLogsDestinationsFilterArgs{...} }
-type GetMonitorLogsDestinationsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetMonitorLogsDestinationsFilterArrayOutput() GetMonitorLogsDestinationsFilterArrayOutput
-	ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(context.Context) GetMonitorLogsDestinationsFilterArrayOutput
-}
-
-type GetMonitorLogsDestinationsFilterArray []GetMonitorLogsDestinationsFilterInput
-
-func (GetMonitorLogsDestinationsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsDestinationsFilter)(nil)).Elem()
-}
-
-func (i GetMonitorLogsDestinationsFilterArray) ToGetMonitorLogsDestinationsFilterArrayOutput() GetMonitorLogsDestinationsFilterArrayOutput {
-	return i.ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetMonitorLogsDestinationsFilterArray) ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationsFilterArrayOutput)
-}
-
-type GetMonitorLogsDestinationsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsDestinationsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetMonitorLogsDestinationsFilter)(nil)).Elem()
-}
-
-func (o GetMonitorLogsDestinationsFilterOutput) ToGetMonitorLogsDestinationsFilterOutput() GetMonitorLogsDestinationsFilterOutput {
-	return o
-}
-
-func (o GetMonitorLogsDestinationsFilterOutput) ToGetMonitorLogsDestinationsFilterOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterOutput {
-	return o
-}
-
-// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
-func (o GetMonitorLogsDestinationsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
-func (o GetMonitorLogsDestinationsFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsFilter) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A list of values for the filter to allow. These values should all be in string form.
-func (o GetMonitorLogsDestinationsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetMonitorLogsDestinationsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetMonitorLogsDestinationsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetMonitorLogsDestinationsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetMonitorLogsDestinationsFilter)(nil)).Elem()
-}
-
-func (o GetMonitorLogsDestinationsFilterArrayOutput) ToGetMonitorLogsDestinationsFilterArrayOutput() GetMonitorLogsDestinationsFilterArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsDestinationsFilterArrayOutput) ToGetMonitorLogsDestinationsFilterArrayOutputWithContext(ctx context.Context) GetMonitorLogsDestinationsFilterArrayOutput {
-	return o
-}
-
-func (o GetMonitorLogsDestinationsFilterArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsDestinationsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsDestinationsFilter {
-		return vs[0].([]GetMonitorLogsDestinationsFilter)[vs[1].(int)]
-	}).(GetMonitorLogsDestinationsFilterOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseMysqlV2PendingUpdateArrayInput)(nil)).Elem(), DatabaseMysqlV2PendingUpdateArray{})
@@ -66397,6 +66579,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclPtrInput)(nil)).Elem(), LkeClusterControlPlaneAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclAddressInput)(nil)).Elem(), LkeClusterControlPlaneAclAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterControlPlaneAclAddressArrayInput)(nil)).Elem(), LkeClusterControlPlaneAclAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterNetworkingInput)(nil)).Elem(), LkeClusterNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterNetworkingPtrInput)(nil)).Elem(), LkeClusterNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolInput)(nil)).Elem(), LkeClusterPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolArrayInput)(nil)).Elem(), LkeClusterPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LkeClusterPoolAutoscalerInput)(nil)).Elem(), LkeClusterPoolAutoscalerArgs{})
@@ -66938,6 +67122,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclAddressInput)(nil)).Elem(), GetLkeClusterControlPlaneAclAddressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterControlPlaneAclAddressArrayInput)(nil)).Elem(), GetLkeClusterControlPlaneAclAddressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterNetworkingInput)(nil)).Elem(), GetLkeClusterNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterNetworkingArrayInput)(nil)).Elem(), GetLkeClusterNetworkingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolInput)(nil)).Elem(), GetLkeClusterPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolArrayInput)(nil)).Elem(), GetLkeClusterPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLkeClusterPoolAutoscalerInput)(nil)).Elem(), GetLkeClusterPoolAutoscalerArgs{})
@@ -67012,10 +67198,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorAlertDefinitionsFilterInput)(nil)).Elem(), GetMonitorAlertDefinitionsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorAlertDefinitionsFilterArrayInput)(nil)).Elem(), GetMonitorAlertDefinitionsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationDetailsInput)(nil)).Elem(), GetMonitorLogsDestinationDetailsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArray{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PendingUpdateArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseMysqlV2PrivateNetworkOutput{})
@@ -67316,6 +67498,8 @@ func init() {
 	pulumi.RegisterOutputType(LkeClusterControlPlaneAclPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneAclAddressOutput{})
 	pulumi.RegisterOutputType(LkeClusterControlPlaneAclAddressArrayOutput{})
+	pulumi.RegisterOutputType(LkeClusterNetworkingOutput{})
+	pulumi.RegisterOutputType(LkeClusterNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolArrayOutput{})
 	pulumi.RegisterOutputType(LkeClusterPoolAutoscalerOutput{})
@@ -67857,6 +68041,8 @@ func init() {
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclAddressOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterControlPlaneAclAddressArrayOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterNetworkingOutput{})
+	pulumi.RegisterOutputType(GetLkeClusterNetworkingArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetLkeClusterPoolAutoscalerOutput{})
@@ -67931,8 +68117,4 @@ func init() {
 	pulumi.RegisterOutputType(GetMonitorAlertDefinitionsFilterOutput{})
 	pulumi.RegisterOutputType(GetMonitorAlertDefinitionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationDetailsOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationArrayOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterOutput{})
-	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterArrayOutput{})
 }

@@ -4830,6 +4830,45 @@ export interface GetLkeClusterControlPlaneAclAddress {
     ipv6s: string[];
 }
 
+export interface GetLkeClusterNetworking {
+    /**
+     * The IPv4 pod network CIDR.
+     */
+    clusterCidrIpv4: string;
+    /**
+     * The system-assigned IPv6 pod network CIDR. This is null for IPv4-only clusters.
+     */
+    clusterCidrIpv6: string;
+    /**
+     * The maximum number of pods per node.
+     */
+    maxPods: number;
+    /**
+     * The IPv4 pod CIDR prefix length assigned to each node.
+     */
+    nodeCidrMaskSizeIpv4: number;
+    /**
+     * The IPv6 pod CIDR prefix length assigned to each node. This is null for IPv4-only clusters.
+     */
+    nodeCidrMaskSizeIpv6: number;
+    /**
+     * The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends.
+     */
+    nodebalancerBackendPrefixLength: number;
+    /**
+     * The pod network routing mode. (`native`, `vxlan`)
+     */
+    routingMode: string;
+    /**
+     * The IPv4 service CIDR.
+     */
+    serviceClusterIpRangeIpv4: string;
+    /**
+     * The system-assigned IPv6 service CIDR. This is null for IPv4-only clusters.
+     */
+    serviceClusterIpRangeIpv6: string;
+}
+
 export interface GetLkeClusterPool {
     /**
      * (Nested Attribute List) The configuration options for the autoscaler. This field only contains an autoscaler configuration if autoscaling is enabled on this cluster.
@@ -10701,6 +10740,47 @@ export interface LkeClusterControlPlaneAclAddress {
      * A set of individual ipv6 addresses or CIDRs to ALLOW.
      */
     ipv6s: string[];
+}
+
+export interface LkeClusterNetworking {
+    /**
+     * The IPv4 pod network CIDR. The prefix length must be between `/11` and `/22`. Only configurable when `routingMode` is `vxlan`.
+     */
+    clusterCidrIpv4: string;
+    /**
+     * The system-assigned IPv6 pod network CIDR. This is empty for IPv4-only clusters.
+     */
+    clusterCidrIpv6: string;
+    /**
+     * The maximum number of pods per node. Must be between `16` and `110`, and must fit within `nodeCidrMaskSizeIpv4`. Only configurable when `routingMode` is `vxlan`.
+     */
+    maxPods: number;
+    /**
+     * The IPv4 pod CIDR prefix length assigned to each node. Must be between `24` and `28`. Only configurable when `routingMode` is `vxlan`.
+     */
+    nodeCidrMaskSizeIpv4: number;
+    /**
+     * The IPv6 pod CIDR prefix length assigned to each node. This is `0` for IPv4-only clusters.
+     */
+    nodeCidrMaskSizeIpv6: number;
+    /**
+     * The prefix length reserved from the highest portion of the VPC subnet for NodeBalancer backends. The valid range depends on the size of the VPC subnet used by the cluster. Only configurable when `routingMode` is `vxlan`.
+     *
+     * The pod and service CIDRs must be RFC1918 or CGNAT ranges, and must not overlap each other or the VPC subnet used by the cluster.
+     */
+    nodebalancerBackendPrefixLength: number;
+    /**
+     * The pod network routing mode. Must be `native` or `vxlan`. Defaults to `native`.
+     */
+    routingMode: string;
+    /**
+     * The IPv4 service CIDR. The prefix length must be between `/20` and `/24`. Only configurable when `routingMode` is `vxlan`.
+     */
+    serviceClusterIpRangeIpv4: string;
+    /**
+     * The system-assigned IPv6 service CIDR. This is empty for IPv4-only clusters.
+     */
+    serviceClusterIpRangeIpv6: string;
 }
 
 export interface LkeClusterPool {

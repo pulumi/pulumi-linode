@@ -6,6 +6,7 @@ package com.pulumi.linode.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.linode.outputs.GetLkeClusterControlPlane;
+import com.pulumi.linode.outputs.GetLkeClusterNetworking;
 import com.pulumi.linode.outputs.GetLkeClusterPool;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -55,6 +56,11 @@ public final class GetLkeClusterResult {
      * 
      */
     private String label;
+    /**
+     * @return (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
+     * 
+     */
+    private List<GetLkeClusterNetworking> networkings;
     /**
      * @return (Nested Attribute List) Node pools associated with this cluster.
      * 
@@ -159,6 +165,13 @@ public final class GetLkeClusterResult {
         return this.label;
     }
     /**
+     * @return (Nested Attribute List) The pod network routing mode and network configuration of an LKE Enterprise cluster. **NOTE: This field may not be available to all users and is only populated when apiVersion is set to `v4beta`.**
+     * 
+     */
+    public List<GetLkeClusterNetworking> networkings() {
+        return this.networkings;
+    }
+    /**
      * @return (Nested Attribute List) Node pools associated with this cluster.
      * 
      */
@@ -239,6 +252,7 @@ public final class GetLkeClusterResult {
         private String k8sVersion;
         private String kubeconfig;
         private String label;
+        private List<GetLkeClusterNetworking> networkings;
         private List<GetLkeClusterPool> pools;
         private String region;
         private String stackType;
@@ -259,6 +273,7 @@ public final class GetLkeClusterResult {
     	      this.k8sVersion = defaults.k8sVersion;
     	      this.kubeconfig = defaults.kubeconfig;
     	      this.label = defaults.label;
+    	      this.networkings = defaults.networkings;
     	      this.pools = defaults.pools;
     	      this.region = defaults.region;
     	      this.stackType = defaults.stackType;
@@ -339,6 +354,17 @@ public final class GetLkeClusterResult {
             }
             this.label = label;
             return this;
+        }
+        @CustomType.Setter
+        public Builder networkings(List<GetLkeClusterNetworking> networkings) {
+            if (networkings == null) {
+              throw new MissingRequiredPropertyException("GetLkeClusterResult", "networkings");
+            }
+            this.networkings = networkings;
+            return this;
+        }
+        public Builder networkings(GetLkeClusterNetworking... networkings) {
+            return networkings(List.of(networkings));
         }
         @CustomType.Setter
         public Builder pools(List<GetLkeClusterPool> pools) {
@@ -428,6 +454,7 @@ public final class GetLkeClusterResult {
             _resultValue.k8sVersion = k8sVersion;
             _resultValue.kubeconfig = kubeconfig;
             _resultValue.label = label;
+            _resultValue.networkings = networkings;
             _resultValue.pools = pools;
             _resultValue.region = region;
             _resultValue.stackType = stackType;

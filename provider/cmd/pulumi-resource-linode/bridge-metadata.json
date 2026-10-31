@@ -962,6 +962,9 @@
                     "external_pool_tags": {
                         "maxItemsOne": false
                     },
+                    "networking": {
+                        "maxItemsOne": true
+                    },
                     "pool": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2784,6 +2787,9 @@
                                 }
                             }
                         }
+                    },
+                    "networking": {
+                        "maxItemsOne": false
                     },
                     "pools": {
                         "maxItemsOne": false,
