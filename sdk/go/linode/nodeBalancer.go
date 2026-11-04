@@ -319,6 +319,12 @@ func (NodeBalancerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerState)(nil)).Elem()
 }
 
+// NodeBalancerExists checks whether an existing NodeBalancer resource with the given ID exists.
+func NodeBalancerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeBalancerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/nodeBalancer:NodeBalancer", id, state, "", opts...)
+}
+
 type nodeBalancerArgs struct {
 	// Backend communication mode: `legacy` (private IPv4), `ipv6`, or `vpc`. Requires `apiVersion = "v4beta"` and may not be available to all users. Changing this value replaces the NodeBalancer. When omitted, the API chooses the mode; it may report `undefined` if no mode, nodes, or VPCs were specified. `undefined` is read-only and cannot be configured.
 	BackendConnectivity *string `pulumi:"backendConnectivity"`

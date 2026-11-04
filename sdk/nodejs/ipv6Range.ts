@@ -42,6 +42,17 @@ export class Ipv6Range extends pulumi.CustomResource {
         return new Ipv6Range(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing Ipv6Range resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: Ipv6RangeState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("linode:index/ipv6Range:Ipv6Range", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'linode:index/ipv6Range:Ipv6Range';
 

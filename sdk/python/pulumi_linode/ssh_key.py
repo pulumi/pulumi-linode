@@ -270,6 +270,18 @@ class SshKey(pulumi.CustomResource):
         __props__.__dict__["ssh_key"] = ssh_key
         return SshKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["label"] = label
+        __props__["sshKey"] = ssh_key
+        return pulumi.runtime.exists_resource(None, 'linode:index/sshKey:SshKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

@@ -229,6 +229,12 @@ func (MonitorLogsDestinationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorLogsDestinationState)(nil)).Elem()
 }
 
+// MonitorLogsDestinationExists checks whether an existing MonitorLogsDestination resource with the given ID exists.
+func MonitorLogsDestinationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorLogsDestinationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/monitorLogsDestination:MonitorLogsDestination", id, state, "", opts...)
+}
+
 type monitorLogsDestinationArgs struct {
 	// Details for an akamaiObjectStorage logs destination.
 	AkamaiObjectStorageDetails *MonitorLogsDestinationAkamaiObjectStorageDetails `pulumi:"akamaiObjectStorageDetails"`

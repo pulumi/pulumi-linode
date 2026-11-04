@@ -177,6 +177,12 @@ func (ReservedIpAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedIpAssignmentState)(nil)).Elem()
 }
 
+// ReservedIpAssignmentExists checks whether an existing ReservedIpAssignment resource with the given ID exists.
+func ReservedIpAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservedIpAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/reservedIpAssignment:ReservedIpAssignment", id, state, "", opts...)
+}
+
 type reservedIpAssignmentArgs struct {
 	// The reserved IPv4 address to assign to the Linode.
 	Address string `pulumi:"address"`

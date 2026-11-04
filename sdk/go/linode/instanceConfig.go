@@ -355,6 +355,12 @@ func (InstanceConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceConfigState)(nil)).Elem()
 }
 
+// InstanceConfigExists checks whether an existing InstanceConfig resource with the given ID exists.
+func InstanceConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/instanceConfig:InstanceConfig", id, state, "", opts...)
+}
+
 type instanceConfigArgs struct {
 	// If true, the Linode will be booted into this config. If another config is booted, the Linode will be rebooted into this config. If false, the Linode will be shutdown only if it is currently booted into this config. If undefined, the config will alter the boot status of the Linode.
 	Booted *bool `pulumi:"booted"`

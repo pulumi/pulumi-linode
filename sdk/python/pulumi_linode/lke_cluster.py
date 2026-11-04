@@ -1298,6 +1298,44 @@ class LkeCluster(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return LkeCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            apl_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            control_plane: pulumi.Input[Optional[Union['LkeClusterControlPlaneArgs', 'LkeClusterControlPlaneArgsDict', 'outputs.LkeClusterControlPlane']]] = None,
+            external_pool_tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            networking: pulumi.Input[Optional[Union['LkeClusterNetworkingArgs', 'LkeClusterNetworkingArgsDict', 'outputs.LkeClusterNetworking']]] = None,
+            pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeClusterPoolArgs', 'LkeClusterPoolArgsDict', 'outputs.LkeClusterPool']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tier: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiEndpoints"] = api_endpoints
+        __props__["aplEnabled"] = apl_enabled
+        __props__["controlPlane"] = control_plane
+        __props__["externalPoolTags"] = external_pool_tags
+        __props__["k8sVersion"] = k8s_version
+        __props__["kubeconfig"] = kubeconfig
+        __props__["label"] = label
+        __props__["networking"] = networking
+        __props__["pools"] = pools
+        __props__["region"] = region
+        __props__["stackType"] = stack_type
+        __props__["status"] = status
+        __props__["subnetId"] = subnet_id
+        __props__["tags"] = tags
+        __props__["tier"] = tier
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'linode:index/lkeCluster:LkeCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiEndpoints")
     def api_endpoints(self) -> pulumi.Output[Sequence[_builtins.str]]:

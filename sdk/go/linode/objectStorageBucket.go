@@ -258,6 +258,12 @@ func (ObjectStorageBucketState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageBucketState)(nil)).Elem()
 }
 
+// ObjectStorageBucketExists checks whether an existing ObjectStorageBucket resource with the given ID exists.
+func ObjectStorageBucketExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageBucketState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/objectStorageBucket:ObjectStorageBucket", id, state, "", opts...)
+}
+
 type objectStorageBucketArgs struct {
 	// The access key to authenticate with. If not specified with the resource, its value can be
 	// * configured by `objAccessKey` in the provider configuration;

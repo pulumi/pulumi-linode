@@ -526,6 +526,32 @@ class MonitorLogsStream(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return MonitorLogsStream(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            destinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            details: pulumi.Input[Optional[Union['MonitorLogsStreamDetailsArgs', 'MonitorLogsStreamDetailsArgsDict', 'outputs.MonitorLogsStreamDetails']]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["destinations"] = destinations
+        __props__["details"] = details
+        __props__["label"] = label
+        __props__["status"] = status
+        __props__["type"] = type
+        __props__["updated"] = updated
+        __props__["updatedBy"] = updated_by
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'linode:index/monitorLogsStream:MonitorLogsStream', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

@@ -185,6 +185,14 @@ class FirewallSettings(pulumi.CustomResource):
         __props__.__dict__["default_firewall_ids"] = default_firewall_ids
         return FirewallSettings(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_firewall_ids: pulumi.Input[Optional[Union['FirewallSettingsDefaultFirewallIdsArgs', 'FirewallSettingsDefaultFirewallIdsArgsDict', 'outputs.FirewallSettingsDefaultFirewallIds']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultFirewallIds"] = default_firewall_ids
+        return pulumi.runtime.exists_resource(None, 'linode:index/firewallSettings:FirewallSettings', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultFirewallIds")
     def default_firewall_ids(self) -> pulumi.Output[Optional['outputs.FirewallSettingsDefaultFirewallIds']]:

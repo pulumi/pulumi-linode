@@ -101,7 +101,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("images")]
         public Output<ImmutableArray<string>> Images { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputList<string> Images
         {
@@ -282,7 +282,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// A set of Image IDs representing the Images that this StackScript is compatible for deploying with. `any/all` indicates that all available image distributions, including private images, are accepted. Currently private image IDs are not supported.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputList<string> Images
         {

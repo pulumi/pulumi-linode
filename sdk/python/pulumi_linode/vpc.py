@@ -652,6 +652,30 @@ class Vpc(pulumi.CustomResource):
         __props__.__dict__["vpc_type"] = vpc_type
         return Vpc(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv4Args', 'VpcIpv4ArgsDict', 'outputs.VpcIpv4']]]]] = None,
+            ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcIpv6Args', 'VpcIpv6ArgsDict', 'outputs.VpcIpv6']]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetArgs', 'VpcSubnetArgsDict', 'outputs.VpcSubnet']]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["ipv4s"] = ipv4s
+        __props__["ipv6s"] = ipv6s
+        __props__["label"] = label
+        __props__["region"] = region
+        __props__["subnets"] = subnets
+        __props__["updated"] = updated
+        __props__["vpcType"] = vpc_type
+        return pulumi.runtime.exists_resource(None, 'linode:index/vpc:Vpc', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

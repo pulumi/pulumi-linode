@@ -652,6 +652,36 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            axfr_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            master_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            refresh_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            retry_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            soa_email: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ttl_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["axfrIps"] = axfr_ips
+        __props__["description"] = description
+        __props__["domain"] = domain
+        __props__["expireSec"] = expire_sec
+        __props__["masterIps"] = master_ips
+        __props__["refreshSec"] = refresh_sec
+        __props__["retrySec"] = retry_sec
+        __props__["soaEmail"] = soa_email
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["ttlSec"] = ttl_sec
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'linode:index/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="axfrIps")
     def axfr_ips(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

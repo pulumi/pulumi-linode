@@ -887,6 +887,54 @@ class MonitorAlertDefinition(pulumi.CustomResource):
         __props__.__dict__["wait_for"] = wait_for
         return MonitorAlertDefinition(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alert_channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorAlertDefinitionAlertChannelArgs', 'MonitorAlertDefinitionAlertChannelArgsDict', 'outputs.MonitorAlertDefinitionAlertChannel']]]]] = None,
+            channel_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            class_: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entities: pulumi.Input[Optional[Union['MonitorAlertDefinitionEntitiesArgs', 'MonitorAlertDefinitionEntitiesArgsDict', 'outputs.MonitorAlertDefinitionEntities']]] = None,
+            entity_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_bies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_criteria: pulumi.Input[Optional[Union['MonitorAlertDefinitionRuleCriteriaArgs', 'MonitorAlertDefinitionRuleCriteriaArgsDict', 'outputs.MonitorAlertDefinitionRuleCriteria']]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            service_type: pulumi.Input[Optional[_builtins.str]] = None,
+            severity: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_conditions: pulumi.Input[Optional[Union['MonitorAlertDefinitionTriggerConditionsArgs', 'MonitorAlertDefinitionTriggerConditionsArgsDict', 'outputs.MonitorAlertDefinitionTriggerConditions']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alertChannels"] = alert_channels
+        __props__["channelIds"] = channel_ids
+        __props__["class"] = class_
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["description"] = description
+        __props__["entities"] = entities
+        __props__["entityIds"] = entity_ids
+        __props__["groupBies"] = group_bies
+        __props__["label"] = label
+        __props__["regions"] = regions
+        __props__["ruleCriteria"] = rule_criteria
+        __props__["scope"] = scope
+        __props__["serviceType"] = service_type
+        __props__["severity"] = severity
+        __props__["status"] = status
+        __props__["triggerConditions"] = trigger_conditions
+        __props__["type"] = type
+        __props__["updated"] = updated
+        __props__["updatedBy"] = updated_by
+        __props__["waitFor"] = wait_for
+        return pulumi.runtime.exists_resource(None, 'linode:index/monitorAlertDefinition:MonitorAlertDefinition', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alertChannels")
     def alert_channels(self) -> pulumi.Output[Sequence['outputs.MonitorAlertDefinitionAlertChannel']]:

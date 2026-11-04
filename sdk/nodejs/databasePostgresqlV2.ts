@@ -199,6 +199,17 @@ export class DatabasePostgresqlV2 extends pulumi.CustomResource {
         return new DatabasePostgresqlV2(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing DatabasePostgresqlV2 resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: DatabasePostgresqlV2State, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("linode:index/databasePostgresqlV2:DatabasePostgresqlV2", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'linode:index/databasePostgresqlV2:DatabasePostgresqlV2';
 

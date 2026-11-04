@@ -507,6 +507,38 @@ class NetworkingIp(pulumi.CustomResource):
         __props__.__dict__["vpc_nat11"] = vpc_nat11
         return NetworkingIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            assigned_entity: pulumi.Input[Optional[Union['NetworkingIpAssignedEntityArgs', 'NetworkingIpAssignedEntityArgsDict', 'outputs.NetworkingIpAssignedEntity']]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix: pulumi.Input[Optional[_builtins.int]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            rdns: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved: pulumi.Input[Optional[_builtins.bool]] = None,
+            subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_nat11: pulumi.Input[Optional[Union['NetworkingIpVpcNat11Args', 'NetworkingIpVpcNat11ArgsDict', 'outputs.NetworkingIpVpcNat11']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["assignedEntity"] = assigned_entity
+        __props__["gateway"] = gateway
+        __props__["linodeId"] = linode_id
+        __props__["prefix"] = prefix
+        __props__["public"] = public
+        __props__["rdns"] = rdns
+        __props__["region"] = region
+        __props__["reserved"] = reserved
+        __props__["subnetMask"] = subnet_mask
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["vpcNat11"] = vpc_nat11
+        return pulumi.runtime.exists_resource(None, 'linode:index/networkingIp:NetworkingIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

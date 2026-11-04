@@ -354,6 +354,28 @@ class ProducerImageShareGroupMember(pulumi.CustomResource):
         __props__.__dict__["updated"] = updated
         return ProducerImageShareGroupMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            sharegroup_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            token: pulumi.Input[Optional[_builtins.str]] = None,
+            token_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["expiry"] = expiry
+        __props__["label"] = label
+        __props__["sharegroupId"] = sharegroup_id
+        __props__["status"] = status
+        __props__["token"] = token
+        __props__["tokenUuid"] = token_uuid
+        __props__["updated"] = updated
+        return pulumi.runtime.exists_resource(None, 'linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

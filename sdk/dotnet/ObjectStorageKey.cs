@@ -123,7 +123,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// A set of regions where the key will grant access to create buckets.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// A set of regions where the key will grant access to create buckets.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputList<string> Regions
         {
@@ -266,7 +266,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// A set of regions where the key will grant access to create buckets.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputList<string> Regions
         {

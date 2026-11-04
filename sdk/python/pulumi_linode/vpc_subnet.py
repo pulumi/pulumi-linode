@@ -498,6 +498,32 @@ class VpcSubnet(pulumi.CustomResource):
         __props__.__dict__["vpc_type"] = vpc_type
         return VpcSubnet(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            databases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetDatabaseArgs', 'VpcSubnetDatabaseArgsDict', 'outputs.VpcSubnetDatabase']]]]] = None,
+            ipv4: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetIpv6Args', 'VpcSubnetIpv6ArgsDict', 'outputs.VpcSubnetIpv6']]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetLinodeArgs', 'VpcSubnetLinodeArgsDict', 'outputs.VpcSubnetLinode']]]]] = None,
+            nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VpcSubnetNodebalancerArgs', 'VpcSubnetNodebalancerArgsDict', 'outputs.VpcSubnetNodebalancer']]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["databases"] = databases
+        __props__["ipv4"] = ipv4
+        __props__["ipv6s"] = ipv6s
+        __props__["label"] = label
+        __props__["linodes"] = linodes
+        __props__["nodebalancers"] = nodebalancers
+        __props__["updated"] = updated
+        __props__["vpcId"] = vpc_id
+        __props__["vpcType"] = vpc_type
+        return pulumi.runtime.exists_resource(None, 'linode:index/vpcSubnet:VpcSubnet', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

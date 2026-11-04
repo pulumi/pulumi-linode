@@ -217,6 +217,12 @@ func (StackScriptState) ElementType() reflect.Type {
 	return reflect.TypeOf((*stackScriptState)(nil)).Elem()
 }
 
+// StackScriptExists checks whether an existing StackScript resource with the given ID exists.
+func StackScriptExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *StackScriptState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/stackScript:StackScript", id, state, "", opts...)
+}
+
 type stackScriptArgs struct {
 	// A description for the StackScript.
 	Description string `pulumi:"description"`

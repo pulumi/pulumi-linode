@@ -418,6 +418,26 @@ class ObjectStorageKey(pulumi.CustomResource):
         __props__.__dict__["secret_key"] = secret_key
         return ObjectStorageKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageKeyBucketAccessArgs', 'ObjectStorageKeyBucketAccessArgsDict', 'outputs.ObjectStorageKeyBucketAccess']]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            limited: pulumi.Input[Optional[_builtins.bool]] = None,
+            regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            regions_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageKeyRegionsDetailArgs', 'ObjectStorageKeyRegionsDetailArgsDict', 'outputs.ObjectStorageKeyRegionsDetail']]]]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKey"] = access_key
+        __props__["bucketAccesses"] = bucket_accesses
+        __props__["label"] = label
+        __props__["limited"] = limited
+        __props__["regions"] = regions
+        __props__["regionsDetails"] = regions_details
+        __props__["secretKey"] = secret_key
+        return pulumi.runtime.exists_resource(None, 'linode:index/objectStorageKey:ObjectStorageKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[_builtins.str]:

@@ -209,22 +209,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
-     * @deprecated
-     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      * 
      */
-    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
+    @Deprecated
     @Import(name="configs")
     private @Nullable Output<List<InstanceConfigArgs>> configs;
 
     /**
      * @return Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
-     * @deprecated
-     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      * 
      */
-    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
+    @Deprecated
     public Optional<Output<List<InstanceConfigArgs>>> configs() {
         return Optional.ofNullable(this.configs);
     }
@@ -245,20 +243,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * @deprecated
-     * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      * 
      */
-    @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+    @Deprecated
     @Import(name="disks")
     private @Nullable Output<List<InstanceDiskArgs>> disks;
 
     /**
-     * @deprecated
-     * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      * 
      */
-    @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+    @Deprecated
     public Optional<Output<List<InstanceDiskArgs>>> disks() {
         return Optional.ofNullable(this.disks);
     }
@@ -360,22 +356,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * A string containing the Linode&#39;s public IP address.
      * 
-     * @deprecated
-     * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+     * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      * 
      */
-    @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+    @Deprecated
     @Import(name="ipAddress")
     private @Nullable Output<String> ipAddress;
 
     /**
      * @return A string containing the Linode&#39;s public IP address.
      * 
-     * @deprecated
-     * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+     * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      * 
      */
-    @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+    @Deprecated
     public Optional<Output<String>> ipAddress() {
         return Optional.ofNullable(this.ipAddress);
     }
@@ -1162,11 +1156,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
+         * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
          * 
          */
-        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
+        @Deprecated
         public Builder configs(@Nullable Output<List<InstanceConfigArgs>> configs) {
             $.configs = configs;
             return this;
@@ -1177,11 +1170,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
+         * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
          * 
          */
-        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
+        @Deprecated
         public Builder configs(List<InstanceConfigArgs> configs) {
             return configs(Output.of(configs));
         }
@@ -1191,11 +1183,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
+         * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
          * 
          */
-        @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
+        @Deprecated
         public Builder configs(InstanceConfigArgs... configs) {
             return configs(List.of(configs));
         }
@@ -1224,11 +1215,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+         * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
          * 
          */
-        @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+        @Deprecated
         public Builder disks(@Nullable Output<List<InstanceDiskArgs>> disks) {
             $.disks = disks;
             return this;
@@ -1237,11 +1227,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+         * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
          * 
          */
-        @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+        @Deprecated
         public Builder disks(List<InstanceDiskArgs> disks) {
             return disks(Output.of(disks));
         }
@@ -1249,11 +1238,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @return builder
          * 
-         * @deprecated
-         * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+         * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
          * 
          */
-        @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+        @Deprecated
         public Builder disks(InstanceDiskArgs... disks) {
             return disks(List.of(disks));
         }
@@ -1403,11 +1391,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+         * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
          * 
          */
-        @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+        @Deprecated
         public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
@@ -1418,11 +1405,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+         * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
          * 
          */
-        @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+        @Deprecated
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
         }

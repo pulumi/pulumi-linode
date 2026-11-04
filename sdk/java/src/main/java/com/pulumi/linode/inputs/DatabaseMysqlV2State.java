@@ -605,22 +605,20 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
     /**
      * The secondary/private host for the managed database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     @Import(name="hostSecondary")
     private @Nullable Output<String> hostSecondary;
 
     /**
      * @return The secondary/private host for the managed database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     public Optional<Output<String>> hostSecondary() {
         return Optional.ofNullable(this.hostSecondary);
     }
@@ -1808,11 +1806,10 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use hostStandby instead.
+         * @deprecated Use hostStandby instead.
          * 
          */
-        @Deprecated /* Use hostStandby instead. */
+        @Deprecated
         public Builder hostSecondary(@Nullable Output<String> hostSecondary) {
             $.hostSecondary = hostSecondary;
             return this;
@@ -1823,11 +1820,10 @@ public final class DatabaseMysqlV2State extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use hostStandby instead.
+         * @deprecated Use hostStandby instead.
          * 
          */
-        @Deprecated /* Use hostStandby instead. */
+        @Deprecated
         public Builder hostSecondary(String hostSecondary) {
             return hostSecondary(Output.of(hostSecondary));
         }

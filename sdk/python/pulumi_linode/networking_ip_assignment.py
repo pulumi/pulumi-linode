@@ -239,6 +239,16 @@ class NetworkingIpAssignment(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return NetworkingIpAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assignments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkingIpAssignmentAssignmentArgs', 'NetworkingIpAssignmentAssignmentArgsDict', 'outputs.NetworkingIpAssignmentAssignment']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assignments"] = assignments
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'linode:index/networkingIpAssignment:NetworkingIpAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def assignments(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkingIpAssignmentAssignment']]]:

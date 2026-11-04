@@ -238,6 +238,12 @@ func (MonitorLogsStreamState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorLogsStreamState)(nil)).Elem()
 }
 
+// MonitorLogsStreamExists checks whether an existing MonitorLogsStream resource with the given ID exists.
+func MonitorLogsStreamExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorLogsStreamState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/monitorLogsStream:MonitorLogsStream", id, state, "", opts...)
+}
+
 type monitorLogsStreamArgs struct {
 	// The list of logs destination IDs attached to this stream.
 	Destinations []int `pulumi:"destinations"`

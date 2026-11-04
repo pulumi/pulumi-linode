@@ -169,6 +169,12 @@ func (InstanceIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIpState)(nil)).Elem()
 }
 
+// InstanceIpExists checks whether an existing InstanceIp resource with the given ID exists.
+func InstanceIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/instanceIp:InstanceIp", id, state, "", opts...)
+}
+
 type instanceIpArgs struct {
 	// If true, the instance will be rebooted to update network interfaces.
 	ApplyImmediately *bool `pulumi:"applyImmediately"`

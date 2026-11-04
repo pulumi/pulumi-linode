@@ -138,6 +138,12 @@ func (NodeBalancerNodeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerNodeState)(nil)).Elem()
 }
 
+// NodeBalancerNodeExists checks whether an existing NodeBalancerNode resource with the given ID exists.
+func NodeBalancerNodeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeBalancerNodeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/nodeBalancerNode:NodeBalancerNode", id, state, "", opts...)
+}
+
 type nodeBalancerNodeArgs struct {
 	// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `backendConnectivity = "ipv6"` on the NodeBalancer.
 	//

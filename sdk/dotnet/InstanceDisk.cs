@@ -175,7 +175,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -325,7 +325,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
@@ -442,7 +442,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The size of the Disk in MB. **NOTE:** Resizing a disk will trigger a Linode reboot.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

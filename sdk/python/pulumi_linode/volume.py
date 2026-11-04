@@ -603,6 +603,34 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return Volume(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            filesystem_path: pulumi.Input[Optional[_builtins.str]] = None,
+            io_ready: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            source_volume_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['VolumeTimeoutsArgs', 'VolumeTimeoutsArgsDict', 'outputs.VolumeTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["encryption"] = encryption
+        __props__["filesystemPath"] = filesystem_path
+        __props__["ioReady"] = io_ready
+        __props__["label"] = label
+        __props__["linodeId"] = linode_id
+        __props__["region"] = region
+        __props__["size"] = size
+        __props__["sourceVolumeId"] = source_volume_id
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'linode:index/volume:Volume', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def encryption(self) -> pulumi.Output[_builtins.str]:

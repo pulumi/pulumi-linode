@@ -139,6 +139,12 @@ func (RdnsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rdnsState)(nil)).Elem()
 }
 
+// RdnsExists checks whether an existing Rdns resource with the given ID exists.
+func RdnsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RdnsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/rdns:Rdns", id, state, "", opts...)
+}
+
 type rdnsArgs struct {
 	// The Public IPv4 or IPv6 address that will receive the `PTR` record.  A matching `A` or `AAAA` record must exist.
 	Address string `pulumi:"address"`

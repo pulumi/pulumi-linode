@@ -139,6 +139,12 @@ func (PlacementGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*placementGroupState)(nil)).Elem()
 }
 
+// PlacementGroupExists checks whether an existing PlacementGroup resource with the given ID exists.
+func PlacementGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PlacementGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/placementGroup:PlacementGroup", id, state, "", opts...)
+}
+
 type placementGroupArgs struct {
 	// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
 	Label string `pulumi:"label"`

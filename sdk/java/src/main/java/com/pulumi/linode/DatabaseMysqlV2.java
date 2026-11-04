@@ -863,11 +863,10 @@ public class DatabaseMysqlV2 extends com.pulumi.resources.CustomResource {
     /**
      * The secondary/private host for the managed database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     @Export(name="hostSecondary", refs={String.class}, tree="[0]")
     private Output<String> hostSecondary;
 

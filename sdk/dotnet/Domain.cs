@@ -86,7 +86,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IP addresses representing the master DNS for this Domain.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("masterIps")]
         public Output<ImmutableArray<string>> MasterIps { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IP addresses representing the master DNS for this Domain.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputList<string> MasterIps
         {
@@ -315,7 +315,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The IP addresses representing the master DNS for this Domain.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         public InputList<string> MasterIps
         {

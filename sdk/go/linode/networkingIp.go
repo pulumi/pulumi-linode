@@ -172,6 +172,12 @@ func (NetworkingIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkingIpState)(nil)).Elem()
 }
 
+// NetworkingIpExists checks whether an existing NetworkingIp resource with the given ID exists.
+func NetworkingIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkingIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/networkingIp:NetworkingIp", id, state, "", opts...)
+}
+
 type networkingIpArgs struct {
 	// The ID of the Linode to allocate an IPv4 address for. **Required** when `reserved` is `false` or not set. Updating this field on an ephemeral IP will trigger a recreation. Conflicts with `region`.
 	LinodeId *int `pulumi:"linodeId"`
