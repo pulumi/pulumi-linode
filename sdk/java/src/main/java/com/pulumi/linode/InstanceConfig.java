@@ -268,11 +268,10 @@ public class InstanceConfig extends com.pulumi.resources.CustomResource {
     /**
      * A dictionary of device disks to use as a device map in a Linode&#39;s configuration profile.
      * 
-     * @deprecated
-     * Devices attribute is deprecated in favor of `device`.
+     * @deprecated Devices attribute is deprecated in favor of `device`.
      * 
      */
-    @Deprecated /* Devices attribute is deprecated in favor of `device`. */
+    @Deprecated
     @Export(name="devices", refs={InstanceConfigDevices.class}, tree="[0]")
     private Output<InstanceConfigDevices> devices;
 

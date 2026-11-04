@@ -291,6 +291,18 @@ class PlacementGroupAssignment(pulumi.CustomResource):
         __props__.__dict__["placement_group_id"] = placement_group_id
         return PlacementGroupAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            compliant_only: pulumi.Input[Optional[_builtins.bool]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            placement_group_id: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["compliantOnly"] = compliant_only
+        __props__["linodeId"] = linode_id
+        __props__["placementGroupId"] = placement_group_id
+        return pulumi.runtime.exists_resource(None, 'linode:index/placementGroupAssignment:PlacementGroupAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="compliantOnly")
     def compliant_only(self) -> pulumi.Output[Optional[_builtins.bool]]:

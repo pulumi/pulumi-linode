@@ -514,6 +514,32 @@ class MonitorLogsDestination(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return MonitorLogsDestination(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            akamai_object_storage_details: pulumi.Input[Optional[Union['MonitorLogsDestinationAkamaiObjectStorageDetailsArgs', 'MonitorLogsDestinationAkamaiObjectStorageDetailsArgsDict', 'outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_https_details: pulumi.Input[Optional[Union['MonitorLogsDestinationCustomHttpsDetailsArgs', 'MonitorLogsDestinationCustomHttpsDetailsArgsDict', 'outputs.MonitorLogsDestinationCustomHttpsDetails']]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_by: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["akamaiObjectStorageDetails"] = akamai_object_storage_details
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["customHttpsDetails"] = custom_https_details
+        __props__["label"] = label
+        __props__["status"] = status
+        __props__["type"] = type
+        __props__["updated"] = updated
+        __props__["updatedBy"] = updated_by
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'linode:index/monitorLogsDestination:MonitorLogsDestination', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="akamaiObjectStorageDetails")
     def akamai_object_storage_details(self) -> pulumi.Output[Optional['outputs.MonitorLogsDestinationAkamaiObjectStorageDetails']]:

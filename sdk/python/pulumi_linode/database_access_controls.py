@@ -272,6 +272,18 @@ class DatabaseAccessControls(pulumi.CustomResource):
         __props__.__dict__["database_type"] = database_type
         return DatabaseAccessControls(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            database_id: pulumi.Input[Optional[_builtins.int]] = None,
+            database_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowLists"] = allow_lists
+        __props__["databaseId"] = database_id
+        __props__["databaseType"] = database_type
+        return pulumi.runtime.exists_resource(None, 'linode:index/databaseAccessControls:DatabaseAccessControls', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowLists")
     def allow_lists(self) -> pulumi.Output[Sequence[_builtins.str]]:

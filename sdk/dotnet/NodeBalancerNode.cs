@@ -27,7 +27,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `BackendConnectivity = "ipv6"` on the NodeBalancer.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("address")]
         public Output<string> Address { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `BackendConnectivity = "ipv6"` on the NodeBalancer.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The backend IP address and port (`IPv4:PORT` or `[IPv6]:PORT`). IPv4 backends use private IP addresses. IPv6 backends require `BackendConnectivity = "ipv6"` on the NodeBalancer.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }

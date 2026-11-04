@@ -123,7 +123,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("nodebalancerId")]
         public Output<int> NodebalancerId { get; private set; } = null!;
@@ -298,7 +298,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("nodebalancerId", required: true)]
         public Input<int> NodebalancerId { get; set; } = null!;
@@ -444,7 +444,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The ID of the NodeBalancer to access.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("nodebalancerId")]
         public Input<int>? NodebalancerId { get; set; }

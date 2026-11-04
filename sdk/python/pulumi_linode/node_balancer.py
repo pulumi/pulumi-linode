@@ -824,6 +824,48 @@ class NodeBalancer(pulumi.CustomResource):
         __props__.__dict__["vpcs"] = vpcs
         return NodeBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backend_connectivity: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            client_conn_throttle: pulumi.Input[Optional[_builtins.int]] = None,
+            client_udp_sess_throttle: pulumi.Input[Optional[_builtins.int]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            firewalls: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerFirewallArgs', 'NodeBalancerFirewallArgsDict', 'outputs.NodeBalancerFirewall']]]]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            lke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerLkeClusterArgs', 'NodeBalancerLkeClusterArgsDict', 'outputs.NodeBalancerLkeCluster']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            transfers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerTransferArgs', 'NodeBalancerTransferArgsDict', 'outputs.NodeBalancerTransfer']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerVpcArgs', 'NodeBalancerVpcArgsDict', 'outputs.NodeBalancerVpc']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backendConnectivity"] = backend_connectivity
+        __props__["backendIpv6Prefix"] = backend_ipv6_prefix
+        __props__["clientConnThrottle"] = client_conn_throttle
+        __props__["clientUdpSessThrottle"] = client_udp_sess_throttle
+        __props__["created"] = created
+        __props__["firewallId"] = firewall_id
+        __props__["firewalls"] = firewalls
+        __props__["hostname"] = hostname
+        __props__["ipv4"] = ipv4
+        __props__["ipv6"] = ipv6
+        __props__["label"] = label
+        __props__["lkeClusters"] = lke_clusters
+        __props__["region"] = region
+        __props__["tags"] = tags
+        __props__["transfers"] = transfers
+        __props__["type"] = type
+        __props__["updated"] = updated
+        __props__["vpcs"] = vpcs
+        return pulumi.runtime.exists_resource(None, 'linode:index/nodeBalancer:NodeBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backendConnectivity")
     def backend_connectivity(self) -> pulumi.Output[_builtins.str]:

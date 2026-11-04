@@ -265,6 +265,12 @@ func (NodeBalancerConfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodeBalancerConfigState)(nil)).Elem()
 }
 
+// NodeBalancerConfigExists checks whether an existing NodeBalancerConfig resource with the given ID exists.
+func NodeBalancerConfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NodeBalancerConfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/nodeBalancerConfig:NodeBalancerConfig", id, state, "", opts...)
+}
+
 type nodeBalancerConfigArgs struct {
 	// What algorithm this NodeBalancer should use for routing traffic to backends. (`roundrobin`, `leastconn`, `source`)
 	Algorithm *string `pulumi:"algorithm"`

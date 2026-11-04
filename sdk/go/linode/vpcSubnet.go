@@ -221,6 +221,12 @@ func (VpcSubnetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcSubnetState)(nil)).Elem()
 }
 
+// VpcSubnetExists checks whether an existing VpcSubnet resource with the given ID exists.
+func VpcSubnetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcSubnetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/vpcSubnet:VpcSubnet", id, state, "", opts...)
+}
+
 type vpcSubnetArgs struct {
 	// The IPv4 range of this subnet in CIDR format.
 	//

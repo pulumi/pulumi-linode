@@ -307,6 +307,12 @@ func (InstanceDiskState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceDiskState)(nil)).Elem()
 }
 
+// InstanceDiskExists checks whether an existing InstanceDisk resource with the given ID exists.
+func InstanceDiskExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceDiskState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/instanceDisk:InstanceDisk", id, state, "", opts...)
+}
+
 type instanceDiskArgs struct {
 	// A list of public SSH keys that will be automatically appended to the root user's ~/.ssh/authorized_keys file when deploying from an Image. When `image` is provided, at least one of `rootPass`, `authorizedKeys`, or `authorizedUsers` must be specified. (Requires `image`)
 	AuthorizedKeys []string `pulumi:"authorizedKeys"`

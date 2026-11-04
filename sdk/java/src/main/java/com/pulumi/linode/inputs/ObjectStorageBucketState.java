@@ -86,22 +86,20 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
     /**
      * The endpoint for the bucket used for s3 connections.
      * 
-     * @deprecated
-     * Use `s3Endpoint` instead
+     * @deprecated Use `s3Endpoint` instead
      * 
      */
-    @Deprecated /* Use `s3Endpoint` instead */
+    @Deprecated
     @Import(name="endpoint")
     private @Nullable Output<String> endpoint;
 
     /**
      * @return The endpoint for the bucket used for s3 connections.
      * 
-     * @deprecated
-     * Use `s3Endpoint` instead
+     * @deprecated Use `s3Endpoint` instead
      * 
      */
-    @Deprecated /* Use `s3Endpoint` instead */
+    @Deprecated
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
     }
@@ -367,11 +365,10 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `s3Endpoint` instead
+         * @deprecated Use `s3Endpoint` instead
          * 
          */
-        @Deprecated /* Use `s3Endpoint` instead */
+        @Deprecated
         public Builder endpoint(@Nullable Output<String> endpoint) {
             $.endpoint = endpoint;
             return this;
@@ -382,11 +379,10 @@ public final class ObjectStorageBucketState extends com.pulumi.resources.Resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Use `s3Endpoint` instead
+         * @deprecated Use `s3Endpoint` instead
          * 
          */
-        @Deprecated /* Use `s3Endpoint` instead */
+        @Deprecated
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
         }

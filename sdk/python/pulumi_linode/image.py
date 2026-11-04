@@ -1029,6 +1029,64 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["wait_for_replications"] = wait_for_replications
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cloud_init: pulumi.Input[Optional[_builtins.bool]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            deprecated: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.int]] = None,
+            expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            file_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            image_sharing: pulumi.Input[Optional[Union['ImageImageSharingArgs', 'ImageImageSharingArgsDict', 'outputs.ImageImageSharing']]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            is_shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_regions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            replications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageReplicationArgs', 'ImageReplicationArgsDict', 'outputs.ImageReplication']]]]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeouts: pulumi.Input[Optional[Union['ImageTimeoutsArgs', 'ImageTimeoutsArgsDict', 'outputs.ImageTimeouts']]] = None,
+            total_size: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vendor: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_replications: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["capabilities"] = capabilities
+        __props__["cloudInit"] = cloud_init
+        __props__["created"] = created
+        __props__["createdBy"] = created_by
+        __props__["deprecated"] = deprecated
+        __props__["description"] = description
+        __props__["diskId"] = disk_id
+        __props__["expiry"] = expiry
+        __props__["fileHash"] = file_hash
+        __props__["filePath"] = file_path
+        __props__["imageSharing"] = image_sharing
+        __props__["isPublic"] = is_public
+        __props__["isShared"] = is_shared
+        __props__["label"] = label
+        __props__["linodeId"] = linode_id
+        __props__["region"] = region
+        __props__["replicaRegions"] = replica_regions
+        __props__["replications"] = replications
+        __props__["size"] = size
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["timeouts"] = timeouts
+        __props__["totalSize"] = total_size
+        __props__["type"] = type
+        __props__["vendor"] = vendor
+        __props__["waitForReplications"] = wait_for_replications
+        return pulumi.runtime.exists_resource(None, 'linode:index/image:Image', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def capabilities(self) -> pulumi.Output[Sequence[_builtins.str]]:

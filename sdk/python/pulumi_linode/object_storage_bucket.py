@@ -715,6 +715,38 @@ class ObjectStorageBucket(pulumi.CustomResource):
         __props__.__dict__["versioning"] = versioning
         return ObjectStorageBucket(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[Union['ObjectStorageBucketCertArgs', 'ObjectStorageBucketCertArgsDict', 'outputs.ObjectStorageBucketCert']]] = None,
+            cors_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObjectStorageBucketLifecycleRuleArgs', 'ObjectStorageBucketLifecycleRuleArgsDict', 'outputs.ObjectStorageBucketLifecycleRule']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            s3_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+            versioning: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessKey"] = access_key
+        __props__["acl"] = acl
+        __props__["cert"] = cert
+        __props__["corsEnabled"] = cors_enabled
+        __props__["endpoint"] = endpoint
+        __props__["endpointType"] = endpoint_type
+        __props__["hostname"] = hostname
+        __props__["label"] = label
+        __props__["lifecycleRules"] = lifecycle_rules
+        __props__["region"] = region
+        __props__["s3Endpoint"] = s3_endpoint
+        __props__["secretKey"] = secret_key
+        __props__["versioning"] = versioning
+        return pulumi.runtime.exists_resource(None, 'linode:index/objectStorageBucket:ObjectStorageBucket', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessKey")
     def access_key(self) -> pulumi.Output[Optional[_builtins.str]]:

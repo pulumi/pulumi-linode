@@ -412,6 +412,12 @@ func (InterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*interfaceState)(nil)).Elem()
 }
 
+// InterfaceExists checks whether an existing Interface resource with the given ID exists.
+func InterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/interface:Interface", id, state, "", opts...)
+}
+
 type interfaceArgs struct {
 	// Indicates if the interface serves as the default route when multiple interfaces are eligible for this role. Referenced directly (e.g. `default_route.ipv4`).
 	DefaultRoute *InterfaceDefaultRoute `pulumi:"defaultRoute"`

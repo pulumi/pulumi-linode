@@ -447,6 +447,34 @@ class InstanceIp(pulumi.CustomResource):
         __props__.__dict__["vpc_nat11s"] = vpc_nat11s
         return InstanceIp(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            apply_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix: pulumi.Input[Optional[_builtins.int]] = None,
+            public: pulumi.Input[Optional[_builtins.bool]] = None,
+            rdns: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_nat11s: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceIpVpcNat11Args', 'InstanceIpVpcNat11ArgsDict', 'outputs.InstanceIpVpcNat11']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["applyImmediately"] = apply_immediately
+        __props__["gateway"] = gateway
+        __props__["linodeId"] = linode_id
+        __props__["prefix"] = prefix
+        __props__["public"] = public
+        __props__["rdns"] = rdns
+        __props__["region"] = region
+        __props__["subnetMask"] = subnet_mask
+        __props__["type"] = type
+        __props__["vpcNat11s"] = vpc_nat11s
+        return pulumi.runtime.exists_resource(None, 'linode:index/instanceIp:InstanceIp', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

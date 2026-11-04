@@ -212,6 +212,12 @@ func (ObjectStorageKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageKeyState)(nil)).Elem()
 }
 
+// ObjectStorageKeyExists checks whether an existing ObjectStorageKey resource with the given ID exists.
+func ObjectStorageKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/objectStorageKey:ObjectStorageKey", id, state, "", opts...)
+}
+
 type objectStorageKeyArgs struct {
 	// Defines this key as a Limited Access Key. Limited Access Keys restrict this Object Storage key’s access to only the bucket(s) declared in this array and define their bucket-level permissions. Not providing this block will not limit this Object Storage Key. Set elements can't be referenced by index; use a `for` expression or `tolist(...)` to access them.
 	BucketAccesses []ObjectStorageKeyBucketAccess `pulumi:"bucketAccesses"`

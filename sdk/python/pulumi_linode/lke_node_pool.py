@@ -854,6 +854,42 @@ class LkeNodePool(pulumi.CustomResource):
         __props__.__dict__["update_strategy"] = update_strategy
         return LkeNodePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            autoscaler: pulumi.Input[Optional[Union['LkeNodePoolAutoscalerArgs', 'LkeNodePoolAutoscalerArgsDict', 'outputs.LkeNodePoolAutoscaler']]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            isolation_public_ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+            isolation_public_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict', 'outputs.LkeNodePoolNode']]]]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict', 'outputs.LkeNodePoolTaint']]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            update_strategy: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["autoscaler"] = autoscaler
+        __props__["clusterId"] = cluster_id
+        __props__["diskEncryption"] = disk_encryption
+        __props__["firewallId"] = firewall_id
+        __props__["isolationPublicIpv4"] = isolation_public_ipv4
+        __props__["isolationPublicIpv6"] = isolation_public_ipv6
+        __props__["k8sVersion"] = k8s_version
+        __props__["label"] = label
+        __props__["labels"] = labels
+        __props__["nodeCount"] = node_count
+        __props__["nodes"] = nodes
+        __props__["tags"] = tags
+        __props__["taints"] = taints
+        __props__["type"] = type
+        __props__["updateStrategy"] = update_strategy
+        return pulumi.runtime.exists_resource(None, 'linode:index/lkeNodePool:LkeNodePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def autoscaler(self) -> pulumi.Output[Optional['outputs.LkeNodePoolAutoscaler']]:

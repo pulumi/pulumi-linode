@@ -775,6 +775,44 @@ class Firewall(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Firewall(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            devices: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallDeviceArgs', 'FirewallDeviceArgsDict', 'outputs.FirewallDevice']]]]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            inbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            inbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundArgs', 'FirewallInboundArgsDict', 'outputs.FirewallInbound']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            nodebalancers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            outbound_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            outbounds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundArgs', 'FirewallOutboundArgsDict', 'outputs.FirewallOutbound']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["devices"] = devices
+        __props__["disabled"] = disabled
+        __props__["fingerprint"] = fingerprint
+        __props__["inboundPolicy"] = inbound_policy
+        __props__["inbounds"] = inbounds
+        __props__["interfaces"] = interfaces
+        __props__["label"] = label
+        __props__["linodes"] = linodes
+        __props__["nodebalancers"] = nodebalancers
+        __props__["outboundPolicy"] = outbound_policy
+        __props__["outbounds"] = outbounds
+        __props__["status"] = status
+        __props__["tags"] = tags
+        __props__["updated"] = updated
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'linode:index/firewall:Firewall', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

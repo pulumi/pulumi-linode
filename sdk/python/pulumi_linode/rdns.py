@@ -318,6 +318,20 @@ class Rdns(pulumi.CustomResource):
         __props__.__dict__["wait_for_available"] = wait_for_available
         return Rdns(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            rdns: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RdnsTimeoutsArgs', 'RdnsTimeoutsArgsDict', 'outputs.RdnsTimeouts']]] = None,
+            wait_for_available: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["rdns"] = rdns
+        __props__["timeouts"] = timeouts
+        __props__["waitForAvailable"] = wait_for_available
+        return pulumi.runtime.exists_resource(None, 'linode:index/rdns:Rdns', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

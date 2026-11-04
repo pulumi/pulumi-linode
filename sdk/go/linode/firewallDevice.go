@@ -163,6 +163,12 @@ func (FirewallDeviceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallDeviceState)(nil)).Elem()
 }
 
+// FirewallDeviceExists checks whether an existing FirewallDevice resource with the given ID exists.
+func FirewallDeviceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallDeviceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/firewallDevice:FirewallDevice", id, state, "", opts...)
+}
+
 type firewallDeviceArgs struct {
 	// The unique ID of the entity to attach.
 	EntityId int `pulumi:"entityId"`

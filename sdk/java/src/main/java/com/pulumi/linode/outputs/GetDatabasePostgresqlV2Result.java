@@ -306,11 +306,10 @@ public final class GetDatabasePostgresqlV2Result {
     /**
      * @return The secondary/private host for the managed database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     private String hostSecondary;
     private String hostStandby;
     private String id;
@@ -783,11 +782,10 @@ public final class GetDatabasePostgresqlV2Result {
     /**
      * @return The secondary/private host for the managed database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     public String hostSecondary() {
         return this.hostSecondary;
     }

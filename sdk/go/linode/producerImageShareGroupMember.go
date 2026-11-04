@@ -150,6 +150,12 @@ func (ProducerImageShareGroupMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*producerImageShareGroupMemberState)(nil)).Elem()
 }
 
+// ProducerImageShareGroupMemberExists checks whether an existing ProducerImageShareGroupMember resource with the given ID exists.
+func ProducerImageShareGroupMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ProducerImageShareGroupMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/producerImageShareGroupMember:ProducerImageShareGroupMember", id, state, "", opts...)
+}
+
 type producerImageShareGroupMemberArgs struct {
 	// A label for the member.
 	Label string `pulumi:"label"`

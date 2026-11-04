@@ -66,39 +66,39 @@ namespace Pulumi.Linode
         /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
         /// 
         /// * `Ipv6` - The IPv6 ranges of this subnet.
-        /// 
+        ///   
         ///   * `Range` - An IPv6 range allocated to this subnet.
         /// 
         /// * `Linodes` - A list of Linodes assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of the Linode
-        /// 
+        ///   
         ///   * `Interfaces` - A list of networking interfaces objects.
-        /// 
+        ///     
         ///     * `Id` - ID of the interface.
-        /// 
+        ///     
         ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
-        /// 
+        ///     
         ///     * `Active` - Whether the Interface is actively in use.
         /// 
         /// * `Databases` - A list of Managed Databases assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
-        /// 
+        ///   
         ///   * `Ipv4Range` - IPv4 range assigned to the database.
-        /// 
+        ///   
         ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
-        /// 
+        ///     
         ///     * `Range` - An IPv6 address range in CIDR notation.
         /// 
         /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
-        /// 
+        ///   
         ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
-        /// 
+        ///   
         ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
-        /// 
+        ///     
         ///     * `Range` - An IPv6 address range in CIDR notation.
         /// 
         /// * `Created` - The date and time when the VPC Subnet was created.
@@ -167,39 +167,39 @@ namespace Pulumi.Linode
         /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
         /// 
         /// * `Ipv6` - The IPv6 ranges of this subnet.
-        /// 
+        ///   
         ///   * `Range` - An IPv6 range allocated to this subnet.
         /// 
         /// * `Linodes` - A list of Linodes assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of the Linode
-        /// 
+        ///   
         ///   * `Interfaces` - A list of networking interfaces objects.
-        /// 
+        ///     
         ///     * `Id` - ID of the interface.
-        /// 
+        ///     
         ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
-        /// 
+        ///     
         ///     * `Active` - Whether the Interface is actively in use.
         /// 
         /// * `Databases` - A list of Managed Databases assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
-        /// 
+        ///   
         ///   * `Ipv4Range` - IPv4 range assigned to the database.
-        /// 
+        ///   
         ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
-        /// 
+        ///     
         ///     * `Range` - An IPv6 address range in CIDR notation.
         /// 
         /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
-        /// 
+        ///   
         ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
-        /// 
+        ///   
         ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
-        /// 
+        ///     
         ///     * `Range` - An IPv6 address range in CIDR notation.
         /// 
         /// * `Created` - The date and time when the VPC Subnet was created.
@@ -268,39 +268,39 @@ namespace Pulumi.Linode
         /// * `Ipv4` - The IPv4 range of this subnet in CIDR format.
         /// 
         /// * `Ipv6` - The IPv6 ranges of this subnet.
-        /// 
+        ///   
         ///   * `Range` - An IPv6 range allocated to this subnet.
         /// 
         /// * `Linodes` - A list of Linodes assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of the Linode
-        /// 
+        ///   
         ///   * `Interfaces` - A list of networking interfaces objects.
-        /// 
+        ///     
         ///     * `Id` - ID of the interface.
-        /// 
+        ///     
         ///     * `ConfigId` - ID of Linode Config that the interface is associated with. `Null` for a Linode Interface.
-        /// 
+        ///     
         ///     * `Active` - Whether the Interface is actively in use.
         /// 
         /// * `Databases` - A list of Managed Databases assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of a managed database assigned to the VPC Subnet.
-        /// 
+        ///   
         ///   * `Ipv4Range` - IPv4 range assigned to the database.
-        /// 
+        ///   
         ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the database.
-        /// 
+        ///     
         ///     * `Range` - An IPv6 address range in CIDR notation.
         /// 
         /// * `Nodebalancers` - A list of NodeBalancers assigned to this subnet.
-        /// 
+        ///   
         ///   * `Id` - ID of a NodeBalancer assigned to the VPC Subnet.
-        /// 
+        ///   
         ///   * `Ipv4Range` - IPv4 range assigned to the NodeBalancer.
-        /// 
+        ///   
         ///   * `Ipv6Ranges` - A list of IPv6 ranges assigned to the NodeBalancer.
-        /// 
+        ///     
         ///     * `Range` - An IPv6 address range in CIDR notation.
         /// 
         /// * `Created` - The date and time when the VPC Subnet was created.

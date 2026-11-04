@@ -44,18 +44,18 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var foo = new StackScript("foo", StackScriptArgs.builder()
  *             .label("foo")
  *             .description("Installs a Package")
  *             .script("""
  * #!/bin/bash
- * # <UDF name=\"package\" label=\"System Package to Install\" example=\"nginx\" default=\"\">
+ * # <UDF name=}&#92;{@code "package}&#92;{@code " label=}&#92;{@code "System Package to Install}&#92;{@code " example=}&#92;{@code "nginx}&#92;{@code " default=}&#92;{@code "}&#92;{@code ">
  * apt-get -q update && apt-get -q -y install $PACKAGE
  *             """)
  *             .images(            
@@ -75,8 +75,8 @@ import javax.annotation.Nullable;
  *             .stackscriptData(Map.of("package", "nginx"))
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

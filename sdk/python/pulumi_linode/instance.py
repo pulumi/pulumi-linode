@@ -2209,6 +2209,106 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["watchdog_enabled"] = watchdog_enabled
         return Instance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alerts: pulumi.Input[Optional[Union['InstanceAlertsArgs', 'InstanceAlertsArgsDict', 'outputs.InstanceAlerts']]] = None,
+            authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_id: pulumi.Input[Optional[_builtins.int]] = None,
+            backups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceBackupArgs', 'InstanceBackupArgsDict', 'outputs.InstanceBackup']]]]] = None,
+            backups_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            boot_config_label: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_size: pulumi.Input[Optional[_builtins.int]] = None,
+            booted: pulumi.Input[Optional[_builtins.bool]] = None,
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigArgs', 'InstanceConfigArgsDict', 'outputs.InstanceConfig']]]]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDiskArgs', 'InstanceDiskArgsDict', 'outputs.InstanceDisk']]]]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            has_user_data: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            interface_generation: pulumi.Input[Optional[_builtins.str]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceInterfaceArgs', 'InstanceInterfaceArgsDict', 'outputs.InstanceInterface']]]]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+            kernel: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceLinodeInterfaceArgs', 'InstanceLinodeInterfaceArgsDict', 'outputs.InstanceLinodeInterface']]]]] = None,
+            lke_cluster_id: pulumi.Input[Optional[_builtins.int]] = None,
+            locks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            metadatas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMetadataArgs', 'InstanceMetadataArgsDict', 'outputs.InstanceMetadata']]]]] = None,
+            migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            network_helper: pulumi.Input[Optional[_builtins.bool]] = None,
+            placement_group: pulumi.Input[Optional[Union['InstancePlacementGroupArgs', 'InstancePlacementGroupArgsDict', 'outputs.InstancePlacementGroup']]] = None,
+            placement_group_externally_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            shared_ipv4s: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            specs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceSpecArgs', 'InstanceSpecArgsDict', 'outputs.InstanceSpec']]]]] = None,
+            stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            swap_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            watchdog_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alerts"] = alerts
+        __props__["authorizedKeys"] = authorized_keys
+        __props__["authorizedUsers"] = authorized_users
+        __props__["backupId"] = backup_id
+        __props__["backups"] = backups
+        __props__["backupsEnabled"] = backups_enabled
+        __props__["bootConfigLabel"] = boot_config_label
+        __props__["bootSize"] = boot_size
+        __props__["booted"] = booted
+        __props__["capabilities"] = capabilities
+        __props__["configs"] = configs
+        __props__["diskEncryption"] = disk_encryption
+        __props__["disks"] = disks
+        __props__["firewallId"] = firewall_id
+        __props__["hasUserData"] = has_user_data
+        __props__["hostUuid"] = host_uuid
+        __props__["image"] = image
+        __props__["interfaceGeneration"] = interface_generation
+        __props__["interfaces"] = interfaces
+        __props__["ipAddress"] = ip_address
+        __props__["ipv4s"] = ipv4s
+        __props__["ipv6"] = ipv6
+        __props__["kernel"] = kernel
+        __props__["label"] = label
+        __props__["linodeInterfaces"] = linode_interfaces
+        __props__["lkeClusterId"] = lke_cluster_id
+        __props__["locks"] = locks
+        __props__["maintenancePolicy"] = maintenance_policy
+        __props__["metadatas"] = metadatas
+        __props__["migrationType"] = migration_type
+        __props__["networkHelper"] = network_helper
+        __props__["placementGroup"] = placement_group
+        __props__["placementGroupExternallyManaged"] = placement_group_externally_managed
+        __props__["privateIp"] = private_ip
+        __props__["privateIpAddress"] = private_ip_address
+        __props__["region"] = region
+        __props__["resizeDisk"] = resize_disk
+        __props__["rootPass"] = root_pass
+        __props__["sharedIpv4s"] = shared_ipv4s
+        __props__["specs"] = specs
+        __props__["stackscriptData"] = stackscript_data
+        __props__["stackscriptId"] = stackscript_id
+        __props__["status"] = status
+        __props__["swapSize"] = swap_size
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["watchdogEnabled"] = watchdog_enabled
+        return pulumi.runtime.exists_resource(None, 'linode:index/instance:Instance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def alerts(self) -> pulumi.Output['outputs.InstanceAlerts']:

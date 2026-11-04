@@ -86,22 +86,20 @@ public final class InstanceConfigState extends com.pulumi.resources.ResourceArgs
     /**
      * A dictionary of device disks to use as a device map in a Linode&#39;s configuration profile.
      * 
-     * @deprecated
-     * Devices attribute is deprecated in favor of `device`.
+     * @deprecated Devices attribute is deprecated in favor of `device`.
      * 
      */
-    @Deprecated /* Devices attribute is deprecated in favor of `device`. */
+    @Deprecated
     @Import(name="devices")
     private @Nullable Output<InstanceConfigDevicesArgs> devices;
 
     /**
      * @return A dictionary of device disks to use as a device map in a Linode&#39;s configuration profile.
      * 
-     * @deprecated
-     * Devices attribute is deprecated in favor of `device`.
+     * @deprecated Devices attribute is deprecated in favor of `device`.
      * 
      */
-    @Deprecated /* Devices attribute is deprecated in favor of `device`. */
+    @Deprecated
     public Optional<Output<InstanceConfigDevicesArgs>> devices() {
         return Optional.ofNullable(this.devices);
     }
@@ -375,11 +373,10 @@ public final class InstanceConfigState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Devices attribute is deprecated in favor of `device`.
+         * @deprecated Devices attribute is deprecated in favor of `device`.
          * 
          */
-        @Deprecated /* Devices attribute is deprecated in favor of `device`. */
+        @Deprecated
         public Builder devices(@Nullable Output<InstanceConfigDevicesArgs> devices) {
             $.devices = devices;
             return this;
@@ -390,11 +387,10 @@ public final class InstanceConfigState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
-         * @deprecated
-         * Devices attribute is deprecated in favor of `device`.
+         * @deprecated Devices attribute is deprecated in favor of `device`.
          * 
          */
-        @Deprecated /* Devices attribute is deprecated in favor of `device`. */
+        @Deprecated
         public Builder devices(InstanceConfigDevicesArgs devices) {
             return devices(Output.of(devices));
         }

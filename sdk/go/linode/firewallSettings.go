@@ -98,6 +98,12 @@ func (FirewallSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallSettingsState)(nil)).Elem()
 }
 
+// FirewallSettingsExists checks whether an existing FirewallSettings resource with the given ID exists.
+func FirewallSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *FirewallSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/firewallSettings:FirewallSettings", id, state, "", opts...)
+}
+
 type firewallSettingsArgs struct {
 	// A map of default firewall IDs for various interfaces. Referenced directly (e.g. `default_firewall_ids.linode`).
 	DefaultFirewallIds *FirewallSettingsDefaultFirewallIds `pulumi:"defaultFirewallIds"`

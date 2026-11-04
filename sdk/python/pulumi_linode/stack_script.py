@@ -584,6 +584,38 @@ class StackScript(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return StackScript(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            deployments_active: pulumi.Input[Optional[_builtins.int]] = None,
+            deployments_total: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            rev_note: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            user_defined_fields: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackScriptUserDefinedFieldArgs', 'StackScriptUserDefinedFieldArgsDict', 'outputs.StackScriptUserDefinedField']]]]] = None,
+            user_gravatar_id: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["deploymentsActive"] = deployments_active
+        __props__["deploymentsTotal"] = deployments_total
+        __props__["description"] = description
+        __props__["images"] = images
+        __props__["isPublic"] = is_public
+        __props__["label"] = label
+        __props__["revNote"] = rev_note
+        __props__["script"] = script
+        __props__["updated"] = updated
+        __props__["userDefinedFields"] = user_defined_fields
+        __props__["userGravatarId"] = user_gravatar_id
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'linode:index/stackScript:StackScript', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:

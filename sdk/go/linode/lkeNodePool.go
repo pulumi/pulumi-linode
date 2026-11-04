@@ -338,6 +338,12 @@ func (LkeNodePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lkeNodePoolState)(nil)).Elem()
 }
 
+// LkeNodePoolExists checks whether an existing LkeNodePool resource with the given ID exists.
+func LkeNodePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LkeNodePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/lkeNodePool:LkeNodePool", id, state, "", opts...)
+}
+
 type lkeNodePoolArgs struct {
 	Autoscaler *LkeNodePoolAutoscaler `pulumi:"autoscaler"`
 	// ID of the LKE Cluster where to create the current Node Pool.

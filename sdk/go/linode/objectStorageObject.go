@@ -314,6 +314,12 @@ func (ObjectStorageObjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectStorageObjectState)(nil)).Elem()
 }
 
+// ObjectStorageObjectExists checks whether an existing ObjectStorageObject resource with the given ID exists.
+func ObjectStorageObjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectStorageObjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/objectStorageObject:ObjectStorageObject", id, state, "", opts...)
+}
+
 type objectStorageObjectArgs struct {
 	// The REQUIRED access key to authenticate with. If it's not specified with the resource, you must provide its value by
 	// * configuring the `objAccessKey` in the provider configuration;

@@ -159,6 +159,12 @@ func (PlacementGroupAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*placementGroupAssignmentState)(nil)).Elem()
 }
 
+// PlacementGroupAssignmentExists checks whether an existing PlacementGroupAssignment resource with the given ID exists.
+func PlacementGroupAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PlacementGroupAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/placementGroupAssignment:PlacementGroupAssignment", id, state, "", opts...)
+}
+
 type placementGroupAssignmentArgs struct {
 	CompliantOnly *bool `pulumi:"compliantOnly"`
 	// The unique ID of the Linode to assign.

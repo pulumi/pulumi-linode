@@ -143,6 +143,12 @@ func (Ipv6RangeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipv6RangeState)(nil)).Elem()
 }
 
+// Ipv6RangeExists checks whether an existing Ipv6Range resource with the given ID exists.
+func Ipv6RangeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *Ipv6RangeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/ipv6Range:Ipv6Range", id, state, "", opts...)
+}
+
 type ipv6RangeArgs struct {
 	// The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
 	LinodeId *int `pulumi:"linodeId"`

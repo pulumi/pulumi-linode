@@ -152,6 +152,12 @@ func (ConsumerImageShareGroupTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumerImageShareGroupTokenState)(nil)).Elem()
 }
 
+// ConsumerImageShareGroupTokenExists checks whether an existing ConsumerImageShareGroupToken resource with the given ID exists.
+func ConsumerImageShareGroupTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ConsumerImageShareGroupTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken", id, state, "", opts...)
+}
+
 type consumerImageShareGroupTokenArgs struct {
 	// A label for the token.
 	Label *string `pulumi:"label"`

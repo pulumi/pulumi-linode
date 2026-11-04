@@ -183,6 +183,12 @@ func (LockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lockState)(nil)).Elem()
 }
 
+// LockExists checks whether an existing Lock resource with the given ID exists.
+func LockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/lock:Lock", id, state, "", opts...)
+}
+
 type lockArgs struct {
 	// The ID of the entity to lock.
 	EntityId int `pulumi:"entityId"`

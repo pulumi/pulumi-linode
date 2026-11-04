@@ -139,6 +139,12 @@ func (InstanceSharedIpsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceSharedIpsState)(nil)).Elem()
 }
 
+// InstanceSharedIpsExists checks whether an existing InstanceSharedIps resource with the given ID exists.
+func InstanceSharedIpsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InstanceSharedIpsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/instanceSharedIps:InstanceSharedIps", id, state, "", opts...)
+}
+
 type instanceSharedIpsArgs struct {
 	// The set of IPs to share with the Linode.
 	Addresses []string `pulumi:"addresses"`

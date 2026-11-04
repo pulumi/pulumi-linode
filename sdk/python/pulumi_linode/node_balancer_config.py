@@ -946,6 +946,54 @@ class NodeBalancerConfig(pulumi.CustomResource):
         __props__.__dict__["udp_session_timeout"] = udp_session_timeout
         return NodeBalancerConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            check: pulumi.Input[Optional[_builtins.str]] = None,
+            check_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            check_body: pulumi.Input[Optional[_builtins.str]] = None,
+            check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            check_passive: pulumi.Input[Optional[_builtins.bool]] = None,
+            check_path: pulumi.Input[Optional[_builtins.str]] = None,
+            check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            cipher_suite: pulumi.Input[Optional[_builtins.str]] = None,
+            node_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeBalancerConfigNodeStatusArgs', 'NodeBalancerConfigNodeStatusArgsDict', 'outputs.NodeBalancerConfigNodeStatus']]]]] = None,
+            nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_commonname: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_key: pulumi.Input[Optional[_builtins.str]] = None,
+            stickiness: pulumi.Input[Optional[_builtins.str]] = None,
+            udp_check_port: pulumi.Input[Optional[_builtins.int]] = None,
+            udp_session_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["check"] = check
+        __props__["checkAttempts"] = check_attempts
+        __props__["checkBody"] = check_body
+        __props__["checkInterval"] = check_interval
+        __props__["checkPassive"] = check_passive
+        __props__["checkPath"] = check_path
+        __props__["checkTimeout"] = check_timeout
+        __props__["cipherSuite"] = cipher_suite
+        __props__["nodeStatuses"] = node_statuses
+        __props__["nodebalancerId"] = nodebalancer_id
+        __props__["port"] = port
+        __props__["protocol"] = protocol
+        __props__["proxyProtocol"] = proxy_protocol
+        __props__["sslCert"] = ssl_cert
+        __props__["sslCommonname"] = ssl_commonname
+        __props__["sslFingerprint"] = ssl_fingerprint
+        __props__["sslKey"] = ssl_key
+        __props__["stickiness"] = stickiness
+        __props__["udpCheckPort"] = udp_check_port
+        __props__["udpSessionTimeout"] = udp_session_timeout
+        return pulumi.runtime.exists_resource(None, 'linode:index/nodeBalancerConfig:NodeBalancerConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

@@ -453,6 +453,30 @@ class NodeBalancerNode(pulumi.CustomResource):
         __props__.__dict__["weight"] = weight
         return NodeBalancerNode(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            nodebalancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            subnet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["address"] = address
+        __props__["configId"] = config_id
+        __props__["label"] = label
+        __props__["mode"] = mode
+        __props__["nodebalancerId"] = nodebalancer_id
+        __props__["status"] = status
+        __props__["subnetId"] = subnet_id
+        __props__["vpcConfigId"] = vpc_config_id
+        __props__["weight"] = weight
+        return pulumi.runtime.exists_resource(None, 'linode:index/nodeBalancerNode:NodeBalancerNode', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def address(self) -> pulumi.Output[_builtins.str]:

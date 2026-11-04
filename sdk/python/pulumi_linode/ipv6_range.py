@@ -342,6 +342,26 @@ class Ipv6Range(pulumi.CustomResource):
         __props__.__dict__["route_target"] = route_target
         return Ipv6Range(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            is_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            linodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            range: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            route_target: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["isBgp"] = is_bgp
+        __props__["linodeId"] = linode_id
+        __props__["linodes"] = linodes
+        __props__["prefixLength"] = prefix_length
+        __props__["range"] = range
+        __props__["region"] = region
+        __props__["routeTarget"] = route_target
+        return pulumi.runtime.exists_resource(None, 'linode:index/ipv6Range:Ipv6Range', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="isBgp")
     def is_bgp(self) -> pulumi.Output[_builtins.bool]:

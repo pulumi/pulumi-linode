@@ -349,6 +349,24 @@ class PlacementGroup(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return PlacementGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            is_compliant: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PlacementGroupMemberArgs', 'PlacementGroupMemberArgsDict', 'outputs.PlacementGroupMember']]]]] = None,
+            placement_group_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            placement_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["isCompliant"] = is_compliant
+        __props__["label"] = label
+        __props__["members"] = members
+        __props__["placementGroupPolicy"] = placement_group_policy
+        __props__["placementGroupType"] = placement_group_type
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'linode:index/placementGroup:PlacementGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="isCompliant")
     def is_compliant(self) -> pulumi.Output[_builtins.bool]:

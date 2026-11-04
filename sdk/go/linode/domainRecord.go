@@ -188,6 +188,12 @@ func (DomainRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainRecordState)(nil)).Elem()
 }
 
+// DomainRecordExists checks whether an existing DomainRecord resource with the given ID exists.
+func DomainRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/domainRecord:DomainRecord", id, state, "", opts...)
+}
+
 type domainRecordArgs struct {
 	// The ID of the Domain to access.  *Changing `domainId` forces the creation of a new Linode Domain Record.*.
 	DomainId int `pulumi:"domainId"`

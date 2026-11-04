@@ -541,7 +541,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -914,7 +914,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -1334,7 +1334,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Linode type defines the pricing, CPU, disk, and RAM specs of the instance. Examples are `"g6-nanode-1"`, `"g6-standard-2"`, `"g6-highmem-16"`, `"g6-dedicated-16"`, etc. See all types [here](https://api.linode.com/v4/linode/types).
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

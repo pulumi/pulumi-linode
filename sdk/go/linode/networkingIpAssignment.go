@@ -114,6 +114,12 @@ func (NetworkingIpAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkingIpAssignmentState)(nil)).Elem()
 }
 
+// NetworkingIpAssignmentExists checks whether an existing NetworkingIpAssignment resource with the given ID exists.
+func NetworkingIpAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkingIpAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/networkingIpAssignment:NetworkingIpAssignment", id, state, "", opts...)
+}
+
 type networkingIpAssignmentArgs struct {
 	// A list of IP/Linode assignments to apply.
 	Assignments []NetworkingIpAssignmentAssignment `pulumi:"assignments"`

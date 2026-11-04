@@ -750,6 +750,42 @@ class InstanceDisk(pulumi.CustomResource):
         __props__.__dict__["updated"] = updated
         return InstanceDisk(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            authorized_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authorized_users: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
+            filesystem: pulumi.Input[Optional[_builtins.str]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            root_pass: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            stackscript_data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            stackscript_id: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['InstanceDiskTimeoutsArgs', 'InstanceDiskTimeoutsArgsDict', 'outputs.InstanceDiskTimeouts']]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["authorizedKeys"] = authorized_keys
+        __props__["authorizedUsers"] = authorized_users
+        __props__["created"] = created
+        __props__["diskEncryption"] = disk_encryption
+        __props__["filesystem"] = filesystem
+        __props__["image"] = image
+        __props__["label"] = label
+        __props__["linodeId"] = linode_id
+        __props__["rootPass"] = root_pass
+        __props__["size"] = size
+        __props__["stackscriptData"] = stackscript_data
+        __props__["stackscriptId"] = stackscript_id
+        __props__["status"] = status
+        __props__["timeouts"] = timeouts
+        __props__["updated"] = updated
+        return pulumi.runtime.exists_resource(None, 'linode:index/instanceDisk:InstanceDisk', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="authorizedKeys")
     def authorized_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

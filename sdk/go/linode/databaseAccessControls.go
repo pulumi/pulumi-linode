@@ -135,6 +135,12 @@ func (DatabaseAccessControlsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseAccessControlsState)(nil)).Elem()
 }
 
+// DatabaseAccessControlsExists checks whether an existing DatabaseAccessControls resource with the given ID exists.
+func DatabaseAccessControlsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseAccessControlsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/databaseAccessControls:DatabaseAccessControls", id, state, "", opts...)
+}
+
 type databaseAccessControlsArgs struct {
 	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format.
 	AllowLists []string `pulumi:"allowLists"`

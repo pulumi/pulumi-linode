@@ -181,11 +181,10 @@ public class ObjectStorageBucket extends com.pulumi.resources.CustomResource {
     /**
      * The endpoint for the bucket used for s3 connections.
      * 
-     * @deprecated
-     * Use `s3Endpoint` instead
+     * @deprecated Use `s3Endpoint` instead
      * 
      */
-    @Deprecated /* Use `s3Endpoint` instead */
+    @Deprecated
     @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 

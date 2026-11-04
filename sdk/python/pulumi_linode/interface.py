@@ -736,6 +736,26 @@ class Interface(pulumi.CustomResource):
         __props__.__dict__["vpc"] = vpc
         return Interface(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_route: pulumi.Input[Optional[Union['InterfaceDefaultRouteArgs', 'InterfaceDefaultRouteArgsDict', 'outputs.InterfaceDefaultRoute']]] = None,
+            firewall_id: pulumi.Input[Optional[_builtins.int]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            public: pulumi.Input[Optional[Union['InterfacePublicArgs', 'InterfacePublicArgsDict', 'outputs.InterfacePublic']]] = None,
+            rdma_vpc: pulumi.Input[Optional[Union['InterfaceRdmaVpcArgs', 'InterfaceRdmaVpcArgsDict', 'outputs.InterfaceRdmaVpc']]] = None,
+            vlan: pulumi.Input[Optional[Union['InterfaceVlanArgs', 'InterfaceVlanArgsDict', 'outputs.InterfaceVlan']]] = None,
+            vpc: pulumi.Input[Optional[Union['InterfaceVpcArgs', 'InterfaceVpcArgsDict', 'outputs.InterfaceVpc']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultRoute"] = default_route
+        __props__["firewallId"] = firewall_id
+        __props__["linodeId"] = linode_id
+        __props__["public"] = public
+        __props__["rdmaVpc"] = rdma_vpc
+        __props__["vlan"] = vlan
+        __props__["vpc"] = vpc
+        return pulumi.runtime.exists_resource(None, 'linode:index/interface:Interface', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultRoute")
     def default_route(self) -> pulumi.Output['outputs.InterfaceDefaultRoute']:

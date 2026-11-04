@@ -695,6 +695,12 @@ func (DatabaseMysqlV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseMysqlV2State)(nil)).Elem()
 }
 
+// DatabaseMysqlV2Exists checks whether an existing DatabaseMysqlV2 resource with the given ID exists.
+func DatabaseMysqlV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabaseMysqlV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/databaseMysqlV2:DatabaseMysqlV2", id, state, "", opts...)
+}
+
 type databaseMysqlV2Args struct {
 	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists []string `pulumi:"allowLists"`

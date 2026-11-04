@@ -135,6 +135,12 @@ func (AccountSettingsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountSettingsState)(nil)).Elem()
 }
 
+// AccountSettingsExists checks whether an existing AccountSettings resource with the given ID exists.
+func AccountSettingsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccountSettingsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/accountSettings:AccountSettings", id, state, "", opts...)
+}
+
 type accountSettingsArgs struct {
 	// The account-wide backups default. If true, all Linodes created will automatically be enrolled in the Backups service. If false, Linodes will not be enrolled by default, but may still be enrolled on creation or later.
 	BackupsEnabled *bool `pulumi:"backupsEnabled"`

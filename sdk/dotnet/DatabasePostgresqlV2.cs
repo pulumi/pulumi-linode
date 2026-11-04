@@ -683,7 +683,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Linode Instance type used for the nodes of the Managed Database.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -1110,7 +1110,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Linode Instance type used for the nodes of the Managed Database.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -1619,7 +1619,7 @@ namespace Pulumi.Linode
         /// <summary>
         /// The Linode Instance type used for the nodes of the Managed Database.
         /// 
-        /// - - -
+        /// ***
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -828,6 +828,12 @@ func (DatabasePostgresqlV2State) ElementType() reflect.Type {
 	return reflect.TypeOf((*databasePostgresqlV2State)(nil)).Elem()
 }
 
+// DatabasePostgresqlV2Exists checks whether an existing DatabasePostgresqlV2 resource with the given ID exists.
+func DatabasePostgresqlV2Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DatabasePostgresqlV2State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/databasePostgresqlV2:DatabasePostgresqlV2", id, state, "", opts...)
+}
+
 type databasePostgresqlV2Args struct {
 	// A list of IP addresses that can access the Managed Database. Each item can be a single IP address or a range in CIDR format. Use `DatabaseAccessControls` to manage your allow list separately.
 	AllowLists []string `pulumi:"allowLists"`

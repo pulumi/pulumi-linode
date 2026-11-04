@@ -761,6 +761,12 @@ func (LkeClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lkeClusterState)(nil)).Elem()
 }
 
+// LkeClusterExists checks whether an existing LkeCluster resource with the given ID exists.
+func LkeClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LkeClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/lkeCluster:LkeCluster", id, state, "", opts...)
+}
+
 type lkeClusterArgs struct {
 	// Enables the App Platform Layer
 	AplEnabled *bool `pulumi:"aplEnabled"`

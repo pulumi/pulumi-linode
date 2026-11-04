@@ -208,6 +208,12 @@ func (ReservedIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservedIpState)(nil)).Elem()
 }
 
+// ReservedIpExists checks whether an existing ReservedIp resource with the given ID exists.
+func ReservedIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ReservedIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/reservedIp:ReservedIp", id, state, "", opts...)
+}
+
 type reservedIpArgs struct {
 	// The region in which to reserve the IP address. Changing this forces a new resource to be created.
 	Region string `pulumi:"region"`

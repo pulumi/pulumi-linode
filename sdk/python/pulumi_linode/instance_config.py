@@ -899,6 +899,38 @@ class InstanceConfig(pulumi.CustomResource):
         __props__.__dict__["virt_mode"] = virt_mode
         return InstanceConfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            booted: pulumi.Input[Optional[_builtins.bool]] = None,
+            comments: pulumi.Input[Optional[_builtins.str]] = None,
+            device: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigDeviceArgs', 'InstanceConfigDeviceArgsDict', 'outputs.InstanceConfigDevice']]]]] = None,
+            devices: pulumi.Input[Optional[Union['InstanceConfigDevicesArgs', 'InstanceConfigDevicesArgsDict', 'outputs.InstanceConfigDevices']]] = None,
+            helpers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigHelperArgs', 'InstanceConfigHelperArgsDict', 'outputs.InstanceConfigHelper']]]]] = None,
+            interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceConfigInterfaceArgs', 'InstanceConfigInterfaceArgsDict', 'outputs.InstanceConfigInterface']]]]] = None,
+            kernel: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            linode_id: pulumi.Input[Optional[_builtins.int]] = None,
+            memory_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            root_device: pulumi.Input[Optional[_builtins.str]] = None,
+            run_level: pulumi.Input[Optional[_builtins.str]] = None,
+            virt_mode: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["booted"] = booted
+        __props__["comments"] = comments
+        __props__["device"] = device
+        __props__["devices"] = devices
+        __props__["helpers"] = helpers
+        __props__["interfaces"] = interfaces
+        __props__["kernel"] = kernel
+        __props__["label"] = label
+        __props__["linodeId"] = linode_id
+        __props__["memoryLimit"] = memory_limit
+        __props__["rootDevice"] = root_device
+        __props__["runLevel"] = run_level
+        __props__["virtMode"] = virt_mode
+        return pulumi.runtime.exists_resource(None, 'linode:index/instanceConfig:InstanceConfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def booted(self) -> pulumi.Output[_builtins.bool]:

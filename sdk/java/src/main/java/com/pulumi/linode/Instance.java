@@ -482,11 +482,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * Configuration profiles define the VM settings and boot behavior of the Linode Instance.
      * 
-     * @deprecated
-     * The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
+     * @deprecated The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource.
      * 
      */
-    @Deprecated /* The embedded config is deprecated and scheduled to be removed in the next major version.Please consider migrating it  to linode.InstanceConfig resource. */
+    @Deprecated
     @Export(name="configs", refs={List.class,InstanceConfig.class}, tree="[0,1]")
     private Output<List<InstanceConfig>> configs;
 
@@ -512,11 +511,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.diskEncryption;
     }
     /**
-     * @deprecated
-     * The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
+     * @deprecated The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource.
      * 
      */
-    @Deprecated /* The embedded disk block in linode.Instance resource is deprecated and scheduled to be removed in the next major version. Please consider migrating it to be the linode.InstanceDisk resource. */
+    @Deprecated
     @Export(name="disks", refs={List.class,InstanceDisk.class}, tree="[0,1]")
     private Output<List<InstanceDisk>> disks;
 
@@ -614,11 +612,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A string containing the Linode&#39;s public IP address.
      * 
-     * @deprecated
-     * The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
+     * @deprecated The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead.
      * 
      */
-    @Deprecated /* The `ipAddress` attribute in linode.Instance resource is deprecated. Please consider using the `ipv4` set attribute in the same resource or a `linode.getInstanceNetworking` data source instead. */
+    @Deprecated
     @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 

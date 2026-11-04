@@ -57,11 +57,10 @@ public final class GetDatabasesDatabase {
     /**
      * @return The secondary/private network host for the Managed Database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     private String hostSecondary;
     /**
      * @return The standby host for the Managed Database.
@@ -184,11 +183,10 @@ public final class GetDatabasesDatabase {
     /**
      * @return The secondary/private network host for the Managed Database.
      * 
-     * @deprecated
-     * Use hostStandby instead.
+     * @deprecated Use hostStandby instead.
      * 
      */
-    @Deprecated /* Use hostStandby instead. */
+    @Deprecated
     public String hostSecondary() {
         return this.hostSecondary;
     }

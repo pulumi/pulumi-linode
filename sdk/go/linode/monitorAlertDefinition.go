@@ -281,6 +281,12 @@ func (MonitorAlertDefinitionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*monitorAlertDefinitionState)(nil)).Elem()
 }
 
+// MonitorAlertDefinitionExists checks whether an existing MonitorAlertDefinition resource with the given ID exists.
+func MonitorAlertDefinitionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MonitorAlertDefinitionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("linode:index/monitorAlertDefinition:MonitorAlertDefinition", id, state, "", opts...)
+}
+
 type monitorAlertDefinitionArgs struct {
 	// A list of channel IDs to associate with the alert definition.
 	ChannelIds []int `pulumi:"channelIds"`

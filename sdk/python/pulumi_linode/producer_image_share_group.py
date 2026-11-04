@@ -428,6 +428,32 @@ class ProducerImageShareGroup(pulumi.CustomResource):
         __props__.__dict__["uuid"] = uuid
         return ProducerImageShareGroup(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expiry: pulumi.Input[Optional[_builtins.str]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProducerImageShareGroupImageArgs', 'ProducerImageShareGroupImageArgsDict', 'outputs.ProducerImageShareGroupImage']]]]] = None,
+            images_count: pulumi.Input[Optional[_builtins.int]] = None,
+            is_suspended: pulumi.Input[Optional[_builtins.bool]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            members_count: pulumi.Input[Optional[_builtins.int]] = None,
+            updated: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["created"] = created
+        __props__["description"] = description
+        __props__["expiry"] = expiry
+        __props__["images"] = images
+        __props__["imagesCount"] = images_count
+        __props__["isSuspended"] = is_suspended
+        __props__["label"] = label
+        __props__["membersCount"] = members_count
+        __props__["updated"] = updated
+        __props__["uuid"] = uuid
+        return pulumi.runtime.exists_resource(None, 'linode:index/producerImageShareGroup:ProducerImageShareGroup', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def created(self) -> pulumi.Output[_builtins.str]:
