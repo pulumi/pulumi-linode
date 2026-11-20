@@ -8,8 +8,6 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstanceConfigDeviceSdam {
@@ -22,12 +20,12 @@ public final class GetInstancesInstanceConfigDeviceSdam {
      * @return The `label` of the `disk` to map to this `device` slot.
      * 
      */
-    private @Nullable String diskLabel;
+    private String diskLabel;
     /**
      * @return The Volume ID to map to this `device` slot.
      * 
      */
-    private @Nullable Integer volumeId;
+    private Integer volumeId;
 
     private GetInstancesInstanceConfigDeviceSdam() {}
     /**
@@ -41,15 +39,15 @@ public final class GetInstancesInstanceConfigDeviceSdam {
      * @return The `label` of the `disk` to map to this `device` slot.
      * 
      */
-    public Optional<String> diskLabel() {
-        return Optional.ofNullable(this.diskLabel);
+    public String diskLabel() {
+        return this.diskLabel;
     }
     /**
      * @return The Volume ID to map to this `device` slot.
      * 
      */
-    public Optional<Integer> volumeId() {
-        return Optional.ofNullable(this.volumeId);
+    public Integer volumeId() {
+        return this.volumeId;
     }
 
     public static Builder builder() {
@@ -62,8 +60,8 @@ public final class GetInstancesInstanceConfigDeviceSdam {
     @CustomType.Builder
     public static final class Builder {
         private Integer diskId;
-        private @Nullable String diskLabel;
-        private @Nullable Integer volumeId;
+        private String diskLabel;
+        private Integer volumeId;
         public Builder() {}
         public Builder(GetInstancesInstanceConfigDeviceSdam defaults) {
     	      Objects.requireNonNull(defaults);
@@ -81,14 +79,18 @@ public final class GetInstancesInstanceConfigDeviceSdam {
             return this;
         }
         @CustomType.Setter
-        public Builder diskLabel(@Nullable String diskLabel) {
-
+        public Builder diskLabel(String diskLabel) {
+            if (diskLabel == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDeviceSdam", "diskLabel");
+            }
             this.diskLabel = diskLabel;
             return this;
         }
         @CustomType.Setter
-        public Builder volumeId(@Nullable Integer volumeId) {
-
+        public Builder volumeId(Integer volumeId) {
+            if (volumeId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigDeviceSdam", "volumeId");
+            }
             this.volumeId = volumeId;
             return this;
         }

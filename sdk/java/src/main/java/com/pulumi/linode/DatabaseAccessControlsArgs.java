@@ -6,10 +6,13 @@ package com.pulumi.linode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.linode.inputs.DatabaseAccessControlsTimeoutsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DatabaseAccessControlsArgs extends com.pulumi.resources.ResourceArgs {
@@ -61,12 +64,20 @@ public final class DatabaseAccessControlsArgs extends com.pulumi.resources.Resou
         return this.databaseType;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<DatabaseAccessControlsTimeoutsArgs> timeouts;
+
+    public Optional<Output<DatabaseAccessControlsTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private DatabaseAccessControlsArgs() {}
 
     private DatabaseAccessControlsArgs(DatabaseAccessControlsArgs $) {
         this.allowLists = $.allowLists;
         this.databaseId = $.databaseId;
         this.databaseType = $.databaseType;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -158,6 +169,15 @@ public final class DatabaseAccessControlsArgs extends com.pulumi.resources.Resou
          */
         public Builder databaseType(String databaseType) {
             return databaseType(Output.of(databaseType));
+        }
+
+        public Builder timeouts(@Nullable Output<DatabaseAccessControlsTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(DatabaseAccessControlsTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public DatabaseAccessControlsArgs build() {

@@ -10,9 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.linode.DatabaseAccessControlsArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.DatabaseAccessControlsState;
+import com.pulumi.linode.outputs.DatabaseAccessControlsTimeouts;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -116,6 +118,12 @@ public class DatabaseAccessControls extends com.pulumi.resources.CustomResource 
      */
     public Output<String> databaseType() {
         return this.databaseType;
+    }
+    @Export(name="timeouts", refs={DatabaseAccessControlsTimeouts.class}, tree="[0]")
+    private Output</* @Nullable */ DatabaseAccessControlsTimeouts> timeouts;
+
+    public Output<Optional<DatabaseAccessControlsTimeouts>> timeouts() {
+        return Codegen.optional(this.timeouts);
     }
 
     /**

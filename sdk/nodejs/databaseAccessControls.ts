@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -84,6 +86,7 @@ export class DatabaseAccessControls extends pulumi.CustomResource {
      * The unique type of the target database. (`mysql`, `postgresql`)
      */
     declare public readonly databaseType: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DatabaseAccessControlsTimeouts | undefined>;
 
     /**
      * Create a DatabaseAccessControls resource with the given unique name, arguments, and options.
@@ -101,6 +104,7 @@ export class DatabaseAccessControls extends pulumi.CustomResource {
             resourceInputs["allowLists"] = state?.allowLists;
             resourceInputs["databaseId"] = state?.databaseId;
             resourceInputs["databaseType"] = state?.databaseType;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as DatabaseAccessControlsArgs | undefined;
             if (args?.allowLists === undefined && !opts.urn) {
@@ -115,6 +119,7 @@ export class DatabaseAccessControls extends pulumi.CustomResource {
             resourceInputs["allowLists"] = args?.allowLists;
             resourceInputs["databaseId"] = args?.databaseId;
             resourceInputs["databaseType"] = args?.databaseType;
+            resourceInputs["timeouts"] = args?.timeouts;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseAccessControls.__pulumiType, name, resourceInputs, opts);
@@ -137,6 +142,7 @@ export interface DatabaseAccessControlsState {
      * The unique type of the target database. (`mysql`, `postgresql`)
      */
     databaseType?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DatabaseAccessControlsTimeouts | undefined>;
 }
 
 /**
@@ -155,4 +161,5 @@ export interface DatabaseAccessControlsArgs {
      * The unique type of the target database. (`mysql`, `postgresql`)
      */
     databaseType: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DatabaseAccessControlsTimeouts | undefined>;
 }

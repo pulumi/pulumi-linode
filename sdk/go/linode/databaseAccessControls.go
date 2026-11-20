@@ -72,7 +72,8 @@ type DatabaseAccessControls struct {
 	// The unique ID of the target database.
 	DatabaseId pulumi.IntOutput `pulumi:"databaseId"`
 	// The unique type of the target database. (`mysql`, `postgresql`)
-	DatabaseType pulumi.StringOutput `pulumi:"databaseType"`
+	DatabaseType pulumi.StringOutput                     `pulumi:"databaseType"`
+	Timeouts     DatabaseAccessControlsTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewDatabaseAccessControls registers a new resource with the given unique name, arguments, and options.
@@ -119,7 +120,8 @@ type databaseAccessControlsState struct {
 	// The unique ID of the target database.
 	DatabaseId *int `pulumi:"databaseId"`
 	// The unique type of the target database. (`mysql`, `postgresql`)
-	DatabaseType *string `pulumi:"databaseType"`
+	DatabaseType *string                         `pulumi:"databaseType"`
+	Timeouts     *DatabaseAccessControlsTimeouts `pulumi:"timeouts"`
 }
 
 type DatabaseAccessControlsState struct {
@@ -129,6 +131,7 @@ type DatabaseAccessControlsState struct {
 	DatabaseId pulumi.IntPtrInput
 	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType pulumi.StringPtrInput
+	Timeouts     DatabaseAccessControlsTimeoutsPtrInput
 }
 
 func (DatabaseAccessControlsState) ElementType() reflect.Type {
@@ -147,7 +150,8 @@ type databaseAccessControlsArgs struct {
 	// The unique ID of the target database.
 	DatabaseId int `pulumi:"databaseId"`
 	// The unique type of the target database. (`mysql`, `postgresql`)
-	DatabaseType string `pulumi:"databaseType"`
+	DatabaseType string                          `pulumi:"databaseType"`
+	Timeouts     *DatabaseAccessControlsTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a DatabaseAccessControls resource.
@@ -158,6 +162,7 @@ type DatabaseAccessControlsArgs struct {
 	DatabaseId pulumi.IntInput
 	// The unique type of the target database. (`mysql`, `postgresql`)
 	DatabaseType pulumi.StringInput
+	Timeouts     DatabaseAccessControlsTimeoutsPtrInput
 }
 
 func (DatabaseAccessControlsArgs) ElementType() reflect.Type {
@@ -260,6 +265,10 @@ func (o DatabaseAccessControlsOutput) DatabaseId() pulumi.IntOutput {
 // The unique type of the target database. (`mysql`, `postgresql`)
 func (o DatabaseAccessControlsOutput) DatabaseType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseAccessControls) pulumi.StringOutput { return v.DatabaseType }).(pulumi.StringOutput)
+}
+
+func (o DatabaseAccessControlsOutput) Timeouts() DatabaseAccessControlsTimeoutsPtrOutput {
+	return o.ApplyT(func(v *DatabaseAccessControls) DatabaseAccessControlsTimeoutsPtrOutput { return v.Timeouts }).(DatabaseAccessControlsTimeoutsPtrOutput)
 }
 
 type DatabaseAccessControlsArrayOutput struct{ *pulumi.OutputState }

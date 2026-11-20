@@ -54,7 +54,7 @@ class GetInstancesResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        The provider-assigned unique ID for this managed resource.
+        The ID of the Placement Group in the Linode API.
         """
         return pulumi.get(self, "id")
 
@@ -129,11 +129,17 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
 
     ## Filterable Fields
 
+    * `disk_encryption`
+
     * `id`
 
     * `image`
 
+    * `interface_generation`
+
     * `label`
+
+    * `lke_cluster_id`
 
     * `region`
 
@@ -146,8 +152,8 @@ def get_instances(filters: Optional[Sequence[Union['GetInstancesFilterArgs', 'Ge
     * `watchdog_enabled`
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
-    :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
+    :param _builtins.str order_by: The attribute to order the results by. (`id`, `image`, `label`, `region`, `lke_cluster_id`)
     """
     __args__ = dict()
     __args__['filters'] = filters
@@ -201,11 +207,17 @@ def get_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union[
 
     ## Filterable Fields
 
+    * `disk_encryption`
+
     * `id`
 
     * `image`
 
+    * `interface_generation`
+
     * `label`
+
+    * `lke_cluster_id`
 
     * `region`
 
@@ -218,8 +230,8 @@ def get_instances_output(filters: pulumi.Input[Optional[Optional[Sequence[Union[
     * `watchdog_enabled`
 
 
-    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `asc`)
-    :param _builtins.str order_by: The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+    :param _builtins.str order: The order in which results should be returned. (`asc`, `desc`; default `desc`)
+    :param _builtins.str order_by: The attribute to order the results by. (`id`, `image`, `label`, `region`, `lke_cluster_id`)
     """
     __args__ = dict()
     __args__['filters'] = filters

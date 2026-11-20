@@ -7,13 +7,11 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInstancesInstanceConfigInterfaceIpv6Range {
     /**
-     * @return The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     * @return The value of `range` computed by the API.
      * 
      */
     private String assignedRange;
@@ -21,11 +19,11 @@ public final class GetInstancesInstanceConfigInterfaceIpv6Range {
      * @return A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      * 
      */
-    private @Nullable String range;
+    private String range;
 
     private GetInstancesInstanceConfigInterfaceIpv6Range() {}
     /**
-     * @return The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     * @return The value of `range` computed by the API.
      * 
      */
     public String assignedRange() {
@@ -35,8 +33,8 @@ public final class GetInstancesInstanceConfigInterfaceIpv6Range {
      * @return A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      * 
      */
-    public Optional<String> range() {
-        return Optional.ofNullable(this.range);
+    public String range() {
+        return this.range;
     }
 
     public static Builder builder() {
@@ -49,7 +47,7 @@ public final class GetInstancesInstanceConfigInterfaceIpv6Range {
     @CustomType.Builder
     public static final class Builder {
         private String assignedRange;
-        private @Nullable String range;
+        private String range;
         public Builder() {}
         public Builder(GetInstancesInstanceConfigInterfaceIpv6Range defaults) {
     	      Objects.requireNonNull(defaults);
@@ -66,8 +64,10 @@ public final class GetInstancesInstanceConfigInterfaceIpv6Range {
             return this;
         }
         @CustomType.Setter
-        public Builder range(@Nullable String range) {
-
+        public Builder range(String range) {
+            if (range == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstanceConfigInterfaceIpv6Range", "range");
+            }
             this.range = range;
             return this;
         }

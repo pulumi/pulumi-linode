@@ -13,6 +13,328 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions struct {
+	// The logical operation applied. Currently only 'ALL' allowed.
+	CriteriaCondition string `pulumi:"criteriaCondition"`
+	// Time period over which data is collected before evaluating the threshold.
+	EvaluationPeriodSeconds int `pulumi:"evaluationPeriodSeconds"`
+	// Frequency at which the metric data is polled.
+	PollingIntervalSeconds int `pulumi:"pollingIntervalSeconds"`
+	// Number of times the condition must be met before triggering an alert.
+	TriggerOccurrences int `pulumi:"triggerOccurrences"`
+}
+
+// GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsInput is an input type that accepts GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs and GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput values.
+// You can construct a concrete instance of `GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsInput` via:
+//
+//	GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs{...}
+type GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsInput interface {
+	pulumi.Input
+
+	ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput() GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput
+	ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutputWithContext(context.Context) GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput
+}
+
+type GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs struct {
+	// The logical operation applied. Currently only 'ALL' allowed.
+	CriteriaCondition pulumi.StringInput `pulumi:"criteriaCondition"`
+	// Time period over which data is collected before evaluating the threshold.
+	EvaluationPeriodSeconds pulumi.IntInput `pulumi:"evaluationPeriodSeconds"`
+	// Frequency at which the metric data is polled.
+	PollingIntervalSeconds pulumi.IntInput `pulumi:"pollingIntervalSeconds"`
+	// Number of times the condition must be met before triggering an alert.
+	TriggerOccurrences pulumi.IntInput `pulumi:"triggerOccurrences"`
+}
+
+func (GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions)(nil)).Elem()
+}
+
+func (i GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs) ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput() GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput {
+	return i.ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutputWithContext(context.Background())
+}
+
+func (i GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs) ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutputWithContext(ctx context.Context) GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput)
+}
+
+type GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions)(nil)).Elem()
+}
+
+func (o GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput() GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput {
+	return o
+}
+
+func (o GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) ToGetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutputWithContext(ctx context.Context) GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput {
+	return o
+}
+
+// The logical operation applied. Currently only 'ALL' allowed.
+func (o GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) CriteriaCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions) string { return v.CriteriaCondition }).(pulumi.StringOutput)
+}
+
+// Time period over which data is collected before evaluating the threshold.
+func (o GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) EvaluationPeriodSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions) int {
+		return v.EvaluationPeriodSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Frequency at which the metric data is polled.
+func (o GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) PollingIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions) int {
+		return v.PollingIntervalSeconds
+	}).(pulumi.IntOutput)
+}
+
+// Number of times the condition must be met before triggering an alert.
+func (o GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput) TriggerOccurrences() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsAlertDefinitionTriggerConditions) int { return v.TriggerOccurrences }).(pulumi.IntOutput)
+}
+
+type GetMonitorAlertDefinitionsFilter struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy *string `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name string `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values []string `pulumi:"values"`
+}
+
+// GetMonitorAlertDefinitionsFilterInput is an input type that accepts GetMonitorAlertDefinitionsFilterArgs and GetMonitorAlertDefinitionsFilterOutput values.
+// You can construct a concrete instance of `GetMonitorAlertDefinitionsFilterInput` via:
+//
+//	GetMonitorAlertDefinitionsFilterArgs{...}
+type GetMonitorAlertDefinitionsFilterInput interface {
+	pulumi.Input
+
+	ToGetMonitorAlertDefinitionsFilterOutput() GetMonitorAlertDefinitionsFilterOutput
+	ToGetMonitorAlertDefinitionsFilterOutputWithContext(context.Context) GetMonitorAlertDefinitionsFilterOutput
+}
+
+type GetMonitorAlertDefinitionsFilterArgs struct {
+	// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of values for the filter to allow. These values should all be in string form.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetMonitorAlertDefinitionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorAlertDefinitionsFilter)(nil)).Elem()
+}
+
+func (i GetMonitorAlertDefinitionsFilterArgs) ToGetMonitorAlertDefinitionsFilterOutput() GetMonitorAlertDefinitionsFilterOutput {
+	return i.ToGetMonitorAlertDefinitionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetMonitorAlertDefinitionsFilterArgs) ToGetMonitorAlertDefinitionsFilterOutputWithContext(ctx context.Context) GetMonitorAlertDefinitionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorAlertDefinitionsFilterOutput)
+}
+
+// GetMonitorAlertDefinitionsFilterArrayInput is an input type that accepts GetMonitorAlertDefinitionsFilterArray and GetMonitorAlertDefinitionsFilterArrayOutput values.
+// You can construct a concrete instance of `GetMonitorAlertDefinitionsFilterArrayInput` via:
+//
+//	GetMonitorAlertDefinitionsFilterArray{ GetMonitorAlertDefinitionsFilterArgs{...} }
+type GetMonitorAlertDefinitionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorAlertDefinitionsFilterArrayOutput() GetMonitorAlertDefinitionsFilterArrayOutput
+	ToGetMonitorAlertDefinitionsFilterArrayOutputWithContext(context.Context) GetMonitorAlertDefinitionsFilterArrayOutput
+}
+
+type GetMonitorAlertDefinitionsFilterArray []GetMonitorAlertDefinitionsFilterInput
+
+func (GetMonitorAlertDefinitionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorAlertDefinitionsFilter)(nil)).Elem()
+}
+
+func (i GetMonitorAlertDefinitionsFilterArray) ToGetMonitorAlertDefinitionsFilterArrayOutput() GetMonitorAlertDefinitionsFilterArrayOutput {
+	return i.ToGetMonitorAlertDefinitionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorAlertDefinitionsFilterArray) ToGetMonitorAlertDefinitionsFilterArrayOutputWithContext(ctx context.Context) GetMonitorAlertDefinitionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorAlertDefinitionsFilterArrayOutput)
+}
+
+type GetMonitorAlertDefinitionsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorAlertDefinitionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorAlertDefinitionsFilter)(nil)).Elem()
+}
+
+func (o GetMonitorAlertDefinitionsFilterOutput) ToGetMonitorAlertDefinitionsFilterOutput() GetMonitorAlertDefinitionsFilterOutput {
+	return o
+}
+
+func (o GetMonitorAlertDefinitionsFilterOutput) ToGetMonitorAlertDefinitionsFilterOutputWithContext(ctx context.Context) GetMonitorAlertDefinitionsFilterOutput {
+	return o
+}
+
+// The method to match the field by. (`exact`, `regex`, `substring`; default `exact`)
+func (o GetMonitorAlertDefinitionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field to filter by. See the Filterable Fields section for a complete list of filterable fields.
+func (o GetMonitorAlertDefinitionsFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of values for the filter to allow. These values should all be in string form.
+func (o GetMonitorAlertDefinitionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetMonitorAlertDefinitionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetMonitorAlertDefinitionsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorAlertDefinitionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorAlertDefinitionsFilter)(nil)).Elem()
+}
+
+func (o GetMonitorAlertDefinitionsFilterArrayOutput) ToGetMonitorAlertDefinitionsFilterArrayOutput() GetMonitorAlertDefinitionsFilterArrayOutput {
+	return o
+}
+
+func (o GetMonitorAlertDefinitionsFilterArrayOutput) ToGetMonitorAlertDefinitionsFilterArrayOutputWithContext(ctx context.Context) GetMonitorAlertDefinitionsFilterArrayOutput {
+	return o
+}
+
+func (o GetMonitorAlertDefinitionsFilterArrayOutput) Index(i pulumi.IntInput) GetMonitorAlertDefinitionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorAlertDefinitionsFilter {
+		return vs[0].([]GetMonitorAlertDefinitionsFilter)[vs[1].(int)]
+	}).(GetMonitorAlertDefinitionsFilterOutput)
+}
+
+type GetMonitorLogsDestinationDetails struct {
+	// The access key ID (applies to `akamaiObjectStorage` type).
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// The authentication type (applies to `customHttps` type).
+	AuthenticationType string `pulumi:"authenticationType"`
+	// The bucket name (applies to `akamaiObjectStorage` type).
+	BucketName string `pulumi:"bucketName"`
+	// The content type of log data. One of: `application/json`, `application/json; charset=utf-8` (applies to `customHttps` type).
+	ContentType string `pulumi:"contentType"`
+	// The compression format (applies to `customHttps` type).
+	DataCompression string `pulumi:"dataCompression"`
+	// The HTTPS endpoint URL (applies to `customHttps` type).
+	EndpointUrl string `pulumi:"endpointUrl"`
+	// The storage endpoint hostname (applies to `akamaiObjectStorage` type).
+	Host string `pulumi:"host"`
+	// The path within the bucket (applies to `akamaiObjectStorage` type).
+	Path string `pulumi:"path"`
+	// The TLS hostname (applies to `customHttps` type).
+	TlsHostname string `pulumi:"tlsHostname"`
+}
+
+// GetMonitorLogsDestinationDetailsInput is an input type that accepts GetMonitorLogsDestinationDetailsArgs and GetMonitorLogsDestinationDetailsOutput values.
+// You can construct a concrete instance of `GetMonitorLogsDestinationDetailsInput` via:
+//
+//	GetMonitorLogsDestinationDetailsArgs{...}
+type GetMonitorLogsDestinationDetailsInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsDestinationDetailsOutput() GetMonitorLogsDestinationDetailsOutput
+	ToGetMonitorLogsDestinationDetailsOutputWithContext(context.Context) GetMonitorLogsDestinationDetailsOutput
+}
+
+type GetMonitorLogsDestinationDetailsArgs struct {
+	// The access key ID (applies to `akamaiObjectStorage` type).
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// The authentication type (applies to `customHttps` type).
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// The bucket name (applies to `akamaiObjectStorage` type).
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// The content type of log data. One of: `application/json`, `application/json; charset=utf-8` (applies to `customHttps` type).
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The compression format (applies to `customHttps` type).
+	DataCompression pulumi.StringInput `pulumi:"dataCompression"`
+	// The HTTPS endpoint URL (applies to `customHttps` type).
+	EndpointUrl pulumi.StringInput `pulumi:"endpointUrl"`
+	// The storage endpoint hostname (applies to `akamaiObjectStorage` type).
+	Host pulumi.StringInput `pulumi:"host"`
+	// The path within the bucket (applies to `akamaiObjectStorage` type).
+	Path pulumi.StringInput `pulumi:"path"`
+	// The TLS hostname (applies to `customHttps` type).
+	TlsHostname pulumi.StringInput `pulumi:"tlsHostname"`
+}
+
+func (GetMonitorLogsDestinationDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsDestinationDetails)(nil)).Elem()
+}
+
+func (i GetMonitorLogsDestinationDetailsArgs) ToGetMonitorLogsDestinationDetailsOutput() GetMonitorLogsDestinationDetailsOutput {
+	return i.ToGetMonitorLogsDestinationDetailsOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsDestinationDetailsArgs) ToGetMonitorLogsDestinationDetailsOutputWithContext(ctx context.Context) GetMonitorLogsDestinationDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsDestinationDetailsOutput)
+}
+
+type GetMonitorLogsDestinationDetailsOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsDestinationDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsDestinationDetails)(nil)).Elem()
+}
+
+func (o GetMonitorLogsDestinationDetailsOutput) ToGetMonitorLogsDestinationDetailsOutput() GetMonitorLogsDestinationDetailsOutput {
+	return o
+}
+
+func (o GetMonitorLogsDestinationDetailsOutput) ToGetMonitorLogsDestinationDetailsOutputWithContext(ctx context.Context) GetMonitorLogsDestinationDetailsOutput {
+	return o
+}
+
+// The access key ID (applies to `akamaiObjectStorage` type).
+func (o GetMonitorLogsDestinationDetailsOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// The authentication type (applies to `customHttps` type).
+func (o GetMonitorLogsDestinationDetailsOutput) AuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// The bucket name (applies to `akamaiObjectStorage` type).
+func (o GetMonitorLogsDestinationDetailsOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// The content type of log data. One of: `application/json`, `application/json; charset=utf-8` (applies to `customHttps` type).
+func (o GetMonitorLogsDestinationDetailsOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The compression format (applies to `customHttps` type).
+func (o GetMonitorLogsDestinationDetailsOutput) DataCompression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.DataCompression }).(pulumi.StringOutput)
+}
+
+// The HTTPS endpoint URL (applies to `customHttps` type).
+func (o GetMonitorLogsDestinationDetailsOutput) EndpointUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.EndpointUrl }).(pulumi.StringOutput)
+}
+
+// The storage endpoint hostname (applies to `akamaiObjectStorage` type).
+func (o GetMonitorLogsDestinationDetailsOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The path within the bucket (applies to `akamaiObjectStorage` type).
+func (o GetMonitorLogsDestinationDetailsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The TLS hostname (applies to `customHttps` type).
+func (o GetMonitorLogsDestinationDetailsOutput) TlsHostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsDestinationDetails) string { return v.TlsHostname }).(pulumi.StringOutput)
+}
+
 type GetMonitorLogsDestinationsDestination struct {
 	// When this logs destination was created.
 	Created string `pulumi:"created"`
@@ -604,6 +926,139 @@ func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) ClusterIds() pulumi.IntA
 // Whether all clusters were auto-added at this version.
 func (o GetMonitorLogsStreamHistoryStreamDetailsOutput) IsAutoAddAllClustersEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetMonitorLogsStreamHistoryStreamDetails) bool { return v.IsAutoAddAllClustersEnabled }).(pulumi.BoolOutput)
+}
+
+type GetMonitorLogsStreamQuotasQuota struct {
+	// The description of the logs stream quota.
+	Description string `pulumi:"description"`
+	// The ID of the logs stream quota.
+	QuotaId string `pulumi:"quotaId"`
+	// The maximum number allowed by this quota.
+	QuotaLimit int `pulumi:"quotaLimit"`
+	// The name of the logs stream quota.
+	QuotaName string `pulumi:"quotaName"`
+	// The type of the logs stream quota.
+	QuotaType string `pulumi:"quotaType"`
+}
+
+// GetMonitorLogsStreamQuotasQuotaInput is an input type that accepts GetMonitorLogsStreamQuotasQuotaArgs and GetMonitorLogsStreamQuotasQuotaOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamQuotasQuotaInput` via:
+//
+//	GetMonitorLogsStreamQuotasQuotaArgs{...}
+type GetMonitorLogsStreamQuotasQuotaInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamQuotasQuotaOutput() GetMonitorLogsStreamQuotasQuotaOutput
+	ToGetMonitorLogsStreamQuotasQuotaOutputWithContext(context.Context) GetMonitorLogsStreamQuotasQuotaOutput
+}
+
+type GetMonitorLogsStreamQuotasQuotaArgs struct {
+	// The description of the logs stream quota.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The ID of the logs stream quota.
+	QuotaId pulumi.StringInput `pulumi:"quotaId"`
+	// The maximum number allowed by this quota.
+	QuotaLimit pulumi.IntInput `pulumi:"quotaLimit"`
+	// The name of the logs stream quota.
+	QuotaName pulumi.StringInput `pulumi:"quotaName"`
+	// The type of the logs stream quota.
+	QuotaType pulumi.StringInput `pulumi:"quotaType"`
+}
+
+func (GetMonitorLogsStreamQuotasQuotaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamQuotasQuota)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamQuotasQuotaArgs) ToGetMonitorLogsStreamQuotasQuotaOutput() GetMonitorLogsStreamQuotasQuotaOutput {
+	return i.ToGetMonitorLogsStreamQuotasQuotaOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamQuotasQuotaArgs) ToGetMonitorLogsStreamQuotasQuotaOutputWithContext(ctx context.Context) GetMonitorLogsStreamQuotasQuotaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamQuotasQuotaOutput)
+}
+
+// GetMonitorLogsStreamQuotasQuotaArrayInput is an input type that accepts GetMonitorLogsStreamQuotasQuotaArray and GetMonitorLogsStreamQuotasQuotaArrayOutput values.
+// You can construct a concrete instance of `GetMonitorLogsStreamQuotasQuotaArrayInput` via:
+//
+//	GetMonitorLogsStreamQuotasQuotaArray{ GetMonitorLogsStreamQuotasQuotaArgs{...} }
+type GetMonitorLogsStreamQuotasQuotaArrayInput interface {
+	pulumi.Input
+
+	ToGetMonitorLogsStreamQuotasQuotaArrayOutput() GetMonitorLogsStreamQuotasQuotaArrayOutput
+	ToGetMonitorLogsStreamQuotasQuotaArrayOutputWithContext(context.Context) GetMonitorLogsStreamQuotasQuotaArrayOutput
+}
+
+type GetMonitorLogsStreamQuotasQuotaArray []GetMonitorLogsStreamQuotasQuotaInput
+
+func (GetMonitorLogsStreamQuotasQuotaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamQuotasQuota)(nil)).Elem()
+}
+
+func (i GetMonitorLogsStreamQuotasQuotaArray) ToGetMonitorLogsStreamQuotasQuotaArrayOutput() GetMonitorLogsStreamQuotasQuotaArrayOutput {
+	return i.ToGetMonitorLogsStreamQuotasQuotaArrayOutputWithContext(context.Background())
+}
+
+func (i GetMonitorLogsStreamQuotasQuotaArray) ToGetMonitorLogsStreamQuotasQuotaArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamQuotasQuotaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMonitorLogsStreamQuotasQuotaArrayOutput)
+}
+
+type GetMonitorLogsStreamQuotasQuotaOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamQuotasQuotaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMonitorLogsStreamQuotasQuota)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamQuotasQuotaOutput) ToGetMonitorLogsStreamQuotasQuotaOutput() GetMonitorLogsStreamQuotasQuotaOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamQuotasQuotaOutput) ToGetMonitorLogsStreamQuotasQuotaOutputWithContext(ctx context.Context) GetMonitorLogsStreamQuotasQuotaOutput {
+	return o
+}
+
+// The description of the logs stream quota.
+func (o GetMonitorLogsStreamQuotasQuotaOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamQuotasQuota) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The ID of the logs stream quota.
+func (o GetMonitorLogsStreamQuotasQuotaOutput) QuotaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamQuotasQuota) string { return v.QuotaId }).(pulumi.StringOutput)
+}
+
+// The maximum number allowed by this quota.
+func (o GetMonitorLogsStreamQuotasQuotaOutput) QuotaLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamQuotasQuota) int { return v.QuotaLimit }).(pulumi.IntOutput)
+}
+
+// The name of the logs stream quota.
+func (o GetMonitorLogsStreamQuotasQuotaOutput) QuotaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamQuotasQuota) string { return v.QuotaName }).(pulumi.StringOutput)
+}
+
+// The type of the logs stream quota.
+func (o GetMonitorLogsStreamQuotasQuotaOutput) QuotaType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMonitorLogsStreamQuotasQuota) string { return v.QuotaType }).(pulumi.StringOutput)
+}
+
+type GetMonitorLogsStreamQuotasQuotaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMonitorLogsStreamQuotasQuotaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMonitorLogsStreamQuotasQuota)(nil)).Elem()
+}
+
+func (o GetMonitorLogsStreamQuotasQuotaArrayOutput) ToGetMonitorLogsStreamQuotasQuotaArrayOutput() GetMonitorLogsStreamQuotasQuotaArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamQuotasQuotaArrayOutput) ToGetMonitorLogsStreamQuotasQuotaArrayOutputWithContext(ctx context.Context) GetMonitorLogsStreamQuotasQuotaArrayOutput {
+	return o
+}
+
+func (o GetMonitorLogsStreamQuotasQuotaArrayOutput) Index(i pulumi.IntInput) GetMonitorLogsStreamQuotasQuotaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMonitorLogsStreamQuotasQuota {
+		return vs[0].([]GetMonitorLogsStreamQuotasQuota)[vs[1].(int)]
+	}).(GetMonitorLogsStreamQuotasQuotaOutput)
 }
 
 type GetMonitorLogsStreamsFilter struct {
@@ -18262,6 +18717,10 @@ func (o GetVpcsVpcSubnetNodebalancerIpv6RangeArrayOutput) Index(i pulumi.IntInpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsInput)(nil)).Elem(), GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorAlertDefinitionsFilterInput)(nil)).Elem(), GetMonitorAlertDefinitionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorAlertDefinitionsFilterArrayInput)(nil)).Elem(), GetMonitorAlertDefinitionsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationDetailsInput)(nil)).Elem(), GetMonitorLogsDestinationDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsDestinationArrayInput)(nil)).Elem(), GetMonitorLogsDestinationsDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsDestinationsFilterInput)(nil)).Elem(), GetMonitorLogsDestinationsFilterArgs{})
@@ -18270,6 +18729,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamArrayInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamHistoryStreamDetailsInput)(nil)).Elem(), GetMonitorLogsStreamHistoryStreamDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamQuotasQuotaInput)(nil)).Elem(), GetMonitorLogsStreamQuotasQuotaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamQuotasQuotaArrayInput)(nil)).Elem(), GetMonitorLogsStreamQuotasQuotaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsFilterInput)(nil)).Elem(), GetMonitorLogsStreamsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsFilterArrayInput)(nil)).Elem(), GetMonitorLogsStreamsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMonitorLogsStreamsStreamInput)(nil)).Elem(), GetMonitorLogsStreamsStreamArgs{})
@@ -18549,6 +19010,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcsVpcSubnetNodebalancerIpv6RangeArrayInput)(nil)).Elem(), GetVpcsVpcSubnetNodebalancerIpv6RangeArray{})
+	pulumi.RegisterOutputType(GetMonitorAlertDefinitionsAlertDefinitionTriggerConditionsOutput{})
+	pulumi.RegisterOutputType(GetMonitorAlertDefinitionsFilterOutput{})
+	pulumi.RegisterOutputType(GetMonitorAlertDefinitionsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsDestinationDetailsOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsDestinationArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsDestinationsFilterOutput{})
@@ -18557,6 +19022,8 @@ func init() {
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamHistoryStreamDetailsOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamQuotasQuotaOutput{})
+	pulumi.RegisterOutputType(GetMonitorLogsStreamQuotasQuotaArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamsFilterOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetMonitorLogsStreamsStreamOutput{})

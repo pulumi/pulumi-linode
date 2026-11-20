@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface DatabaseAccessControlsTimeouts {
+    /**
+     * Used when creating the access controls (until the database update has finished)
+     */
+    create?: string;
+    /**
+     * Used when deleting the access controls (until the database update has finished)
+     */
+    delete?: string;
+    /**
+     * Used when updating the access controls (until the database update has finished)
+     */
+    update?: string;
+}
+
 export interface DatabaseMysqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
@@ -2875,13 +2890,13 @@ export interface GetInstancesInstance {
     /**
      * (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
      */
-    alerts: outputs.GetInstancesInstanceAlerts;
+    alerts: outputs.GetInstancesInstanceAlert[];
     /**
      * (Read-Only Object List) Information about the Linode's backup status. Referenced with an index (e.g. `backups.0.enabled`).
      */
     backups: outputs.GetInstancesInstanceBackup[];
     /**
-     * The Label of the Instance Config that should be used to boot the Linode instance.
+     * The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.
      */
     bootConfigLabel: string;
     /**
@@ -2905,7 +2920,7 @@ export interface GetInstancesInstance {
      */
     hasUserData: boolean;
     /**
-     * The Linode’s host machine, as a UUID.
+     * The Linode's host machine, as a UUID.
      */
     hostUuid: string;
     /**
@@ -2986,7 +3001,7 @@ export interface GetInstancesInstance {
     watchdogEnabled: boolean;
 }
 
-export interface GetInstancesInstanceAlerts {
+export interface GetInstancesInstanceAlert {
     /**
      * The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
      */
@@ -3357,11 +3372,11 @@ export interface GetInstancesInstanceConfigDeviceSd {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSda {
@@ -3372,11 +3387,11 @@ export interface GetInstancesInstanceConfigDeviceSda {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaa {
@@ -3387,11 +3402,11 @@ export interface GetInstancesInstanceConfigDeviceSdaa {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdab {
@@ -3402,11 +3417,11 @@ export interface GetInstancesInstanceConfigDeviceSdab {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdac {
@@ -3417,11 +3432,11 @@ export interface GetInstancesInstanceConfigDeviceSdac {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdad {
@@ -3432,11 +3447,11 @@ export interface GetInstancesInstanceConfigDeviceSdad {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdae {
@@ -3447,11 +3462,11 @@ export interface GetInstancesInstanceConfigDeviceSdae {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaf {
@@ -3462,11 +3477,11 @@ export interface GetInstancesInstanceConfigDeviceSdaf {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdag {
@@ -3477,11 +3492,11 @@ export interface GetInstancesInstanceConfigDeviceSdag {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdah {
@@ -3492,11 +3507,11 @@ export interface GetInstancesInstanceConfigDeviceSdah {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdai {
@@ -3507,11 +3522,11 @@ export interface GetInstancesInstanceConfigDeviceSdai {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaj {
@@ -3522,11 +3537,11 @@ export interface GetInstancesInstanceConfigDeviceSdaj {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdak {
@@ -3537,11 +3552,11 @@ export interface GetInstancesInstanceConfigDeviceSdak {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdal {
@@ -3552,11 +3567,11 @@ export interface GetInstancesInstanceConfigDeviceSdal {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdam {
@@ -3567,11 +3582,11 @@ export interface GetInstancesInstanceConfigDeviceSdam {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdan {
@@ -3582,11 +3597,11 @@ export interface GetInstancesInstanceConfigDeviceSdan {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdao {
@@ -3597,11 +3612,11 @@ export interface GetInstancesInstanceConfigDeviceSdao {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdap {
@@ -3612,11 +3627,11 @@ export interface GetInstancesInstanceConfigDeviceSdap {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaq {
@@ -3627,11 +3642,11 @@ export interface GetInstancesInstanceConfigDeviceSdaq {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdar {
@@ -3642,11 +3657,11 @@ export interface GetInstancesInstanceConfigDeviceSdar {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdat {
@@ -3657,11 +3672,11 @@ export interface GetInstancesInstanceConfigDeviceSdat {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaus {
@@ -3672,11 +3687,11 @@ export interface GetInstancesInstanceConfigDeviceSdaus {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdav {
@@ -3687,11 +3702,11 @@ export interface GetInstancesInstanceConfigDeviceSdav {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaw {
@@ -3702,11 +3717,11 @@ export interface GetInstancesInstanceConfigDeviceSdaw {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaxis {
@@ -3717,11 +3732,11 @@ export interface GetInstancesInstanceConfigDeviceSdaxis {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSday {
@@ -3732,11 +3747,11 @@ export interface GetInstancesInstanceConfigDeviceSday {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdaz {
@@ -3747,11 +3762,11 @@ export interface GetInstancesInstanceConfigDeviceSdaz {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdb {
@@ -3762,11 +3777,11 @@ export interface GetInstancesInstanceConfigDeviceSdb {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdba {
@@ -3777,11 +3792,11 @@ export interface GetInstancesInstanceConfigDeviceSdba {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbb {
@@ -3792,11 +3807,11 @@ export interface GetInstancesInstanceConfigDeviceSdbb {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbc {
@@ -3807,11 +3822,11 @@ export interface GetInstancesInstanceConfigDeviceSdbc {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbd {
@@ -3822,11 +3837,11 @@ export interface GetInstancesInstanceConfigDeviceSdbd {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbe {
@@ -3837,11 +3852,11 @@ export interface GetInstancesInstanceConfigDeviceSdbe {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbf {
@@ -3852,11 +3867,11 @@ export interface GetInstancesInstanceConfigDeviceSdbf {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbg {
@@ -3867,11 +3882,11 @@ export interface GetInstancesInstanceConfigDeviceSdbg {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbh {
@@ -3882,11 +3897,11 @@ export interface GetInstancesInstanceConfigDeviceSdbh {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbi {
@@ -3897,11 +3912,11 @@ export interface GetInstancesInstanceConfigDeviceSdbi {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbj {
@@ -3912,11 +3927,11 @@ export interface GetInstancesInstanceConfigDeviceSdbj {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbk {
@@ -3927,11 +3942,11 @@ export interface GetInstancesInstanceConfigDeviceSdbk {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdbl {
@@ -3942,11 +3957,11 @@ export interface GetInstancesInstanceConfigDeviceSdbl {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdc {
@@ -3957,11 +3972,11 @@ export interface GetInstancesInstanceConfigDeviceSdc {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdd {
@@ -3972,11 +3987,11 @@ export interface GetInstancesInstanceConfigDeviceSdd {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSde {
@@ -3987,11 +4002,11 @@ export interface GetInstancesInstanceConfigDeviceSde {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdf {
@@ -4002,11 +4017,11 @@ export interface GetInstancesInstanceConfigDeviceSdf {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdg {
@@ -4017,11 +4032,11 @@ export interface GetInstancesInstanceConfigDeviceSdg {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdh {
@@ -4032,11 +4047,11 @@ export interface GetInstancesInstanceConfigDeviceSdh {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdi {
@@ -4047,11 +4062,11 @@ export interface GetInstancesInstanceConfigDeviceSdi {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdj {
@@ -4062,11 +4077,11 @@ export interface GetInstancesInstanceConfigDeviceSdj {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdk {
@@ -4077,11 +4092,11 @@ export interface GetInstancesInstanceConfigDeviceSdk {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdl {
@@ -4092,11 +4107,11 @@ export interface GetInstancesInstanceConfigDeviceSdl {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdm {
@@ -4107,11 +4122,11 @@ export interface GetInstancesInstanceConfigDeviceSdm {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdn {
@@ -4122,11 +4137,11 @@ export interface GetInstancesInstanceConfigDeviceSdn {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdo {
@@ -4137,11 +4152,11 @@ export interface GetInstancesInstanceConfigDeviceSdo {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdp {
@@ -4152,11 +4167,11 @@ export interface GetInstancesInstanceConfigDeviceSdp {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdq {
@@ -4167,11 +4182,11 @@ export interface GetInstancesInstanceConfigDeviceSdq {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdr {
@@ -4182,11 +4197,11 @@ export interface GetInstancesInstanceConfigDeviceSdr {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdt {
@@ -4197,11 +4212,11 @@ export interface GetInstancesInstanceConfigDeviceSdt {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdus {
@@ -4212,11 +4227,11 @@ export interface GetInstancesInstanceConfigDeviceSdus {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdv {
@@ -4227,11 +4242,11 @@ export interface GetInstancesInstanceConfigDeviceSdv {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdw {
@@ -4242,11 +4257,11 @@ export interface GetInstancesInstanceConfigDeviceSdw {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdx {
@@ -4257,11 +4272,11 @@ export interface GetInstancesInstanceConfigDeviceSdx {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdy {
@@ -4272,11 +4287,11 @@ export interface GetInstancesInstanceConfigDeviceSdy {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigDeviceSdz {
@@ -4287,16 +4302,16 @@ export interface GetInstancesInstanceConfigDeviceSdz {
     /**
      * The `label` of the `disk` to map to this `device` slot.
      */
-    diskLabel?: string;
+    diskLabel: string;
     /**
      * The Volume ID to map to this `device` slot.
      */
-    volumeId?: number;
+    volumeId: number;
 }
 
 export interface GetInstancesInstanceConfigHelper {
     /**
-     * Populates the /dev directory early during boot without udev. Defaults to false.
+     * Populates the /dev directory early during boot without udev.
      */
     devtmpfsAutomount: boolean;
     /**
@@ -4329,27 +4344,27 @@ export interface GetInstancesInstanceConfigInterface {
     /**
      * IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
      */
-    ipRanges?: string[];
+    ipRanges: string[];
     /**
      * This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
      */
-    ipamAddress?: string;
+    ipamAddress: string;
     /**
      * This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
      */
-    ipv4: outputs.GetInstancesInstanceConfigInterfaceIpv4;
+    ipv4s: outputs.GetInstancesInstanceConfigInterfaceIpv4[];
     /**
      * This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
      */
-    ipv6: outputs.GetInstancesInstanceConfigInterfaceIpv6;
+    ipv6s: outputs.GetInstancesInstanceConfigInterfaceIpv6[];
     /**
      * The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
      */
-    label?: string;
+    label: string;
     /**
      * Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
      */
-    primary?: boolean;
+    primary: boolean;
     /**
      * The type of interface. (`public`, `vlan`, `vpc`)
      */
@@ -4357,7 +4372,7 @@ export interface GetInstancesInstanceConfigInterface {
     /**
      * The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
      */
-    subnetId?: number;
+    subnetId: number;
     /**
      * The ID of VPC which this interface is attached to.
      */
@@ -4368,7 +4383,7 @@ export interface GetInstancesInstanceConfigInterfaceIpv4 {
     /**
      * The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
      */
-    nat11?: string;
+    nat11: string;
     /**
      * The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
      */
@@ -4392,13 +4407,13 @@ export interface GetInstancesInstanceConfigInterfaceIpv6 {
 
 export interface GetInstancesInstanceConfigInterfaceIpv6Range {
     /**
-     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     * The value of `range` computed by the API.
      */
     assignedRange: string;
     /**
      * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    range?: string;
+    range: string;
 }
 
 export interface GetInstancesInstanceConfigInterfaceIpv6Slaac {
@@ -4407,13 +4422,13 @@ export interface GetInstancesInstanceConfigInterfaceIpv6Slaac {
      */
     address: string;
     /**
-     * The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+     * The value of `range` computed by the API.
      */
     assignedRange: string;
     /**
      * A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
      */
-    range?: string;
+    range: string;
 }
 
 export interface GetInstancesInstanceDisk {
@@ -5885,6 +5900,29 @@ export interface GetMonitorLogsStreamHistoryStreamDetails {
      * Whether all clusters were auto-added at this version.
      */
     isAutoAddAllClustersEnabled: boolean;
+}
+
+export interface GetMonitorLogsStreamQuotasQuota {
+    /**
+     * The description of the logs stream quota.
+     */
+    description: string;
+    /**
+     * The ID of the logs stream quota.
+     */
+    quotaId: string;
+    /**
+     * The maximum number allowed by this quota.
+     */
+    quotaLimit: number;
+    /**
+     * The name of the logs stream quota.
+     */
+    quotaName: string;
+    /**
+     * The type of the logs stream quota.
+     */
+    quotaType: string;
 }
 
 export interface GetMonitorLogsStreamsFilter {
@@ -10890,6 +10928,28 @@ export interface LkeNodePoolAutoscaler {
      * The minimum number of nodes to autoscale to.
      */
     min?: number;
+}
+
+export interface LkeNodePoolNetworking {
+    /**
+     * Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdmaVpc"`.
+     */
+    interfaces: outputs.LkeNodePoolNetworkingInterface[];
+}
+
+export interface LkeNodePoolNetworkingInterface {
+    /**
+     * ID of the VPC subnet for the interface.
+     */
+    subnetId: number;
+    /**
+     * Interface type: `vpc` for the first interface; subsequent interfaces may be `rdmaVpc`.
+     */
+    type: string;
+    /**
+     * ID of the VPC for the interface.
+     */
+    vpcId: number;
 }
 
 export interface LkeNodePoolNode {

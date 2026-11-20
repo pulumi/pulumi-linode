@@ -31,6 +31,7 @@ class LkeNodePoolArgs:
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 networking: pulumi.Input[Optional['LkeNodePoolNetworkingArgs']] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  taints: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]]] = None,
@@ -44,9 +45,12 @@ class LkeNodePoolArgs:
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+               
+               * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        :param pulumi.Input['LkeNodePoolNetworkingArgs'] networking: Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolTaintArgs']]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
@@ -74,6 +78,8 @@ class LkeNodePoolArgs:
             pulumi.set(__self__, "label", label)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if networking is not None:
+            pulumi.set(__self__, "networking", networking)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
         if tags is not None:
@@ -157,6 +163,8 @@ class LkeNodePoolArgs:
     def isolation_public_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+
+        * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         """
         return pulumi.get(self, "isolation_public_ipv6")
 
@@ -199,6 +207,18 @@ class LkeNodePoolArgs:
     @labels.setter
     def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networking(self) -> pulumi.Input[Optional['LkeNodePoolNetworkingArgs']]:
+        """
+        Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
+        """
+        return pulumi.get(self, "networking")
+
+    @networking.setter
+    def networking(self, value: pulumi.Input[Optional['LkeNodePoolNetworkingArgs']]):
+        pulumi.set(self, "networking", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
@@ -265,6 +285,7 @@ class _LkeNodePoolState:
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 networking: pulumi.Input[Optional['LkeNodePoolNetworkingArgs']] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -279,9 +300,12 @@ class _LkeNodePoolState:
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+               
+               * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        :param pulumi.Input['LkeNodePoolNetworkingArgs'] networking: Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNodeArgs']]] nodes: A list of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
@@ -311,6 +335,8 @@ class _LkeNodePoolState:
             pulumi.set(__self__, "label", label)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if networking is not None:
+            pulumi.set(__self__, "networking", networking)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
         if nodes is not None:
@@ -386,6 +412,8 @@ class _LkeNodePoolState:
     def isolation_public_ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+
+        * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         """
         return pulumi.get(self, "isolation_public_ipv6")
 
@@ -428,6 +456,18 @@ class _LkeNodePoolState:
     @labels.setter
     def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def networking(self) -> pulumi.Input[Optional['LkeNodePoolNetworkingArgs']]:
+        """
+        Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
+        """
+        return pulumi.get(self, "networking")
+
+    @networking.setter
+    def networking(self, value: pulumi.Input[Optional['LkeNodePoolNetworkingArgs']]):
+        pulumi.set(self, "networking", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
@@ -521,6 +561,7 @@ class LkeNodePool(pulumi.CustomResource):
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 networking: pulumi.Input[Optional[Union['LkeNodePoolNetworkingArgs', 'LkeNodePoolNetworkingArgsDict', 'outputs.LkeNodePoolNetworking']]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict', 'outputs.LkeNodePoolTaint']]]]] = None,
@@ -603,6 +644,44 @@ class LkeNodePool(pulumi.CustomResource):
             node_count=3,
             tags=[external_pool_tag])
         ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        external_pool_tag = "external"
+        rdma = linode.LkeCluster("rdma",
+            label="rdma-cluster",
+            k8s_version="v1.35.9+lke3",
+            region="us-mia",
+            tier="enterprise",
+            vpc_id=vpc_id,
+            subnet_id=vpc_subnet_id,
+            external_pool_tags=[external_pool_tag])
+        rdma_lke_node_pool = linode.LkeNodePool("rdma",
+            cluster_id=rdma.id.apply(lambda x: int(x)),
+            type="g3-gpu-rtxpro6000-blackwell-rdma-8",
+            node_count=1,
+            tags=[external_pool_tag],
+            networking={
+                "interfaces": [
+                    {
+                        "type": "vpc",
+                        "vpc_id": vpc_id,
+                        "subnet_id": vpc_subnet_id,
+                    },
+                    {
+                        "type": "rdma_vpc",
+                        "vpc_id": vpc_id,
+                        "subnet_id": rdma_subnet_id,
+                    },
+                ],
+            })
+        ```
+
+        Replace the VPC and subnet variables with IDs for existing resources in the
+        cluster's region. The first interface must be the cluster VPC interface; add
+        RDMA VPC interfaces after it. RDMA-capable plans and RDMA VPC subnets may not
+        be available in every region or account.
 
         ## Import
 
@@ -620,9 +699,12 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+               
+               * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        :param pulumi.Input[Union['LkeNodePoolNetworkingArgs', 'LkeNodePoolNetworkingArgsDict', 'outputs.LkeNodePoolNetworking']] networking: Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict', 'outputs.LkeNodePoolTaint']]]] taints: Kubernetes taints to add to node pool nodes. Taints help control how pods are scheduled onto nodes, specifically allowing them to repel certain pods.
@@ -715,6 +797,44 @@ class LkeNodePool(pulumi.CustomResource):
             node_count=3,
             tags=[external_pool_tag])
         ```
+        ```python
+        import pulumi
+        import pulumi_linode as linode
+
+        external_pool_tag = "external"
+        rdma = linode.LkeCluster("rdma",
+            label="rdma-cluster",
+            k8s_version="v1.35.9+lke3",
+            region="us-mia",
+            tier="enterprise",
+            vpc_id=vpc_id,
+            subnet_id=vpc_subnet_id,
+            external_pool_tags=[external_pool_tag])
+        rdma_lke_node_pool = linode.LkeNodePool("rdma",
+            cluster_id=rdma.id.apply(lambda x: int(x)),
+            type="g3-gpu-rtxpro6000-blackwell-rdma-8",
+            node_count=1,
+            tags=[external_pool_tag],
+            networking={
+                "interfaces": [
+                    {
+                        "type": "vpc",
+                        "vpc_id": vpc_id,
+                        "subnet_id": vpc_subnet_id,
+                    },
+                    {
+                        "type": "rdma_vpc",
+                        "vpc_id": vpc_id,
+                        "subnet_id": rdma_subnet_id,
+                    },
+                ],
+            })
+        ```
+
+        Replace the VPC and subnet variables with IDs for existing resources in the
+        cluster's region. The first interface must be the cluster VPC interface; add
+        RDMA VPC interfaces after it. RDMA-capable plans and RDMA VPC subnets may not
+        be available in every region or account.
 
         ## Import
 
@@ -749,6 +869,7 @@ class LkeNodePool(pulumi.CustomResource):
                  k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
                  label: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 networking: pulumi.Input[Optional[Union['LkeNodePoolNetworkingArgs', 'LkeNodePoolNetworkingArgsDict', 'outputs.LkeNodePoolNetworking']]] = None,
                  node_count: pulumi.Input[Optional[_builtins.int]] = None,
                  tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  taints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolTaintArgs', 'LkeNodePoolTaintArgsDict', 'outputs.LkeNodePoolTaint']]]]] = None,
@@ -774,6 +895,7 @@ class LkeNodePool(pulumi.CustomResource):
             __props__.__dict__["k8s_version"] = k8s_version
             __props__.__dict__["label"] = label
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["networking"] = networking
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["tags"] = tags
             __props__.__dict__["taints"] = taints
@@ -801,6 +923,7 @@ class LkeNodePool(pulumi.CustomResource):
             k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            networking: pulumi.Input[Optional[Union['LkeNodePoolNetworkingArgs', 'LkeNodePoolNetworkingArgsDict', 'outputs.LkeNodePoolNetworking']]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict', 'outputs.LkeNodePoolNode']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -819,9 +942,12 @@ class LkeNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] firewall_id: The ID of the firewall to associate with this node pool. If not provided, default firewall will be associated.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv4: Whether nodes in this pool should have public IPv4 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
         :param pulumi.Input[_builtins.bool] isolation_public_ipv6: Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+               
+               * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         :param pulumi.Input[_builtins.str] k8s_version: The k8s version of the nodes in this node pool. For LKE enterprise only and may not currently available to all users even under v4beta.
         :param pulumi.Input[_builtins.str] label: A label for the Node Pool. If not provided, it defaults to empty string.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
+        :param pulumi.Input[Union['LkeNodePoolNetworkingArgs', 'LkeNodePoolNetworkingArgsDict', 'outputs.LkeNodePoolNetworking']] networking: Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
         :param pulumi.Input[_builtins.int] node_count: The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict', 'outputs.LkeNodePoolNode']]]] nodes: A list of nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: An array of tags applied to the Node Pool. Tags can be used to flag node pools as externally managed, see Externally Managed Node Pools for more details.
@@ -846,6 +972,7 @@ class LkeNodePool(pulumi.CustomResource):
         __props__.__dict__["k8s_version"] = k8s_version
         __props__.__dict__["label"] = label
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["networking"] = networking
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["tags"] = tags
@@ -866,6 +993,7 @@ class LkeNodePool(pulumi.CustomResource):
             k8s_version: pulumi.Input[Optional[_builtins.str]] = None,
             label: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            networking: pulumi.Input[Optional[Union['LkeNodePoolNetworkingArgs', 'LkeNodePoolNetworkingArgsDict', 'outputs.LkeNodePoolNetworking']]] = None,
             node_count: pulumi.Input[Optional[_builtins.int]] = None,
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LkeNodePoolNodeArgs', 'LkeNodePoolNodeArgsDict', 'outputs.LkeNodePoolNode']]]]] = None,
             tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -882,6 +1010,7 @@ class LkeNodePool(pulumi.CustomResource):
         __props__["k8sVersion"] = k8s_version
         __props__["label"] = label
         __props__["labels"] = labels
+        __props__["networking"] = networking
         __props__["nodeCount"] = node_count
         __props__["nodes"] = nodes
         __props__["tags"] = tags
@@ -932,6 +1061,8 @@ class LkeNodePool(pulumi.CustomResource):
     def isolation_public_ipv6(self) -> pulumi.Output[_builtins.bool]:
         """
         Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+
+        * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `api_version = "v4beta"` and an Enterprise cluster.
         """
         return pulumi.get(self, "isolation_public_ipv6")
 
@@ -958,6 +1089,14 @@ class LkeNodePool(pulumi.CustomResource):
         A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def networking(self) -> pulumi.Output[Optional['outputs.LkeNodePoolNetworking']]:
+        """
+        Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires api_version = "v4beta" and tier = "enterprise" on the cluster.
+        """
+        return pulumi.get(self, "networking")
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")

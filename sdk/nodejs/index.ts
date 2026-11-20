@@ -355,6 +355,11 @@ export const getMonitorLogsStreamHistory: typeof import("./getMonitorLogsStreamH
 export const getMonitorLogsStreamHistoryOutput: typeof import("./getMonitorLogsStreamHistory").getMonitorLogsStreamHistoryOutput = null as any;
 utilities.lazyLoad(exports, ["getMonitorLogsStreamHistory","getMonitorLogsStreamHistoryOutput"], () => require("./getMonitorLogsStreamHistory"));
 
+export { GetMonitorLogsStreamQuotasResult } from "./getMonitorLogsStreamQuotas";
+export const getMonitorLogsStreamQuotas: typeof import("./getMonitorLogsStreamQuotas").getMonitorLogsStreamQuotas = null as any;
+export const getMonitorLogsStreamQuotasOutput: typeof import("./getMonitorLogsStreamQuotas").getMonitorLogsStreamQuotasOutput = null as any;
+utilities.lazyLoad(exports, ["getMonitorLogsStreamQuotas","getMonitorLogsStreamQuotasOutput"], () => require("./getMonitorLogsStreamQuotas"));
+
 export { GetMonitorLogsStreamsArgs, GetMonitorLogsStreamsResult, GetMonitorLogsStreamsOutputArgs } from "./getMonitorLogsStreams";
 export const getMonitorLogsStreams: typeof import("./getMonitorLogsStreams").getMonitorLogsStreams = null as any;
 export const getMonitorLogsStreamsOutput: typeof import("./getMonitorLogsStreams").getMonitorLogsStreamsOutput = null as any;

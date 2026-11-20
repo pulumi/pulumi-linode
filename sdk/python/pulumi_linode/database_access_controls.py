@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DatabaseAccessControlsArgs', 'DatabaseAccessControls']
 
@@ -21,7 +23,8 @@ class DatabaseAccessControlsArgs:
     def __init__(__self__, *,
                  allow_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  database_id: pulumi.Input[_builtins.int],
-                 database_type: pulumi.Input[_builtins.str]):
+                 database_type: pulumi.Input[_builtins.str],
+                 timeouts: pulumi.Input[Optional['DatabaseAccessControlsTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a DatabaseAccessControls resource.
 
@@ -32,6 +35,8 @@ class DatabaseAccessControlsArgs:
         pulumi.set(__self__, "allow_lists", allow_lists)
         pulumi.set(__self__, "database_id", database_id)
         pulumi.set(__self__, "database_type", database_type)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="allowLists")
@@ -69,13 +74,23 @@ class DatabaseAccessControlsArgs:
     def database_type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "database_type", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['DatabaseAccessControlsTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['DatabaseAccessControlsTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _DatabaseAccessControlsState:
     def __init__(__self__, *,
                  allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  database_id: pulumi.Input[Optional[_builtins.int]] = None,
-                 database_type: pulumi.Input[Optional[_builtins.str]] = None):
+                 database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['DatabaseAccessControlsTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering DatabaseAccessControls resources.
 
@@ -89,6 +104,8 @@ class _DatabaseAccessControlsState:
             pulumi.set(__self__, "database_id", database_id)
         if database_type is not None:
             pulumi.set(__self__, "database_type", database_type)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="allowLists")
@@ -126,6 +143,15 @@ class _DatabaseAccessControlsState:
     def database_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_type", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['DatabaseAccessControlsTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['DatabaseAccessControlsTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("linode:index/databaseAccessControls:DatabaseAccessControls")
 class DatabaseAccessControls(pulumi.CustomResource):
@@ -136,6 +162,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
                  allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  database_id: pulumi.Input[Optional[_builtins.int]] = None,
                  database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DatabaseAccessControlsTimeoutsArgs', 'DatabaseAccessControlsTimeoutsArgsDict', 'outputs.DatabaseAccessControlsTimeouts']]] = None,
                  __props__=None):
         """
         Manages the access control for a Linode Database. Only one `DatabaseAccessControls` resource should be defined per-database.
@@ -221,6 +248,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
                  allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  database_id: pulumi.Input[Optional[_builtins.int]] = None,
                  database_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DatabaseAccessControlsTimeoutsArgs', 'DatabaseAccessControlsTimeoutsArgsDict', 'outputs.DatabaseAccessControlsTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -239,6 +267,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
             if database_type is None and not opts.urn:
                 raise TypeError("Missing required property 'database_type'")
             __props__.__dict__["database_type"] = database_type
+            __props__.__dict__["timeouts"] = timeouts
         super(DatabaseAccessControls, __self__).__init__(
             'linode:index/databaseAccessControls:DatabaseAccessControls',
             resource_name,
@@ -251,7 +280,8 @@ class DatabaseAccessControls(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             database_id: pulumi.Input[Optional[_builtins.int]] = None,
-            database_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseAccessControls':
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['DatabaseAccessControlsTimeoutsArgs', 'DatabaseAccessControlsTimeoutsArgsDict', 'outputs.DatabaseAccessControlsTimeouts']]] = None) -> 'DatabaseAccessControls':
         """
         Get an existing DatabaseAccessControls resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -270,6 +300,7 @@ class DatabaseAccessControls(pulumi.CustomResource):
         __props__.__dict__["allow_lists"] = allow_lists
         __props__.__dict__["database_id"] = database_id
         __props__.__dict__["database_type"] = database_type
+        __props__.__dict__["timeouts"] = timeouts
         return DatabaseAccessControls(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -277,11 +308,13 @@ class DatabaseAccessControls(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             database_id: pulumi.Input[Optional[_builtins.int]] = None,
-            database_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+            database_type: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['DatabaseAccessControlsTimeoutsArgs', 'DatabaseAccessControlsTimeoutsArgsDict', 'outputs.DatabaseAccessControlsTimeouts']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["allowLists"] = allow_lists
         __props__["databaseId"] = database_id
         __props__["databaseType"] = database_type
+        __props__["timeouts"] = timeouts
         return pulumi.runtime.exists_resource(None, 'linode:index/databaseAccessControls:DatabaseAccessControls', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -307,4 +340,9 @@ class DatabaseAccessControls(pulumi.CustomResource):
         The unique type of the target database. (`mysql`, `postgresql`)
         """
         return pulumi.get(self, "database_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DatabaseAccessControlsTimeouts']]:
+        return pulumi.get(self, "timeouts")
 

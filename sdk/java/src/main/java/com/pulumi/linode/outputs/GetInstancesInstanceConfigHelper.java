@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetInstancesInstanceConfigHelper {
     /**
-     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * @return Populates the /dev directory early during boot without udev.
      * 
      */
     private Boolean devtmpfsAutomount;
@@ -38,7 +38,7 @@ public final class GetInstancesInstanceConfigHelper {
 
     private GetInstancesInstanceConfigHelper() {}
     /**
-     * @return Populates the /dev directory early during boot without udev. Defaults to false.
+     * @return Populates the /dev directory early during boot without udev.
      * 
      */
     public Boolean devtmpfsAutomount() {

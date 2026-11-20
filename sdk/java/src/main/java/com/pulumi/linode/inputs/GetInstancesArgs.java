@@ -25,14 +25,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     @Import(name="order")
     private @Nullable Output<String> order;
 
     /**
-     * @return The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * @return The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     public Optional<Output<String>> order() {
@@ -40,14 +40,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
      * 
      */
     @Import(name="orderBy")
     private @Nullable Output<String> orderBy;
 
     /**
-     * @return The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * @return The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
      * 
      */
     public Optional<Output<String>> orderBy() {
@@ -94,7 +94,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `desc`)
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `desc`)
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orderBy The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+         * @param orderBy The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param orderBy The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+         * @param orderBy The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
          * 
          * @return builder
          * 

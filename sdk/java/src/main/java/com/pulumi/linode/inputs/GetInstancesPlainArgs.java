@@ -24,14 +24,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     @Import(name="order")
     private @Nullable String order;
 
     /**
-     * @return The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * @return The order in which results should be returned. (`asc`, `desc`; default `desc`)
      * 
      */
     public Optional<String> order() {
@@ -39,14 +39,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
      * 
      */
     @Import(name="orderBy")
     private @Nullable String orderBy;
 
     /**
-     * @return The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * @return The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
      * 
      */
     public Optional<String> orderBy() {
@@ -89,7 +89,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param order The order in which results should be returned. (`asc`, `desc`; default `asc`)
+         * @param order The order in which results should be returned. (`asc`, `desc`; default `desc`)
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param orderBy The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+         * @param orderBy The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
          * 
          * @return builder
          * 

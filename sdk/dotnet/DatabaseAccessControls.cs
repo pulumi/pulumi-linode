@@ -73,6 +73,9 @@ namespace Pulumi.Linode
         [Output("databaseType")]
         public Output<string> DatabaseType { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.DatabaseAccessControlsTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a DatabaseAccessControls resource with the given unique name, arguments, and options.
@@ -143,6 +146,9 @@ namespace Pulumi.Linode
         [Input("databaseType", required: true)]
         public Input<string> DatabaseType { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Input<Inputs.DatabaseAccessControlsTimeoutsArgs>? Timeouts { get; set; }
+
         public DatabaseAccessControlsArgs()
         {
         }
@@ -174,6 +180,9 @@ namespace Pulumi.Linode
         /// </summary>
         [Input("databaseType")]
         public Input<string>? DatabaseType { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DatabaseAccessControlsTimeoutsGetArgs>? Timeouts { get; set; }
 
         public DatabaseAccessControlsState()
         {

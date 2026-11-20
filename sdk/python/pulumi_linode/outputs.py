@@ -16,6 +16,7 @@ from . import _utilities
 from . import outputs
 
 __all__ = [
+    'DatabaseAccessControlsTimeouts',
     'DatabaseMysqlV2PendingUpdate',
     'DatabaseMysqlV2PrivateNetwork',
     'DatabaseMysqlV2Timeouts',
@@ -172,6 +173,8 @@ __all__ = [
     'LkeClusterPoolNode',
     'LkeClusterPoolTaint',
     'LkeNodePoolAutoscaler',
+    'LkeNodePoolNetworking',
+    'LkeNodePoolNetworkingInterface',
     'LkeNodePoolNode',
     'LkeNodePoolTaint',
     'MonitorAlertDefinitionAlertChannel',
@@ -368,7 +371,7 @@ __all__ = [
     'GetInstanceTypesTypeRegionPriceResult',
     'GetInstancesFilterResult',
     'GetInstancesInstanceResult',
-    'GetInstancesInstanceAlertsResult',
+    'GetInstancesInstanceAlertResult',
     'GetInstancesInstanceBackupResult',
     'GetInstancesInstanceBackupScheduleResult',
     'GetInstancesInstanceConfigResult',
@@ -521,6 +524,7 @@ __all__ = [
     'GetMonitorLogsStreamDetailsResult',
     'GetMonitorLogsStreamHistoryStreamResult',
     'GetMonitorLogsStreamHistoryStreamDetailsResult',
+    'GetMonitorLogsStreamQuotasQuotaResult',
     'GetMonitorLogsStreamsFilterResult',
     'GetMonitorLogsStreamsStreamResult',
     'GetNbTypesFilterResult',
@@ -668,6 +672,49 @@ __all__ = [
     'GetVpcsVpcSubnetNodebalancerResult',
     'GetVpcsVpcSubnetNodebalancerIpv6RangeResult',
 ]
+
+@pulumi.output_type
+class DatabaseAccessControlsTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: Used when creating the access controls (until the database update has finished)
+        :param _builtins.str delete: Used when deleting the access controls (until the database update has finished)
+        :param _builtins.str update: Used when updating the access controls (until the database update has finished)
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        Used when creating the access controls (until the database update has finished)
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        Used when deleting the access controls (until the database update has finished)
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        Used when updating the access controls (until the database update has finished)
+        """
+        return pulumi.get(self, "update")
+
 
 @pulumi.output_type
 class DatabaseMysqlV2PendingUpdate(dict):
@@ -9830,6 +9877,83 @@ class LkeNodePoolAutoscaler(dict):
         The minimum number of nodes to autoscale to.
         """
         return pulumi.get(self, "min")
+
+
+@pulumi.output_type
+class LkeNodePoolNetworking(dict):
+    def __init__(__self__, *,
+                 interfaces: Sequence['outputs.LkeNodePoolNetworkingInterface']):
+        """
+        :param Sequence['LkeNodePoolNetworkingInterfaceArgs'] interfaces: Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdma_vpc"`.
+        """
+        pulumi.set(__self__, "interfaces", interfaces)
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> Sequence['outputs.LkeNodePoolNetworkingInterface']:
+        """
+        Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdma_vpc"`.
+        """
+        return pulumi.get(self, "interfaces")
+
+
+@pulumi.output_type
+class LkeNodePoolNetworkingInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "subnetId":
+            suggest = "subnet_id"
+        elif key == "vpcId":
+            suggest = "vpc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LkeNodePoolNetworkingInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LkeNodePoolNetworkingInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LkeNodePoolNetworkingInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet_id: _builtins.int,
+                 type: _builtins.str,
+                 vpc_id: _builtins.int):
+        """
+        :param _builtins.int subnet_id: ID of the VPC subnet for the interface.
+        :param _builtins.str type: Interface type: `vpc` for the first interface; subsequent interfaces may be `rdma_vpc`.
+        :param _builtins.int vpc_id: ID of the VPC for the interface.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        ID of the VPC subnet for the interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Interface type: `vpc` for the first interface; subsequent interfaces may be `rdma_vpc`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> _builtins.int:
+        """
+        ID of the VPC for the interface.
+        """
+        return pulumi.get(self, "vpc_id")
 
 
 @pulumi.output_type
@@ -21379,7 +21503,7 @@ class GetInstancesFilterResult(dict):
 @pulumi.output_type
 class GetInstancesInstanceResult(dict):
     def __init__(__self__, *,
-                 alerts: 'outputs.GetInstancesInstanceAlertsResult',
+                 alerts: Sequence['outputs.GetInstancesInstanceAlertResult'],
                  backups: Sequence['outputs.GetInstancesInstanceBackupResult'],
                  boot_config_label: _builtins.str,
                  capabilities: Sequence[_builtins.str],
@@ -21408,15 +21532,15 @@ class GetInstancesInstanceResult(dict):
                  type: _builtins.str,
                  watchdog_enabled: _builtins.bool):
         """
-        :param 'GetInstancesInstanceAlertsArgs' alerts: (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
+        :param Sequence['GetInstancesInstanceAlertArgs'] alerts: (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
         :param Sequence['GetInstancesInstanceBackupArgs'] backups: (Read-Only Object List) Information about the Linode's backup status. Referenced with an index (e.g. `backups.0.enabled`).
-        :param _builtins.str boot_config_label: The Label of the Instance Config that should be used to boot the Linode instance.
+        :param _builtins.str boot_config_label: The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.
         :param Sequence[_builtins.str] capabilities: A list of capabilities of this Linode instance.
         :param Sequence['GetInstancesInstanceConfigArgs'] configs: (Read-Only Object List) A list of configs associated with the Linode. Referenced with an index (e.g. `config.0.label`).
         :param _builtins.str disk_encryption: The disk encryption policy for this instance.
         :param Sequence['GetInstancesInstanceDiskArgs'] disks: (Read-Only Object List) A list of disks associated with the Linode. Referenced with an index (e.g. `disk.0.label`).
         :param _builtins.bool has_user_data: Whether this Instance was created with user-data.
-        :param _builtins.str host_uuid: The Linode’s host machine, as a UUID.
+        :param _builtins.str host_uuid: The Linode's host machine, as a UUID.
         :param _builtins.int id: The ID of the Placement Group in the Linode API.
         :param _builtins.str image: An Image ID to deploy the Disk from. Official Linode Images start with linode/, while your Images start with `private/`. See [images](https://api.linode.com/v4/images) for more information on the Images available for you to use. Examples are `linode/debian12`, `linode/fedora39`, `linode/ubuntu22.04`, `linode/arch`, and `private/12345`. See all images [here](https://api.linode.com/v4/linode/images) (Requires a personal access token; docs [here](https://techdocs.akamai.com/linode-api/reference/get-images)). *This value can not be imported.* *Changing `image` forces the creation of a new Linode Instance.*
         :param _builtins.str interface_generation: The interface type for this Instance. (`linode`, `legacy_config`)
@@ -21468,7 +21592,7 @@ class GetInstancesInstanceResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def alerts(self) -> 'outputs.GetInstancesInstanceAlertsResult':
+    def alerts(self) -> Sequence['outputs.GetInstancesInstanceAlertResult']:
         """
         (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
         """
@@ -21486,7 +21610,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="bootConfigLabel")
     def boot_config_label(self) -> _builtins.str:
         """
-        The Label of the Instance Config that should be used to boot the Linode instance.
+        The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.
         """
         return pulumi.get(self, "boot_config_label")
 
@@ -21534,7 +21658,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="hostUuid")
     def host_uuid(self) -> _builtins.str:
         """
-        The Linode’s host machine, as a UUID.
+        The Linode's host machine, as a UUID.
         """
         return pulumi.get(self, "host_uuid")
 
@@ -21692,7 +21816,7 @@ class GetInstancesInstanceResult(dict):
 
 
 @pulumi.output_type
-class GetInstancesInstanceAlertsResult(dict):
+class GetInstancesInstanceAlertResult(dict):
     def __init__(__self__, *,
                  cpu: _builtins.int,
                  io: _builtins.int,
@@ -22687,18 +22811,16 @@ class GetInstancesInstanceConfigDeviceResult(dict):
 class GetInstancesInstanceConfigDeviceSdResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22710,7 +22832,7 @@ class GetInstancesInstanceConfigDeviceSdResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22718,7 +22840,7 @@ class GetInstancesInstanceConfigDeviceSdResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22729,18 +22851,16 @@ class GetInstancesInstanceConfigDeviceSdResult(dict):
 class GetInstancesInstanceConfigDeviceSdaResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22752,7 +22872,7 @@ class GetInstancesInstanceConfigDeviceSdaResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22760,7 +22880,7 @@ class GetInstancesInstanceConfigDeviceSdaResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22771,18 +22891,16 @@ class GetInstancesInstanceConfigDeviceSdaResult(dict):
 class GetInstancesInstanceConfigDeviceSdaaResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22794,7 +22912,7 @@ class GetInstancesInstanceConfigDeviceSdaaResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22802,7 +22920,7 @@ class GetInstancesInstanceConfigDeviceSdaaResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22813,18 +22931,16 @@ class GetInstancesInstanceConfigDeviceSdaaResult(dict):
 class GetInstancesInstanceConfigDeviceSdabResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22836,7 +22952,7 @@ class GetInstancesInstanceConfigDeviceSdabResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22844,7 +22960,7 @@ class GetInstancesInstanceConfigDeviceSdabResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22855,18 +22971,16 @@ class GetInstancesInstanceConfigDeviceSdabResult(dict):
 class GetInstancesInstanceConfigDeviceSdacResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22878,7 +22992,7 @@ class GetInstancesInstanceConfigDeviceSdacResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22886,7 +23000,7 @@ class GetInstancesInstanceConfigDeviceSdacResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22897,18 +23011,16 @@ class GetInstancesInstanceConfigDeviceSdacResult(dict):
 class GetInstancesInstanceConfigDeviceSdadResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22920,7 +23032,7 @@ class GetInstancesInstanceConfigDeviceSdadResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22928,7 +23040,7 @@ class GetInstancesInstanceConfigDeviceSdadResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22939,18 +23051,16 @@ class GetInstancesInstanceConfigDeviceSdadResult(dict):
 class GetInstancesInstanceConfigDeviceSdaeResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -22962,7 +23072,7 @@ class GetInstancesInstanceConfigDeviceSdaeResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -22970,7 +23080,7 @@ class GetInstancesInstanceConfigDeviceSdaeResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -22981,18 +23091,16 @@ class GetInstancesInstanceConfigDeviceSdaeResult(dict):
 class GetInstancesInstanceConfigDeviceSdafResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23004,7 +23112,7 @@ class GetInstancesInstanceConfigDeviceSdafResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23012,7 +23120,7 @@ class GetInstancesInstanceConfigDeviceSdafResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23023,18 +23131,16 @@ class GetInstancesInstanceConfigDeviceSdafResult(dict):
 class GetInstancesInstanceConfigDeviceSdagResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23046,7 +23152,7 @@ class GetInstancesInstanceConfigDeviceSdagResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23054,7 +23160,7 @@ class GetInstancesInstanceConfigDeviceSdagResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23065,18 +23171,16 @@ class GetInstancesInstanceConfigDeviceSdagResult(dict):
 class GetInstancesInstanceConfigDeviceSdahResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23088,7 +23192,7 @@ class GetInstancesInstanceConfigDeviceSdahResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23096,7 +23200,7 @@ class GetInstancesInstanceConfigDeviceSdahResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23107,18 +23211,16 @@ class GetInstancesInstanceConfigDeviceSdahResult(dict):
 class GetInstancesInstanceConfigDeviceSdaiResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23130,7 +23232,7 @@ class GetInstancesInstanceConfigDeviceSdaiResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23138,7 +23240,7 @@ class GetInstancesInstanceConfigDeviceSdaiResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23149,18 +23251,16 @@ class GetInstancesInstanceConfigDeviceSdaiResult(dict):
 class GetInstancesInstanceConfigDeviceSdajResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23172,7 +23272,7 @@ class GetInstancesInstanceConfigDeviceSdajResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23180,7 +23280,7 @@ class GetInstancesInstanceConfigDeviceSdajResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23191,18 +23291,16 @@ class GetInstancesInstanceConfigDeviceSdajResult(dict):
 class GetInstancesInstanceConfigDeviceSdakResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23214,7 +23312,7 @@ class GetInstancesInstanceConfigDeviceSdakResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23222,7 +23320,7 @@ class GetInstancesInstanceConfigDeviceSdakResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23233,18 +23331,16 @@ class GetInstancesInstanceConfigDeviceSdakResult(dict):
 class GetInstancesInstanceConfigDeviceSdalResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23256,7 +23352,7 @@ class GetInstancesInstanceConfigDeviceSdalResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23264,7 +23360,7 @@ class GetInstancesInstanceConfigDeviceSdalResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23275,18 +23371,16 @@ class GetInstancesInstanceConfigDeviceSdalResult(dict):
 class GetInstancesInstanceConfigDeviceSdamResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23298,7 +23392,7 @@ class GetInstancesInstanceConfigDeviceSdamResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23306,7 +23400,7 @@ class GetInstancesInstanceConfigDeviceSdamResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23317,18 +23411,16 @@ class GetInstancesInstanceConfigDeviceSdamResult(dict):
 class GetInstancesInstanceConfigDeviceSdanResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23340,7 +23432,7 @@ class GetInstancesInstanceConfigDeviceSdanResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23348,7 +23440,7 @@ class GetInstancesInstanceConfigDeviceSdanResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23359,18 +23451,16 @@ class GetInstancesInstanceConfigDeviceSdanResult(dict):
 class GetInstancesInstanceConfigDeviceSdaoResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23382,7 +23472,7 @@ class GetInstancesInstanceConfigDeviceSdaoResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23390,7 +23480,7 @@ class GetInstancesInstanceConfigDeviceSdaoResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23401,18 +23491,16 @@ class GetInstancesInstanceConfigDeviceSdaoResult(dict):
 class GetInstancesInstanceConfigDeviceSdapResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23424,7 +23512,7 @@ class GetInstancesInstanceConfigDeviceSdapResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23432,7 +23520,7 @@ class GetInstancesInstanceConfigDeviceSdapResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23443,18 +23531,16 @@ class GetInstancesInstanceConfigDeviceSdapResult(dict):
 class GetInstancesInstanceConfigDeviceSdaqResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23466,7 +23552,7 @@ class GetInstancesInstanceConfigDeviceSdaqResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23474,7 +23560,7 @@ class GetInstancesInstanceConfigDeviceSdaqResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23485,18 +23571,16 @@ class GetInstancesInstanceConfigDeviceSdaqResult(dict):
 class GetInstancesInstanceConfigDeviceSdarResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23508,7 +23592,7 @@ class GetInstancesInstanceConfigDeviceSdarResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23516,7 +23600,7 @@ class GetInstancesInstanceConfigDeviceSdarResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23527,18 +23611,16 @@ class GetInstancesInstanceConfigDeviceSdarResult(dict):
 class GetInstancesInstanceConfigDeviceSdatResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23550,7 +23632,7 @@ class GetInstancesInstanceConfigDeviceSdatResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23558,7 +23640,7 @@ class GetInstancesInstanceConfigDeviceSdatResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23569,18 +23651,16 @@ class GetInstancesInstanceConfigDeviceSdatResult(dict):
 class GetInstancesInstanceConfigDeviceSdausResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23592,7 +23672,7 @@ class GetInstancesInstanceConfigDeviceSdausResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23600,7 +23680,7 @@ class GetInstancesInstanceConfigDeviceSdausResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23611,18 +23691,16 @@ class GetInstancesInstanceConfigDeviceSdausResult(dict):
 class GetInstancesInstanceConfigDeviceSdavResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23634,7 +23712,7 @@ class GetInstancesInstanceConfigDeviceSdavResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23642,7 +23720,7 @@ class GetInstancesInstanceConfigDeviceSdavResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23653,18 +23731,16 @@ class GetInstancesInstanceConfigDeviceSdavResult(dict):
 class GetInstancesInstanceConfigDeviceSdawResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23676,7 +23752,7 @@ class GetInstancesInstanceConfigDeviceSdawResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23684,7 +23760,7 @@ class GetInstancesInstanceConfigDeviceSdawResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23695,18 +23771,16 @@ class GetInstancesInstanceConfigDeviceSdawResult(dict):
 class GetInstancesInstanceConfigDeviceSdaxisResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23718,7 +23792,7 @@ class GetInstancesInstanceConfigDeviceSdaxisResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23726,7 +23800,7 @@ class GetInstancesInstanceConfigDeviceSdaxisResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23737,18 +23811,16 @@ class GetInstancesInstanceConfigDeviceSdaxisResult(dict):
 class GetInstancesInstanceConfigDeviceSdayResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23760,7 +23832,7 @@ class GetInstancesInstanceConfigDeviceSdayResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23768,7 +23840,7 @@ class GetInstancesInstanceConfigDeviceSdayResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23779,18 +23851,16 @@ class GetInstancesInstanceConfigDeviceSdayResult(dict):
 class GetInstancesInstanceConfigDeviceSdazResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23802,7 +23872,7 @@ class GetInstancesInstanceConfigDeviceSdazResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23810,7 +23880,7 @@ class GetInstancesInstanceConfigDeviceSdazResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23821,18 +23891,16 @@ class GetInstancesInstanceConfigDeviceSdazResult(dict):
 class GetInstancesInstanceConfigDeviceSdbResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23844,7 +23912,7 @@ class GetInstancesInstanceConfigDeviceSdbResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23852,7 +23920,7 @@ class GetInstancesInstanceConfigDeviceSdbResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23863,18 +23931,16 @@ class GetInstancesInstanceConfigDeviceSdbResult(dict):
 class GetInstancesInstanceConfigDeviceSdbaResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23886,7 +23952,7 @@ class GetInstancesInstanceConfigDeviceSdbaResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23894,7 +23960,7 @@ class GetInstancesInstanceConfigDeviceSdbaResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23905,18 +23971,16 @@ class GetInstancesInstanceConfigDeviceSdbaResult(dict):
 class GetInstancesInstanceConfigDeviceSdbbResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23928,7 +23992,7 @@ class GetInstancesInstanceConfigDeviceSdbbResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23936,7 +24000,7 @@ class GetInstancesInstanceConfigDeviceSdbbResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23947,18 +24011,16 @@ class GetInstancesInstanceConfigDeviceSdbbResult(dict):
 class GetInstancesInstanceConfigDeviceSdbcResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -23970,7 +24032,7 @@ class GetInstancesInstanceConfigDeviceSdbcResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -23978,7 +24040,7 @@ class GetInstancesInstanceConfigDeviceSdbcResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -23989,18 +24051,16 @@ class GetInstancesInstanceConfigDeviceSdbcResult(dict):
 class GetInstancesInstanceConfigDeviceSdbdResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24012,7 +24072,7 @@ class GetInstancesInstanceConfigDeviceSdbdResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24020,7 +24080,7 @@ class GetInstancesInstanceConfigDeviceSdbdResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24031,18 +24091,16 @@ class GetInstancesInstanceConfigDeviceSdbdResult(dict):
 class GetInstancesInstanceConfigDeviceSdbeResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24054,7 +24112,7 @@ class GetInstancesInstanceConfigDeviceSdbeResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24062,7 +24120,7 @@ class GetInstancesInstanceConfigDeviceSdbeResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24073,18 +24131,16 @@ class GetInstancesInstanceConfigDeviceSdbeResult(dict):
 class GetInstancesInstanceConfigDeviceSdbfResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24096,7 +24152,7 @@ class GetInstancesInstanceConfigDeviceSdbfResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24104,7 +24160,7 @@ class GetInstancesInstanceConfigDeviceSdbfResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24115,18 +24171,16 @@ class GetInstancesInstanceConfigDeviceSdbfResult(dict):
 class GetInstancesInstanceConfigDeviceSdbgResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24138,7 +24192,7 @@ class GetInstancesInstanceConfigDeviceSdbgResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24146,7 +24200,7 @@ class GetInstancesInstanceConfigDeviceSdbgResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24157,18 +24211,16 @@ class GetInstancesInstanceConfigDeviceSdbgResult(dict):
 class GetInstancesInstanceConfigDeviceSdbhResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24180,7 +24232,7 @@ class GetInstancesInstanceConfigDeviceSdbhResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24188,7 +24240,7 @@ class GetInstancesInstanceConfigDeviceSdbhResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24199,18 +24251,16 @@ class GetInstancesInstanceConfigDeviceSdbhResult(dict):
 class GetInstancesInstanceConfigDeviceSdbiResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24222,7 +24272,7 @@ class GetInstancesInstanceConfigDeviceSdbiResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24230,7 +24280,7 @@ class GetInstancesInstanceConfigDeviceSdbiResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24241,18 +24291,16 @@ class GetInstancesInstanceConfigDeviceSdbiResult(dict):
 class GetInstancesInstanceConfigDeviceSdbjResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24264,7 +24312,7 @@ class GetInstancesInstanceConfigDeviceSdbjResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24272,7 +24320,7 @@ class GetInstancesInstanceConfigDeviceSdbjResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24283,18 +24331,16 @@ class GetInstancesInstanceConfigDeviceSdbjResult(dict):
 class GetInstancesInstanceConfigDeviceSdbkResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24306,7 +24352,7 @@ class GetInstancesInstanceConfigDeviceSdbkResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24314,7 +24360,7 @@ class GetInstancesInstanceConfigDeviceSdbkResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24325,18 +24371,16 @@ class GetInstancesInstanceConfigDeviceSdbkResult(dict):
 class GetInstancesInstanceConfigDeviceSdblResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24348,7 +24392,7 @@ class GetInstancesInstanceConfigDeviceSdblResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24356,7 +24400,7 @@ class GetInstancesInstanceConfigDeviceSdblResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24367,18 +24411,16 @@ class GetInstancesInstanceConfigDeviceSdblResult(dict):
 class GetInstancesInstanceConfigDeviceSdcResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24390,7 +24432,7 @@ class GetInstancesInstanceConfigDeviceSdcResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24398,7 +24440,7 @@ class GetInstancesInstanceConfigDeviceSdcResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24409,18 +24451,16 @@ class GetInstancesInstanceConfigDeviceSdcResult(dict):
 class GetInstancesInstanceConfigDeviceSddResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24432,7 +24472,7 @@ class GetInstancesInstanceConfigDeviceSddResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24440,7 +24480,7 @@ class GetInstancesInstanceConfigDeviceSddResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24451,18 +24491,16 @@ class GetInstancesInstanceConfigDeviceSddResult(dict):
 class GetInstancesInstanceConfigDeviceSdeResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24474,7 +24512,7 @@ class GetInstancesInstanceConfigDeviceSdeResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24482,7 +24520,7 @@ class GetInstancesInstanceConfigDeviceSdeResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24493,18 +24531,16 @@ class GetInstancesInstanceConfigDeviceSdeResult(dict):
 class GetInstancesInstanceConfigDeviceSdfResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24516,7 +24552,7 @@ class GetInstancesInstanceConfigDeviceSdfResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24524,7 +24560,7 @@ class GetInstancesInstanceConfigDeviceSdfResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24535,18 +24571,16 @@ class GetInstancesInstanceConfigDeviceSdfResult(dict):
 class GetInstancesInstanceConfigDeviceSdgResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24558,7 +24592,7 @@ class GetInstancesInstanceConfigDeviceSdgResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24566,7 +24600,7 @@ class GetInstancesInstanceConfigDeviceSdgResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24577,18 +24611,16 @@ class GetInstancesInstanceConfigDeviceSdgResult(dict):
 class GetInstancesInstanceConfigDeviceSdhResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24600,7 +24632,7 @@ class GetInstancesInstanceConfigDeviceSdhResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24608,7 +24640,7 @@ class GetInstancesInstanceConfigDeviceSdhResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24619,18 +24651,16 @@ class GetInstancesInstanceConfigDeviceSdhResult(dict):
 class GetInstancesInstanceConfigDeviceSdiResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24642,7 +24672,7 @@ class GetInstancesInstanceConfigDeviceSdiResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24650,7 +24680,7 @@ class GetInstancesInstanceConfigDeviceSdiResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24661,18 +24691,16 @@ class GetInstancesInstanceConfigDeviceSdiResult(dict):
 class GetInstancesInstanceConfigDeviceSdjResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24684,7 +24712,7 @@ class GetInstancesInstanceConfigDeviceSdjResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24692,7 +24720,7 @@ class GetInstancesInstanceConfigDeviceSdjResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24703,18 +24731,16 @@ class GetInstancesInstanceConfigDeviceSdjResult(dict):
 class GetInstancesInstanceConfigDeviceSdkResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24726,7 +24752,7 @@ class GetInstancesInstanceConfigDeviceSdkResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24734,7 +24760,7 @@ class GetInstancesInstanceConfigDeviceSdkResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24745,18 +24771,16 @@ class GetInstancesInstanceConfigDeviceSdkResult(dict):
 class GetInstancesInstanceConfigDeviceSdlResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24768,7 +24792,7 @@ class GetInstancesInstanceConfigDeviceSdlResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24776,7 +24800,7 @@ class GetInstancesInstanceConfigDeviceSdlResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24787,18 +24811,16 @@ class GetInstancesInstanceConfigDeviceSdlResult(dict):
 class GetInstancesInstanceConfigDeviceSdmResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24810,7 +24832,7 @@ class GetInstancesInstanceConfigDeviceSdmResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24818,7 +24840,7 @@ class GetInstancesInstanceConfigDeviceSdmResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24829,18 +24851,16 @@ class GetInstancesInstanceConfigDeviceSdmResult(dict):
 class GetInstancesInstanceConfigDeviceSdnResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24852,7 +24872,7 @@ class GetInstancesInstanceConfigDeviceSdnResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24860,7 +24880,7 @@ class GetInstancesInstanceConfigDeviceSdnResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24871,18 +24891,16 @@ class GetInstancesInstanceConfigDeviceSdnResult(dict):
 class GetInstancesInstanceConfigDeviceSdoResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24894,7 +24912,7 @@ class GetInstancesInstanceConfigDeviceSdoResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24902,7 +24920,7 @@ class GetInstancesInstanceConfigDeviceSdoResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24913,18 +24931,16 @@ class GetInstancesInstanceConfigDeviceSdoResult(dict):
 class GetInstancesInstanceConfigDeviceSdpResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24936,7 +24952,7 @@ class GetInstancesInstanceConfigDeviceSdpResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24944,7 +24960,7 @@ class GetInstancesInstanceConfigDeviceSdpResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24955,18 +24971,16 @@ class GetInstancesInstanceConfigDeviceSdpResult(dict):
 class GetInstancesInstanceConfigDeviceSdqResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -24978,7 +24992,7 @@ class GetInstancesInstanceConfigDeviceSdqResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -24986,7 +25000,7 @@ class GetInstancesInstanceConfigDeviceSdqResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -24997,18 +25011,16 @@ class GetInstancesInstanceConfigDeviceSdqResult(dict):
 class GetInstancesInstanceConfigDeviceSdrResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25020,7 +25032,7 @@ class GetInstancesInstanceConfigDeviceSdrResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25028,7 +25040,7 @@ class GetInstancesInstanceConfigDeviceSdrResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25039,18 +25051,16 @@ class GetInstancesInstanceConfigDeviceSdrResult(dict):
 class GetInstancesInstanceConfigDeviceSdtResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25062,7 +25072,7 @@ class GetInstancesInstanceConfigDeviceSdtResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25070,7 +25080,7 @@ class GetInstancesInstanceConfigDeviceSdtResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25081,18 +25091,16 @@ class GetInstancesInstanceConfigDeviceSdtResult(dict):
 class GetInstancesInstanceConfigDeviceSdusResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25104,7 +25112,7 @@ class GetInstancesInstanceConfigDeviceSdusResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25112,7 +25120,7 @@ class GetInstancesInstanceConfigDeviceSdusResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25123,18 +25131,16 @@ class GetInstancesInstanceConfigDeviceSdusResult(dict):
 class GetInstancesInstanceConfigDeviceSdvResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25146,7 +25152,7 @@ class GetInstancesInstanceConfigDeviceSdvResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25154,7 +25160,7 @@ class GetInstancesInstanceConfigDeviceSdvResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25165,18 +25171,16 @@ class GetInstancesInstanceConfigDeviceSdvResult(dict):
 class GetInstancesInstanceConfigDeviceSdwResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25188,7 +25192,7 @@ class GetInstancesInstanceConfigDeviceSdwResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25196,7 +25200,7 @@ class GetInstancesInstanceConfigDeviceSdwResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25207,18 +25211,16 @@ class GetInstancesInstanceConfigDeviceSdwResult(dict):
 class GetInstancesInstanceConfigDeviceSdxResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25230,7 +25232,7 @@ class GetInstancesInstanceConfigDeviceSdxResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25238,7 +25240,7 @@ class GetInstancesInstanceConfigDeviceSdxResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25249,18 +25251,16 @@ class GetInstancesInstanceConfigDeviceSdxResult(dict):
 class GetInstancesInstanceConfigDeviceSdyResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25272,7 +25272,7 @@ class GetInstancesInstanceConfigDeviceSdyResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25280,7 +25280,7 @@ class GetInstancesInstanceConfigDeviceSdyResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25291,18 +25291,16 @@ class GetInstancesInstanceConfigDeviceSdyResult(dict):
 class GetInstancesInstanceConfigDeviceSdzResult(dict):
     def __init__(__self__, *,
                  disk_id: _builtins.int,
-                 disk_label: Optional[_builtins.str] = None,
-                 volume_id: Optional[_builtins.int] = None):
+                 disk_label: _builtins.str,
+                 volume_id: _builtins.int):
         """
         :param _builtins.int disk_id: The Disk ID of the associated `disk_label`, if used
         :param _builtins.str disk_label: The `label` of the `disk` to map to this `device` slot.
         :param _builtins.int volume_id: The Volume ID to map to this `device` slot.
         """
         pulumi.set(__self__, "disk_id", disk_id)
-        if disk_label is not None:
-            pulumi.set(__self__, "disk_label", disk_label)
-        if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+        pulumi.set(__self__, "disk_label", disk_label)
+        pulumi.set(__self__, "volume_id", volume_id)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
@@ -25314,7 +25312,7 @@ class GetInstancesInstanceConfigDeviceSdzResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="diskLabel")
-    def disk_label(self) -> Optional[_builtins.str]:
+    def disk_label(self) -> _builtins.str:
         """
         The `label` of the `disk` to map to this `device` slot.
         """
@@ -25322,7 +25320,7 @@ class GetInstancesInstanceConfigDeviceSdzResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[_builtins.int]:
+    def volume_id(self) -> _builtins.int:
         """
         The Volume ID to map to this `device` slot.
         """
@@ -25338,7 +25336,7 @@ class GetInstancesInstanceConfigHelperResult(dict):
                  network: _builtins.bool,
                  updatedb_disabled: _builtins.bool):
         """
-        :param _builtins.bool devtmpfs_automount: Populates the /dev directory early during boot without udev. Defaults to false.
+        :param _builtins.bool devtmpfs_automount: Populates the /dev directory early during boot without udev.
         :param _builtins.bool distro: Controls the behavior of the Linode Config's Distribution Helper setting.
         :param _builtins.bool modules_dep: Creates a modules dependency file for the Kernel you run.
         :param _builtins.bool network: Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
@@ -25354,7 +25352,7 @@ class GetInstancesInstanceConfigHelperResult(dict):
     @pulumi.getter(name="devtmpfsAutomount")
     def devtmpfs_automount(self) -> _builtins.bool:
         """
-        Populates the /dev directory early during boot without udev. Defaults to false.
+        Populates the /dev directory early during boot without udev.
         """
         return pulumi.get(self, "devtmpfs_automount")
 
@@ -25396,44 +25394,39 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
     def __init__(__self__, *,
                  active: _builtins.bool,
                  id: _builtins.int,
-                 ipv4: 'outputs.GetInstancesInstanceConfigInterfaceIpv4Result',
-                 ipv6: 'outputs.GetInstancesInstanceConfigInterfaceIpv6Result',
+                 ip_ranges: Sequence[_builtins.str],
+                 ipam_address: _builtins.str,
+                 ipv4s: Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv4Result'],
+                 ipv6s: Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv6Result'],
+                 label: _builtins.str,
+                 primary: _builtins.bool,
                  purpose: _builtins.str,
-                 vpc_id: _builtins.int,
-                 ip_ranges: Optional[Sequence[_builtins.str]] = None,
-                 ipam_address: Optional[_builtins.str] = None,
-                 label: Optional[_builtins.str] = None,
-                 primary: Optional[_builtins.bool] = None,
-                 subnet_id: Optional[_builtins.int] = None):
+                 subnet_id: _builtins.int,
+                 vpc_id: _builtins.int):
         """
         :param _builtins.bool active: Whether this interface is currently booted and active.
         :param _builtins.int id: The ID of the Placement Group in the Linode API.
-        :param 'GetInstancesInstanceConfigInterfaceIpv4Args' ipv4: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
-        :param 'GetInstancesInstanceConfigInterfaceIpv6Args' ipv6: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
-        :param _builtins.str purpose: The type of interface. (`public`, `vlan`, `vpc`)
-        :param _builtins.int vpc_id: The ID of VPC which this interface is attached to.
         :param Sequence[_builtins.str] ip_ranges: IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         :param _builtins.str ipam_address: This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        :param Sequence['GetInstancesInstanceConfigInterfaceIpv4Args'] ipv4s: This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        :param Sequence['GetInstancesInstanceConfigInterfaceIpv6Args'] ipv6s: This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         :param _builtins.str label: The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         :param _builtins.bool primary: Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+        :param _builtins.str purpose: The type of interface. (`public`, `vlan`, `vpc`)
         :param _builtins.int subnet_id: The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        :param _builtins.int vpc_id: The ID of VPC which this interface is attached to.
         """
         pulumi.set(__self__, "active", active)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv4", ipv4)
-        pulumi.set(__self__, "ipv6", ipv6)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "ipam_address", ipam_address)
+        pulumi.set(__self__, "ipv4s", ipv4s)
+        pulumi.set(__self__, "ipv6s", ipv6s)
+        pulumi.set(__self__, "label", label)
+        pulumi.set(__self__, "primary", primary)
         pulumi.set(__self__, "purpose", purpose)
+        pulumi.set(__self__, "subnet_id", subnet_id)
         pulumi.set(__self__, "vpc_id", vpc_id)
-        if ip_ranges is not None:
-            pulumi.set(__self__, "ip_ranges", ip_ranges)
-        if ipam_address is not None:
-            pulumi.set(__self__, "ipam_address", ipam_address)
-        if label is not None:
-            pulumi.set(__self__, "label", label)
-        if primary is not None:
-            pulumi.set(__self__, "primary", primary)
-        if subnet_id is not None:
-            pulumi.set(__self__, "subnet_id", subnet_id)
 
     @_builtins.property
     @pulumi.getter
@@ -25452,20 +25445,52 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         return pulumi.get(self, "id")
 
     @_builtins.property
-    @pulumi.getter
-    def ipv4(self) -> 'outputs.GetInstancesInstanceConfigInterfaceIpv4Result':
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Sequence[_builtins.str]:
         """
-        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
         """
-        return pulumi.get(self, "ipv4")
+        return pulumi.get(self, "ip_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="ipamAddress")
+    def ipam_address(self) -> _builtins.str:
+        """
+        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
+        """
+        return pulumi.get(self, "ipam_address")
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> 'outputs.GetInstancesInstanceConfigInterfaceIpv6Result':
+    def ipv4s(self) -> Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv4Result']:
+        """
+        This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6s(self) -> Sequence['outputs.GetInstancesInstanceConfigInterfaceIpv6Result']:
         """
         This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         """
-        return pulumi.get(self, "ipv6")
+        return pulumi.get(self, "ipv6s")
+
+    @_builtins.property
+    @pulumi.getter
+    def label(self) -> _builtins.str:
+        """
+        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
+        """
+        return pulumi.get(self, "label")
+
+    @_builtins.property
+    @pulumi.getter
+    def primary(self) -> _builtins.bool:
+        """
+        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
+        """
+        return pulumi.get(self, "primary")
 
     @_builtins.property
     @pulumi.getter
@@ -25476,6 +25501,14 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         return pulumi.get(self, "purpose")
 
     @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> _builtins.int:
+        """
+        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @_builtins.property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> _builtins.int:
         """
@@ -25483,59 +25516,26 @@ class GetInstancesInstanceConfigInterfaceResult(dict):
         """
         return pulumi.get(self, "vpc_id")
 
-    @_builtins.property
-    @pulumi.getter(name="ipRanges")
-    def ip_ranges(self) -> Optional[Sequence[_builtins.str]]:
-        """
-        IPv4 CIDR VPC Subnet ranges that are routed to this Interface. IPv6 ranges are also available to select participants in the Beta program.
-        """
-        return pulumi.get(self, "ip_ranges")
-
-    @_builtins.property
-    @pulumi.getter(name="ipamAddress")
-    def ipam_address(self) -> Optional[_builtins.str]:
-        """
-        This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `vlan` purpose.
-        """
-        return pulumi.get(self, "ipam_address")
-
-    @_builtins.property
-    @pulumi.getter
-    def label(self) -> Optional[_builtins.str]:
-        """
-        The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
-        """
-        return pulumi.get(self, "label")
-
-    @_builtins.property
-    @pulumi.getter
-    def primary(self) -> Optional[_builtins.bool]:
-        """
-        Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `public` or `vpc` purpose.
-        """
-        return pulumi.get(self, "primary")
-
-    @_builtins.property
-    @pulumi.getter(name="subnetId")
-    def subnet_id(self) -> Optional[_builtins.int]:
-        """
-        The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `vpc` purpose.
-        """
-        return pulumi.get(self, "subnet_id")
-
 
 @pulumi.output_type
 class GetInstancesInstanceConfigInterfaceIpv4Result(dict):
     def __init__(__self__, *,
-                 vpc: _builtins.str,
-                 nat11: Optional[_builtins.str] = None):
+                 nat11: _builtins.str,
+                 vpc: _builtins.str):
         """
-        :param _builtins.str vpc: The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         :param _builtins.str nat11: The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        :param _builtins.str vpc: The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         """
+        pulumi.set(__self__, "nat11", nat11)
         pulumi.set(__self__, "vpc", vpc)
-        if nat11 is not None:
-            pulumi.set(__self__, "nat11", nat11)
+
+    @_builtins.property
+    @pulumi.getter
+    def nat11(self) -> _builtins.str:
+        """
+        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
+        """
+        return pulumi.get(self, "nat11")
 
     @_builtins.property
     @pulumi.getter
@@ -25544,14 +25544,6 @@ class GetInstancesInstanceConfigInterfaceIpv4Result(dict):
         The IP from the VPC subnet to use for this interface. A random address will be assigned if this is not specified in a VPC interface.
         """
         return pulumi.get(self, "vpc")
-
-    @_builtins.property
-    @pulumi.getter
-    def nat11(self) -> Optional[_builtins.str]:
-        """
-        The public IP that will be used for the one-to-one NAT purpose. If this is `any`, the public IPv4 address assigned to this Linode is used on this interface and will be 1:1 NATted with the VPC IPv4 address.
-        """
-        return pulumi.get(self, "nat11")
 
 
 @pulumi.output_type
@@ -25598,26 +25590,25 @@ class GetInstancesInstanceConfigInterfaceIpv6Result(dict):
 class GetInstancesInstanceConfigInterfaceIpv6RangeResult(dict):
     def __init__(__self__, *,
                  assigned_range: _builtins.str,
-                 range: Optional[_builtins.str] = None):
+                 range: _builtins.str):
         """
-        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str assigned_range: The value of `range` computed by the API.
         :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
         """
         pulumi.set(__self__, "assigned_range", assigned_range)
-        if range is not None:
-            pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "range", range)
 
     @_builtins.property
     @pulumi.getter(name="assignedRange")
     def assigned_range(self) -> _builtins.str:
         """
-        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        The value of `range` computed by the API.
         """
         return pulumi.get(self, "assigned_range")
 
     @_builtins.property
     @pulumi.getter
-    def range(self) -> Optional[_builtins.str]:
+    def range(self) -> _builtins.str:
         """
         A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
         """
@@ -25629,16 +25620,15 @@ class GetInstancesInstanceConfigInterfaceIpv6SlaacResult(dict):
     def __init__(__self__, *,
                  address: _builtins.str,
                  assigned_range: _builtins.str,
-                 range: Optional[_builtins.str] = None):
+                 range: _builtins.str):
         """
         :param _builtins.str address: The SLAAC address chosen for this interface.
-        :param _builtins.str assigned_range: The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        :param _builtins.str assigned_range: The value of `range` computed by the API.
         :param _builtins.str range: A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "assigned_range", assigned_range)
-        if range is not None:
-            pulumi.set(__self__, "range", range)
+        pulumi.set(__self__, "range", range)
 
     @_builtins.property
     @pulumi.getter
@@ -25652,13 +25642,13 @@ class GetInstancesInstanceConfigInterfaceIpv6SlaacResult(dict):
     @pulumi.getter(name="assignedRange")
     def assigned_range(self) -> _builtins.str:
         """
-        The value of `range` computed by the API. This is necessary when needing to access the range implicitly allocated using `auto`.
+        The value of `range` computed by the API.
         """
         return pulumi.get(self, "assigned_range")
 
     @_builtins.property
     @pulumi.getter
-    def range(self) -> Optional[_builtins.str]:
+    def range(self) -> _builtins.str:
         """
         A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
         """
@@ -29623,6 +29613,68 @@ class GetMonitorLogsStreamHistoryStreamDetailsResult(dict):
         Whether all clusters were auto-added at this version.
         """
         return pulumi.get(self, "is_auto_add_all_clusters_enabled")
+
+
+@pulumi.output_type
+class GetMonitorLogsStreamQuotasQuotaResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 quota_id: _builtins.str,
+                 quota_limit: _builtins.int,
+                 quota_name: _builtins.str,
+                 quota_type: _builtins.str):
+        """
+        :param _builtins.str description: The description of the logs stream quota.
+        :param _builtins.str quota_id: The ID of the logs stream quota.
+        :param _builtins.int quota_limit: The maximum number allowed by this quota.
+        :param _builtins.str quota_name: The name of the logs stream quota.
+        :param _builtins.str quota_type: The type of the logs stream quota.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "quota_id", quota_id)
+        pulumi.set(__self__, "quota_limit", quota_limit)
+        pulumi.set(__self__, "quota_name", quota_name)
+        pulumi.set(__self__, "quota_type", quota_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        The description of the logs stream quota.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="quotaId")
+    def quota_id(self) -> _builtins.str:
+        """
+        The ID of the logs stream quota.
+        """
+        return pulumi.get(self, "quota_id")
+
+    @_builtins.property
+    @pulumi.getter(name="quotaLimit")
+    def quota_limit(self) -> _builtins.int:
+        """
+        The maximum number allowed by this quota.
+        """
+        return pulumi.get(self, "quota_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="quotaName")
+    def quota_name(self) -> _builtins.str:
+        """
+        The name of the logs stream quota.
+        """
+        return pulumi.get(self, "quota_name")
+
+    @_builtins.property
+    @pulumi.getter(name="quotaType")
+    def quota_type(self) -> _builtins.str:
+        """
+        The type of the logs stream quota.
+        """
+        return pulumi.get(self, "quota_type")
 
 
 @pulumi.output_type

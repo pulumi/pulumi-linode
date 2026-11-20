@@ -15,6 +15,8 @@ else:
 from . import _utilities
 
 __all__ = [
+    'DatabaseAccessControlsTimeoutsArgs',
+    'DatabaseAccessControlsTimeoutsArgsDict',
     'DatabaseMysqlV2PendingUpdateArgs',
     'DatabaseMysqlV2PendingUpdateArgsDict',
     'DatabaseMysqlV2PrivateNetworkArgs',
@@ -327,6 +329,10 @@ __all__ = [
     'LkeClusterPoolTaintArgsDict',
     'LkeNodePoolAutoscalerArgs',
     'LkeNodePoolAutoscalerArgsDict',
+    'LkeNodePoolNetworkingArgs',
+    'LkeNodePoolNetworkingArgsDict',
+    'LkeNodePoolNetworkingInterfaceArgs',
+    'LkeNodePoolNetworkingInterfaceArgsDict',
     'LkeNodePoolNodeArgs',
     'LkeNodePoolNodeArgsDict',
     'LkeNodePoolTaintArgs',
@@ -590,6 +596,75 @@ __all__ = [
     'GetVpcsFilterArgs',
     'GetVpcsFilterArgsDict',
 ]
+
+class DatabaseAccessControlsTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Used when creating the access controls (until the database update has finished)
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Used when deleting the access controls (until the database update has finished)
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Used when updating the access controls (until the database update has finished)
+    """
+
+@pulumi.input_type
+class DatabaseAccessControlsTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: Used when creating the access controls (until the database update has finished)
+        :param pulumi.Input[_builtins.str] delete: Used when deleting the access controls (until the database update has finished)
+        :param pulumi.Input[_builtins.str] update: Used when updating the access controls (until the database update has finished)
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Used when creating the access controls (until the database update has finished)
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Used when deleting the access controls (until the database update has finished)
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Used when updating the access controls (until the database update has finished)
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
 
 class DatabaseMysqlV2PendingUpdateArgsDict(TypedDict):
     deadline: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -11820,6 +11895,100 @@ class LkeNodePoolAutoscalerArgs:
     @min.setter
     def min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min", value)
+
+
+class LkeNodePoolNetworkingArgsDict(TypedDict):
+    interfaces: pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNetworkingInterfaceArgsDict']]]
+    """
+    Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdma_vpc"`.
+    """
+
+@pulumi.input_type
+class LkeNodePoolNetworkingArgs:
+    def __init__(__self__, *,
+                 interfaces: pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNetworkingInterfaceArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNetworkingInterfaceArgs']]] interfaces: Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdma_vpc"`.
+        """
+        pulumi.set(__self__, "interfaces", interfaces)
+
+    @_builtins.property
+    @pulumi.getter
+    def interfaces(self) -> pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNetworkingInterfaceArgs']]]:
+        """
+        Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdma_vpc"`.
+        """
+        return pulumi.get(self, "interfaces")
+
+    @interfaces.setter
+    def interfaces(self, value: pulumi.Input[Sequence[pulumi.Input['LkeNodePoolNetworkingInterfaceArgs']]]):
+        pulumi.set(self, "interfaces", value)
+
+
+class LkeNodePoolNetworkingInterfaceArgsDict(TypedDict):
+    subnet_id: pulumi.Input[_builtins.int]
+    """
+    ID of the VPC subnet for the interface.
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    Interface type: `vpc` for the first interface; subsequent interfaces may be `rdma_vpc`.
+    """
+    vpc_id: pulumi.Input[_builtins.int]
+    """
+    ID of the VPC for the interface.
+    """
+
+@pulumi.input_type
+class LkeNodePoolNetworkingInterfaceArgs:
+    def __init__(__self__, *,
+                 subnet_id: pulumi.Input[_builtins.int],
+                 type: pulumi.Input[_builtins.str],
+                 vpc_id: pulumi.Input[_builtins.int]):
+        """
+        :param pulumi.Input[_builtins.int] subnet_id: ID of the VPC subnet for the interface.
+        :param pulumi.Input[_builtins.str] type: Interface type: `vpc` for the first interface; subsequent interfaces may be `rdma_vpc`.
+        :param pulumi.Input[_builtins.int] vpc_id: ID of the VPC for the interface.
+        """
+        pulumi.set(__self__, "subnet_id", subnet_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vpc_id", vpc_id)
+
+    @_builtins.property
+    @pulumi.getter(name="subnetId")
+    def subnet_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        ID of the VPC subnet for the interface.
+        """
+        return pulumi.get(self, "subnet_id")
+
+    @subnet_id.setter
+    def subnet_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "subnet_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Interface type: `vpc` for the first interface; subsequent interfaces may be `rdma_vpc`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[_builtins.int]:
+        """
+        ID of the VPC for the interface.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "vpc_id", value)
 
 
 class LkeNodePoolNodeArgsDict(TypedDict):
