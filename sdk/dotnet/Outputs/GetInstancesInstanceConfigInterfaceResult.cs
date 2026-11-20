@@ -28,23 +28,23 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the `Vlan` purpose.
         /// </summary>
-        public readonly string? IpamAddress;
+        public readonly string IpamAddress;
         /// <summary>
         /// This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.
         /// </summary>
-        public readonly Outputs.GetInstancesInstanceConfigInterfaceIpv4Result Ipv4;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceIpv4Result> Ipv4s;
         /// <summary>
         /// This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.
         /// </summary>
-        public readonly Outputs.GetInstancesInstanceConfigInterfaceIpv6Result Ipv6;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceIpv6Result> Ipv6s;
         /// <summary>
         /// The label of the Placement Group. This field can only contain ASCII letters, digits and dashes.
         /// </summary>
-        public readonly string? Label;
+        public readonly string Label;
         /// <summary>
         /// Whether the interface is the primary interface that should have the default route for this Linode. This field is only allowed for interfaces with the `Public` or `Vpc` purpose.
         /// </summary>
-        public readonly bool? Primary;
+        public readonly bool Primary;
         /// <summary>
         /// The type of interface. (`Public`, `Vlan`, `Vpc`)
         /// </summary>
@@ -52,7 +52,7 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The name of the VPC Subnet to join. This field is only allowed and required for interfaces with the `Vpc` purpose.
         /// </summary>
-        public readonly int? SubnetId;
+        public readonly int SubnetId;
         /// <summary>
         /// The ID of VPC which this interface is attached to.
         /// </summary>
@@ -66,19 +66,19 @@ namespace Pulumi.Linode.Outputs
 
             ImmutableArray<string> ipRanges,
 
-            string? ipamAddress,
+            string ipamAddress,
 
-            Outputs.GetInstancesInstanceConfigInterfaceIpv4Result ipv4,
+            ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceIpv4Result> ipv4s,
 
-            Outputs.GetInstancesInstanceConfigInterfaceIpv6Result ipv6,
+            ImmutableArray<Outputs.GetInstancesInstanceConfigInterfaceIpv6Result> ipv6s,
 
-            string? label,
+            string label,
 
-            bool? primary,
+            bool primary,
 
             string purpose,
 
-            int? subnetId,
+            int subnetId,
 
             int vpcId)
         {
@@ -86,8 +86,8 @@ namespace Pulumi.Linode.Outputs
             Id = id;
             IpRanges = ipRanges;
             IpamAddress = ipamAddress;
-            Ipv4 = ipv4;
-            Ipv6 = ipv6;
+            Ipv4s = ipv4s;
+            Ipv6s = ipv6s;
             Label = label;
             Primary = primary;
             Purpose = purpose;

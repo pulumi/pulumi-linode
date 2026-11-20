@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetInstancesResult {
     private @Nullable List<GetInstancesFilter> filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     private String id;
@@ -34,7 +34,7 @@ public final class GetInstancesResult {
         return this.filters == null ? List.of() : this.filters;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return The ID of the Placement Group in the Linode API.
      * 
      */
     public String id() {

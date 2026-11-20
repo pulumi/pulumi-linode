@@ -11,6 +11,7 @@ import com.pulumi.linode.LkeNodePoolArgs;
 import com.pulumi.linode.Utilities;
 import com.pulumi.linode.inputs.LkeNodePoolState;
 import com.pulumi.linode.outputs.LkeNodePoolAutoscaler;
+import com.pulumi.linode.outputs.LkeNodePoolNetworking;
 import com.pulumi.linode.outputs.LkeNodePoolNode;
 import com.pulumi.linode.outputs.LkeNodePoolTaint;
 import java.lang.Boolean;
@@ -217,6 +218,73 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.linode.LkeCluster;
+ * import com.pulumi.linode.LkeClusterArgs;
+ * import com.pulumi.linode.LkeNodePool;
+ * import com.pulumi.linode.LkeNodePoolArgs;
+ * import com.pulumi.linode.inputs.LkeNodePoolNetworkingArgs;
+ * import com.pulumi.linode.inputs.LkeNodePoolNetworkingInterfaceArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var externalPoolTag = "external";
+ * 
+ *         var rdma = new LkeCluster("rdma", LkeClusterArgs.builder()
+ *             .label("rdma-cluster")
+ *             .k8sVersion("v1.35.9+lke3")
+ *             .region("us-mia")
+ *             .tier("enterprise")
+ *             .vpcId(vpcId)
+ *             .subnetId(vpcSubnetId)
+ *             .externalPoolTags(externalPoolTag)
+ *             .build());
+ * 
+ *         var rdmaLkeNodePool = new LkeNodePool("rdmaLkeNodePool", LkeNodePoolArgs.builder()
+ *             .clusterId(rdma.id())
+ *             .type("g3-gpu-rtxpro6000-blackwell-rdma-8")
+ *             .nodeCount(1)
+ *             .tags(externalPoolTag)
+ *             .networking(LkeNodePoolNetworkingArgs.builder()
+ *                 .interfaces(                
+ *                     LkeNodePoolNetworkingInterfaceArgs.builder()
+ *                         .type("vpc")
+ *                         .vpcId(vpcId)
+ *                         .subnetId(vpcSubnetId)
+ *                         .build(),
+ *                     LkeNodePoolNetworkingInterfaceArgs.builder()
+ *                         .type("rdma_vpc")
+ *                         .vpcId(vpcId)
+ *                         .subnetId(rdmaSubnetId)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Replace the VPC and subnet variables with IDs for existing resources in the
+ * cluster&#39;s region. The first interface must be the cluster VPC interface; add
+ * RDMA VPC interfaces after it. RDMA-capable plans and RDMA VPC subnets may not
+ * be available in every region or account.
  * 
  * ## Import
  * 
@@ -294,12 +362,16 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
     /**
      * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
      * 
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = &#34;v4beta&#34;` and an Enterprise cluster.
+     * 
      */
     @Export(name="isolationPublicIpv6", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isolationPublicIpv6;
 
     /**
      * @return Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = &#34;v4beta&#34;` and an Enterprise cluster.
      * 
      */
     public Output<Boolean> isolationPublicIpv6() {
@@ -346,6 +418,20 @@ public class LkeNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> labels() {
         return this.labels;
+    }
+    /**
+     * Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = &#34;v4beta&#34; and tier = &#34;enterprise&#34; on the cluster.
+     * 
+     */
+    @Export(name="networking", refs={LkeNodePoolNetworking.class}, tree="[0]")
+    private Output</* @Nullable */ LkeNodePoolNetworking> networking;
+
+    /**
+     * @return Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = &#34;v4beta&#34; and tier = &#34;enterprise&#34; on the cluster.
+     * 
+     */
+    public Output<Optional<LkeNodePoolNetworking>> networking() {
+        return Codegen.optional(this.networking);
     }
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.

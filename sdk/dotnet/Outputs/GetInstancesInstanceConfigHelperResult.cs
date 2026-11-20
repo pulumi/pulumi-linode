@@ -14,7 +14,7 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigHelperResult
     {
         /// <summary>
-        /// Populates the /dev directory early during boot without udev. Defaults to false.
+        /// Populates the /dev directory early during boot without udev.
         /// </summary>
         public readonly bool DevtmpfsAutomount;
         /// <summary>

@@ -88,6 +88,46 @@ import * as utilities from "./utilities";
  *     tags: [externalPoolTag],
  * });
  * ```
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as linode from "@pulumi/linode";
+ *
+ * const externalPoolTag = "external";
+ * const rdma = new linode.LkeCluster("rdma", {
+ *     label: "rdma-cluster",
+ *     k8sVersion: "v1.35.9+lke3",
+ *     region: "us-mia",
+ *     tier: "enterprise",
+ *     vpcId: vpcId,
+ *     subnetId: vpcSubnetId,
+ *     externalPoolTags: [externalPoolTag],
+ * });
+ * const rdmaLkeNodePool = new linode.LkeNodePool("rdma", {
+ *     clusterId: rdma.id.apply(x =>Number(x)),
+ *     type: "g3-gpu-rtxpro6000-blackwell-rdma-8",
+ *     nodeCount: 1,
+ *     tags: [externalPoolTag],
+ *     networking: {
+ *         interfaces: [
+ *             {
+ *                 type: "vpc",
+ *                 vpcId: vpcId,
+ *                 subnetId: vpcSubnetId,
+ *             },
+ *             {
+ *                 type: "rdma_vpc",
+ *                 vpcId: vpcId,
+ *                 subnetId: rdmaSubnetId,
+ *             },
+ *         ],
+ *     },
+ * });
+ * ```
+ *
+ * Replace the VPC and subnet variables with IDs for existing resources in the
+ * cluster's region. The first interface must be the cluster VPC interface; add
+ * RDMA VPC interfaces after it. RDMA-capable plans and RDMA VPC subnets may not
+ * be available in every region or account.
  *
  * ## Import
  *
@@ -155,6 +195,8 @@ export class LkeNodePool extends pulumi.CustomResource {
     declare public readonly isolationPublicIpv4: pulumi.Output<boolean>;
     /**
      * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     *
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = "v4beta"` and an Enterprise cluster.
      */
     declare public readonly isolationPublicIpv6: pulumi.Output<boolean>;
     /**
@@ -169,6 +211,10 @@ export class LkeNodePool extends pulumi.CustomResource {
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = "v4beta" and tier = "enterprise" on the cluster.
+     */
+    declare public readonly networking: pulumi.Output<outputs.LkeNodePoolNetworking | undefined>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
@@ -220,6 +266,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["k8sVersion"] = state?.k8sVersion;
             resourceInputs["label"] = state?.label;
             resourceInputs["labels"] = state?.labels;
+            resourceInputs["networking"] = state?.networking;
             resourceInputs["nodeCount"] = state?.nodeCount;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["tags"] = state?.tags;
@@ -243,6 +290,7 @@ export class LkeNodePool extends pulumi.CustomResource {
             resourceInputs["k8sVersion"] = args?.k8sVersion;
             resourceInputs["label"] = args?.label;
             resourceInputs["labels"] = args?.labels;
+            resourceInputs["networking"] = args?.networking;
             resourceInputs["nodeCount"] = args?.nodeCount;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["taints"] = args?.taints;
@@ -278,6 +326,8 @@ export interface LkeNodePoolState {
     isolationPublicIpv4?: pulumi.Input<boolean | undefined>;
     /**
      * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     *
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = "v4beta"` and an Enterprise cluster.
      */
     isolationPublicIpv6?: pulumi.Input<boolean | undefined>;
     /**
@@ -292,6 +342,10 @@ export interface LkeNodePoolState {
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = "v4beta" and tier = "enterprise" on the cluster.
+     */
+    networking?: pulumi.Input<inputs.LkeNodePoolNetworking | undefined>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */
@@ -345,6 +399,8 @@ export interface LkeNodePoolArgs {
     isolationPublicIpv4?: pulumi.Input<boolean | undefined>;
     /**
      * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     *
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = "v4beta"` and an Enterprise cluster.
      */
     isolationPublicIpv6?: pulumi.Input<boolean | undefined>;
     /**
@@ -359,6 +415,10 @@ export interface LkeNodePoolArgs {
      * A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = "v4beta" and tier = "enterprise" on the cluster.
+     */
+    networking?: pulumi.Input<inputs.LkeNodePoolNetworking | undefined>;
     /**
      * The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
      */

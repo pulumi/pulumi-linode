@@ -16,13 +16,13 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
         /// </summary>
-        public readonly Outputs.GetInstancesInstanceAlertsResult Alerts;
+        public readonly ImmutableArray<Outputs.GetInstancesInstanceAlertResult> Alerts;
         /// <summary>
         /// (Read-Only Object List) Information about the Linode's backup status. Referenced with an index (e.g. `backups.0.enabled`).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstancesInstanceBackupResult> Backups;
         /// <summary>
-        /// The Label of the Instance Config that should be used to boot the Linode instance.
+        /// The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.
         /// </summary>
         public readonly string BootConfigLabel;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Linode.Outputs
         /// </summary>
         public readonly bool HasUserData;
         /// <summary>
-        /// The Linode’s host machine, as a UUID.
+        /// The Linode's host machine, as a UUID.
         /// </summary>
         public readonly string HostUuid;
         /// <summary>
@@ -128,7 +128,7 @@ namespace Pulumi.Linode.Outputs
 
         [OutputConstructor]
         private GetInstancesInstanceResult(
-            Outputs.GetInstancesInstanceAlertsResult alerts,
+            ImmutableArray<Outputs.GetInstancesInstanceAlertResult> alerts,
 
             ImmutableArray<Outputs.GetInstancesInstanceBackupResult> backups,
 

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @CustomType
-public final class GetInstancesInstanceAlerts {
+public final class GetInstancesInstanceAlert {
     /**
      * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
      * 
@@ -47,7 +47,7 @@ public final class GetInstancesInstanceAlerts {
      */
     private List<Integer> userAlerts;
 
-    private GetInstancesInstanceAlerts() {}
+    private GetInstancesInstanceAlert() {}
     /**
      * @return The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we&#39;ll send you an alert. If this is set to 0, the alert is disabled.
      * 
@@ -102,7 +102,7 @@ public final class GetInstancesInstanceAlerts {
         return new Builder();
     }
 
-    public static Builder builder(GetInstancesInstanceAlerts defaults) {
+    public static Builder builder(GetInstancesInstanceAlert defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -115,7 +115,7 @@ public final class GetInstancesInstanceAlerts {
         private Integer transferQuota;
         private List<Integer> userAlerts;
         public Builder() {}
-        public Builder(GetInstancesInstanceAlerts defaults) {
+        public Builder(GetInstancesInstanceAlert defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cpu = defaults.cpu;
     	      this.io = defaults.io;
@@ -129,7 +129,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder cpu(Integer cpu) {
             if (cpu == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "cpu");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "cpu");
             }
             this.cpu = cpu;
             return this;
@@ -137,7 +137,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder io(Integer io) {
             if (io == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "io");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "io");
             }
             this.io = io;
             return this;
@@ -145,7 +145,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder networkIn(Integer networkIn) {
             if (networkIn == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "networkIn");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "networkIn");
             }
             this.networkIn = networkIn;
             return this;
@@ -153,7 +153,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder networkOut(Integer networkOut) {
             if (networkOut == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "networkOut");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "networkOut");
             }
             this.networkOut = networkOut;
             return this;
@@ -161,7 +161,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder systemAlerts(List<Integer> systemAlerts) {
             if (systemAlerts == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "systemAlerts");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "systemAlerts");
             }
             this.systemAlerts = systemAlerts;
             return this;
@@ -172,7 +172,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder transferQuota(Integer transferQuota) {
             if (transferQuota == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "transferQuota");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "transferQuota");
             }
             this.transferQuota = transferQuota;
             return this;
@@ -180,7 +180,7 @@ public final class GetInstancesInstanceAlerts {
         @CustomType.Setter
         public Builder userAlerts(List<Integer> userAlerts) {
             if (userAlerts == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstanceAlerts", "userAlerts");
+              throw new MissingRequiredPropertyException("GetInstancesInstanceAlert", "userAlerts");
             }
             this.userAlerts = userAlerts;
             return this;
@@ -188,8 +188,8 @@ public final class GetInstancesInstanceAlerts {
         public Builder userAlerts(Integer... userAlerts) {
             return userAlerts(List.of(userAlerts));
         }
-        public GetInstancesInstanceAlerts build() {
-            final var _resultValue = new GetInstancesInstanceAlerts();
+        public GetInstancesInstanceAlert build() {
+            final var _resultValue = new GetInstancesInstanceAlert();
             _resultValue.cpu = cpu;
             _resultValue.io = io;
             _resultValue.networkIn = networkIn;

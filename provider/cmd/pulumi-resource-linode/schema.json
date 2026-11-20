@@ -155,6 +155,23 @@
         }
     },
     "types": {
+        "linode:index/DatabaseAccessControlsTimeouts:DatabaseAccessControlsTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "Used when creating the access controls (until the database update has finished)\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "Used when deleting the access controls (until the database update has finished)\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "Used when updating the access controls (until the database update has finished)\n"
+                }
+            },
+            "type": "object"
+        },
         "linode:index/DatabaseMysqlV2PendingUpdate:DatabaseMysqlV2PendingUpdate": {
             "properties": {
                 "deadline": {
@@ -3686,6 +3703,43 @@
                 }
             },
             "type": "object"
+        },
+        "linode:index/LkeNodePoolNetworking:LkeNodePoolNetworking": {
+            "properties": {
+                "interfaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/LkeNodePoolNetworkingInterface:LkeNodePoolNetworkingInterface"
+                    },
+                    "description": "Ordered VPC interfaces for nodes in the pool. The first interface must have `type = \"vpc\"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = \u003cspan pulumi-lang-nodejs=\"\"rdmaVpc\"\" pulumi-lang-dotnet=\"\"RdmaVpc\"\" pulumi-lang-go=\"\"rdmaVpc\"\" pulumi-lang-python=\"\"rdma_vpc\"\" pulumi-lang-yaml=\"\"rdmaVpc\"\" pulumi-lang-java=\"\"rdmaVpc\"\" pulumi-lang-hcl=\"\"rdma_vpc\"\"\u003e\"rdmaVpc\"\u003c/span\u003e`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "interfaces"
+            ]
+        },
+        "linode:index/LkeNodePoolNetworkingInterface:LkeNodePoolNetworkingInterface": {
+            "properties": {
+                "subnetId": {
+                    "type": "integer",
+                    "description": "ID of the VPC subnet for the interface.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Interface type: \u003cspan pulumi-lang-nodejs=\"`vpc`\" pulumi-lang-dotnet=\"`Vpc`\" pulumi-lang-go=\"`vpc`\" pulumi-lang-python=\"`vpc`\" pulumi-lang-yaml=\"`vpc`\" pulumi-lang-java=\"`vpc`\" pulumi-lang-hcl=\"`vpc`\"\u003e`vpc`\u003c/span\u003e for the first interface; subsequent interfaces may be \u003cspan pulumi-lang-nodejs=\"`rdmaVpc`\" pulumi-lang-dotnet=\"`RdmaVpc`\" pulumi-lang-go=\"`rdmaVpc`\" pulumi-lang-python=\"`rdma_vpc`\" pulumi-lang-yaml=\"`rdmaVpc`\" pulumi-lang-java=\"`rdmaVpc`\" pulumi-lang-hcl=\"`rdma_vpc`\"\u003e`rdmaVpc`\u003c/span\u003e.\n"
+                },
+                "vpcId": {
+                    "type": "integer",
+                    "description": "ID of the VPC for the interface.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "subnetId",
+                "type",
+                "vpcId"
+            ]
         },
         "linode:index/LkeNodePoolNode:LkeNodePoolNode": {
             "properties": {
@@ -10564,7 +10618,10 @@
         "linode:index/getInstancesInstance:getInstancesInstance": {
             "properties": {
                 "alerts": {
-                    "$ref": "#/types/linode:index/getInstancesInstanceAlerts:getInstancesInstanceAlerts",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstancesInstanceAlert:getInstancesInstanceAlert"
+                    },
                     "description": "(Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).\n"
                 },
                 "backups": {
@@ -10576,7 +10633,7 @@
                 },
                 "bootConfigLabel": {
                     "type": "string",
-                    "description": "The Label of the Instance Config that should be used to boot the Linode instance.\n"
+                    "description": "The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.\n"
                 },
                 "capabilities": {
                     "type": "array",
@@ -10609,7 +10666,7 @@
                 },
                 "hostUuid": {
                     "type": "string",
-                    "description": "The Linode’s host machine, as a UUID.\n"
+                    "description": "The Linode's host machine, as a UUID.\n"
                 },
                 "id": {
                     "type": "integer",
@@ -10740,7 +10797,7 @@
                 }
             }
         },
-        "linode:index/getInstancesInstanceAlerts:getInstancesInstanceAlerts": {
+        "linode:index/getInstancesInstanceAlert:getInstancesInstanceAlert": {
             "properties": {
                 "cpu": {
                     "type": "integer",
@@ -11462,7 +11519,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11487,7 +11546,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11512,7 +11573,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11537,7 +11600,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11562,7 +11627,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11587,7 +11654,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11612,7 +11681,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11637,7 +11708,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11662,7 +11735,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11687,7 +11762,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11712,7 +11789,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11737,7 +11816,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11762,7 +11843,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11787,7 +11870,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11812,7 +11897,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11837,7 +11924,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11862,7 +11951,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11887,7 +11978,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11912,7 +12005,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11937,7 +12032,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11962,7 +12059,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -11987,7 +12086,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12012,7 +12113,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12037,7 +12140,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12062,7 +12167,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12087,7 +12194,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12112,7 +12221,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12137,7 +12248,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12162,7 +12275,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12187,7 +12302,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12212,7 +12329,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12237,7 +12356,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12262,7 +12383,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12287,7 +12410,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12312,7 +12437,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12337,7 +12464,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12362,7 +12491,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12387,7 +12518,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12412,7 +12545,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12437,7 +12572,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12462,7 +12599,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12487,7 +12626,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12512,7 +12653,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12537,7 +12680,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12562,7 +12707,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12587,7 +12734,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12612,7 +12761,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12637,7 +12788,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12662,7 +12815,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12687,7 +12842,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12712,7 +12869,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12737,7 +12896,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12762,7 +12923,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12787,7 +12950,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12812,7 +12977,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12837,7 +13004,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12862,7 +13031,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12887,7 +13058,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12912,7 +13085,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12937,7 +13112,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12962,7 +13139,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -12987,7 +13166,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -13012,7 +13193,9 @@
             },
             "type": "object",
             "required": [
-                "diskId"
+                "diskId",
+                "diskLabel",
+                "volumeId"
             ],
             "language": {
                 "nodejs": {
@@ -13024,7 +13207,7 @@
             "properties": {
                 "devtmpfsAutomount": {
                     "type": "boolean",
-                    "description": "Populates the /dev directory early during boot without udev. Defaults to false.\n"
+                    "description": "Populates the /dev directory early during boot without udev.\n"
                 },
                 "distro": {
                     "type": "boolean",
@@ -13078,12 +13261,18 @@
                     "type": "string",
                     "description": "This Network Interface’s private IP address in Classless Inter-Domain Routing (CIDR) notation. (e.g. `10.0.0.1/24`) This field is only allowed for interfaces with the \u003cspan pulumi-lang-nodejs=\"`vlan`\" pulumi-lang-dotnet=\"`Vlan`\" pulumi-lang-go=\"`vlan`\" pulumi-lang-python=\"`vlan`\" pulumi-lang-yaml=\"`vlan`\" pulumi-lang-java=\"`vlan`\" pulumi-lang-hcl=\"`vlan`\"\u003e`vlan`\u003c/span\u003e purpose.\n"
                 },
-                "ipv4": {
-                    "$ref": "#/types/linode:index/getInstancesInstanceConfigInterfaceIpv4:getInstancesInstanceConfigInterfaceIpv4",
+                "ipv4s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstancesInstanceConfigInterfaceIpv4:getInstancesInstanceConfigInterfaceIpv4"
+                    },
                     "description": "This Linode's IPv4 Addresses. Each Linode is assigned a single public IPv4 address upon creation, and may get a single private IPv4 address if needed. You may need to open a support ticket to get additional IPv4 addresses.\n"
                 },
-                "ipv6": {
-                    "$ref": "#/types/linode:index/getInstancesInstanceConfigInterfaceIpv6:getInstancesInstanceConfigInterfaceIpv6",
+                "ipv6s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/linode:index/getInstancesInstanceConfigInterfaceIpv6:getInstancesInstanceConfigInterfaceIpv6"
+                    },
                     "description": "This Linode's IPv6 SLAAC addresses. This address is specific to a Linode, and may not be shared.  The prefix (`/128`) is included in this attribute.\n"
                 },
                 "label": {
@@ -13111,9 +13300,14 @@
             "required": [
                 "active",
                 "id",
-                "ipv4",
-                "ipv6",
+                "ipRanges",
+                "ipamAddress",
+                "ipv4s",
+                "ipv6s",
+                "label",
+                "primary",
                 "purpose",
+                "subnetId",
                 "vpcId"
             ],
             "language": {
@@ -13135,6 +13329,7 @@
             },
             "type": "object",
             "required": [
+                "nat11",
                 "vpc"
             ],
             "language": {
@@ -13180,7 +13375,7 @@
             "properties": {
                 "assignedRange": {
                     "type": "string",
-                    "description": "The value of \u003cspan pulumi-lang-nodejs=\"`range`\" pulumi-lang-dotnet=\"`Range`\" pulumi-lang-go=\"`range`\" pulumi-lang-python=\"`range`\" pulumi-lang-yaml=\"`range`\" pulumi-lang-java=\"`range`\" pulumi-lang-hcl=\"`range`\"\u003e`range`\u003c/span\u003e computed by the API. This is necessary when needing to access the range implicitly allocated using \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e.\n"
+                    "description": "The value of \u003cspan pulumi-lang-nodejs=\"`range`\" pulumi-lang-dotnet=\"`Range`\" pulumi-lang-go=\"`range`\" pulumi-lang-python=\"`range`\" pulumi-lang-yaml=\"`range`\" pulumi-lang-java=\"`range`\" pulumi-lang-hcl=\"`range`\"\u003e`range`\u003c/span\u003e computed by the API.\n"
                 },
                 "range": {
                     "type": "string",
@@ -13189,7 +13384,8 @@
             },
             "type": "object",
             "required": [
-                "assignedRange"
+                "assignedRange",
+                "range"
             ],
             "language": {
                 "nodejs": {
@@ -13205,7 +13401,7 @@
                 },
                 "assignedRange": {
                     "type": "string",
-                    "description": "The value of \u003cspan pulumi-lang-nodejs=\"`range`\" pulumi-lang-dotnet=\"`Range`\" pulumi-lang-go=\"`range`\" pulumi-lang-python=\"`range`\" pulumi-lang-yaml=\"`range`\" pulumi-lang-java=\"`range`\" pulumi-lang-hcl=\"`range`\"\u003e`range`\u003c/span\u003e computed by the API. This is necessary when needing to access the range implicitly allocated using \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\" pulumi-lang-hcl=\"`auto`\"\u003e`auto`\u003c/span\u003e.\n"
+                    "description": "The value of \u003cspan pulumi-lang-nodejs=\"`range`\" pulumi-lang-dotnet=\"`Range`\" pulumi-lang-go=\"`range`\" pulumi-lang-python=\"`range`\" pulumi-lang-yaml=\"`range`\" pulumi-lang-java=\"`range`\" pulumi-lang-hcl=\"`range`\"\u003e`range`\u003c/span\u003e computed by the API.\n"
                 },
                 "range": {
                     "type": "string",
@@ -13215,7 +13411,8 @@
             "type": "object",
             "required": [
                 "address",
-                "assignedRange"
+                "assignedRange",
+                "range"
             ],
             "language": {
                 "nodejs": {
@@ -15773,6 +15970,43 @@
             "required": [
                 "clusterIds",
                 "isAutoAddAllClustersEnabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "linode:index/getMonitorLogsStreamQuotasQuota:getMonitorLogsStreamQuotasQuota": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the logs stream quota.\n"
+                },
+                "quotaId": {
+                    "type": "string",
+                    "description": "The ID of the logs stream quota.\n"
+                },
+                "quotaLimit": {
+                    "type": "integer",
+                    "description": "The maximum number allowed by this quota.\n"
+                },
+                "quotaName": {
+                    "type": "string",
+                    "description": "The name of the logs stream quota.\n"
+                },
+                "quotaType": {
+                    "type": "string",
+                    "description": "The type of the logs stream quota.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "quotaId",
+                "quotaLimit",
+                "quotaName",
+                "quotaType"
             ],
             "language": {
                 "nodejs": {
@@ -21049,6 +21283,9 @@
                 "databaseType": {
                     "type": "string",
                     "description": "The unique type of the target database. (\u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`postgresql`\" pulumi-lang-dotnet=\"`Postgresql`\" pulumi-lang-go=\"`postgresql`\" pulumi-lang-python=\"`postgresql`\" pulumi-lang-yaml=\"`postgresql`\" pulumi-lang-java=\"`postgresql`\" pulumi-lang-hcl=\"`postgresql`\"\u003e`postgresql`\u003c/span\u003e)\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/linode:index/DatabaseAccessControlsTimeouts:DatabaseAccessControlsTimeouts"
                 }
             },
             "required": [
@@ -21066,13 +21303,14 @@
                 },
                 "databaseId": {
                     "type": "integer",
-                    "description": "The unique ID of the target database.\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique ID of the target database.\n"
                 },
                 "databaseType": {
                     "type": "string",
-                    "description": "The unique type of the target database. (\u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`postgresql`\" pulumi-lang-dotnet=\"`Postgresql`\" pulumi-lang-go=\"`postgresql`\" pulumi-lang-python=\"`postgresql`\" pulumi-lang-yaml=\"`postgresql`\" pulumi-lang-java=\"`postgresql`\" pulumi-lang-hcl=\"`postgresql`\"\u003e`postgresql`\u003c/span\u003e)\n",
-                    "willReplaceOnChanges": true
+                    "description": "The unique type of the target database. (\u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`postgresql`\" pulumi-lang-dotnet=\"`Postgresql`\" pulumi-lang-go=\"`postgresql`\" pulumi-lang-python=\"`postgresql`\" pulumi-lang-yaml=\"`postgresql`\" pulumi-lang-java=\"`postgresql`\" pulumi-lang-hcl=\"`postgresql`\"\u003e`postgresql`\u003c/span\u003e)\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/linode:index/DatabaseAccessControlsTimeouts:DatabaseAccessControlsTimeouts"
                 }
             },
             "requiredInputs": [
@@ -21092,13 +21330,14 @@
                     },
                     "databaseId": {
                         "type": "integer",
-                        "description": "The unique ID of the target database.\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique ID of the target database.\n"
                     },
                     "databaseType": {
                         "type": "string",
-                        "description": "The unique type of the target database. (\u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`postgresql`\" pulumi-lang-dotnet=\"`Postgresql`\" pulumi-lang-go=\"`postgresql`\" pulumi-lang-python=\"`postgresql`\" pulumi-lang-yaml=\"`postgresql`\" pulumi-lang-java=\"`postgresql`\" pulumi-lang-hcl=\"`postgresql`\"\u003e`postgresql`\u003c/span\u003e)\n",
-                        "willReplaceOnChanges": true
+                        "description": "The unique type of the target database. (\u003cspan pulumi-lang-nodejs=\"`mysql`\" pulumi-lang-dotnet=\"`Mysql`\" pulumi-lang-go=\"`mysql`\" pulumi-lang-python=\"`mysql`\" pulumi-lang-yaml=\"`mysql`\" pulumi-lang-java=\"`mysql`\" pulumi-lang-hcl=\"`mysql`\"\u003e`mysql`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`postgresql`\" pulumi-lang-dotnet=\"`Postgresql`\" pulumi-lang-go=\"`postgresql`\" pulumi-lang-python=\"`postgresql`\" pulumi-lang-yaml=\"`postgresql`\" pulumi-lang-java=\"`postgresql`\" pulumi-lang-hcl=\"`postgresql`\"\u003e`postgresql`\u003c/span\u003e)\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/linode:index/DatabaseAccessControlsTimeouts:DatabaseAccessControlsTimeouts"
                     }
                 },
                 "type": "object"
@@ -25746,7 +25985,7 @@
             }
         },
         "linode:index/lkeNodePool:LkeNodePool": {
-            "description": "Manages an LKE Node Pool.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).\n\n\u003e **Notice** To prevent LKE node pools managed by this resource from being\nrecreated by the\u003cspan pulumi-lang-nodejs=\" linode.LkeCluster \" pulumi-lang-dotnet=\" linode.LkeCluster \" pulumi-lang-go=\" LkeCluster \" pulumi-lang-python=\" LkeCluster \" pulumi-lang-yaml=\" linode.LkeCluster \" pulumi-lang-java=\" linode.LkeCluster \" pulumi-lang-hcl=\" linode_lke_cluster \"\u003e linode.LkeCluster \u003c/span\u003eresource, the cluster's\u003cspan pulumi-lang-nodejs=\" externalPoolTags\n\" pulumi-lang-dotnet=\" ExternalPoolTags\n\" pulumi-lang-go=\" externalPoolTags\n\" pulumi-lang-python=\" external_pool_tags\n\" pulumi-lang-yaml=\" externalPoolTags\n\" pulumi-lang-java=\" externalPoolTags\n\" pulumi-lang-hcl=\" external_pool_tags\n\"\u003e externalPoolTags\n\u003c/span\u003e attribute must match the tags attribute of this resource. Please review the\nExternally Managed Node Pools\nsection for more information.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    nodeCount: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    node_count=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        NodeCount = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: pulumi.Int(150003),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = 150003\n  type       = \"g6-standard-2\"\n  node_count = 3\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .nodeCount(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      nodeCount: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    nodeCount: 3,\n    label: \"app-pool\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    node_count=3,\n    label=\"app-pool\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        NodeCount = 3,\n        Label = \"app-pool\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: pulumi.Int(150003),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t\tLabel:     pulumi.String(\"app-pool\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = 150003\n  type       = \"g6-standard-2\"\n  node_count = 3\n  label      = \"app-pool\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .nodeCount(3)\n            .label(\"app-pool\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      nodeCount: 3\n      label: app-pool\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    firewallId: 12345,\n    nodeCount: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    firewall_id=12345,\n    node_count=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        FirewallId = 12345,\n        NodeCount = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId:  pulumi.Int(150003),\n\t\t\tType:       pulumi.String(\"g6-standard-2\"),\n\t\t\tFirewallId: pulumi.Int(12345),\n\t\t\tNodeCount:  pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id  = 150003\n  type        = \"g6-standard-2\"\n  firewall_id = 12345\n  node_count  = 3\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .firewallId(12345)\n            .nodeCount(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      firewallId: 12345\n      nodeCount: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    autoscaler: {\n        min: 3,\n        max: 10,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    autoscaler={\n        \"min\": 3,\n        \"max\": 10,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        Autoscaler = new Linode.Inputs.LkeNodePoolAutoscalerArgs\n        {\n            Min = 3,\n            Max = 10,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: pulumi.Int(150003),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tAutoscaler: \u0026linode.LkeNodePoolAutoscalerArgs{\n\t\t\t\tMin: pulumi.Int(3),\n\t\t\t\tMax: pulumi.Int(10),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = 150003\n  type       = \"g6-standard-2\"\n  autoscaler {\n    min = 3\n    max = 10\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .autoscaler(LkeNodePoolAutoscalerArgs.builder()\n                .min(3)\n                .max(10)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      autoscaler:\n        min: 3\n        max: 10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst externalPoolTag = \"external\";\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    label: \"my-cluster\",\n    k8sVersion: \"1.32\",\n    region: \"us-mia\",\n    labels: {\n        key: \"value\",\n    },\n    externalPoolTags: [externalPoolTag],\n    pools: [{\n        type: \"g6-standard-1\",\n        count: 1,\n    }],\n});\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: my_cluster.id.apply(x =\u003eNumber(x)),\n    type: \"g6-standard-2\",\n    nodeCount: 3,\n    tags: [externalPoolTag],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexternal_pool_tag = \"external\"\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    label=\"my-cluster\",\n    k8s_version=\"1.32\",\n    region=\"us-mia\",\n    labels={\n        \"key\": \"value\",\n    },\n    external_pool_tags=[external_pool_tag],\n    pools=[{\n        \"type\": \"g6-standard-1\",\n        \"count\": 1,\n    }])\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=my_cluster.id.apply(lambda x: int(x)),\n    type=\"g6-standard-2\",\n    node_count=3,\n    tags=[external_pool_tag])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var externalPoolTag = \"external\";\n\n    var my_cluster = new Linode.LkeCluster(\"my-cluster\", new()\n    {\n        Label = \"my-cluster\",\n        K8sVersion = \"1.32\",\n        Region = \"us-mia\",\n        Labels = \n        {\n            { \"key\", \"value\" },\n        },\n        ExternalPoolTags = new[]\n        {\n            externalPoolTag,\n        },\n        Pools = new[]\n        {\n            new Linode.Inputs.LkeClusterPoolArgs\n            {\n                Type = \"g6-standard-1\",\n                Count = 1,\n            },\n        },\n    });\n\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = my_cluster.Id.Apply(x =\u003e int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),\n        Type = \"g6-standard-2\",\n        NodeCount = 3,\n        Tags = new[]\n        {\n            externalPoolTag,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"strconv\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texternalPoolTag := \"external\"\n\t\tmy_cluster, err := linode.NewLkeCluster(ctx, \"my-cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tK8sVersion: pulumi.String(\"1.32\"),\n\t\t\tRegion:     pulumi.String(\"us-mia\"),\n\t\t\tLabels: map[string]string{\n\t\t\t\t\"key\": \"value\",\n\t\t\t},\n\t\t\tExternalPoolTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(externalPoolTag),\n\t\t\t},\n\t\t\tPools: linode.LkeClusterPoolArray{\n\t\t\t\t\u0026linode.LkeClusterPoolArgs{\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-1\"),\n\t\t\t\t\tCount: pulumi.Int(1),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: my_cluster.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(externalPoolTag),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = linode_lke_cluster.my-cluster.id\n  type       = \"g6-standard-2\"\n  node_count = 3\n  tags       = [local.externalPoolTag]\n}\nresource \"linode_lke_cluster\" \"my-cluster\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  label       = \"my-cluster\"\n  k8s_version = \"1.32\"\n  region      = \"us-mia\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  external_pool_tags = [local.externalPoolTag]\n  pool {\n    type  = \"g6-standard-1\"\n    count = 1\n  }\n}\nlocals {\n  externalPoolTag = \"external\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeCluster;\nimport com.pulumi.linode.LkeClusterArgs;\nimport com.pulumi.linode.inputs.LkeClusterPoolArgs;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var externalPoolTag = \"external\";\n\n        var my_cluster = new LkeCluster(\"my-cluster\", LkeClusterArgs.builder()\n            .label(\"my-cluster\")\n            .k8sVersion(\"1.32\")\n            .region(\"us-mia\")\n            .labels(Map.of(\"key\", \"value\"))\n            .externalPoolTags(externalPoolTag)\n            .pools(LkeClusterPoolArgs.builder()\n                .type(\"g6-standard-1\")\n                .count(1)\n                .build())\n            .build());\n\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(my_cluster.id())\n            .type(\"g6-standard-2\")\n            .nodeCount(3)\n            .tags(externalPoolTag)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: ${[\"my-cluster\"].id}\n      type: g6-standard-2\n      nodeCount: 3\n      tags:\n        - ${externalPoolTag}\n  my-cluster:\n    type: linode:LkeCluster\n    properties:\n      label: my-cluster\n      k8sVersion: '1.32'\n      region: us-mia\n      labels:\n        key: value\n      externalPoolTags:\n        - ${externalPoolTag}\n      pools:\n        - type: g6-standard-1\n          count: 1\nvariables:\n  externalPoolTag: external\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nLKE Node Pools can be imported using the `cluster_id,id`, e.g.\n\n```sh\n$ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345\n```\n\n",
+            "description": "Manages an LKE Node Pool.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/post-lke-cluster-pools).\n\n\u003e **Notice** To prevent LKE node pools managed by this resource from being\nrecreated by the\u003cspan pulumi-lang-nodejs=\" linode.LkeCluster \" pulumi-lang-dotnet=\" linode.LkeCluster \" pulumi-lang-go=\" LkeCluster \" pulumi-lang-python=\" LkeCluster \" pulumi-lang-yaml=\" linode.LkeCluster \" pulumi-lang-java=\" linode.LkeCluster \" pulumi-lang-hcl=\" linode_lke_cluster \"\u003e linode.LkeCluster \u003c/span\u003eresource, the cluster's\u003cspan pulumi-lang-nodejs=\" externalPoolTags\n\" pulumi-lang-dotnet=\" ExternalPoolTags\n\" pulumi-lang-go=\" externalPoolTags\n\" pulumi-lang-python=\" external_pool_tags\n\" pulumi-lang-yaml=\" externalPoolTags\n\" pulumi-lang-java=\" externalPoolTags\n\" pulumi-lang-hcl=\" external_pool_tags\n\"\u003e externalPoolTags\n\u003c/span\u003e attribute must match the tags attribute of this resource. Please review the\nExternally Managed Node Pools\nsection for more information.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    nodeCount: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    node_count=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        NodeCount = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: pulumi.Int(150003),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = 150003\n  type       = \"g6-standard-2\"\n  node_count = 3\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .nodeCount(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      nodeCount: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    nodeCount: 3,\n    label: \"app-pool\",\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    node_count=3,\n    label=\"app-pool\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        NodeCount = 3,\n        Label = \"app-pool\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: pulumi.Int(150003),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t\tLabel:     pulumi.String(\"app-pool\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = 150003\n  type       = \"g6-standard-2\"\n  node_count = 3\n  label      = \"app-pool\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .nodeCount(3)\n            .label(\"app-pool\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      nodeCount: 3\n      label: app-pool\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    firewallId: 12345,\n    nodeCount: 3,\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    firewall_id=12345,\n    node_count=3)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        FirewallId = 12345,\n        NodeCount = 3,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId:  pulumi.Int(150003),\n\t\t\tType:       pulumi.String(\"g6-standard-2\"),\n\t\t\tFirewallId: pulumi.Int(12345),\n\t\t\tNodeCount:  pulumi.Int(3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id  = 150003\n  type        = \"g6-standard-2\"\n  firewall_id = 12345\n  node_count  = 3\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .firewallId(12345)\n            .nodeCount(3)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      firewallId: 12345\n      nodeCount: 3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: 150003,\n    type: \"g6-standard-2\",\n    autoscaler: {\n        min: 3,\n        max: 10,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=150003,\n    type=\"g6-standard-2\",\n    autoscaler={\n        \"min\": 3,\n        \"max\": 10,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = 150003,\n        Type = \"g6-standard-2\",\n        Autoscaler = new Linode.Inputs.LkeNodePoolAutoscalerArgs\n        {\n            Min = 3,\n            Max = 10,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: pulumi.Int(150003),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tAutoscaler: \u0026linode.LkeNodePoolAutoscalerArgs{\n\t\t\t\tMin: pulumi.Int(3),\n\t\t\t\tMax: pulumi.Int(10),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = 150003\n  type       = \"g6-standard-2\"\n  autoscaler {\n    min = 3\n    max = 10\n  }\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(150003)\n            .type(\"g6-standard-2\")\n            .autoscaler(LkeNodePoolAutoscalerArgs.builder()\n                .min(3)\n                .max(10)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: 150003\n      type: g6-standard-2\n      autoscaler:\n        min: 3\n        max: 10\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst externalPoolTag = \"external\";\nconst my_cluster = new linode.LkeCluster(\"my-cluster\", {\n    label: \"my-cluster\",\n    k8sVersion: \"1.32\",\n    region: \"us-mia\",\n    labels: {\n        key: \"value\",\n    },\n    externalPoolTags: [externalPoolTag],\n    pools: [{\n        type: \"g6-standard-1\",\n        count: 1,\n    }],\n});\nconst my_pool = new linode.LkeNodePool(\"my-pool\", {\n    clusterId: my_cluster.id.apply(x =\u003eNumber(x)),\n    type: \"g6-standard-2\",\n    nodeCount: 3,\n    tags: [externalPoolTag],\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexternal_pool_tag = \"external\"\nmy_cluster = linode.LkeCluster(\"my-cluster\",\n    label=\"my-cluster\",\n    k8s_version=\"1.32\",\n    region=\"us-mia\",\n    labels={\n        \"key\": \"value\",\n    },\n    external_pool_tags=[external_pool_tag],\n    pools=[{\n        \"type\": \"g6-standard-1\",\n        \"count\": 1,\n    }])\nmy_pool = linode.LkeNodePool(\"my-pool\",\n    cluster_id=my_cluster.id.apply(lambda x: int(x)),\n    type=\"g6-standard-2\",\n    node_count=3,\n    tags=[external_pool_tag])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var externalPoolTag = \"external\";\n\n    var my_cluster = new Linode.LkeCluster(\"my-cluster\", new()\n    {\n        Label = \"my-cluster\",\n        K8sVersion = \"1.32\",\n        Region = \"us-mia\",\n        Labels = \n        {\n            { \"key\", \"value\" },\n        },\n        ExternalPoolTags = new[]\n        {\n            externalPoolTag,\n        },\n        Pools = new[]\n        {\n            new Linode.Inputs.LkeClusterPoolArgs\n            {\n                Type = \"g6-standard-1\",\n                Count = 1,\n            },\n        },\n    });\n\n    var my_pool = new Linode.LkeNodePool(\"my-pool\", new()\n    {\n        ClusterId = my_cluster.Id.Apply(x =\u003e int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),\n        Type = \"g6-standard-2\",\n        NodeCount = 3,\n        Tags = new[]\n        {\n            externalPoolTag,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"strconv\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texternalPoolTag := \"external\"\n\t\tmy_cluster, err := linode.NewLkeCluster(ctx, \"my-cluster\", \u0026linode.LkeClusterArgs{\n\t\t\tLabel:      pulumi.String(\"my-cluster\"),\n\t\t\tK8sVersion: pulumi.String(\"1.32\"),\n\t\t\tRegion:     pulumi.String(\"us-mia\"),\n\t\t\tLabels: map[string]string{\n\t\t\t\t\"key\": \"value\",\n\t\t\t},\n\t\t\tExternalPoolTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(externalPoolTag),\n\t\t\t},\n\t\t\tPools: linode.LkeClusterPoolArray{\n\t\t\t\t\u0026linode.LkeClusterPoolArgs{\n\t\t\t\t\tType:  pulumi.String(\"g6-standard-1\"),\n\t\t\t\t\tCount: pulumi.Int(1),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewLkeNodePool(ctx, \"my-pool\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: my_cluster.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),\n\t\t\tType:      pulumi.String(\"g6-standard-2\"),\n\t\t\tNodeCount: pulumi.Int(3),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(externalPoolTag),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_node_pool\" \"my-pool\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = linode_lke_cluster.my-cluster.id\n  type       = \"g6-standard-2\"\n  node_count = 3\n  tags       = [local.externalPoolTag]\n}\nresource \"linode_lke_cluster\" \"my-cluster\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  label       = \"my-cluster\"\n  k8s_version = \"1.32\"\n  region      = \"us-mia\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  external_pool_tags = [local.externalPoolTag]\n  pool {\n    type  = \"g6-standard-1\"\n    count = 1\n  }\n}\nlocals {\n  externalPoolTag = \"external\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeCluster;\nimport com.pulumi.linode.LkeClusterArgs;\nimport com.pulumi.linode.inputs.LkeClusterPoolArgs;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var externalPoolTag = \"external\";\n\n        var my_cluster = new LkeCluster(\"my-cluster\", LkeClusterArgs.builder()\n            .label(\"my-cluster\")\n            .k8sVersion(\"1.32\")\n            .region(\"us-mia\")\n            .labels(Map.of(\"key\", \"value\"))\n            .externalPoolTags(externalPoolTag)\n            .pools(LkeClusterPoolArgs.builder()\n                .type(\"g6-standard-1\")\n                .count(1)\n                .build())\n            .build());\n\n        var my_pool = new LkeNodePool(\"my-pool\", LkeNodePoolArgs.builder()\n            .clusterId(my_cluster.id())\n            .type(\"g6-standard-2\")\n            .nodeCount(3)\n            .tags(externalPoolTag)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-pool:\n    type: linode:LkeNodePool\n    properties:\n      clusterId: ${[\"my-cluster\"].id}\n      type: g6-standard-2\n      nodeCount: 3\n      tags:\n        - ${externalPoolTag}\n  my-cluster:\n    type: linode:LkeCluster\n    properties:\n      label: my-cluster\n      k8sVersion: '1.32'\n      region: us-mia\n      labels:\n        key: value\n      externalPoolTags:\n        - ${externalPoolTag}\n      pools:\n        - type: g6-standard-1\n          count: 1\nvariables:\n  externalPoolTag: external\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst externalPoolTag = \"external\";\nconst rdma = new linode.LkeCluster(\"rdma\", {\n    label: \"rdma-cluster\",\n    k8sVersion: \"v1.35.9+lke3\",\n    region: \"us-mia\",\n    tier: \"enterprise\",\n    vpcId: vpcId,\n    subnetId: vpcSubnetId,\n    externalPoolTags: [externalPoolTag],\n});\nconst rdmaLkeNodePool = new linode.LkeNodePool(\"rdma\", {\n    clusterId: rdma.id.apply(x =\u003eNumber(x)),\n    type: \"g3-gpu-rtxpro6000-blackwell-rdma-8\",\n    nodeCount: 1,\n    tags: [externalPoolTag],\n    networking: {\n        interfaces: [\n            {\n                type: \"vpc\",\n                vpcId: vpcId,\n                subnetId: vpcSubnetId,\n            },\n            {\n                type: \"rdma_vpc\",\n                vpcId: vpcId,\n                subnetId: rdmaSubnetId,\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nexternal_pool_tag = \"external\"\nrdma = linode.LkeCluster(\"rdma\",\n    label=\"rdma-cluster\",\n    k8s_version=\"v1.35.9+lke3\",\n    region=\"us-mia\",\n    tier=\"enterprise\",\n    vpc_id=vpc_id,\n    subnet_id=vpc_subnet_id,\n    external_pool_tags=[external_pool_tag])\nrdma_lke_node_pool = linode.LkeNodePool(\"rdma\",\n    cluster_id=rdma.id.apply(lambda x: int(x)),\n    type=\"g3-gpu-rtxpro6000-blackwell-rdma-8\",\n    node_count=1,\n    tags=[external_pool_tag],\n    networking={\n        \"interfaces\": [\n            {\n                \"type\": \"vpc\",\n                \"vpc_id\": vpc_id,\n                \"subnet_id\": vpc_subnet_id,\n            },\n            {\n                \"type\": \"rdma_vpc\",\n                \"vpc_id\": vpc_id,\n                \"subnet_id\": rdma_subnet_id,\n            },\n        ],\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var externalPoolTag = \"external\";\n\n    var rdma = new Linode.LkeCluster(\"rdma\", new()\n    {\n        Label = \"rdma-cluster\",\n        K8sVersion = \"v1.35.9+lke3\",\n        Region = \"us-mia\",\n        Tier = \"enterprise\",\n        VpcId = vpcId,\n        SubnetId = vpcSubnetId,\n        ExternalPoolTags = new[]\n        {\n            externalPoolTag,\n        },\n    });\n\n    var rdmaLkeNodePool = new Linode.LkeNodePool(\"rdma\", new()\n    {\n        ClusterId = rdma.Id.Apply(x =\u003e int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),\n        Type = \"g3-gpu-rtxpro6000-blackwell-rdma-8\",\n        NodeCount = 1,\n        Tags = new[]\n        {\n            externalPoolTag,\n        },\n        Networking = new Linode.Inputs.LkeNodePoolNetworkingArgs\n        {\n            Interfaces = new[]\n            {\n                new Linode.Inputs.LkeNodePoolNetworkingInterfaceArgs\n                {\n                    Type = \"vpc\",\n                    VpcId = vpcId,\n                    SubnetId = vpcSubnetId,\n                },\n                new Linode.Inputs.LkeNodePoolNetworkingInterfaceArgs\n                {\n                    Type = \"rdma_vpc\",\n                    VpcId = vpcId,\n                    SubnetId = rdmaSubnetId,\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"strconv\"\n\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texternalPoolTag := \"external\"\n\t\trdma, err := linode.NewLkeCluster(ctx, \"rdma\", \u0026linode.LkeClusterArgs{\n\t\t\tLabel:      pulumi.String(\"rdma-cluster\"),\n\t\t\tK8sVersion: pulumi.String(\"v1.35.9+lke3\"),\n\t\t\tRegion:     pulumi.String(\"us-mia\"),\n\t\t\tTier:       pulumi.String(\"enterprise\"),\n\t\t\tVpcId:      pulumi.Any(vpcId),\n\t\t\tSubnetId:   pulumi.Any(vpcSubnetId),\n\t\t\tExternalPoolTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(externalPoolTag),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = linode.NewLkeNodePool(ctx, \"rdma\", \u0026linode.LkeNodePoolArgs{\n\t\t\tClusterId: rdma.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),\n\t\t\tType:      pulumi.String(\"g3-gpu-rtxpro6000-blackwell-rdma-8\"),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(externalPoolTag),\n\t\t\t},\n\t\t\tNetworking: \u0026linode.LkeNodePoolNetworkingArgs{\n\t\t\t\tInterfaces: linode.LkeNodePoolNetworkingInterfaceArray{\n\t\t\t\t\t\u0026linode.LkeNodePoolNetworkingInterfaceArgs{\n\t\t\t\t\t\tType:     pulumi.String(\"vpc\"),\n\t\t\t\t\t\tVpcId:    pulumi.Any(vpcId),\n\t\t\t\t\t\tSubnetId: pulumi.Any(vpcSubnetId),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026linode.LkeNodePoolNetworkingInterfaceArgs{\n\t\t\t\t\t\tType:     pulumi.String(\"rdma_vpc\"),\n\t\t\t\t\t\tVpcId:    pulumi.Any(vpcId),\n\t\t\t\t\t\tSubnetId: pulumi.Any(rdmaSubnetId),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\nresource \"linode_lke_cluster\" \"rdma\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  label              = \"rdma-cluster\"\n  k8s_version        = \"v1.35.9+lke3\"\n  region             = \"us-mia\"\n  tier               = \"enterprise\"\n  vpc_id             = vpcId\n  subnet_id          = vpcSubnetId\n  external_pool_tags = [local.externalPoolTag]\n}\nresource \"linode_lke_node_pool\" \"rdma\" {\n  lifecycle {\n    create_before_destroy = true\n  }\n  cluster_id = linode_lke_cluster.rdma.id\n  type       = \"g3-gpu-rtxpro6000-blackwell-rdma-8\"\n  node_count = 1\n  tags       = [local.externalPoolTag]\n  networking = {\n    interfaces = [{\n      type      = \"vpc\"\n      vpc_id    = vpcId\n      subnet_id = vpcSubnetId\n      }, {\n      type      = \"rdma_vpc\"\n      vpc_id    = vpcId\n      subnet_id = rdmaSubnetId\n    }]\n  }\n}\nlocals {\n  externalPoolTag = \"external\"\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LkeCluster;\nimport com.pulumi.linode.LkeClusterArgs;\nimport com.pulumi.linode.LkeNodePool;\nimport com.pulumi.linode.LkeNodePoolArgs;\nimport com.pulumi.linode.inputs.LkeNodePoolNetworkingArgs;\nimport com.pulumi.linode.inputs.LkeNodePoolNetworkingInterfaceArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var externalPoolTag = \"external\";\n\n        var rdma = new LkeCluster(\"rdma\", LkeClusterArgs.builder()\n            .label(\"rdma-cluster\")\n            .k8sVersion(\"v1.35.9+lke3\")\n            .region(\"us-mia\")\n            .tier(\"enterprise\")\n            .vpcId(vpcId)\n            .subnetId(vpcSubnetId)\n            .externalPoolTags(externalPoolTag)\n            .build());\n\n        var rdmaLkeNodePool = new LkeNodePool(\"rdmaLkeNodePool\", LkeNodePoolArgs.builder()\n            .clusterId(rdma.id())\n            .type(\"g3-gpu-rtxpro6000-blackwell-rdma-8\")\n            .nodeCount(1)\n            .tags(externalPoolTag)\n            .networking(LkeNodePoolNetworkingArgs.builder()\n                .interfaces(                \n                    LkeNodePoolNetworkingInterfaceArgs.builder()\n                        .type(\"vpc\")\n                        .vpcId(vpcId)\n                        .subnetId(vpcSubnetId)\n                        .build(),\n                    LkeNodePoolNetworkingInterfaceArgs.builder()\n                        .type(\"rdma_vpc\")\n                        .vpcId(vpcId)\n                        .subnetId(rdmaSubnetId)\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  rdma:\n    type: linode:LkeCluster\n    properties:\n      label: rdma-cluster\n      k8sVersion: v1.35.9+lke3\n      region: us-mia\n      tier: enterprise\n      vpcId: ${vpcId}\n      subnetId: ${vpcSubnetId}\n      externalPoolTags:\n        - ${externalPoolTag}\n  rdmaLkeNodePool:\n    type: linode:LkeNodePool\n    name: rdma\n    properties:\n      clusterId: ${rdma.id}\n      type: g3-gpu-rtxpro6000-blackwell-rdma-8\n      nodeCount: 1\n      tags:\n        - ${externalPoolTag}\n      networking:\n        interfaces:\n          - type: vpc\n            vpcId: ${vpcId}\n            subnetId: ${vpcSubnetId}\n          - type: rdma_vpc\n            vpcId: ${vpcId}\n            subnetId: ${rdmaSubnetId}\nvariables:\n  externalPoolTag: external\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nReplace the VPC and subnet variables with IDs for existing resources in the\ncluster's region. The first interface must be the cluster VPC interface; add\nRDMA VPC interfaces after it. RDMA-capable plans and RDMA VPC subnets may not\nbe available in every region or account.\n\n## Import\n\nLKE Node Pools can be imported using the `cluster_id,id`, e.g.\n\n```sh\n$ pulumi import linode:index/lkeNodePool:LkeNodePool my_pool 150003,12345\n```\n\n",
             "properties": {
                 "autoscaler": {
                     "$ref": "#/types/linode:index/LkeNodePoolAutoscaler:LkeNodePoolAutoscaler"
@@ -25769,7 +26008,7 @@
                 },
                 "isolationPublicIpv6": {
                     "type": "boolean",
-                    "description": "Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.\n"
+                    "description": "Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.\n\n* \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires \u003cspan pulumi-lang-nodejs=\"`apiVersion \" pulumi-lang-dotnet=\"`ApiVersion \" pulumi-lang-go=\"`apiVersion \" pulumi-lang-python=\"`api_version \" pulumi-lang-yaml=\"`apiVersion \" pulumi-lang-java=\"`apiVersion \" pulumi-lang-hcl=\"`api_version \"\u003e`apiVersion \u003c/span\u003e= \"v4beta\"` and an Enterprise cluster.\n"
                 },
                 "k8sVersion": {
                     "type": "string",
@@ -25785,6 +26024,10 @@
                         "type": "string"
                     },
                     "description": "A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
+                },
+                "networking": {
+                    "$ref": "#/types/linode:index/LkeNodePoolNetworking:LkeNodePoolNetworking",
+                    "description": "Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires\u003cspan pulumi-lang-nodejs=\" apiVersion \" pulumi-lang-dotnet=\" ApiVersion \" pulumi-lang-go=\" apiVersion \" pulumi-lang-python=\" api_version \" pulumi-lang-yaml=\" apiVersion \" pulumi-lang-java=\" apiVersion \" pulumi-lang-hcl=\" api_version \"\u003e apiVersion \u003c/span\u003e= \"v4beta\" and tier = \"enterprise\" on the cluster."
                 },
                 "nodeCount": {
                     "type": "integer",
@@ -25857,7 +26100,7 @@
                 },
                 "isolationPublicIpv6": {
                     "type": "boolean",
-                    "description": "Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.\n"
+                    "description": "Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.\n\n* \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires \u003cspan pulumi-lang-nodejs=\"`apiVersion \" pulumi-lang-dotnet=\"`ApiVersion \" pulumi-lang-go=\"`apiVersion \" pulumi-lang-python=\"`api_version \" pulumi-lang-yaml=\"`apiVersion \" pulumi-lang-java=\"`apiVersion \" pulumi-lang-hcl=\"`api_version \"\u003e`apiVersion \u003c/span\u003e= \"v4beta\"` and an Enterprise cluster.\n"
                 },
                 "k8sVersion": {
                     "type": "string",
@@ -25873,6 +26116,10 @@
                         "type": "string"
                     },
                     "description": "A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
+                },
+                "networking": {
+                    "$ref": "#/types/linode:index/LkeNodePoolNetworking:LkeNodePoolNetworking",
+                    "description": "Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires\u003cspan pulumi-lang-nodejs=\" apiVersion \" pulumi-lang-dotnet=\" ApiVersion \" pulumi-lang-go=\" apiVersion \" pulumi-lang-python=\" api_version \" pulumi-lang-yaml=\" apiVersion \" pulumi-lang-java=\" apiVersion \" pulumi-lang-hcl=\" api_version \"\u003e apiVersion \u003c/span\u003e= \"v4beta\" and tier = \"enterprise\" on the cluster."
                 },
                 "nodeCount": {
                     "type": "integer",
@@ -25929,7 +26176,7 @@
                     },
                     "isolationPublicIpv6": {
                         "type": "boolean",
-                        "description": "Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.\n"
+                        "description": "Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.\n\n* \u003cspan pulumi-lang-nodejs=\"`networking`\" pulumi-lang-dotnet=\"`Networking`\" pulumi-lang-go=\"`networking`\" pulumi-lang-python=\"`networking`\" pulumi-lang-yaml=\"`networking`\" pulumi-lang-java=\"`networking`\" pulumi-lang-hcl=\"`networking`\"\u003e`networking`\u003c/span\u003e - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires \u003cspan pulumi-lang-nodejs=\"`apiVersion \" pulumi-lang-dotnet=\"`ApiVersion \" pulumi-lang-go=\"`apiVersion \" pulumi-lang-python=\"`api_version \" pulumi-lang-yaml=\"`apiVersion \" pulumi-lang-java=\"`apiVersion \" pulumi-lang-hcl=\"`api_version \"\u003e`apiVersion \u003c/span\u003e= \"v4beta\"` and an Enterprise cluster.\n"
                     },
                     "k8sVersion": {
                         "type": "string",
@@ -25945,6 +26192,10 @@
                             "type": "string"
                         },
                         "description": "A map attribute containing key-value pairs to be added as labels to nodes in the node pool. Labels help classify your nodes and to easily select subsets of objects. To learn more, review [Add Labels and Taints to your LKE Node Pools](https://www.linode.com/docs/products/compute/kubernetes/guides/deploy-and-manage-cluster-with-the-linode-api/#add-labels-and-taints-to-your-lke-node-pools).\n"
+                    },
+                    "networking": {
+                        "$ref": "#/types/linode:index/LkeNodePoolNetworking:LkeNodePoolNetworking",
+                        "description": "Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires\u003cspan pulumi-lang-nodejs=\" apiVersion \" pulumi-lang-dotnet=\" ApiVersion \" pulumi-lang-go=\" apiVersion \" pulumi-lang-python=\" api_version \" pulumi-lang-yaml=\" apiVersion \" pulumi-lang-java=\" apiVersion \" pulumi-lang-hcl=\" api_version \"\u003e apiVersion \u003c/span\u003e= \"v4beta\" and tier = \"enterprise\" on the cluster."
                     },
                     "nodeCount": {
                         "type": "integer",
@@ -32806,7 +33057,7 @@
             }
         },
         "linode:index/getInstances:getInstances": {
-            "description": "Provides information about Linode instances that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instances = linode.getInstances({\n    filters: [\n        {\n            name: \"label\",\n            values: [\n                \"my-label\",\n                \"my-other-label\",\n            ],\n        },\n        {\n            name: \"tags\",\n            values: [\"my-tag\"],\n        },\n    ],\n});\nexport const instanceId = my_instances.then(my_instances =\u003e my_instances.instances?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instances = linode.get_instances(filters=[\n    {\n        \"name\": \"label\",\n        \"values\": [\n            \"my-label\",\n            \"my-other-label\",\n        ],\n    },\n    {\n        \"name\": \"tags\",\n        \"values\": [\"my-tag\"],\n    },\n])\npulumi.export(\"instanceId\", my_instances.instances[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instances = Linode.GetInstances.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetInstancesFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-label\",\n                    \"my-other-label\",\n                },\n            },\n            new Linode.Inputs.GetInstancesFilterInputArgs\n            {\n                Name = \"tags\",\n                Values = new[]\n                {\n                    \"my-tag\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"instanceId\"] = my_instances.Apply(my_instances =\u003e my_instances.Apply(getInstancesResult =\u003e getInstancesResult.Instances[0]?.Id)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmy_instances, err := linode.GetInstances(ctx, \u0026linode.GetInstancesArgs{\n\t\t\tFilters: []linode.GetInstancesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-label\",\n\t\t\t\t\t\t\"my-other-label\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"tags\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-tag\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"instanceId\", my_instances.Instances[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\ndata \"linode_instances\" \"my-instances\" {\n  filter {\n    name   = \"label\"\n    values = [\"my-label\", \"my-other-label\"]\n  }\n  filter {\n    name   = \"tags\"\n    values = [\"my-tag\"]\n  }\n}\n\noutput \"instanceId\" {\n  value = data.linode_instances.my-instances.instances[0].id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetInstancesArgs;\nimport com.pulumi.linode.inputs.GetInstancesFilterArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()\n            .filters(            \n                GetInstancesFilterArgs.builder()\n                    .name(\"label\")\n                    .values(                    \n                        \"my-label\",\n                        \"my-other-label\")\n                    .build(),\n                GetInstancesFilterArgs.builder()\n                    .name(\"tags\")\n                    .values(\"my-tag\")\n                    .build())\n            .build());\n\n        ctx.export(\"instanceId\", my_instances.instances()[0].id());\n    }\n}\n```\n```yaml\nvariables:\n  my-instances:\n    fn::invoke:\n      function: linode:getInstances\n      arguments:\n        filters:\n          - name: label\n            values:\n              - my-label\n              - my-other-label\n          - name: tags\n            values:\n              - my-tag\noutputs:\n  instanceId: ${[\"my-instances\"].instances[0].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_instances = linode.getInstances({});\nexport const instanceIds = all_instances.then(all_instances =\u003e all_instances.instances.map(__item =\u003e __item.id));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_instances = linode.get_instances()\npulumi.export(\"instanceIds\", [__item.id for __item in all_instances.instances])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all_instances = Linode.GetInstances.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"instanceIds\"] = all_instances.Apply(all_instances =\u003e all_instances.Apply(getInstancesResult =\u003e getInstancesResult.Instances).Select(__item =\u003e __item.Id).ToList()),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nall_instances, err := linode.GetInstances(ctx, \u0026linode.GetInstancesArgs{\n}, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"instanceIds\", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-40)))\nreturn nil\n})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\ndata \"linode_instances\" \"all-instances\" {\n}\n\noutput \"instanceIds\" {\n  value = data.linode_instances.all-instances.instances[*].id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetInstancesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()\n            .build());\n\n        ctx.export(\"instanceIds\", all_instances.instances().stream().map(element -\u003e element.id()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\" pulumi-lang-hcl=\"`image`\"\u003e`image`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`label`\" pulumi-lang-dotnet=\"`Label`\" pulumi-lang-go=\"`label`\" pulumi-lang-python=\"`label`\" pulumi-lang-yaml=\"`label`\" pulumi-lang-java=\"`label`\" pulumi-lang-hcl=\"`label`\"\u003e`label`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`tags`\" pulumi-lang-dotnet=\"`Tags`\" pulumi-lang-go=\"`tags`\" pulumi-lang-python=\"`tags`\" pulumi-lang-yaml=\"`tags`\" pulumi-lang-java=\"`tags`\" pulumi-lang-hcl=\"`tags`\"\u003e`tags`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`type`\" pulumi-lang-dotnet=\"`Type`\" pulumi-lang-go=\"`type`\" pulumi-lang-python=\"`type`\" pulumi-lang-yaml=\"`type`\" pulumi-lang-java=\"`type`\" pulumi-lang-hcl=\"`type`\"\u003e`type`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`watchdogEnabled`\" pulumi-lang-dotnet=\"`WatchdogEnabled`\" pulumi-lang-go=\"`watchdogEnabled`\" pulumi-lang-python=\"`watchdog_enabled`\" pulumi-lang-yaml=\"`watchdogEnabled`\" pulumi-lang-java=\"`watchdogEnabled`\" pulumi-lang-hcl=\"`watchdog_enabled`\"\u003e`watchdogEnabled`\u003c/span\u003e\n",
+            "description": "Provides information about Linode instances that match a set of filters.\nFor more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-linode-instances).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst my_instances = linode.getInstances({\n    filters: [\n        {\n            name: \"label\",\n            values: [\n                \"my-label\",\n                \"my-other-label\",\n            ],\n        },\n        {\n            name: \"tags\",\n            values: [\"my-tag\"],\n        },\n    ],\n});\nexport const instanceId = my_instances.then(my_instances =\u003e my_instances.instances?.[0]?.id);\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nmy_instances = linode.get_instances(filters=[\n    {\n        \"name\": \"label\",\n        \"values\": [\n            \"my-label\",\n            \"my-other-label\",\n        ],\n    },\n    {\n        \"name\": \"tags\",\n        \"values\": [\"my-tag\"],\n    },\n])\npulumi.export(\"instanceId\", my_instances.instances[0].id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_instances = Linode.GetInstances.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new Linode.Inputs.GetInstancesFilterInputArgs\n            {\n                Name = \"label\",\n                Values = new[]\n                {\n                    \"my-label\",\n                    \"my-other-label\",\n                },\n            },\n            new Linode.Inputs.GetInstancesFilterInputArgs\n            {\n                Name = \"tags\",\n                Values = new[]\n                {\n                    \"my-tag\",\n                },\n            },\n        },\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"instanceId\"] = my_instances.Apply(my_instances =\u003e my_instances.Apply(getInstancesResult =\u003e getInstancesResult.Instances[0]?.Id)),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmy_instances, err := linode.GetInstances(ctx, \u0026linode.GetInstancesArgs{\n\t\t\tFilters: []linode.GetInstancesFilter{\n\t\t\t\t{\n\t\t\t\t\tName: \"label\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-label\",\n\t\t\t\t\t\t\"my-other-label\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t{\n\t\t\t\t\tName: \"tags\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-tag\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"instanceId\", my_instances.Instances[0].Id)\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\ndata \"linode_instances\" \"my-instances\" {\n  filter {\n    name   = \"label\"\n    values = [\"my-label\", \"my-other-label\"]\n  }\n  filter {\n    name   = \"tags\"\n    values = [\"my-tag\"]\n  }\n}\n\noutput \"instanceId\" {\n  value = data.linode_instances.my-instances.instances[0].id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetInstancesArgs;\nimport com.pulumi.linode.inputs.GetInstancesFilterArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()\n            .filters(            \n                GetInstancesFilterArgs.builder()\n                    .name(\"label\")\n                    .values(                    \n                        \"my-label\",\n                        \"my-other-label\")\n                    .build(),\n                GetInstancesFilterArgs.builder()\n                    .name(\"tags\")\n                    .values(\"my-tag\")\n                    .build())\n            .build());\n\n        ctx.export(\"instanceId\", my_instances.instances()[0].id());\n    }\n}\n```\n```yaml\nvariables:\n  my-instances:\n    fn::invoke:\n      function: linode:getInstances\n      arguments:\n        filters:\n          - name: label\n            values:\n              - my-label\n              - my-other-label\n          - name: tags\n            values:\n              - my-tag\noutputs:\n  instanceId: ${[\"my-instances\"].instances[0].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all_instances = linode.getInstances({});\nexport const instanceIds = all_instances.then(all_instances =\u003e all_instances.instances.map(__item =\u003e __item.id));\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall_instances = linode.get_instances()\npulumi.export(\"instanceIds\", [__item.id for __item in all_instances.instances])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all_instances = Linode.GetInstances.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"instanceIds\"] = all_instances.Apply(all_instances =\u003e all_instances.Apply(getInstancesResult =\u003e getInstancesResult.Instances).Select(__item =\u003e __item.Id).ToList()),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nall_instances, err := linode.GetInstances(ctx, \u0026linode.GetInstancesArgs{\n}, nil);\nif err != nil {\nreturn err\n}\nctx.Export(\"instanceIds\", pulumi.IntArray(%!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ example.pp:3,11-40)))\nreturn nil\n})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\ndata \"linode_instances\" \"all-instances\" {\n}\n\noutput \"instanceIds\" {\n  value = data.linode_instances.all-instances.instances[*].id\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport com.pulumi.linode.inputs.GetInstancesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all-instances = LinodeFunctions.getInstances(GetInstancesArgs.builder()\n            .build());\n\n        ctx.export(\"instanceIds\", all_instances.instances().stream().map(element -\u003e element.id()).collect(toList()));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Filterable Fields\n\n* \u003cspan pulumi-lang-nodejs=\"`diskEncryption`\" pulumi-lang-dotnet=\"`DiskEncryption`\" pulumi-lang-go=\"`diskEncryption`\" pulumi-lang-python=\"`disk_encryption`\" pulumi-lang-yaml=\"`diskEncryption`\" pulumi-lang-java=\"`diskEncryption`\" pulumi-lang-hcl=\"`disk_encryption`\"\u003e`diskEncryption`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\" pulumi-lang-hcl=\"`image`\"\u003e`image`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`interfaceGeneration`\" pulumi-lang-dotnet=\"`InterfaceGeneration`\" pulumi-lang-go=\"`interfaceGeneration`\" pulumi-lang-python=\"`interface_generation`\" pulumi-lang-yaml=\"`interfaceGeneration`\" pulumi-lang-java=\"`interfaceGeneration`\" pulumi-lang-hcl=\"`interface_generation`\"\u003e`interfaceGeneration`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`label`\" pulumi-lang-dotnet=\"`Label`\" pulumi-lang-go=\"`label`\" pulumi-lang-python=\"`label`\" pulumi-lang-yaml=\"`label`\" pulumi-lang-java=\"`label`\" pulumi-lang-hcl=\"`label`\"\u003e`label`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`lkeClusterId`\" pulumi-lang-dotnet=\"`LkeClusterId`\" pulumi-lang-go=\"`lkeClusterId`\" pulumi-lang-python=\"`lke_cluster_id`\" pulumi-lang-yaml=\"`lkeClusterId`\" pulumi-lang-java=\"`lkeClusterId`\" pulumi-lang-hcl=\"`lke_cluster_id`\"\u003e`lkeClusterId`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\" pulumi-lang-hcl=\"`status`\"\u003e`status`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`tags`\" pulumi-lang-dotnet=\"`Tags`\" pulumi-lang-go=\"`tags`\" pulumi-lang-python=\"`tags`\" pulumi-lang-yaml=\"`tags`\" pulumi-lang-java=\"`tags`\" pulumi-lang-hcl=\"`tags`\"\u003e`tags`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`type`\" pulumi-lang-dotnet=\"`Type`\" pulumi-lang-go=\"`type`\" pulumi-lang-python=\"`type`\" pulumi-lang-yaml=\"`type`\" pulumi-lang-java=\"`type`\" pulumi-lang-hcl=\"`type`\"\u003e`type`\u003c/span\u003e\n\n* \u003cspan pulumi-lang-nodejs=\"`watchdogEnabled`\" pulumi-lang-dotnet=\"`WatchdogEnabled`\" pulumi-lang-go=\"`watchdogEnabled`\" pulumi-lang-python=\"`watchdog_enabled`\" pulumi-lang-yaml=\"`watchdogEnabled`\" pulumi-lang-java=\"`watchdogEnabled`\" pulumi-lang-hcl=\"`watchdog_enabled`\"\u003e`watchdogEnabled`\u003c/span\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getInstances.\n",
                 "properties": {
@@ -32818,11 +33069,11 @@
                     },
                     "order": {
                         "type": "string",
-                        "description": "The order in which results should be returned. (\u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\" pulumi-lang-hcl=\"`asc`\"\u003e`asc`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e; default \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\" pulumi-lang-hcl=\"`asc`\"\u003e`asc`\u003c/span\u003e)\n"
+                        "description": "The order in which results should be returned. (\u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\" pulumi-lang-hcl=\"`asc`\"\u003e`asc`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e; default \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\" pulumi-lang-hcl=\"`desc`\"\u003e`desc`\u003c/span\u003e)\n"
                     },
                     "orderBy": {
                         "type": "string",
-                        "description": "The attribute to order the results by. See the Filterable Fields section for a list of valid fields.\n"
+                        "description": "The attribute to order the results by. (\u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\" pulumi-lang-hcl=\"`id`\"\u003e`id`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\" pulumi-lang-hcl=\"`image`\"\u003e`image`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`label`\" pulumi-lang-dotnet=\"`Label`\" pulumi-lang-go=\"`label`\" pulumi-lang-python=\"`label`\" pulumi-lang-yaml=\"`label`\" pulumi-lang-java=\"`label`\" pulumi-lang-hcl=\"`label`\"\u003e`label`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\" pulumi-lang-hcl=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`lkeClusterId`\" pulumi-lang-dotnet=\"`LkeClusterId`\" pulumi-lang-go=\"`lkeClusterId`\" pulumi-lang-python=\"`lke_cluster_id`\" pulumi-lang-yaml=\"`lkeClusterId`\" pulumi-lang-java=\"`lkeClusterId`\" pulumi-lang-hcl=\"`lke_cluster_id`\"\u003e`lkeClusterId`\u003c/span\u003e)\n"
                     }
                 },
                 "type": "object"
@@ -32837,7 +33088,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "description": "The ID of the Placement Group in the Linode API.\n",
                         "type": "string"
                     },
                     "instances": {
@@ -32855,8 +33106,8 @@
                     }
                 },
                 "required": [
-                    "instances",
-                    "id"
+                    "id",
+                    "instances"
                 ],
                 "type": "object"
             }
@@ -34313,6 +34564,29 @@
                     "id",
                     "streamId",
                     "streams"
+                ],
+                "type": "object"
+            }
+        },
+        "linode:index/getMonitorLogsStreamQuotas:getMonitorLogsStreamQuotas": {
+            "description": "Provides details about logs stream quotas available.\nThis data source requires the \u003cspan pulumi-lang-nodejs=\"`v4beta`\" pulumi-lang-dotnet=\"`V4beta`\" pulumi-lang-go=\"`v4beta`\" pulumi-lang-python=\"`v4beta`\" pulumi-lang-yaml=\"`v4beta`\" pulumi-lang-java=\"`v4beta`\" pulumi-lang-hcl=\"`v4beta`\"\u003e`v4beta`\u003c/span\u003e API.\n\n## Example Usage\n\nThe following example shows how one might use this data source to list logs stream quotas.\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as linode from \"@pulumi/linode\";\n\nconst all = linode.getMonitorLogsStreamQuotas({});\n```\n```python\nimport pulumi\nimport pulumi_linode as linode\n\nall = linode.get_monitor_logs_stream_quotas()\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Linode = Pulumi.Linode;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = Linode.GetMonitorLogsStreamQuotas.Invoke();\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-linode/sdk/v6/go/linode\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := linode.GetMonitorLogsStreamQuotas(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```hcl\nterraform {\n  required_providers {\n    linode = {\n      source = \"pulumi/linode\"\n    }\n  }\n}\n\ndata \"linode_monitor_logs_stream_quotas\" \"all\" {\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.linode.LinodeFunctions;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      function: linode:getMonitorLogsStreamQuotas\n      arguments: {}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getMonitorLogsStreamQuotas.\n",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "quotas": {
+                        "description": "(Nested Attribute List) The list of logs stream quotas available.\n",
+                        "items": {
+                            "$ref": "#/types/linode:index/getMonitorLogsStreamQuotasQuota:getMonitorLogsStreamQuotasQuota"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "id",
+                    "quotas"
                 ],
                 "type": "object"
             }

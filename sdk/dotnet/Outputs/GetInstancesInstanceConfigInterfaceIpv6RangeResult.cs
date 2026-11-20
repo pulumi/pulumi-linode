@@ -14,19 +14,19 @@ namespace Pulumi.Linode.Outputs
     public sealed class GetInstancesInstanceConfigInterfaceIpv6RangeResult
     {
         /// <summary>
-        /// The value of `Range` computed by the API. This is necessary when needing to access the range implicitly allocated using `Auto`.
+        /// The value of `Range` computed by the API.
         /// </summary>
         public readonly string AssignedRange;
         /// <summary>
         /// A prefix to add to this interface, or `Auto` for a new IPv6 prefix to be automatically allocated.
         /// </summary>
-        public readonly string? Range;
+        public readonly string Range;
 
         [OutputConstructor]
         private GetInstancesInstanceConfigInterfaceIpv6RangeResult(
             string assignedRange,
 
-            string? range)
+            string range)
         {
             AssignedRange = assignedRange;
             Range = range;

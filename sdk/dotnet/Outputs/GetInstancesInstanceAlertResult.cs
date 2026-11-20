@@ -11,7 +11,7 @@ namespace Pulumi.Linode.Outputs
 {
 
     [OutputType]
-    public sealed class GetInstancesInstanceAlertsResult
+    public sealed class GetInstancesInstanceAlertResult
     {
         /// <summary>
         /// The percentage of CPU usage required to trigger an alert. If the average CPU usage over two hours exceeds this value, we'll send you an alert. If this is set to 0, the alert is disabled.
@@ -43,7 +43,7 @@ namespace Pulumi.Linode.Outputs
         public readonly ImmutableArray<int> UserAlerts;
 
         [OutputConstructor]
-        private GetInstancesInstanceAlertsResult(
+        private GetInstancesInstanceAlertResult(
             int cpu,
 
             int io,

@@ -76,6 +76,7 @@ from .get_monitor_logs_destination import *
 from .get_monitor_logs_destinations import *
 from .get_monitor_logs_stream import *
 from .get_monitor_logs_stream_history import *
+from .get_monitor_logs_stream_quotas import *
 from .get_monitor_logs_streams import *
 from .get_nb_types import *
 from .get_network_transfer_prices import *

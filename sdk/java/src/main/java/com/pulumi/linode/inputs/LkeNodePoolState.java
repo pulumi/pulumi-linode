@@ -6,6 +6,7 @@ package com.pulumi.linode.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.linode.inputs.LkeNodePoolAutoscalerArgs;
+import com.pulumi.linode.inputs.LkeNodePoolNetworkingArgs;
 import com.pulumi.linode.inputs.LkeNodePoolNodeArgs;
 import com.pulumi.linode.inputs.LkeNodePoolTaintArgs;
 import java.lang.Boolean;
@@ -92,12 +93,16 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
      * 
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = &#34;v4beta&#34;` and an Enterprise cluster.
+     * 
      */
     @Import(name="isolationPublicIpv6")
     private @Nullable Output<Boolean> isolationPublicIpv6;
 
     /**
      * @return Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+     * 
+     * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = &#34;v4beta&#34;` and an Enterprise cluster.
      * 
      */
     public Optional<Output<Boolean>> isolationPublicIpv6() {
@@ -147,6 +152,21 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = &#34;v4beta&#34; and tier = &#34;enterprise&#34; on the cluster.
+     * 
+     */
+    @Import(name="networking")
+    private @Nullable Output<LkeNodePoolNetworkingArgs> networking;
+
+    /**
+     * @return Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = &#34;v4beta&#34; and tier = &#34;enterprise&#34; on the cluster.
+     * 
+     */
+    public Optional<Output<LkeNodePoolNetworkingArgs>> networking() {
+        return Optional.ofNullable(this.networking);
     }
 
     /**
@@ -259,6 +279,7 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         this.k8sVersion = $.k8sVersion;
         this.label = $.label;
         this.labels = $.labels;
+        this.networking = $.networking;
         this.nodeCount = $.nodeCount;
         this.nodes = $.nodes;
         this.tags = $.tags;
@@ -381,6 +402,8 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param isolationPublicIpv6 Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
          * 
+         * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = &#34;v4beta&#34;` and an Enterprise cluster.
+         * 
          * @return builder
          * 
          */
@@ -391,6 +414,8 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param isolationPublicIpv6 Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+         * 
+         * * `networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `apiVersion = &#34;v4beta&#34;` and an Enterprise cluster.
          * 
          * @return builder
          * 
@@ -460,6 +485,27 @@ public final class LkeNodePoolState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param networking Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = &#34;v4beta&#34; and tier = &#34;enterprise&#34; on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networking(@Nullable Output<LkeNodePoolNetworkingArgs> networking) {
+            $.networking = networking;
+            return this;
+        }
+
+        /**
+         * @param networking Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires apiVersion = &#34;v4beta&#34; and tier = &#34;enterprise&#34; on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networking(LkeNodePoolNetworkingArgs networking) {
+            return networking(Output.of(networking));
         }
 
         /**

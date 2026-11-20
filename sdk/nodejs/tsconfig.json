@@ -91,6 +91,7 @@
         "getMonitorLogsDestinations.ts",
         "getMonitorLogsStream.ts",
         "getMonitorLogsStreamHistory.ts",
+        "getMonitorLogsStreamQuotas.ts",
         "getMonitorLogsStreams.ts",
         "getNbTypes.ts",
         "getNetworkTransferPrices.ts",

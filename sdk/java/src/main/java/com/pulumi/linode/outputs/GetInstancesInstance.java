@@ -5,7 +5,7 @@ package com.pulumi.linode.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.linode.outputs.GetInstancesInstanceAlerts;
+import com.pulumi.linode.outputs.GetInstancesInstanceAlert;
 import com.pulumi.linode.outputs.GetInstancesInstanceBackup;
 import com.pulumi.linode.outputs.GetInstancesInstanceConfig;
 import com.pulumi.linode.outputs.GetInstancesInstanceDisk;
@@ -23,14 +23,14 @@ public final class GetInstancesInstance {
      * @return (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
      * 
      */
-    private GetInstancesInstanceAlerts alerts;
+    private List<GetInstancesInstanceAlert> alerts;
     /**
      * @return (Read-Only Object List) Information about the Linode&#39;s backup status. Referenced with an index (e.g. `backups.0.enabled`).
      * 
      */
     private List<GetInstancesInstanceBackup> backups;
     /**
-     * @return The Label of the Instance Config that should be used to boot the Linode instance.
+     * @return The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.
      * 
      */
     private String bootConfigLabel;
@@ -60,7 +60,7 @@ public final class GetInstancesInstance {
      */
     private Boolean hasUserData;
     /**
-     * @return The Linode’s host machine, as a UUID.
+     * @return The Linode&#39;s host machine, as a UUID.
      * 
      */
     private String hostUuid;
@@ -165,7 +165,7 @@ public final class GetInstancesInstance {
      * @return (Read-Only Object List) The alert thresholds for this Linode. Referenced with an index (e.g. `alerts.0.cpu`).
      * 
      */
-    public GetInstancesInstanceAlerts alerts() {
+    public List<GetInstancesInstanceAlert> alerts() {
         return this.alerts;
     }
     /**
@@ -176,7 +176,7 @@ public final class GetInstancesInstance {
         return this.backups;
     }
     /**
-     * @return The Label of the Instance Config that should be used to boot the Linode instance.
+     * @return The label of the Config used to boot this Linode. Only populated when the Linode has exactly one Config.
      * 
      */
     public String bootConfigLabel() {
@@ -218,7 +218,7 @@ public final class GetInstancesInstance {
         return this.hasUserData;
     }
     /**
-     * @return The Linode’s host machine, as a UUID.
+     * @return The Linode&#39;s host machine, as a UUID.
      * 
      */
     public String hostUuid() {
@@ -367,7 +367,7 @@ public final class GetInstancesInstance {
     }
     @CustomType.Builder
     public static final class Builder {
-        private GetInstancesInstanceAlerts alerts;
+        private List<GetInstancesInstanceAlert> alerts;
         private List<GetInstancesInstanceBackup> backups;
         private String bootConfigLabel;
         private List<String> capabilities;
@@ -429,12 +429,15 @@ public final class GetInstancesInstance {
         }
 
         @CustomType.Setter
-        public Builder alerts(GetInstancesInstanceAlerts alerts) {
+        public Builder alerts(List<GetInstancesInstanceAlert> alerts) {
             if (alerts == null) {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "alerts");
             }
             this.alerts = alerts;
             return this;
+        }
+        public Builder alerts(GetInstancesInstanceAlert... alerts) {
+            return alerts(List.of(alerts));
         }
         @CustomType.Setter
         public Builder backups(List<GetInstancesInstanceBackup> backups) {

@@ -141,6 +141,66 @@ namespace Pulumi.Linode
     /// 
     /// });
     /// ```
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Linode = Pulumi.Linode;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var externalPoolTag = "external";
+    /// 
+    ///     var rdma = new Linode.LkeCluster("rdma", new()
+    ///     {
+    ///         Label = "rdma-cluster",
+    ///         K8sVersion = "v1.35.9+lke3",
+    ///         Region = "us-mia",
+    ///         Tier = "enterprise",
+    ///         VpcId = vpcId,
+    ///         SubnetId = vpcSubnetId,
+    ///         ExternalPoolTags = new[]
+    ///         {
+    ///             externalPoolTag,
+    ///         },
+    ///     });
+    /// 
+    ///     var rdmaLkeNodePool = new Linode.LkeNodePool("rdma", new()
+    ///     {
+    ///         ClusterId = rdma.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+    ///         Type = "g3-gpu-rtxpro6000-blackwell-rdma-8",
+    ///         NodeCount = 1,
+    ///         Tags = new[]
+    ///         {
+    ///             externalPoolTag,
+    ///         },
+    ///         Networking = new Linode.Inputs.LkeNodePoolNetworkingArgs
+    ///         {
+    ///             Interfaces = new[]
+    ///             {
+    ///                 new Linode.Inputs.LkeNodePoolNetworkingInterfaceArgs
+    ///                 {
+    ///                     Type = "vpc",
+    ///                     VpcId = vpcId,
+    ///                     SubnetId = vpcSubnetId,
+    ///                 },
+    ///                 new Linode.Inputs.LkeNodePoolNetworkingInterfaceArgs
+    ///                 {
+    ///                     Type = "rdma_vpc",
+    ///                     VpcId = vpcId,
+    ///                     SubnetId = rdmaSubnetId,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Replace the VPC and subnet variables with IDs for existing resources in the
+    /// cluster's region. The first interface must be the cluster VPC interface; add
+    /// RDMA VPC interfaces after it. RDMA-capable plans and RDMA VPC subnets may not
+    /// be available in every region or account.
     /// 
     /// ## Import
     /// 
@@ -182,6 +242,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// 
+        /// * `Networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `ApiVersion = "v4beta"` and an Enterprise cluster.
         /// </summary>
         [Output("isolationPublicIpv6")]
         public Output<bool> IsolationPublicIpv6 { get; private set; } = null!;
@@ -203,6 +265,12 @@ namespace Pulumi.Linode
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
+
+        /// <summary>
+        /// Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires ApiVersion = "v4beta" and tier = "enterprise" on the cluster.
+        /// </summary>
+        [Output("networking")]
+        public Output<Outputs.LkeNodePoolNetworking?> Networking { get; private set; } = null!;
 
         /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -319,6 +387,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// 
+        /// * `Networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `ApiVersion = "v4beta"` and an Enterprise cluster.
         /// </summary>
         [Input("isolationPublicIpv6")]
         public Input<bool>? IsolationPublicIpv6 { get; set; }
@@ -346,6 +416,12 @@ namespace Pulumi.Linode
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires ApiVersion = "v4beta" and tier = "enterprise" on the cluster.
+        /// </summary>
+        [Input("networking")]
+        public Input<Inputs.LkeNodePoolNetworkingArgs>? Networking { get; set; }
 
         /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.
@@ -430,6 +506,8 @@ namespace Pulumi.Linode
 
         /// <summary>
         /// Whether nodes in this pool should have public IPv6 addresses. This is only available for LKE Enterprise clusters and may not be available to all customers. Changing this value replaces the pool.
+        /// 
+        /// * `Networking` - (Optional, Nested Attribute) Networking configuration for the node pool. Immutable after creation; changing it forces pool replacement. Requires `ApiVersion = "v4beta"` and an Enterprise cluster.
         /// </summary>
         [Input("isolationPublicIpv6")]
         public Input<bool>? IsolationPublicIpv6 { get; set; }
@@ -457,6 +535,12 @@ namespace Pulumi.Linode
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Networking configuration for the node pool. Immutable after creation — changing this block forces pool replacement. Requires ApiVersion = "v4beta" and tier = "enterprise" on the cluster.
+        /// </summary>
+        [Input("networking")]
+        public Input<Inputs.LkeNodePoolNetworkingGetArgs>? Networking { get; set; }
 
         /// <summary>
         /// The number of nodes in the Node Pool. If undefined with an autoscaler the initial node count will equal the autoscaler minimum.

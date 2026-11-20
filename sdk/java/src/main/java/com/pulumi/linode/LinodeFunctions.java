@@ -264,6 +264,7 @@ import com.pulumi.linode.outputs.GetMonitorAlertDefinitionsResult;
 import com.pulumi.linode.outputs.GetMonitorLogsDestinationResult;
 import com.pulumi.linode.outputs.GetMonitorLogsDestinationsResult;
 import com.pulumi.linode.outputs.GetMonitorLogsStreamHistoryResult;
+import com.pulumi.linode.outputs.GetMonitorLogsStreamQuotasResult;
 import com.pulumi.linode.outputs.GetMonitorLogsStreamResult;
 import com.pulumi.linode.outputs.GetMonitorLogsStreamsResult;
 import com.pulumi.linode.outputs.GetNbTypesResult;
@@ -21996,11 +21997,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -22097,11 +22104,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -22198,11 +22211,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -22299,11 +22318,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -22400,11 +22425,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -22501,11 +22532,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -22602,11 +22639,17 @@ public final class LinodeFunctions {
      * 
      * ## Filterable Fields
      * 
+     * * `diskEncryption`
+     * 
      * * `id`
      * 
      * * `image`
      * 
+     * * `interfaceGeneration`
+     * 
      * * `label`
+     * 
+     * * `lkeClusterId`
      * 
      * * `region`
      * 
@@ -30622,6 +30665,286 @@ public final class LinodeFunctions {
      */
     public static CompletableFuture<GetMonitorLogsStreamHistoryResult> getMonitorLogsStreamHistoryPlain(GetMonitorLogsStreamHistoryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory", TypeShape.of(GetMonitorLogsStreamHistoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotas() {
+        return getMonitorLogsStreamQuotas(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotasPlain() {
+        return getMonitorLogsStreamQuotasPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotas(InvokeArgs args) {
+        return getMonitorLogsStreamQuotas(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotasPlain(InvokeArgs args) {
+        return getMonitorLogsStreamQuotasPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotas(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStreamQuotas:getMonitorLogsStreamQuotas", TypeShape.of(GetMonitorLogsStreamQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotas(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("linode:index/getMonitorLogsStreamQuotas:getMonitorLogsStreamQuotas", TypeShape.of(GetMonitorLogsStreamQuotasResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides details about logs stream quotas available.
+     * This data source requires the `v4beta` API.
+     * 
+     * ## Example Usage
+     * 
+     * The following example shows how one might use this data source to list logs stream quotas.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.linode.LinodeFunctions;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = LinodeFunctions.getMonitorLogsStreamQuotas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetMonitorLogsStreamQuotasResult> getMonitorLogsStreamQuotasPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("linode:index/getMonitorLogsStreamQuotas:getMonitorLogsStreamQuotas", TypeShape.of(GetMonitorLogsStreamQuotasResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides a list of Linode Monitor Logs Streams.

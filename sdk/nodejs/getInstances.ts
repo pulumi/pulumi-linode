@@ -43,11 +43,17 @@ import * as utilities from "./utilities";
  *
  * ## Filterable Fields
  *
+ * * `diskEncryption`
+ *
  * * `id`
  *
  * * `image`
  *
+ * * `interfaceGeneration`
+ *
  * * `label`
+ *
+ * * `lkeClusterId`
  *
  * * `region`
  *
@@ -75,11 +81,11 @@ export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOption
 export interface GetInstancesArgs {
     filters?: inputs.GetInstancesFilter[];
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: string;
     /**
-     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
      */
     orderBy?: string;
 }
@@ -90,7 +96,7 @@ export interface GetInstancesArgs {
 export interface GetInstancesResult {
     readonly filters?: outputs.GetInstancesFilter[];
     /**
-     * The provider-assigned unique ID for this managed resource.
+     * The ID of the Placement Group in the Linode API.
      */
     readonly id: string;
     /**
@@ -137,11 +143,17 @@ export interface GetInstancesResult {
  *
  * ## Filterable Fields
  *
+ * * `diskEncryption`
+ *
  * * `id`
  *
  * * `image`
  *
+ * * `interfaceGeneration`
+ *
  * * `label`
+ *
+ * * `lkeClusterId`
  *
  * * `region`
  *
@@ -169,11 +181,11 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
 export interface GetInstancesOutputArgs {
     filters?: pulumi.Input<pulumi.Input<inputs.GetInstancesFilterArgs>[] | undefined>;
     /**
-     * The order in which results should be returned. (`asc`, `desc`; default `asc`)
+     * The order in which results should be returned. (`asc`, `desc`; default `desc`)
      */
     order?: pulumi.Input<string | undefined>;
     /**
-     * The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+     * The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
      */
     orderBy?: pulumi.Input<string | undefined>;
 }

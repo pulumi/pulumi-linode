@@ -74,11 +74,17 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `DiskEncryption`
+        /// 
         /// * `Id`
         /// 
         /// * `Image`
         /// 
+        /// * `InterfaceGeneration`
+        /// 
         /// * `Label`
+        /// 
+        /// * `LkeClusterId`
         /// 
         /// * `Region`
         /// 
@@ -156,11 +162,17 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `DiskEncryption`
+        /// 
         /// * `Id`
         /// 
         /// * `Image`
         /// 
+        /// * `InterfaceGeneration`
+        /// 
         /// * `Label`
+        /// 
+        /// * `LkeClusterId`
         /// 
         /// * `Region`
         /// 
@@ -238,11 +250,17 @@ namespace Pulumi.Linode
         /// 
         /// ## Filterable Fields
         /// 
+        /// * `DiskEncryption`
+        /// 
         /// * `Id`
         /// 
         /// * `Image`
         /// 
+        /// * `InterfaceGeneration`
+        /// 
         /// * `Label`
+        /// 
+        /// * `LkeClusterId`
         /// 
         /// * `Region`
         /// 
@@ -270,13 +288,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public string? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// The attribute to order the results by. (`Id`, `Image`, `Label`, `Region`, `LkeClusterId`)
         /// </summary>
         [Input("orderBy")]
         public string? OrderBy { get; set; }
@@ -298,13 +316,13 @@ namespace Pulumi.Linode
         }
 
         /// <summary>
-        /// The order in which results should be returned. (`Asc`, `Desc`; default `Asc`)
+        /// The order in which results should be returned. (`Asc`, `Desc`; default `Desc`)
         /// </summary>
         [Input("order")]
         public Input<string>? Order { get; set; }
 
         /// <summary>
-        /// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+        /// The attribute to order the results by. (`Id`, `Image`, `Label`, `Region`, `LkeClusterId`)
         /// </summary>
         [Input("orderBy")]
         public Input<string>? OrderBy { get; set; }
@@ -321,7 +339,7 @@ namespace Pulumi.Linode
     {
         public readonly ImmutableArray<Outputs.GetInstancesFilterResult> Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// The ID of the Placement Group in the Linode API.
         /// </summary>
         public readonly string Id;
         /// <summary>

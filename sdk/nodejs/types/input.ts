@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface DatabaseAccessControlsTimeouts {
+    /**
+     * Used when creating the access controls (until the database update has finished)
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * Used when deleting the access controls (until the database update has finished)
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * Used when updating the access controls (until the database update has finished)
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface DatabaseMysqlV2PendingUpdate {
     /**
      * The time when a mandatory update needs to be applied.
@@ -4881,6 +4896,28 @@ export interface LkeNodePoolAutoscaler {
      * The minimum number of nodes to autoscale to.
      */
     min?: pulumi.Input<number | undefined>;
+}
+
+export interface LkeNodePoolNetworking {
+    /**
+     * Ordered VPC interfaces for nodes in the pool. The first interface must have `type = "vpc"` and reference the cluster's VPC subnet. Subsequent interfaces may use `type = "rdmaVpc"`.
+     */
+    interfaces: pulumi.Input<pulumi.Input<inputs.LkeNodePoolNetworkingInterface>[]>;
+}
+
+export interface LkeNodePoolNetworkingInterface {
+    /**
+     * ID of the VPC subnet for the interface.
+     */
+    subnetId: pulumi.Input<number>;
+    /**
+     * Interface type: `vpc` for the first interface; subsequent interfaces may be `rdmaVpc`.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * ID of the VPC for the interface.
+     */
+    vpcId: pulumi.Input<number>;
 }
 
 export interface LkeNodePoolNode {

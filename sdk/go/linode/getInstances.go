@@ -78,11 +78,17 @@ import (
 //
 // ## Filterable Fields
 //
+// * `diskEncryption`
+//
 // * `id`
 //
 // * `image`
 //
+// * `interfaceGeneration`
+//
 // * `label`
+//
+// * `lkeClusterId`
 //
 // * `region`
 //
@@ -106,16 +112,16 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 // A collection of arguments for invoking getInstances.
 type GetInstancesArgs struct {
 	Filters []GetInstancesFilter `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order *string `pulumi:"order"`
-	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	// The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
 	OrderBy *string `pulumi:"orderBy"`
 }
 
 // A collection of values returned by getInstances.
 type GetInstancesResult struct {
 	Filters []GetInstancesFilter `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
+	// The ID of the Placement Group in the Linode API.
 	Id string `pulumi:"id"`
 	// (Read-Only Object List) The matched Linode instances. Referenced with an index (e.g. `instances.0.id`).
 	Instances []GetInstancesInstance `pulumi:"instances"`
@@ -131,9 +137,9 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 // A collection of arguments for invoking getInstances.
 type GetInstancesOutputArgs struct {
 	Filters GetInstancesFilterArrayInput `pulumi:"filters"`
-	// The order in which results should be returned. (`asc`, `desc`; default `asc`)
+	// The order in which results should be returned. (`asc`, `desc`; default `desc`)
 	Order pulumi.StringPtrInput `pulumi:"order"`
-	// The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
+	// The attribute to order the results by. (`id`, `image`, `label`, `region`, `lkeClusterId`)
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`
 }
 
@@ -160,7 +166,7 @@ func (o GetInstancesResultOutput) Filters() GetInstancesFilterArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []GetInstancesFilter { return v.Filters }).(GetInstancesFilterArrayOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
+// The ID of the Placement Group in the Linode API.
 func (o GetInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }

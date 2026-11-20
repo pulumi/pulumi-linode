@@ -20,19 +20,19 @@ namespace Pulumi.Linode.Outputs
         /// <summary>
         /// The `Label` of the `Disk` to map to this `Device` slot.
         /// </summary>
-        public readonly string? DiskLabel;
+        public readonly string DiskLabel;
         /// <summary>
         /// The Volume ID to map to this `Device` slot.
         /// </summary>
-        public readonly int? VolumeId;
+        public readonly int VolumeId;
 
         [OutputConstructor]
         private GetInstancesInstanceConfigDeviceSdcResult(
             int diskId,
 
-            string? diskLabel,
+            string diskLabel,
 
-            int? volumeId)
+            int volumeId)
         {
             DiskId = diskId;
             DiskLabel = diskLabel;

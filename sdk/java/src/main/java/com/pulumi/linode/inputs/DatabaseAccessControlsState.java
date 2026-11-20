@@ -5,6 +5,7 @@ package com.pulumi.linode.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.linode.inputs.DatabaseAccessControlsTimeoutsArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -62,12 +63,20 @@ public final class DatabaseAccessControlsState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.databaseType);
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<DatabaseAccessControlsTimeoutsArgs> timeouts;
+
+    public Optional<Output<DatabaseAccessControlsTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private DatabaseAccessControlsState() {}
 
     private DatabaseAccessControlsState(DatabaseAccessControlsState $) {
         this.allowLists = $.allowLists;
         this.databaseId = $.databaseId;
         this.databaseType = $.databaseType;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -159,6 +168,15 @@ public final class DatabaseAccessControlsState extends com.pulumi.resources.Reso
          */
         public Builder databaseType(String databaseType) {
             return databaseType(Output.of(databaseType));
+        }
+
+        public Builder timeouts(@Nullable Output<DatabaseAccessControlsTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(DatabaseAccessControlsTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public DatabaseAccessControlsState build() {
