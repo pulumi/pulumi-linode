@@ -996,6 +996,13 @@
                     "autoscaler": {
                         "maxItemsOne": true
                     },
+                    "networking": {
+                        "fields": {
+                            "interfaces": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
                     "nodes": {
                         "maxItemsOne": false
                     },
@@ -3136,6 +3143,15 @@
                     }
                 }
             },
+            "linode_monitor_logs_stream_quotas": {
+                "current": "linode:index/getMonitorLogsStreamQuotas:getMonitorLogsStreamQuotas",
+                "majorVersion": 6,
+                "fields": {
+                    "quotas": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "linode_monitor_logs_streams": {
                 "current": "linode:index/getMonitorLogsStreams:getMonitorLogsStreams",
                 "majorVersion": 6,
@@ -4248,7 +4264,17 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "datasources": {
+            "linode_instances": {
+                "maxItemsOneOverrides": {
+                    "instances.$.alerts": true,
+                    "instances.$.config.$.interface.$.ipv4": true,
+                    "instances.$.config.$.interface.$.ipv6": true
+                }
+            }
+        }
+    },
     "default-resource-schema-fixups": {
         "resources": {
             "linode_account_settings": {},
@@ -4257,6 +4283,7 @@
                     "kind": "missing"
                 }
             },
+            "linode_database_access_controls": {},
             "linode_database_mysql_v2": {},
             "linode_database_postgresql_v2": {},
             "linode_firewall": {},
@@ -4320,7 +4347,7 @@
         "resources": {
             "linode:index/accountSettings:AccountSettings": 1,
             "linode:index/consumerImageShareGroupToken:ConsumerImageShareGroupToken": 1,
-            "linode:index/databaseAccessControls:DatabaseAccessControls": 0,
+            "linode:index/databaseAccessControls:DatabaseAccessControls": 1,
             "linode:index/databaseMysqlV2:DatabaseMysqlV2": 1,
             "linode:index/databasePostgresqlV2:DatabasePostgresqlV2": 1,
             "linode:index/domain:Domain": 0,
@@ -4403,7 +4430,7 @@
             "linode:index/getInstanceNetworking:getInstanceNetworking": 1,
             "linode:index/getInstanceType:getInstanceType": 1,
             "linode:index/getInstanceTypes:getInstanceTypes": 1,
-            "linode:index/getInstances:getInstances": 0,
+            "linode:index/getInstances:getInstances": 1,
             "linode:index/getInterface:getInterface": 1,
             "linode:index/getIpv6Range:getIpv6Range": 1,
             "linode:index/getIpv6Ranges:getIpv6Ranges": 1,
@@ -4427,6 +4454,7 @@
             "linode:index/getMonitorLogsDestinations:getMonitorLogsDestinations": 1,
             "linode:index/getMonitorLogsStream:getMonitorLogsStream": 1,
             "linode:index/getMonitorLogsStreamHistory:getMonitorLogsStreamHistory": 1,
+            "linode:index/getMonitorLogsStreamQuotas:getMonitorLogsStreamQuotas": 1,
             "linode:index/getMonitorLogsStreams:getMonitorLogsStreams": 1,
             "linode:index/getNbTypes:getNbTypes": 1,
             "linode:index/getNetworkTransferPrices:getNetworkTransferPrices": 1,
